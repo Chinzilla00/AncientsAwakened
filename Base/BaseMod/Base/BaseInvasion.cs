@@ -1,6 +1,22 @@
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Linq;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Graphics;
+
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.Utilities;
+using Terraria.ModLoader;
+using AAMod;
+
 namespace AAMod
 {
-    /*public class BaseInvasion
+	/*public class BaseInvasion
 	{
 		public static List<int> net = new List<int>();
 		public static List<int> special = new List<int>();

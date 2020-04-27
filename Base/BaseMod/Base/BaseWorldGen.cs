@@ -1,12 +1,18 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using Microsoft.Xna.Framework;
 
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ObjectData;
+using Terraria.ID;
 using Terraria.Localization;
+using Terraria.Utilities;
+using Terraria.Map;
 using Terraria.ModLoader;
 using Terraria.World.Generation;
+using AAMod;
 
 namespace AAMod
 {
@@ -20,6 +26,18 @@ namespace AAMod
         //------------------------------------------------------//
         //  Author(s): Grox the Great                           //
         //------------------------------------------------------//
+		
+		public static Tile GetTileSafely(Vector2 position)
+		{
+			return GetTileSafely((int)(position.X / 16f), (int)(position.Y / 16f));
+		}
+		
+		public static Tile GetTileSafely(int x, int y)
+		{
+			if(x < 0 || x > Main.maxTilesX || y < 0 || y > Main.maxTilesY)
+				return new Tile();
+			return Framing.GetTileSafely(x, y);
+		}
 
 		public static void GenOre(int tileType, int amountInWorld = -1, float oreStrength = 5, int oreSteps = 5, int heightLimit = -1, bool mapDebug = false)
 		{
@@ -69,12 +87,13 @@ namespace AAMod
          */
         public static int GetFirstTileFloor(int x, int startY, bool solid = true)
         {
-            for(int y = startY; y < Main.maxTilesY; y++)
+			if(!WorldGen.InWorld(x, startY)) return startY;			
+            for(int y = startY; y < Main.maxTilesY - 10; y++)
             {
-                Tile tile = Main.tile[x, y];
+                Tile tile = Framing.GetTileSafely(x, y);
                 if(tile != null && tile.nactive() && (!solid || Main.tileSolid[(int)tile.type])){ return y; }
             }
-            return Main.maxTilesY;
+            return Main.maxTilesY - 10;
         }
 
         /*
@@ -84,33 +103,35 @@ namespace AAMod
          */
         public static int GetFirstTileCeiling(int x, int startY, bool solid = true)
         {
-            for (int y = startY; y > 0; y--)
+			if(!WorldGen.InWorld(x, startY)) return startY;
+            for (int y = startY; y > 10; y--)
             {
-                Tile tile = Main.tile[x, y];
+                Tile tile = Framing.GetTileSafely(x, y);
                 if (tile != null && tile.nactive() && (!solid || Main.tileSolid[(int)tile.type])) { return y; }
             }
-            return 0;
+            return 10;
         }
 		
 		
         public static int GetFirstTileSide(int startX, int y, bool left, bool solid = true)
         {
+			if(!WorldGen.InWorld(startX, y)) return startX;			
 			if(left)
 			{
-				for(int x = startX; x > 0; x--)
+				for(int x = startX; x > 10; x--)
 				{
-					Tile tile = Main.tile[x, y];
+					Tile tile = Framing.GetTileSafely(x, y);
 					if(tile != null && tile.nactive() && (!solid || Main.tileSolid[(int)tile.type])){ return x; }
 				}			
-				return 0;
+				return 10;
 			}else
 			{
-				for(int x = startX; x < Main.maxTilesX; x++)
+				for(int x = startX; x < Main.maxTilesX - 10; x++)
 				{
-					Tile tile = Main.tile[x, y];
+					Tile tile = Framing.GetTileSafely(x, y);
 					if(tile != null && tile.nactive() && (!solid || Main.tileSolid[(int)tile.type])){ return x; }
 				}
-				return Main.maxTilesX;				
+				return Main.maxTilesX - 10;				
 			}
         }		
 
@@ -130,7 +151,7 @@ namespace AAMod
         public static int GetWorldSize()
         {
             if (Main.maxTilesX == 4200) { return 1; }
-            else if (Main.maxTilesX == 6300) { return 2; }
+            else if (Main.maxTilesX == 6400) { return 2; }
             else if (Main.maxTilesX == 8400) { return 3; }
             return 1; //unknown size, assume small
         }
@@ -159,7 +180,8 @@ namespace AAMod
             {
                 for(int y1 = radiusUp; y1 <= radiusDown; y1++)
                 {
-                    double dist = Vector2.Distance(new Vector2(x1 * 16f + 8f, y1 * 16f + 8f), position);				
+                    double dist = Vector2.Distance(new Vector2(x1 * 16f + 8f, y1 * 16f + 8f), position);	
+					if(!WorldGen.InWorld(x1, y1, 0)) continue;					
                     if(dist < distRad && Main.tile[x1, y1] != null && Main.tile[x1, y1].active())
                     {
                         int currentType = Main.tile[x1, y1].type;
@@ -202,6 +224,8 @@ namespace AAMod
          */
         public static void GenerateLiquid(int x, int y, int liquidType, bool updateFlow = true, int liquidHeight = 255, bool sync = true)
         {
+			if(!WorldGen.InWorld(x, y, 0)) return;
+			if(Main.tile[x, y] == null) Main.tile[x, y] = new Tile();
             liquidHeight = (int)MathHelper.Clamp(liquidHeight, 0, 255);
             Main.tile[x, y].liquid = (byte)liquidHeight;
 			if (liquidType == 0) { Main.tile[x, y].lava(false); Main.tile[x, y].honey(false); }else
@@ -246,6 +270,7 @@ namespace AAMod
         {
 			try
 			{
+			if(!WorldGen.InWorld(x, y, 0)) return;	
             if(Main.tile[x, y] == null){ Main.tile[x, y] = new Tile(); }		
             TileObjectData data = (tile <= -1 ? null : TileObjectData.GetTileData(tile, tileStyle, 0));			
             int width = (data == null ? 1 : data.Width);
@@ -349,7 +374,10 @@ namespace AAMod
                 int size = sizeWidth > sizeHeight ? sizeWidth : sizeHeight;
                 NetMessage.SendTileSquare(-1, x + (int)(size * 0.5F), y + (int)(size * 0.5F), size + 1);
             }
-			}catch(Exception e){ ErrorLogger.Log("TILEGEN ERROR: " + e.Message); ErrorLogger.Log(e.StackTrace); ErrorLogger.Log("--------"); }
+			}catch(Exception e)
+			{
+				BaseUtility.LogFancy("AAMod~ TILEGEN ERROR:", e);
+			}
         }
 
 		#region worldgen
@@ -772,7 +800,7 @@ namespace AAMod
 			Main.tileSolid[137] = true;
 		}
 
-		//fuck it, this is broken
+		//screw it, this is broken
 		public class GenHelper
 		{
 			public List<TileData> tiles = new List<TileData>();
@@ -1030,9 +1058,25 @@ namespace AAMod
 	#endregion
 	
 	#region Custom GenActions
+	public class IsInWorld : GenAction
+	{
+		public IsInWorld()
+		{
+		}
+
+		public override bool Apply(Point origin, int x, int y, params object[] args)
+		{
+			if(x < 0 || x > Main.maxTilesX || y < 0 || y > Main.maxTilesY)
+				return base.Fail();
+			return base.UnitApply(origin, x, y, args);
+		}
+	}	
+	
 	public class SetModTile : GenAction
 	{
 		public ushort _type;
+		public short _frameX = -1;
+		public short _frameY = -1;
 		public bool _doFraming;
 		public bool _doNeighborFraming;
 		public Func<int, int, Tile, bool> _canReplace;
@@ -1044,19 +1088,26 @@ namespace AAMod
 			this._doNeighborFraming = setNeighborFrames;
 		}
 		
-		public SetModTile ExtraParams(Func<int, int, Tile, bool> canReplace)
+		public SetModTile ExtraParams(Func<int, int, Tile, bool> canReplace, int frameX = -1, int frameY = -1)
 		{
 			_canReplace = canReplace;
+			_frameX = (short)frameX;
+			_frameY = (short)frameY;
 			return this;
 		}
 
 		public override bool Apply(Point origin, int x, int y, params object[] args)
 		{
-			if(x < 0 || x > Main.maxTilesX || y < 0 || y > Main.maxTilesY) return false;
+			if(x < 0 || x > Main.maxTilesX || y < 0 || y > Main.maxTilesY) 
+				return false;
 			if(GenBase._tiles[x, y] == null) GenBase._tiles[x, y] = new Tile();		
 			if(_canReplace == null || (_canReplace != null && _canReplace(x, y, GenBase._tiles[x, y])))
 			{
 				GenBase._tiles[x, y].ResetToType(this._type);
+				if(_frameX > -1)
+					GenBase._tiles[x, y].frameX = _frameX;
+				if(_frameY > -1)
+					GenBase._tiles[x, y].frameY = _frameY;				
 				if (this._doFraming)
 				{
 					WorldUtils.TileFrame(x, y, this._doNeighborFraming);
@@ -1148,6 +1199,33 @@ namespace AAMod
 			}
 			return base.Fail();
 		}
+	}
+	
+	public class ClearTileSafely : GenAction
+	{
+		private bool _frameNeighbors;
+
+		public ClearTileSafely(bool frameNeighbors = false)
+		{
+			this._frameNeighbors = frameNeighbors;
+		}
+
+		public override bool Apply(Point origin, int x, int y, params object[] args)
+		{
+			if(x < 0 || x >= Main.maxTilesX || y < 0 || y >= Main.maxTilesY)
+				return false;
+			if(GenBase._tiles[x, y] == null)
+				GenBase._tiles[x, y] = new Tile();
+			GenBase._tiles[x, y].ClearTile();
+			if (_frameNeighbors)
+			{
+				WorldGen.TileFrame(x + 1, y, false, false);
+				WorldGen.TileFrame(x - 1, y, false, false);
+				WorldGen.TileFrame(x, y + 1, false, false);
+				WorldGen.TileFrame(x, y - 1, false, false);
+			}
+			return base.UnitApply(origin, x, y, args);
+		}		
 	}
 	#endregion
 

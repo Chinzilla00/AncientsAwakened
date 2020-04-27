@@ -1,17 +1,19 @@
 using System;
 using System.IO;
+using System.Windows.Forms;
 
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
 using Terraria;
 using Terraria.ModLoader;
+using AAMod;
 
 namespace AAMod
 {
-    public class BaseShaderCompiler
+	public class BaseShaderCompiler
 	{
-		public static string appDir = null;
+		/*public static string appDir = null;
 		public static ContentManager manager = null;
 		
 		public static Effect CompileShader(Mod mod, string fileName, GraphicsDevice device = null)
@@ -36,6 +38,6 @@ namespace AAMod
 				if(File.Exists(fileDir)) File.Delete(fileDir); //cleanup after
 				return effect;
 			}catch(Exception e){ ErrorLogger.Log("SHADER ERROR: " + e.Message); ErrorLogger.Log(e.StackTrace); ErrorLogger.Log("--------"); return null; }
-		}
+		}*/
 	}
 }

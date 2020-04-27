@@ -7,13 +7,17 @@ using Terraria;
 using Terraria.UI.Chat;
 using Terraria.ObjectData;
 using Terraria.DataStructures;
+using Terraria.ID;
 using Terraria.UI;
 using Terraria.ModLoader;
 using Terraria.Graphics.Shaders;
+using Terraria.Localization;
+using Terraria.GameContent.UI;
+using AAMod;
 
 namespace AAMod
 {
-    public class DrawAnimationPrecise : DrawAnimation
+	public class DrawAnimationPrecise : DrawAnimation
 	{
 		int Width = 0, Height = 0, offsetX = 0, offsetY = 2;
 		bool vertical = true;
@@ -268,6 +272,21 @@ namespace AAMod
             if (insertAt == -1) list.Add(layer); else list.Insert(first ? insertAt : insertAt + 1, layer);
         }
 
+        /*
+         * Returns a rectangle representing the frame on a texture, can offset on the x axis.
+         * 
+         * pixelSpaceX/pixelSpaceY : The 'pixel space' seperating two frames in the texture on the X/Y axis, respectively.
+         */
+        public static Rectangle GetAdvancedFrame(int currentFrame, int frameOffsetX, int frameWidth, int frameHeight, int pixelSpaceX = 0, int pixelSpaceY = 2)
+        {
+			int column = (currentFrame / frameOffsetX);
+			currentFrame -= (column * frameOffsetX);
+			pixelSpaceY *= currentFrame;
+			int startX = (frameOffsetX == 0 ? 0 : column * (frameWidth + pixelSpaceX));			
+            int startY = (frameHeight * currentFrame) + pixelSpaceY;
+            return new Rectangle(startX, startY, frameWidth, frameHeight);
+        }		
+		
         /*
          * Returns a rectangle representing the frame on a texture.
          * 
@@ -1405,11 +1424,22 @@ namespace AAMod
             }
         }		
 		
+		
+
         /*
          * Draws the given texture using the override color.
          * Uses a Entity for width, height, position, rotation, and sprite direction.
          */
         public static void DrawTexture(object sb, Texture2D texture, int shader, Entity codable, Color? overrideColor = null, bool drawCentered = false, Vector2 overrideOrigin = default(Vector2))
+        {
+			DrawTexture(sb, texture, shader, codable, 1, overrideColor, drawCentered, overrideOrigin);
+		}
+
+        /*
+         * Draws the given texture using the override color.
+         * Uses a Entity for width, height, position, rotation, and sprite direction.
+         */
+        public static void DrawTexture(object sb, Texture2D texture, int shader, Entity codable, int framecountX, Color? overrideColor = null, bool drawCentered = false, Vector2 overrideOrigin = default(Vector2))
         {
             Color lightColor = (overrideColor != null ? (Color)overrideColor : codable is Item ? ((Item)codable).GetAlpha(GetLightColor(codable.Center)) : codable is NPC ? GetNPCColor(((NPC)codable), codable.Center, false) : codable is Projectile ? ((Projectile)codable).GetAlpha(GetLightColor(codable.Center)) : GetLightColor(codable.Center));
             int frameCount = (codable is Item ? 1 : codable is NPC ? Main.npcFrameCount[((NPC)codable).type] : 1);
@@ -1418,19 +1448,24 @@ namespace AAMod
             float rotation = (codable is Item ? 0 : codable is NPC ? ((NPC)codable).rotation : ((Projectile)codable).rotation);
             int spriteDirection = (codable is Item ? 1 : codable is NPC ? ((NPC)codable).spriteDirection : ((Projectile)codable).spriteDirection);
 			float offsetY = (codable is NPC ? ((NPC)codable).gfxOffY : 0f);
-            DrawTexture(sb, texture, shader, codable.position + new Vector2(0f, offsetY), codable.width, codable.height, scale, rotation, spriteDirection, frameCount, frame, lightColor, drawCentered, overrideOrigin);
+            DrawTexture(sb, texture, shader, codable.position + new Vector2(0f, offsetY), codable.width, codable.height, scale, rotation, spriteDirection, frameCount, framecountX, frame, lightColor, drawCentered, overrideOrigin);
         }
+
+        public static void DrawTexture(object sb, Texture2D texture, int shader, Vector2 position, int width, int height, float scale, float rotation, int direction, int framecount, Rectangle frame, Color? overrideColor = null, bool drawCentered = false, Vector2 overrideOrigin = default(Vector2))
+        {
+			DrawTexture(sb, texture, shader, position, width, height, scale, rotation, direction, framecount, 1, frame, overrideColor, drawCentered, overrideOrigin);
+		}
 
         /*
          * Draws the given texture using lighting nearby, or the overriden color given.
          */
-        public static void DrawTexture(object sb, Texture2D texture, int shader, Vector2 position, int width, int height, float scale, float rotation, int direction, int framecount, Rectangle frame, Color? overrideColor = null, bool drawCentered = false, Vector2 overrideOrigin = default(Vector2))
+        public static void DrawTexture(object sb, Texture2D texture, int shader, Vector2 position, int width, int height, float scale, float rotation, int direction, int framecount, int framecountX, Rectangle frame, Color? overrideColor = null, bool drawCentered = false, Vector2 overrideOrigin = default(Vector2))
         {
-            Vector2 origin = overrideOrigin != default(Vector2) ? overrideOrigin : new Vector2((float)(texture.Width / 2), (float)(texture.Height / framecount / 2));
+            Vector2 origin = overrideOrigin != default(Vector2) ? overrideOrigin : new Vector2((float)(frame.Width / framecountX / 2), (float)(texture.Height / framecount / 2));
             Color lightColor = overrideColor != null ? (Color)overrideColor : GetLightColor(position + new Vector2(width * 0.5f, height * 0.5f));
 			if (sb is List<DrawData>)
 			{
-				DrawData dd = new DrawData(texture, GetDrawPosition(position, origin, width, height, texture.Width, texture.Height, framecount, scale, drawCentered), frame, lightColor, rotation, origin, scale, direction == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
+				DrawData dd = new DrawData(texture, GetDrawPosition(position, origin, width, height, texture.Width, texture.Height, frame, framecount, framecountX, scale, drawCentered), frame, lightColor, rotation, origin, scale, direction == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
 				dd.shader = shader;
 				((List<DrawData>)sb).Add(dd);
 			}else if (sb is SpriteBatch)
@@ -1442,7 +1477,7 @@ namespace AAMod
 					((SpriteBatch)sb).Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 					GameShaders.Armor.ApplySecondary(shader, Main.player[Main.myPlayer], null);				
 				}
-				((SpriteBatch)sb).Draw(texture, GetDrawPosition(position, origin, width, height, texture.Width, texture.Height, framecount, scale, drawCentered), frame, lightColor, rotation, origin, scale, direction == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);				
+				((SpriteBatch)sb).Draw(texture, GetDrawPosition(position, origin, width, height, texture.Width, texture.Height, frame, framecount, framecountX, scale, drawCentered), frame, lightColor, rotation, origin, scale, direction == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);				
 				if (applyDye)
 				{
 					((SpriteBatch)sb).End();
@@ -1697,15 +1732,23 @@ namespace AAMod
         /*
          * Returns the draw position of a texture for npcs and projectiles.
          */
-        public static Vector2 GetDrawPosition(Vector2 position, Vector2 origin, int width, int height, int texWidth, int texHeight, int framecount, float scale, bool drawCentered = false)
+        public static Vector2 GetDrawPosition(Vector2 position, Vector2 origin, int width, int height, int texWidth, int texHeight, Rectangle frame, int framecount, float scale, bool drawCentered = false)
+        {
+			return GetDrawPosition(position, origin, width, height, texWidth, texHeight, frame, framecount, 1, scale, drawCentered);
+		}
+	
+        /*
+         * Returns the draw position of a texture for npcs and projectiles.
+         */
+        public static Vector2 GetDrawPosition(Vector2 position, Vector2 origin, int width, int height, int texWidth, int texHeight, Rectangle frame, int framecount, int framecountX, float scale, bool drawCentered = false)
         {
 			Vector2 screenPos = new Vector2((int)Main.screenPosition.X, (int)Main.screenPosition.Y);
 			if(drawCentered)
 			{
-				Vector2 texHalf = new Vector2(texWidth / 2, texHeight / framecount / 2);
-				return (position + new Vector2(width * 0.5f, height * 0.5f)) - (texHalf * scale) + (origin * scale) - screenPos;	
+				Vector2 texHalf = new Vector2(texWidth / framecountX / 2, texHeight / framecount / 2);
+				return position + new Vector2(width / 2, height / 2) - (texHalf * scale) + (origin * scale) - screenPos;
 			}
-			return position - screenPos + new Vector2(width * 0.5f, height) - new Vector2(texWidth * scale / 2f, texHeight * scale / (float)framecount) + (origin * scale) + new Vector2(0f, 5f);
+			return position - screenPos + new Vector2(width / 2, height) - (new Vector2(texWidth / framecountX / 2, texHeight / framecount) * scale) + (origin * scale) + new Vector2(0f, 5f);
         }
 
         /*
@@ -1923,7 +1966,7 @@ namespace AAMod
 				secondaryApply = false;
 			}catch(Exception e)
 			{
-				ErrorLogger.Log(e.Message); ErrorLogger.Log(e.StackTrace); ErrorLogger.Log("--------");
+				BaseUtility.LogFancy("AAMod~ BASE ARMOR ERROR:", e);
 			}
 		}
 		

@@ -1,9 +1,13 @@
+using System;
 using System.IO;
 using Microsoft.Xna.Framework;
 
 using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Localization;
+using AAMod;
 
 namespace AAMod
 {

@@ -4,9 +4,12 @@ using Microsoft.Xna.Framework;
 
 using Terraria;
 using Terraria.ObjectData;
+using Terraria.DataStructures;
+using Terraria.ID;
 using Terraria.Localization;
 using Terraria.Utilities;
 using Terraria.ModLoader;
+using AAMod;
 
 namespace AAMod
 {
@@ -224,7 +227,7 @@ namespace AAMod
 					if (tile != null && tile.active() && tile.type == type && (addTile == null || addTile(tile)) && (dist == -1 || Vector2.Distance(originalPos, new Vector2(x1, y1)) < dist))
 					{
 						dist = Vector2.Distance(originalPos, new Vector2(x1, y1));
-                        if (type == 21 || TileObjectData.GetTileData(tile.type, 0).Width > 1 || TileObjectData.GetTileData(tile.type, 0).Height > 1)
+                        if (type == 21 || (TileObjectData.GetTileData(tile.type, 0) != null && (TileObjectData.GetTileData(tile.type, 0).Width > 1 || TileObjectData.GetTileData(tile.type, 0).Height > 1)))
 						{
 							int x2 = x1; int y2 = y1;
 							if (type == 21)

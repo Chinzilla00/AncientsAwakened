@@ -4,11 +4,16 @@ using System.Reflection;
 using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Graphics;
+using log4net;
 
 using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
 using Terraria.Localization;
 using Terraria.Utilities;
 using Terraria.ModLoader;
+using AAMod;
 
 namespace AAMod
 {
@@ -21,11 +26,22 @@ namespace AAMod
         //------------------------------------------------------//
         //  Author(s): Grox the Great                           //
         //------------------------------------------------------// 
-		
-		public static void LogFancy(string logText)
+
+		public static string[] GetLoadedMods()
 		{
-			LogFancy("", logText, null);
-		}		
+			return ModLoader.Mods.Reverse().Select(m => m.Name).ToArray();
+		}	
+
+		public static void LogBasic(string logText)
+		{
+			ILog logger = LogManager.GetLogger("Terraria");			
+			logger.Info(logText);			
+		}
+
+		//public static void LogFancy(string logText)
+		//{
+		//	LogFancy("", logText, null);
+		//}		
 	
 		public static void LogFancy(string prefix, Exception e)
 		{
@@ -34,12 +50,20 @@ namespace AAMod
 
 		public static void LogFancy(string prefix, string logText, Exception e = null)
 		{
+			ILog logger = LogManager.GetLogger("Terraria");	
 			if(e != null)
 			{
-				ErrorLogger.Log(prefix + e.Message); ErrorLogger.Log(e.StackTrace);	ErrorLogger.Log(">---------<");	
+				logger.Info(">---------<");			
+				logger.Error(prefix + e.Message);
+				logger.Error(e.StackTrace);		
+				logger.Info(">---------<");				
+				//ErrorLogger.Log(prefix + e.Message); ErrorLogger.Log(e.StackTrace);	ErrorLogger.Log(">---------<");	
 			}else
 			{
-				ErrorLogger.Log(prefix + logText);
+				logger.Info(">---------<");			
+				logger.Info(prefix + logText);	
+				logger.Info(">---------<");					
+				//ErrorLogger.Log(prefix + logText);
 			}		
 		}		
 
@@ -178,7 +202,7 @@ namespace AAMod
                 return ModLoader.GetMod(mName).GetNPC(n2).npc;
             }else
             {
-                string[] modNames = ModLoader.GetLoadedMods();
+                string[] modNames = GetLoadedMods();
                 foreach (string name in modNames)
                 {
                     Mod mod = ModLoader.GetMod(name);
@@ -198,7 +222,7 @@ namespace AAMod
                 return ModLoader.GetMod(mName).GetItem(n2).item;
             }else
             {
-                string[] modNames = ModLoader.GetLoadedMods();
+                string[] modNames = GetLoadedMods();
                 foreach (string name in modNames)
                 {
                     Mod mod = ModLoader.GetMod(name);
@@ -219,7 +243,7 @@ namespace AAMod
             }
             else
             {
-                string[] modNames = ModLoader.GetLoadedMods();
+                string[] modNames = GetLoadedMods();
                 foreach (string name in modNames)
                 {
                     Mod mod = ModLoader.GetMod(name);
@@ -239,7 +263,7 @@ namespace AAMod
                 return ModLoader.GetMod(mName).GetTile(n2);
             }else
             {
-                string[] modNames = ModLoader.GetLoadedMods();
+                string[] modNames = GetLoadedMods();
                 foreach (string name in modNames)
                 {
                     Mod mod = ModLoader.GetMod(name);
@@ -587,6 +611,25 @@ namespace AAMod
             return false;
         }		
 
+
+        /*
+         * Returns a monochrome version of the given color.
+         */
+        public static Color ColorMonochrome(Color color)
+        {
+			int average = color.R + color.G + color.B;
+			average /= 3;
+            return new Color(average, average, average, color.A);
+        }		
+		
+        /*
+         * Alters the coior by the amount of the alpha given.
+         */
+        public static Color ColorAlpha(Color color, int alpha)
+        {
+			return color * (1f - ((float)alpha / 255f));
+        }
+		
         /*
          * Alters the brightness of the color by the amount of the factor. If factor is negative, it darkens it. Else, it brightens it.
          */

@@ -1,11 +1,16 @@
+using System;
 using System.IO;
+using System.Reflection;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.Audio;
 using Terraria.ModLoader;
+using AAMod;
 
 namespace AAMod
 {
@@ -160,6 +165,7 @@ namespace AAMod
         public static bool ReadBool(this BinaryReader w) { return w.ReadBoolean(); }
         public static int ReadInt(this BinaryReader w) { return w.ReadInt32(); }
         public static short ReadShort(this BinaryReader w) { return w.ReadInt16(); }
+	    public static ushort ReadUShort(this BinaryReader w) { return w.ReadUInt16(); }	
         public static float ReadFloat(this BinaryReader w) { return w.ReadSingle(); }
 
         public static bool IsBlank(this Item item)
@@ -350,7 +356,9 @@ namespace AAMod
         public const int TIME_DAWNDUSK = 0; //if Main.dayTime is true, this is dawn. Else, this is dusk.
         public const int TIME_MIDDAY = 27000;
         public const int TIME_MIDNIGHT = 16200;
-
+		public const int TIME_FULLDAY = 54000; 
+		public const int TIME_FULLNIGHT = 32400;
+		
 		//various invasionTypes
 		public const int INVASION_GOBLIN = 1;	
 		public const int INVASION_FROSTLEGION = 2;	

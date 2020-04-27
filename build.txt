@@ -6,5 +6,5 @@ buildIgnore = *.csproj, *.user, obj\*, bin\*, lib\*, .vs\*, *.gif, *.piskel, Unu
 hideCode = true
 hideResources = false
 includeSource = false
-modReferences = BaseMod
+modReferences = AAMod
 homepage = https://discord.gg/MmpCpj4

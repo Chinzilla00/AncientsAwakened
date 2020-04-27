@@ -1,17 +1,24 @@
+using System;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 
 using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
+using BaseMod;
 
-namespace AAMod
+namespace BaseMod
 {
-    public class MNet
+	public class MNet
 	{
 		public static void SendBaseNetMessage(int msg, params object[] param)
 		{
 			if (Main.netMode == 0) { return; } //nothing to sync in SP
-            BaseNet.WriteToPacket(AAMod.inst.GetPacket(), (byte)msg, param).Send();
+            BaseNet.WriteToPacket(BaseMod.inst.GetPacket(), (byte)msg, param).Send();
 		}
 
-		//OLD (moved to AAMod)
+		//OLD (moved to BaseMod)
 		/*public override void NetReceive(BinBuffer bb, int msg, MessageBuffer buffer)
 		{
 			if (msg == 0) //projectile hostility and ownership

@@ -8,6 +8,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.Utilities;
 using Terraria.ModLoader;
+using AAMod;
 
 namespace AAMod
 {
@@ -730,7 +731,110 @@ namespace AAMod
          * means npcs can use the method too.
          * 
          * ----------------------------------------
-         */		
+         */
+	 
+		public static void AILightningBolt(Projectile projectile, ref float[] ai, float changeAngleAt = 40)
+		{
+			int projFrameCounter = projectile.frameCounter;
+			projectile.frameCounter = projFrameCounter + 1;
+			if (projectile.velocity == Vector2.Zero)
+			{
+				if (projectile.frameCounter >= projectile.extraUpdates * 2)
+				{
+					projectile.frameCounter = 0;
+					bool shouldKillProjectile = true;
+					for (int m = 1; m < projectile.oldPos.Length; m = projFrameCounter + 1)
+					{
+						if (projectile.oldPos[m] != projectile.oldPos[0])
+						{
+							shouldKillProjectile = false;
+						}
+						projFrameCounter = m;
+					}
+					if (shouldKillProjectile)
+					{
+						projectile.Kill();
+						return;
+					}
+				}
+				/*if (Main.rand.Next(projectile.extraUpdates) == 0)
+				{
+					for (int m2 = 0; m2 < 2; m2 = projFrameCounter + 1)
+					{
+						float newRot = projectile.rotation + ((Main.rand.Next(2) == 1) ? -1f : 1f) * 1.57079637f;
+						float rotMultiplier = (float)Main.rand.NextDouble() * 0.8f + 1f;
+						Vector2 dustVel = new Vector2((float)Math.Cos((double)newRot) * rotMultiplier, (float)Math.Sin((double)newRot) * rotMultiplier);
+						int dustID = Dust.NewDust(projectile.Center, 0, 0, 226, dustVel.X, dustVel.Y, 0, default(Color), 1f);
+						Main.dust[dustID].noGravity = true;
+						Main.dust[dustID].scale = 1.2f;
+						projFrameCounter = m2;
+					}
+					if (Main.rand.Next(5) == 0)
+					{
+						Vector2 dustPos = projectile.velocity.RotatedBy(1.5707963705062866, default(Vector2)) * ((float)Main.rand.NextDouble() - 0.5f) * (float)projectile.width;
+						int dustID = Dust.NewDust(projectile.Center + dustPos - Vector2.One * 4f, 8, 8, 31, 0f, 0f, 100, default(Color), 1.5f);
+						Dust dust = Main.dust[dustID];
+						dust.velocity *= 0.5f;
+						Main.dust[dustID].velocity.Y = -Math.Abs(Main.dust[dustID].velocity.Y);
+						return;
+					}
+				}*/
+			}
+			else if (projectile.frameCounter >= projectile.extraUpdates * 2)
+			{
+				projectile.frameCounter = 0;
+				float velSpeed = projectile.velocity.Length();
+				UnifiedRandom unifiedRandom = new UnifiedRandom((int)projectile.ai[1]);
+				int newFrameCounter = 0;
+				Vector2 projVelocity = -Vector2.UnitY;
+				Vector2 angleVector;
+				do
+				{
+					int percentile = unifiedRandom.Next();
+					projectile.ai[1] = (float)percentile;
+					percentile %= 100;
+					float f = (float)percentile / 100f * 6.28318548f;
+					angleVector = f.ToRotationVector2();
+					if (angleVector.Y > 0f)
+					{
+						angleVector.Y *= -1f;
+					}
+					bool moreFrames = false;
+					if (angleVector.Y > -0.02f)
+					{
+						moreFrames = true;
+					}
+					if (angleVector.X * (float)(projectile.extraUpdates + 1) * 2f * velSpeed + projectile.localAI[0] > changeAngleAt)
+					{
+						moreFrames = true;
+					}
+					if (angleVector.X * (float)(projectile.extraUpdates + 1) * 2f * velSpeed + projectile.localAI[0] < -changeAngleAt)
+					{
+						moreFrames = true;
+					}
+					if (!moreFrames)
+					{
+						goto IL_2608D;
+					}
+					projFrameCounter = newFrameCounter;
+					newFrameCounter = projFrameCounter + 1;
+				}
+				while (projFrameCounter < 100);
+				projectile.velocity = Vector2.Zero;
+				projectile.localAI[1] = 1f;
+				goto IL_26099;
+				IL_2608D:
+				projVelocity = angleVector;
+				IL_26099:
+				if (projectile.velocity != Vector2.Zero)
+				{
+					projectile.localAI[0] += projVelocity.X * (float)(projectile.extraUpdates + 1) * 2f * velSpeed;
+					projectile.velocity = projVelocity.RotatedBy((double)(projectile.ai[0] + 1.57079637f), default(Vector2)) * velSpeed;
+					projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
+					return;
+				}
+			}
+		}
 
 		public static void AIProjWorm(Projectile p, ref float[] ai, int[] wormTypes, int wormLength, float velScalar = 1f, float velScalarIdle = 1f, float velocityMax = 30f, float velocityMaxIdle = 15f)
 		{
@@ -2118,6 +2222,142 @@ namespace AAMod
 
 		#region Vanilla NPC AI Copy Methods
 
+		/*
+		 * A cleaned up (and edited) copy of Shadowflame Ghost AI. (aiStyle 86) (Shadowflame Apparition, etc.)
+		 * 
+		 * speedupOverTime: Wether or not to speed up when aligned to the player over time.
+		 * distanceBeforeTakeoff: The distance from the target player before the NPC turns around.
+		 */		
+		public static void AIShadowflameGhost(NPC npc, ref float[] ai, bool speedupOverTime = false, float distanceBeforeTakeoff = 660f, float velIntervalX = 0.3f, float velMaxX = 7f, float velIntervalY = 0.2f, float velMaxY = 4f, float velScalarY = 4f, float velScalarYMax = 15f, float velIntervalXTurn = 0.4f, float velIntervalYTurn = 0.4f, float velIntervalScalar = 0.95f, float velIntervalMaxTurn = 5f)
+		{
+			int npcAvoidCollision;
+			for (int m = 0; m < 200; m = npcAvoidCollision + 1)
+			{
+				if (m != npc.whoAmI && Main.npc[m].active && Main.npc[m].type == npc.type)
+				{
+					Vector2 dist = Main.npc[m].Center - npc.Center;
+					if (dist.Length() < 50f)
+					{
+						dist.Normalize();
+						if (dist.X == 0f && dist.Y == 0f)
+						{
+							if (m > npc.whoAmI)
+								dist.X = 1f;
+							else
+								dist.X = -1f;
+						}
+						dist *= 0.4f;
+						npc.velocity -= dist;
+						Main.npc[m].velocity += dist;
+					}
+				}
+				npcAvoidCollision = m;
+			}
+			if (speedupOverTime)
+			{
+				float timerMax = 120f;
+				if (npc.localAI[0] < timerMax)
+				{
+					if (npc.localAI[0] == 0f)
+					{
+						Main.PlaySound(SoundID.Item8, npc.Center);
+						npc.TargetClosest(true);
+						if (npc.direction > 0)
+						{
+							npc.velocity.X = npc.velocity.X + 2f;
+						}
+						else
+						{
+							npc.velocity.X = npc.velocity.X - 2f;
+						}
+						for (int m = 0; m < 20; m = npcAvoidCollision + 1)
+						{
+							npcAvoidCollision = m;
+						}
+					}
+					npc.localAI[0] += 1f;
+					float timerPartial = 1f - npc.localAI[0] / timerMax;
+					float timerPartialTimes20 = timerPartial * 20f;
+					int nextNPC = 0;
+					while ((float)nextNPC < timerPartialTimes20)
+					{
+						npcAvoidCollision = nextNPC;
+						nextNPC = npcAvoidCollision + 1;
+					}
+				}
+			}
+			if (npc.ai[0] == 0f)
+			{
+				npc.TargetClosest(true);
+				npc.ai[0] = 1f;
+				npc.ai[1] = (float)npc.direction;
+			}
+			else if (npc.ai[0] == 1f)
+			{
+				npc.TargetClosest(true);
+				npc.velocity.X = npc.velocity.X + npc.ai[1] * velIntervalX;
+				
+				if (npc.velocity.X > velMaxX)
+					npc.velocity.X = velMaxX;
+				else if (npc.velocity.X < -velMaxX)
+					npc.velocity.X = -velMaxX;
+
+				float playerDistY = Main.player[npc.target].Center.Y - npc.Center.Y;
+				if (Math.Abs(playerDistY) > velMaxY)
+					velScalarY = velScalarYMax;
+
+				if (playerDistY > velMaxY) 
+					playerDistY = velMaxY;
+				else if (playerDistY < -velMaxY) 
+					playerDistY = -velMaxY;
+				
+				npc.velocity.Y = (npc.velocity.Y * (velScalarY - 1f) + playerDistY) / velScalarY;
+				if ((npc.ai[1] > 0f && Main.player[npc.target].Center.X - npc.Center.X < -distanceBeforeTakeoff) || (npc.ai[1] < 0f && Main.player[npc.target].Center.X - npc.Center.X > distanceBeforeTakeoff))
+				{
+					npc.ai[0] = 2f;
+					npc.ai[1] = 0f;
+					if (npc.Center.Y + 20f > Main.player[npc.target].Center.Y)
+						npc.ai[1] = -1f;
+					else
+						npc.ai[1] = 1f;
+				}
+			}
+			else if (npc.ai[0] == 2f)
+			{
+				npc.velocity.Y = npc.velocity.Y + npc.ai[1] * velIntervalYTurn;
+				
+				if (npc.velocity.Length() > velIntervalMaxTurn)
+					npc.velocity *= velIntervalScalar;
+				
+				if (npc.velocity.X > -1f && npc.velocity.X < 1f)
+				{
+					npc.TargetClosest(true);
+					npc.ai[0] = 3f;
+					npc.ai[1] = (float)npc.direction;
+				}
+			}
+			else if (npc.ai[0] == 3f)
+			{
+				npc.velocity.X = npc.velocity.X + npc.ai[1] * velIntervalXTurn;
+				
+				if (npc.Center.Y > Main.player[npc.target].Center.Y)
+					npc.velocity.Y = npc.velocity.Y - velIntervalY;
+				else
+					npc.velocity.Y = npc.velocity.Y + velIntervalY;
+				
+				if (npc.velocity.Length() > velIntervalMaxTurn)
+					npc.velocity *= velIntervalScalar;
+				
+				if (npc.velocity.Y > -1f && npc.velocity.Y < 1f)
+				{
+					npc.TargetClosest(true);
+					npc.ai[0] = 0f;
+					npc.ai[1] = (float)npc.direction;
+				}
+			}																
+		}
+		
+		
 		public static void AISpaceOctopus(NPC npc, ref float[] ai, float moveSpeed = 0.15f, float velMax = 5f, float hoverDistance = 250f, float shootProjInterval = 70f, Action<NPC, Vector2> FireProj = null)
 		{
 			npc.TargetClosest(true);		
@@ -3677,67 +3917,99 @@ namespace AAMod
 		public static void AIWorm(NPC npc, ref bool isDigging, int[] wormTypes, float partDistanceAddon = 0f, float maxSpeed = 8f, float gravityResist = 0.07f, bool fly = false, bool split = false, bool ignoreTiles = false, bool spawnTileDust = true, bool soundEffects = true, bool rotateAverage = false, Action<NPC, int, bool> onChangeType = null)
         {
 			bool singlePiece = wormTypes.Length == 1;
+			bool isHead = npc.type == wormTypes[0];
+			bool isTail = npc.type == wormTypes[wormTypes.Length - 1];
+			bool isBody = !isHead && !isTail;		
             int wormLength = wormTypes.Length;
+			
             if (split)
             {
                 npc.realLife = -1;
             }else
-            if (npc.ai[3] > 0f) { npc.realLife = (int)npc.ai[3]; }
-
-            if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead) { npc.TargetClosest(true); }
-            if (Main.player[npc.target].dead && npc.timeLeft > 300) { npc.timeLeft = 300; }
+            if (npc.ai[3] > 0f)
+				npc.realLife = (int)npc.ai[3];
+			
+			if(npc.ai[0] == -1f)
+				npc.ai[0] = npc.whoAmI;
+            if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead)
+				npc.TargetClosest(true);
+			if(isHead)
+			{
+				if((npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead) && npc.timeLeft > 300)
+					npc.timeLeft = 300;
+			}else
+			{
+				npc.timeLeft = 50;
+			}
             if (Main.netMode != 1)
             {
 				if (!singlePiece)
 				{
 					//spawn pieces (flying)
-					if (fly && npc.type == wormTypes[0] && npc.ai[0] == 0f)
+					if (fly && isHead && npc.ai[0] == 0f)
 					{
 						npc.ai[3] = (float)npc.whoAmI;
 						npc.realLife = npc.whoAmI;
 						int npcID = npc.whoAmI;
-
 						for (int m = 1; m < wormLength - 1; m++)
 						{
-							int npcType = (m == wormLength ? wormTypes[wormTypes.Length - 1] : wormTypes[m]);
+							int npcType = wormTypes[m];
+							
+							float ai0 = 0;
+							float ai1 = npcID;
+							float ai2 = 0;
+							float ai3 = npc.ai[3];							
 
-							int newnpcID = NPC.NewNPC((int)(npc.Center.X), (int)(npc.Center.Y), npcType, npc.whoAmI);
-							Main.npc[newnpcID].ai[3] = (float)npc.whoAmI;
-							Main.npc[newnpcID].realLife = npc.whoAmI;
-							Main.npc[newnpcID].ai[1] = (float)npcID;
-							Main.npc[npcID].ai[0] = (float)newnpcID;
-							NetMessage.SendData(23, -1, -1, NetworkText.FromLiteral(""), newnpcID, 0f, 0f, 0f, 0);
+							int newnpcID = NPC.NewNPC((int)(npc.Center.X), (int)(npc.Center.Y), npcType, npc.whoAmI, ai0, ai1, ai2, ai3);
+							Main.npc[npcID].ai[0] = newnpcID;
+							Main.npc[npcID].netUpdate = true;
+							//Main.npc[newnpcID].ai[3] = (float)npc.whoAmI;
+							//Main.npc[newnpcID].realLife = npc.whoAmI;
+							//Main.npc[newnpcID].ai[1] = (float)npcID;
+							//Main.npc[npcID].ai[0] = (float)newnpcID;
+							//Main.npc[newnpcID].netUpdate = true;							
+							//NetMessage.SendData(23, -1, -1, NetworkText.FromLiteral(""), newnpcID, 0f, 0f, 0f, 0);
 							npcID = newnpcID;
 						}
 						npc.netUpdate = true;
 					}else //spawn pieces
-					if ((npc.type == wormTypes[0] || (npc.type != wormTypes[0] && npc.type != wormTypes[wormTypes.Length - 1])) && npc.ai[0] == 0f)
+					if ((isHead || isBody) && npc.ai[0] == 0f)
 					{
-						if (npc.type == wormTypes[0])
+						if(isHead)
 						{
 							if (!split)
 							{
 								npc.ai[3] = (float)npc.whoAmI;
 								npc.realLife = npc.whoAmI;
 							}
-							npc.ai[2] = (float)(wormLength - 1);
-							int nextPiece = (wormTypes.Length <= 2 ? wormTypes[wormTypes.Length - 1] : wormTypes[1]);
-							npc.ai[0] = (float)NPC.NewNPC((int)(npc.Center.X), (int)(npc.Center.Y), nextPiece, npc.whoAmI);
-						}else
-						if ((npc.type != wormTypes[0] && npc.type != wormTypes[wormTypes.Length - 1]) && npc.ai[2] > 0f)
-						{
-							npc.ai[0] = (float)NPC.NewNPC((int)(npc.Center.X), (int)(npc.Center.Y), wormTypes[wormLength - (int)npc.ai[2]], npc.whoAmI);
-						}else
-						{
-							npc.ai[0] = (float)NPC.NewNPC((int)(npc.Center.X), (int)(npc.Center.Y), wormTypes[wormTypes.Length - 1], npc.whoAmI);
+							npc.ai[2] = (float)(wormLength - 1);							
 						}
-						if (!split)
+						float ai0 = 0;
+						float ai1 = npc.whoAmI;
+						float ai2 = npc.ai[2] - 1f;
+						float ai3 = npc.ai[3];
+						if(split)
+							npc.ai[3] = 0f;
+						
+						if (isHead)
+						{
+							npc.ai[0] = (float)NPC.NewNPC((int)(npc.Center.X), (int)(npc.Center.Y), wormTypes[1], npc.whoAmI, ai0, ai1, ai2, ai3);
+						}else
+						if (isBody && npc.ai[2] > 0f)
+						{
+							npc.ai[0] = (float)NPC.NewNPC((int)(npc.Center.X), (int)(npc.Center.Y), wormTypes[wormLength - (int)npc.ai[2]], npc.whoAmI, ai0, ai1, ai2, ai3);
+						}else
+						{
+							npc.ai[0] = (float)NPC.NewNPC((int)(npc.Center.X), (int)(npc.Center.Y), wormTypes[wormTypes.Length - 1], npc.whoAmI, ai0, ai1, ai2, ai3);
+						}
+						/*if (!split)
 						{
 							Main.npc[(int)npc.ai[0]].ai[3] = npc.ai[3];
 							Main.npc[(int)npc.ai[0]].realLife = npc.realLife;
 						}
 						Main.npc[(int)npc.ai[0]].ai[1] = (float)npc.whoAmI;
-						Main.npc[(int)npc.ai[0]].ai[2] = npc.ai[2] - 1f;
+						Main.npc[(int)npc.ai[0]].ai[2] = npc.ai[2] - 1f;*/
+						Main.npc[(int)npc.ai[0]].netUpdate = true;				
 						npc.netUpdate = true;
 					}
 				}
@@ -3762,7 +4034,7 @@ namespace AAMod
                         npc.HitEffect(0, 10.0);
                         npc.active = false;
                     }
-                    if ((npc.type != wormTypes[0] && npc.type != wormTypes[wormTypes.Length - 1]) && !Main.npc[(int)npc.ai[1]].active) //if the body was just split, turn it into a head
+                    if (isBody && !Main.npc[(int)npc.ai[1]].active) //if the body was just split, turn it into a head
                     {
 						int oldType = npc.type;
                         npc.type = wormTypes[0];
@@ -3778,21 +4050,21 @@ namespace AAMod
 						if(onChangeType != null) onChangeType(npc, oldType, true);
                     }
                     else
-                        if ((npc.type != wormTypes[0] && npc.type != wormTypes[wormTypes.Length - 1]) && !Main.npc[(int)npc.ai[0]].active) //if the body was just split, turn it into a tail
-                        {
-							int oldType = npc.type;				
-                            npc.type = wormTypes[wormTypes.Length - 1];
-                            int npcID = npc.whoAmI;
-                            float lifePercent = (float)npc.life / (float)npc.lifeMax;
-                            float lastPiece = npc.ai[1];
-                            npc.SetDefaults(npc.type, -1f);
-                            npc.life = (int)((float)npc.lifeMax * lifePercent);
-                            npc.ai[1] = lastPiece;
-                            npc.TargetClosest(true);
-                            npc.netUpdate = true;
-                            npc.whoAmI = npcID;
-							if(onChangeType != null) onChangeType(npc, oldType, false);						
-                        }
+					if (isBody && !Main.npc[(int)npc.ai[0]].active) //if the body was just split, turn it into a tail
+					{
+						int oldType = npc.type;				
+						npc.type = wormTypes[wormTypes.Length - 1];
+						int npcID = npc.whoAmI;
+						float lifePercent = (float)npc.life / (float)npc.lifeMax;
+						float lastPiece = npc.ai[1];
+						npc.SetDefaults(npc.type, -1f);
+						npc.life = (int)((float)npc.lifeMax * lifePercent);
+						npc.ai[1] = lastPiece;
+						npc.TargetClosest(true);
+						npc.netUpdate = true;
+						npc.whoAmI = npcID;
+						if(onChangeType != null) onChangeType(npc, oldType, false);						
+					}
                 }
                 else
 				if (!singlePiece)
@@ -3810,7 +4082,8 @@ namespace AAMod
                         npc.active = false;
                     }
                 }
-                if (!npc.active && Main.netMode == 2) { NetMessage.SendData(28, -1, -1, NetworkText.FromLiteral(""), npc.whoAmI, 1, 0f, 0f, -1); }
+                if (!npc.active && Main.netMode == 2) 
+					NetMessage.SendData(28, -1, -1, NetworkText.FromLiteral(""), npc.whoAmI, 1, 0f, 0f, -1);
             }
             int tileX = (int)(npc.position.X / 16f) - 1;
             int tileCenterX = (int)((npc.Center.X) / 16f) + 2;
@@ -3826,7 +4099,8 @@ namespace AAMod
                 {
                     for (int tY = tileY; tY < tileCenterY; tY++)
                     {
-                        if (Main.tile[tX, tY] != null && ((Main.tile[tX, tY].nactive() && (Main.tileSolid[(int)Main.tile[tX, tY].type] || (Main.tileSolidTop[(int)Main.tile[tX, tY].type] && Main.tile[tX, tY].frameY == 0))) || Main.tile[tX, tY].liquid > 64))
+						Tile checkTile = BaseWorldGen.GetTileSafely(tX, tY);						
+                        if (checkTile != null && ((checkTile.nactive() && (Main.tileSolid[(int)checkTile.type] || (Main.tileSolidTop[(int)checkTile.type] && checkTile.frameY == 0))) || checkTile.liquid > 64))
                         {
                             Vector2 tPos;
                             tPos.X = (float)(tX * 16);
@@ -3834,7 +4108,7 @@ namespace AAMod
                             if (npc.position.X + (float)npc.width > tPos.X && npc.position.X < tPos.X + 16f && npc.position.Y + (float)npc.height > tPos.Y && npc.position.Y < tPos.Y + 16f)
                             {
                                 canMove = true;
-                                if (spawnTileDust && Main.rand.Next(100) == 0 && Main.tile[tX, tY].nactive())
+                                if (spawnTileDust && Main.rand.Next(100) == 0 && checkTile.nactive())
                                 {
                                     WorldGen.KillTile(tX, tY, true, true, false);
                                 }
@@ -4426,7 +4700,7 @@ namespace AAMod
          * ai : A float array that stores AI data. (Note projectile array should be synced!)
          * jumpTime : the amount of cooldown after the slime has jumped.
          */
-        public static void AISlime(NPC npc, ref float[] ai, bool fleeWhenDay = false, int jumpTime = 200, float jumpVelX = 2f, float jumpVelY = 6f, float jumpVelHighX = 3f, float jumpVelHighY = 8f)
+        public static void AISlime(NPC npc, ref float[] ai, bool fleeWhenDay = false, int jumpTime = 200, float jumpVelX = 2f, float jumpVelY = -6f, float jumpVelHighX = 3f, float jumpVelHighY = -8f)
         {
             //ai[0] is a timer that iterates after the npc has jumped. If it is >= 0, the npc will attempt to jump again.
             //ai[1] is used to determine what jump type to do. (if 2, large jump, else smaller jump.)
@@ -4519,6 +4793,8 @@ namespace AAMod
 		 */
 		public static void WalkupHalfBricks(Entity codable, ref float gfxOffY, ref float stepSpeed)
 		{
+			if(codable == null)
+				return;
 			if (codable.velocity.Y >= 0f)
 			{
 				int offset = 0;
@@ -4528,6 +4804,7 @@ namespace AAMod
 				pos.X += codable.velocity.X;
 				int tileX = (int)(((double)pos.X + (double)(codable.width / 2) + (double)((codable.width / 2 + 1) * offset)) / 16.0);
 				int tileY = (int)(((double)pos.Y + (double)codable.height - 1.0) / 16.0);
+
 				if (Main.tile[tileX, tileY] == null) Main.tile[tileX, tileY] = new Tile();
 				if (Main.tile[tileX, tileY - 1] == null) Main.tile[tileX, tileY - 1] = new Tile();
 				if (Main.tile[tileX, tileY - 2] == null) Main.tile[tileX, tileY - 2] = new Tile();
@@ -4661,7 +4938,11 @@ namespace AAMod
                     }
                 }
                 return newVelocity;
-            }catch(Exception e) { ErrorLogger.Log(e.Message); ErrorLogger.Log(e.StackTrace); return velocity; }
+            }catch(Exception e)
+			{
+				BaseUtility.LogFancy("AAMod~ ATTEMPT JUMP ERROR:", e);
+				return velocity; 
+			}
         }
 
 
@@ -5668,6 +5949,7 @@ namespace AAMod
 				if (Main.netMode != 0) { MNet.SendBaseNetMessage(0, proj.owner, proj.identity, proj.friendly, proj.hostile); }
             }
 			proj.netUpdate2 = true;
+			Main.projectile[projectileID] = proj;
             return projectileID;
         }
 
@@ -5901,7 +6183,10 @@ namespace AAMod
                 }
                 Way += Jump;
             }
-			}catch(Exception e){ ErrorLogger.Log("TRACE ERROR: " + e.Message); ErrorLogger.Log(e.StackTrace); ErrorLogger.Log("--------"); }
+			}catch(Exception e)
+			{
+				BaseUtility.LogFancy("AAMod~ TRACE ERROR:", e);				
+			}
             return end;
         }
 
