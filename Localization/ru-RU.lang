@@ -2115,11 +2115,11 @@ ItemTooltip.StarIdol=Блестит как звезды на небе\nМоже�
 // AAMod.Items.Boss.Greed
 
 
-ItemName.DesireCharm=Charm of Desire
-ItemTooltip.DesireCharm=Grabbing coins boosts your damage by 1% for 4 seconds\nGrabbing another coin increases the damage by 1% and resets the countdown\nCaps out at 20% damage
+ItemName.DesireCharm=Амулет Желания
+ItemTooltip.DesireCharm=Поднимание монеток увеличивает ваш урон на 1% на 4 секунды\nПоднимание еще одной монетки увеличивает ваш урон еще на 1% и перезапускает отсчет\nМаксимальное увеличение урона 20%
 
-ItemName.GildedGlock=Gilded Glock
-ItemTooltip.GildedGlock=Uses Coins as Ammo
+ItemName.GildedGlock=Gilded Глок
+ItemTooltip.GildedGlock=Использует монетки вместо пуль
 
 ItemName.GoldDigger=Золотоискатель
 ItemTooltip.GoldDigger=Выпускает снаряд, создающий фонтан из монет при контакте с блоком\nМожет быть активен только один фонтан
@@ -3024,8 +3024,8 @@ ItemTooltip.Z=Распространяет Пустоту
 
 ItemName.DragonsGrip=Хватка Дракона
 
-ItemName.GripsOfChaos=The Grips of Chaos
-ItemTooltip.GripsOfChaos=Fires 2 different hooks depending on which one is already out\nRed has a longer range\nBlue pulls in/retracts quicker
+ItemName.GripsOfChaos=Руки Хаоса
+ItemTooltip.GripsOfChaos=Стреляет 2 крюками, в зависимости от того, какой уже выпущенt\nКрасный длиннее\nСиний притягивается быстрее
 
 
 
@@ -3510,7 +3510,7 @@ ItemTooltip.StarWrathEX=Вызывает с небес падающие звез
 
 ItemName.SunLance=Солнечная Алебарда
 
-ItemName.TerraBladeEX=Истинный Терра-меч
+ItemName.TerraBladeEX=Истинный Клинок земли
 ItemTooltip.TerraBladeEX=Стреляет самонаводящимися снарядами, накладывающими Терра-Пламя\nТерра-меч EX
 
 ItemName.TerraShortsword=Терра-Палаш
