@@ -2,7 +2,7 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
-using Terraria.DataStructures
+using Terraria.DataStructures;
 
 namespace AAMod.NPCs.Bosses.MushroomMonarch
 {
