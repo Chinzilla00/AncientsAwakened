@@ -165,6 +165,10 @@ namespace AAMod.NPCs.TownNPCs
 				shop.item[nextSlot].shopCustomPrice = new int?(15);
 				shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin;
 				nextSlot++;
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Vanity.Universe.UniBag>());
+				shop.item[nextSlot].shopCustomPrice = new int?(15);
+				shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin;
+				nextSlot++;
 
 				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Vanity.Alphakip.AlphaBag>());
 				shop.item[nextSlot].shopCustomPrice = new int?(25);

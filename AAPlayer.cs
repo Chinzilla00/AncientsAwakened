@@ -2855,13 +2855,11 @@ namespace AAMod
                         break;
 
                     case 19:
-                        player.QuickSpawnItem(mod.ItemType("CursedHood"));
-                        player.QuickSpawnItem(mod.ItemType("CursedRobe"));
-                        player.QuickSpawnItem(mod.ItemType("CursedPants"));
+                        player.QuickSpawnItem(mod.ItemType("UniBag"));
 
                         if (dropType >= 3)
                         {
-                            player.QuickSpawnItem(mod.ItemType("CursedSickle" + addonEX));
+                            //player.QuickSpawnItem(mod.ItemType("CursedSickle" + addonEX));
                         }
 
                         spawnedDevItems = true;

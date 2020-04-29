@@ -5,12 +5,12 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Vanity.Universe
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class CursedPants : BaseAAItem
+	public class UniPants : BaseAAItem
 	{
 		public override void SetStaticDefaults()
-        {
+		{
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Cursed Reaper Boots");
+            DisplayName.SetDefault("Universal Trousers");
             Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Devs!'");
         }
 
@@ -20,11 +20,10 @@ namespace AAMod.Items.Vanity.Universe
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = new Color(29, 109, 124);
+                    line2.overrideColor = new Color(106, 72, 125);
                 }
             }
         }
-
 
         public override void SetDefaults()
         {

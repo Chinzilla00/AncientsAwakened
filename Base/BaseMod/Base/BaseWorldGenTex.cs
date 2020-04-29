@@ -36,7 +36,7 @@ namespace AAMod
 			if(liquidData != null) liquidTex.GetData(0, liquidTex.Bounds, liquidData, 0, liquidTex.Width * liquidTex.Height);				
 			Color[] slopeData = (slopeTex != null ? new Color[slopeTex.Width * slopeTex.Height] : null);
 			if(slopeData != null) slopeTex.GetData(0, slopeTex.Bounds, slopeData, 0, slopeTex.Width * slopeTex.Height);
-			
+
 			int x = 0, y = 0;
 			TexGen gen = new TexGen(tileTex.Width, tileTex.Height);
 			for(int m = 0; m < tileData.Length; m++)

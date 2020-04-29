@@ -1088,6 +1088,7 @@ namespace AAMod
                 AAMod.instance.ItemType("MikBag"),
                 AAMod.instance.ItemType("TailsToolbox"),
                 AAMod.instance.ItemType("ShoxBag"),
+                AAMod.instance.ItemType("UniBag"),
                 AAMod.instance.ItemType("ApawnEgg")
             });
             RecipeGroup.RegisterGroup("AAMod:DevBag", group23);

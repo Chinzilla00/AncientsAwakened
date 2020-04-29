@@ -3,15 +3,14 @@ using Terraria.ModLoader;
 using System.Collections.Generic;
 
 namespace AAMod.Items.Vanity.Universe
-
 {
-    [AutoloadEquip(EquipType.Body)]
-    public class CursedRobe : BaseAAItem
-    {
-        public override void SetStaticDefaults()
+    [AutoloadEquip(EquipType.Head)]
+	public class UniHead : BaseAAItem
+	{
+		public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Cursed Reaper Robe");
+            DisplayName.SetDefault("Universal Globe");
             Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Devs!'");
         }
 
@@ -21,18 +20,17 @@ namespace AAMod.Items.Vanity.Universe
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = new Color(29, 109, 124);
+                    line2.overrideColor = new Color(106, 72, 125);
                 }
             }
         }
 
-
         public override void SetDefaults()
         {
-            item.width = 26;
+            item.width = 18;
             item.height = 20;
             item.rare = 9;
             item.vanity = true;
         }
-    }
+	}
 }
