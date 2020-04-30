@@ -1260,22 +1260,22 @@ namespace AAMod.Worldgeneration
                     if (Main.tile[x, y].type == ModContent.TileType<Placeholder1>())
                     {
                         Main.tile[x, y].ClearTile();
-                        WorldGen.PlaceTile(x, y, ModContent.TileType<KeepPlatform>(), true, false, -1, 20);
+                        WorldGen.PlaceTile(x, y, ModContent.TileType<KeepPlatform>(), true, false, -1, 0);
                     }
                     if (Main.tile[x, y].type == ModContent.TileType<Placeholder2>())
                     {
                         Main.tile[x, y].ClearTile();
-                        WorldGen.PlaceTile(x, y, ModContent.TileType<KeepPlatform>(), true, false, -1, 26);
+                        WorldGen.PlaceTile(x, y, ModContent.TileType<KeepPlatform>(), true, false, -1, 0);
                     }
                     if (Main.tile[x, y].type == ModContent.TileType<Placeholder3>())
                     {
                         Main.tile[x, y].ClearTile();
-                        WorldGen.PlaceTile(x, y, ModContent.TileType<KeepPlatform>(), true, false, -1, 19);
+                        WorldGen.PlaceTile(x, y, ModContent.TileType<KeepPlatform>(), true, false, -1, 0);
                     }
                     if (Main.tile[x, y].type == ModContent.TileType<Placeholder4>())
                     {
                         Main.tile[x, y].ClearTile();
-                        WorldGen.PlaceTile(x, y, ModContent.TileType<KeepPlatform>(), true, false, -1, 25);
+                        WorldGen.PlaceTile(x, y, ModContent.TileType<KeepPlatform>(), true, false, -1, 0);
                     }
                     if (Main.tile[x, y].type == ModContent.TileType<Placeholder5>())
                     {
