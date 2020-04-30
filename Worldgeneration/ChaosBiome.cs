@@ -1250,7 +1250,7 @@ namespace AAMod.Worldgeneration
 
             Texture2D platTex = mod.GetTexture("Worldgeneration/LostKeepPlatforms");
 
-            TexGen gen2 = BaseWorldGenTex.GetTexGenerator(platTex, colorToTile, null);
+            TexGen gen2 = BaseWorldGenTex.GetTexGenerator(platTex, colorToTile2, null);
             gen2.Generate(genX, genY, true, true);
 
             for (int x = origin.X; x < origin.X + platTex.Width; x++)
