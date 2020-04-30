@@ -1,16 +1,16 @@
 ﻿using Microsoft.Xna.Framework;
-using System.Collections.Generic;
 using Terraria.ModLoader;
+using System.Collections.Generic;
 
-namespace AAMod.Items.Vanity.Mikpin
+namespace AAMod.Items.Vanity.Mikpin.Angel
 {
-    [AutoloadEquip(EquipType.Legs)]
-    public class MikpinPants : BaseAAItem
+    [AutoloadEquip(EquipType.Body)]
+    public class MikJacket : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Kitsune Pants");
+            DisplayName.SetDefault("Angelic Operator's Jacket");
             Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Testers!'");
         }
 
@@ -27,8 +27,8 @@ namespace AAMod.Items.Vanity.Mikpin
 
         public override void SetDefaults()
         {
-            item.width = 22;
-            item.height = 18;
+            item.width = 26;
+            item.height = 20;
             item.rare = 9;
             item.vanity = true;
         }

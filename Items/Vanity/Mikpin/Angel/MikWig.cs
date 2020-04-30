@@ -2,15 +2,15 @@
 using Terraria.ModLoader;
 using System.Collections.Generic;
 
-namespace AAMod.Items.Vanity.Mikpin
+namespace AAMod.Items.Vanity.Mikpin.Angel
 {
     [AutoloadEquip(EquipType.Head)]
-    public class MikpinWig : BaseAAItem
+    public class MikWig : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Kitsune Wig");
+            DisplayName.SetDefault("Angelic Operator's Halo");
             Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Testers!'");
         }
 

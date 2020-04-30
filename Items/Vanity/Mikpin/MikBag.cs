@@ -1,5 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
+using AAMod.Items.Vanity.Mikpin.Kitsune;
+using AAMod.Items.Vanity.Mikpin.Angel;
 
 namespace AAMod.Items.Vanity.Mikpin
 {
@@ -7,8 +9,8 @@ namespace AAMod.Items.Vanity.Mikpin
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Kitsune's Bag");
-            Tooltip.SetDefault("<right> to open \n'All the essentials for impersonating the Weeb Fox!'");
+            DisplayName.SetDefault("Six-Star Operator Bag");
+            Tooltip.SetDefault("<right> to open \n'All the essentials for impersonating the Apple Pie-loving Sniper!'");
         }
 
         public override void SetDefaults()
@@ -27,9 +29,18 @@ namespace AAMod.Items.Vanity.Mikpin
 
  		public override void RightClick(Player player)
 		{
-			player.QuickSpawnItem(ModContent.ItemType<MikpinWig>());
-            player.QuickSpawnItem(ModContent.ItemType<MikpinCloak>());
-            player.QuickSpawnItem(ModContent.ItemType<MikpinPants>());
+            if (Main.rand.Next(2) == 0)
+            {
+                player.QuickSpawnItem(ModContent.ItemType<MikpinWig>());
+                player.QuickSpawnItem(ModContent.ItemType<MikpinCloak>());
+                player.QuickSpawnItem(ModContent.ItemType<MikpinPants>());
+            }
+            else
+            {
+                player.QuickSpawnItem(ModContent.ItemType<MikWig>());
+                player.QuickSpawnItem(ModContent.ItemType<MikJacket>());
+                player.QuickSpawnItem(ModContent.ItemType<MikLeggings>());
+            }
         }
     }
 }

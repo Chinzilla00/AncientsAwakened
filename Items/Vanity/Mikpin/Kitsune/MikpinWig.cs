@@ -2,15 +2,15 @@
 using Terraria.ModLoader;
 using System.Collections.Generic;
 
-namespace AAMod.Items.Vanity.Mikpin
+namespace AAMod.Items.Vanity.Mikpin.Kitsune
 {
-    [AutoloadEquip(EquipType.Body)]
-    public class MikpinCloak : BaseAAItem
+    [AutoloadEquip(EquipType.Head)]
+    public class MikpinWig : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Kitsune Dress");
+            DisplayName.SetDefault("Kitsune Wig");
             Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Testers!'");
         }
 
@@ -27,7 +27,7 @@ namespace AAMod.Items.Vanity.Mikpin
 
         public override void SetDefaults()
         {
-            item.width = 26;
+            item.width = 18;
             item.height = 20;
             item.rare = 9;
             item.vanity = true;

@@ -23,7 +23,7 @@ namespace AAMod.NPCs.Bosses.Wyrmling
 		{
 			npc.noTileCollide = true;
 			npc.height = 16;
-			npc.width = 30;
+			npc.width = 16;
 			npc.aiStyle = -1;
 			npc.netAlways = true;
             npc.damage = 18;
@@ -47,8 +47,6 @@ namespace AAMod.NPCs.Bosses.Wyrmling
         public override bool PreAI()
         {
             Lighting.AddLight(npc.Center, Color.DarkOrange.R / 255, Color.DarkOrange.G / 255, Color.DarkOrange.B / 255);
-            Player player = Main.player[npc.target];
-            float dist = npc.Distance(player.Center);
             if (npc.alpha != 0)
             {
                 for (int spawnDust = 0; spawnDust < 2; spawnDust++)

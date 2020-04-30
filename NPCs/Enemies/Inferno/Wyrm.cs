@@ -24,7 +24,7 @@ namespace AAMod.NPCs.Bosses.Wyrm
 		{
 			npc.noTileCollide = true;
 			npc.height = 32;
-			npc.width = 44;
+			npc.width = 32;
 			npc.aiStyle = -1;
 			npc.netAlways = true;
             npc.damage = 20;
