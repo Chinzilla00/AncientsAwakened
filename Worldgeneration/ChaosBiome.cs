@@ -1221,7 +1221,6 @@ namespace AAMod.Worldgeneration
             Dictionary<Color, int> colorToObject = new Dictionary<Color, int>
             {
                 [new Color(255, 0, 0)] = mod.WallType("KeepPlatform"),
-                [new Color(255, 255, 255)] = -1,
                 [Color.Black] = -1
             };
 
@@ -1232,14 +1231,14 @@ namespace AAMod.Worldgeneration
                 new Actions.SetSlope(0)
             }));
 
-            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/LostKeep"), colorToTile, mod.GetTexture("Worldgeneration/LostKeepWall"), colorToWall, null, mod.GetTexture("Worldgeneration/LostKeepSlope"), mod.GetTexture("Worldgeneration/LostKeepPlatforms"), colorToObject);
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/LostKeep"), colorToTile, mod.GetTexture("Worldgeneration/LostKeepWall"), colorToWall, null, mod.GetTexture("Worldgeneration/LostKeepSlope"));
 
             int genX = origin.X;
             int genY = origin.Y;
 
             gen.Generate(genX, genY, true, true);
 
-           /* Dictionary<Color, int> colorToTile2 = new Dictionary<Color, int>
+            Dictionary<Color, int> colorToTile2 = new Dictionary<Color, int>
             {
                 [new Color(255, 0, 0)] = ModContent.TileType<Placeholder1>(),
                 [new Color(255, 255, 0)] = ModContent.TileType<Placeholder2>(),
@@ -1252,18 +1251,39 @@ namespace AAMod.Worldgeneration
             Texture2D platTex = mod.GetTexture("Worldgeneration/LostKeepPlatforms");
 
             TexGen gen2 = BaseWorldGenTex.GetTexGenerator(platTex, colorToTile, null);
+            gen2.Generate(genX, genY, true, true);
 
-            for (int x = 0; x < platTex.Width; x++)
+            for (int x = origin.X; x < origin.X + platTex.Width; x++)
             {
-                for (int y = 0; y < platTex.Height; y++)
+                for (int y = origin.Y; y < origin.Y + platTex.Height; y++)
                 {
                     if (Main.tile[x, y].type == ModContent.TileType<Placeholder1>())
                     {
                         Main.tile[x, y].ClearTile();
-                        WorldGen.PlaceObject(x, y, )
+                        WorldGen.PlaceTile(x, y, ModContent.TileType<KeepPlatform>(), true, false, -1, 20);
+                    }
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder2>())
+                    {
+                        Main.tile[x, y].ClearTile();
+                        WorldGen.PlaceTile(x, y, ModContent.TileType<KeepPlatform>(), true, false, -1, 26);
+                    }
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder3>())
+                    {
+                        Main.tile[x, y].ClearTile();
+                        WorldGen.PlaceTile(x, y, ModContent.TileType<KeepPlatform>(), true, false, -1, 19);
+                    }
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder4>())
+                    {
+                        Main.tile[x, y].ClearTile();
+                        WorldGen.PlaceTile(x, y, ModContent.TileType<KeepPlatform>(), true, false, -1, 25);
+                    }
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder5>())
+                    {
+                        Main.tile[x, y].ClearTile();
+                        WorldGen.PlaceTile(x, y, ModContent.TileType<KeepPlatform>(), true, false, -1, 0);
                     }
                 }
-            }*/
+            }
 
 
             return true;
