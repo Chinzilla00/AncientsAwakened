@@ -1218,6 +1218,13 @@ namespace AAMod.Worldgeneration
                 [Color.Black] = -2 //turn into air
             };
 
+            Dictionary<Color, int> colorToObject = new Dictionary<Color, int>
+            {
+                [new Color(255, 0, 0)] = mod.WallType("KeepPlatform"),
+                [new Color(255, 255, 255)] = -1,
+                [Color.Black] = -1
+            };
+
             WorldUtils.Gen(origin, new Shapes.Rectangle(280, 230), Actions.Chain(new GenAction[] //remove all fluids in sphere...
 			{
                 new InWorld(),
@@ -1225,7 +1232,7 @@ namespace AAMod.Worldgeneration
                 new Actions.SetSlope(0)
             }));
 
-            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/LostKeep"), colorToTile, mod.GetTexture("Worldgeneration/LostKeepWall"), colorToWall, null, mod.GetTexture("Worldgeneration/LostKeepSlope"));
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/LostKeep"), colorToTile, mod.GetTexture("Worldgeneration/LostKeepWall"), colorToWall, null, mod.GetTexture("Worldgeneration/LostKeepSlope"), mod.GetTexture("Worldgeneration/LostKeepPlatforms"), colorToObject);
 
             int genX = origin.X;
             int genY = origin.Y;
