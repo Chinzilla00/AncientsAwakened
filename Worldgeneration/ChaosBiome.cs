@@ -1241,16 +1241,14 @@ namespace AAMod.Worldgeneration
             Dictionary<Color, int> colorToTile2 = new Dictionary<Color, int>
             {
                 [new Color(255, 0, 0)] = ModContent.TileType<Placeholder1>(),
-                [new Color(255, 255, 0)] = ModContent.TileType<Placeholder2>(),
-                [new Color(0, 255, 0)] = ModContent.TileType<Placeholder3>(),
-                [new Color(0, 0, 255)] = ModContent.TileType<Placeholder4>(),
-                [new Color(0, 255, 255)] = ModContent.TileType<Placeholder5>(),
+                [new Color(0, 255, 0)] = ModContent.TileType<Placeholder2>(),
+                [new Color(255, 0, 255)] = ModContent.TileType<Placeholder3>(),
                 [Color.Black] = -1 //don't touch when genning
             };
 
             Texture2D platTex = mod.GetTexture("Worldgeneration/LostKeepPlatforms");
 
-            TexGen gen2 = BaseWorldGenTex.GetTexGenerator(platTex, colorToTile2, null);
+            TexGen gen2 = BaseWorldGenTex.GetTexGenerator(platTex, colorToTile2, null, null, null, platTex);
             gen2.Generate(genX, genY, true, true);
 
             for (int x = origin.X; x < origin.X + platTex.Width; x++)
@@ -1261,30 +1259,21 @@ namespace AAMod.Worldgeneration
                     {
                         Main.tile[x, y].ClearTile();
                         WorldGen.PlaceTile(x, y, ModContent.TileType<KeepPlatform>(), true, false, -1, 0);
+                        WorldGen.SlopeTile(x, y, 1);
                     }
                     if (Main.tile[x, y].type == ModContent.TileType<Placeholder2>())
                     {
                         Main.tile[x, y].ClearTile();
                         WorldGen.PlaceTile(x, y, ModContent.TileType<KeepPlatform>(), true, false, -1, 0);
+                        WorldGen.SlopeTile(x, y, 2);
                     }
                     if (Main.tile[x, y].type == ModContent.TileType<Placeholder3>())
                     {
                         Main.tile[x, y].ClearTile();
                         WorldGen.PlaceTile(x, y, ModContent.TileType<KeepPlatform>(), true, false, -1, 0);
                     }
-                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder4>())
-                    {
-                        Main.tile[x, y].ClearTile();
-                        WorldGen.PlaceTile(x, y, ModContent.TileType<KeepPlatform>(), true, false, -1, 0);
-                    }
-                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder5>())
-                    {
-                        Main.tile[x, y].ClearTile();
-                        WorldGen.PlaceTile(x, y, ModContent.TileType<KeepPlatform>(), true, false, -1, 0);
-                    }
                 }
             }
-
 
             return true;
         }
