@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Tiles
 {
-    public class TerraWood : ModTile
+    public class TerraWoodSolid : ModTile
     {
 
         public bool glow = true; 
@@ -13,7 +13,8 @@ namespace AAMod.Tiles
         {
             Main.tileSolid[Type] = true;
             Main.tileBlockLight[Type] = true;
-            Main.tileSolid[Type] = false;
+            Main.tileSolid[Type] = true;
+            Main.tileMerge[Type][mod.TileType("TerraWood")] = true;
             Main.tileMerge[Type][mod.TileType("TerraLeaves")] = true;
             Main.tileMerge[Type][mod.TileType("TerraCrystal")] = true;
             soundType = 21;
@@ -41,7 +42,7 @@ namespace AAMod.Tiles
                 zero = Vector2.Zero;
             }
             int height = tile.frameY == 36 ? 18 : 16;
-            BaseDrawing.DrawTileTexture(spriteBatch, Main.tileTexture[Type], i, j, true, false, false, null, AAGlobalTile.GetTerraColorDim);
+            BaseDrawing.DrawTileTexture(spriteBatch, Main.tileTexture[Type], i, j, true, false, false, null, AAGlobalTile.GetTerraColorBright);
         }
 
         public override void ModifyLight(int x, int y, ref float r, ref float g, ref float b)

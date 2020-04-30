@@ -1467,7 +1467,7 @@ namespace AAMod
             Main.jungleTiles += mireTiles;
             pagodaTiles = tileCounts[ModContent.TileType<ScorchedDynastyWoodS>()] + tileCounts[ModContent.TileType<ScorchedShinglesS>()];
             lakeTiles = tileCounts[ModContent.TileType<Darkmud>()] + tileCounts[ModContent.TileType<AbyssGrass>()] + tileCounts[ModContent.TileType<AbyssWood>()] + tileCounts[ModContent.TileType<AbyssWoodSolid>()];
-            terraTiles = tileCounts[ModContent.TileType<TerraCrystal>()] + tileCounts[ModContent.TileType<TerraWood>()] + tileCounts[ModContent.TileType<TerraLeaves>()];
+            terraTiles = tileCounts[ModContent.TileType<TerraCrystal>()] + tileCounts[ModContent.TileType<TerraWood>()] + tileCounts[ModContent.TileType<TerraLeaves>()] + tileCounts[ModContent.TileType<KeepBrick>()] + +tileCounts[ModContent.TileType<TerraBrick>()];
             Radium = tileCounts[ModContent.TileType<RadiumOre>()] + tileCounts[ModContent.TileType<Tiles.Altar.DaybringerBrick>()] + tileCounts[ModContent.TileType<Tiles.Altar.NightcrawlerBrick>()];
             HoardTiles = tileCounts[ModContent.TileType<GreedBrick>()] + tileCounts[ModContent.TileType<GreedStone>()];
             CloudTiles = tileCounts[ModContent.TileType<AcropolisBlock>()] + tileCounts[ModContent.TileType<AcropolisBlock2>()];
@@ -1563,11 +1563,13 @@ namespace AAMod
         private void Terrarium(GenerationProgress progress)
         {
             progress.Message = Language.GetTextValue("Mods.AAMod.Common.AAWorldBuildTerrarium");
-            Point origin = new Point((int)(Main.maxTilesX * 0.5f), (int)(Main.maxTilesY * 0.4f));
-            origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
-            TerrariumDelete delete = new TerrariumDelete();
-            TerrariumSphere biome = new TerrariumSphere();
-            delete.Place(origin, WorldGen.structures);
+
+            Point origin = new Point((int)(Main.maxTilesX * 0.35f), (int)(Main.maxTilesY * 0.38f));
+            if (Main.dungeonX < Main.maxTilesX / 2)
+            {
+                origin = new Point((int)(Main.maxTilesX * 0.65f), (int)(Main.maxTilesY * 0.38f));
+            }
+            Keep biome = new Keep();
             biome.Place(origin, WorldGen.structures);
         }
 

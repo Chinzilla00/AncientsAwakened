@@ -15,6 +15,7 @@ using Terraria.Utilities;
 using AAMod.Tiles.Chests;
 using AAMod.Tiles.Crafters;
 using AAMod.Tiles.Boss;
+using AAMod.Worldgeneration.Placeholder;
 
 namespace AAMod.Worldgeneration
 {
@@ -1180,6 +1181,92 @@ namespace AAMod.Worldgeneration
             NetMessage.SendObjectPlacment(-1, origin.X + 41, origin.Y + 27, (ushort)mod.TileType("CrystalChandelier"), 0, 0, -1, -1);
 
             return true;
+        }
+    }
+
+    public class Keep : MicroBiome
+    {
+        public override bool Place(Point origin, StructureMap structures)
+        {
+            Mod mod = AAMod.instance;
+            int worldSize = GetWorldSize();
+
+
+            Dictionary<Color, int> colorToTile = new Dictionary<Color, int>
+            {
+                [new Color(128, 128, 128)] = mod.TileType("KeepBrick"),
+                [new Color(64, 64, 64)] = mod.TileType("TerraBrick"),
+                [new Color(0, 128, 0)] = mod.TileType("TerraCrystal"),
+                [new Color(255, 0, 0)] = mod.TileType("TerraDoor"),
+                [new Color(255, 255, 0)] = mod.TileType("TerraGate"),
+                [new Color(0, 64, 0)] = mod.TileType("TerraPillar"),
+                [new Color(128, 0, 0)] = mod.TileType("TerraWoodSolid"),
+                [new Color(0, 255, 255)] = mod.TileType("TerraWood"),
+                [new Color(0, 0, 64)] = mod.TileType("TerraLeaves"),
+                [new Color(255, 0, 255)] = mod.TileType("KeepPlatform"),
+                [new Color(0, 0, 255)] = TileID.Glass,
+                [new Color(255, 255, 255)] = -1, //don't touch when genning
+                [Color.Black] = -2 //turn into air
+            };
+
+            Dictionary<Color, int> colorToWall = new Dictionary<Color, int>
+            {
+                [new Color(0, 255, 0)] = mod.WallType("KeepWall"),
+                [new Color(255, 0, 0)] = WallID.GreenStainedGlass,
+                [new Color(0, 0, 255)] = WallID.Glass,
+                [new Color(255, 255, 255)] = -1, //don't touch when genning
+                [Color.Black] = -2 //turn into air
+            };
+
+            WorldUtils.Gen(origin, new Shapes.Rectangle(280, 230), Actions.Chain(new GenAction[] //remove all fluids in sphere...
+			{
+                new InWorld(),
+                new Actions.SetLiquid(0, 0),
+                new Actions.SetSlope(0)
+            }));
+
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/LostKeep"), colorToTile, mod.GetTexture("Worldgeneration/LostKeepWall"), colorToWall, null, mod.GetTexture("Worldgeneration/LostKeepSlope"));
+
+            int genX = origin.X;
+            int genY = origin.Y;
+
+            gen.Generate(genX, genY, true, true);
+
+           /* Dictionary<Color, int> colorToTile2 = new Dictionary<Color, int>
+            {
+                [new Color(255, 0, 0)] = ModContent.TileType<Placeholder1>(),
+                [new Color(255, 255, 0)] = ModContent.TileType<Placeholder2>(),
+                [new Color(0, 255, 0)] = ModContent.TileType<Placeholder3>(),
+                [new Color(0, 0, 255)] = ModContent.TileType<Placeholder4>(),
+                [new Color(0, 255, 255)] = ModContent.TileType<Placeholder5>(),
+                [Color.Black] = -1 //don't touch when genning
+            };
+
+            Texture2D platTex = mod.GetTexture("Worldgeneration/LostKeepPlatforms");
+
+            TexGen gen2 = BaseWorldGenTex.GetTexGenerator(platTex, colorToTile, null);
+
+            for (int x = 0; x < platTex.Width; x++)
+            {
+                for (int y = 0; y < platTex.Height; y++)
+                {
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder1>())
+                    {
+                        Main.tile[x, y].ClearTile();
+                        WorldGen.PlaceObject(x, y, )
+                    }
+                }
+            }*/
+
+
+            return true;
+        }
+        public static int GetWorldSize()
+        {
+            if (Main.maxTilesX == 4200) { return 1; }
+            else if (Main.maxTilesX == 6400) { return 2; }
+            else if (Main.maxTilesX == 8400) { return 3; }
+            return 1; //unknown size, assume small
         }
     }
 

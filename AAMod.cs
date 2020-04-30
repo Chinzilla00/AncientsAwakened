@@ -954,9 +954,8 @@ namespace AAMod
 
             if (Ancients.Terrarium)
             {
-
                 priority = MusicPriority.BiomeHigh;
-                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Terrarium");
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Keep");
 
                 return;
             }
