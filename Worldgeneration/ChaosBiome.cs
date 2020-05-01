@@ -1207,7 +1207,7 @@ namespace AAMod.Worldgeneration
                 [new Color(128, 0, 0)] = mod.TileType("TerraWoodSolid"),
                 [new Color(0, 255, 255)] = mod.TileType("TerraWood"),
                 [new Color(0, 0, 64)] = mod.TileType("TerraLeaves"),
-                [new Color(255, 0, 255)] = mod.TileType("KeepPlatform"),
+                [new Color(64, 0, 0)] = mod.TileType("ScorchedShinglesS"),
                 [new Color(0, 0, 255)] = TileID.Glass,
                 [new Color(255, 255, 255)] = -1, //don't touch when genning
                 [Color.Black] = -2 //turn into air
@@ -1221,12 +1221,6 @@ namespace AAMod.Worldgeneration
                 [new Color(0, 0, 255)] = WallID.Glass,
                 [new Color(255, 255, 255)] = -1, //don't touch when genning
                 [Color.Black] = -2 //turn into air
-            };
-
-            Dictionary<Color, int> colorToObject = new Dictionary<Color, int>
-            {
-                [new Color(255, 0, 0)] = mod.WallType("KeepPlatform"),
-                [Color.Black] = -1
             };
 
             WorldUtils.Gen(origin, new Shapes.Rectangle(280, 230), Actions.Chain(new GenAction[] //remove all fluids in sphere...
@@ -1253,12 +1247,15 @@ namespace AAMod.Worldgeneration
 
             Texture2D platTex = mod.GetTexture("Worldgeneration/LostKeepPlatforms");
 
-            TexGen gen2 = BaseWorldGenTex.GetTexGenerator(platTex, colorToTile2, null, null, null, platTex);
+            TexGen gen2 = BaseWorldGenTex.GetTexGenerator(platTex, colorToTile2, null, null, null, null);
             gen2.Generate(genX, genY, true, true);
 
-            for (int x = origin.X; x < origin.X + platTex.Width; x++)
+            int x = 0;
+            int y = 0;
+
+            for (x = origin.X; x < origin.X + platTex.Width; x++)
             {
-                for (int y = origin.Y; y < origin.Y + platTex.Height; y++)
+                for (y = origin.Y; y < origin.Y + platTex.Height; y++)
                 {
                     if (Main.tile[x, y].type == ModContent.TileType<Placeholder1>())
                     {
@@ -1307,95 +1304,113 @@ namespace AAMod.Worldgeneration
             };
 
             TexGen gen3 = BaseWorldGenTex.GetTexGenerator(ObjectTex, colorToObj, null, null, null, null);
-            gen3.Generate(genX, genY, true, true);
+            gen3.Generate(genX, genY, true, true); 
+            
 
-            for (int x = origin.X; x < origin.X + platTex.Width; x++)
+            for (x = origin.X; x < origin.X + ObjectTex.Width; x++)
             {
-                for (int y = origin.Y; y < origin.Y + platTex.Height; y++)
+                for (y = origin.Y; y < origin.Y + ObjectTex.Height; y++)
                 {
                     if (Main.tile[x, y].type == ModContent.TileType<Placeholder1>())
-                    { 
-                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<KeepLamp>());
+                    {
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, ModContent.TileType<KeepLamp>());
                     }
 
                     if (Main.tile[x, y].type == ModContent.TileType<Placeholder2>())
                     {
-                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<KeepLantern>());
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, ModContent.TileType<KeepLantern>());
                     }
 
                     if (Main.tile[x, y].type == ModContent.TileType<Placeholder3>())
                     {
-                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<KeepChandelier>());
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, ModContent.TileType<KeepChandelier>());
                     }
 
                     if (Main.tile[x, y].type == ModContent.TileType<Placeholder4>())
                     {
-                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<KeepClock>());
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, ModContent.TileType<KeepClock>());
                     }
 
                     if (Main.tile[x, y].type == ModContent.TileType<Placeholder5>())
                     {
-                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<KeepTable>());
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, ModContent.TileType<KeepTable>());
                     }
 
                     if (Main.tile[x, y].type == ModContent.TileType<Placeholder6>())
                     {
-                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<KeepCandelabra>());
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, ModContent.TileType<KeepCandelabra>());
                     }
 
                     if (Main.tile[x, y].type == ModContent.TileType<Placeholder7>())
                     {
-                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<KeepBookcase>());
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, ModContent.TileType<KeepBookcase>());
                     }
 
                     if (Main.tile[x, y].type == ModContent.TileType<Placeholder8>())
                     {
-                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<TerraStatue>());
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, ModContent.TileType<TerraStatue>());
                     }
 
                     if (Main.tile[x, y].type == ModContent.TileType<Placeholder9>())
                     {
-                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<TerraBed>());
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, ModContent.TileType<TerraBed>());
                     }
 
                     if (Main.tile[x, y].type == ModContent.TileType<Placeholder10>())
                     {
-                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<TerraBath>());
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, ModContent.TileType<TerraBath>());
                     }
 
                     if (Main.tile[x, y].type == ModContent.TileType<Placeholder11>())
                     {
-                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<TerraSink>());
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, ModContent.TileType<TerraSink>());
                     }
 
                     if (Main.tile[x, y].type == ModContent.TileType<Placeholder12>())
                     {
-                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<TerraChandelier>());
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, ModContent.TileType<TerraChandelier>());
                     }
 
                     if (Main.tile[x, y].type == ModContent.TileType<Placeholder13>())
                     {
-                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<TerraLantern>());
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, ModContent.TileType<TerraLantern>());
                     }
 
                     if (Main.tile[x, y].type == ModContent.TileType<Placeholder14>())
                     {
-                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<RazewoodLantern>());
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, ModContent.TileType<RazewoodLantern>());
                     }
 
                     if (Main.tile[x, y].type == ModContent.TileType<Placeholder15>())
                     {
-                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<RazewoodBed>());
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, ModContent.TileType<RazewoodBed>());
                     }
 
                     if (Main.tile[x, y].type == ModContent.TileType<Placeholder16>())
                     {
-                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<RazewoodDresser>());
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, ModContent.TileType<RazewoodDresser>());
                     }
 
                     if (Main.tile[x, y].type == ModContent.TileType<Placeholder17>())
                     {
-                        GenUtils.ObjectPlace(origin, x, y, TileID.CookingPots);
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, TileID.CookingPots);
                     }
                 }
             }
@@ -1416,9 +1431,13 @@ namespace AAMod.Worldgeneration
     {
         public static void ObjectPlace(Point Origin, int x, int y, int TileType)
         {
-            Main.tile[x, y].ClearTile();
             WorldGen.PlaceObject(Origin.X + x, Origin.Y + y, TileType);
             NetMessage.SendObjectPlacment(-1, Origin.X + x, Origin.Y + y, TileType, 0, 0, -1, -1);
+        }
+        public static void ObjectPlace(int x, int y, int TileType)
+        {
+            WorldGen.PlaceObject(x, y, TileType);
+            NetMessage.SendObjectPlacment(-1, x, y, TileType, 0, 0, -1, -1);
         }
     }
 

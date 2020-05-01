@@ -62,6 +62,10 @@ namespace AAMod.Items.Ranged
             if (type == 474)
             {
                 type = 270;
+                int p = Projectile.NewProjectile(position, new Vector2(speedX, speedY), type, damage, knockBack, Main.myPlayer);
+                Main.projectile[p].magic = false;
+                Main.projectile[p].ranged = true;
+                return false;
             }
             return true;
         }
