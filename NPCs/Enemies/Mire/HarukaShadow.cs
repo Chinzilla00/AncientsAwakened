@@ -68,7 +68,7 @@ namespace AAMod.NPCs.Enemies.Mire
             if (npc.ai[0] != 1)
             {
                 npc.ai[0] = 1;
-                CombatText.NewText(npc.Hitbox, new Color(72, 78, 117), "pathetic.");
+                CombatText.NewText(npc.Hitbox, new Color(72, 78, 117), Lang.BossChat("HarukaShadow"));
             }
             return false;
         }
