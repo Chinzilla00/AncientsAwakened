@@ -15,6 +15,10 @@ using Terraria.Utilities;
 using AAMod.Tiles.Chests;
 using AAMod.Tiles.Crafters;
 using AAMod.Tiles.Boss;
+using AAMod.Tiles.Furniture.Razewood;
+using AAMod.Tiles.Furniture.Terra;
+using AAMod.Tiles.Furniture.Keep;
+using AAMod.Tiles.Decoration;
 using AAMod.Worldgeneration.Placeholder;
 
 namespace AAMod.Worldgeneration
@@ -1282,29 +1286,119 @@ namespace AAMod.Worldgeneration
 
             Dictionary<Color, int> colorToObj = new Dictionary<Color, int>
             {
-                [new Color(255, 0, 0)] = mod.TileType("KeepLamp"),
-                [new Color(0, 255, 0)] = mod.TileType("KeepLantern"),
-                [new Color(0, 0, 255)] = mod.TileType("KeepChandelier"),
-                [new Color(128, 128, 128)] = mod.TileType("KeepClock"),
-                [new Color(64, 64, 64)] = mod.TileType("KeepTable"),
-                [new Color(255, 255, 0)] = mod.TileType("KeepCandelabra"),
-                [new Color(128, 0, 0)] = mod.TileType("KeepBookcase"),
-                [new Color(0, 255, 255)] = mod.TileType("TerraStatue"),
-                [new Color(128, 128, 0)] = mod.TileType("TerraBed"),
-                [new Color(0, 128, 128)] = mod.TileType("TerraBath"),
-                [new Color(128, 0, 128)] = mod.TileType("TerraSink"),
-                [new Color(0, 0, 128)] = mod.TileType("TerraChandelier"),
-                [new Color(0, 128, 0)] = mod.TileType("TerraLantern"),
-                [new Color(64, 0, 64)] = mod.TileType("RazewoodLantern"),
-                [new Color(0, 0, 64)] = mod.TileType("RazewoodBed"),
-                [new Color(64, 64, 0)] = mod.TileType("RazewoodDresser"),
-                [new Color(64, 0, 0)] = TileID.CookingPots,
-                [new Color(255, 255, 255)] = -1, //don't touch when genning
-                [Color.Black] = -2 //turn into air
+                [new Color(255, 0, 0)] = mod.TileType("Placeholder1"),
+                [new Color(0, 255, 0)] = mod.TileType("Placeholder2"),
+                [new Color(0, 0, 255)] = mod.TileType("Placeholder3"),
+                [new Color(128, 128, 128)] = mod.TileType("Placeholder4"),
+                [new Color(64, 64, 64)] = mod.TileType("Placeholder5"),
+                [new Color(255, 255, 0)] = mod.TileType("Placeholder6"),
+                [new Color(128, 0, 0)] = mod.TileType("Placeholder7"),
+                [new Color(0, 255, 255)] = mod.TileType("Placeholder8"),
+                [new Color(128, 128, 0)] = mod.TileType("Placeholder9"),
+                [new Color(0, 128, 128)] = mod.TileType("Placeholder10"),
+                [new Color(128, 0, 128)] = mod.TileType("Placeholder11"),
+                [new Color(0, 0, 128)] = mod.TileType("Placeholder12"),
+                [new Color(0, 128, 0)] = mod.TileType("Placeholder13"),
+                [new Color(64, 0, 64)] = mod.TileType("Placeholder14"),
+                [new Color(0, 0, 64)] = mod.TileType("Placeholder15"),
+                [new Color(64, 64, 0)] = mod.TileType("Placeholder16"),
+                [new Color(64, 0, 0)] = mod.TileType("Placeholder17"),
+                [Color.Black] = -1
             };
 
-            TexGen gen3 = BaseWorldGenTex.GetTexGenerator(null, null, null, null, null, null, ObjectTex, colorToObj);
+            TexGen gen3 = BaseWorldGenTex.GetTexGenerator(ObjectTex, colorToObj, null, null, null, null);
             gen3.Generate(genX, genY, true, true);
+
+            for (int x = origin.X; x < origin.X + platTex.Width; x++)
+            {
+                for (int y = origin.Y; y < origin.Y + platTex.Height; y++)
+                {
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder1>())
+                    { 
+                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<KeepLamp>());
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder2>())
+                    {
+                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<KeepLantern>());
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder3>())
+                    {
+                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<KeepChandelier>());
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder4>())
+                    {
+                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<KeepClock>());
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder5>())
+                    {
+                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<KeepTable>());
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder6>())
+                    {
+                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<KeepCandelabra>());
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder7>())
+                    {
+                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<KeepBookcase>());
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder8>())
+                    {
+                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<TerraStatue>());
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder9>())
+                    {
+                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<TerraBed>());
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder10>())
+                    {
+                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<TerraBath>());
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder11>())
+                    {
+                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<TerraSink>());
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder12>())
+                    {
+                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<TerraChandelier>());
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder13>())
+                    {
+                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<TerraLantern>());
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder14>())
+                    {
+                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<RazewoodLantern>());
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder15>())
+                    {
+                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<RazewoodBed>());
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder16>())
+                    {
+                        GenUtils.ObjectPlace(origin, x, y, ModContent.TileType<RazewoodDresser>());
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder17>())
+                    {
+                        GenUtils.ObjectPlace(origin, x, y, TileID.CookingPots);
+                    }
+                }
+            }
 
             return true;
         }
@@ -1314,6 +1408,17 @@ namespace AAMod.Worldgeneration
             else if (Main.maxTilesX == 6400) { return 2; }
             else if (Main.maxTilesX == 8400) { return 3; }
             return 1; //unknown size, assume small
+     
+        }
+    }
+
+    public class GenUtils
+    {
+        public static void ObjectPlace(Point Origin, int x, int y, int TileType)
+        {
+            Main.tile[x, y].ClearTile();
+            WorldGen.PlaceObject(Origin.X + x, Origin.Y + y, TileType);
+            NetMessage.SendObjectPlacment(-1, Origin.X + x, Origin.Y + y, TileType, 0, 0, -1, -1);
         }
     }
 
