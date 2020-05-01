@@ -543,6 +543,9 @@ namespace AAMod
             StarActive = flags5[6];
             GravActive = flags5[7];
 
+            BitsByte flags6 = reader.ReadByte();
+            downedLucifer = flags6[0];
+
             MireCenter = reader.ReadVector2();
 			InfernoCenter = reader.ReadVector2();		
 

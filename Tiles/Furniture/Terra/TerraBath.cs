@@ -5,7 +5,7 @@ using Terraria.ObjectData;
 
 namespace AAMod.Tiles.Furniture.Terra
 {
-    public class TerraTub : ModTile
+    public class TerraBath : ModTile
 	{
 		public override void SetDefaults()
 		{

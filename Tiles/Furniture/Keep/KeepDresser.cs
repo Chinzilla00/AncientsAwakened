@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.DataStructures;
 
-namespace AAMod.Tiles.Furniture.Terra
+namespace AAMod.Tiles.Furniture.Keep
 {
     public class KeepDresser : ModTile
 	{
