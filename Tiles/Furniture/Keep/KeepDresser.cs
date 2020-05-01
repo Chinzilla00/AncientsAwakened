@@ -10,7 +10,7 @@ using Terraria.DataStructures;
 
 namespace AAMod.Tiles.Furniture.Terra
 {
-    public class TerraDresser : ModTile
+    public class KeepDresser : ModTile
 	{
 		public override void SetDefaults()
 		{
@@ -33,13 +33,13 @@ namespace AAMod.Tiles.Furniture.Terra
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
 			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Terra Dresser");
+			name.SetDefault("Keep Dresser");
             AddMapEntry(new Color(65, 205, 12), name);
             dustType = 107;
 			disableSmartCursor = true;
 			adjTiles = new int[] { TileID.Dressers };
-			dresser = "Terra Dresser";
-			dresserDrop = mod.ItemType("TerraDresser");
+			dresser = "Keep Dresser";
+			dresserDrop = mod.ItemType("KeepDresser");
 		}
 
 		public override bool HasSmartInteract()
@@ -166,7 +166,7 @@ namespace AAMod.Tiles.Furniture.Terra
 				}
 				if (player.showItemIconText == chest)
 				{
-					player.showItemIcon2 = mod.ItemType("TerraDresser");
+					player.showItemIcon2 = mod.ItemType("KeepDresser");
 					player.showItemIconText = "";
 				}
 			}

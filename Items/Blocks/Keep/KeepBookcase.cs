@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks.Keep
 {
-    public class KeepBookshelf : ModItem
+    public class KeepBookcase : ModItem
     {
         public override void SetStaticDefaults()
         {

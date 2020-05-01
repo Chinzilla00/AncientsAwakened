@@ -1213,6 +1213,7 @@ namespace AAMod.Worldgeneration
             {
                 [new Color(0, 255, 0)] = mod.WallType("KeepWall"),
                 [new Color(255, 0, 0)] = WallID.GreenStainedGlass,
+                [new Color(255, 0, 255)] = WallID.PurpleStainedGlass,
                 [new Color(0, 0, 255)] = WallID.Glass,
                 [new Color(255, 255, 255)] = -1, //don't touch when genning
                 [Color.Black] = -2 //turn into air
@@ -1274,6 +1275,36 @@ namespace AAMod.Worldgeneration
                     }
                 }
             }
+
+
+            Texture2D ObjectTex = mod.GetTexture("Worldgeneration/LostKeepObjects");
+
+
+            Dictionary<Color, int> colorToObj = new Dictionary<Color, int>
+            {
+                [new Color(255, 0, 0)] = mod.TileType("KeepLamp"),
+                [new Color(0, 255, 0)] = mod.TileType("KeepLantern"),
+                [new Color(0, 0, 255)] = mod.TileType("KeepChandelier"),
+                [new Color(128, 128, 128)] = mod.TileType("KeepClock"),
+                [new Color(64, 64, 64)] = mod.TileType("KeepTable"),
+                [new Color(255, 255, 0)] = mod.TileType("KeepCandelabra"),
+                [new Color(128, 0, 0)] = mod.TileType("KeepBookcase"),
+                [new Color(0, 255, 255)] = mod.TileType("TerraStatue"),
+                [new Color(128, 128, 0)] = mod.TileType("TerraBed"),
+                [new Color(0, 128, 128)] = mod.TileType("TerraBath"),
+                [new Color(128, 0, 128)] = mod.TileType("TerraSink"),
+                [new Color(0, 0, 128)] = mod.TileType("TerraChandelier"),
+                [new Color(0, 128, 0)] = mod.TileType("TerraLantern"),
+                [new Color(64, 0, 64)] = mod.TileType("RazewoodLantern"),
+                [new Color(0, 0, 64)] = mod.TileType("RazewoodBed"),
+                [new Color(64, 64, 0)] = mod.TileType("RazewoodDresser"),
+                [new Color(64, 0, 0)] = TileID.CookingPots,
+                [new Color(255, 255, 255)] = -1, //don't touch when genning
+                [Color.Black] = -2 //turn into air
+            };
+
+            TexGen gen3 = BaseWorldGenTex.GetTexGenerator(null, null, null, null, null, null, ObjectTex, colorToObj);
+            gen3.Generate(genX, genY, true, true);
 
             return true;
         }

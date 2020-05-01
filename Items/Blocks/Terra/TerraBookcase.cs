@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks.Terra
 {
-    public class TerraBookshelf : ModItem
+    public class TerraBookcase : ModItem
     {
         public override void SetStaticDefaults()
         {

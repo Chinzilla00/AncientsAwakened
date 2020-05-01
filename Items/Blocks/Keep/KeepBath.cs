@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks.Keep
 {
-    public class KeepTub : ModItem
+    public class KeepBath : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -22,7 +22,7 @@ namespace AAMod.Items.Blocks.Keep
             item.useStyle = 1;
             item.consumable = true;
             item.value = 250;
-            item.createTile = mod.TileType("KeepTub");
+            item.createTile = mod.TileType("KeepBath");
         }
         public override void AddRecipes()
         {

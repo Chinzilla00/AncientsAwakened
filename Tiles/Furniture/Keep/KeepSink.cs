@@ -1,11 +1,12 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace AAMod.Tiles.Furniture.Terra
+namespace AAMod.Tiles.Furniture.Keep
 {
-    public class TerraSink : ModTile
+    public class KeepSink : ModTile
 	{
 		public override void SetDefaults()
 		{
@@ -21,9 +22,9 @@ namespace AAMod.Tiles.Furniture.Terra
             };
             TileObjectData.addTile(Type);
 			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Terra Sink");
-            AddMapEntry(new Color(65, 205, 12), name);
-            dustType = 107;
+			name.SetDefault("Keep Sink");
+			AddMapEntry(new Color(30, 150, 12), name);
+			dustType = DustID.Stone;
 			disableSmartCursor = true;
 		}
 

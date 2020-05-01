@@ -26,7 +26,6 @@ namespace AAMod.Tiles.Furniture.Doom
             };
             TileObjectData.addTile(Type);
             ModTranslation name = CreateMapEntryName();
-            // name.SetDefault("Example Clock"); // Automatic from .lang files
             AddMapEntry(new Color(200, 0, 0), name);
             dustType = mod.DustType("DoomDust");
             adjTiles = new int[] { TileID.GrandfatherClocks };

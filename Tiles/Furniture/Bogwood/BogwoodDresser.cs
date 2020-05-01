@@ -166,7 +166,7 @@ namespace AAMod.Tiles.Furniture.Bogwood
 				}
 				if (player.showItemIconText == chest)
 				{
-					player.showItemIcon2 = mod.ItemType("ExampleDresser");
+					player.showItemIcon2 = mod.ItemType("BogwoodDresser");
 					player.showItemIconText = "";
 				}
 			}

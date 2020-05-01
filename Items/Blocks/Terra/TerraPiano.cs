@@ -1,13 +1,13 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Blocks.KeepF
+namespace AAMod.Items.Blocks.Terra
 {
-    public class KeepPiano : ModItem
+    public class TerraPiano : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Keep Piano");
+            DisplayName.SetDefault("Terra Piano");
         }
 
         public override void SetDefaults()
@@ -27,8 +27,8 @@ namespace AAMod.Items.Blocks.KeepF
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("Keep"), 15);
-            recipe.AddIngredient(ItemID.Book);
+            recipe.AddIngredient(mod.ItemType("TerraShard"), 15);
+            recipe.AddIngredient(ItemID.HallowedBar, 4);
             recipe.AddIngredient(ItemID.Bone, 4);
             //recipe.AddIngredient(ItemID.Torch, 3);
             recipe.AddTile(TileID.WorkBenches);

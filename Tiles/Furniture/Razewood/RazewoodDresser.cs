@@ -166,7 +166,7 @@ namespace AAMod.Tiles.Furniture.Razewood
 				}
 				if (player.showItemIconText == chest)
 				{
-					player.showItemIcon2 = mod.ItemType("ExampleDresser");
+					player.showItemIcon2 = mod.ItemType("RazewoodDresser");
 					player.showItemIconText = "";
 				}
 			}

@@ -5,6 +5,7 @@ using Terraria.Enums;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.DataStructures;
+using Terraria.ID;
 
 namespace AAMod.Tiles.Furniture.Keep
 {

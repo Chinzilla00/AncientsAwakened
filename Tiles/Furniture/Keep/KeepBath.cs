@@ -1,11 +1,12 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
 namespace AAMod.Tiles.Furniture.Keep
 {
-    public class KeepTub : ModTile
+    public class KeepBath : ModTile
 	{
 		public override void SetDefaults()
 		{
@@ -30,7 +31,5 @@ namespace AAMod.Tiles.Furniture.Keep
 		{
 			Item.NewItem(i * 16, j * 16, 64, 32, mod.ItemType("KeepBath"));
 		}
-
-		
 	}
 }
