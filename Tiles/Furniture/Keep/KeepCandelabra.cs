@@ -63,9 +63,9 @@ namespace AAMod.Tiles.Furniture.Keep
             Tile tile = Main.tile[i, j];
             if (tile.frameX < 36)
             {
-                r = 0.9f;
-                g = 0.9f;
-                b = 0.9f;
+                r = 0.3f;
+                g = 0.3f;
+                b = 0.3f;
             }
         }
         public override void KillMultiTile(int i, int j, int frameX, int frameY)

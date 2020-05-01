@@ -66,9 +66,9 @@ namespace AAMod.Tiles.Furniture.Keep
             Tile tile = Main.tile[i, j];
             if (tile.frameX < 18)
             {
-                r = 0.9f;
-                g = 0.9f;
-                b = 0.9f;
+                r = 0.3f;
+                g = 0.3f;
+                b = 0.3f;
             }
         }
 
