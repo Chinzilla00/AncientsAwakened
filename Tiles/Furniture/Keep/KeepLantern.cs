@@ -27,7 +27,6 @@ namespace AAMod.Tiles.Furniture.Keep
             dustType = DustID.Stone;
             adjTiles = new int[] { TileID.HangingLanterns };
             AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
-
         }
         public override void HitWire(int i, int j)
         {
@@ -66,9 +65,9 @@ namespace AAMod.Tiles.Furniture.Keep
             Tile tile = Main.tile[i, j];
             if (tile.frameX < 18)
             {
-                r = 0.3f;
-                g = 0.3f;
-                b = 0.3f;
+                r = 0.5f;
+                g = 0.5f;
+                b = 0.5f;
             }
         }
 

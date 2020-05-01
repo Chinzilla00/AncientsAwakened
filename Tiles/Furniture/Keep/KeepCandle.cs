@@ -67,9 +67,9 @@ namespace AAMod.Tiles.Furniture.Keep
             Tile tile = Main.tile[i, j];
             if (tile.frameX < 18)
             {
-                r = 0.2f;
-                g = 0.2f;
-                b = 0.2f;
+                r = 0.4f;
+                g = 0.4f;
+                b = 0.4f;
             }
         }
         public override void PostDraw(int i, int j, SpriteBatch spriteBatch)

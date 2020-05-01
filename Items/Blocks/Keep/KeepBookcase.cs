@@ -22,7 +22,7 @@ namespace AAMod.Items.Blocks.Keep
             item.useStyle = 1;
             item.consumable = true;
             item.value = 250;
-            item.createTile = mod.TileType("KeepBookshelf");
+            item.createTile = mod.TileType("KeepBookcase");
         }
         public override void AddRecipes()
         {
