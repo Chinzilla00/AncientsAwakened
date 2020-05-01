@@ -64,6 +64,10 @@ namespace AAMod
         public string nums = "1234567890";
         public static bool ModContentGenerated;
 
+        public static bool Terra1;
+        public static bool Terra2;
+        public static bool Terra3;
+
         //Messages
         public static bool AMessage;
         public static bool Empowered;
@@ -371,6 +375,10 @@ namespace AAMod
             InfernoStripe = downed.Contains("IStripe");
             MireStripe = downed.Contains("MStripe");
             ModContentGenerated = downed.Contains("WorldGenned");
+
+            Terra1 = downedBrood || downedHydra || NPC.downedBoss2;
+            Terra2 = NPC.downedPlantBoss;
+            Terra3 = downedShen;
 
             if (tag.ContainsKey("MCenter")) // check if the altar coordinates exist in the save file
             {
@@ -1386,22 +1394,70 @@ namespace AAMod
                     }
                 }
             }
+
             if (NPC.downedBoss2)
             {
-                if (!TerrariumEnemies)
+                if (!Terra1)
                 {
-                    TerrariumEnemies = true;
+                    Terra1 = true;
                     if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedBoss2Info"), Color.LimeGreen);
+                    for (int j = 0; j < Main.maxTilesX; j++)
+                    {
+                        for (int k = 0; k < Main.maxTilesY; k++)
+                        {
+                            if (Main.tile[j, k].active() && Main.tile[j, k].type == (ushort)ModContent.TileType<TerraDoor>())
+                            {
+                                WorldGen.KillTile(j, k, false, false, true);
+                            }
+                        }
+                    }
                 }
             }
+            if (NPC.downedPlantBoss)
+            {
+                if (!Terra2)
+                {
+                    Terra2 = true;
+                    if (Main.netMode != 1) BaseUtility.Chat("Ancient constructs Awaken in a place long forgotten...", Color.LimeGreen);
+                    for (int j = 0; j < Main.maxTilesX; j++)
+                    {
+                        for (int k = 0; k < Main.maxTilesY; k++)
+                        {
+                            if (Main.tile[j, k].active() && Main.tile[j, k].type == (ushort)ModContent.TileType<TerraGate>())
+                            {
+                                WorldGen.KillTile(j, k, false, false, true);
+                            }
+                        }
+                    }
+                }
+            }
+            if (downedShen)
+            {
+                if (!Terra3)
+                {
+                    Terra3 = true;
+                    if (Main.netMode != 1) BaseUtility.Chat("...hello..? Please...come to the keep as soon as possible...there is something you must see...", Color.LimeGreen);
+                    for (int j = 0; j < Main.maxTilesX; j++)
+                    {
+                        for (int k = 0; k < Main.maxTilesY; k++)
+                        {
+                            if (Main.tile[j, k].active() && Main.tile[j, k].type == (ushort)ModContent.TileType<TerraVault>())
+                            {
+                                WorldGen.KillTile(j, k, false, false, true);
+                            }
+                        }
+                    }
+                }
+            }
+
             if (NPC.downedBoss3)
             {
                 if (!Dynaskull)
                 {
                     Dynaskull = true;
-                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedBoss3Info1"), Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B);
+                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedBoss3Info1"), Color.DarkOrange);
                     if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedBoss3Info2"), Color.Orange);
-                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedBoss3Info3"), Color.Cyan.R, Color.Cyan.G, Color.Cyan.B);
+                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedBoss3Info3"), Color.Cyan);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
                     for (int k = 0; k < (int)(x * y * 15E-05); k++)
@@ -1434,7 +1490,7 @@ namespace AAMod
                 downedSAncient = true;
             }
 
-            if (downedAkuma && downedYamata && downedZero)
+            if (downedAkuma && downedYamata)
             {
                 if (downedAllAncients == false)
                 {

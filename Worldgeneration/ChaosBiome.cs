@@ -1208,6 +1208,7 @@ namespace AAMod.Worldgeneration
                 [new Color(0, 255, 255)] = mod.TileType("TerraWood"),
                 [new Color(0, 0, 64)] = mod.TileType("TerraLeaves"),
                 [new Color(64, 0, 0)] = mod.TileType("ScorchedShinglesS"),
+                [new Color(255, 0, 255)] = mod.TileType("TerraVault"),
                 [new Color(0, 0, 255)] = TileID.Glass,
                 [new Color(255, 255, 255)] = -1, //don't touch when genning
                 [Color.Black] = -2 //turn into air

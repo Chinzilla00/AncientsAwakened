@@ -192,10 +192,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.DropLoot(ModContent.ItemType<Items.Pets.ZeroCore>(), 1f / 10f);
                 npc.DropLoot(ModContent.ItemType<Items.Vanity.Mask.ZeroMask>(), 1f / 7f);
                 npc.DropLoot(ModContent.ItemType<Items.Boss.Zero.ZeroTrophy>(), 1f / 10f);
-                if (Main.rand.Next(50) == 0 && AAWorld.downedAllAncients)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RealityStone"));
-                }
             }
         }
 

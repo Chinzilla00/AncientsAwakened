@@ -1037,6 +1037,7 @@ namespace AAMod
                     pool.Add(ModContent.NPCType<PuritySphere>(), .03f);
                     pool.Add(ModContent.NPCType<PurityCrawler>(), .03f);
                     pool.Add(ModContent.NPCType<PuritySquid>(), .03f);
+                    return;
                 }
                 else if (NPC.downedBoss2)
                 {
