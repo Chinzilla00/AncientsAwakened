@@ -1417,6 +1417,7 @@ namespace AAMod.Worldgeneration
             }
 
             WorldGen.PlaceTile(origin.X + 33, origin.Y + 137, mod.TileType("InvokerBookTile"), true, false);
+            WorldGen.PlaceTile(origin.X + 238, origin.Y + 104, mod.TileType("TerraDresser"), true, false);
 
             return true;
         }
