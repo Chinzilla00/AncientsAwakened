@@ -24,7 +24,6 @@ namespace AAMod.Projectiles.Akuma.Dawnstrike
             projectile.alpha = 255;
             projectile.scale = 1f;
             projectile.timeLeft = 100;
-            projectile.magic = true;
             projectile.ignoreWater = true;
             projectile.ranged = true;
         }
