@@ -320,7 +320,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         {
             if (laughTimer > 0 && !Laughing)
             {
-                CombatText.NewText(npc.getRect(), new Color(146, 30, 68), "NYEH", true, true);
+                CombatText.NewText(npc.getRect(), new Color(146, 30, 68), Lang.BossChat("YamataAHeadLaugh1"), true, true);
                 Laughing = true;
             }
             else if (laughTimer <= 0)
@@ -332,7 +332,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 laughTimer--;
                 if (laughTimer % 20 == 0 && laughTimer != 120)
                 {
-                    CombatText.NewText(npc.getRect(), new Color(146, 30, 68), "HEH", true, true);
+                    CombatText.NewText(npc.getRect(), new Color(146, 30, 68), Lang.BossChat("YamataAHeadLaugh2"), true, true);
                 }
             }
         }
