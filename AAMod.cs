@@ -335,6 +335,7 @@ namespace AAMod
             PremultiplyTexture(GetTexture("NPCs/Bosses/Toad/ToadBubble"));
             PremultiplyTexture(GetTexture("NPCs/Bosses/Zero/Protocol/ProtoStar"));
             PremultiplyTexture(GetTexture("Textures/SagittariusShield"));
+            PremultiplyTexture(GetTexture("Projectiles/ArchwitchStar"));
 
             if (GetSoundSlot(SoundType.Music, "Sounds/Music/Monarch") != 0) //ensure music was loaded!
             {
