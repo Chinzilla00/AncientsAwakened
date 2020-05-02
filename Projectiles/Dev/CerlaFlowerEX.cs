@@ -144,7 +144,7 @@ namespace AAMod.Projectiles.Dev
 
 			BaseDrawing.DrawTexture(sb, ring, 0, projectile.position, projectile.width, projectile.height, RingScale, RingRot, projectile.direction, 1, ringFrame, projectile.GetAlpha(ColorUtils.COLOR_GLOWPULSE), true);
 
-			BaseDrawing.DrawAura(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, auraPercent, 1.4f, projectile.scale, projectile.rotation, player.direction, 1, frame, 0, 0, Color.White);
+			BaseDrawing.DrawAura(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, auraPercent, 1.4f, projectile.scale, projectile.rotation, -player.direction, 1, frame, 0, 0, Color.White);
             BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, -player.direction, 1, frame, projectile.GetAlpha(ColorUtils.COLOR_GLOWPULSE), true);
 
 

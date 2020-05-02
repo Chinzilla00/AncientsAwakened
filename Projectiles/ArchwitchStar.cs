@@ -83,17 +83,21 @@ namespace AAMod.Projectiles
 			
             if (projectile.active) { SetRot(); }
 
-            rot *= player.direction;
+            BaseAI.AIRotate(projectile, ref projectile.rotation, ref rot, player.Center, true, 100f, 20f, 0.07f * player.direction, true);
+            rotate -= .05f * player.direction;
 
-            BaseAI.AIRotate(projectile, ref projectile.rotation, ref rot, player.Center, true, 100f, 20f, 0.07f, true);
-            rotate += .05f * player.direction;
+        }
 
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            Player player = Main.player[projectile.owner];
+            Projectile.NewProjectile(target.Center, Vector2.Zero, mod.ProjectileType("ArchwitchBoom"), (int)(100 * player.magicDamage), 4, Main.myPlayer);
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color dColor)
         {
             Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height, 0, 0);
-            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, rotate, 0, 1, frame, dColor, true);
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, rotate, 0, 1, frame, projectile.GetAlpha(dColor), true);
             return false;
         }
 	}

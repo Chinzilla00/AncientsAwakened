@@ -11,7 +11,7 @@ namespace AAMod.Items.Dev
         {
             DisplayName.SetDefault("Archwitch's Galactic Scepter");
             Tooltip.SetDefault(@"The staff of the Dragon Queen
-Left-click to spin the scepter, firing off stars at nearby enemies
+Left-click to spin the scepter, creating a ring of explosive stars around you
 Right click to fire explosive magic bolts");
             Item.staff[item.type] = true;
         }
