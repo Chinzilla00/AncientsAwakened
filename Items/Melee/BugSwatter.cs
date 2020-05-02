@@ -27,7 +27,7 @@ namespace AAMod.Items.Melee
 			item.autoReuse = true;
 		}
 
-        public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+        public override bool? CanHitNPC(Player player, NPC target)
         {
             if (target.type == NPCID.Bee
                 || target.type == NPCID.BeeSmall
@@ -56,12 +56,13 @@ namespace AAMod.Items.Melee
                 || target.type == NPCID.BlackRecluse
                 || target.type == NPCID.BlackRecluseWall)
             {
-                item.damage = damage * 3;
+                item.damage = 60;
             }
             else
             {
                 item.damage = 30;
             }
+            return true;
         }
 	}
 }

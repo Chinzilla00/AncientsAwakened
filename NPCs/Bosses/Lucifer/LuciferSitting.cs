@@ -1,6 +1,10 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using System.Collections.Generic;
+using System.IO;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 using Terraria.Utilities;
 
 namespace AAMod.NPCs.Bosses.Lucifer
@@ -63,38 +67,240 @@ namespace AAMod.NPCs.Bosses.Lucifer
             }
         }
 
-        int chatNumber = 0;
+        public static bool SwitchInfo = false;
+        public static bool Who = false;
+        public static bool ThePit = false;
+        public static bool Pit1 = false;
+        public static bool Pit2 = false;
+        public static bool Pit3 = false;
+        public static bool Pit4 = false;
+        public static bool Pit5 = false;
+        public static bool Pit6 = false;
+        public static bool Pit7 = false;
+        public static bool Pit8 = false;
+        public static bool Pit9 = false;
+        public static bool Pit10 = false;
+        public static bool Pit11 = false;
+        public static bool Pit12 = false;
+        public static bool Pit13 = false;
+        public static bool Pit14 = false;
+        public static bool Pit15 = false;
+        public static bool Pit16 = false;
+        public static bool Pit17 = false;
+        public static bool Pit18 = false;
+        public static bool Pit19 = false;
+        public static bool Pit20 = false;
+        public static bool LuciferC = false;
+        public static int ChatNumber = 0;
+        public static bool AskChallenge = false;
 
         public override void ResetEffects()
         {
-            chatNumber = 0;
+            SwitchInfo = false;
+            ThePit = false;
+            Who = false;
+            Pit1 = false;
+            Pit2 = false;
+            Pit3 = false;
+            Pit4 = false;
+            Pit5 = false;
+            Pit6 = false;
+            Pit7 = false;
+            Pit8 = false;
+            Pit9 = false;
+            Pit10 = false;
+            Pit11 = false;
+            Pit12 = false;
+            Pit13 = false;
+            Pit14 = false;
+            Pit15 = false;
+            Pit16 = false;
+            Pit17 = false;
+            Pit18 = false;
+            Pit19 = false;
+            Pit20 = false;
+            LuciferC = false;
+            AskChallenge = false;
+        }
+
+        public void ResetBools()
+        {
+            ThePit = false;
+            Who = false;
+            Pit1 = false;
+            Pit2 = false;
+            Pit3 = false;
+            Pit4 = false;
+            Pit5 = false;
+            Pit6 = false;
+            Pit7 = false;
+            Pit8 = false;
+            Pit9 = false;
+            Pit10 = false;
+            Pit11 = false;
+            Pit12 = false;
+            Pit13 = false;
+            Pit14 = false;
+            Pit15 = false;
+            Pit16 = false;
+            Pit17 = false;
+            Pit18 = false;
+            Pit19 = false;
+            Pit20 = false;
+            LuciferC = false;
+            AskChallenge = false;
         }
 
         public override void SetChatButtons(ref string button, ref string button2)
         {
-            string who = "Who are you?";
-            string when = "When will it be done?";
-            string why = "Why are you building it?";
-            string bye = "Alright, goodbye.";
-            if (chatNumber == 0)
+            string SwitchInfoT = "Cycle Dialogue";
+            string ThePitT = "What is this place?";
+            string WhoT = "Who are you?";
+            string Pit1T = "Pit Challenge 1 (1 Copper)";
+            string Pit2T = "Pit Challenge 2 (10 Silver)";
+            string Pit3T = "Pit Challenge 3 (50 Silver)";
+            string Pit4T = "Pit Challenge 4 (1 Gold)";
+            string Pit5T = "A Glutton for a Good Time (5 Gold)";
+            string Pit6T = "Pit Challenge 6 (10 Gold)";
+            string Pit7T = "Pit Challenge 7 (15 Gold)";
+            string Pit8T = "Pit Challenge 8 (20 Gold)";
+            string Pit9T = "Pit Challenge 9 (25 Gold)";
+            string Pit10T = "A Demon's Wrath (40 Gold)";
+            string Pit11T = "Pit Challenge 11 (50 Gold)";
+            string Pit12T = "Pit Challenge 12 (60 Gold)";
+            string Pit13T = "Pit Challenge 13 (70 Gold)";
+            string Pit14T = "Pit Challenge 14 (80 Gold)";
+            string Pit15T = "Bloodlust (1 Platinum)";
+            string Pit16T = "Pit Challenge 16 (2 Platinum)";
+            string Pit17T = "Pit Challenge 17 (5 Platinum)";
+            string Pit18T = "Pit Challenge 18 (10 Platinum)";
+            string Pit19T = "Pit Challenge 19 (15 Platinum)";
+            string Pit20T = "An Act of Treachery (30 Platinum)";
+            string LuciferT = "My turn. ('Free!')";
+            string Accept = "Accept Challenge";
+
+            button = SwitchInfoT;
+
+            if (ChatNumber == 1)
             {
-                button = who;
+                button2 = WhoT;
+                Pit1 = true;
             }
-            else if (chatNumber == 1)
+            else if (ChatNumber == 2)
             {
-                button = when;
+                button2 = Pit1T;
+                Pit1 = true;
             }
-            else if (chatNumber == 2)
+            else if (ChatNumber == 3)
             {
-                button = why;
+                button2 = Pit2T;
+                Pit2 = true;
             }
-            else if (chatNumber == 3)
+            else if (ChatNumber == 4)
             {
-                button = bye;
+                button2 = Pit3T;
+                Pit3 = true;
+            }
+            else if (ChatNumber == 5)
+            {
+                button2 = Pit4T;
+                Pit4 = true;
+            }
+            else if (ChatNumber == 6)
+            {
+                button2 = Pit5T;
+                Pit5 = true;
+            }
+            else if (ChatNumber == 7 && PitWorld.downedGluttony)
+            {
+                button2 = Pit6T;
+                Pit6 = true;
+            }
+            else if (ChatNumber == 8 && PitWorld.downedGluttony)
+            {
+                button2 = Pit7T;
+                Pit7 = true;
+            }
+            else if (ChatNumber == 9 && PitWorld.downedGluttony)
+            {
+                button2 = Pit8T;
+                Pit8 = true;
+            }
+            else if (ChatNumber == 10 && PitWorld.downedGluttony)
+            {
+                button2 = Pit9T;
+                Pit9 = true;
+            }
+            else if (ChatNumber == 11 && PitWorld.downedGluttony)
+            {
+                button2 = Pit10T;
+                Pit10 = true;
+            }
+            else if (ChatNumber == 12 && PitWorld.downedWrath)
+            {
+                button2 = Pit11T;
+                Pit11 = true;
+            }
+            else if (ChatNumber == 13 && PitWorld.downedWrath)
+            {
+                button2 = Pit12T;
+                Pit12 = true;
+            }
+            else if (ChatNumber == 14 && PitWorld.downedWrath)
+            {
+                button2 = Pit13T;
+                Pit13 = true;
+            }
+            else if (ChatNumber == 15 && PitWorld.downedWrath)
+            {
+                button2 = Pit14T;
+                Pit14 = true;
+            }
+            else if (ChatNumber == 16 && PitWorld.downedWrath)
+            {
+                button2 = Pit15T;
+                Pit15 = true;
+            }
+            else if (ChatNumber == 17 && PitWorld.downedLust)
+            {
+                button2 = Pit16T;
+                Pit16 = true;
+            }
+            else if (ChatNumber == 18 && PitWorld.downedLust)
+            {
+                button2 = Pit17T;
+                Pit17 = true;
+            }
+            else if (ChatNumber == 19 && PitWorld.downedLust)
+            {
+                button2 = Pit18T;
+                Pit18 = true;
+            }
+            else if (ChatNumber == 20 && PitWorld.downedLust)
+            {
+                button2 = Pit19T;
+                Pit19 = true;
+            }
+            else if (ChatNumber == 21 && PitWorld.downedLust)
+            {
+                button2 = Pit20T;
+                Pit20 = true;
+            }
+            else if (ChatNumber == 22 && PitWorld.downedTreachery)
+            {
+                button2 = LuciferT;
+                LuciferC = true;
             }
             else
             {
-                button = "";
+                ChatNumber = 0;
+                button2 = ThePitT;
+                ThePit = true;
+            }
+
+            if (AskChallenge)
+            {
+                button2 = Accept;
             }
         }
 
@@ -102,24 +308,27 @@ namespace AAMod.NPCs.Bosses.Lucifer
         {
             if (firstButton)
             {
-                if (chatNumber == 0)
+                ResetBools();
+                ChatNumber += 1;
+                AskChallenge = false;
+                if (ChatNumber > 22)
                 {
-                    Main.npcChatText = @"Who am I?! I'm-- Who am I kiddin'. You know who I am. Now skedaddle, I got an arena to get built.";
+                    ChatNumber = 0;
                 }
-                else if (chatNumber == 1)
+            }
+            else
+            {
+                if (!AskChallenge)
                 {
-                    Main.npcChatText = @"I don't know, whenever my guys get off their lazy behinds and actually start building stuff.";
+                    Main.npcChatText = BossChat();
+                    AskChallenge = true;
                 }
-                else if (chatNumber == 2)
+                else
                 {
-                    Main.npcChatText = @"You have a lot of questions, don't you? I'm building it because I want to watch guts spill. Why else?";
+                    StartChallenge();
+                    Main.npcChatText = "";
+                    Main.editSign = false;
                 }
-                else if (chatNumber == 3)
-                {
-                    Main.npcChatText = @"See you around. Come back when I finish, I'd love to see you get gored! BWAHAHAHAHAHAHAHAHAH!!!";
-                }
-                chatNumber++;
-                Main.PlaySound(12, -1, -1, 1);
             }
         }
 
@@ -131,6 +340,171 @@ namespace AAMod.NPCs.Bosses.Lucifer
 
 Huh? What am I doin'?! I'm supervising.");
             return chat;
+        }
+
+        public static string BossChat()
+        {
+            Player player = Main.LocalPlayer;
+            if (Who)
+            {
+                return "Who am I? Why, Lucifer the Pit Lord, at your service. I run this little circus down here, and its all for a good laugh! BWAHAHAHAHAHAHAH!!! Anyways, you gonna place a bet, mortal?";
+            }
+            if (Pit1)
+            {
+                return "One Copper? That's it? ...Well if you say so...";
+            }
+            if (Pit2)
+            {
+                return "";
+            }
+            if (Pit3)
+            {
+                return "";
+            }
+            if (Pit4)
+            {
+                return "";
+            }
+            if (Pit5)
+            {
+                return "Say, you've been doing pretty good. How about I set you up against one of my main guys, a Deadly Sin. Beat him and I'll make sure to reward you handsomely, what do you say?";
+            }
+            if (Pit6)
+            {
+                return "";
+            }
+            if (Pit7)
+            {
+                return "";
+            }
+            if (Pit8)
+            {
+                return "";
+            }
+            if (Pit9)
+            {
+                return "";
+            }
+            if (Pit10)
+            {
+                return "You've impressed me so far, mortal. You're giving this old devil quite a show! How about I hook you up with a match against my next Deadly Sin? Careful, though. This one packs a whollop!";
+            }
+            if (Pit11)
+            {
+                return "";
+            }
+            if (Pit12)
+            {
+                return "";
+            }
+            if (Pit13)
+            {
+                return "";
+            }
+            if (Pit14)
+            {
+                return "";
+            }
+            if (Pit15)
+            {
+                return "You really stack up against most of my guys, you know. So how about my top lady, instead. Quite the charmer, she is. What do you say, kiddo?";
+            }
+            if (Pit16)
+            {
+                return "";
+            }
+            if (Pit17)
+            {
+                return "";
+            }
+            if (Pit18)
+            {
+                return "";
+            }
+            if (Pit19)
+            {
+                return "";
+            }
+            if (Pit20)
+            {
+                return "Okay, so. You've pretty much torn through all my sins at this point. Well, except for one. He's the big guy. The head honcho. My right hand man. Take him down, and I'll make it worth your time. But I will warn you, he doesn't play clean.";
+            }
+            if (LuciferC)
+            {
+                return "Alright. You've piqued my interest, " + player.name + ". I think you're ready for your final pit challenge. The Sins all want rematches, and they've got an axe-- er...claws...to grind. Beat my five best guys in a row, and I'll reward you handsomely. I'll even let you do it for free! No strings attatched!";
+            }
+            else
+            {
+                return "You're in the Pit, mortal. A place where monsters and warriors fight for glory, bloodshed, and my own entertainment. You can place a bet and fight an enemy, and I'll double your wager if you win. If you lose, you're outta here. What do you say?";
+            }
+        }
+
+        public void StartChallenge()
+        {
+
+        }
+    }
+
+    public class PitWorld : ModWorld
+    {
+        public static int Challenge = 0;
+        public static bool ChallengeComplete = false;
+
+        public static bool downedGluttony = false;
+        public static bool downedWrath = false;
+        public static bool downedLust = false;
+        public static bool downedTreachery = false;
+
+        public override void Initialize()
+        {
+            downedGluttony = false;
+            downedWrath = false;
+            downedLust = false;
+            downedTreachery = false;
+        }
+
+        public override TagCompound Save()
+        {
+            var downed = new List<string>();
+            if (downedGluttony) downed.Add("G");
+            if (downedWrath) downed.Add("W");
+            if (downedLust) downed.Add("L");
+            if (downedTreachery) downed.Add("T");
+
+            return new TagCompound 
+            {
+                {"downed", downed}
+            };
+        }
+
+        public override void Load(TagCompound tag)
+        {
+            var downed = tag.GetList<string>("downed");
+            //bosses
+            downedGluttony = downed.Contains("G");
+            downedWrath = downed.Contains("W");
+            downedLust = downed.Contains("L");
+            downedTreachery = downed.Contains("T");
+
+        }
+
+        public override void NetSend(BinaryWriter writer)
+        {
+            BitsByte flags = new BitsByte();
+            flags[0] = downedGluttony;
+            flags[1] = downedWrath;
+            flags[2] = downedLust;
+            flags[3] = downedTreachery;
+            writer.Write(flags);
+        }
+
+        public override void NetReceive(BinaryReader reader)
+        {
+            BitsByte flags = reader.ReadByte();
+            downedGluttony = flags[0];
+            downedWrath = flags[1];
+            downedLust = flags[2];
+            downedTreachery = flags[3];
         }
     }
 }
