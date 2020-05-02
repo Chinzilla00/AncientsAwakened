@@ -52,21 +52,21 @@ namespace AAMod.Projectiles.Dev
 
 			if (projectile.alpha > 0)
 			{
-				projectile.alpha--;
+				projectile.alpha -= 4;
 			}
 			else
 			{
 				projectile.alpha = 0;
 			}
 
-			if (RingScale < 1f)
+			if (RingScale < 1.2f)
 			{
-				RingScale += .05f;
+				RingScale += .005f;
 				RingRot += .05f;
 			}
 			else
 			{
-				RingScale = 1f;
+				RingScale = 1.2f;
 				RingRot += .02f;
 			}
 
@@ -145,7 +145,7 @@ namespace AAMod.Projectiles.Dev
 			BaseDrawing.DrawTexture(sb, ring, 0, projectile.position, projectile.width, projectile.height, RingScale, RingRot, projectile.direction, 1, ringFrame, projectile.GetAlpha(ColorUtils.COLOR_GLOWPULSE), true);
 
 			BaseDrawing.DrawAura(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, auraPercent, 1.4f, projectile.scale, projectile.rotation, player.direction, 1, frame, 0, 0, Color.White);
-            BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, player.direction, 1, frame, projectile.GetAlpha(ColorUtils.COLOR_GLOWPULSE), true);
+            BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, -player.direction, 1, frame, projectile.GetAlpha(ColorUtils.COLOR_GLOWPULSE), true);
 
 
 			return false;
