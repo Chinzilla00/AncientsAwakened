@@ -139,7 +139,7 @@ namespace AAMod.Projectiles.Dev
 
 		public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
-			Texture2D ring = mod.GetTexture("Projectiles/Dev/CerlaRing");
+			Texture2D ring = mod.GetTexture("Projectiles/Dev/CerlaRune");
 			Player player = Main.player[projectile.owner];
 
 			if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
