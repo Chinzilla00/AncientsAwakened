@@ -1,7 +1,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Paintings
+namespace AAMod.Items.Blocks.Paintings
 {
     public class KingQueenPainting : ModItem
     {

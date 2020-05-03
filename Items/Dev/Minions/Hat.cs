@@ -39,9 +39,9 @@ namespace AAMod.Items.Dev.Minions
             projectile.ai[aislotHomingCooldown]++;
             if (projectile.ai[aislotHomingCooldown] > homingDelay)
             {
-                projectile.ai[aislotHomingCooldown] = homingDelay; 
+                projectile.ai[aislotHomingCooldown] = homingDelay;
 
-                int foundTarget = (int)projectile.ai[1];
+                int foundTarget = HomeOnTarget();
                 if (foundTarget != -1)
                 {
                     NPC n = Main.npc[foundTarget];
@@ -49,6 +49,29 @@ namespace AAMod.Items.Dev.Minions
                     projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
                 }
             }
+        }
+        private int HomeOnTarget()
+        {
+            const bool homingCanAimAtWetEnemies = true;
+            const float homingMaximumRangeInPixels = 400;
+
+            int selectedTarget = -1;
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                NPC n = Main.npc[i];
+                if (n.CanBeChasedBy(projectile) && (!n.wet || homingCanAimAtWetEnemies))
+                {
+                    float distance = projectile.Distance(n.Center);
+                    if (distance <= homingMaximumRangeInPixels &&
+                        (
+                            selectedTarget == -1 || //there is no selected target
+                            projectile.Distance(Main.npc[selectedTarget].Center) > distance)
+                    )
+                        selectedTarget = i;
+                }
+            }
+
+            return selectedTarget;
         }
 
         public override bool PreDraw(SpriteBatch sb, Color lightColor)

@@ -3,12 +3,12 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks.Paintings
 {
-    public class WizardPainting : ModItem
+    public class KrakenPainting : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("The Wizard");
-            Tooltip.SetDefault("'I don't care what you've become. I still have hope for you.'");
+            DisplayName.SetDefault("Sea of Nightmares");
+            Tooltip.SetDefault("'There are things in that ship no man should see...'");
         }
 
         public override void SetDefaults()
@@ -23,7 +23,7 @@ namespace AAMod.Items.Blocks.Paintings
             item.useStyle = 1;
             item.consumable = true;
             item.rare = ItemRarityID.Blue;
-            item.createTile = mod.TileType("WizardPainting");
+            item.createTile = mod.TileType("KrakenPainting");
         }
     }
 }
