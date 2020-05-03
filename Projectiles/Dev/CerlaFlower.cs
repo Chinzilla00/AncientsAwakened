@@ -91,7 +91,7 @@ namespace AAMod.Projectiles.Dev
 
 				float num396 = projectile.position.X;
 				float num397 = projectile.position.Y;
-				float num398 = 700f;
+				float num398 = 1000f;
 				bool flag11 = false;
 				for (int num399 = 0; num399 < 200; num399++)
 				{
@@ -119,11 +119,11 @@ namespace AAMod.Projectiles.Dev
 					num406 = num403 / num406;
 					num404 *= num406;
 					num405 *= num406;
-					if (projectile.ai[0] == 50)
+					if (projectile.ai[0] == 30)
 					{
 						Projectile.NewProjectile(projectile.Center.X - 4f, projectile.Center.Y, num404, num405, ModContent.ProjectileType<CerlaProj>(), (int)(projectile.damage * player.minionDamage * player.minionDamage), Player.crystalLeafKB, projectile.owner, 0f, 0f);
 					}
-					if (projectile.ai[0] >= 65)
+					if (projectile.ai[0] >= 35)
 					{
 						Projectile.NewProjectile(projectile.Center.X - 4f, projectile.Center.Y, num404, num405, ModContent.ProjectileType<CerlaProj>(), (int)(projectile.damage * player.minionDamage * player.minionDamage), Player.crystalLeafKB, projectile.owner, 0f, 0f);
 						projectile.ai[0] = 0f;

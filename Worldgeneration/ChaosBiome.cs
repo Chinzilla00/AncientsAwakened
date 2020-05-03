@@ -1417,10 +1417,39 @@ namespace AAMod.Worldgeneration
             }
 
             WorldGen.PlaceTile(origin.X + 33, origin.Y + 137, mod.TileType("InvokerBookTile"), true, false);
-            WorldGen.PlaceTile(origin.X + 238, origin.Y + 104, mod.TileType("TerraDresser"), true, false);
+            WorldGen.PlaceChest(origin.X + 238, origin.Y + 104, (ushort)mod.TileType("TerraDresser"));
             WorldGen.PlaceTile(origin.X + 220, origin.Y + 104, mod.TileType("TerraBookcase"), true, false);
             WorldGen.PlaceTile(origin.X + 224, origin.Y + 104, mod.TileType("TerraBookcase"), true, false);
             WorldGen.PlaceTile(origin.X + 228, origin.Y + 104, mod.TileType("TerraBookcase"), true, false);
+
+
+            WorldGen.PlaceTile(origin.X + 97, origin.Y + 60, mod.TileType("KeepDoor1"), true, false);
+            WorldGen.PlaceTile(origin.X + 192, origin.Y + 60, mod.TileType("KeepDoor1"), true, false);
+            WorldGen.PlaceTile(origin.X + 209, origin.Y + 60, mod.TileType("KeepDoor1"), true, false);
+            WorldGen.PlaceTile(origin.X + 224, origin.Y + 60, mod.TileType("KeepDoor1"), true, false);
+
+            WorldGen.PlaceTile(origin.X + 31, origin.Y + 152, mod.TileType("KeepDoor1"), true, false);
+            WorldGen.PlaceTile(origin.X + 27, origin.Y + 162, mod.TileType("KeepDoor1"), true, false);
+            WorldGen.PlaceTile(origin.X + 29, origin.Y + 183, mod.TileType("KeepDoor1"), true, false);
+
+            WorldGen.PlaceTile(origin.X + 247, origin.Y + 152, mod.TileType("KeepDoor1"), true, false);
+            WorldGen.PlaceTile(origin.X + 251, origin.Y + 162, mod.TileType("KeepDoor1"), true, false);
+            WorldGen.PlaceTile(origin.X + 249, origin.Y + 183, mod.TileType("KeepDoor1"), true, false);
+
+            WorldGen.PlaceTile(origin.X + 81, origin.Y + 130, mod.TileType("KeepDoor2"), true, false);
+            WorldGen.PlaceTile(origin.X + 81, origin.Y + 158, mod.TileType("KeepDoor2"), true, false);
+
+            WorldGen.PlaceTile(origin.X + 209, origin.Y + 130, mod.TileType("KeepDoor2"), true, false);
+            WorldGen.PlaceTile(origin.X + 209, origin.Y + 158, mod.TileType("KeepDoor2"), true, false);
+
+            WorldGen.PlaceTile(origin.X + 74, origin.Y + 130, mod.TileType("KeepDoor2"), true, false);
+            WorldGen.PlaceTile(origin.X + 216, origin.Y + 102, mod.TileType("KeepDoor2"), true, false);
+
+            WorldGen.PlaceTile(origin.X + 127, origin.Y + 112, mod.TileType("KeepDoor2S"), true, false);
+            WorldGen.PlaceTile(origin.X + 161, origin.Y + 112, mod.TileType("KeepDoor2S"), true, false);
+
+            WorldGen.PlaceTile(origin.X + 74, origin.Y + 109, mod.TileType("KeepDoor3"), true, false);
+            WorldGen.PlaceTile(origin.X + 228, origin.Y + 108, mod.TileType("KeepDoor3"), true, false);
 
             return true;
         }
