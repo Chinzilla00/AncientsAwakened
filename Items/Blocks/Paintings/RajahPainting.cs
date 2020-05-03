@@ -3,11 +3,11 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks.Paintings
 {
-    public class KrakenPainting : ModItem
+    public class RajahPainting : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Sea of Nightmares");
+            DisplayName.SetDefault("Pouncing Punisher");
             Tooltip.SetDefault("'There are things in that ship no man should see...'");
         }
 
