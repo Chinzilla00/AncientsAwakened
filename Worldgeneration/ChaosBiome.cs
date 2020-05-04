@@ -1251,8 +1251,8 @@ namespace AAMod.Worldgeneration
             TexGen gen2 = BaseWorldGenTex.GetTexGenerator(platTex, colorToTile2, null, null, null, null);
             gen2.Generate(genX, genY, true, true);
 
-            int x = 0;
-            int y = 0;
+            int x;
+            int y;
 
             for (x = origin.X; x < origin.X + platTex.Width; x++)
             {
@@ -1278,9 +1278,7 @@ namespace AAMod.Worldgeneration
                 }
             }
 
-
             Texture2D ObjectTex = mod.GetTexture("Worldgeneration/LostKeepObjects");
-
 
             Dictionary<Color, int> colorToObj = new Dictionary<Color, int>
             {
@@ -1305,8 +1303,7 @@ namespace AAMod.Worldgeneration
             };
 
             TexGen gen3 = BaseWorldGenTex.GetTexGenerator(ObjectTex, colorToObj, null, null, null, null);
-            gen3.Generate(genX, genY, true, true); 
-            
+            gen3.Generate(genX, genY, true, true);
 
             for (x = origin.X; x < origin.X + ObjectTex.Width; x++)
             {
@@ -1416,12 +1413,16 @@ namespace AAMod.Worldgeneration
                 }
             }
 
+            #region Terra's Bedroom
+
             WorldGen.PlaceTile(origin.X + 33, origin.Y + 137, mod.TileType("InvokerBookTile"), true, false);
             WorldGen.PlaceChest(origin.X + 238, origin.Y + 104, (ushort)mod.TileType("TerraDresser"));
-            WorldGen.PlaceTile(origin.X + 220, origin.Y + 104, mod.TileType("TerraBookcase"), true, false);
-            WorldGen.PlaceTile(origin.X + 224, origin.Y + 104, mod.TileType("TerraBookcase"), true, false);
-            WorldGen.PlaceTile(origin.X + 228, origin.Y + 104, mod.TileType("TerraBookcase"), true, false);
+            WorldGen.PlaceTile(origin.X + 222, origin.Y + 104, mod.TileType("TerraBookcase"), true, false);
+            WorldGen.PlaceTile(origin.X + 226, origin.Y + 101, mod.TileType("KingQueenPainting"), true, false);
 
+            #endregion
+
+            #region doors 
 
             WorldGen.PlaceTile(origin.X + 97, origin.Y + 60, mod.TileType("KeepDoor1"), true, false);
             WorldGen.PlaceTile(origin.X + 192, origin.Y + 60, mod.TileType("KeepDoor1"), true, false);
@@ -1450,6 +1451,41 @@ namespace AAMod.Worldgeneration
 
             WorldGen.PlaceTile(origin.X + 74, origin.Y + 109, mod.TileType("KeepDoor3"), true, false);
             WorldGen.PlaceTile(origin.X + 228, origin.Y + 108, mod.TileType("KeepDoor3"), true, false);
+
+            #endregion
+
+            #region Paintings
+
+            WorldGen.PlaceTile(origin.X + 117, origin.Y + 76, mod.TileType("ShenPainting"), true, false);
+            WorldGen.PlaceTile(origin.X + 127, origin.Y + 76, mod.TileType("CRajahPainting"), true, false);
+            WorldGen.PlaceTile(origin.X + 137, origin.Y + 76, mod.TileType("IZPainting"), true, false);
+            WorldGen.PlaceTile(origin.X + 147, origin.Y + 76, mod.TileType("SoCPainting"), true, false);
+            WorldGen.PlaceTile(origin.X + 147, origin.Y + 76, mod.TileType("MushmadPainting"), true, false);
+            WorldGen.PlaceTile(origin.X + 157, origin.Y + 76, mod.TileType("DecayPainting"), true, false);
+
+            WorldGen.PlaceTile(origin.X + 90, origin.Y + 89, mod.TileType("LuciferPainting"), true, false);
+            WorldGen.PlaceTile(origin.X + 107, origin.Y + 89, mod.TileType("FulgurusPainting"), true, false);
+            WorldGen.PlaceTile(origin.X + 133, origin.Y + 89, mod.TileType("AkumaPainting"), true, false);
+            WorldGen.PlaceTile(origin.X + 156, origin.Y + 89, mod.TileType("YamataPainting"), true, false);
+            WorldGen.PlaceTile(origin.X + 182, origin.Y + 89, mod.TileType("ZeroPainting"), true, false);
+            WorldGen.PlaceTile(origin.X + 198, origin.Y + 89, mod.TileType("DaedalusPainting"), true, false);
+
+            WorldGen.PlaceTile(origin.X + 101, origin.Y + 98, mod.TileType("HotJPainting"), true, false);
+            WorldGen.PlaceTile(origin.X + 128, origin.Y + 98, mod.TileType("AnubisPainting"), true, false);
+            WorldGen.PlaceTile(origin.X + 161, origin.Y + 98, mod.TileType("ValkyriePainting"), true, false);
+            WorldGen.PlaceTile(origin.X + 188, origin.Y + 98, mod.TileType("NKPainting"), true, false);
+
+            WorldGen.PlaceTile(origin.X + 89, origin.Y + 108, mod.TileType("RajahPainting"), true, false);
+            WorldGen.PlaceTile(origin.X + 106, origin.Y + 108, mod.TileType("UmbraPainting"), true, false);
+            WorldGen.PlaceTile(origin.X + 123, origin.Y + 108, mod.TileType("GreedPainting"), true, false);
+            WorldGen.PlaceTile(origin.X + 166, origin.Y + 108, mod.TileType("AcropolisPainting"), true, false);
+            WorldGen.PlaceTile(origin.X + 183, origin.Y + 108, mod.TileType("SanguinePainting"), true, false);
+            WorldGen.PlaceTile(origin.X + 200, origin.Y + 108, mod.TileType("ShipPainting"), true, false);
+
+            WorldGen.PlaceTile(origin.X + 31, origin.Y + 87, mod.TileType("WizardPainting"), true, false);
+            WorldGen.PlaceTile(origin.X + 30, origin.Y + 136, mod.TileType("TerraPainting"), true, false);
+            WorldGen.PlaceTile(origin.X + 226, origin.Y + 101, mod.TileType("KingQueenPainting"), true, false);
+            #endregion
 
             return true;
         }
