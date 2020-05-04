@@ -36,6 +36,12 @@ BuffDescription.CCRune=召唤符文为你而战
 BuffName.Cerberus=刻耳泊洛斯
 BuffDescription.Cerberus=“哇哦，那并不可怕”
 
+BuffName.CerlaFlower=塞尔拉之花
+BuffDescription.CerlaFlower=向敌人发射花瓣箭
+
+BuffName.CerlaFlowerEX=塞尔拉繁花
+BuffDescription.CerlaFlowerEX=快速向敌人发射花瓣箭
+
 BuffName.Clueless=浓雾
 BuffDescription.Clueless=你什么也看不见
 
@@ -2060,6 +2066,45 @@ ItemName.BogwoodWall=污泽木墙
 
 ItemName.BogwoodWorkbench=污泽木工作台
 
+// AAMod.Items.Blocks.Terra
+
+
+ItemName.TerraBath=泰拉浴缸
+
+ItemName.TerraBed=泰拉床
+
+ItemName.TerraBookcase=泰拉书架
+
+ItemName.TerraCandelabra=泰拉烛台
+
+ItemName.TerraCandle=泰拉蜡烛
+
+ItemName.TerraChair=泰拉椅
+
+ItemName.TerraChandelier=泰拉吊灯
+
+ItemName.TerraChest=泰拉箱
+
+ItemName.TerraClock=泰拉钟
+
+ItemName.TerraCouch=泰拉沙发
+
+ItemName.TerraDoor=泰拉门
+
+ItemName.TerraDresser=泰拉梳妆台
+
+ItemName.TerraLamp=泰拉灯
+
+ItemName.TerraLantern=泰拉灯笼
+
+ItemName.TerraPiano=泰拉钢琴
+
+ItemName.TerraSink=泰拉水池
+
+ItemName.TerraTable=泰拉桌
+
+ItemName.TerraWorkbench=泰拉工作台
+
 // AAMod.Items.Blocks.Bricks
 
 ItemName.AbyssiumBrick=潭渊砖
@@ -2079,7 +2124,11 @@ ItemName.EventideBrick=渊宵砖
 
 ItemName.IncineriteBrick=燎烬砖
 
+ItemName.KeepBrick=泰拉心堡砖
+
 ItemName.SkymarbleBrick=天理石砖
+
+ItemName.TerraBrick=泰拉砖
 
 ItemName.RadiumBrick=镭光砖
 
@@ -2111,7 +2160,42 @@ ItemName.OroborosWorkbench=虚环木工作台
 
 ItemName.OroborosWall=虚环木墙
 
+// AAMod.Items.Blocks.Keep
 
+
+ItemName.KeepBath=泰拉心堡浴缸
+
+ItemName.KeepBed=泰拉心堡床
+
+ItemName.KeepBookcase=泰拉心堡书架
+
+ItemName.KeepCandelabra=泰拉心堡烛台
+
+ItemName.KeepCandle=泰拉心堡蜡烛
+
+ItemName.KeepChair=泰拉心堡椅
+
+ItemName.KeepChandelier=泰拉心堡吊灯
+
+ItemName.KeepClock=泰拉心堡钟
+
+ItemName.KeepCouch=泰拉心堡沙发
+
+ItemName.KeepDoor=泰拉心堡门
+
+ItemName.KeepDresser=泰拉心堡梳妆台
+
+ItemName.KeepLamp=泰拉心堡灯
+
+ItemName.KeepLantern=泰拉心堡灯笼
+
+ItemName.KeepPiano=泰拉心堡钢琴
+
+ItemName.KeepSink=泰拉心堡水池
+
+ItemName.KeepTable=泰拉心堡桌
+
+ItemName.KeepWorkbench=泰拉心堡工作台
 
 
 // AAMod.Items.Blocks.Statues
@@ -3175,7 +3259,7 @@ ItemName.AmphibianLongswordS=闪耀的两栖生物大剑
 ItemTooltip.AmphibianLongswordS=我听说你喜欢冲澡. \n-Alphakip
 
 ItemName.ArchwitchStaff=龙女巫的天河法杖
-ItemTooltip.ArchwitchStaff=龙之女皇的法杖\n左键旋转法杖向周围的敌人发射星星\n右键发射爆炸魔法矢
+ItemTooltip.ArchwitchStaff=龙之女皇的法杖\n左键在你周围创造一个爆炸星星圈\n右键发射爆炸魔法矢
 
 ItemName.ArchwitchWand=天界手杖
 ItemTooltip.ArchwitchWand=一个老手杖. 似乎最近没有用过.
@@ -3185,6 +3269,12 @@ ItemTooltip.CatsEyeRifle=发射暗影尖刺\n不消耗子弹\n“快 把 棒 棒
 
 ItemName.CatsEyeRifleEX=消音者
 ItemTooltip.CatsEyeRifleEX=发射暗影尖刺\n不消耗子弹\n猫眼步枪EX
+
+ItemName.CerlaStaff=救世主的赠礼
+ItemTooltip.CerlaStaff=召唤一个向敌人发射花瓣箭的塞尔拉之花\n一次只能存在一只塞尔拉之花\n占用一个召唤栏位
+
+ItemName.CerlaStaffEX=园丁的恩宠
+ItemTooltip.CerlaStaffEX=召唤一个快速向敌人发射花瓣箭的塞尔拉繁花\n一次只能存在一只塞尔拉繁花\n占用一个召唤栏位\n救世主的赠礼 EX
 
 ItemName.CharlieShell=尖刺龟壳盾
 ItemTooltip.CharlieShell=允许你向敌人冲刺并造成伤害\n攻击你的敌人受到反伤\n'我. 要. 打. 你.'\n-Charlie
@@ -4993,6 +5083,9 @@ ItemTooltip.Suncaller=让你看见太阳\n无消耗
 ItemName.Sunpowder=日光粉尘
 ItemTooltip.Sunpowder=清除潭渊
 
+ItemName.TerraKey=泰拉心堡钥匙
+ItemTooltip.TerraKey=一把非常华丽的钥匙
+
 ItemName.Timecaller=时间操控者
 ItemTooltip.Timecaller=日月互换\n无消耗
 
@@ -5310,14 +5403,20 @@ ItemTooltip.ShinyHalTux=这件礼服纯手工\n“非常适合冒充远古觉醒
 
 // AAMod.Items.Vanity.Universe
 
-ItemName.CursedHood=诅咒收割者兜帽
-ItemTooltip.CursedHood=“非常适合冒充远古觉醒的开发者!”
+===UNKNWN===
+ItemName.Lemon=柠檬
 
-ItemName.CursedPants=诅咒收割者长裤
-ItemTooltip.CursedPants=“非常适合冒充远古觉醒的开发者!”
+ItemName.UniBag=星河晶源
+ItemTooltip.UniBag=右键打开\n内含冒充整个宇宙的所有物品
 
-ItemName.CursedRobe=诅咒收割者宽袍
-ItemTooltip.CursedRobe=“非常适合冒充远古觉醒的开发者!”
+ItemName.UniHead=宇宙之天球
+ItemTooltip.UniHead=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.UniPants=宇宙之长裤
+ItemTooltip.UniPants=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.UniSweater=宇宙之毛衣
+ItemTooltip.UniSweater=“非常适合冒充远古觉醒的开发者!”
 
 // AAMod.Items.Vanity.Moon
 
@@ -5377,17 +5476,29 @@ ItemTooltip.MaskPlate=“非常适合冒充远古觉醒的开发者!”
 
 // AAMod.Items.Vanity.Mikpin
 
-ItemName.MikBag=狐皮包
-ItemTooltip.MikBag=右键打开\n内含冒充网络狐狸的所有物品
+ItemName.MikBag=六星操作员包
+ItemTooltip.MikBag=右键打开\n内含冒充爱吃苹果派的狙击手的所有物品
 
 ItemName.MikpinCloak=狐皮着装
-ItemTooltip.MikpinCloak=“非常适合冒充远古觉醒的开发者!”
+ItemTooltip.MikpinCloak=“非常适合冒充远古觉醒的测试员”
 
 ItemName.MikpinPants=狐皮长裤
-ItemTooltip.MikpinPants=“非常适合冒充远古觉醒的开发者!”
+ItemTooltip.MikpinPants=“非常适合冒充远古觉醒的测试员!”
 
 ItemName.MikpinWig=狐皮假发
-ItemTooltip.MikpinWig=“非常适合冒充远古觉醒的开发者!”
+ItemTooltip.MikpinWig=“非常适合冒充远古觉醒的测试员!”
+
+// AAMod.Items.Vanity.Mikpin.Angel
+
+
+ItemName.MikJacket=天使操作员夹克
+ItemTooltip.MikJacket=“非常适合冒充远古觉醒的测试员!”
+
+ItemName.MikLeggings=天使操作员护腿
+ItemTooltip.MikLeggings=“非常适合冒充远古觉醒的测试员!”
+
+ItemName.MikWig=天使操作员光环
+ItemTooltip.MikWig=“非常适合冒充远古觉醒的测试员!”
 
 // AAMod.Items.Vanity.Blazen
 
@@ -5606,6 +5717,11 @@ ItemName.CrossoverItem=
 
 ItemName.MonochromeApple=黑白苹果
 ItemTooltip.MonochromeApple=会吸引一个伙伴小马
+
+// AAMod.Projectiles.Dev
+
+
+ItemName.CMDOrb=治愈之魂
 
 
 // AAMod.Items.Accessories
@@ -5871,6 +5987,12 @@ NPCName.HydraHead8=潭渊蛇头
 NPCName.HydraHead9=潭渊蛇头
 
 NPCName.HarukaShadow=...
+
+// AAMod.NPCs.Bosses.Lucifer
+
+NPCName.Lucifer=路西法
+
+NPCName.LuciferSitting=路西法 地狱深壑之主
 
 
 // AAMod.NPCs.Bosses.MushroomMonarch
@@ -6470,7 +6592,7 @@ MapObject.DoomPlatform=厄劫平台
 
 // AAMod.Tiles.BogwoodF
 
-ItemName.BogwoodBathtub=污泽木浴缸
+MapObject.BogwoodBathtub=污泽木浴缸
 
 MapObject.BogwoodBench=污泽木凳
 
@@ -6512,6 +6634,45 @@ MapObject.BogwoodWall=污泽木墙
 
 MapObject.BogwoodWorkbench=污泽木工作台
 
+// AAMod.Tiles.Furniture.Terra
+
+
+MapObject.TerraBath=泰拉浴缸
+
+MapObject.TerraBed=泰拉床
+
+MapObject.TerraBookcase=泰拉书架
+
+MapObject.TerraCandelabra=泰拉烛台
+
+MapObject.TerraCandle=泰拉蜡烛
+
+MapObject.TerraChair=泰拉椅
+
+MapObject.TerraChandelier=泰拉吊灯
+
+MapObject.TerraChest=泰拉箱
+
+MapObject.TerraClock=泰拉钟
+
+MapObject.TerraCouch=泰拉沙发
+
+MapObject.TerraDoor=泰拉门
+
+MapObject.TerraDresser=泰拉梳妆台
+
+MapObject.TerraLamp=泰拉灯
+
+MapObject.TerraLantern=泰拉灯笼
+
+MapObject.TerraPiano=泰拉钢琴
+
+MapObject.TerraSink=泰拉水池
+
+MapObject.TerraTable=泰拉桌
+
+MapObject.TerraWorkbench=泰拉工作台
+
 // AAMod.Tiles.Oroboros
 
 MapObject.OroborosBathtub=虚环木浴缸
@@ -6535,6 +6696,43 @@ MapObject.OroborosLantern=虚环木灯笼
 MapObject.OroborosPlatform=虚环木平台
 
 MapObject.OroborosWorkbench=虚环木工作台
+
+// AAMod.Tiles.Furniture.Keep
+
+
+MapObject.KeepBath=泰拉心堡浴缸
+
+MapObject.KeepBed=泰拉心堡床
+
+MapObject.KeepBookcase=泰拉心堡书架
+
+MapObject.KeepCandelabra=泰拉心堡烛台
+
+MapObject.KeepCandle=泰拉心堡蜡烛
+
+MapObject.KeepChair=泰拉心堡椅
+
+MapObject.KeepChandelier=泰拉心堡吊灯
+
+MapObject.KeepClock=泰拉心堡钟
+
+MapObject.KeepCouch=泰拉心堡沙发
+
+MapObject.KeepDoor=泰拉心堡门
+
+MapObject.KeepDresser=泰拉心堡梳妆台
+
+MapObject.KeepLamp=泰拉心堡灯
+
+MapObject.KeepLantern=泰拉心堡灯笼
+
+MapObject.KeepPiano=泰拉心堡钢琴
+
+MapObject.KeepSink=泰拉心堡水池
+
+MapObject.KeepTable=泰拉心堡桌
+
+MapObject.KeepWorkbench=泰拉心堡工作台
 
 // AAMod.Tiles.RazewoodF
 
@@ -6601,6 +6799,19 @@ MapObject.VoidCrate=虚空宝箱
 // AAMod.Tiles.Decoration
 
 MapObject.RoyalBunnyCage=王冠兔兔笼
+
+MapObject.TerraStatue=失落的英雄雕像
+
+// AAMod.Tiles.Keep
+
+
+MapObject.KeepDoor1=密封门
+
+MapObject.KeepDoor2=密封门
+
+MapObject.KeepDoor2S=密封门
+
+MapObject.KeepDoor3=密封大门
 
 // AAMod.Tiles.Boxes
 
@@ -6733,6 +6944,8 @@ MapObject.DaybreakIncineriteOre=炙曦矿石
 
 MapObject.DevStatue=雕像
 
+MapObject.EnderMemory=永恒之记忆
+
 MapObject.DiscordiumOre=冥昧矿
 
 MapObject.DoomsdayChest=末日宝箱
@@ -6782,6 +6995,8 @@ MapObject.HaphestusForge=赫费斯特铁匠神熔炉
 MapObject.HellstoneAnvil=狱石砧
 
 MapObject.HydraPod=九头蛇蒴荚
+
+MapObject.Throne=罪恶王座
 
 MapObject.IncineriteOre=燎烬矿石
 

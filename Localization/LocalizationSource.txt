@@ -34,6 +34,12 @@ BuffDescription.CCRune=Summons runes to fight for you
 BuffName.Cerberus=Cerberus
 BuffDescription.Cerberus='Aww, that isn't so scary!'
 
+BuffName.CerlaFlower=Cerla Flower
+BuffDescription.CerlaFlower=Fires petal bolts at enemies
+
+BuffName.CerlaFlowerEX=Cerla Blossom
+BuffDescription.CerlaFlowerEX=Fires petal bolts at enemies rapidly.
+
 BuffName.ChaosBuff=Chaotic Fury
 BuffDescription.ChaosBuff=Your magic abilities are increased substantially
 
@@ -1525,6 +1531,8 @@ ItemName.EventideBrick=Eventide Brick
 
 ItemName.IncineriteBrick=Incinerite Brick
 
+ItemName.KeepBrick=Keep Brick
+
 ItemName.RadiumBrick=Radium Brick
 
 ItemName.RelicBrick=Relic Brick
@@ -1532,6 +1540,8 @@ ItemName.RelicBrick=Relic Brick
 ItemName.SkycrystalBrick=Skycrystal Brick
 
 ItemName.SkymarbleBrick=Skymarble Brick
+
+ItemName.TerraBrick=Keep Brick
 
 
 // AAMod.Items.Blocks.Doom
@@ -1745,6 +1755,44 @@ ItemTooltip.TruePaladinsSmeltery=A superforge meant for only the worthiest of sm
 ItemName.VoidUnit=Void Recreation Unit
 
 
+// AAMod.Items.Blocks.Keep
+
+
+ItemName.KeepBath=Keep Bathtub
+
+ItemName.KeepBed=Keep Bed
+
+ItemName.KeepBookcase=Keep Bookcase
+
+ItemName.KeepCandelabra=Keep Candelabra
+
+ItemName.KeepCandle=Keep Candle
+
+ItemName.KeepChair=Keep Chair
+
+ItemName.KeepChandelier=Keep Chandelier
+
+ItemName.KeepClock=Keep Clock
+
+ItemName.KeepCouch=Keep Couch
+
+ItemName.KeepDoor=Keep Door
+
+ItemName.KeepDresser=Keep Dresser
+
+ItemName.KeepLamp=Keep Lamp
+
+ItemName.KeepLantern=Keep Lantern
+
+ItemName.KeepPiano=Keep Piano
+
+ItemName.KeepSink=Keep Sink
+
+ItemName.KeepTable=Keep Table
+
+ItemName.KeepWorkbench=Keep Workbench
+
+
 // AAMod.Items.Blocks.Oroboros
 
 
@@ -1853,6 +1901,46 @@ ItemName.MoonStatue=Wasp Statue
 ItemName.SauceStatue=Snake Statue
 
 ItemName.TailsStatue=Fox Statue
+
+
+// AAMod.Items.Blocks.Terra
+
+
+ItemName.TerraBath=Terra Bathtub
+
+ItemName.TerraBed=Terra Bed
+
+ItemName.TerraBookcase=Terra Bookcase
+
+ItemName.TerraCandelabra=Terra Candelabra
+
+ItemName.TerraCandle=Terra Candle
+
+ItemName.TerraChair=Terra Chair
+
+ItemName.TerraChandelier=Terra Chandelier
+
+ItemName.TerraChest=Terra Chest
+
+ItemName.TerraClock=Terra Clock
+
+ItemName.TerraCouch=Terra Couch
+
+ItemName.TerraDoor=Terra Door
+
+ItemName.TerraDresser=Terra Dresser
+
+ItemName.TerraLamp=Terra Lamp
+
+ItemName.TerraLantern=Terra Lantern
+
+ItemName.TerraPiano=Terra Piano
+
+ItemName.TerraSink=Terra Sink
+
+ItemName.TerraTable=Terra Table
+
+ItemName.TerraWorkbench=Terra Workbench
 
 
 // AAMod.Items.Boss.AH
@@ -2788,7 +2876,7 @@ ItemName.AmphibianLongswordS=Amphibious Longsword
 ItemTooltip.AmphibianLongswordS=So I heard you like getting hosed. \n-Alphakip
 
 ItemName.ArchwitchStaff=Archwitch's Galactic Scepter
-ItemTooltip.ArchwitchStaff=The staff of the Dragon Queen\nLeft-click to spin the scepter, firing off stars at nearby enemies\nRight click to fire explosive magic bolts
+ItemTooltip.ArchwitchStaff=The staff of the Dragon Queen\nLeft-click to spin the scepter, creating a ring of explosive stars around you\nRight click to fire explosive magic bolts
 
 ItemName.ArchwitchWand=Celestial Wand
 ItemTooltip.ArchwitchWand=An old wand. It seems to have not been used recently.
@@ -2798,6 +2886,12 @@ ItemTooltip.CatsEyeRifle=Fires Shadow bolts\nDoesn't require ammo\n'QUICK HIDE T
 
 ItemName.CatsEyeRifleEX=The Silencer
 ItemTooltip.CatsEyeRifleEX=Fires Shadow bolts\nDoesn't require ammo\nCat's Eye Rifle EX
+
+ItemName.CerlaStaff=The Lifegiver's Gift 
+ItemTooltip.CerlaStaff=Summons a Cerla Flower that fires petal bolts at enemies\nOnly one Cerla Flower may be active at a time\nTakes up a Minion Slot
+
+ItemName.CerlaStaffEX=The Gardener's Blessing
+ItemTooltip.CerlaStaffEX=Summons a Cerla Blossom that fires rapid petal bolts at enemies\nOnly one Cerla Blossom may be active at a time\nTakes up a Minion Slot\nThe Lifegiver's Gift EX
 
 ItemName.Chronos=Chronos
 ItemTooltip.Chronos=Time Teller EX\nDamage changes based on time of day\nDamage is greatest at Midday and Midnight\n'Time is big ball of wibbly-wobbly timey-wimey yo-yos.'\n-Dallin
@@ -3111,8 +3205,9 @@ ItemTooltip.Z=Spreads the Void
 
 ItemName.DragonsGrip=Dragon's Grip
 
-ItemName.GripsOfChaos=Руки Хаоса
-ItemTooltip.GripsOfChaos=Стреляет 2 крюками, в зависимости от того, какой уже выпущенt\nКрасный длиннее\nСиний притягивается быстрее
+ItemName.GripsOfChaos=The Grips of Chaos
+ItemTooltip.GripsOfChaos=Fires 2 different hooks depending on which one is already out\nRed has a longer range\nBlue pulls in/retracts quicker
+
 
 // AAMod.Items
 
@@ -4299,6 +4394,9 @@ ItemTooltip.Suncaller=Brings forth the morning sun.\nNon-Consumable
 ItemName.Sunpowder=
 ItemTooltip.Sunpowder=Cleanses the mire
 
+ItemName.TerraKey=Keep Key
+ItemTooltip.TerraKey=A very ornate key
+
 ItemName.Timecaller=Timecaller
 ItemTooltip.Timecaller=Brings forth the next light.\nNon-Consumable
 
@@ -4400,6 +4498,9 @@ ItemTooltip.DuckstepWings=Allows flight and slow fall\n'Great for impersonating 
 // AAMod.Items.Vanity.Beg
 
 
+ItemName.BegBag=Weird Horse Bag
+ItemTooltip.BegBag=<right> to open \n'All the essentials for impersonating that weird horse kid!'
+
 ItemName.PonyBody=Weird Horse Shirt
 ItemTooltip.PonyBody='Great for impersonating Ancients Awakened Devs!'
 
@@ -4471,6 +4572,9 @@ ItemTooltip.InvokerRobe=The enchanted robe of Aleister the 'Mega Therion'\nGreat
 // AAMod.Items.Vanity.Charlie
 
 
+ItemName.CharlieBag=Reaper's Bag
+ItemTooltip.CharlieBag=<right> to open \n'All the essentials for impersonating the Grim Edgelord!'
+
 ItemName.CharlieBoots=Wraith Boots
 ItemTooltip.CharlieBoots='Great for impersonating Ancients Awakened Devs!'
 
@@ -4479,6 +4583,9 @@ ItemTooltip.CharlieCloak='Great for impersonating Ancients Awakened Devs!'
 
 ItemName.CharlieCowl=Wraith Cowl
 ItemTooltip.CharlieCowl='Great for impersonating Ancients Awakened Devs!'
+
+ItemName.CharlieWings=Grim Nightmare Wings
+ItemTooltip.CharlieWings=Allows flight and slow fall\nHold down and jump to hover for an extended period of time\n'Great for impersonating Ancients Awakened Devs!'
 
 
 // AAMod.Items.Vanity.Dallin
@@ -4728,7 +4835,27 @@ ItemName.MaskPlate=Mask Lord's Chestplate
 ItemTooltip.MaskPlate='Great for impersonating Ancients Awakened Contributors!'
 
 
+// AAMod.Items.Vanity.Mikpin.Angel
+
+
+ItemName.MikJacket=Angelic Operator's Jacket
+ItemTooltip.MikJacket='Great for impersonating Ancients Awakened Testers!'
+
+ItemName.MikLeggings=Angelic Operator's Leggings
+ItemTooltip.MikLeggings='Great for impersonating Ancients Awakened Testers!'
+
+ItemName.MikWig=Angelic Operator's Halo
+ItemTooltip.MikWig='Great for impersonating Ancients Awakened Testers!'
+
+
 // AAMod.Items.Vanity.Mikpin
+
+
+ItemName.MikBag=Six-Star Operator Bag
+ItemTooltip.MikBag=<right> to open \n'All the essentials for impersonating the Apple Pie-loving Sniper!'
+
+
+// AAMod.Items.Vanity.Mikpin.Kitsune
 
 
 ItemName.MikpinCloak=Kitsune Dress
@@ -4806,6 +4933,22 @@ ItemName.ShinyPlutoPlate=Outer God's Ancient Chestplate
 ItemTooltip.ShinyPlutoPlate='Great for impersonating Ancients Awakened Devs!'
 
 
+// AAMod.Items.Vanity.Shox
+
+
+ItemName.ShoxBag=Charged Shock Bag
+ItemTooltip.ShoxBag=<right> to open \n'All the essentials for impersonating the Shock Lord!'
+
+ItemName.ShoxPants=Shock Lord's Boots
+ItemTooltip.ShoxPants='Great for impersonating Ancients Awakened Contributors!'
+
+ItemName.ShoxPlate=Shock Lord's Plate
+ItemTooltip.ShoxPlate='Great for impersonating Ancients Awakened Contributors!'
+
+ItemName.ShoxVisor=Shock Lord's Visor
+ItemTooltip.ShoxVisor='Great for impersonating Ancients Awakened Contributors!'
+
+
 // AAMod.Items.Vanity.Tails
 
 
@@ -4817,6 +4960,9 @@ ItemTooltip.TailsHead=A helmet made to resemble a certain two-tailed fox.\n'Grea
 
 ItemName.TailsLegs=Tails Leggings
 ItemTooltip.TailsLegs=Leggings made to resemble a certain two-tailed fox.\n'Great for impersonating Ancients Awakened Devs!'
+
+ItemName.TailsToolbox=Tails' Toolbox
+ItemTooltip.TailsToolbox=<right> to open \n'All the essentials for impersonating the Fox Wonder!'
 
 
 // AAMod.Items.Vanity.Tied
@@ -4838,20 +4984,26 @@ ItemTooltip.TiedsSuit='Great for impersonating Ancients Awakened Devs!'
 // AAMod.Items.Vanity.Universe
 
 
-ItemName.CursedHood=Cursed Reaper Hood
-ItemTooltip.CursedHood='Great for impersonating Ancients Awakened Devs!'
+===UNKNWN===
+ItemName.Lemon=
 
-ItemName.CursedPants=Cursed Reaper Boots
-ItemTooltip.CursedPants='Great for impersonating Ancients Awakened Devs!'
+ItemName.UniBag=Galactic Geode
+ItemTooltip.UniBag=<right> to open \n'All the essentials for impersonating the whole universe!'
 
-ItemName.CursedRobe=Cursed Reaper Robe
-ItemTooltip.CursedRobe='Great for impersonating Ancients Awakened Devs!'
+ItemName.UniHead=Universal Globe
+ItemTooltip.UniHead='Great for impersonating Ancients Awakened Devs!'
+
+ItemName.UniPants=Universal Trousers
+ItemTooltip.UniPants='Great for impersonating Ancients Awakened Devs!'
+
+ItemName.UniSweater=Universal Sweater
+ItemTooltip.UniSweater='Great for impersonating Ancients Awakened Devs!'
 
 
 // AAMod.Items.Vanity.VoidEye
 
 
-ItemName.VoidBag=Void Eye Bag
+ItemName.VoidBag=Void Gate
 ItemTooltip.VoidBag=<right> to open\n'All the essentials for impersonating the Dark Watcher!'
 
 ItemName.VoidEyeBoots=Void Eye's Boots
@@ -4907,6 +5059,12 @@ ItemName.MonochromeApple=Monochromatic Apple
 ItemTooltip.MonochromeApple=Will attract an equestrian friend
 
 
+// AAMod.Projectiles.Dev
+
+
+ItemName.CMDOrb=Healing Soul
+
+
 // AAMod.Tiles.Altar
 
 
@@ -4915,6 +5073,16 @@ ItemName.GS=
 
 ===UNKNWN===
 ItemName.SC=
+
+
+// AAMod
+
+
+===UNKNWN===
+NPCName.ParentNPC=
+
+===UNKNWN===
+NPCName.YamataBoss=
 
 
 // AAMod.NPCs.Bosses.AH.Ashe
@@ -5118,6 +5286,22 @@ NPCName.NightcrawlerHead=Nightcrawler
 NPCName.NightcrawlerTail=
 
 
+// AAMod.NPCs.Bosses.FeudalFungus
+
+
+NPCName.FeudalFungus=Feudal Fungus
+
+NPCName.FungusFlier=Fungus Flier
+
+NPCName.FungusSlep=Very Large Glowing Mushroom
+
+NPCName.FungusSpore=Fungal Spore
+
+NPCName.FungusWake=Very Large Glowing Mushroom...?
+
+NPCName.Mushling=Mushling
+
+
 // AAMod.NPCs.Bosses.Greed
 
 
@@ -5188,32 +5372,24 @@ NPCName.HydraHead8=
 NPCName.HydraHead9=
 
 
+// AAMod.NPCs.Bosses.Lucifer
+
+
+NPCName.Lucifer=Lucifer
+
+NPCName.LuciferSitting=Lucifer the Pit Lord
+
+
 // AAMod.NPCs.Bosses.MushroomMonarch
 
-
-NPCName.FeudalFungus=Feudal Fungus
-
-NPCName.FungusFlier=Fungus Flier
-
-NPCName.FungusSpore=Fungal Spore
-
-NPCName.Mushling=Mushling
-
-NPCName.MushroomMonarch=Mushroom Monarch
-
-NPCName.RedMushling=Mushling
-
-
-// AAMod.NPCs.Bosses.MushroomMonarch.Spawn
-
-
-NPCName.FungusSlep=Very Large Glowing Mushroom
-
-NPCName.FungusWake=Very Large Glowing Mushroom...?
 
 NPCName.MonarchSlep=Very Large Mushroom
 
 NPCName.MonarchWake=Very Large Mushroom...?
+
+NPCName.MushroomMonarch=Mushroom Monarch
+
+NPCName.RedMushling=Mushling
 
 
 // AAMod.NPCs.Bosses.Rajah
@@ -5358,6 +5534,9 @@ NPCName.WyrmlingTail2=Wyrmling
 // AAMod.NPCs.Bosses.Yamata.Awakened
 
 
+===UNKNWN===
+NPCName.YamataA=
+
 NPCName.YamataAHead=Yamata no Orochi
 
 NPCName.YamataAHeadF=Yamata no Orochi
@@ -5367,6 +5546,9 @@ NPCName.YamataSoul=Mire Soul
 
 // AAMod.NPCs.Bosses.Yamata
 
+
+===UNKNWN===
+NPCName.Yamata=
 
 NPCName.YamataHead=Yamata
 
@@ -5416,6 +5598,8 @@ NPCName.ZeroEcho=3CH0
 NPCName.ZeroMini=ZER0 SELF 0RGANIZATI0N
 
 NPCName.ZeroProtocol=ZER0 PR0T0C0L
+
+NPCName.ZeroTransition=Broken Rift
 
 
 // AAMod.NPCs.Critters
@@ -5487,6 +5671,10 @@ NPCName.LungBody=Ancient Lung
 NPCName.LungTail=Ancient Lung
 
 NPCName.MagmaSwimmer=Magma Swimmer
+
+NPCName.TheStride=Flamebrute
+
+NPCName.TheStrideDeathAnimation=Flamebrute
 
 
 // AAMod.NPCs.Enemies.Mire
@@ -5747,6 +5935,8 @@ MapObject.GreedAltar=Desire Altar
 
 MapObject.HydraPod=Hydra Pod
 
+MapObject.Throne=Throne of Evil
+
 
 // AAMod.Tiles.Boxes
 
@@ -5933,6 +6123,8 @@ MapObject.MoonBeeJar=Lunar Hornet Jar
 
 MapObject.RoyalBunnyCage=Royal Bunny Cage
 
+MapObject.TerraStatue=Lost Hero Statue
+
 
 // AAMod.Tiles.Furniture.Bogwood
 
@@ -6022,6 +6214,44 @@ MapObject.DoomWorkbench=Doom Workbench
 MapObject.CrystalChandelier=Crystal Chandelier
 
 
+// AAMod.Tiles.Furniture.Keep
+
+
+MapObject.KeepBath=Keep Bathtub
+
+MapObject.KeepBed=Keep Bed
+
+MapObject.KeepBookcase=Keep Bookcase
+
+MapObject.KeepCandelabra=Keep Candelabra
+
+MapObject.KeepCandle=Keep Candle
+
+MapObject.KeepChair=Keep Chair
+
+MapObject.KeepChandelier=Keep Chandelier
+
+MapObject.KeepCouch=Keep Couch
+
+MapObject.KeepDoorClosed=Keep Door
+
+MapObject.KeepDoorOpen=Keep Door
+
+MapObject.KeepDresser=Keep Dresser
+
+MapObject.KeepLamp=Keep Lamp
+
+MapObject.KeepLantern=Keep Latern
+
+MapObject.KeepPiano=Keep Piano
+
+MapObject.KeepSink=Keep Sink
+
+MapObject.KeepTable=Keep Table
+
+MapObject.KeepWorkbench=Keep Workbench
+
+
 // AAMod.Tiles.Furniture.Oroboros
 
 
@@ -6088,8 +6318,60 @@ MapObject.RazewoodTub=Razewood Bathtub
 MapObject.RazewoodWorkbench=Razewood Workbench
 
 
+// AAMod.Tiles.Furniture.Terra
+
+
+MapObject.TerraBath=Terra Bathtub
+
+MapObject.TerraBed=Terra Bed
+
+MapObject.TerraBookcase=Terra Bookcase
+
+MapObject.TerraCandelabra=Terra Candelabra
+
+MapObject.TerraCandle=Terra Candle
+
+MapObject.TerraChair=Terra Chair
+
+MapObject.TerraChandelier=Terra Chandelier
+
+MapObject.TerraChest=Terra Chest
+
+MapObject.TerraCouch=Terra Couch
+
+MapObject.TerraDoorClosed=Terra Door
+
+MapObject.TerraDoorOpen=Terra Door
+
+MapObject.TerraDresser=Terra Dresser
+
+MapObject.TerraLamp=Terra Lamp
+
+MapObject.TerraLantern=Terra Latern
+
+MapObject.TerraPiano=Terra Piano
+
+MapObject.TerraSink=Terra Sink
+
+MapObject.TerraTable=Terra Table
+
+MapObject.TerraWorkbench=Terra Workbench
+
+
 // AAMod.Tiles
 
+
+
+// AAMod.Tiles.Keep
+
+
+MapObject.KeepDoor1=Sealed Door
+
+MapObject.KeepDoor2=Sealed Door
+
+MapObject.KeepDoor2S=Sealed Door
+
+MapObject.KeepDoor3=Sealed Gate
 
 
 // AAMod.Tiles.Ore
@@ -6157,5 +6439,9 @@ MapObject.RazewoodSapling=Razewood Sapling
 
 
 // AAMod.Tiles.Trophy
+
+
+
+// AAMod.Worldgeneration.Placeholder
 
 
