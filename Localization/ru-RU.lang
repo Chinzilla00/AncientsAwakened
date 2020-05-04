@@ -34,6 +34,12 @@ BuffDescription.CCRune=Призывает руны вам на помощь
 BuffName.Cerberus=Цербер
 BuffDescription.Cerberus=Авв, он даже не страшный
 
+ItemName.CerlaStaff=Подарок Дающей жизнь
+ItemTooltip.CerlaStaff=Призывает Цветок Церлы, который стреляет снарядами лепестков в ваших врагов\nМожно призвать только один Цветок Церлы\nТратит 1 слот для миньонов
+
+ItemName.CerlaStaffEX=Благословление Садовода
+ItemTooltip.CerlaStaffEX=Призывает Цветение Церлы, которое стреляет снарядами лепестков в ваших врагов\nМожно призвать только одно Цветение\nТратит 1 слот для миньоновt\nПодарок Дающей жизнь ЕХ
+
 BuffName.ChaosBuff=Хаотическая Ярость
 BuffDescription.ChaosBuff=В основном, ваши магические способности увеличены
 
@@ -1315,8 +1321,6 @@ ItemName.MireSkulkerBanner=Знамя краба из Трясины
 
 ItemName.ScavengerBanner=Знамя Сборщика
 
-// AAMod.Items.Blocks.Boxes
-
 
 // AAMod.Items.Blocks.Boxes
 
@@ -1492,6 +1496,46 @@ ItemName.BogwoodWall=Стена из дерева Трясины
 
 ItemName.BogwoodWorkbench=Верстак из дерева Трясины
 
+// AAMod.Items.Blocks.Terra
+
+
+ItemName.TerraBath=Терра ванна
+
+ItemName.TerraBed=Терра кровать
+
+ItemName.TerraBookcase=Терра шкаф
+
+ItemName.TerraCandelabra=Терра канделябра
+
+ItemName.TerraCandle=Терра свечка
+
+ItemName.TerraChair=Терра стул
+
+ItemName.TerraChandelier=Терра люстра
+
+ItemName.TerraChest=Терра сундук
+
+ItemName.TerraClock=Терра часы
+
+ItemName.TerraCouch=Терра диван
+
+ItemName.TerraDoor=Терра дверь
+
+ItemName.TerraDresser=Терра тумбочка
+
+ItemName.TerraLamp=Терра лампа
+
+ItemName.TerraLantern=Терра фонарь
+
+ItemName.TerraPiano=Терра пианино
+
+ItemName.TerraSink=Терра раковина
+
+ItemName.TerraTable=Терра стол
+
+ItemName.TerraWorkbench=Терра верстак
+
+
 // AAMod.Items.Blocks.Bricks
 
 
@@ -1512,7 +1556,11 @@ ItemName.EventideBrick=Вечерний кирпич
 
 ItemName.IncineriteBrick=Кирпич из инсенерита (Блять научите, как правильно это писать, как у тебя переведено)
 
+ItemName.KeepBrick=Кирпич Затерянной Крепости
+
 ItemName.SkymarbleBrick=Кирпич из небесного мрамора
+
+ItemName.TerraBrick=Кирпич Затерянной Крепости
 
 ItemName.RadiumBrick=Кирпич из радия
 
@@ -1575,6 +1623,9 @@ ItemName.DragonfireTorch=Факел драконьего огня
 
 ItemName.DynaskullOre=Ископаемое Диноскалла
 ItemTooltip.DynaskullOre=Энергия миллионов лет пульсирует в этих ископаемых
+
+ItemName.EnderMemory=Вечная Память
+ItemTooltip.EnderMemory=Потрясающая статуя, которая сделана так, что бы почитить чью-то память\nМрачная гравюра выгравирована на основании
 
 ItemName.Equibox=Музыкальная шкатулка "Черви Равноденствия"
 ItemTooltip.Equibox=Проигрывает 'Symphony of the Stars' OmegaFerretMusic
@@ -1717,6 +1768,43 @@ ItemName.OroborosLantern=Уроборусный фонарь
 ItemName.OroborosPlatform=Уроборусная деревянная платформа
 
 ItemName.OroborosWorkbench=Уроборусный верстак
+
+// AAMod.Items.Blocks.Keep
+
+
+ItemName.KeepBath=Ванна Затерянной Крепости
+
+ItemName.KeepBed=Кровать Затерянной Крепости
+
+ItemName.KeepBookcase=Шкаф Затерянной Крепости
+
+ItemName.KeepCandelabra=Канделябра Затерянной Крепости
+
+ItemName.KeepCandle=Свечка Затерянной Крепости
+
+ItemName.KeepChair=Стул Затерянной Крепости
+
+ItemName.KeepChandelier=Люстра Затерянной Крепости
+
+ItemName.KeepClock=Часы Затерянной Крепости
+
+ItemName.KeepCouch=Диван Затерянной Крепости
+
+ItemName.KeepDoor=Дверь Затерянной Крепости
+
+ItemName.KeepDresser=Тумбочка Затерянной Крепости
+
+ItemName.KeepLamp=Лампа Затерянной Крепости
+
+ItemName.KeepLantern=Фонарь Затерянной Крепости
+
+ItemName.KeepPiano=Пианино Затерянной Крепости
+
+ItemName.KeepSink=Раковина Затерянной Крепости
+
+ItemName.KeepTable=Стол Затерянной Крепости
+
+ItemName.KeepWorkbench=Верстак Затерянной Крепости
 
 // AAMod.Items.Blocks.RazewoodF
 
@@ -2708,11 +2796,23 @@ ItemTooltip.AmphibianLongswordEXS=Длинный меч Амфибии EX
 ItemName.AmphibianLongswordS=Длинный меч Амфибии
 ItemTooltip.AmphibianLongswordS=Итак,я слышал, что тебе нравится, когда тебя обливают из шланга. \n-Alphakip
 
+ItemName.ArchwitchStaff=Галакчитеский Скипетр Архиведьмы
+ItemTooltip.ArchwitchStaff=Посох Королевы Драконов\nНажмите левую кнопку мыши, что бы крутить скипетр, создавая кольцо из взрывных звезд вокруг себя\nНажмите правую кнопку мыши, что бы выстрелить взрывными магическими снарядами
+
+ItemName.ArchwitchWand=Небесный Посох
+ItemTooltip.ArchwitchWand=Старый посох. Похоже, что его давно не использовали.
+
 ItemName.CatsEyeRifle=Ружье Кошачьего Глаза
 ItemTooltip.CatsEyeRifle=Стреляет теневыми болтами\nНе требует патронов\n'БЫСТРО, ПРЯЧЬ ТАЙНИК С ЛОЛИ'\n-Liz
 
 ItemName.CatsEyeRifleEX=Глушитель
 ItemTooltip.CatsEyeRifleEX=Стреляет теневыми болтами\nНе требует патронов\nРужье Кошачьего Глаза EX
+
+ItemName.CerlaStaff=The Lifegiver's Gift 
+ItemTooltip.CerlaStaff=Summons a Cerla Flower that fires petal bolts at enemies\nOnly one Cerla Flower may be active at a time\nTakes up a Minion Slot
+
+ItemName.CerlaStaffEX=The Gardener's Blessing
+ItemTooltip.CerlaStaffEX=Summons a Cerla Blossom that fires rapid petal bolts at enemies\nOnly one Cerla Blossom may be active at a time\nTakes up a Minion Slot\nThe Lifegiver's Gift EX
 
 ItemName.Chronos=Хронос
 ItemTooltip.Chronos=Подсказчик Времени EX\nУрон меняется в завимисимости времени суток\nУрон выше всего в полдень и в полунчь\n'Время это большой мяч вибли-вобли временных-швременных йо-йо.'\n-Dallin
@@ -4209,6 +4309,9 @@ ItemTooltip.Suncaller=Вызывает утреннее солнце.\nНе тр
 ItemName.Sunpowder=Солнечный Порошок
 ItemTooltip.Sunpowder=Очищает Трясину
 
+ItemName.TerraKey=Ключ Затерянной Крепости
+ItemTooltip.TerraKey=Богато украшенный ключ
+
 ItemName.Timecaller=Взывающий ко Времени
 ItemTooltip.Timecaller=Вызывает следующий Лунный или Солнечный свет.\nНе тратится
 
@@ -4639,6 +4742,18 @@ ItemTooltip.MikpinPants='Великолепен для подражания те
 ItemName.MikpinWig=Парик Китсуна
 ItemTooltip.MikpinWig='Великолепен для подражания тестерам Ancients Awakened!'
 
+// AAMod.Items.Vanity.Mikpin.Angel
+
+
+ItemName.MikJacket=Куртка Ангельского Оператора
+ItemTooltip.MikJacket='Великолепна для подражания тестерам Ancients Awakened!'
+
+ItemName.MikLeggings=Штаны Ангельского Оператора
+ItemTooltip.MikLeggings='Великолепны для подражания тестерам Ancients Awakened!'
+
+ItemName.MikWig=Нимб Ангельского Оператора
+ItemTooltip.MikWig='Великолепен для подражания тестерам Ancients Awakened!'
+
 
 // AAMod.Items.Vanity.Moon
 
@@ -4724,15 +4839,20 @@ ItemTooltip.TiedsSuit='Великолепен для подражания раз
 
 // AAMod.Items.Vanity.Universe
 
+===UNKNWN===
+ItemName.Lemon=
 
-ItemName.CursedHood=Проклятый Капюшон Жнеца
-ItemTooltip.CursedHood='Великолепен для подражания разработчикам Ancients Awakened!'
+ItemName.UniBag=Галактический геод
+ItemTooltip.UniBag=<right>, что бы открыть\n'Предметы первой необходимости для подражания самой Вселенной!
 
-ItemName.CursedPants=Проклятые Ботинки Жнеца
-ItemTooltip.CursedPants='Великолепны для подражания разработчикам Ancients Awakened!'
+ItemName.UniHead=Вселенский Шар
+ItemTooltip.UniHead='Великолепен для подражания разработчикам Ancients Awakened!'
 
-ItemName.CursedRobe=Проклятая Роба Жнеца
-ItemTooltip.CursedRobe='Великолепна для подражания разработчикам Ancients Awakened!'
+ItemName.UniPants=Вселенские Штаны
+ItemTooltip.UniPants='Великолепны для подражания разработчикам Ancients Awakened!'
+
+ItemName.UniSweater=Вселенский Свитер
+ItemTooltip.UniSweater='Великолепен для подражания разработчикам Ancients Awakened!'
 
 // AAMod.Items.Vanity.VoidEye
 
@@ -4790,6 +4910,11 @@ ItemName.RogueWeapon=
 
 ItemName.MonochromeApple=Монохроматическое Яблоко
 ItemTooltip.MonochromeApple=Привлечет друга из эквэстрии
+
+// AAMod.Projectiles.Dev
+
+
+ItemName.CMDOrb=Лечущая душа
 
 
 // AAMod.NPCs.Bosses.AH.Ashe
@@ -5061,6 +5186,12 @@ NPCName.HydraHead8=Гидра
 
 ===UNKNWN===
 NPCName.HydraHead9=Гидра
+
+// AAMod.NPCs.Bosses.Lucifer
+
+NPCName.Lucifer=Люцифер
+
+NPCName.LuciferSitting=Люцифер, лорд Гиенны
 
 // AAMod.NPCs.Bosses.MushroomMonarch.Spawn
 
@@ -5607,6 +5738,8 @@ MapObject.GreedAltar=Алтарь Желания
 
 MapObject.HydraPod=Кокон Гидры
 
+MapObject.Throne=Трон Зла
+
 
 // AAMod.Tiles.Boxes
 
@@ -5787,6 +5920,8 @@ MapObject.MoonBeeJar=Банка с Лунным Шмелем
 
 MapObject.RoyalBunnyCage=Клетка с Королевским Кроликом
 
+MapObject.TerraStatue=Статуя Потерянного Героя
+
 
 // AAMod.Tiles.Furniture.Bogwood
 
@@ -5874,6 +6009,43 @@ MapObject.DoomWorkbench=Верстак Рока
 
 MapObject.CrystalChandelier=Кристальная Люстра
 
+// AAMod.Tiles.Furniture.Keep
+
+
+MapObject.KeepBath=Ванна Затерянной Крепости
+
+MapObject.KeepBed=Кровать Затерянной Крепости
+
+MapObject.KeepBookcase=Шкаф Затерянной Крепости
+
+MapObject.KeepCandelabra=Канделябра Затерянной Крепости
+
+MapObject.KeepCandle=Свечка Затерянной Крепости
+
+MapObject.KeepChair=Стул Затерянной Крепости
+
+MapObject.KeepChandelier=Люстра Затерянной Крепости
+
+MapObject.KeepClock=Часы Затерянной Крепости
+
+MapObject.KeepCouch=Диван Затерянной Крепости
+
+MapObject.KeepDoor=Дверь Затерянной Крепости
+
+MapObject.KeepDresser=Тумбочка Затерянной Крепости
+
+MapObject.KeepLamp=Лампа Затерянной Крепости
+
+MapObject.KeepLantern=Фонарь Затерянной Крепости
+
+MapObject.KeepPiano=Пианино Затерянной Крепости
+
+MapObject.KeepSink=Раковина Затерянной Крепости
+
+MapObject.KeepTable=Стол Затерянной Крепости
+
+MapObject.KeepWorkbench=Верстак Затерянной Крепости
+
 
 // AAMod.Tiles.Furniture.Oroboros
 
@@ -5940,10 +6112,59 @@ MapObject.RazewoodTub=Ванна из Обожженной древесины
 
 MapObject.RazewoodWorkbench=Верстак из Обожженной древесины
 
+// AAMod.Tiles.Furniture.Terra
+
+
+MapObject.TerraBath=Терра ванна
+
+MapObject.TerraBed=Терра кровать
+
+MapObject.TerraBookcase=Терра шкаф
+
+MapObject.TerraCandelabra=Терра канделябра
+
+MapObject.TerraCandle=Терра свечка
+
+MapObject.TerraChair=Терра стул
+
+MapObject.TerraChandelier=Терра люстра
+
+MapObject.TerraChest=Терра сундук
+
+MapObject.TerraClock=Терра часы
+
+MapObject.TerraCouch=Терра диван
+
+MapObject.TerraDoor=Терра дверь
+
+MapObject.TerraDresser=Терра тумбочка
+
+MapObject.TerraLamp=Терра лампа
+
+MapObject.TerraLantern=Терра фонарь
+
+MapObject.TerraPiano=Терра пианино
+
+MapObject.TerraSink=Терра раковина
+
+MapObject.TerraTable=Терра стол
+
+MapObject.TerraWorkbench=Терра верстак
+
 
 // AAMod.Tiles
 
 
+// AAMod.Tiles.Keep
+
+
+MapObject.KeepDoor1=Закрытая дверь
+
+MapObject.KeepDoor2=Закрытая дверь
+
+MapObject.KeepDoor2S=Закрытая дверь
+
+MapObject.KeepDoor3=Закрытые ворота
 
 // AAMod.Tiles.Ore
 

@@ -22,7 +22,7 @@ namespace AAMod.Items.Blocks.Terra
             item.useStyle = 1;
             item.consumable = true;
             item.value = 250;
-            item.createTile = mod.TileType("TerraBookshelf");
+            item.createTile = mod.TileType("TerraBookcase");
         }
         public override void AddRecipes()
         {
