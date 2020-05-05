@@ -10,7 +10,6 @@ namespace AAMod.Walls.Bricks
 		{
             dustType = mod.DustType("DoomsdayDust");
 			AddMapEntry(new Color(50, 25, 0));
-            Main.wallLight[Type] = true;
             Main.wallHouse[Type] = true;
             soundType = 21;
             drop = mod.ItemType("DoomiteWall");

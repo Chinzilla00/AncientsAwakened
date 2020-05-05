@@ -62,7 +62,7 @@ namespace AAMod.Tiles.Keep
         }
         public override void NearbyEffects(int i, int j, bool closer)
         {
-            if (!AAWorld.Terra2)
+            if (AAWorld.Terra2)
             { 
                 Main.tileSolid[Type] = false;
                 _activated = false;

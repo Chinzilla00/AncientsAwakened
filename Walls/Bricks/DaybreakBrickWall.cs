@@ -9,7 +9,6 @@ namespace AAMod.Walls.Bricks
 	{
         public override void SetDefaults()
         {
-            Main.wallLight[Type] = true;
             Main.wallHouse[Type] = true;
             drop = mod.ItemType("DaybreakWall");
             AddMapEntry(new Color(40, 12, 10));

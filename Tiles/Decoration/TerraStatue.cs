@@ -20,7 +20,7 @@ namespace AAMod.Tiles.Decoration
             Main.tileLavaDeath[Type] = false;
             TileObjectData.newTile.Width = 5;
             TileObjectData.newTile.Height = 5;
-            TileObjectData.newTile.Origin = new Point16(2, 4);
+            TileObjectData.newTile.Origin = new Point16(1, 4);
             TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16, 16, 16 };
             TileObjectData.newTile.CoordinateWidth = 16;

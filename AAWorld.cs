@@ -1644,6 +1644,10 @@ namespace AAMod
         {
             progress.Message = Language.GetTextValue("Mods.AAMod.Common.AAWorldBuildHoard");
             Point origin = new Point((int)(Main.maxTilesX * 0.3f), (int)(Main.maxTilesY * 0.65f));
+            if (Main.dungeonX > Main.maxTilesX / 2)
+            {
+                origin = new Point((int)(Main.maxTilesX * 0.7f), (int)(Main.maxTilesY * 0.65f));
+            }
             Hoard biome = new Hoard();
             HoardClear delete = new HoardClear();
             delete.Place(origin, WorldGen.structures);

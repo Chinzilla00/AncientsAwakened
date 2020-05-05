@@ -3,12 +3,12 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks.Paintings
 {
-    public class KrakenPainting : ModItem
+    public class LuciferPainting : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Sea of Nightmares");
-            Tooltip.SetDefault("'There are things in that ship no man should see...'");
+            DisplayName.SetDefault("King of Evil");
+            Tooltip.SetDefault("'The pit. Hot, dark, and bloody, no thanks.'");
         }
 
         public override void SetDefaults()
@@ -23,7 +23,7 @@ namespace AAMod.Items.Blocks.Paintings
             item.useStyle = 1;
             item.consumable = true;
             item.rare = ItemRarityID.Blue;
-            item.createTile = mod.TileType("KrakenPainting");
+            item.createTile = mod.TileType("LuciferPainting");
         }
     }
 }
