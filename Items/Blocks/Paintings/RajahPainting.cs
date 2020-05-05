@@ -8,7 +8,7 @@ namespace AAMod.Items.Blocks.Paintings
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Pouncing Punisher");
-            Tooltip.SetDefault("'There are things in that ship no man should see...'");
+            Tooltip.SetDefault("'The king of the small and helpless, both of which he is most certainly not.'");
         }
 
         public override void SetDefaults()

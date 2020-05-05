@@ -7,7 +7,7 @@ namespace AAMod.Items.Blocks.Paintings
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Valor");
+            DisplayName.SetDefault("7-Headed Scream");
             Tooltip.SetDefault("'Sweet Azathoth, will this oversized lizard zip his lip?!'");
         }
 

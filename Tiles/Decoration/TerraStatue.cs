@@ -18,7 +18,7 @@ namespace AAMod.Tiles.Decoration
             Main.tileNoAttach[Type] = true;
             dustType = DustID.Gold;
             Main.tileLavaDeath[Type] = false;
-            TileObjectData.newTile.Width = 5;
+            TileObjectData.newTile.Width = 4;
             TileObjectData.newTile.Height = 5;
             TileObjectData.newTile.Origin = new Point16(1, 4);
             TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);

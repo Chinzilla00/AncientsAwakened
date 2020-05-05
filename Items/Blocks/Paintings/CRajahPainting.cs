@@ -8,7 +8,7 @@ namespace AAMod.Items.Blocks.Paintings
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Champion of the Innocent");
-            Tooltip.SetDefault("'The flames of hate...they still rage in this serpent...'");
+            Tooltip.SetDefault("'The only thing more powerful than a defender is his unending fury.'");
         }
 
         public override void SetDefaults()

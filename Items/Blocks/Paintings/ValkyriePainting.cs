@@ -23,7 +23,7 @@ namespace AAMod.Items.Blocks.Paintings
             item.useStyle = 1;
             item.consumable = true;
             item.rare = ItemRarityID.Blue;
-            item.createTile = mod.TileType("UmbraPainting");
+            item.createTile = mod.TileType("ValkyriePainting");
         }
     }
 }

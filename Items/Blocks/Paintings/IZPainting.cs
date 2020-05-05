@@ -8,7 +8,7 @@ namespace AAMod.Items.Blocks.Paintings
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Eye of Infinity");
-            Tooltip.SetDefault("'I'm never going to those islands again...'");
+            Tooltip.SetDefault("'It still haunts my nightmares...'");
         }
 
         public override void SetDefaults()

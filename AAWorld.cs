@@ -1042,7 +1042,7 @@ namespace AAMod
         private void Altars(GenerationProgress progress)
         {
             progress.Message = Language.GetTextValue("Mods.AAMod.Common.AAWorldBuildAltars");
-            for (int num = 0; num < Main.maxTilesX / 390; num++)
+            for (int num = 0; num < Main.maxTilesX / 500; num++)
             {
                 int xAxis = WorldGen.genRand.Next(200, Main.maxTilesX - 200);
                 int yAxis = WorldGen.genRand.Next((int)WorldGen.rockLayer + 150, Main.maxTilesY - 250);
@@ -1061,28 +1061,30 @@ namespace AAMod
                         {
                             Altar = ModContent.TileType<ChaosAltar2>();
                         }
-                        if (Main.rand.Next(15) == 0)
+
+                        if ((tile.type == ModContent.TileType<Torchstone>() ||
+                            tile.type == ModContent.TileType<Torchsand>() ||
+                            tile.type == ModContent.TileType<Torchice>() ||
+                            tile.type == ModContent.TileType<Torchsandstone>() ||
+                            tile.type == ModContent.TileType<Torchsand>() ||
+                            tile.type == ModContent.TileType<InfernoGrass>())
+                            && Altar == ModContent.TileType<ChaosAltar1>())
                         {
-                            if ((tile.type == ModContent.TileType<Torchstone>() ||
-                                tile.type == ModContent.TileType<Torchsand>() ||
-                                tile.type == ModContent.TileType<Torchice>() ||
-                                tile.type == ModContent.TileType<Torchsandstone>() ||
-                                tile.type == ModContent.TileType<Torchsand>() ||
-                                tile.type == ModContent.TileType<InfernoGrass>())  
-                                && Altar == ModContent.TileType<ChaosAltar1>())
-                            {
-                                Altar = ModContent.TileType<ChaosAltar2>();
-                            }
-                            if ((tile.type == ModContent.TileType<Depthstone>() || 
-                                tile.type == ModContent.TileType<Depthsand>() || 
-                                tile.type == ModContent.TileType<IndigoIce>() ||
-                                tile.type == ModContent.TileType<Depthsandstone>() ||
-                                tile.type == ModContent.TileType<Depthsand>() ||
-                                tile.type == ModContent.TileType<MireGrass>()) 
-                                && Altar == ModContent.TileType<ChaosAltar2>())
-                            {
-                                Altar = ModContent.TileType<ChaosAltar1>();
-                            }
+                            Altar = ModContent.TileType<ChaosAltar2>();
+                        }
+                        if ((tile.type == ModContent.TileType<Depthstone>() ||
+                            tile.type == ModContent.TileType<Depthsand>() ||
+                            tile.type == ModContent.TileType<IndigoIce>() ||
+                            tile.type == ModContent.TileType<Depthsandstone>() ||
+                            tile.type == ModContent.TileType<Depthsand>() ||
+                            tile.type == ModContent.TileType<MireGrass>())
+                            && Altar == ModContent.TileType<ChaosAltar2>())
+                        {
+                            Altar = ModContent.TileType<ChaosAltar1>();
+                        }
+
+                        if (Main.rand.Next(15) == 0 && tile.type != ModContent.TileType<KeepBrick>() && tile.type != ModContent.TileType<TerraBrick>())
+                        {
                             WorldGen.PlaceObject(AltarX, AltarY - 1, Altar);
                         }
                     }
