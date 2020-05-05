@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
@@ -14,6 +15,9 @@ namespace AAMod.Tiles.Keep
             TileObjectData.newTile.StyleHorizontal = true;
             TileObjectData.newTile.StyleWrapLimit = 36;
             TileObjectData.addTile(Type);
+            ModTranslation name = CreateMapEntryName();
+            name.SetDefault("Painting");
+            AddMapEntry(new Color(171, 71, 66), name);
             dustType = 7;
             disableSmartCursor = true;
         }

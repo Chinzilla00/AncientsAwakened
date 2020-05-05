@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
@@ -25,6 +26,9 @@ namespace AAMod.Tiles.Keep
 			TileObjectData.newTile.AnchorTop = default;
 			TileObjectData.newTile.AnchorWall = true;
 			TileObjectData.addTile(Type);
+			ModTranslation name = CreateMapEntryName();
+			name.SetDefault("Painting");
+			AddMapEntry(new Color(171, 71, 66), name);
 			dustType = 7;
 		}
 

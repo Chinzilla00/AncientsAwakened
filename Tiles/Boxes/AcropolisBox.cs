@@ -21,8 +21,8 @@ namespace AAMod.Tiles.Boxes
 			disableSmartCursor = true;
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Music Box");
-            dustType = DustID.BlueCrystalShard;
-            AddMapEntry(new Color(200, 200, 200), name);
+			AddMapEntry(new Color(200, 200, 200), name);
+			dustType = DustID.BlueCrystalShard;
 		}
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)

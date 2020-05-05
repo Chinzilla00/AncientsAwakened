@@ -1331,7 +1331,6 @@ namespace AAMod.Worldgeneration
                     if (Main.tile[x, y].type == ModContent.TileType<Placeholder4>())
                     {
                         Main.tile[x, y].ClearTile();
-                        GenUtils.ObjectPlace(x, y, ModContent.TileType<KeepClock>());
                     }
 
                     if (Main.tile[x, y].type == ModContent.TileType<Placeholder5>())
@@ -1413,9 +1412,11 @@ namespace AAMod.Worldgeneration
                 }
             }
 
+            WorldGen.PlaceTile(origin.X + 32, origin.Y + 137, mod.TileType("InvokerBookTile"), true, false);
+            WorldGen.PlaceTile(origin.X + 36, origin.Y + 137, mod.TileType("InvokerBookTile"), true, false);
+
             #region Terra's Bedroom
 
-            WorldGen.PlaceTile(origin.X + 33, origin.Y + 137, mod.TileType("InvokerBookTile"), true, false);
             WorldGen.PlaceChest(origin.X + 238, origin.Y + 104, (ushort)mod.TileType("TerraDresser"));
             WorldGen.PlaceTile(origin.X + 226, origin.Y + 104, mod.TileType("TerraBookcase"), true, false);
 
@@ -1435,6 +1436,8 @@ namespace AAMod.Worldgeneration
             WorldGen.PlaceTile(origin.X + 247, origin.Y + 154, mod.TileType("KeepDoor1"), true, false);
             WorldGen.PlaceTile(origin.X + 251, origin.Y + 164, mod.TileType("KeepDoor1"), true, false);
             WorldGen.PlaceTile(origin.X + 249, origin.Y + 185, mod.TileType("KeepDoor1"), true, false);
+
+            WorldGen.PlaceTile(origin.X + 62, origin.Y + 80, mod.TileType("KeepDoor1"), true, false);
 
             WorldGen.PlaceTile(origin.X + 81, origin.Y + 130, mod.TileType("KeepDoor2"), true, false);
             WorldGen.PlaceTile(origin.X + 81, origin.Y + 158, mod.TileType("KeepDoor2"), true, false);
@@ -1474,7 +1477,7 @@ namespace AAMod.Worldgeneration
             WorldGen.PlaceTile(origin.X + 170, origin.Y + 100, ModContent.TileType<NKPainting>(), true, false);
             WorldGen.PlaceTile(origin.X + 186, origin.Y + 100, ModContent.TileType<LuciferPainting>(), true, false);
 
-            WorldGen.PlaceTile(origin.X + 85, origin.Y + 110, ModContent.TileType<RajahPainting>(), true, false);
+            WorldGen.PlaceTile(origin.X + 89, origin.Y + 110, ModContent.TileType<RajahPainting>(), true, false);
             WorldGen.PlaceTile(origin.X + 105, origin.Y + 110, ModContent.TileType<UmbraPainting>(), true, false);
             WorldGen.PlaceTile(origin.X + 121, origin.Y + 110, ModContent.TileType<GreedPainting>(), true, false);
             WorldGen.PlaceTile(origin.X + 168, origin.Y + 110, ModContent.TileType<AcropolisPainting>(), true, false);
