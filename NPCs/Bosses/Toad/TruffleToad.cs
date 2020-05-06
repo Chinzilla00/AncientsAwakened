@@ -531,9 +531,12 @@ namespace AAMod.NPCs.Bosses.Toad
                 npc.velocity.X *= .98f;
                 if (internalAI[1] == 35)
                 {
-                    NPC.NewNPC((int)(npc.Center.X - 30f), (int)(npc.Center.Y - 16), ModContent.NPCType<TinyToad>());
-                    NPC.NewNPC((int)npc.Center.X, (int)(npc.Center.Y - 16), ModContent.NPCType<TinyToad>());
-                    NPC.NewNPC((int)(npc.Center.X + 30f), (int)(npc.Center.Y - 16), ModContent.NPCType<TinyToad>());
+                    if (!NPC.AnyNPCs(ModContent.NPCType<TinyToad>()))
+                    {
+                        NPC.NewNPC((int)(npc.Center.X - 30f), (int)(npc.Center.Y - 16), ModContent.NPCType<TinyToad>());
+                        NPC.NewNPC((int)npc.Center.X, (int)(npc.Center.Y - 16), ModContent.NPCType<TinyToad>());
+                        NPC.NewNPC((int)(npc.Center.X + 30f), (int)(npc.Center.Y - 16), ModContent.NPCType<TinyToad>());
+                    }
                 }
                 if (internalAI[1] >= 100)
                 {
