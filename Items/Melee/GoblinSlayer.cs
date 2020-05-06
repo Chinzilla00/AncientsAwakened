@@ -46,7 +46,7 @@ namespace AAMod.Items.Melee
             return base.CanUseItem(player);
         }
 
-        public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+        public override bool? CanHitNPC(Player player, NPC target)
         {
             if (target.type == NPCID.GoblinArcher
                 || target.type == NPCID.GoblinPeon
@@ -71,6 +71,7 @@ namespace AAMod.Items.Melee
             {
                 item.damage = 30;
             }
+            return true;
         }
 	}
 }

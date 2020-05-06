@@ -317,6 +317,10 @@ namespace AAMod.NPCs.TownNPCs
 					shop.item[nextSlot].shopCustomPrice = new int?(40);
 					shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin;
 					nextSlot++;
+					shop.item[nextSlot].SetDefaults(ModContent.ItemType<CerlaStaff>());
+					shop.item[nextSlot].shopCustomPrice = new int?(40);
+					shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin;
+					nextSlot++;
 				}
 			}
 		}

@@ -9,7 +9,6 @@ namespace AAMod.Walls.Bricks
 	{
 		public override void SetDefaults()
         {
-            Main.wallLight[Type] = true;
             dustType = DustID.Gold;
             AddMapEntry(new Color(60, 60, 0));
             soundType = 21;

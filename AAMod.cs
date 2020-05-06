@@ -230,8 +230,6 @@ namespace AAMod
             texture.SetData(buffer);
         }
 
-        public static Texture2D BlockBarier = null;
-
         public override void Load()
         {
             Logger.InfoFormat("{0} AA log", Name);
@@ -335,6 +333,7 @@ namespace AAMod
             PremultiplyTexture(GetTexture("NPCs/Bosses/Toad/ToadBubble"));
             PremultiplyTexture(GetTexture("NPCs/Bosses/Zero/Protocol/ProtoStar"));
             PremultiplyTexture(GetTexture("Textures/SagittariusShield"));
+            PremultiplyTexture(GetTexture("Projectiles/ArchwitchStar"));
 
             if (GetSoundSlot(SoundType.Music, "Sounds/Music/Monarch") != 0) //ensure music was loaded!
             {
@@ -419,7 +418,6 @@ namespace AAMod
             ReplaceItemTexture(3460, "Resprites/Luminite");
             ReplaceItemTexture(512, "Resprites/SoulOfNight");
 
-            BlockBarier = GetTexture("Textures/BlockShield");
             sunTextureBackup = Main.sunTexture;
             sun3TextureBackup = Main.sun3Texture;
 
@@ -607,8 +605,6 @@ namespace AAMod
             if (Main.netMode != 2) //handle clearing all static texture arrays
             {
                 precachedTextures.Clear();
-
-                BlockBarier = null;
             }
         }
 

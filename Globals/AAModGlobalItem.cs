@@ -463,8 +463,13 @@ namespace AAMod
                 }
             }
         }
+
         public override bool CanUseItem(Item item, Player player)
         {
+            if (item.type == ItemID.RodofDiscord && player.GetModPlayer<AAPlayer>().Terrarium)
+            {
+                return false;
+            }
             if (player.GetModPlayer<AAPlayer>().ShieldUp && item.damage > 0)
             {
                 return false;

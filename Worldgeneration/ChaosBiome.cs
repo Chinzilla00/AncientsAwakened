@@ -15,6 +15,11 @@ using Terraria.Utilities;
 using AAMod.Tiles.Chests;
 using AAMod.Tiles.Crafters;
 using AAMod.Tiles.Boss;
+using AAMod.Tiles.Furniture.Razewood;
+using AAMod.Tiles.Furniture.Terra;
+using AAMod.Tiles.Furniture.Keep;
+using AAMod.Tiles.Keep;
+using AAMod.Tiles.Decoration;
 using AAMod.Worldgeneration.Placeholder;
 
 namespace AAMod.Worldgeneration
@@ -1203,7 +1208,8 @@ namespace AAMod.Worldgeneration
                 [new Color(128, 0, 0)] = mod.TileType("TerraWoodSolid"),
                 [new Color(0, 255, 255)] = mod.TileType("TerraWood"),
                 [new Color(0, 0, 64)] = mod.TileType("TerraLeaves"),
-                [new Color(255, 0, 255)] = mod.TileType("KeepPlatform"),
+                [new Color(64, 0, 0)] = mod.TileType("ScorchedShinglesS"),
+                [new Color(255, 0, 255)] = mod.TileType("TerraVault"),
                 [new Color(0, 0, 255)] = TileID.Glass,
                 [new Color(255, 255, 255)] = -1, //don't touch when genning
                 [Color.Black] = -2 //turn into air
@@ -1213,16 +1219,10 @@ namespace AAMod.Worldgeneration
             {
                 [new Color(0, 255, 0)] = mod.WallType("KeepWall"),
                 [new Color(255, 0, 0)] = WallID.GreenStainedGlass,
+                [new Color(255, 0, 255)] = WallID.PurpleStainedGlass,
                 [new Color(0, 0, 255)] = WallID.Glass,
                 [new Color(255, 255, 255)] = -1, //don't touch when genning
                 [Color.Black] = -2 //turn into air
-            };
-
-            Dictionary<Color, int> colorToObject = new Dictionary<Color, int>
-            {
-                [new Color(255, 0, 0)] = mod.WallType("KeepPlatform"),
-                [new Color(255, 255, 255)] = -1,
-                [Color.Black] = -1
             };
 
             WorldUtils.Gen(origin, new Shapes.Rectangle(280, 230), Actions.Chain(new GenAction[] //remove all fluids in sphere...
@@ -1232,39 +1232,264 @@ namespace AAMod.Worldgeneration
                 new Actions.SetSlope(0)
             }));
 
-            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/LostKeep"), colorToTile, mod.GetTexture("Worldgeneration/LostKeepWall"), colorToWall, null, mod.GetTexture("Worldgeneration/LostKeepSlope"), mod.GetTexture("Worldgeneration/LostKeepPlatforms"), colorToObject);
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/LostKeep"), colorToTile, mod.GetTexture("Worldgeneration/LostKeepWall"), colorToWall, null, mod.GetTexture("Worldgeneration/LostKeepSlope"));
 
             int genX = origin.X;
             int genY = origin.Y;
 
             gen.Generate(genX, genY, true, true);
 
-           /* Dictionary<Color, int> colorToTile2 = new Dictionary<Color, int>
+            Dictionary<Color, int> colorToTile2 = new Dictionary<Color, int>
             {
                 [new Color(255, 0, 0)] = ModContent.TileType<Placeholder1>(),
-                [new Color(255, 255, 0)] = ModContent.TileType<Placeholder2>(),
-                [new Color(0, 255, 0)] = ModContent.TileType<Placeholder3>(),
-                [new Color(0, 0, 255)] = ModContent.TileType<Placeholder4>(),
-                [new Color(0, 255, 255)] = ModContent.TileType<Placeholder5>(),
+                [new Color(0, 255, 0)] = ModContent.TileType<Placeholder2>(),
+                [new Color(255, 0, 255)] = ModContent.TileType<Placeholder3>(),
                 [Color.Black] = -1 //don't touch when genning
             };
 
             Texture2D platTex = mod.GetTexture("Worldgeneration/LostKeepPlatforms");
 
-            TexGen gen2 = BaseWorldGenTex.GetTexGenerator(platTex, colorToTile, null);
+            TexGen gen2 = BaseWorldGenTex.GetTexGenerator(platTex, colorToTile2, null, null, null, null);
+            gen2.Generate(genX, genY, true, true);
 
-            for (int x = 0; x < platTex.Width; x++)
+            int x;
+            int y;
+
+            for (x = origin.X; x < origin.X + platTex.Width; x++)
             {
-                for (int y = 0; y < platTex.Height; y++)
+                for (y = origin.Y; y < origin.Y + platTex.Height; y++)
                 {
                     if (Main.tile[x, y].type == ModContent.TileType<Placeholder1>())
                     {
                         Main.tile[x, y].ClearTile();
-                        WorldGen.PlaceObject(x, y, )
+                        WorldGen.PlaceTile(x, y, ModContent.TileType<KeepPlatform>(), true, false, -1, 0);
+                        WorldGen.SlopeTile(x, y, 1);
+                    }
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder2>())
+                    {
+                        Main.tile[x, y].ClearTile();
+                        WorldGen.PlaceTile(x, y, ModContent.TileType<KeepPlatform>(), true, false, -1, 0);
+                        WorldGen.SlopeTile(x, y, 2);
+                    }
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder3>())
+                    {
+                        Main.tile[x, y].ClearTile();
+                        WorldGen.PlaceTile(x, y, ModContent.TileType<KeepPlatform>(), true, false, -1, 0);
                     }
                 }
-            }*/
+            }
 
+            Texture2D ObjectTex = mod.GetTexture("Worldgeneration/LostKeepObjects");
+
+            Dictionary<Color, int> colorToObj = new Dictionary<Color, int>
+            {
+                [new Color(255, 0, 0)] = mod.TileType("Placeholder1"),
+                [new Color(0, 255, 0)] = mod.TileType("Placeholder2"),
+                [new Color(0, 0, 255)] = mod.TileType("Placeholder3"),
+                [new Color(128, 128, 128)] = mod.TileType("Placeholder4"),
+                [new Color(64, 64, 64)] = mod.TileType("Placeholder5"),
+                [new Color(255, 255, 0)] = mod.TileType("Placeholder6"),
+                [new Color(128, 0, 0)] = mod.TileType("Placeholder7"),
+                [new Color(0, 255, 255)] = mod.TileType("Placeholder8"),
+                [new Color(128, 128, 0)] = mod.TileType("Placeholder9"),
+                [new Color(0, 128, 128)] = mod.TileType("Placeholder10"),
+                [new Color(128, 0, 128)] = mod.TileType("Placeholder11"),
+                [new Color(0, 0, 128)] = mod.TileType("Placeholder12"),
+                [new Color(0, 128, 0)] = mod.TileType("Placeholder13"),
+                [new Color(64, 0, 64)] = mod.TileType("Placeholder14"),
+                [new Color(0, 0, 64)] = mod.TileType("Placeholder15"),
+                [new Color(64, 64, 0)] = mod.TileType("Placeholder16"),
+                [new Color(64, 0, 0)] = mod.TileType("Placeholder17"),
+                [Color.Black] = -1
+            };
+
+            TexGen gen3 = BaseWorldGenTex.GetTexGenerator(ObjectTex, colorToObj, null, null, null, null);
+            gen3.Generate(genX, genY, true, true);
+
+            for (x = origin.X; x < origin.X + ObjectTex.Width; x++)
+            {
+                for (y = origin.Y; y < origin.Y + ObjectTex.Height; y++)
+                {
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder1>())
+                    {
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, ModContent.TileType<KeepLamp>());
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder2>())
+                    {
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, ModContent.TileType<KeepLantern>());
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder3>())
+                    {
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, ModContent.TileType<KeepChandelier>());
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder4>())
+                    {
+                        Main.tile[x, y].ClearTile();
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder5>())
+                    {
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, ModContent.TileType<KeepTable>());
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder6>())
+                    {
+                        Main.tile[x, y].ClearTile();
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder7>())
+                    {
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, ModContent.TileType<KeepBookcase>());
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder8>())
+                    {
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, ModContent.TileType<TerraStatue>());
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder9>())
+                    {
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, ModContent.TileType<TerraBed>());
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder10>())
+                    {
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, ModContent.TileType<TerraBath>());
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder11>())
+                    {
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, ModContent.TileType<TerraSink>());
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder12>())
+                    {
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, ModContent.TileType<TerraChandelier>());
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder13>())
+                    {
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, ModContent.TileType<TerraLantern>());
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder14>())
+                    {
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, ModContent.TileType<RazewoodLantern>());
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder15>())
+                    {
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, ModContent.TileType<RazewoodBed>());
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder16>())
+                    {
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, ModContent.TileType<RazewoodDresser>());
+                    }
+
+                    if (Main.tile[x, y].type == ModContent.TileType<Placeholder17>())
+                    {
+                        Main.tile[x, y].ClearTile();
+                        GenUtils.ObjectPlace(x, y, TileID.CookingPots);
+                    }
+                }
+            }
+
+            WorldGen.PlaceTile(origin.X + 32, origin.Y + 137, mod.TileType("InvokerBookTile"), true, false);
+            WorldGen.PlaceTile(origin.X + 36, origin.Y + 137, mod.TileType("InvokerBookTile"), true, false);
+
+            #region Terra's Bedroom
+
+            WorldGen.PlaceChest(origin.X + 238, origin.Y + 104, (ushort)mod.TileType("TerraDresser"));
+            WorldGen.PlaceTile(origin.X + 226, origin.Y + 104, mod.TileType("TerraBookcase"), true, false);
+
+            #endregion
+
+            #region doors 
+
+            WorldGen.PlaceTile(origin.X + 97, origin.Y + 60, mod.TileType("KeepDoor1"), true, false);
+            WorldGen.PlaceTile(origin.X + 192, origin.Y + 60, mod.TileType("KeepDoor1"), true, false);
+            WorldGen.PlaceTile(origin.X + 209, origin.Y + 60, mod.TileType("KeepDoor1"), true, false);
+            WorldGen.PlaceTile(origin.X + 223, origin.Y + 60, mod.TileType("KeepDoor1"), true, false);
+
+            WorldGen.PlaceTile(origin.X + 31, origin.Y + 152, mod.TileType("KeepDoor1"), true, false);
+            WorldGen.PlaceTile(origin.X + 27, origin.Y + 162, mod.TileType("KeepDoor1"), true, false);
+            WorldGen.PlaceTile(origin.X + 29, origin.Y + 183, mod.TileType("KeepDoor1"), true, false);
+
+            WorldGen.PlaceTile(origin.X + 247, origin.Y + 152, mod.TileType("KeepDoor1"), true, false);
+            WorldGen.PlaceTile(origin.X + 251, origin.Y + 162, mod.TileType("KeepDoor1"), true, false);
+            WorldGen.PlaceTile(origin.X + 249, origin.Y + 183, mod.TileType("KeepDoor1"), true, false);
+
+            WorldGen.PlaceTile(origin.X + 62, origin.Y + 80, mod.TileType("KeepDoor1"), true, false);
+
+            WorldGen.PlaceTile(origin.X + 80, origin.Y + 130, mod.TileType("KeepDoor2"), true, false);
+            WorldGen.PlaceTile(origin.X + 80, origin.Y + 158, mod.TileType("KeepDoor2"), true, false);
+
+            WorldGen.PlaceTile(origin.X + 209, origin.Y + 130, mod.TileType("KeepDoor2"), true, false);
+            WorldGen.PlaceTile(origin.X + 209, origin.Y + 158, mod.TileType("KeepDoor2"), true, false);
+
+            WorldGen.PlaceTile(origin.X + 73, origin.Y + 130, mod.TileType("KeepDoor2"), true, false);
+            WorldGen.PlaceTile(origin.X + 216, origin.Y + 102, mod.TileType("KeepDoor2"), true, false);
+
+            WorldGen.PlaceTile(origin.X + 127, origin.Y + 114, mod.TileType("KeepDoor2S"), true, false);
+            WorldGen.PlaceTile(origin.X + 160, origin.Y + 114, mod.TileType("KeepDoor2S"), true, false);
+
+            WorldGen.PlaceTile(origin.X + 73, origin.Y + 109, mod.TileType("KeepDoor3"), true, false);
+            WorldGen.PlaceTile(origin.X + 228, origin.Y + 108, mod.TileType("KeepDoor3"), true, false);
+
+            #endregion
+
+            #region Paintings
+
+            WorldGen.PlaceTile(origin.X + 115, origin.Y + 79, ModContent.TileType<ShenPainting>(), true, false);
+            WorldGen.PlaceTile(origin.X + 127, origin.Y + 79, ModContent.TileType<CRajahPainting>(), true, false);
+            WorldGen.PlaceTile(origin.X + 139, origin.Y + 79, ModContent.TileType<IZPainting>(), true, false);
+            WorldGen.PlaceTile(origin.X + 151, origin.Y + 79, ModContent.TileType<SoCPainting>(), true, false);
+            WorldGen.PlaceTile(origin.X + 163, origin.Y + 79, ModContent.TileType<MushmadPainting>(), true, false);
+            WorldGen.PlaceTile(origin.X + 175, origin.Y + 79, ModContent.TileType<DecayPainting>(), true, false);
+
+            WorldGen.PlaceTile(origin.X + 103, origin.Y + 90, ModContent.TileType<FulgurusPainting>(), true, false);
+            WorldGen.PlaceTile(origin.X + 133, origin.Y + 90, ModContent.TileType<AkumaPainting>(), true, false);
+            WorldGen.PlaceTile(origin.X + 156, origin.Y + 90, ModContent.TileType<YamataPainting>(), true, false);
+            WorldGen.PlaceTile(origin.X + 186, origin.Y + 90, ModContent.TileType<ZeroPainting>(), true, false);
+
+            WorldGen.PlaceTile(origin.X + 103, origin.Y + 100, ModContent.TileType<DaedalusPainting>(), true, false);
+            WorldGen.PlaceTile(origin.X + 119, origin.Y + 100, ModContent.TileType<HotJPainting>(), true, false);
+            WorldGen.PlaceTile(origin.X + 135, origin.Y + 100, ModContent.TileType<AnubisPainting>(), true, false);
+            WorldGen.PlaceTile(origin.X + 154, origin.Y + 100, ModContent.TileType<ValkyriePainting>(), true, false);
+            WorldGen.PlaceTile(origin.X + 170, origin.Y + 100, ModContent.TileType<NKPainting>(), true, false);
+            WorldGen.PlaceTile(origin.X + 186, origin.Y + 100, ModContent.TileType<LuciferPainting>(), true, false);
+
+            WorldGen.PlaceTile(origin.X + 89, origin.Y + 110, ModContent.TileType<RajahPainting>(), true, false);
+            WorldGen.PlaceTile(origin.X + 105, origin.Y + 110, ModContent.TileType<UmbraPainting>(), true, false);
+            WorldGen.PlaceTile(origin.X + 121, origin.Y + 110, ModContent.TileType<GreedPainting>(), true, false);
+            WorldGen.PlaceTile(origin.X + 168, origin.Y + 110, ModContent.TileType<AcropolisPainting>(), true, false);
+            WorldGen.PlaceTile(origin.X + 184, origin.Y + 110, ModContent.TileType<SanguinePainting>(), true, false);
+            WorldGen.PlaceTile(origin.X + 200, origin.Y + 110, ModContent.TileType<ShipPainting>(), true, false);
+
+            WorldGen.PlaceTile(origin.X + 31, origin.Y + 87, ModContent.TileType<WizardPainting>(), true, false);
+            WorldGen.PlaceTile(origin.X + 30, origin.Y + 136, ModContent.TileType<TerraPainting>(), true, false);
+            WorldGen.PlaceTile(origin.X + 230, origin.Y + 102, ModContent.TileType<KingQueenPainting>(), true, false);
+
+
+            #endregion
 
             return true;
         }
@@ -1274,6 +1499,20 @@ namespace AAMod.Worldgeneration
             else if (Main.maxTilesX == 6400) { return 2; }
             else if (Main.maxTilesX == 8400) { return 3; }
             return 1; //unknown size, assume small
+        }
+    }
+
+    public class GenUtils
+    {
+        public static void ObjectPlace(Point Origin, int x, int y, int TileType)
+        {
+            WorldGen.PlaceObject(Origin.X + x, Origin.Y + y, TileType);
+            NetMessage.SendObjectPlacment(-1, Origin.X + x, Origin.Y + y, TileType, 0, 0, -1, -1);
+        }
+        public static void ObjectPlace(int x, int y, int TileType)
+        {
+            WorldGen.PlaceObject(x, y, TileType);
+            NetMessage.SendObjectPlacment(-1, x, y, TileType, 0, 0, -1, -1);
         }
     }
 

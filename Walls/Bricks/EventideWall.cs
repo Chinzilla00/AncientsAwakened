@@ -8,7 +8,6 @@ namespace AAMod.Walls.Bricks
 	{
 		public override void SetDefaults()
         {
-            Main.wallLight[Type] = true;
             Main.wallHouse[Type] = true;
             dustType = mod.DustType("AbyssiumDust");
 			AddMapEntry(new Color(33, 37, 96));

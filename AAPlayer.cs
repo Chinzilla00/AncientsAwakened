@@ -90,6 +90,8 @@ namespace AAMod
         public bool CCBookEX = false;
         public bool WeakCCRune = false;
         public bool CCRune = false;
+        public bool Cerla = false;
+        public bool CerlaEX = false;
         #endregion
 
         #region Biome bools.
@@ -454,6 +456,8 @@ namespace AAMod
             CCBookEX = false;
             WeakCCRune = false;
             CCRune = false;
+            Cerla = false;
+            CerlaEX = false;
         }
 
         private void ResetArmorEffect()
@@ -2960,6 +2964,14 @@ namespace AAMod
                         break;
                     case 32:
                             player.QuickSpawnItem(ModContent.ItemType<Items.Vanity.Shox.ShoxBag>());
+                        break;
+                    case 33:
+
+                        if (dropType >= 3)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("CerlaStaff" + addonEX));
+                        }
+
                         break;
 
                     default:

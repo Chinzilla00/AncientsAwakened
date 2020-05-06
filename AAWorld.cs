@@ -64,6 +64,10 @@ namespace AAMod
         public string nums = "1234567890";
         public static bool ModContentGenerated;
 
+        public static bool Terra1;
+        public static bool Terra2;
+        public static bool Terra3;
+
         //Messages
         public static bool AMessage;
         public static bool Empowered;
@@ -372,6 +376,10 @@ namespace AAMod
             MireStripe = downed.Contains("MStripe");
             ModContentGenerated = downed.Contains("WorldGenned");
 
+            Terra1 = downedBrood || downedHydra || NPC.downedBoss2;
+            Terra2 = NPC.downedPlantBoss;
+            Terra3 = downedShen;
+
             if (tag.ContainsKey("MCenter")) // check if the altar coordinates exist in the save file
             {
                 MireCenter = tag.Get<Vector2>("MCenter");
@@ -542,6 +550,9 @@ namespace AAMod
             WormActive = flags5[5];
             StarActive = flags5[6];
             GravActive = flags5[7];
+
+            BitsByte flags6 = reader.ReadByte();
+            downedLucifer = flags6[0];
 
             MireCenter = reader.ReadVector2();
 			InfernoCenter = reader.ReadVector2();		
@@ -1031,7 +1042,7 @@ namespace AAMod
         private void Altars(GenerationProgress progress)
         {
             progress.Message = Language.GetTextValue("Mods.AAMod.Common.AAWorldBuildAltars");
-            for (int num = 0; num < Main.maxTilesX / 390; num++)
+            for (int num = 0; num < Main.maxTilesX / 500; num++)
             {
                 int xAxis = WorldGen.genRand.Next(200, Main.maxTilesX - 200);
                 int yAxis = WorldGen.genRand.Next((int)WorldGen.rockLayer + 150, Main.maxTilesY - 250);
@@ -1050,28 +1061,30 @@ namespace AAMod
                         {
                             Altar = ModContent.TileType<ChaosAltar2>();
                         }
-                        if (Main.rand.Next(15) == 0)
+
+                        if ((tile.type == ModContent.TileType<Torchstone>() ||
+                            tile.type == ModContent.TileType<Torchsand>() ||
+                            tile.type == ModContent.TileType<Torchice>() ||
+                            tile.type == ModContent.TileType<Torchsandstone>() ||
+                            tile.type == ModContent.TileType<Torchsand>() ||
+                            tile.type == ModContent.TileType<InfernoGrass>())
+                            && Altar == ModContent.TileType<ChaosAltar1>())
                         {
-                            if ((tile.type == ModContent.TileType<Torchstone>() ||
-                                tile.type == ModContent.TileType<Torchsand>() ||
-                                tile.type == ModContent.TileType<Torchice>() ||
-                                tile.type == ModContent.TileType<Torchsandstone>() ||
-                                tile.type == ModContent.TileType<Torchsand>() ||
-                                tile.type == ModContent.TileType<InfernoGrass>())  
-                                && Altar == ModContent.TileType<ChaosAltar1>())
-                            {
-                                Altar = ModContent.TileType<ChaosAltar2>();
-                            }
-                            if ((tile.type == ModContent.TileType<Depthstone>() || 
-                                tile.type == ModContent.TileType<Depthsand>() || 
-                                tile.type == ModContent.TileType<IndigoIce>() ||
-                                tile.type == ModContent.TileType<Depthsandstone>() ||
-                                tile.type == ModContent.TileType<Depthsand>() ||
-                                tile.type == ModContent.TileType<MireGrass>()) 
-                                && Altar == ModContent.TileType<ChaosAltar2>())
-                            {
-                                Altar = ModContent.TileType<ChaosAltar1>();
-                            }
+                            Altar = ModContent.TileType<ChaosAltar2>();
+                        }
+                        if ((tile.type == ModContent.TileType<Depthstone>() ||
+                            tile.type == ModContent.TileType<Depthsand>() ||
+                            tile.type == ModContent.TileType<IndigoIce>() ||
+                            tile.type == ModContent.TileType<Depthsandstone>() ||
+                            tile.type == ModContent.TileType<Depthsand>() ||
+                            tile.type == ModContent.TileType<MireGrass>())
+                            && Altar == ModContent.TileType<ChaosAltar2>())
+                        {
+                            Altar = ModContent.TileType<ChaosAltar1>();
+                        }
+
+                        if (Main.rand.Next(15) == 0 && tile.type != ModContent.TileType<KeepBrick>() && tile.type != ModContent.TileType<TerraBrick>())
+                        {
                             WorldGen.PlaceObject(AltarX, AltarY - 1, Altar);
                         }
                     }
@@ -1383,22 +1396,70 @@ namespace AAMod
                     }
                 }
             }
+
             if (NPC.downedBoss2)
             {
-                if (!TerrariumEnemies)
+                if (!Terra1)
                 {
-                    TerrariumEnemies = true;
+                    Terra1 = true;
                     if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedBoss2Info"), Color.LimeGreen);
+                    for (int j = 0; j < Main.maxTilesX; j++)
+                    {
+                        for (int k = 0; k < Main.maxTilesY; k++)
+                        {
+                            if (Main.tile[j, k].active() && Main.tile[j, k].type == (ushort)ModContent.TileType<TerraDoor>())
+                            {
+                                WorldGen.KillTile(j, k, false, false, true);
+                            }
+                        }
+                    }
                 }
             }
+            if (NPC.downedPlantBoss)
+            {
+                if (!Terra2)
+                {
+                    Terra2 = true;
+                    if (Main.netMode != 1) BaseUtility.Chat("Ancient constructs Awaken in a place long forgotten...", Color.LimeGreen);
+                    for (int j = 0; j < Main.maxTilesX; j++)
+                    {
+                        for (int k = 0; k < Main.maxTilesY; k++)
+                        {
+                            if (Main.tile[j, k].active() && Main.tile[j, k].type == (ushort)ModContent.TileType<TerraGate>())
+                            {
+                                WorldGen.KillTile(j, k, false, false, true);
+                            }
+                        }
+                    }
+                }
+            }
+            if (downedShen)
+            {
+                if (!Terra3)
+                {
+                    Terra3 = true;
+                    if (Main.netMode != 1) BaseUtility.Chat("...hello..? Please...come to the keep as soon as possible...there is something you must see...", Color.LimeGreen);
+                    for (int j = 0; j < Main.maxTilesX; j++)
+                    {
+                        for (int k = 0; k < Main.maxTilesY; k++)
+                        {
+                            if (Main.tile[j, k].active() && Main.tile[j, k].type == (ushort)ModContent.TileType<TerraVault>())
+                            {
+                                WorldGen.KillTile(j, k, false, false, true);
+                            }
+                        }
+                    }
+                }
+            }
+
             if (NPC.downedBoss3)
             {
                 if (!Dynaskull)
                 {
                     Dynaskull = true;
-                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedBoss3Info1"), Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B);
+                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedBoss3Info1"), Color.DarkOrange);
                     if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedBoss3Info2"), Color.Orange);
-                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedBoss3Info3"), Color.Cyan.R, Color.Cyan.G, Color.Cyan.B);
+                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedBoss3Info3"), Color.Cyan);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
                     for (int k = 0; k < (int)(x * y * 15E-05); k++)
@@ -1431,7 +1492,7 @@ namespace AAMod
                 downedSAncient = true;
             }
 
-            if (downedAkuma && downedYamata && downedZero)
+            if (downedAkuma && downedYamata)
             {
                 if (downedAllAncients == false)
                 {
@@ -1585,6 +1646,10 @@ namespace AAMod
         {
             progress.Message = Language.GetTextValue("Mods.AAMod.Common.AAWorldBuildHoard");
             Point origin = new Point((int)(Main.maxTilesX * 0.3f), (int)(Main.maxTilesY * 0.65f));
+            if (Main.dungeonX > Main.maxTilesX / 2)
+            {
+                origin = new Point((int)(Main.maxTilesX * 0.7f), (int)(Main.maxTilesY * 0.65f));
+            }
             Hoard biome = new Hoard();
             HoardClear delete = new HoardClear();
             delete.Place(origin, WorldGen.structures);

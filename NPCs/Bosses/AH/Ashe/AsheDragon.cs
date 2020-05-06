@@ -53,7 +53,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             {
                 for (int j = 0; j < 2; j++)
                 {
-                    int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 228, 0f, 0f, 100, default, 2f);
+                    int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 228, 0f, 0f, 100, default, 1f);
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].noLight = true;
                 }

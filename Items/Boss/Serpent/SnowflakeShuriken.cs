@@ -27,6 +27,7 @@ namespace AAMod.Items.Boss.Serpent
 			item.shoot = mod.ProjectileType ("SS");
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
+            item.consumable = true;
         }
     }
 }

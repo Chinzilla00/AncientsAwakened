@@ -244,22 +244,15 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                             if (npc.life < npc.lifeMax / 3)
                             {
                                 int a = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X - 150, npc.Center.Y);
-                                Main.npc[a].Center = npc.Center;
                                 int b = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X + 150, npc.Center.Y);
-                                Main.npc[b].Center = npc.Center;
                                 int c = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X, npc.Center.Y - 150);
-                                Main.npc[c].Center = npc.Center;
                                 int d = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X, npc.Center.Y + 150);
-                                Main.npc[d].Center = npc.Center;
                             }
                             else
                             {
                                 int a = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X - 180, npc.Center.Y - 60);
-                                Main.npc[a].Center = npc.Center;
                                 int b = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X + 180, npc.Center.Y - 60);
-                                Main.npc[b].Center = npc.Center;
                                 int c = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X, npc.Center.Y - 200);
-                                Main.npc[c].Center = npc.Center;
                             }
                         }
                         else

@@ -167,7 +167,7 @@ namespace AAMod.Tiles.Furniture.Doom
 				}
 				if (player.showItemIconText == chest)
 				{
-					player.showItemIcon2 = mod.ItemType("ExampleDresser");
+					player.showItemIcon2 = mod.ItemType("DoomDresser");
 					player.showItemIconText = "";
 				}
 			}

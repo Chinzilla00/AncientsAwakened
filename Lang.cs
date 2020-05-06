@@ -1843,6 +1843,8 @@ Fishy";
 
                         case "FatPixie":
                         return "扑哧";
+                        case "HarukaShadow":
+                        return "真悲哀.";
 
                         case "AHDeath1":
                         return "啊啊啊啊啊! 别又这样了!!!";
@@ -2205,6 +2207,10 @@ Fishy";
 
                         case "YamataAHead":
                         return "哦呃!!!";
+                        case "YamataAHeadLaugh1":
+                        return "涅哈哈";
+                        case "YamataAHeadLaugh2":
+                        return "哈哈";
                         case "Yamata1":
                         return "哈! 我对你很宽容! 当你真正强大的时候再来, 我们来真正的比试!";
                         case "Yamata2":
@@ -2586,6 +2592,8 @@ Fishy";
 
                         case "FatPixie":
                         return "EEEE";
+                        case "HarukaShadow":
+                        return "pathetic.";
 
                         case "AHDeath1":
                         return "РРРРРРРГХ! НЕТ, ТОЛЬКО НЕ СНОВА!!!";
@@ -2952,6 +2960,10 @@ Fishy";
 
                         case "YamataAHead":
                         return "АУЧЬ!!!";
+                        case "YamataAHeadLaugh1":
+                        return "NYEH";
+                        case "YamataAHeadLaugh2":
+                        return "HEH";
                         case "Yamata1":
                         return "ХАХ! Я поддался тебе! Возвращайся, когда будешь по-настоящему хорош и сможем устроить настоящий бой";
                         case "Yamata2":
@@ -3343,6 +3355,9 @@ Fishy";
                         case "FatPixie":
                         return "YEET";
 
+                        case "HarukaShadow":
+                        return "pathetic.";
+
                         case "AHDeath1":
                         return "RRRRRRRRRGH! NOT AGAIN!!!";
                         case "AHDeath2":
@@ -3708,6 +3723,10 @@ Fishy";
 
                         case "YamataAHead":
                         return "OWIE!!!";
+                        case "YamataAHeadLaugh1":
+                        return "NYEH";
+                        case "YamataAHeadLaugh2":
+                        return "HEH";
                         case "Yamata1":
                         return "HAH! I went easy on ya! Come back when you're actually good and we can have a real fight!";
                         case "Yamata2":

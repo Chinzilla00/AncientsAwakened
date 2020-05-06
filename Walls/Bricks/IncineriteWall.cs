@@ -8,7 +8,6 @@ namespace AAMod.Walls.Bricks
 	{
         public override void SetDefaults()
         {
-            Main.wallLight[Type] = true;
             Main.wallHouse[Type] = true;
             drop = mod.ItemType("IncineriteWall");
             AddMapEntry(new Color(40, 30, 10));

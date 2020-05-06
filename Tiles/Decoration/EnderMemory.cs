@@ -32,7 +32,6 @@ namespace AAMod.Tiles.Decoration
             name.SetDefault("Eternal Memory");
             AddMapEntry(new Color(150, 100, 0), name);
             disableSmartCursor = true;
-            drop = mod.ItemType("EnderMemory");
         }
 
         public override bool NewRightClick(int i, int j)

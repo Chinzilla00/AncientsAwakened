@@ -61,9 +61,9 @@ namespace AAMod.NPCs.Bosses.Akuma
                     if (npc.frameCounter >= 7)
                     {
                         npc.frameCounter = 0;
-                        npc.frame.Y += 44;
+                        npc.frame.Y += 42;
                     }
-                    if (npc.frame.Y > 44 * 7)
+                    if (npc.frame.Y > 42 * 7)
                     {
                         npc.frame.Y = 0;
                     }
@@ -136,9 +136,9 @@ namespace AAMod.NPCs.Bosses.Akuma
 				if (npc.frameCounter >= 7)
 				{
 					npc.frameCounter = 0;
-					npc.frame.Y += 52;
+					npc.frame.Y += 42;
 				}
-				if (npc.frame.Y > 52 * 5)
+				if (npc.frame.Y > 42 * 7)
 				{
 					npc.frame.Y = 0;
 				}
