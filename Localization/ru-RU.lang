@@ -111,8 +111,8 @@ BuffDescription.DragonSoul=Горит гневом дракона
 BuffName.DragonSpirit=Дух Дракона
 BuffDescription.DragonSpirit=Призывает Дух Дракона сражаться за вас
 
-BuffName.DustDevil=Пыльный Дьявол
-BuffDescription.DustDevil=Призывает Пыльного Дьявола сражаться за вас
+BuffName.DustDevil=Пыльный Демон
+BuffDescription.DustDevil=Призывает Пыльного Демона сражаться за вас
 
 BuffName.DynaEnergy1=Дина-Энергия
 
@@ -318,7 +318,7 @@ BuffDescription.Terrarium=Ваша стопа горит энергией Тер
 BuffName.TerraSummon=Терра-Миньоны
 BuffDescription.TerraSummon=Команда констрактов единства под вашим распоряжением
 
-BuffName.TerraWizard=Терра-Колдун
+BuffName.TerraWizard=Терра Колдун
 BuffDescription.TerraWizard=Магия
 
 BuffName.TiedemiesBuff=Тайдмис
@@ -1123,7 +1123,7 @@ ItemTooltip.WitchRobe=Увеличивает магический урон/ур�
 
 
 ===UNKNWN===
-ItemName.AbyssClawBanner= Знамя когтя Бездны
+ItemName.AbyssClawBanner= Знамя Когтя Бездны
 
 ItemName.Banners=Сломанное знамя
 
@@ -1164,16 +1164,16 @@ ItemName.FlamebruteBanner= Знамя Огненного Зверя
 ItemName.FlamespitterBanner= Знамя Огнеплюя
 
 ===UNKNWN===
-ItemName.FogAnglerBanner=Знамя туманного удильщика
+ItemName.FogAnglerBanner=Знамя Туманного Удильщика
 
 ===UNKNWN===
-ItemName.FungusFrogBanner=Знамя грибной лягушки
+ItemName.FungusFrogBanner=Знамя Грибной Лягушки
 
 ===UNKNWN===
-ItemName.HydraClawBanner= Знамя когтя Гидры
+ItemName.HydraClawBanner= Знамя Когтя Гидры
 
 ===UNKNWN===
-ItemName.InfernalSlimeBanner= Знамя Огненного слизня
+ItemName.InfernalSlimeBanner= Знамя Пламенного Слизня
 
 ===UNKNWN===
 ItemName.InfernoSalamanderBanner= Знамя Опаленной саламандры
@@ -1184,13 +1184,13 @@ ItemName.InfernoGhoulBanner=Знамя гуля из Инферно
 ===UNKNWN===
 ItemName.KappaBanner= Знамя Каппы
 
-ItemName.LungBanner=Знамя древнего змия
+ItemName.LungBanner=Знамя Древнего Змия
 
 ===UNKNWN===
-ItemName.MadnessBatBanner= Знамя летучей мыши безумия
+ItemName.MadnessBatBanner= Знамя Летучей мыши Безумия
 
 ===UNKNWN===
-ItemName.MadnessSlimeBanner= Знамя Слизня безумия
+ItemName.MadnessSlimeBanner= Знамя Слизня Безумия
 
 ===UNKNWN===
 ItemName.MagmalgamBanner= Знамя Магмальгамы
@@ -1204,31 +1204,31 @@ ItemName.MireGhoulBanner=Знамя гуля из Трясины
 ItemName.MiregronBanner= Знамя Трягрона
 
 ===UNKNWN===
-ItemName.MireSlimeBanner= Знамя слизня Трясины
+ItemName.MireSlimeBanner= Знамя Слизня Трясины
 
 ===UNKNWN===
 ItemName.MireSandSharkBanner=Знамя песчаной акулы из Трясины 
 
 ===UNKNWN===
-ItemName.MiresquitoBanner=Знамя комара
+ItemName.MiresquitoBanner=Знамя Комара
 
 ===UNKNWN===
-ItemName.MossterBanner= Знамя мохтра (Переведи его, как "мохтер")
+ItemName.MossterBanner= Знамя Мохтра
 
 ===UNKNWN===
-ItemName.MushbugBanner=Знамя грибного жука
+ItemName.MushbugBanner=Знамя Грибного Жука
 
 ===UNKNWN===
-ItemName.MushroomCrabBanner=Знамя грибного краба
+ItemName.MushroomCrabBanner=Знамя Грибного Краба
 
 ===UNKNWN===
-ItemName.MushroomZombieBanner=Знамя грибного зомби
+ItemName.MushroomZombieBanner=Знамя Грибного Зомби
 
 ===UNKNWN===
 ItemName.NewtBanner= Знамя Ньюта
 
 ===UNKNWN===
-ItemName.NightGuardBanner=Знамя ночного стража
+ItemName.NightGuardBanner=Знамя Ночного Стража
 
 ===UNKNWN===
 ItemName.NullBanner= Знамя Нуля
@@ -1539,22 +1539,22 @@ ItemName.TerraWorkbench=Терра верстак
 // AAMod.Items.Blocks.Bricks
 
 
-ItemName.AbyssiumBrick=Кирпич из абиссиума
+ItemName.AbyssiumBrick=Кирпич из Абиссиума
 
-ItemName.DarkmatterBrick=Кирпич из темной материи
+ItemName.DarkmatterBrick=Кирпич из Темной Материи
 
 ItemName.DaybreakBrick=Рассветный кирпич
 
-ItemName.DoomsdayPlating=Покрытие судного дня
+ItemName.DoomsdayPlating=Покрытие Судного дня
 
-ItemName.DoomstoneBrick=Кирпич из Камня рока
+ItemName.DoomstoneBrick=Кирпич из камня рока
 
 ItemName.EquinoxBrick=Кирпич Равноденствия
 ItemTooltip.EquinoxBrick=Меняется в зависимости от времени суток
 
 ItemName.EventideBrick=Вечерний кирпич
 
-ItemName.IncineriteBrick=Кирпич из инсенерита (Блять научите, как правильно это писать, как у тебя переведено)
+ItemName.IncineriteBrick=Кирпич из Инцинерита
 
 ItemName.KeepBrick=Кирпич Затерянной Крепости
 
@@ -1562,7 +1562,7 @@ ItemName.SkymarbleBrick=Кирпич из небесного мрамора
 
 ItemName.TerraBrick=Кирпич Затерянной Крепости
 
-ItemName.RadiumBrick=Кирпич из радия
+ItemName.RadiumBrick=Кирпич из Радия
 
 ItemName.RelicBrick=Кирпич из реликвии
 
@@ -2604,7 +2604,7 @@ ItemTooltip.DoomPortal=Призывает маленький протокол р
 ItemName.DoomRay=Нова Фокус
 ItemTooltip.DoomRay=Стреляет могущественным лучом смерти
 
-ItemName.EventHorizon=Горизон Событий
+ItemName.EventHorizon=Горизонт Событий
 
 ItemName.GenocideCannon=Пушка Геноцида
 ItemTooltip.GenocideCannon=Стреляет взрывными ракетами\nшанс 25% выстрелить глюкнувшей ракет0й, которая взрывается в осколочные ракеты
@@ -2656,7 +2656,7 @@ ItemName.ZeroTrophy=Тр0фей Зир0
 ItemName.ChaosRune=Хаос Руна
 ItemTooltip.ChaosRune=Проклятая дощечка, разрывающаяся хаотической энергией\nПризывает истинную форму Шен Дорагона\nНе тратится
 
-ItemName.ChaosSigil=Сигила Хаоса
+ItemName.ChaosSigil=Печать Хаоса
 ItemTooltip.ChaosSigil=Проклятая дощечка, полная нестабильной магии\nПризывает Императора Хаоса\nНе тратится
 
 ItemName.ConfusingMushroom=Странно выглядящий гриб
@@ -2668,7 +2668,7 @@ ItemTooltip.CuriousClaw=Он по-странному сухой \nМожет б�
 ItemName.CursedSkull=Проклятый череп
 ItemTooltip.CursedSkull=Приывает Скелетрона\nМожет быть использован только ночью
 
-ItemName.DiamondCarrot=Десяти каратовая морковка
+ItemName.DiamondCarrot=10-ти каратовая морковка
 ItemTooltip.DiamondCarrot=Ярость разгневанного Раджи сиходит из этой богато украшенной морковки...\nНе тратится
 
 ItemName.DjinnLamp=Пустынная лампа
@@ -2677,7 +2677,7 @@ ItemTooltip.DjinnLamp=Призывает Пустынного Джинна
 ItemName.DraconianRune=Руна Драконического Солнца
 ItemTooltip.DraconianRune=Закалдованная дощечка, разрывающаяся огненной хаотической энергией\nПризывает Они Акуму\nМожно использовать только днем в Инферно\nНе тратится
 
-ItemName.DraconianSigil=Сигила Драконического Солнца
+ItemName.DraconianSigil=Печать Драконического Солнца
 ItemTooltip.DraconianSigil=Богато украшенная дощечка, которая, по слухам, содержит лучезарную силу тысячи солнц\nПризывает Акуму\nМожно использовать только днем в Инферно\nНе тратится
 
 ItemName.DragonBell=Древний Колокол
@@ -2686,7 +2686,7 @@ ItemTooltip.DragonBell=Богато украшенный колокол\nПри�
 ItemName.DreadRune=Руна Ужасающей Луны
 ItemTooltip.DreadRune=Закалдованная дощечка, испускающая темную хаотическую энергию\nПризывает Ямата Но Орочи\nМожно использовать только ночью в Трясине\nNon-Consumable
 
-ItemName.DreadSigil=Сигила Ужасающей Луны
+ItemName.DreadSigil=Печать Ужасающей Луны
 ItemTooltip.DreadSigil=Рваная старая дощечка, которая, по слухам, содержит темную магию новой Луны\nПризывает Ямату\nМожно использовать только ночью в Трясине\nNon-Consumable
 
 ItemName.EquinoxWorm=Червь Равноденствия
@@ -2704,7 +2704,7 @@ ItemTooltip.GoldenGrub=Призывает Жадность\nМожет быть 
 ItemName.HydraChow=Еда Гидры
 ItemTooltip.HydraChow=Только одно держание этого заставляет вас заткнуть нос\nПризывает Гидру\nМожно использовать только ночью в Трясине
 
-ItemName.InterestingClaw=Инетерсно выглядещий коготь
+ItemName.InterestingClaw=Интересно выглядещий коготь
 ItemTooltip.InterestingClaw=Он по-странному липкий и мокрый\nМожет быть использован только ночью
 
 ItemName.IntimidatingMushroom=Устрашающе выглядящий гриб
@@ -2719,8 +2719,8 @@ ItemTooltip.Owl=Призывает Афину\nМожет быть исполь�
 ItemName.PlanteraFlower=Джунглиевая Орхидея
 ItemTooltip.PlanteraFlower=Призывает Плантеру\nМожет быть использована только в подземных Джунглях
 
-ItemName.GoldenCarrot=10-ти каратовая морковка
-ItemTooltip.GoldenCarrot=Призывает самого Разозленного Палача
+ItemName.PlatinumCarrot=10-ти каратовая морковка
+ItemTooltip.Platinum=Призывает самого Разозленного Палача
 
 ItemName.Scepter=Скипетр Ра
 ItemTooltip.Scepter=Вызовет Анубиса\nРаботает только на поверхности в Пустные\n'Я эм...взял это у своего старого друга-птицы'
@@ -3510,7 +3510,7 @@ ItemTooltip.DragonFang=Нажмите правую кнопку мыши, что
 
 ItemName.DragonGlove=Перчатка Дракона
 
-ItemName.Dragonkite=?
+ItemName.Dragonkite=Полет Дракона
 
 ItemName.DuskBringer=Разносчик Сумрака
 
@@ -3526,7 +3526,7 @@ ItemName.FlamingFury=Огненная Ярость
 ItemTooltip.FlamingFury=Скована воспламеняющим гневом древних драконов
 
 ItemName.FleshrendClaymore=Плотный Клеймор
-ItemTooltip.FleshrendClaymore=Запятнан кровью павших враговStained with the blood of your fallen foes.
+ItemTooltip.FleshrendClaymore=Запятнан кровью павших врагов
 
 ItemName.GlacierBreaker=Разрушитель Ледника
 ItemTooltip.GlacierBreaker=Пока цепь летит, падают сосульки
@@ -3677,7 +3677,7 @@ ItemName.Green=Зеленый Алхимический Гриб
 ItemTooltip.Green=Пахнет странно
 
 ItemName.MadnessShroom=Гриб Безумия
-ItemTooltip.MadnessShroom=Чрезвычайно редкий гриб\nМожет Грибочеловек знает, что делать с этим?
+ItemTooltip.MadnessShroom=Чрезвычайно редкий гриб\nМожет Человек-Гриб знает, что делать с этим?
 
 ItemName.Orange=Оранжевый Алхимический Гриб
 ItemTooltip.Orange=Пахнет странно
@@ -3945,11 +3945,6 @@ ItemName.MidasGun=Бластер
 ItemTooltip.MidasGun=Выстрели, чтобы выбить больше денег.
 
 ===UNKNWN===
-ItemName.Mossket=
-
-ItemName.Mushbow=Mushroom Bow
-
-===UNKNWN===
 ItemName.Mossket=Мохшкет
 
 ItemName.Mushbow=Грибной Лук
@@ -4198,7 +4193,7 @@ ItemName.OceanPick=Коралловая Кирка
 ItemTooltip.OceanPick=Потому что "Синяя Кирка" было скучным названием
 
 ItemName.PerfectShadowDrill=Идеальный Бур Теней
-ItemTooltip.PerfectShadowDrill=Так-то лучше.
+ItemTooltip.PerfectShadowDrill=Так-то лучше
 
 ItemName.PerfectStonebreaker=Идеальный Камнелом
 
@@ -4229,59 +4224,59 @@ ItemName.TrueScalpel=Истинный Скальпель
 // AAMod.Items.Usable
 
 
-ItemName.BlackSolution=Black Solution
-ItemTooltip.BlackSolution=Used by the Clentaminator\nSpreads the Void
+ItemName.BlackSolution=Черный раствор
+ItemTooltip.BlackSolution=Используется с очистителем\nРаспространяет Пустоту
 
-ItemName.BrownSolution=Brown Solution
-ItemTooltip.BrownSolution=Used by the Clentaminator\nSpreads the Red Mushroom biome
+ItemName.BrownSolution=Коричневый раствор
+ItemTooltip.BrownSolution=Используется с очистителем\nРаспространяет Красный Грибной биом
 
-ItemName.CodeMagnet=Binary Code Magnet
-ItemTooltip.CodeMagnet=Pulls items to you by moving its code closer to you\nRight click the item to turn it off
+ItemName.CodeMagnet=Магнит Бинарного Кода
+ItemTooltip.CodeMagnet=Притягивает к вам предметы, перенося их код ближе к вам\nНажмите правую кнопку мыши, что бы выключить магнит
 
-ItemName.CodeMagnetOff=Binary Code Magnet
-ItemTooltip.CodeMagnetOff=Pulls items to you by moving its code closer to you\nRight click the item to turn it on
+ItemName.CodeMagnetOff=Магнит Бинарного Кода
+ItemTooltip.CodeMagnetOff=Притягивает к вам предметы, перенося их код ближе к вам\nНажмите правую кнопку мыши, что бы включить магнит
 
-ItemName.DeepGreenSolution=Deep Green Solution
-ItemTooltip.DeepGreenSolution=Used by the Clentaminator\nConverts the jungle into forest
+ItemName.DeepGreenSolution=Темно-зеленый раствор
+ItemTooltip.DeepGreenSolution=Используется с очистителем\nПревращает Джунгли в Лес
 
-ItemName.DoomSeeds=Doom Seeds
-ItemTooltip.DoomSeeds=Plants Doomgrass
+ItemName.DoomSeeds=Семена Рока
+ItemTooltip.DoomSeeds=Садят траву Пустоты
 
-ItemName.DoomstopperKey=Doomstopper Chip
-ItemTooltip.DoomstopperKey='Unlocks Doomsday Chests'
+ItemName.DoomstopperKey=Чип остановки Рока
+ItemTooltip.DoomstopperKey='Открывает сундуки Судного дня'
 
-ItemName.FungicideSolution=Swarm Solution
-ItemTooltip.FungicideSolution=Used by the Clentaminator\nCleanses the mushroom biomes
+ItemName.FungicideSolution=Раствор Роя
+ItemTooltip.FungicideSolution=Используется с очистителем\nОчищает грибные биомы
 
-ItemName.GreedKey=Gilded Key
-ItemTooltip.GreedKey=This probably unlocks...something?
+ItemName.GreedKey=Позолоченный ключ
+ItemTooltip.GreedKey=Открывает...что-то?
 
-ItemName.IndigoSolution=Indigo Solution
-ItemTooltip.IndigoSolution=Used by the Clentaminator\nSpreads the Mire
+ItemName.IndigoSolution=Раствор индиго
+ItemTooltip.IndigoSolution=Исопльзуется с очистителем\nРаспространяет Трясину
 
 ItemName.InfernoKey=Inferno Key
 ItemTooltip.InfernoKey='Unlocks the power of the blazing sun'
 
-ItemName.InfernoSeeds=Scorched Seeds
-ItemTooltip.InfernoSeeds=Plants Inferno grass
+ItemName.InfernoSeeds=Соженные семена
+ItemTooltip.InfernoSeeds=Садит траву Инферно
 
-ItemName.KeyOfSmite=Key of Smite
-ItemTooltip.KeyOfSmite='Charged with flaming energy'
+ItemName.KeyOfSmite=Ключ разрушения
+ItemTooltip.KeyOfSmite='Заряжен огненной энергией'
 
-ItemName.KeyOfSpite=Key of Spite
-ItemTooltip.KeyOfSpite='Charged with abyssal energy'
+ItemName.KeyOfSpite=Ключ злобы
+ItemTooltip.KeyOfSpite='Заряжен энергией бездны'
 
-ItemName.LimeSolution=Lime Solution
-ItemTooltip.LimeSolution=Used by the Clentaminator\nConverts the forest into the jungle
+ItemName.LimeSolution=Лаймовый раствор
+ItemTooltip.LimeSolution=Используется с очистителем\nПревращает Лес в Джунгли
 
-ItemName.MireKey=Mire Key
-ItemTooltip.MireKey='Unlocks the power of the wrathful abyss'
+ItemName.MireKey=Ключ Трясины
+ItemTooltip.MireKey='Открывает силу разгневанной бездны'
 
-ItemName.MireSeeds=Dank Seeds
-ItemTooltip.MireSeeds=Plants Mire grass
+ItemName.MireSeeds=Мокрые семена
+ItemTooltip.MireSeeds=Садит траву Трясины
 
-ItemName.Mooncaller=Mooncaller
-ItemTooltip.Mooncaller=Brings forth the shimmering moon.\nNon-Consumable
+ItemName.Mooncaller=Взывающий к Луне
+ItemTooltip.Mooncaller=Вызывает мерцающую Луну.\nНе тратится
 
 ===UNKNWN===
 ItemName.Moonpowder=Лунный Порошок
@@ -4297,7 +4292,7 @@ ItemName.OrderSolution=Раствор Порядка
 ItemTooltip.OrderSolution=Используется Очистителем\nОчищает Хаос
 
 ItemName.RiftMirror=Зеркало Разлома
-ItemTooltip.RiftMirror=Нажатие на горячую клавишу разлома (rift) возвращает вас домой\nНажатие на горячую клавишу возвращения разлома (rift return) возвращает вас на прошлую точку телепорта
+ItemTooltip.RiftMirror=Нажатие на горячую клавишу разлома возвращает вас домой\nНажатие на горячую клавишу возвращения разлома возвращает вас на прошлую точку телепорта
 
 ItemName.SporeSac=Споровый Мешок
 ItemTooltip.SporeSac=Распространяет поверхностный грибной биом
@@ -4312,7 +4307,7 @@ ItemTooltip.Sunpowder=Очищает Трясину
 ItemName.TerraKey=Ключ Затерянной Крепости
 ItemTooltip.TerraKey=Богато украшенный ключ
 
-ItemName.Timecaller=Взывающий ко Времени
+ItemName.Timecaller=Взывающий ко времени
 ItemTooltip.Timecaller=Вызывает следующий Лунный или Солнечный свет.\nНе тратится
 
 ItemName.TreasureRadar=Охотник за Сокровищами
@@ -4364,13 +4359,13 @@ ItemName.AnarchyBag=Мешок Пристина
 ItemTooltip.AnarchyBag=<right>, что бы открыть\n'Предметы первой необходимости для подражания Анархии!'
 
 ItemName.PristineChestplate=Нагрудник Пристина
-ItemTooltip.PristineChestplate='Великолепна для подражания контрибьюторов Ancients Awakened!'\nАнархия сам сделал этот спрайт
+ItemTooltip.PristineChestplate='Великолепен для подражания контрибьюторов Ancients Awakened!'\nАнархия сам сделал этот спрайт
 
 ItemName.PristineHelmet=Шлем Пристина
-ItemTooltip.PristineHelmet='Великолепна для подражания контрибьюторов Ancients Awakened!'\nАнархия сам сделал этот спрайт
+ItemTooltip.PristineHelmet='Великолепен для подражания контрибьюторов Ancients Awakened!'\nАнархия сам сделал этот спрайт
 
 ItemName.PristineLeggings=Штаны Пристина
-ItemTooltip.PristineLeggings='Великолепна для подражания контрибьюторов Ancients Awakened!'\nАнархия сам сделал этот спрайт
+ItemTooltip.PristineLeggings='Великолепны для подражания контрибьюторов Ancients Awakened!'\nАнархия сам сделал этот спрайт
 
 // AAMod.Items.Vanity.Apawn
 
@@ -4378,10 +4373,10 @@ ItemName.ApawnEgg=Яйцо с сюпризом
 ItemTooltip.ApawnEgg=<right>, что бы открыть\n'ЭТО ОГРООООМНОЕ пластиковое яйцо'
 
 ItemName.ApawnBoots=Ботинки Апавна
-ItemTooltip.ApawnBoots='Великолепна для подражания тестерам Ancients Awakened!'
+ItemTooltip.ApawnBoots='Великолепны для подражания тестерам Ancients Awakened!'
 
 ItemName.ApawnHelm=Визор Апавна
-ItemTooltip.ApawnHelm='Великолепна для подражания разработчикам Ancients Awakened!'
+ItemTooltip.ApawnHelm='Великолепен для подражания разработчикам Ancients Awakened!'
 
 ItemName.ApawnPlate=Пластина Апавна
 ItemTooltip.ApawnPlate='Великолепна для подражания разработчикам Ancients Awakened!'
@@ -4412,13 +4407,13 @@ ItemName.BegBag=Мешок Странной Лошади
 ItemTooltip.BegBag=<right>, что бы открыть\n'Предметы первой необходимости для подражания Странной Лошади!'
 
 ItemName.PonyBody=Костюм Странной Лошади
-ItemTooltip.PonyBody='Великолепна для подражания разработчикам Ancients Awakened!'
+ItemTooltip.PonyBody='Великолепен для подражания разработчикам Ancients Awakened!'
 
 ItemName.PonyHoofs=Копыта Странной Лошади
 ItemTooltip.PonyHoofs='Великолепны для подражания разработчикам Ancients Awakened!'
 
 ItemName.PonyMask=Маска Странной Лошади
-ItemTooltip.PonyMask='Великолепны для подражания разработчикам Ancients Awakened!'
+ItemTooltip.PonyMask='Великолепна для подражания разработчикам Ancients Awakened!'
 
 // AAMod.Items.Vanity.Blazen
 
@@ -4477,10 +4472,10 @@ ItemName.CharlieBoots=Ботинки Призрака
 ItemTooltip.CharlieBoots='Великолепны для подражания разработчикам Ancients Awakened!'
 
 ItemName.CharlieCloak=Накидка Призрака
-ItemTooltip.CharlieCloak='Великолепны для подражания разработчикам Ancients Awakened!'
+ItemTooltip.CharlieCloak='Великолепна для подражания разработчикам Ancients Awakened!'
 
 ItemName.CharlieCowl=Капюшон Призрака
-ItemTooltip.CharlieCowl='Великолепны для подражания разработчикам Ancients Awakened!'
+ItemTooltip.CharlieCowl='Великолепен для подражания разработчикам Ancients Awakened!'
 
 ItemName.CharlieWings=Темные крылья Кошмара
 ItemTooltip.CharlieWings=Позволяют вам летать и поглощают урон от падения\nДержите вниз и прыжок, что бы продолжительно лететь над землей\n'Великолепны для подражания разработчикам Ancients Awakened!'
@@ -4569,16 +4564,16 @@ ItemTooltip.TopHat=<right>, что бы открыть\n'Предметы пер
 
 
 ItemName.SammyPants=Штаны Пушистого лиса
-ItemTooltip.SammyPants='Великолепна для подражания контрибьюторов Ancients Awakened!'
+ItemTooltip.SammyPants='Великолепны для подражания контрибьюторам Ancients Awakened!'
 
 ItemName.SammySweater=Свитер Пушистого лиса
-ItemTooltip.SammySweater='Великолепна для подражания контрибьюторов Ancients Awakened!'
+ItemTooltip.SammySweater='Великолепен для подражания контрибьюторам Ancients Awakened!'
 
 ItemName.SammyWig=Парик Пушистого лиса
-ItemTooltip.SammyWig='Великолепна для подражания контрибьюторов Ancients Awakened!'
+ItemTooltip.SammyWig='Великолепен для подражания контрибьюторам Ancients Awakened!'
 
-ItemName.WetFurrbag=Wet Furrbag
-ItemTooltip.WetFurrbag=<right> to open \n'All the essentials for impersonating the Funloving Fox!'
+ItemName.WetFurrbag=Мокрый мешок из шерсти
+ItemTooltip.WetFurrbag=<right>, что бы открыть \n'Предметы первой необходимости для подражания Веселому Лису!'
 
 
 // AAMod.Items.Vanity.Gibs
@@ -4717,16 +4712,16 @@ ItemName.ZeroMask=Маска Зир0
 
 
 ItemName.Mask=Маска
-ItemTooltip.Mask='Великолепна для подражания контрибьюторов Ancients Awakened!'
+ItemTooltip.Mask='Великолепна для подражания контрибьюторам Ancients Awakened!'
 
 ItemName.MaskBag=Мешок с масками
 ItemTooltip.MaskBag=<right>, что бы открыть\n'Предметы первой необходимости для подражания Лорду Масок!'
 
 ItemName.MaskBoots=Штаны Лорда масок
-ItemTooltip.MaskBoots='Great for impersonating Ancients Awakened Contributors!'
+ItemTooltip.MaskBoots='Великолепны для подражания контрибьюторам Ancients Awakened!'
 
 ItemName.MaskPlate=Нагрудник Лорда Масок
-ItemTooltip.MaskPlate='Great for impersonating Ancients Awakened Contributors!'
+ItemTooltip.MaskPlate='Великолепен для подражания контрибьюторам Ancients Awakened!'
 
 // AAMod.Items.Vanity.Mikpin
 
@@ -4792,13 +4787,13 @@ ItemName.ShoxBag=Заряженный мешок Шока
 ItemTooltip.ShoxBag=<right>, что бы открыть\n'Предметы первой необходимости для подражания Лорду Шока!'
 
 ItemName.ShoxPants=Ботинки Лорда Шока
-ItemTooltip.ShoxPants='Великолепны для подражания контрибьюторов Ancients Awakened!'
+ItemTooltip.ShoxPants='Великолепны для подражания контрибьюторам Ancients Awakened!'
 
 ItemName.ShoxPlate=Пластина Лорда Шока
-ItemTooltip.ShoxPlate='Великолепны для подражания контрибьюторов Ancients Awakened!'
+ItemTooltip.ShoxPlate='Великолепны для подражания контрибьюторам Ancients Awakened!'
 
 ItemName.ShoxVisor=Визор Лорда Шока
-ItemTooltip.ShoxVisor='Великолепны для подражания контрибьюторов Ancients Awakened!'
+ItemTooltip.ShoxVisor='Великолепны для подражания контрибьюторам Ancients Awakened!'
 
 // AAMod.Items.Vanity.Ohno
 
@@ -4861,36 +4856,36 @@ ItemName.VoidBag=Врата Пустоты
 ItemTooltip.VoidBag=<right>, что бы открыть\n'Предметы первой необходимости для подражания Темному Смотрителю!'
 
 ItemName.VoidEyeBoots=Штаны Глаза Пустоты
-ItemTooltip.VoidEyeBoots='Великолепны для подражания контрибьюторов Ancients Awakened!'
+ItemTooltip.VoidEyeBoots='Великолепны для подражания контрибьюторам Ancients Awakened!'
 
 ItemName.VoidEyeHelm=Маска Глаза Пустоты 
-ItemTooltip.VoidEyeHelm='Великолепна для подражания контрибьюторов Ancients Awakened!'
+ItemTooltip.VoidEyeHelm='Великолепна для подражания контрибьюторам Ancients Awakened!'
 
 ItemName.VoidEyePlate=Нагрудник Глаза Пустоты 
-ItemTooltip.VoidEyePlate='Великолепен для подражания контрибьюторов Ancients Awakened!'
+ItemTooltip.VoidEyePlate='Великолепен для подражания контрибьюторам Ancients Awakened!'
 
 
 // AAMod.Items.Walls
 
 ItemName.CovetiteBrickWall=Стена из Каветитовых кирпичей
 
-ItemName.DarkmatterWall=Стена кирпичей из темной материи
+ItemName.DarkmatterWall=Стена кирпичей из Темной Материи
 
-ItemName.DaybreakWall=Стена из кирпичей рассвета
+ItemName.DaybreakWall=Стена из кирпичей Рассвета
 
-ItemName.DoomiteWall=Стена из рокового покрытия
+ItemName.DoomiteWall=Стена из Рокового покрытия
 
-ItemName.DoomsdayWall=Стена из покрытия судного дня
+ItemName.DoomsdayWall=Стена из покрытия Судного дня
 
-ItemName.DoomstoneBrickWall=Стена кирпичей из камня Рока
+ItemName.DoomstoneBrickWall=Стена кирпичей из камня рока
 
-ItemName.EquinoxWall=Стена из кирпичей равноденствия
+ItemName.EquinoxWall=Стена из кирпичей Равноденствия
 
-ItemName.EventideWall=Стена из вечерних кирпечей
+ItemName.EventideWall=Стена из Вечерних кирпечей
 
-ItemName.IncineriteWall=Стена кирпичей из инцинирита (вот как писать)
+ItemName.IncineriteWall=Стена кирпичей из Инцинирита 
 
-ItemName.RadiumWall=Стена кирпичей из радия
+ItemName.RadiumWall=Стена кирпичей из Радия
 
 ItemName.RelicWall=Стена кирпичей из реликвии
 
@@ -5063,7 +5058,7 @@ NPCName.OwlRune=Руна Совы
 NPCName.SeraphA=Страж Серафим
 
 ===UNKNWN===
-NPCName.SeraphHerald=
+NPCName.SeraphHerald=Серафим
 
 
 // AAMod.NPCs.Bosses.Athena.Olympian

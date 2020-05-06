@@ -5568,7 +5568,7 @@ Fishy";
                     case "WormSpawn1":
                     return "Похоже, что кто-то снова собрал наш идол, Дэйбрингер";
                     case "WormSpawn2":
-                    return "Похоже. Смертный";
+                    return "Судя по всему. Смертный";
                     case "WormSpawn3":
                     return ", ты нас сильно впечатлил.";
                     case "WormSpawn4":
@@ -5658,15 +5658,15 @@ Fishy";
                 switch(Info)
                 {
                     case "Info1":
-                    return "Расставляет алтари хаоса";
+                    return "Расставляем алтари хаоса";
                     case "Info2":
-                    return "Распространяет хаос";
+                    return "Распространяем хаос";
                     case "Info3":
-                    return "Зажигает Инферно";
+                    return "Зажигаем Инферно";
                     case "Info4":
-                    return "Затапливает Трясину.";
+                    return "Затапливаем Трясину.";
                     case "Info5":
-                    return "Строит Террариум";
+                    return "Строим Террариум";
                 }
             }
             else
