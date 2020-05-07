@@ -26,7 +26,6 @@ namespace AAMod.NPCs.Enemies.Terrarium.Hardmode
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-
             if (projectile.velocity.X != oldVelocity.X)
             {
                 projectile.position.X = projectile.position.X + projectile.velocity.X;
@@ -50,6 +49,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.Hardmode
 
         public override void PostAI()
         {
+            projectile.velocity.Y += 1;
             projectile.localAI[0] += 1f;
             if (projectile.localAI[0] > 9f)
             {

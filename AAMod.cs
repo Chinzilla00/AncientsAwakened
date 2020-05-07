@@ -1093,10 +1093,10 @@ namespace AAMod
             else
             if (msg == MsgType.SyncAI) //sync AI array
             {
-                int classID = (int)bb.ReadByte();
-                int id = (int)bb.ReadInt16();
-                int aitype = (int)bb.ReadByte();
-                int arrayLength = (int)bb.ReadByte();
+                int classID = bb.ReadByte();
+                int id = bb.ReadInt16();
+                int aitype = bb.ReadByte();
+                int arrayLength = bb.ReadByte();
                 float[] newAI = new float[arrayLength];
                 for (int m = 0; m < arrayLength; m++)
                 {

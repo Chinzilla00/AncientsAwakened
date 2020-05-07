@@ -109,6 +109,7 @@ namespace AAMod
         public static bool downedAnubisA;
         public static bool downedAABoss;
         public static bool downedLucifer;
+        public static bool downedCore;
 
         public static bool AnubisAwakened;
         public static bool WormActive;
@@ -181,6 +182,7 @@ namespace AAMod
             AthenaHerald = false;
             downedAABoss = false;
             downedLucifer = false;
+            downedCore = false;
 
             AnubisAwakened = false;
             WormActive = false;
@@ -288,6 +290,7 @@ namespace AAMod
             if (downedGreedA) downed.Add("WOOOORMS");
             if (AthenaHerald) downed.Add("BitchBird");
             if (downedLucifer) downed.Add("L");
+            if (downedCore) downed.Add("Core");
 
             if (AnubisAwakened) downed.Add("AnuA");
             if (WormActive) downed.Add("WormA");
@@ -359,6 +362,7 @@ namespace AAMod
             downedGreedA = downed.Contains("WOOOORMS");
             AthenaHerald = downed.Contains("BitchBird");
             downedLucifer = downed.Contains("L");
+            downedCore = downed.Contains("Core");
 
             AnubisAwakened = downed.Contains("AnuA");
             WormActive = downed.Contains("WormA");
@@ -473,6 +477,7 @@ namespace AAMod
 
             BitsByte flags6 = new BitsByte();
             flags6[0] = downedLucifer;
+            flags6[1] = downedCore;
             writer.Write(flags6);
 
             writer.WriteVector2(MireCenter);
@@ -553,6 +558,7 @@ namespace AAMod
 
             BitsByte flags6 = reader.ReadByte();
             downedLucifer = flags6[0];
+            downedCore = flags6[1];
 
             MireCenter = reader.ReadVector2();
 			InfernoCenter = reader.ReadVector2();		

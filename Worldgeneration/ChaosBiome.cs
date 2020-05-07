@@ -1488,6 +1488,20 @@ namespace AAMod.Worldgeneration
             WorldGen.PlaceTile(origin.X + 30, origin.Y + 136, ModContent.TileType<TerraPainting>(), true, false);
             WorldGen.PlaceTile(origin.X + 230, origin.Y + 102, ModContent.TileType<KingQueenPainting>(), true, false);
 
+            #endregion
+
+            #region Biomite Core Arena
+
+            WorldGen.PlaceTile(origin.X + 144, origin.Y + 134, ModContent.TileType<CoreActivator>(), true, false);
+
+            WorldGen.PlaceTile(origin.X + 141, origin.Y + 126, ModContent.TileType<Core>(), true, false);
+            WorldGen.PlaceTile(origin.X + 107, origin.Y + 130, ModContent.TileType<Core>(), true, false);
+            WorldGen.PlaceTile(origin.X + 175, origin.Y + 130, ModContent.TileType<Core>(), true, false);
+            WorldGen.PlaceTile(origin.X + 114, origin.Y + 152, ModContent.TileType<Core>(), true, false);
+            WorldGen.PlaceTile(origin.X + 168, origin.Y + 152, ModContent.TileType<Core>(), true, false);
+            WorldGen.PlaceTile(origin.X + 141, origin.Y + 157, ModContent.TileType<Core>(), true, false);
+
+
 
             #endregion
 

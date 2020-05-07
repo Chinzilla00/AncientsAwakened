@@ -17,8 +17,6 @@ namespace AAMod.Items.Materials
         // TODO -- Velocity Y smaller, post NewItem?
         public override void SetDefaults()
         {
-            
-            
             item.width = 16;
             item.height = 16;
             item.maxStack = 999;
@@ -40,7 +38,7 @@ namespace AAMod.Items.Materials
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "Prism", 5);
-            recipe.AddTile(null, "TerraPrism");
+            recipe.AddTile(null, "HallowedForge");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
@@ -74,26 +72,6 @@ namespace AAMod.Items.Materials
         public override void PostUpdate()
         {
             Lighting.AddLight(item.Center, AAColor.TerraGlow.ToVector3() * 0.55f * Main.essScale);
-        }
-
-        public override void AddRecipes()
-        {
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "TerraShard", 5);
-                recipe.AddIngredient(null, "Crystal");
-                recipe.AddTile(null, "TerraPrism");
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            }
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "DragonSpirit", 5);
-                recipe.AddIngredient(null, "Crystal");
-                recipe.AddTile(null, "TerraPrism");
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            }
         }
     }
 
