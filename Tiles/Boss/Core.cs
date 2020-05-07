@@ -15,8 +15,8 @@ namespace AAMod.Tiles.Boss
             Main.tileFrameImportant[Type] = true;
             Main.tileNoAttach[Type] = true;
             Main.tileLavaDeath[Type] = false;
-            TileObjectData.newTile.Width = 6;
-            TileObjectData.newTile.Height = 11;
+            TileObjectData.newTile.Width = 8;
+            TileObjectData.newTile.Height = 8;
             TileObjectData.newTile.Origin = new Point16(0, 0);
             TileObjectData.newTile.AnchorWall = true;
             TileObjectData.newTile.AnchorBottom = default;

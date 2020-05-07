@@ -17,6 +17,7 @@ namespace AAMod
 
     public class Title : ModProjectile
     {
+        public override string Texture => "AAMod/BlankTex";
         public override void SetDefaults()
         {
             projectile.width = 1;

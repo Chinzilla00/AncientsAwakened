@@ -1222,8 +1222,8 @@ namespace AAMod
             Titles modPlayer2 = Main.player[Main.myPlayer].GetModPlayer<Titles>();
             float alpha = modPlayer2.alphaText;
 
-            Main.spriteBatch.DrawString(Main.fontDeathText, BossTitle, new Vector2(textPositionLeft, (Main.screenHeight / 2) - 250), titleColor, 0f, Vector2.Zero, .7f, SpriteEffects.None, 0f);
-            Main.spriteBatch.DrawString(Main.fontDeathText, BossName, new Vector2(textPositionLeft, Main.screenHeight / 2 - 300), Color.Green * ((255 - alpha) / 255f), 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+            Main.spriteBatch.DrawString(Main.fontDeathText, BossTitle, new Vector2(textPositionLeft, (Main.screenHeight / 2) - 250), titleColor * ((255 - alpha) / 255f), 0f, Vector2.Zero, .7f, SpriteEffects.None, 0f);
+            Main.spriteBatch.DrawString(Main.fontDeathText, BossName, new Vector2(textPositionLeft, Main.screenHeight / 2 - 300), titleColor * ((255 - alpha) / 255f), 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
         }
 
         public static void ShowTitle(NPC npc, int ID)

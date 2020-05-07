@@ -132,6 +132,17 @@ namespace AAMod.NPCs.Bosses.Core
 
             Player player = Main.player[npc.target];
 
+            if (player.dead || !player.active || (npc.position.X - Main.player[npc.target].position.X) > 6000f || (npc.position.X - Main.player[npc.target].position.X) < -6000f || (npc.position.Y - Main.player[npc.target].position.Y) > 6000f || (npc.position.Y - Main.player[npc.target].position.Y) < -6000f)
+            {
+                npc.TargetClosest(true);
+                player = Main.player[npc.target];
+
+                if (player.dead || !player.active || (npc.position.X - Main.player[npc.target].position.X) > 6000f || (npc.position.X - Main.player[npc.target].position.X) < -6000f || (npc.position.Y - Main.player[npc.target].position.Y) > 6000f || (npc.position.Y - Main.player[npc.target].position.Y) < -6000f)
+                { 
+                    npc.active = false;
+                }
+            }
+
             npc.ai[0]++;
 
             if (npc.ai[1] == 0) //Changing Positions
