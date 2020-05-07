@@ -62,8 +62,9 @@ namespace AAMod
         internal TerratoolGroxUI TerratoolGroxState;
         internal TerratoolEXUI TerratoolEXState;
 
-        public static SpriteFont fontMouseText;
+        //Fonts
 
+        public static SpriteFont fontMouseText;
 
         internal static AAMod instance;
         public static AAMod self = null;
@@ -1157,7 +1158,7 @@ namespace AAMod
                 case 4:
                     BossName = "Anubis";
                     BossTitle = "Forsaken Judge";
-                    titleColor = Color.SeaGreen;
+                    titleColor = Color.DarkGreen;
                     break;
                 case 5:
                     BossName = "Olympian Athena";
@@ -1217,13 +1218,17 @@ namespace AAMod
             }
 
             Vector2 textSize = Main.fontDeathText.MeasureString(BossName);
+            Vector2 textSize2 = Main.fontDeathText.MeasureString(BossTitle) * .35f;
             float textPositionLeft = Main.screenWidth / 2 - textSize.X / 2;
+            float text2PositionLeft = Main.screenWidth / 2 - textSize2.X / 2;
 
             Titles modPlayer2 = Main.player[Main.myPlayer].GetModPlayer<Titles>();
             float alpha = modPlayer2.alphaText;
+            float alpha2 = modPlayer2.alphaText2;
 
-            Main.spriteBatch.DrawString(Main.fontDeathText, BossTitle, new Vector2(textPositionLeft, (Main.screenHeight / 2) - 250), titleColor * ((255 - alpha) / 255f), 0f, Vector2.Zero, .7f, SpriteEffects.None, 0f);
-            Main.spriteBatch.DrawString(Main.fontDeathText, BossName, new Vector2(textPositionLeft, Main.screenHeight / 2 - 300), titleColor * ((255 - alpha) / 255f), 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+            Main.spriteBatch.DrawString(Main.fontDeathText, BossTitle, new Vector2(text2PositionLeft, (Main.screenHeight / 2) - 350), titleColor * ((255 - alpha2) / 255f), 0f, Vector2.Zero, .6f, SpriteEffects.None, 0f);
+
+            Main.spriteBatch.DrawString(Main.fontDeathText, "~ " + BossName + " ~", new Vector2(textPositionLeft, Main.screenHeight / 2 - 300), titleColor * ((255 - alpha) / 255f), 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
         }
 
         public static void ShowTitle(NPC npc, int ID)
