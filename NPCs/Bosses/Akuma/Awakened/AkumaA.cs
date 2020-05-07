@@ -108,8 +108,15 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
         public bool spawnAshe = false;
 
+        bool title = false;
+
         public override bool PreAI()
         {
+            if (!title)
+            {
+                AAMod.ShowTitle(npc, 8);
+                title = true;
+            }
             Player player = Main.player[npc.target];
             if (Main.expertMode)
             {

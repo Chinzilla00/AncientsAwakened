@@ -275,6 +275,11 @@ namespace AAMod.NPCs.Bosses.Core
                         break;
                     case 10:
 
+                        if (npc.ai[0] % 198 == 0)
+                        {
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<Projectiles.SnowCloud>(), 40, 0, Main.myPlayer, player.Center.X, player.Center.Y + 150);
+                        }
+
                         break;
                     case 11:
 

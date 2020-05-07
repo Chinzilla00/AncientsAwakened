@@ -217,9 +217,16 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
         bool isCharging = false;
 
+        bool title = false;
+
         public override void AI()
         {
-            if((npc.ai[0] == 4 && NPC.CountNPCS(mod.NPCType("ZeroEcho")) > 0 && !Counterattack) || isCharging)
+            if (!title)
+            {
+                AAMod.ShowTitle(npc, 12);
+                title = true;
+            }
+            if ((npc.ai[0] == 4 && NPC.CountNPCS(mod.NPCType("ZeroEcho")) > 0 && !Counterattack) || isCharging)
             {
                 npc.chaseable = false;
                 npc.defense = 9999;

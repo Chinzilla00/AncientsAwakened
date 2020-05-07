@@ -62,6 +62,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                     {
                         int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 0, Main.myPlayer, 0, 10);
                         Main.projectile[b].Center = npc.Center;
+                        AAMod.ShowTitle(npc, 4);
 
                         NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<ForsakenAnubis>());
                         npc.active = false;

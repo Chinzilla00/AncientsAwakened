@@ -1,5 +1,4 @@
-﻿using AAMod.NPCs.Bosses.Core;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.IO;
 using Terraria;
@@ -60,7 +59,7 @@ namespace AAMod.Tiles.Boss
                 CoreWorld.PrismCharged = false;
                 return true;
             }
-            if (BasePlayer.HasItem(player, type) && !NPC.AnyNPCs(ModContent.NPCType<Core>()))
+            if (BasePlayer.HasItem(player, type) && !NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.Core.Core>()))
             {
                 for (int m = 0; m < 50; m++)
                 {
@@ -68,7 +67,7 @@ namespace AAMod.Tiles.Boss
                     if (item != null && item.type == type && item.stack >= 1)
                     {
                         item.stack--;
-                        SpawnBoss(player, ModContent.NPCType<Core>(), player.Center);
+                        SpawnBoss(player, ModContent.NPCType<NPCs.Bosses.Core.Core>(), player.Center);
                     }
                 }
             }
@@ -141,7 +140,7 @@ namespace AAMod.Tiles.Boss
 
         public override void PostUpdate()
         {
-            PedestalActive = NPC.AnyNPCs(ModContent.NPCType<Core>());
+            PedestalActive = NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.Core.Core>());
         }
 
         public override void NetSend(BinaryWriter writer)

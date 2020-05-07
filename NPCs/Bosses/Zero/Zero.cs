@@ -317,8 +317,16 @@ namespace AAMod.NPCs.Bosses.Zero
         bool RespawnArms1;
         bool RespawnArms2;
 
+        bool title = false;
+
         public override void AI()
         {
+            if (!title)
+            {
+                AAMod.ShowTitle(npc, 11);
+                title = true;
+            }
+
             if (Main.expertMode)
             {
                 damage = npc.damage / 4;

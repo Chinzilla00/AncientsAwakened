@@ -107,8 +107,15 @@ namespace AAMod.NPCs.Bosses.Akuma
             return null;
         }
 
+        bool title = false;
+
         public override bool PreAI()
         {
+            if (!title)
+            {
+                AAMod.ShowTitle(npc, 7);
+                title = true;
+            }
             Player player = Main.player[npc.target];
             if (Main.expertMode)
             {

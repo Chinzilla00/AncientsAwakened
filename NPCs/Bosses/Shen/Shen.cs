@@ -149,8 +149,15 @@ namespace AAMod.NPCs.Bosses.Shen
             }
         }
 
+        bool title = false;
+
         public override void AI()
         {
+            if (!title && !isAwakened)
+            {
+                AAMod.ShowTitle(npc, 14);
+                title = true;
+            }
             npc.TargetClosest(true);
             Player player = Main.player[npc.target];
             Vector2 targetPos;

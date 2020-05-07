@@ -703,6 +703,7 @@ namespace AAMod.NPCs.Bosses.Anubis
                                 music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Anubis");
                                 if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Anubis6"), Color.Gold);
                                 internalAI[0] = 1;
+                                AAMod.ShowTitle(npc, 1);
                                 Teleport();
                                 npc.netUpdate = true;
                             }
@@ -712,6 +713,7 @@ namespace AAMod.NPCs.Bosses.Anubis
                             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Anubis");
                             if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Anubis7"), Color.Gold);
                             internalAI[0] = 1;
+                            AAMod.ShowTitle(npc, 1);
                             Teleport();
                             npc.netUpdate = true;
                         }

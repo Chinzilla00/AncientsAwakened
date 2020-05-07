@@ -78,8 +78,15 @@ namespace AAMod.NPCs.Bosses.Greed
             }
         }
 
+        bool title = false;
+
         public override bool PreAI()
         {
+            if (!title)
+            {
+                AAMod.ShowTitle(npc, 3);
+                title = true;
+            }
             npc.TargetClosest();
             Player player = Main.player[npc.target];
             if (Main.expertMode)

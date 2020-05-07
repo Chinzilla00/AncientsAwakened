@@ -58,8 +58,16 @@ namespace AAMod.NPCs.Bosses.Shen
             }
         }
 
+        bool title = false;
+
         public override void AI()
         {
+            if (!title)
+            {
+                AAMod.ShowTitle(npc, 14);
+                title = true;
+            }
+
             Main.dayTime = false;
             Main.time = 18000;
 

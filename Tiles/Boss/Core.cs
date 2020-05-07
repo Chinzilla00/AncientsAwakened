@@ -5,7 +5,7 @@ using Terraria.ObjectData;
 using Terraria.DataStructures;
 using Terraria.Enums;
 
-namespace AAMod.Tiles.Decoration
+namespace AAMod.Tiles.Boss
 {
     public class Core : ModTile
     {

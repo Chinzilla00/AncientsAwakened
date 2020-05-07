@@ -343,8 +343,16 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             }
         }
 
+        bool title = false;
+
         public override void AI()
         {
+            if (!title)
+            {
+                AAMod.ShowTitle(npc, 10);
+                title = true;
+            }
+
             TargetClosest();
             HandleHeads();
 

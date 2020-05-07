@@ -1249,6 +1249,18 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.value = Item.sellPrice(3, 0, 0, 0);
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/RajahTheme");
         }
+
+        bool title = false;
+
+        public override bool PreAI()
+        {
+            if (!title)
+            {
+                AAMod.ShowTitle(npc, 13);
+                title = true;
+            }
+            return true;
+        }
         public override string BossHeadTexture => "AAMod/NPCs/Bosses/Rajah/SupremeRajah_Head_Boss";
     }
 }

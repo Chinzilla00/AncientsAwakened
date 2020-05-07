@@ -297,8 +297,16 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
         }
 
+        bool title = false;
+
         public override void AI()
         {
+            if (!title)
+            {
+                AAMod.ShowTitle(npc, 9);
+                title = true;
+            }
+
             TargetClosest();
             HandleHeads();
 

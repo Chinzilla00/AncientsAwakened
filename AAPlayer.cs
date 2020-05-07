@@ -346,6 +346,7 @@ namespace AAMod
         public float MaxMovespeedboost = 0;
         public bool bossactive = false;
         public bool nohitplayer = true;
+
         #endregion
 
         #endregion

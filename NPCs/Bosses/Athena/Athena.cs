@@ -191,6 +191,7 @@ namespace AAMod.NPCs.Bosses.Athena
                                 if (internalAI[3] >= 420)
                                 {
                                     CombatText.NewText(npc.Hitbox, Color.CadetBlue, Lang.BossChat("Athena6"));
+                                    AAMod.ShowTitle(npc, 2);
                                     internalAI[2] = 1;
 
                                     npc.netUpdate = true;
@@ -211,7 +212,9 @@ namespace AAMod.NPCs.Bosses.Athena
                                 if (internalAI[3] == 300)
                                 {
                                     CombatText.NewText(npc.Hitbox, Color.CadetBlue, Lang.BossChat("Athena14"));
+                                    AAMod.ShowTitle(npc, 2);
                                     internalAI[2] = 1;
+
                                     npc.netUpdate = true;
                                 }
                             }
@@ -225,6 +228,7 @@ namespace AAMod.NPCs.Bosses.Athena
                                 if (internalAI[3] >= 180)
                                 {
                                     CombatText.NewText(npc.Hitbox, Color.CadetBlue, Lang.BossChat("Athena8"));
+                                    AAMod.ShowTitle(npc, 2);
                                     internalAI[2] = 1;
                                     npc.netUpdate = true;
                                 }

@@ -19,6 +19,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
 using Terraria.Utilities;
+using ReLogic.Graphics;
 
 namespace AAMod
 {
@@ -779,28 +780,6 @@ namespace AAMod
                 Main.backgroundTexture[58] = ModContent.GetTexture("Terraria/Background_" + 58);
             }
 		}
-        public bool AAMenuset = false;
-        public bool AAMenuReset = true;
-
-        public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
-        {
-            int wireSelectionLayerIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Wire Selection"));
-            if (wireSelectionLayerIndex != -1)
-            {
-                layers.Insert(wireSelectionLayerIndex, new LegacyGameInterfaceLayer(
-                "AAMod: Radial UIs",
-                delegate
-                {
-                    if (TerratoolInterface?.CurrentState is ToggableUI && lastUpdateUIGameTime != null)
-                    {
-                        TerratoolInterface.Draw(Main.spriteBatch, lastUpdateUIGameTime);
-                    }
-
-                    return true;
-                },
-                InterfaceScaleType.UI));
-            }
-        }
 
         public static Texture2D GetGlowmask(string Name)
         {
@@ -1112,6 +1091,154 @@ namespace AAMod
                     ((ParentProjectile)Main.projectile[id].modProjectile).SetAI(newAI, aitype);
                 }
                 if (Main.netMode == 2) BaseNet.SyncAI(classID, id, newAI, aitype);
+            }
+        }
+
+        public bool AAMenuset = false;
+        public bool AAMenuReset = true;
+
+        public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
+        {
+            int wireSelectionLayerIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Wire Selection"));
+            if (wireSelectionLayerIndex != -1)
+            {
+                layers.Insert(wireSelectionLayerIndex, new LegacyGameInterfaceLayer(
+                "AAMod: Radial UIs",
+                delegate
+                {
+                    if (TerratoolInterface?.CurrentState is ToggableUI && lastUpdateUIGameTime != null)
+                    {
+                        TerratoolInterface.Draw(Main.spriteBatch, lastUpdateUIGameTime);
+                    }
+
+                    return true;
+                },
+                InterfaceScaleType.UI));
+            }
+
+            Titles modPlayer = Main.player[Main.myPlayer].GetModPlayer<Titles>();
+            if (modPlayer.text)
+            {
+                var textLayer = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Inventory"));
+                var computerState = new LegacyGameInterfaceLayer("AAMod: UI",
+                    delegate
+                    {
+                        BossTitle(modPlayer.BossID);
+                        return true;
+                    },
+                    InterfaceScaleType.UI);
+                layers.Insert(textLayer, computerState);
+            }
+        }
+
+        private void BossTitle(int BossID)
+        {
+            string BossName = "";
+            string BossTitle = "";
+            Color titleColor = Color.White;
+
+            switch (BossID)
+            {
+                case 1:
+                    BossName = "Anubis Legendscribe";
+                    BossTitle = "";
+                    titleColor = Color.Goldenrod;
+                    break;
+                case 2:
+                    BossName = "Athena";
+                    BossTitle = "";
+                    titleColor = Color.CornflowerBlue;
+                    break;
+                case 3:
+                    BossName = "Greed";
+                    BossTitle = "";
+                    titleColor = Color.Gold;
+                    break;
+                case 4:
+                    BossName = "Anubis";
+                    BossTitle = "Forsaken Judge";
+                    titleColor = Color.SeaGreen;
+                    break;
+                case 5:
+                    BossName = "Olympian Athena";
+                    BossTitle = "Seraph Queen";
+                    titleColor = Color.Turquoise;
+                    break;
+                case 6:
+                    BossName = "Greed";
+                    BossTitle = "Worm King";
+                    titleColor = Color.Gold;
+                    break;
+                case 7:
+                    BossName = "Akuma";
+                    BossTitle = "Draconian Demon";
+                    titleColor = Color.OrangeRed;
+                    break;
+                case 8:
+                    BossName = "Oni Akuma";
+                    BossTitle = "Blazing Fury Incarnate";
+                    titleColor = Color.DeepSkyBlue;
+                    break;
+                case 9:
+                    BossName = "Yamata";
+                    BossTitle = "Dread Nightmare";
+                    titleColor = Color.Indigo;
+                    break;
+                case 10:
+                    BossName = "Yamata No Orochi";
+                    BossTitle = "Abyssal Wrath Incarnate";
+                    titleColor = Color.MediumVioletRed;
+                    break;
+                case 11:
+                    BossName = "ZER0";
+                    BossTitle = "Doomsday Construct";
+                    titleColor = Color.Red;
+                    break;
+                case 12:
+                    BossName = "ZER0 PR0T0C0L";
+                    BossTitle = "Dark Cipher";
+                    titleColor = Color.Red;
+                    break;
+                case 13:
+                    BossName = "Rajah Rabbit";
+                    BossTitle = "Champion of the Innocent";
+                    titleColor = Color.LightCyan;
+                    break;
+                case 14:
+                    BossName = "Shen Doragon";
+                    BossTitle = "Discordian Doomsayer";
+                    titleColor = Color.Magenta;
+                    break;
+                case 15:
+                    BossName = "Shen Doragon Awakened";
+                    BossTitle = "Unyielding Discord Incarnate";
+                    titleColor = Color.Magenta;
+                    break;
+            }
+
+            Vector2 textSize = Main.fontDeathText.MeasureString(BossName);
+            float textPositionLeft = Main.screenWidth / 2 - textSize.X / 2;
+
+            Titles modPlayer2 = Main.player[Main.myPlayer].GetModPlayer<Titles>();
+            float alpha = modPlayer2.alphaText;
+
+            Main.spriteBatch.DrawString(Main.fontDeathText, BossTitle, new Vector2(textPositionLeft, (Main.screenHeight / 2) - 250), titleColor, 0f, Vector2.Zero, .7f, SpriteEffects.None, 0f);
+            Main.spriteBatch.DrawString(Main.fontDeathText, BossName, new Vector2(textPositionLeft, Main.screenHeight / 2 - 300), Color.Green * ((255 - alpha) / 255f), 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+        }
+
+        public static void ShowTitle(NPC npc, int ID)
+        {
+            if (AAConfigClient.Instance.AncientIntroText)
+            {
+                Projectile.NewProjectile(npc.Center, Vector2.Zero, ModContent.ProjectileType<Title>(), 0, 0, Main.myPlayer, ID, 0);
+            }
+        }
+
+        public static void ShowTitle(Player player, int ID)
+        {
+            if (AAConfigClient.Instance.AncientIntroText)
+            {
+                Projectile.NewProjectile(player.Center, Vector2.Zero, ModContent.ProjectileType<Title>(), 0, 0, Main.myPlayer, ID, 0);
             }
         }
     }
