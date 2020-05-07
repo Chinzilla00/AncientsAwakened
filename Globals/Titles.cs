@@ -14,6 +14,15 @@ namespace AAMod
         {
             text = false;
         }
+
+        public override void PreUpdate()
+        {
+            if (!AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<Title>()))
+            {
+                alphaText = 255f;
+                alphaText2 = 255f;
+            }
+        }
     }
 
     public class Title : ModProjectile
@@ -36,15 +45,6 @@ namespace AAMod
             Player player = Main.player[projectile.owner];
             Titles modPlayer = player.GetModPlayer<Titles>();
 
-            if (modPlayer.alphaText > 255)
-            {
-                modPlayer.alphaText = 255;
-            }
-            if (modPlayer.alphaText2 > 255)
-            {
-                modPlayer.alphaText2 = 255;
-            }
-
             modPlayer.text = true;
 
             modPlayer.BossID = (int)projectile.ai[0];
@@ -62,7 +62,6 @@ namespace AAMod
             }
             else
             {
-
                 if (projectile.timeLeft <= 180)
                 {
                     modPlayer.alphaText -= 5f;

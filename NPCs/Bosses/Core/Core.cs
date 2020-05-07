@@ -232,7 +232,7 @@ namespace AAMod.NPCs.Bosses.Core
             {
                 switch ((int)npc.ai[3])
                 {
-                    default:
+                    default: //Terra
 
                         if (npc.ai[0] > 180 && NPC.CountNPCS(ModContent.NPCType<TerraProbe>()) + NPC.CountNPCS(ModContent.NPCType<TerraWatcher>()) < 5 && Main.netMode != 1)
                         {
@@ -255,7 +255,7 @@ namespace AAMod.NPCs.Bosses.Core
                         }
 
                         break;
-                    case 2:
+                    case 2: //Desert
 
                         if (npc.ai[0] % 198 == 0)
                         {
@@ -263,28 +263,33 @@ namespace AAMod.NPCs.Bosses.Core
                         }
 
                         break;
-                    case 3:
+                    case 3: //Corruption
 
                         break;
-                    case 4:
+                    case 4: //Jungle
 
                         break;
-                    case 5:
+                    case 5: //Inferno
 
                         break;
-                    case 6:
+                    case 6: //Glowing Mushroom
 
                         break;
-                    case 7:
+                    case 7: //Hell
 
                         break;
-                    case 8:
+                    case 8: //Cavern
+
+                        if (npc.ai[0] == 91)
+                        {
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<Projectiles.RockFall>(), 40, 0, Main.myPlayer, player.Center.X, player.Center.Y + 150);
+                        }
 
                         break;
-                    case 9:
+                    case 9: //Void
 
                         break;
-                    case 10:
+                    case 10: //Snow
 
                         if (npc.ai[0] % 198 == 0)
                         {
@@ -292,10 +297,10 @@ namespace AAMod.NPCs.Bosses.Core
                         }
 
                         break;
-                    case 11:
+                    case 11: //Crimson
 
                         break;
-                    case 12:
+                    case 12: //Dungeon
                         int ShootX = 10;
                         int ShootY = 0;
 
@@ -316,16 +321,48 @@ namespace AAMod.NPCs.Bosses.Core
                         }
 
                         break;
-                    case 13:
+                    case 13: //Mire
 
                         break;
-                    case 14:
+                    case 14: //Ocean
 
                         break;
-                    case 15:
+                    case 15: //Hallow
 
                         break;
-                    case 16:
+                    case 16: //Sky
+
+                        if (npc.ai[0] % 60f == 0f && Main.netMode != 1)
+                        {
+                            int[] array4 = new int[5];
+                            Vector2[] array5 = new Vector2[5];
+                            int num838 = 0;
+                            float num839 = 2000f;
+                            for (int num840 = 0; num840 < 255; num840++)
+                            {
+                                if (Main.player[num840].active && !Main.player[num840].dead)
+                                {
+                                    Vector2 center9 = Main.player[num840].Center;
+                                    float num841 = Vector2.Distance(center9, npc.Center);
+                                    if (num841 < num839 && Collision.CanHit(npc.Center, 1, 1, center9, 1, 1))
+                                    {
+                                        array4[num838] = num840;
+                                        array5[num838] = center9;
+                                        if (++num838 >= array5.Length)
+                                        {
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                            for (int num842 = 0; num842 < num838; num842++)
+                            {
+                                Vector2 vector82 = array5[num842] - npc.Center;
+                                float ai = Main.rand.Next(100);
+                                Vector2 vector83 = Vector2.Normalize(vector82.RotatedByRandom(0.78539818525314331)) * 14f;
+                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, vector83.X, vector83.Y, ModContent.ProjectileType<Athena.Olympian.AthenaShock>(), npc.damage, 0f, Main.myPlayer, vector82.ToRotation(), ai);
+                            }
+                        }
 
                         break;
                 }

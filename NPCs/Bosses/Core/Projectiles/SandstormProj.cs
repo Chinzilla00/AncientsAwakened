@@ -2,12 +2,11 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
-using System.IO;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.NPCs.Bosses.Core.Projectiles
 {
-    public class SandstormProj : ModProjectile
+	public class SandstormProj : ModProjectile
 	{
 		public override string Texture => "AAMod/BlankTex";
 
