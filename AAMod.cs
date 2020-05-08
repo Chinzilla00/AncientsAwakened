@@ -1233,7 +1233,7 @@ namespace AAMod
             }
 
             Vector2 textSize = Main.fontDeathText.MeasureString(BossName);
-            Vector2 textSize2 = Main.fontDeathText.MeasureString(BossTitle) * .4f;
+            Vector2 textSize2 = Main.fontDeathText.MeasureString(BossTitle) * .33f;
             float textPositionLeft = Main.screenWidth / 2 - textSize.X / 2;
             float text2PositionLeft = Main.screenWidth / 2 - textSize2.X / 2;
 
