@@ -1215,10 +1215,25 @@ namespace AAMod
                     BossTitle = "Unyielding Discord Incarnate";
                     titleColor = Color.Magenta;
                     break;
+                case 16:
+                    BossName = "Ashe & Haruka";
+                    BossTitle = "Sisters of Discord";
+                    titleColor = Color.Magenta;
+                    break;
+                case 17:
+                    BossName = "Equinox Worms";
+                    BossTitle = "The";
+                    titleColor = Color.BlueViolet;
+                    break;
+                case 18:
+                    BossName = "Rajah Rabbit";
+                    BossTitle = "";
+                    titleColor = Color.LightCyan;
+                    break;
             }
 
             Vector2 textSize = Main.fontDeathText.MeasureString(BossName);
-            Vector2 textSize2 = Main.fontDeathText.MeasureString(BossTitle) * .35f;
+            Vector2 textSize2 = Main.fontDeathText.MeasureString(BossTitle) * .4f;
             float textPositionLeft = Main.screenWidth / 2 - textSize.X / 2;
             float text2PositionLeft = Main.screenWidth / 2 - textSize2.X / 2;
 
@@ -1228,7 +1243,28 @@ namespace AAMod
 
             Main.spriteBatch.DrawString(Main.fontDeathText, BossTitle, new Vector2(text2PositionLeft, (Main.screenHeight / 2) - 350), titleColor * ((255 - alpha2) / 255f), 0f, Vector2.Zero, .6f, SpriteEffects.None, 0f);
 
-            Main.spriteBatch.DrawString(Main.fontDeathText, "~ " + BossName + " ~", new Vector2(textPositionLeft, Main.screenHeight / 2 - 300), titleColor * ((255 - alpha) / 255f), 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+            if (BossID != 16)
+            {
+                Main.spriteBatch.DrawString(Main.fontDeathText, "~ " + BossName + " ~", new Vector2(textPositionLeft, Main.screenHeight / 2 - 300), titleColor * ((255 - alpha) / 255f), 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+            }
+            else
+            {
+                float alpha3 = modPlayer2.alphaText3;
+                float alpha4 = modPlayer2.alphaText4;
+
+                Vector2 ASize = Main.fontDeathText.MeasureString("Ashe");
+                Vector2 AndSize = Main.fontDeathText.MeasureString("&");
+                Vector2 HSize = Main.fontDeathText.MeasureString("Haruka");
+                float APositionLeft = Main.screenWidth / 2 - ASize.X / 2;
+                float AndPositionLeft = Main.screenWidth / 2 - AndSize.X / 2;
+                float HPositionLeft = Main.screenWidth / 2 - HSize.X / 2;
+
+                Main.spriteBatch.DrawString(Main.fontDeathText, "Ashe", new Vector2(APositionLeft, Main.screenHeight / 2 - 300), Color.OrangeRed * ((255 - alpha) / 255f), 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+                Main.spriteBatch.DrawString(Main.fontDeathText, "&", new Vector2(AndPositionLeft, Main.screenHeight / 2 - 250), Color.Magenta * ((255 - alpha3) / 255f), 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+                Main.spriteBatch.DrawString(Main.fontDeathText, "Haruka", new Vector2(HPositionLeft, Main.screenHeight / 2 - 200), Color.Indigo * ((255 - alpha4) / 255f), 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+                return;
+            }
+
         }
 
         public static void ShowTitle(NPC npc, int ID)
@@ -1244,6 +1280,14 @@ namespace AAMod
             if (AAConfigClient.Instance.AncientIntroText)
             {
                 Projectile.NewProjectile(player.Center, Vector2.Zero, ModContent.ProjectileType<Title>(), 0, 0, Main.myPlayer, ID, 0);
+            }
+        }
+
+        public static void ShowSistersTitle(NPC npc)
+        {
+            if (AAConfigClient.Instance.AncientIntroText)
+            {
+                Projectile.NewProjectile(npc.Center, Vector2.Zero, ModContent.ProjectileType<SistersTitle>(), 0, 0, Main.myPlayer, 16, 0);
             }
         }
     }

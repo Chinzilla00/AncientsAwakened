@@ -143,8 +143,15 @@ namespace AAMod.NPCs.Bosses.Rajah
         private bool SayLine = false;
         private bool DefenseLine = false;
 
+        bool title = false;
+
         public override void AI()
         {
+            if (!title && !isSupreme)
+            {
+                AAMod.ShowTitle(npc, 18);
+                title = true;
+            }
             if (Main.expertMode)
             {
                 damage = npc.damage / 4;

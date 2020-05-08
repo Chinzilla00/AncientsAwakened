@@ -177,8 +177,15 @@ namespace AAMod.NPCs.Bosses.Equinox
         public int CloudCount = Main.expertMode ? 8 : 6;
         public int CloudCooldown = 400;
 
+        bool title = false;
+
         public override bool PreAI()
         {
+            if (!title && !nightcrawler)
+            {
+                AAMod.ShowTitle(npc, 18);
+                title = true;
+            }
             bool isHead = npc.type == mod.NPCType("DaybringerHead") || npc.type == mod.NPCType("NightcrawlerHead");
             if (Main.netMode != 1 && !initCustom)
             {

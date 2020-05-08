@@ -50,8 +50,16 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public bool RuneCrash = false;
 
+
+        bool title = false;
+
         public override void AI()
         {
+            if (!title)
+            {
+                AAMod.ShowSistersTitle(npc);
+                title = true;
+            }
             Player player = Main.player[npc.target];
 
             Vector2 wantedVelocity = player.Center - new Vector2(pos, 250);
