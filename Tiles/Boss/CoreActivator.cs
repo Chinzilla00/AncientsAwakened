@@ -22,7 +22,7 @@ namespace AAMod.Tiles.Boss
             TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
             TileObjectData.newTile.Origin = new Point16(0, 0);
             TileObjectData.newTile.Direction = TileObjectDirection.None;
-            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 18 };
+            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
             TileObjectData.newTile.CoordinateWidth = 16;
             TileObjectData.newTile.CoordinatePadding = 2;
             TileObjectData.addTile(Type);
