@@ -17,9 +17,9 @@ namespace AAMod.Tiles.Boss
             Main.tileSolidTop[Type] = false;
             Main.tileFrameImportant[Type] = true;
             Main.tileNoAttach[Type] = true;
-            dustType = DustID.BlueCrystalShard;
+            dustType = 107;
             Main.tileLavaDeath[Type] = false;
-            TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
+            TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
             TileObjectData.newTile.Origin = new Point16(0, 0);
             TileObjectData.newTile.Direction = TileObjectDirection.None;
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 18 };
@@ -35,7 +35,7 @@ namespace AAMod.Tiles.Boss
 
         public Color White(Color color)
         {
-            return AAColor.Sky;
+            return AAColor.COLOR_WHITEFADE1;
         }
 
         public override void PostDraw(int x, int y, SpriteBatch sb)
