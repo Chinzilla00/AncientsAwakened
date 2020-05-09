@@ -69,12 +69,12 @@ namespace AAMod.NPCs.Bosses.Core
             #region Points
 
             Vector2 origin = Origin();
-            Vector2 topCenter = origin + new Vector2(145 * 16f, 130  * 16f);
-            Vector2 topLeft = origin + new Vector2(111 * 16f, 134 * 16f);
-            Vector2 topRight = origin + new Vector2(179 * 16f, 134 * 16f);
-            Vector2 BottomLeft = origin + new Vector2(118 * 16f, 156 * 16f);
-            Vector2 BottomRight = origin + new Vector2(172 * 16f, 156 * 16f);
-            Vector2 BottomCenter = origin + new Vector2(145 * 16f, 161 * 16f);
+            Vector2 topCenter = origin + Vector16(140, 125) + Vector16(5, 4);
+            Vector2 topLeft = origin + Vector16(106, 129) + Vector16(5, 4);
+            Vector2 topRight = origin + Vector16(174, 129) + Vector16(5, 4);
+            Vector2 BottomLeft = origin + Vector16(113, 151) + Vector16(5, 4);
+            Vector2 BottomRight = origin + Vector16(167, 151) + Vector16(5, 4);
+            Vector2 BottomCenter = origin + Vector16(140, 156) + Vector16(5, 4);
 
             #endregion
 
@@ -102,13 +102,9 @@ namespace AAMod.NPCs.Bosses.Core
                 {
                     frameShell = 2;
                 }
-                if (internalAI[1] == 80)
+                if (internalAI[1] >= 80)
                 {
                     frameShell = 3;
-                }
-                if (internalAI[1] >= 100)
-                {
-                    frameShell = 4;
                 }
 
                 if (internalAI[1] >= 130)
@@ -218,13 +214,13 @@ namespace AAMod.NPCs.Bosses.Core
 
             if (npc.ai[0] % 15 == 0)
             {
-                if (frameShell < 4)
+                if (frameShell < 3)
                 {
                     frameShell += 1;
                 }
                 else
                 {
-                    frameShell = 4;
+                    frameShell = 3;
                 }
             }
 
@@ -511,10 +507,11 @@ namespace AAMod.NPCs.Bosses.Core
             Texture2D CoreShell = mod.GetTexture("NPCs/Bosses/Core/CoreShell");
             Texture2D Glow = mod.GetTexture("NPCs/Bosses/Core/CoreGlow");
 
-            Rectangle ShellFrame = BaseDrawing.GetFrame(frameShell, 128, 128, 0, 0);
-            Rectangle GlowFrame = BaseDrawing.GetFrame((int)npc.ai[3], 128, 128, 0, 0); ;
+            Rectangle ShellFrame = BaseDrawing.GetFrame(frameShell, 156, 128, 0, 0);
+            Rectangle GlowFrame = BaseDrawing.GetFrame((int)npc.ai[3], 156, 128, 0, 0); 
+            Rectangle CoreBackSprite = BaseDrawing.GetFrame(0, 156, 128, 0, 0); ;
 
-            BaseDrawing.DrawTexture(sb, CoreBack, 0, npc.position, npc.width, npc.height, 1, 0, 0, 1, new Rectangle(0, 0, 88, 90), dColor, true);
+            BaseDrawing.DrawTexture(sb, CoreBack, 0, npc.position, npc.width, npc.height, 1, 0, 0, 1, CoreBackSprite, dColor, true);
             BaseDrawing.DrawTexture(sb, Core, 0, npc.position, npc.width, npc.height, 1, 0, 0, 8, npc.frame, npc.GetAlpha(GlowColor()), true);
             BaseDrawing.DrawTexture(sb, CoreShell, 0, npc.position, npc.width, npc.height, 1, 0, 1, 4, ShellFrame, dColor, true);
             BaseDrawing.DrawTexture(sb, Glow, 0, npc.position, npc.width, npc.height, 1, npc.rotation, 0, 16, GlowFrame, Color.White, true);
