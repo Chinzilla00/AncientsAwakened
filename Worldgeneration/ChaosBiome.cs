@@ -1494,12 +1494,12 @@ namespace AAMod.Worldgeneration
 
             WorldGen.PlaceTile(origin.X + 144, origin.Y + 134, ModContent.TileType<CoreActivator>(), true, false);
 
-            WorldGen.PlaceTile(origin.X + 141, origin.Y + 126, ModContent.TileType<Core>(), true, false);
-            WorldGen.PlaceTile(origin.X + 107, origin.Y + 130, ModContent.TileType<Core>(), true, false);
-            WorldGen.PlaceTile(origin.X + 175, origin.Y + 130, ModContent.TileType<Core>(), true, false);
-            WorldGen.PlaceTile(origin.X + 114, origin.Y + 152, ModContent.TileType<Core>(), true, false);
-            WorldGen.PlaceTile(origin.X + 168, origin.Y + 152, ModContent.TileType<Core>(), true, false);
-            WorldGen.PlaceTile(origin.X + 141, origin.Y + 157, ModContent.TileType<Core>(), true, false);
+            WorldGen.PlaceTile(origin.X + 140, origin.Y + 125, ModContent.TileType<Core>(), true, false);
+            WorldGen.PlaceTile(origin.X + 106, origin.Y + 129, ModContent.TileType<Core>(), true, false);
+            WorldGen.PlaceTile(origin.X + 174, origin.Y + 129, ModContent.TileType<Core>(), true, false);
+            WorldGen.PlaceTile(origin.X + 113, origin.Y + 151, ModContent.TileType<Core>(), true, false);
+            WorldGen.PlaceTile(origin.X + 167, origin.Y + 151, ModContent.TileType<Core>(), true, false);
+            WorldGen.PlaceTile(origin.X + 140, origin.Y + 156, ModContent.TileType<Core>(), true, false);
 
 
 
