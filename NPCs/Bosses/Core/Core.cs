@@ -516,7 +516,7 @@ namespace AAMod.NPCs.Bosses.Core
 
             BaseDrawing.DrawTexture(sb, CoreBack, 0, npc.position, npc.width, npc.height, 1, 0, 0, 1, new Rectangle(0, 0, 88, 90), dColor, true);
             BaseDrawing.DrawTexture(sb, Core, 0, npc.position, npc.width, npc.height, 1, 0, 0, 8, npc.frame, npc.GetAlpha(GlowColor()), true);
-            BaseDrawing.DrawTexture(sb, CoreShell, 0, npc.position, npc.width, npc.height, 1, 0, 1, 5, ShellFrame, dColor, true);
+            BaseDrawing.DrawTexture(sb, CoreShell, 0, npc.position, npc.width, npc.height, 1, 0, 1, 4, ShellFrame, dColor, true);
             BaseDrawing.DrawTexture(sb, Glow, 0, npc.position, npc.width, npc.height, 1, npc.rotation, 0, 16, GlowFrame, Color.White, true);
             
             return false;
