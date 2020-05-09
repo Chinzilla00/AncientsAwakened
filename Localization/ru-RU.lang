@@ -5522,7 +5522,7 @@ NPCName.YamataHead=Ямата
 NPCName.YamataHeadF1=Ямата
 
 ===UNKNWN===
-NPCName.YamataHeadF2=
+NPCName.YamataHeadF2=Ямата
 
 NPCName.YamataTransition=Дух Гнева
 
@@ -5619,7 +5619,7 @@ NPCName.Dragron=Дракрон
 
 NPCName.Flamebrute=Огненный Зверь
 
-NPCName.Flamespitter=Гнеплюв
+NPCName.Flamespitter=Огнеплюв
 
 NPCName.InfernalSlime=Пламенный Слизень
 
@@ -5824,8 +5824,9 @@ NPCName.Vortex=Вихрь
 NPCName.Alpha=Альфакип
 
 ===UNKNWN===
-NPCName.Anubis=Анубис
+NPCName.Anubis=Летописец Легенд
 
+===UNKNWN===
 NPCName.GoblinSlayer=Убийца Гоблинов
 
 ===UNKNWN===
