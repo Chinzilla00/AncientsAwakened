@@ -261,11 +261,11 @@ namespace AAMod.NPCs.Bosses.Core
                         break;
                     case 3: //Corruption
 
-                        if (npc.ai[0] % 61 == 0)
+                        if (npc.ai[0] % 91 == 0)
                         {
                             for(int i = 0; i < 8; i++)
                             {
-                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 5f * (float)Math.Cos(2 * (3.1415926f / i)), 5f * (float)Math.Sin(2 * (3.1415926f / i)), 96, 50, 1f, Main.myPlayer, -1f, 0f);
+                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 5f * (float)Math.Sin(i * (Math.PI / 4)), 5f * (float)Math.Cos(i * (Math.PI / 4)), 96, 50, 1f, Main.myPlayer, -1f, 0f);
                             }
                         }
 
