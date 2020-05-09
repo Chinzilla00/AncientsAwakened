@@ -550,7 +550,7 @@ namespace AAMod.Globals
                     Lang.BossCheck("Usean") + "[i: " + ModContent.ItemType<ConfusingMushroom>() + "]" + Lang.BossCheck("FeudalFungusInfo"),
                     Lang.BossCheck("FeudalFungusInfo2"),
                     "AAMod/CrossMod/BossChecklist/Fungus",
-                    "AAMod/NPCs/Bosses/MushroomMonarch/FeudalFungus_Head_Boss");
+                    "AAMod/NPCs/Bosses/FeudalFungus/FeudalFungus_Head_Boss");
                 #endregion
 
                 #region Grips
@@ -738,7 +738,7 @@ namespace AAMod.Globals
                     Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("Lifescanner") + "]" + Lang.BossCheck("SagittariusInfo"),
                     Lang.BossCheck("SagittariusInfo2"),
                     "AAMod/CrossMod/BossChecklist/Sag",
-                    "AAMod/NPCs/Bosses/Sagittarius/Sagittarius_Head_Boss");
+                    "AAMod/NPCs/Bosses/Sag/Sag_Head_Boss");
                 #endregion
 
                 #region Anubis
@@ -1236,7 +1236,7 @@ namespace AAMod.Globals
                     Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("ChaosRune") + "]",
                     null,
                     "AAMod/CrossMod/BossChecklist/ShenA",
-                    "AAMod/NPCs/Bosses/Shen/Protocol/ShenA_Head_Boss",
+                    "AAMod/NPCs/Bosses/Shen/ShenA_Head_Boss",
                     (Func<bool>)(() => AAWorld.downedShen && Main.expertMode));
                 #endregion
 

@@ -69,20 +69,20 @@ namespace AAMod.NPCs.Bosses.Core
             #region Points
 
             Vector2 origin = Origin();
-            Vector2 topCenter = origin + Vector16(141, 126);
-            Vector2 topLeft = origin + Vector16(107, 130);
-            Vector2 topRight = origin + Vector16(175, 130);
-            Vector2 BottomLeft = origin + Vector16(114, 152);
-            Vector2 BottomRight = origin + Vector16(168, 152);
-            Vector2 BottomCenter = origin + Vector16(141, 157);
+            Vector2 topCenter = origin + new Vector2(145 * 16f, 130  * 16f);
+            Vector2 topLeft = origin + new Vector2(111 * 16f, 134 * 16f);
+            Vector2 topRight = origin + new Vector2(179 * 16f, 134 * 16f);
+            Vector2 BottomLeft = origin + new Vector2(118 * 16f, 156 * 16f);
+            Vector2 BottomRight = origin + new Vector2(172 * 16f, 156 * 16f);
+            Vector2 BottomCenter = origin + new Vector2(145 * 16f, 161 * 16f);
 
             #endregion
 
             #region Preamble
 
-            if (internalAI[0] != 1 || !AAWorld.downedCore)
+            if (internalAI[0] != 1 && !AAWorld.downedCore)
             {
-                npc.position = topCenter;
+                npc.Center = topCenter;
                 if (internalAI[1] % 5 == 0)
                 {
                     npc.ai[3] += 1;
@@ -168,22 +168,22 @@ namespace AAMod.NPCs.Bosses.Core
                     switch (pos)
                     {
                         case 0:
-                            npc.position = topCenter;
+                            npc.Center = topCenter;
                             break;
                         case 1:
-                            npc.position = topRight;
+                            npc.Center = topRight;
                             break;
                         case 2:
-                            npc.position = topLeft;
+                            npc.Center = topLeft;
                             break;
                         case 3:
-                            npc.position = BottomLeft;
+                            npc.Center = BottomLeft;
                             break;
                         case 4:
-                            npc.position = BottomRight;
+                            npc.Center = BottomRight;
                             break;
                         default:
-                            npc.position = BottomCenter;
+                            npc.Center = BottomCenter;
                             break;
                     }
                     npc.ai[0] = 0;
@@ -265,6 +265,14 @@ namespace AAMod.NPCs.Bosses.Core
                         break;
                     case 3: //Corruption
 
+                        if (npc.ai[0] % 61 == 0)
+                        {
+                            for(int i = 0; i < 8; i++)
+                            {
+                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 5f * (float)Math.Cos(2 * (3.1415926f / i)), 5f * (float)Math.Sin(2 * (3.1415926f / i)), 96, 50, 1f, Main.myPlayer, -1f, 0f);
+                            }
+                        }
+
                         break;
                     case 4: //Jungle
 
@@ -299,6 +307,20 @@ namespace AAMod.NPCs.Bosses.Core
                         break;
                     case 11: //Crimson
 
+                        if (npc.ai[0] % 61 == 0)
+                        {
+                            for (int i = 0; i < 6; i++)
+                            {
+                                Vector2 speed = Main.player[npc.target].Center - npc.Center;
+                                speed.Y -= Math.Abs(speed.X) * 0.2f;
+                                speed.Normalize();
+                                speed *= 8f;
+                                speed += npc.velocity / 3f;
+                                speed.X += Main.rand.Next(-20, 21) * 0.08f;
+                                speed.Y += Main.rand.Next(-20, 21) * 0.08f;
+                                Projectile.NewProjectile(npc.Center, speed, ProjectileID.GoldenShowerHostile, 40, 0f, Main.myPlayer);
+                            }
+                        }
                         break;
                     case 12: //Dungeon
                         int ShootX = 10;
@@ -465,12 +487,12 @@ namespace AAMod.NPCs.Bosses.Core
 
         public Vector2 Origin()
         {
-            Vector2 origin = new Vector2((int)(Main.maxTilesX * 0.35f), (int)(Main.maxTilesY * 0.38f));
+            Point origin = new Point((int)(Main.maxTilesX * 0.35f), (int)(Main.maxTilesY * 0.38f));
             if (Main.dungeonX < Main.maxTilesX / 2)
             {
-                origin = new Vector2((int)(Main.maxTilesX * 0.65f), (int)(Main.maxTilesY * 0.38f));
+                origin = new Point((int)(Main.maxTilesX * 0.65f), (int)(Main.maxTilesY * 0.38f));
             }
-            return origin * 16;
+            return new Vector2(origin.X * 16f, origin.Y * 16f);
         }
 
         public Vector2 Vector16(int x, int y)
@@ -494,7 +516,7 @@ namespace AAMod.NPCs.Bosses.Core
 
             BaseDrawing.DrawTexture(sb, CoreBack, 0, npc.position, npc.width, npc.height, 1, 0, 0, 1, new Rectangle(0, 0, 88, 90), dColor, true);
             BaseDrawing.DrawTexture(sb, Core, 0, npc.position, npc.width, npc.height, 1, 0, 0, 8, npc.frame, npc.GetAlpha(GlowColor()), true);
-            BaseDrawing.DrawTexture(sb, CoreShell, 0, npc.position, npc.width, npc.height, 1, 0, 5, 1, ShellFrame, dColor, true);
+            BaseDrawing.DrawTexture(sb, CoreShell, 0, npc.position, npc.width, npc.height, 1, 0, 1, 4, ShellFrame, dColor, true);
             BaseDrawing.DrawTexture(sb, Glow, 0, npc.position, npc.width, npc.height, 1, npc.rotation, 0, 16, GlowFrame, Color.White, true);
             
             return false;
