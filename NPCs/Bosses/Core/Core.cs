@@ -139,7 +139,8 @@ namespace AAMod.NPCs.Bosses.Core
                 player = Main.player[npc.target];
 
                 if (player.dead || !player.active || (npc.position.X - Main.player[npc.target].position.X) > 6000f || (npc.position.X - Main.player[npc.target].position.X) < -6000f || (npc.position.Y - Main.player[npc.target].position.Y) > 6000f || (npc.position.Y - Main.player[npc.target].position.Y) < -6000f)
-                { 
+                {
+                    Item.NewItem(new Vector2(origin.X + 144, origin.Y + 134), ModContent.ItemType<Items.Materials.TerraCrystal>(), 1);
                     npc.active = false;
                 }
             }
