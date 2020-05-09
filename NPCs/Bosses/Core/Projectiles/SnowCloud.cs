@@ -9,6 +9,7 @@ namespace AAMod.NPCs.Bosses.Core.Projectiles
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Snowstorm");
+			Main.projFrames[projectile.type] = 4;
 		}
 
 		public override void SetDefaults()
@@ -67,6 +68,7 @@ namespace AAMod.NPCs.Bosses.Core.Projectiles
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Snowstorm");
+			Main.projFrames[projectile.type] = 4;
 		}
 
 		public override void SetDefaults()
@@ -110,7 +112,7 @@ namespace AAMod.NPCs.Bosses.Core.Projectiles
 					{
 						int X = (int)(projectile.position.X + 14f + Main.rand.Next(projectile.width - 28));
 						int Y = (int)(projectile.position.Y + projectile.height + 4f);
-						Projectile.NewProjectile(X, Y, 0f, 5f, ModContent.ProjectileType<SnowCloud1>(), projectile.damage, 0f, projectile.owner, 0f, 0f);
+						Projectile.NewProjectile(X, Y, 0f, 5f, ModContent.ProjectileType<Snowflakes>(), projectile.damage, 0f, projectile.owner, 0f, 0f);
 					}
 				}
 			}

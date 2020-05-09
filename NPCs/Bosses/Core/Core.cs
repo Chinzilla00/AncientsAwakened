@@ -78,6 +78,11 @@ namespace AAMod.NPCs.Bosses.Core
 
             #endregion
 
+            if (npc.ai[3] > 16)
+            {
+                npc.ai[3] = 1;
+            }
+
             #region Preamble
 
             if (internalAI[0] != 1 && !AAWorld.downedCore)
@@ -190,7 +195,7 @@ namespace AAMod.NPCs.Bosses.Core
             }
             if (npc.ai[1] == 1) //Changing Attacks
             {
-                if (npc.ai[0] % 10 == 0)
+                if (npc.ai[0] % 15 == 0)
                 {
                     npc.ai[3] = Main.rand.Next(1, 17);
                 }
@@ -205,11 +210,6 @@ namespace AAMod.NPCs.Bosses.Core
                     npc.netUpdate = true;
                 }
                 return;
-            }
-
-            if (npc.ai[3] > 16)
-            {
-                npc.ai[3] = 1;
             }
 
             if (npc.ai[0] % 15 == 0)
@@ -236,6 +236,8 @@ namespace AAMod.NPCs.Bosses.Core
 
                             int m = NPC.NewNPC((int)npc.position.X + 100, (int)npc.position.Y, MinType);
                             Main.npc[m].Center = new Vector2(npc.Center.X + 100, npc.Center.Y);
+
+                            MinType = Main.rand.Next(2) == 0 ? ModContent.NPCType<TerraProbe>() : ModContent.NPCType<TerraWatcher>();
 
                             int n = NPC.NewNPC((int)npc.position.X - 100, (int)npc.position.Y, MinType);
                             Main.npc[n].Center = new Vector2(npc.Center.X - 100, npc.Center.Y);
@@ -286,7 +288,7 @@ namespace AAMod.NPCs.Bosses.Core
 
                         if (npc.ai[0] == 91)
                         {
-                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<Projectiles.RockFall>(), 40, 0, Main.myPlayer, player.Center.X, player.Center.Y + 150);
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<Projectiles.RockFall>(), 40, 0, Main.myPlayer, npc.whoAmI);
                         }
 
                         break;
@@ -319,12 +321,12 @@ namespace AAMod.NPCs.Bosses.Core
                         }
                         break;
                     case 12: //Dungeon
-                        int ShootX = 10;
+                        int ShootX = 6;
                         int ShootY = 0;
 
                         if (Main.rand.Next(2) == 0)
                         {
-                            ShootY = 10;
+                            ShootY = 6;
                         }
 
                         if (npc.ai[0] % 20 == 0)
@@ -385,15 +387,16 @@ namespace AAMod.NPCs.Bosses.Core
                         break;
                 }
 
-                int ChangeRate = (npc.life < (int)(npc.lifeMax * .66f)) ? 900 : (npc.life < npc.lifeMax / 3) ? 600 : 1200;
+                int ChangeRate = (npc.life < (int)(npc.lifeMax * .66f)) ? 300 : (npc.life < npc.lifeMax / 3) ? 450 : 600;
 
                 if (npc.ai[0] > ChangeRate)
                 {
                     npc.ai[0] = 0;
                     npc.ai[1] = 0;
-                    npc.ai[3] = 0;
                 }
             }
+
+            npc.direction = npc.spriteDirection = 1;
         }
 
         public void Sandstorm()
@@ -508,7 +511,7 @@ namespace AAMod.NPCs.Bosses.Core
             Texture2D Glow = mod.GetTexture("NPCs/Bosses/Core/CoreGlow");
 
             Rectangle ShellFrame = BaseDrawing.GetFrame(frameShell, 156, 128, 0, 0);
-            Rectangle GlowFrame = BaseDrawing.GetFrame((int)npc.ai[3], 156, 128, 0, 0); 
+            Rectangle GlowFrame = BaseDrawing.GetFrame((int)npc.ai[3] - 1, 156, 128, 0, 0); 
             Rectangle CoreBackSprite = BaseDrawing.GetFrame(0, 156, 128, 0, 0); ;
 
             BaseDrawing.DrawTexture(sb, CoreBack, 0, npc.position, npc.width, npc.height, 1, 0, 0, 1, CoreBackSprite, dColor, true);

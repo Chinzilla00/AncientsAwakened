@@ -37,11 +37,15 @@ namespace AAMod.NPCs.Bosses.Core.Projectiles
 
         public override void Kill(int timeLeft)
         {
-            for (int num468 = 0; num468 < 5; num468++)
+            for (float num3 = 0f; num3 < 5; num3++)
             {
-                float VelX = -projectile.velocity.X * 0.2f;
-                float VelY = -projectile.velocity.Y * 0.2f;
-                Dust.NewDust(projectile.Center, projectile.width, projectile.height, DustID.Stone, VelX, VelY);
+                Dust dust3 = Dust.NewDustDirect(projectile.Bottom, projectile.width, 1, DustID.Stone, 0f, 0f, 0, default, 1f);
+                dust3.alpha = 0;
+                Dust expr_336_cp_0 = dust3;
+                expr_336_cp_0.velocity.Y -= 3f;
+                Dust expr_34E_cp_0 = dust3;
+                expr_34E_cp_0.velocity.X *= 0.5f;
+                dust3.fadeIn = 0.5f + Main.rand.NextFloat() * 0.5f;
             }
 
             Main.PlaySound(SoundID.Item14, projectile.position);
