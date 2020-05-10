@@ -720,7 +720,7 @@ Fishy";
                         case "SetChatButtons4":
                         return "Больше грибов. ";
                         case "SetChatButtons5":
-                        return "Тиски Хаоса.";
+                        return "Руки Хаоса.";
                         case "SetChatButtons6":
                         return "Жирная Дракониха";
                         case "SetChatButtons7":
@@ -806,7 +806,7 @@ Fishy";
                         case "downedSerpentN":
                         return "Змеи! И откуда там только змеи? Я ненавижу их! В любом случае, недавно, в тундре, встретились эти снежные змеи, которые не оставляют меня в покое. Можешь поиграть в истребителя и узнать по пути, что они делали? ";
                         case "downedRetrieverY":
-                        return "Тебе не попадалась моя третья версия ’Жизнь и Эпические приключения Анубиса, собаки-путешественника!’? ";
+                        return "Тебе не попадалась моя третья версия ’Жизнь и Эпические Приключения Чудо-пса Анубиса!’? ";
                         case "downedRetrieverN":
                         return "Помнишь Руки Хаоса? Те мерзкие, желающие схватиться за все ручонки? Так вот, есть их робо-версия и она ворует мои вещи. Можешь оказать мне услугу и швырнуть в нее гаечный ключ или что-то тип того? ";
                         case "downedRaiderY":
@@ -922,7 +922,7 @@ Fishy";
                         case "AnubisChat9":
                         return "Кстать, спасибо, что разрешил поселиться здесь. Устаешь, когда бродишь по пустыне несколько сотен лет. ";
                         case "AnubisChat10":
-                        return "Да, я написал ’История Террарии’. Но еще я написал великую книгу ’Жизнь и Эпические приключения Анубиса, собаки-путешественника!’.  ";
+                        return "Да, я написал ’История Террарии’. Но еще я написал великую книгу ’Жизнь и Эпические Приключения чудо-пса Анубиса!’.  ";
                         case "AnubisChat11":
                         return "А тебя не выбешивает, когда";
                         case "AnubisChat12":
@@ -4401,7 +4401,7 @@ Fishy";
                         case "HydraChowFalse":
                         return "Ничего не пройсходит. Вы выглядите глупо, держа в воздухе этот вонючий шар.";
                         case "InterestingClawTrue":
-                        return "Тиски Хаоса уже здесь!";
+                        return "Руки Хаоса уже здесь!";
                         case "InterestingClawFalse":
                         return "Коготь прихрамывает у вас в руке. Мерзко.";
                         case "IntimidatingMushroomFalse":
@@ -4419,7 +4419,7 @@ Fishy";
                         case "SubzeroCrystalSnowZoneFalse":
                         return "Кристалл показывает картину ближайшей тундры.";
                         case "SubzeroCrystalTrue":
-                        return "Тундровая Змея продолжает атаковать";
+                        return "Морозная Змея продолжает атаковать";
                         case "ToadstoolFalse":
                         return "Поганка квакает..?";
                         case "ToadstoolTrue":
@@ -4649,7 +4649,7 @@ Fishy";
                         case "Lovecraftian":
                         return "Победите Глаз Ктулху";
                         case "Samurai":
-                        return "Победите Тиски Хаоса";
+                        return "Победите Руки Хаоса";
                         case "GoblinSlayer":
                         return "Победите армию гоблинов";
                     }
@@ -4835,9 +4835,9 @@ Fishy";
                         case "FeudalFungusInfo2":
                         return "Феодальный Гриб исчезает";
                         case "GripsofChaos":
-                        return "Тиски Хаоса";
+                        return "Руки Хаоса";
                         case "GripsofChaosInfo":
-                        return "Тиски разлетаются, разобравшись с вами";
+                        return "Руки разлетаются, разобравшись с вами";
                         case "Broodmother":
                         return "Мать Стаи";
                         case "BroodmotherInfo":
@@ -4851,11 +4851,11 @@ Fishy";
                         case "HydraInfo2":
                         return "Гидра вернулась в ее темное логово";
                         case "SubzeroSerpent":
-                        return "Тундровая Змея";
+                        return "Морозная Змея";
                         case "SubzeroSerpentInfo":
                         return " в биоме Тундры ночью";
                         case "SubzeroSerpentInfo2":
-                        return "Тудровая Змея закапывается в снег";
+                        return "Морозная Змея закапывается в снег";
                         case "DesertDjinn":
                         return "Пустынный Джинн";
                         case "DesertDjinnInfo":
