@@ -6,6 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using System.IO;
 using AAMod.NPCs.Enemies.Terrarium.Hardmode;
+using AAMod.NPCs.Bosses.Core.Projectiles;
 using System.Collections.Generic;
 
 namespace AAMod.NPCs.Bosses.Core
@@ -87,8 +88,9 @@ namespace AAMod.NPCs.Bosses.Core
 
             if (internalAI[0] != 1 && !AAWorld.downedCore)
             {
+                npc.dontTakeDamage = true;
                 npc.Center = topCenter;
-                if (internalAI[1] % 5 == 0)
+                if (internalAI[1] % 10 == 0)
                 {
                     npc.ai[3] += 1;
                 }
@@ -120,6 +122,7 @@ namespace AAMod.NPCs.Bosses.Core
                 if (internalAI[1] >= 220 && Main.netMode != 1)
                 {
                     internalAI[0]++;
+                    npc.dontTakeDamage = false;
                     npc.netUpdate = true;
                 }
                 return;
@@ -284,12 +287,24 @@ namespace AAMod.NPCs.Bosses.Core
                         break;
                     case 7: //Hell
 
+                        if (npc.ai[0] % 60 == 0)
+                        {
+                            int velY = Main.rand.Next(3, 7);
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 5, velY, ModContent.ProjectileType<HellFireball>(), 50, 1f, Main.myPlayer, -1f, 0f);
+                            velY = Main.rand.Next(3, 7);
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, -5, -velY, ModContent.ProjectileType<HellFireball>(), 50, 1f, Main.myPlayer, -1f, 0f);
+                            velY = Main.rand.Next(3, 7);
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 5, -velY, ModContent.ProjectileType<HellFireball>(), 50, 1f, Main.myPlayer, -1f, 0f);
+                            velY = Main.rand.Next(3, 7);
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, -5, velY, ModContent.ProjectileType<HellFireball>(), 50, 1f, Main.myPlayer, -1f, 0f);
+                        }
+
                         break;
                     case 8: //Cavern
 
                         if (npc.ai[0] == 91)
                         {
-                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<Projectiles.RockFall>(), 40, 0, Main.myPlayer, npc.whoAmI);
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<RockFall>(), 40, 0, Main.myPlayer, npc.whoAmI);
                         }
 
                         break;
@@ -300,7 +315,7 @@ namespace AAMod.NPCs.Bosses.Core
 
                         if (npc.ai[0] % 198 == 0)
                         {
-                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<Projectiles.SnowCloud>(), 40, 0, Main.myPlayer, player.Center.X, player.Center.Y + 150);
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<SnowCloud>(), 40, 0, Main.myPlayer, player.Center.X, player.Center.Y + 150);
                         }
 
                         break;
@@ -322,16 +337,17 @@ namespace AAMod.NPCs.Bosses.Core
                         }
                         break;
                     case 12: //Dungeon
-                        int ShootX = 6;
-                        int ShootY = 0;
-
-                        if (Main.rand.Next(2) == 0)
-                        {
-                            ShootY = 6;
-                        }
 
                         if (npc.ai[0] % 20 == 0)
                         {
+                            int ShootX = 6;
+                            int ShootY = 0;
+
+                            if (Main.rand.Next(2) == 0)
+                            {
+                                ShootY = 6;
+                            }
+
                             Projectile.NewProjectile(npc.Center.X, npc.Center.Y, ShootX, ShootY, 270, 50, 1f, Main.myPlayer, -1f, 0f);
                             Projectile.NewProjectile(npc.Center.X, npc.Center.Y, -ShootX, -ShootY, 270, 50, 1f, Main.myPlayer, -1f, 0f);
                             if (ShootY != 0)
@@ -349,6 +365,25 @@ namespace AAMod.NPCs.Bosses.Core
 
                         break;
                     case 15: //Hallow
+
+                        if (npc.ai[0] % 120 == 0)
+                        {
+                            int x = 6;
+                            int y = 0;
+
+                            if (Main.rand.Next(2) == 0)
+                            {
+                                y = 6;
+                            }
+
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, x, y, ModContent.ProjectileType<Rainbow>(), 50, 1f, Main.myPlayer, -1f, 0f);
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, -x, -y, ModContent.ProjectileType<Rainbow>(), 50, 1f, Main.myPlayer, -1f, 0f);
+                            if (y != 0)
+                            {
+                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, x, -y, ModContent.ProjectileType<Rainbow>(), 50, 1f, Main.myPlayer, -1f, 0f);
+                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, -x, y, ModContent.ProjectileType<Rainbow>(), 50, 1f, Main.myPlayer, -1f, 0f);
+                            }
+                        }
 
                         break;
                     case 16: //Sky

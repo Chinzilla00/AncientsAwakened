@@ -21,7 +21,9 @@ namespace AAMod.NPCs.Bosses.Core.Projectiles
 
         public override void AI()
         {
-            projectile.velocity.Y += .2f;
+            projectile.velocity.X = projectile.velocity.X * 0.98f;
+            projectile.velocity.Y = projectile.velocity.Y + 0.35f;
+
             if (Main.rand.Next(2) == 0)
             {
                 int dustnumber = Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.Fire, 0f, 0f, 200, default, 0.5f);
