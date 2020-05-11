@@ -13,16 +13,6 @@ namespace AAMod.NPCs.Bosses.Sag
     [AutoloadBossHead]
     public class Sag : ModNPC
 	{
-        public override bool CloneNewInstances => (ModSupport.GetMod("AAModEXAI") != null ? true : false);
-
-        public override ModNPC Clone()
-		{
-            if(ModSupport.GetMod("AAModEXAI") != null)
-            {
-                return ModSupport.GetModNPC("AAModEXAI", "Sag");
-            }
-			return (ModNPC)MemberwiseClone();
-		}
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Sagittarius");

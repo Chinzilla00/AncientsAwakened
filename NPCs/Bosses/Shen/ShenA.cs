@@ -13,16 +13,6 @@ namespace AAMod.NPCs.Bosses.Shen
     [AutoloadBossHead]
     public class ShenA : Shen
     {
-        public override bool CloneNewInstances => (ModSupport.GetMod("AAModEXAI") != null ? true : false);
-
-        public override ModNPC Clone()
-		{
-            if(ModSupport.GetMod("AAModEXAI") != null)
-            {
-                return ModSupport.GetModNPC("AAModEXAI", "ShenA");
-            }
-			return (ModNPC)MemberwiseClone();
-		}
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shen Doragon Awakened");

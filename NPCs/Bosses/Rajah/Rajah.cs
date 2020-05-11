@@ -15,16 +15,6 @@ namespace AAMod.NPCs.Bosses.Rajah
     [AutoloadBossHead]
     public class Rajah : ModNPC
     {
-        public override bool CloneNewInstances => (ModSupport.GetMod("AAModEXAI") != null ? true : false);
-
-        public override ModNPC Clone()
-		{
-            if(ModSupport.GetMod("AAModEXAI") != null)
-            {
-                return ModSupport.GetModNPC("AAModEXAI", "Rajah");
-            }
-			return (ModNPC)MemberwiseClone();
-		}
         public override string Texture => "AAMod/NPCs/Bosses/Rajah/Rajah";
         public int damage = 0;
 
@@ -1245,16 +1235,6 @@ namespace AAMod.NPCs.Bosses.Rajah
     [AutoloadBossHead]
     public class SupremeRajah : Rajah
     {
-        public override bool CloneNewInstances => (ModSupport.GetMod("AAModEXAI") != null ? true : false);
-
-        public override ModNPC Clone()
-		{
-            if(ModSupport.GetMod("AAModEXAI") != null)
-            {
-                return ModSupport.GetModNPC("AAModEXAI", "SupremeRajah");
-            }
-			return (ModNPC)MemberwiseClone();
-		}
         public override string Texture => "AAMod/NPCs/Bosses/Rajah/Supreme/SupremeRajah";
 
         public override void SetStaticDefaults()

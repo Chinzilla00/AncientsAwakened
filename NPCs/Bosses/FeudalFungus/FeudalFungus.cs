@@ -12,16 +12,6 @@ namespace AAMod.NPCs.Bosses.FeudalFungus
     [AutoloadBossHead]
     public class FeudalFungus : ModNPC
     {
-        public override bool CloneNewInstances => (ModSupport.GetMod("AAModEXAI") != null ? true : false);
-
-        public override ModNPC Clone()
-		{
-            if(ModSupport.GetMod("AAModEXAI") != null)
-            {
-                return ModSupport.GetModNPC("AAModEXAI", "FeudalFungus");
-            }
-			return (ModNPC)MemberwiseClone();
-		}
         public int damage = 0;
 
 		public override void SendExtraAI(BinaryWriter writer)

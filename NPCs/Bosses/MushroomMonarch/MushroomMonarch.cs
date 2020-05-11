@@ -10,16 +10,6 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
     [AutoloadBossHead]
     public class MushroomMonarch : ModNPC
     {
-        public override bool CloneNewInstances => (ModSupport.GetMod("AAModEXAI") != null ? true : false);
-
-        public override ModNPC Clone()
-		{
-            if(ModSupport.GetMod("AAModEXAI") != null)
-            {
-                return ModSupport.GetModNPC("AAModEXAI", "MushroomMonarch");
-            }
-			return (ModNPC)MemberwiseClone();
-		}
 		public override void SendExtraAI(BinaryWriter writer)
 		{
 			base.SendExtraAI(writer);

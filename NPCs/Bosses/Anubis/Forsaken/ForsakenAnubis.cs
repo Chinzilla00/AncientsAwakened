@@ -10,17 +10,6 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
 {
     public class ForsakenAnubis : ModNPC
     {
-        public override bool CloneNewInstances => (ModSupport.GetMod("AAModEXAI") != null ? true : false);
-
-        public override ModNPC Clone()
-		{
-            if(ModSupport.GetMod("AAModEXAI") != null)
-            {
-                return ModSupport.GetModNPC("AAModEXAI", "ForsakenAnubis");
-            }
-			return (ModNPC)MemberwiseClone();
-		}
-
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Anubis; Forsaken Judge");

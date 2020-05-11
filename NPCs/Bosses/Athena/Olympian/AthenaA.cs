@@ -12,16 +12,6 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
     [AutoloadBossHead]
     public class AthenaA : ModNPC
     {
-        public override bool CloneNewInstances => (ModSupport.GetMod("AAModEXAI") != null ? true : false);
-
-        public override ModNPC Clone()
-		{
-            if(ModSupport.GetMod("AAModEXAI") != null)
-            {
-                return ModSupport.GetModNPC("AAModEXAI", "AthenaA");
-            }
-			return (ModNPC)MemberwiseClone();
-		}
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Olympian Athena");

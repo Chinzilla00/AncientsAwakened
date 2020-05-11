@@ -12,16 +12,6 @@ namespace AAMod.NPCs.Bosses.Akuma
     [AutoloadBossHead]
     public class Akuma : ModNPC
     {
-        public override bool CloneNewInstances => (ModSupport.GetMod("AAModEXAI") != null ? true : false);
-
-        public override ModNPC Clone()
-		{
-            if(ModSupport.GetMod("AAModEXAI") != null)
-            {
-                return ModSupport.GetModNPC("AAModEXAI", "Akuma");
-            }
-			return (ModNPC)MemberwiseClone();
-		}
         public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/Akuma"; } }
 
         public bool loludided;

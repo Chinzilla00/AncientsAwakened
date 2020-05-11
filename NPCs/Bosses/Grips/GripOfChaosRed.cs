@@ -9,16 +9,6 @@ namespace AAMod.NPCs.Bosses.Grips
     [AutoloadBossHead]
     public class GripOfChaosRed : BaseGripOfChaos
     {
-        public override bool CloneNewInstances => (ModSupport.GetMod("AAModEXAI") != null ? true : false);
-
-        public override ModNPC Clone()
-		{
-            if(ModSupport.GetMod("AAModEXAI") != null)
-            {
-                return ModSupport.GetModNPC("AAModEXAI", "GripOfChaosRed");
-            }
-			return (ModNPC)MemberwiseClone();
-		}
         public override void SetDefaults()
         {
 			base.SetDefaults();

@@ -12,16 +12,6 @@ namespace AAMod.NPCs.Bosses.Zero
     [AutoloadBossHead]
     public class Zero : ModNPC
     {
-        public override bool CloneNewInstances => (ModSupport.GetMod("AAModEXAI") != null ? true : false);
-
-        public override ModNPC Clone()
-		{
-            if(ModSupport.GetMod("AAModEXAI") != null)
-            {
-                return ModSupport.GetModNPC("AAModEXAI", "Zero");
-            }
-			return (ModNPC)MemberwiseClone();
-		}
         public int damage = 0;
 
         public override void SetStaticDefaults()

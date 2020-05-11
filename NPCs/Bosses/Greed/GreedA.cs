@@ -13,16 +13,6 @@ namespace AAMod.NPCs.Bosses.Greed
     [AutoloadBossHead]
     public class GreedA : ModNPC
     {
-        public override bool CloneNewInstances => (ModSupport.GetMod("AAModEXAI") != null ? true : false);
-
-        public override ModNPC Clone()
-		{
-            if(ModSupport.GetMod("AAModEXAI") != null)
-            {
-                return ModSupport.GetModNPC("AAModEXAI", "GreedA");
-            }
-			return (ModNPC)MemberwiseClone();
-		}
         public int damage = 0;
         bool loludided = false;
 

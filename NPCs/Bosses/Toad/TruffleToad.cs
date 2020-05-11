@@ -13,16 +13,6 @@ namespace AAMod.NPCs.Bosses.Toad
     [AutoloadBossHead]
     public class TruffleToad : ModNPC
     {
-        public override bool CloneNewInstances => (ModSupport.GetMod("AAModEXAI") != null ? true : false);
-
-        public override ModNPC Clone()
-		{
-            if(ModSupport.GetMod("AAModEXAI") != null)
-            {
-                return ModSupport.GetModNPC("AAModEXAI", "TruffleToad");
-            }
-			return (ModNPC)MemberwiseClone();
-		}
         public float bossLife;
         public int damage = 0;
 

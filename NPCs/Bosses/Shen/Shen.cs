@@ -13,16 +13,6 @@ namespace AAMod.NPCs.Bosses.Shen
     [AutoloadBossHead]
     public class Shen : ModNPC
     {
-        public override bool CloneNewInstances => (ModSupport.GetMod("AAModEXAI") != null ? true : false);
-
-        public override ModNPC Clone()
-		{
-            if(ModSupport.GetMod("AAModEXAI") != null)
-            {
-                return ModSupport.GetModNPC("AAModEXAI", "Shen");
-            }
-			return (ModNPC)MemberwiseClone();
-		}
         public int damage = 0;
 
         public bool SpawnGrips = false;

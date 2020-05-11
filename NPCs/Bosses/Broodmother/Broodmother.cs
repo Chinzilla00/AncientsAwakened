@@ -13,16 +13,6 @@ namespace AAMod.NPCs.Bosses.Broodmother
     [AutoloadBossHead]
     public class Broodmother : ModNPC
     {
-        public override bool CloneNewInstances => (ModSupport.GetMod("AAModEXAI") != null ? true : false);
-
-        public override ModNPC Clone()
-		{
-            if(ModSupport.GetMod("AAModEXAI") != null)
-            {
-                return ModSupport.GetModNPC("AAModEXAI", "Broodmother");
-            }
-			return (ModNPC)MemberwiseClone();
-		}
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Broodmother");

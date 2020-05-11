@@ -9,16 +9,6 @@ namespace AAMod.NPCs.Bosses.Anubis
 {
     public class Anubis : ModNPC
     {
-        public override bool CloneNewInstances => (ModSupport.GetMod("AAModEXAI") != null ? true : false);
-
-        public override ModNPC Clone()
-		{
-            if(ModSupport.GetMod("AAModEXAI") != null)
-            {
-                return ModSupport.GetModNPC("AAModEXAI", "Anubis");
-            }
-			return (ModNPC)MemberwiseClone();
-		}
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Anubis Legendscribe");

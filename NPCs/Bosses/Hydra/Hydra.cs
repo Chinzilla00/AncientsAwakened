@@ -13,16 +13,6 @@ namespace AAMod.NPCs.Bosses.Hydra
     [AutoloadBossHead]
     public class Hydra : ModNPC
     {
-        public override bool CloneNewInstances => (ModSupport.GetMod("AAModEXAI") != null ? true : false);
-
-        public override ModNPC Clone()
-		{
-            if(ModSupport.GetMod("AAModEXAI") != null)
-            {
-                return ModSupport.GetModNPC("AAModEXAI", "Hydra");
-            }
-			return (ModNPC)MemberwiseClone();
-		}
         public NPC Head1;
         public NPC Head2;
         public NPC Head3;

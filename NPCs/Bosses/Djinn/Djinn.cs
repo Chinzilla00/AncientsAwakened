@@ -14,16 +14,6 @@ namespace AAMod.NPCs.Bosses.Djinn
     [AutoloadBossHead]
     public class Djinn : ModNPC
     {
-        public override bool CloneNewInstances => (ModSupport.GetMod("AAModEXAI") != null ? true : false);
-
-        public override ModNPC Clone()
-		{
-            if(ModSupport.GetMod("AAModEXAI") != null)
-            {
-                return ModSupport.GetModNPC("AAModEXAI", "Djinn");
-            }
-			return (ModNPC)MemberwiseClone();
-		}
         public int damage = 0;
 
         public override void SetStaticDefaults()

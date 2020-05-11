@@ -13,16 +13,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
     [AutoloadBossHead]
     public class Ashe : ModNPC
     {
-        public override bool CloneNewInstances => (ModSupport.GetMod("AAModEXAI") != null ? true : false);
-
-        public override ModNPC Clone()
-		{
-            if(ModSupport.GetMod("AAModEXAI") != null)
-            {
-                return ModSupport.GetModNPC("AAModEXAI", "Ashe");
-            }
-			return (ModNPC)MemberwiseClone();
-		}
         public int OrbiterCount = Main.expertMode ? 10 : 8;
 
         public bool Health = false;
