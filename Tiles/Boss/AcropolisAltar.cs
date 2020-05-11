@@ -102,7 +102,7 @@ namespace AAMod.Tiles.Boss
                 Main.npc[npcID].Center = npcCenter;
                 Main.npc[npcID].netUpdate = true;
 
-                ((Athena)Main.npc[npcID].modNPC).Seen = seen;
+                if(ModSupport.GetMod("AAModEXAI") == null) ((Athena)Main.npc[npcID].modNPC).Seen = seen;
 
                 if (Main.netMode == NetmodeID.SinglePlayer)
                 {
