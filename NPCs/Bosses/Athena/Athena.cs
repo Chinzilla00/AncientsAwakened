@@ -13,6 +13,17 @@ namespace AAMod.NPCs.Bosses.Athena
     [AutoloadBossHead]
     public class Athena : ModNPC
     {
+        public override bool CloneNewInstances => (ModSupport.GetMod("AAModEXAI") != null ? true : false);
+
+        public override ModNPC Clone()
+		{
+            if(ModSupport.GetMod("AAModEXAI") != null)
+            {
+                return ModSupport.GetModNPC("AAModEXAI", "Athena");
+            }
+			return (ModNPC)MemberwiseClone();
+		}
+
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[npc.type] = 7;

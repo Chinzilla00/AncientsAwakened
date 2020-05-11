@@ -13,6 +13,16 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
     [AutoloadBossHead]
     public class ZeroProtocol : ModNPC
     {
+        public override bool CloneNewInstances => (ModSupport.GetMod("AAModEXAI") != null ? true : false);
+
+        public override ModNPC Clone()
+		{
+            if(ModSupport.GetMod("AAModEXAI") != null)
+            {
+                return ModSupport.GetModNPC("AAModEXAI", "ZeroProtocol");
+            }
+			return (ModNPC)MemberwiseClone();
+		}
         public int timer;
         public static int type;
         public int damage = 0;

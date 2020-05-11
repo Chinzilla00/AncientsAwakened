@@ -13,6 +13,16 @@ namespace AAMod.NPCs.Bosses.Equinox
     [AutoloadBossHead]	
 	public class DaybringerHead : ModNPC
 	{	
+        public override bool CloneNewInstances => (ModSupport.GetMod("AAModEXAI") != null ? true : false);
+
+        public override ModNPC Clone()
+		{
+            if(ModSupport.GetMod("AAModEXAI") != null)
+            {
+                return ModSupport.GetModNPC("AAModEXAI", "DaybringerHead");
+            }
+			return (ModNPC)MemberwiseClone();
+		}
 		public bool nightcrawler = false;
 		public override void SetStaticDefaults()
 		{

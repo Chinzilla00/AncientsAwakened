@@ -12,6 +12,16 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
     [AutoloadBossHead]
     public class Haruka : ModNPC
     {
+        public override bool CloneNewInstances => (ModSupport.GetMod("AAModEXAI") != null ? true : false);
+
+        public override ModNPC Clone()
+		{
+            if(ModSupport.GetMod("AAModEXAI") != null)
+            {
+                return ModSupport.GetModNPC("AAModEXAI", "Haruka");
+            }
+			return (ModNPC)MemberwiseClone();
+		}
 
         public override void SetStaticDefaults()
         {

@@ -13,6 +13,16 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
     [AutoloadBossHead]
     public class AkumaA : ModNPC
     {
+        public override bool CloneNewInstances => (ModSupport.GetMod("AAModEXAI") != null ? true : false);
+
+        public override ModNPC Clone()
+		{
+            if(ModSupport.GetMod("AAModEXAI") != null)
+            {
+                return ModSupport.GetModNPC("AAModEXAI", "AkumaA");
+            }
+			return (ModNPC)MemberwiseClone();
+		}
         public bool Loludided;
         public int fireTimer = 0;
         public int damage = 0;

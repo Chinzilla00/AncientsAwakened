@@ -12,6 +12,16 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
     [AutoloadBossHead]
     public class YamataA : YamataBoss
     {
+        public override bool CloneNewInstances => (ModSupport.GetMod("AAModEXAI") != null ? true : false);
+
+        public override ModNPC Clone()
+		{
+            if(ModSupport.GetMod("AAModEXAI") != null)
+            {
+                return ModSupport.GetModNPC("AAModEXAI", "YamataA");
+            }
+			return (ModNPC)MemberwiseClone();
+		}
         public NPC TrueHead;
         public NPC Head2;
         public NPC Head3;
