@@ -6675,14 +6675,14 @@ Common.DevBag= Мешок Разработчика
 
 //AAConfig
 
-Common.AATownNPC=Отключить НИПов из АА
-Common.AATownNPCInfo=Отключает НИПам из этого мода возможность приходить. Для тех, кто хочет заселить других НИПов быстрее. Не работает на Анубиса, так как он является ключевым в прогрессе продвижения по игре.
-Common.DisableBossDialogue=Отключить Диалоги Боссов
-Common.DisableBossDialogueInfo=Отключает диалоги боссов, чтобы предотвратить спам в чате. Анимации, содержащие диалог босса, будут проигрываться слегка быстрее.
-Common.AAStyleMainPage=Стиль АА для Главного Меню
-Common.AAStyleMainPageInfo=Используйте стиль АА для главного меню вместо ванильного. Если вы играете с АА и другим модом, добавляющим много контента, лучше отключите это.
-Common.AABossTitle=Ancient Introduction Text
-Common.AABossTitleInfo=Disables the Legend of Zelda-style boss introduction text for the Ancients.
+AAConfig.AATownNPC=Отключить НИПов из АА
+AAConfig.AATownNPCInfo=Отключает НИПам из этого мода возможность приходить. Для тех, кто хочет заселить других НИПов быстрее. Не работает на Анубиса, так как он является ключевым в прогрессе продвижения по игре.
+AAConfig.DisableBossDialogue=Отключить Диалоги Боссов
+AAConfig.DisableBossDialogueInfo=Отключает диалоги боссов, чтобы предотвратить спам в чате. Анимации, содержащие диалог босса, будут проигрываться слегка быстрее.
+AAConfig.AAStyleMainPage=Стиль АА для Главного Меню
+AAConfig.AAStyleMainPageInfo=Используйте стиль АА для главного меню вместо ванильного. Если вы играете с АА и другим модом, добавляющим много контента, лучше отключите это.
+AAConfig.AABossTitle=Ancient Introduction Text
+AAConfig.AABossTitleInfo=Disables the Legend of Zelda-style boss introduction text for the Ancients.
 
 //GlobalNPCSInfo
 
