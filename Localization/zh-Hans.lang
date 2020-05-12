@@ -6754,8 +6754,6 @@ MapObject.RazewoodChest=燎火木宝箱
 
 MapObject.RazewoodClock=燎火木钟
 
-Common.RazewoodClockGetTime=用烧焦的木头做一个钟可不是好主意. 这玩意根本不工作.
-
 MapObject.RazewoodCouch=燎火木沙发
 
 MapObject.RazewoodDoor=燎火木门

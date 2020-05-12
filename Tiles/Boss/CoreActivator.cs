@@ -105,7 +105,7 @@ namespace AAMod.Tiles.Boss
                 Main.npc[npcID].Center = npcCenter;
                 Main.npc[npcID].netUpdate = true;
 
-                BaseUtility.Chat("The Biome Core whirs to life!", 175, 75, 255, false);
+                BaseUtility.Chat(Lang.BossChat("CoreSpawn"), 175, 75, 255, false);
             }
             else
             {

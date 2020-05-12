@@ -36,7 +36,7 @@ namespace AAMod.Tiles.Decoration
 
         public override bool NewRightClick(int i, int j)
         {
-            BaseUtility.Chat("The Hero who saved us all from the brink of chaos", Color.LawnGreen);
+            BaseUtility.Chat(Lang.TilesInfo("TerraStatueInfo"), Color.LawnGreen);
             return true;
         }
 

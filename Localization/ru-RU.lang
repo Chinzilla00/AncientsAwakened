@@ -6565,10 +6565,6 @@ Common.GoblinSlayerShopHalloweenLoot=Хэллоуйн
 Common.GoblinSlayerShopChristmasLoot=Рождество
 Common.GoblinSlayerShopMartianLoot=Марсиане
 
-//AAMod.Tiles.RazewoodF
-
-Common.RazewoodClockGetTime=Может быть делать часы из сгоревшей древесины была плохая идея? Они даже не работают.
-
 //lockedchest
 
 Common.InfernoChest_Locked=Закрытый сундук Инферно

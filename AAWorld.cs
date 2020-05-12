@@ -1304,7 +1304,7 @@ namespace AAMod
                 if (RadiumOre == false)
                 {
                     RadiumOre = true;
-                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedEquinoxInfo"), Color.Violet);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedEquinoxInfo"), Color.Violet);
                     for (int i = 0; i < Main.maxTilesX / 50; ++i)
                     {
                         int X = WorldGen.genRand.Next(Main.maxTilesX / 10 * 2, (int)(Main.maxTilesX / 10 * 4.5f));
@@ -1344,12 +1344,12 @@ namespace AAMod
                 if (Ancients == false)
                 {
                     Ancients = true;
-                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedMoonlordInfo1"), Color.ForestGreen);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedMoonlordInfo1"), Color.ForestGreen);
                 }
                 if (Luminite == false)
                 {
                     Luminite = true;
-                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedMoonlordInfo2"), Color.DarkSeaGreen);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedMoonlordInfo2"), Color.DarkSeaGreen);
                     for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
                     {
                         WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(5, 9), WorldGen.genRand.Next(6, 10), (ushort)mod.TileType("LuminiteOre"));
@@ -1362,7 +1362,7 @@ namespace AAMod
                 if (HallowedOre == false)
                 {
                     HallowedOre = true;
-                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedMechBossAnyInfo"), Color.Goldenrod);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedMechBossAnyInfo"), Color.Goldenrod);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
                     for (int k = 0; k < (int)(x * y * 15E-05); k++)
@@ -1379,7 +1379,7 @@ namespace AAMod
                 if (!DiscordOres)
                 {
                     DiscordOres = true;
-                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedSistersInfo"), Color.Magenta);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedSistersInfo"), Color.Magenta);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
                     for (int k = 0; k < (int)(x * y * 15E-05); k++)
@@ -1408,7 +1408,7 @@ namespace AAMod
                 if (!Terra1)
                 {
                     Terra1 = true;
-                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedBoss2Info"), Color.LimeGreen);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedBoss2Info"), Color.LimeGreen);
                     for (int j = 0; j < Main.maxTilesX; j++)
                     {
                         for (int k = 0; k < Main.maxTilesY; k++)
@@ -1426,7 +1426,7 @@ namespace AAMod
                 if (!Terra2)
                 {
                     Terra2 = true;
-                    if (Main.netMode != 1) BaseUtility.Chat("Ancient constructs Awaken in a place long forgotten...", Color.LimeGreen);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedPlantBossInfo"), Color.LimeGreen);
                     for (int j = 0; j < Main.maxTilesX; j++)
                     {
                         for (int k = 0; k < Main.maxTilesY; k++)
@@ -1444,7 +1444,7 @@ namespace AAMod
                 if (!Terra3)
                 {
                     Terra3 = true;
-                    if (Main.netMode != 1) BaseUtility.Chat("...hello..? Please...come to the keep as soon as possible...there is something you must see...", Color.LimeGreen);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedShenInfo"), Color.LimeGreen);
                     for (int j = 0; j < Main.maxTilesX; j++)
                     {
                         for (int k = 0; k < Main.maxTilesY; k++)

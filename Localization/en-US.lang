@@ -199,10 +199,6 @@ Common.GoblinSlayerShopHalloweenLoot=Halloween Loot
 Common.GoblinSlayerShopChristmasLoot=Christmas Loot
 Common.GoblinSlayerShopMartianLoot=Martian Loot
 
-//AAMod.Tiles.RazewoodF
-
-Common.RazewoodClockGetTime=Maybe making a clock out of burned wood wasn't such a good idea. It doesn't even work.
-
 //lockedchest
 
 Common.InfernoChest_Locked=Locked Inferno Chest
