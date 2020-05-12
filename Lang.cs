@@ -61,7 +61,7 @@ namespace AAMod
                     case "downedEquinoxInfo":
                     return "Дар небожителей искрится в атмосфере...";
                     case "StarIdolInfo":
-                    return "В небе множество звезд, дитя";
+                    return "В небе сейчас множество звезд, дитя";
                     case "downedMoonlordInfo1":
                     return "Древние Пробудились!";
                     case "downedMoonlordInfo2":
@@ -1928,92 +1928,92 @@ Fishy";
                     switch(Boss)
                     {
                         case "AnubisLegendscribe":
-                        return "Anubis Legendscribe";
+                        return "Анубис Летописец Легенд";
 
                         case "AthenaName":
-                        return "Athena";
+                        return "Афина";
 
                         case "GreedName":
-                        return "Greed";
+                        return "Жадность";
 
                         case "FAnubisName":
-                        return "Anubis";
+                        return "Анубис";
                         case "FAnubisTitle":
-                        return "Forsaken Judge";
+                        return "Забытый Судья";
 
                         case "OAthenaName":
-                        return "Olympian Athena";
+                        return "Олимпийская Афина";
                         case "OAthenaTitle":
-                        return "Seraph Queen";
+                        return "Королева Серафимов";
 
                         case "WKGName":
-                        return "Greed";
+                        return "Жадность";
                         case "WKGTitle":
-                        return "Worm King";
+                        return "Король Червей";
 
                         case "AkumaName":
-                        return "Akuma";
+                        return "Акума";
                         case "AkumaTitle":
-                        return "Draconian Demon";
+                        return "Драконоподобный Демон";
 
                         case "AkumaAName":
-                        return "Oni Akuma";
+                        return "Они Акума";
                         case "AkumaATitle":
-                        return "Blazing Fury Incarnate";
+                        return "Воплощение Опаляющей Ярости";
 
                         case "YamataName":
-                        return "Yamata";
+                        return "Ямата";
                         case "YamataTitle":
-                        return "Dread Nightmare";
+                        return "Ужасающий Кошмар";
 
                         case "YamataAName":
-                        return "Yamata No Orochi";
+                        return "Ямата Но Орочи";
                         case "YamataATitle":
-                        return "Abyssal Wrath Incarnate";
+                        return "Воплощение Гнева Бездны";
 
                         case "ZER0Name":
-                        return "ZER0";
+                        return "ЗИР0";
                         case "ZER0Title":
-                        return "Doomsday Construct";
+                        return "Конструкт Судного дня";
 
                         case "ZER0PName":
-                        return "ZER0 PR0T0C0L";
+                        return "ЗИР0 ПР0Т0К0Л";
                         case "ZER0PTitle":
-                        return "Dark Cipher";
+                        return "ТЕМНЫЙ НУЛЬ";
 
                         case "CRajahRabbitName":
-                        return "Rajah Rabbit";
+                        return "Кролик Раджа";
                         case "CRajahRabbitTitle":
-                        return "Champion of the Innocent";
+                        return "Защитник Невинных";
 
                         case "ShenName":
-                        return "Shen Doragon";
+                        return "Шен Дорагон";
                         case "ShenTitle":
-                        return "Discordian Doomsayer";
+                        return "Предвестник Раздора";
 
                         case "ShenAName":
-                        return "Shen Doragon Awakened";
+                        return "Шен Дорагон Пробужденный";
                         case "ShenATitle":
-                        return "Unyielding Discord Incarnate";
+                        return "Воплощение Несгибаемого Раздора";
 
                         case "AHName":
-                        return "Ashe & Haruka";
+                        return "Аши и Харука";
                         case "AHTitle":
-                        return "Sisters of Discord";
+                        return "Сестры Раздора";
                         case "AsheName":
-                        return "Ashe";
+                        return "Аши";
                         case "AHANd":
-                        return "&";
+                        return "и";
                         case "HarukaName":
-                        return "Haruka";
+                        return "Харука";
 
                         case "EquinoxName":
-                        return "Equinox Worms";
+                        return "Равноденствия";
                         case "EquinoxTitle":
-                        return "The";
+                        return "Черви";
 
                         case "RajahName":
-                        return "Rajah Rabbit";
+                        return "Кролик Раджа";
                     }
                 }
             else
