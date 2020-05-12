@@ -6111,11 +6111,11 @@ NPCName.WrathHarukaVanish=觉醒潭渊妖女 震惧之八歧遥香
 
 NPCName.WrathHarukaClone=觉醒潭渊妖女 震惧之八歧遥香
 
-NPCName.ShenDoragon=上神应龙 冥昧末日的预言者
+NPCName.ShenDoragon=上神应龙 冥昧末日的预兆
 
-NPCName.Shen=上神应龙 冥昧末日的预言者
+NPCName.Shen=上神应龙 冥昧末日的预兆
 
-NPCName.ShenHitbox=上神应龙 冥昧末日的预言者
+NPCName.ShenHitbox=上神应龙 冥昧末日的预兆
 
 NPCName.ShenA=觉醒之上神应龙 冥昭瞢暗的化身
 
@@ -7154,6 +7154,8 @@ Common.DisableBossDialogue=远古觉醒Boss对话取消
 Common.DisableBossDialogueInfo=阻止Boss对话的生成. 也会让已有的Boss对话速度加快.
 Common.AAStyleMainPage=远古觉醒风格主菜单
 Common.AAStyleMainPageInfo=使用远古觉醒风格的主菜单替换原版主题。如果你想和其他大型模组一同游玩，建议禁止。
+Common.AABossTitle=远古觉醒boss介绍
+Common.AABossTitleInfo=取消塞尔达风格的远古觉醒boss介绍文本.
 
 //AAPlayerChat
 

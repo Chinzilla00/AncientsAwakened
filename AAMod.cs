@@ -1141,92 +1141,92 @@ namespace AAMod
             switch (BossID)
             {
                 case 1:
-                    BossName = "Anubis Legendscribe";
+                    BossName = Lang.BossTitle("AnubisLegendscribeName");
                     BossTitle = "";
                     titleColor = Color.Goldenrod;
                     break;
                 case 2:
-                    BossName = "Athena";
+                    BossName = Lang.BossTitle("AthenaName");
                     BossTitle = "";
                     titleColor = Color.CornflowerBlue;
                     break;
                 case 3:
-                    BossName = "Greed";
+                    BossName = Lang.BossTitle("GreedName");
                     BossTitle = "";
                     titleColor = Color.Gold;
                     break;
                 case 4:
-                    BossName = "Anubis";
-                    BossTitle = "Forsaken Judge";
+                    BossName = Lang.BossTitle("FAnubisName");
+                    BossTitle = Lang.BossTitle("FAnubisTitle");
                     titleColor = Color.DarkGreen;
                     break;
                 case 5:
-                    BossName = "Olympian Athena";
-                    BossTitle = "Seraph Queen";
+                    BossName = Lang.BossTitle("OAthenaName");
+                    BossTitle = Lang.BossTitle("OAthenaTitle");
                     titleColor = Color.Turquoise;
                     break;
                 case 6:
-                    BossName = "Greed";
-                    BossTitle = "Worm King";
+                    BossName = Lang.BossTitle("WKGName");
+                    BossTitle = Lang.BossTitle("WKGTitle");
                     titleColor = Color.Gold;
                     break;
                 case 7:
-                    BossName = "Akuma";
-                    BossTitle = "Draconian Demon";
+                    BossName = Lang.BossTitle("AkumaName");
+                    BossTitle = Lang.BossTitle("AkumaTitle");
                     titleColor = Color.OrangeRed;
                     break;
                 case 8:
-                    BossName = "Oni Akuma";
-                    BossTitle = "Blazing Fury Incarnate";
+                    BossName = Lang.BossTitle("AkumaAName");
+                    BossTitle = Lang.BossTitle("AkumaATitle");
                     titleColor = Color.DeepSkyBlue;
                     break;
                 case 9:
-                    BossName = "Yamata";
-                    BossTitle = "Dread Nightmare";
+                    BossName = Lang.BossTitle("YamataName");
+                    BossTitle = Lang.BossTitle("YamataTitle");
                     titleColor = Color.Indigo;
                     break;
                 case 10:
-                    BossName = "Yamata No Orochi";
-                    BossTitle = "Abyssal Wrath Incarnate";
+                    BossName = Lang.BossTitle("YamataAName");
+                    BossTitle = Lang.BossTitle("YamataATitle");
                     titleColor = Color.MediumVioletRed;
                     break;
                 case 11:
-                    BossName = "ZER0";
-                    BossTitle = "Doomsday Construct";
+                    BossName = Lang.BossTitle("ZER0Name");
+                    BossTitle = Lang.BossTitle("ZER0Title");
                     titleColor = Color.Red;
                     break;
                 case 12:
-                    BossName = "ZER0 PR0T0C0L";
-                    BossTitle = "Dark Cipher";
+                    BossName = Lang.BossTitle("ZER0PName");
+                    BossTitle = Lang.BossTitle("ZER0PTitle");
                     titleColor = Color.Red;
                     break;
                 case 13:
-                    BossName = "Rajah Rabbit";
-                    BossTitle = "Champion of the Innocent";
+                    BossName = Lang.BossTitle("CRajahRabbitName");
+                    BossTitle = Lang.BossTitle("CRajahRabbitTitle");
                     titleColor = Color.LightCyan;
                     break;
                 case 14:
-                    BossName = "Shen Doragon";
-                    BossTitle = "Discordian Doomsayer";
+                    BossName = Lang.BossTitle("ShenName");
+                    BossTitle = Lang.BossTitle("ShenTitle");
                     titleColor = Color.Magenta;
                     break;
                 case 15:
-                    BossName = "Shen Doragon Awakened";
-                    BossTitle = "Unyielding Discord Incarnate";
+                    BossName = Lang.BossTitle("ShenAName");
+                    BossTitle = Lang.BossTitle("ShenATitle");
                     titleColor = Color.Magenta;
                     break;
                 case 16:
-                    BossName = "Ashe & Haruka";
-                    BossTitle = "Sisters of Discord";
+                    BossName = Lang.BossTitle("AHName");
+                    BossTitle = Lang.BossTitle("AHTitle");
                     titleColor = Color.Magenta;
                     break;
                 case 17:
-                    BossName = "Equinox Worms";
-                    BossTitle = "The";
+                    BossName = Lang.BossTitle("EquinoxName");
+                    BossTitle = Lang.BossTitle("EquinoxTitle");
                     titleColor = Color.BlueViolet;
                     break;
                 case 18:
-                    BossName = "Rajah Rabbit";
+                    BossName = Lang.BossTitle("RajahName");
                     BossTitle = "";
                     titleColor = Color.LightCyan;
                     break;
@@ -1252,16 +1252,16 @@ namespace AAMod
                 float alpha3 = modPlayer2.alphaText3;
                 float alpha4 = modPlayer2.alphaText4;
 
-                Vector2 ASize = Main.fontDeathText.MeasureString("Ashe");
-                Vector2 AndSize = Main.fontDeathText.MeasureString("&");
-                Vector2 HSize = Main.fontDeathText.MeasureString("Haruka");
+                Vector2 ASize = Main.fontDeathText.MeasureString(Lang.BossTitle("AsheName"));
+                Vector2 AndSize = Main.fontDeathText.MeasureString(Lang.BossTitle("AHANd"));
+                Vector2 HSize = Main.fontDeathText.MeasureString(Lang.BossTitle("HarukaName"));
                 float APositionLeft = Main.screenWidth / 2 - ASize.X / 2;
                 float AndPositionLeft = Main.screenWidth / 2 - AndSize.X / 2;
                 float HPositionLeft = Main.screenWidth / 2 - HSize.X / 2;
 
-                Main.spriteBatch.DrawString(Main.fontDeathText, "Ashe", new Vector2(APositionLeft, Main.screenHeight / 2 - 300), Color.OrangeRed * ((255 - alpha) / 255f), 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
-                Main.spriteBatch.DrawString(Main.fontDeathText, "&", new Vector2(AndPositionLeft, Main.screenHeight / 2 - 250), Color.Magenta * ((255 - alpha3) / 255f), 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
-                Main.spriteBatch.DrawString(Main.fontDeathText, "Haruka", new Vector2(HPositionLeft, Main.screenHeight / 2 - 200), Color.Indigo * ((255 - alpha4) / 255f), 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+                Main.spriteBatch.DrawString(Main.fontDeathText, Lang.BossTitle("AsheName"), new Vector2(APositionLeft, Main.screenHeight / 2 - 300), Color.OrangeRed * ((255 - alpha) / 255f), 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+                Main.spriteBatch.DrawString(Main.fontDeathText, Lang.BossTitle("AHANd"), new Vector2(AndPositionLeft, Main.screenHeight / 2 - 250), Color.Magenta * ((255 - alpha3) / 255f), 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+                Main.spriteBatch.DrawString(Main.fontDeathText, Lang.BossTitle("HarukaName"), new Vector2(HPositionLeft, Main.screenHeight / 2 - 200), Color.Indigo * ((255 - alpha4) / 255f), 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
                 return;
             }
 

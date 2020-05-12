@@ -28,8 +28,8 @@ namespace AAMod
         public bool AAStyleMainPage;
 
         [DefaultValue(true)]
-        [Label("Ancient Introduction Text")]
-        [Tooltip("Disables the Legend of Zelda-style boss introduction text for the Ancients.")]
+        [Label("$Mods.AAMod.Common.AABossTitle")]
+        [Tooltip("$Mods.AAMod.Common.AABossTitleInfo")]
         public bool AncientIntroText;
     }
 

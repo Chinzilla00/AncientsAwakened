@@ -1827,6 +1827,290 @@ Fishy";
                 }
             return"";
         }
+
+        public static string BossTitle(string Boss)
+        {
+            if(Language.ActiveCulture == GameCulture.Chinese)
+                {
+                    switch(Boss)
+                    {
+                        case "AnubisLegendscribeName":
+                        return "阿努比斯 史诗记述者";
+
+                        case "AthenaName":
+                        return "雅典娜";
+
+                        case "GreedName":
+                        return "金食饕餮";
+
+                        case "FAnubisName":
+                        return "阿努比斯";
+                        case "FAnubisTitle":
+                        return "逝落的断罪师";
+
+                        case "OAthenaName":
+                        return "奥林匹亚女武神雅典娜";
+                        case "OAthenaTitle":
+                        return "鸮姬女王";
+
+                        case "WKGName":
+                        return "金食饕餮";
+                        case "WKGTitle":
+                        return "鎏金万蟲王";
+
+                        case "AkumaName":
+                        return "邪鬼巨龙";
+                        case "AkumaTitle":
+                        return "凶煞恶魔";
+
+                        case "AkumaAName":
+                        return "狂煞魔豪鬼";
+                        case "AkumaATitle":
+                        return "激燃怒火的化身";
+
+                        case "YamataName":
+                        return "八岐大蛇";
+                        case "YamataTitle":
+                        return "惊惧梦魇";
+
+                        case "YamataAName":
+                        return "八俣远吕智";
+                        case "YamataATitle":
+                        return "渊暗恐惧的化身";
+
+                        case "ZER0Name":
+                        return "零";
+                        case "ZER0Title":
+                        return "末日机构";
+
+                        case "ZER0PName":
+                        return "零源协议";
+                        case "ZER0PTitle":
+                        return "深暗虚空的使徒";
+
+                        case "CRajahRabbitName":
+                        return "巨兔王公";
+                        case "CRajahRabbitTitle":
+                        return "无辜的保护者";
+
+                        case "ShenName":
+                        return "上神应龙";
+                        case "ShenTitle":
+                        return "冥昧末日的预言者";
+
+                        case "ShenAName":
+                        return "觉醒之上神应龙";
+                        case "ShenATitle":
+                        return "冥昭瞢暗的化身";
+
+                        case "AHName":
+                        return "艾希 和 遥香";
+                        case "AHTitle":
+                        return "混沌姐妹";
+                        case "AsheName":
+                        return "艾希";
+                        case "AHANd":
+                        return "和";
+                        case "HarukaName":
+                        return "遥香";
+
+                        case "EquinoxName":
+                        return "昼夜虫";
+                        case "EquinoxTitle":
+                        return "神虫";
+
+                        case "RajahName":
+                        return "巨兔王公";
+                    }
+                }
+            else if(Language.ActiveCulture == GameCulture.Russian)
+                {
+                    switch(Boss)
+                    {
+                        case "AnubisLegendscribe":
+                        return "Anubis Legendscribe";
+
+                        case "AthenaName":
+                        return "Athena";
+
+                        case "GreedName":
+                        return "Greed";
+
+                        case "FAnubisName":
+                        return "Anubis";
+                        case "FAnubisTitle":
+                        return "Forsaken Judge";
+
+                        case "OAthenaName":
+                        return "Olympian Athena";
+                        case "OAthenaTitle":
+                        return "Seraph Queen";
+
+                        case "WKGName":
+                        return "Greed";
+                        case "WKGTitle":
+                        return "Worm King";
+
+                        case "AkumaName":
+                        return "Akuma";
+                        case "AkumaTitle":
+                        return "Draconian Demon";
+
+                        case "AkumaAName":
+                        return "Oni Akuma";
+                        case "AkumaATitle":
+                        return "Blazing Fury Incarnate";
+
+                        case "YamataName":
+                        return "Yamata";
+                        case "YamataTitle":
+                        return "Dread Nightmare";
+
+                        case "YamataAName":
+                        return "Yamata No Orochi";
+                        case "YamataATitle":
+                        return "Abyssal Wrath Incarnate";
+
+                        case "ZER0Name":
+                        return "ZER0";
+                        case "ZER0Title":
+                        return "Doomsday Construct";
+
+                        case "ZER0PName":
+                        return "ZER0 PR0T0C0L";
+                        case "ZER0PTitle":
+                        return "Dark Cipher";
+
+                        case "CRajahRabbitName":
+                        return "Rajah Rabbit";
+                        case "CRajahRabbitTitle":
+                        return "Champion of the Innocent";
+
+                        case "ShenName":
+                        return "Shen Doragon";
+                        case "ShenTitle":
+                        return "Discordian Doomsayer";
+
+                        case "ShenAName":
+                        return "Shen Doragon Awakened";
+                        case "ShenATitle":
+                        return "Unyielding Discord Incarnate";
+
+                        case "AHName":
+                        return "Ashe & Haruka";
+                        case "AHTitle":
+                        return "Sisters of Discord";
+                        case "AsheName":
+                        return "Ashe";
+                        case "AHANd":
+                        return "&";
+                        case "HarukaName":
+                        return "Haruka";
+
+                        case "EquinoxName":
+                        return "Equinox Worms";
+                        case "EquinoxTitle":
+                        return "The";
+
+                        case "RajahName":
+                        return "Rajah Rabbit";
+                    }
+                }
+            else
+                {
+                    switch(Boss)
+                    {
+                        case "AnubisLegendscribe":
+                        return "Anubis Legendscribe";
+
+                        case "AthenaName":
+                        return "Athena";
+
+                        case "GreedName":
+                        return "Greed";
+
+                        case "FAnubisName":
+                        return "Anubis";
+                        case "FAnubisTitle":
+                        return "Forsaken Judge";
+
+                        case "OAthenaName":
+                        return "Olympian Athena";
+                        case "OAthenaTitle":
+                        return "Seraph Queen";
+
+                        case "WKGName":
+                        return "Greed";
+                        case "WKGTitle":
+                        return "Worm King";
+
+                        case "AkumaName":
+                        return "Akuma";
+                        case "AkumaTitle":
+                        return "Draconian Demon";
+
+                        case "AkumaAName":
+                        return "Oni Akuma";
+                        case "AkumaATitle":
+                        return "Blazing Fury Incarnate";
+
+                        case "YamataName":
+                        return "Yamata";
+                        case "YamataTitle":
+                        return "Dread Nightmare";
+
+                        case "YamataAName":
+                        return "Yamata No Orochi";
+                        case "YamataATitle":
+                        return "Abyssal Wrath Incarnate";
+
+                        case "ZER0Name":
+                        return "ZER0";
+                        case "ZER0Title":
+                        return "Doomsday Construct";
+
+                        case "ZER0PName":
+                        return "ZER0 PR0T0C0L";
+                        case "ZER0PTitle":
+                        return "Dark Cipher";
+
+                        case "CRajahRabbitName":
+                        return "Rajah Rabbit";
+                        case "CRajahRabbitTitle":
+                        return "Champion of the Innocent";
+
+                        case "ShenName":
+                        return "Shen Doragon";
+                        case "ShenTitle":
+                        return "Discordian Doomsayer";
+
+                        case "ShenAName":
+                        return "Shen Doragon Awakened";
+                        case "ShenATitle":
+                        return "Unyielding Discord Incarnate";
+
+                        case "AHName":
+                        return "Ashe & Haruka";
+                        case "AHTitle":
+                        return "Sisters of Discord";
+                        case "AsheName":
+                        return "Ashe";
+                        case "AHANd":
+                        return "&";
+                        case "HarukaName":
+                        return "Haruka";
+
+                        case "EquinoxName":
+                        return "Equinox Worms";
+                        case "EquinoxTitle":
+                        return "The";
+
+                        case "RajahName":
+                        return "Rajah Rabbit";
+                    }
+                }
+            return"";
+        }
         public static string BossChat(string BossInfo)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
