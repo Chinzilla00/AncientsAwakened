@@ -6681,8 +6681,8 @@ AAConfig.DisableBossDialogue=Отключить Диалоги Боссов
 AAConfig.DisableBossDialogueInfo=Отключает диалоги боссов, чтобы предотвратить спам в чате. Анимации, содержащие диалог босса, будут проигрываться слегка быстрее.
 AAConfig.AAStyleMainPage=Стиль АА для Главного Меню
 AAConfig.AAStyleMainPageInfo=Используйте стиль АА для главного меню вместо ванильного. Если вы играете с АА и другим модом, добавляющим много контента, лучше отключите это.
-AAConfig.AABossTitle=Ancient Introduction Text
-AAConfig.AABossTitleInfo=Disables the Legend of Zelda-style boss introduction text for the Ancients.
+AAConfig.AABossTitle=Представления Древних
+AAConfig.AABossTitleInfo=Отключает представлени боссов-древних в стилистике The Legend of Zelda.
 
 //GlobalNPCSInfo
 
