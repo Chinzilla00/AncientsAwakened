@@ -475,7 +475,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                         int projType = ModContent.ProjectileType<HarukaKunai>();
                         float spread = 45f * 0.0174f;
                         Vector2 dir = Vector2.Normalize(player.Center - npc.Center);
-                        dir *= 14f;
+                        dir *= 12f;
                         float baseSpeed = (float)Math.Sqrt((dir.X * dir.X) + (dir.Y * dir.Y));
                         double startAngle = Math.Atan2(dir.X, dir.Y) - .1d;
                         double deltaAngle = spread / 6f;
@@ -539,7 +539,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                         Vector2 targetCenter = player.position + new Vector2(player.width * 0.5f, player.height * 0.5f);
                         Vector2 fireTarget = npc.Center;
                         int projType = ModContent.ProjectileType<HarukaProj>();
-                        BaseAI.FireProjectile(targetCenter, fireTarget, projType, damage*1, 0f, 14f);
+                        BaseAI.FireProjectile(targetCenter, fireTarget, projType, damage*1, 0f, 12f);
                         npc.netUpdate = true;
                     }
                     if (isSlashing && internalAI[2] > 9 && Main.netMode != 1)
@@ -1030,9 +1030,9 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 {
                     Projectile.NewProjectile(ShadowkingPosition.X, ShadowkingPosition.Y, 0, 0, ModContent.ProjectileType<HarukaStrike>(), damage*1, 5, Main.myPlayer);
                     int projType = ModContent.ProjectileType<HarukaProj>();
-                    for (int i = 0; i < 12; i++)
+                    for (int i = 0; i < 8; i++)
                     {
-                        shoot = new Vector2((float)Math.Sin(i * (Pi / 6)), (float)Math.Cos(i * (Pi / 6)));
+                        shoot = new Vector2((float)Math.Sin(i * (Pi / 4)), (float)Math.Cos(i * (Pi / 4)));
                         shoot *= 10f;
                         Projectile.NewProjectile(ShadowkingPosition.X, ShadowkingPosition.Y, shoot.X, shoot.Y, projType, damage * 1, 5, Main.myPlayer);
                     }

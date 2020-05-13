@@ -14,22 +14,22 @@ namespace AAMod
 
         public static AAConfigClient Instance; // See ExampleConfigServer.Instance for info.
 
-        [Label("$Mods.AAMod.Common.AATownNPC")]
-        [Tooltip("$Mods.AAMod.Common.AATownNPCInfo")]
+        [Label("$Mods.AAMod.AAConfig.AATownNPC")]
+        [Tooltip("$Mods.AAMod.AAConfig.AATownNPCInfo")]
         public bool NoAATownNPC;
 
-        [Label("$Mods.AAMod.Common.DisableBossDialogue")]
-        [Tooltip("$Mods.AAMod.Common.DisableBossDialogueInfo")]
+        [Label("$Mods.AAMod.AAConfig.DisableBossDialogue")]
+        [Tooltip("$Mods.AAMod.AAConfig.DisableBossDialogueInfo")]
         public bool NoBossDialogue;
 
         [DefaultValue(false)]
-        [Label("$Mods.AAMod.Common.AAStyleMainPage")]
-        [Tooltip("$Mods.AAMod.Common.AAStyleMainPageInfo")]
+        [Label("$Mods.AAMod.AAConfig.AAStyleMainPage")]
+        [Tooltip("$Mods.AAMod.AAConfig.AAStyleMainPageInfo")]
         public bool AAStyleMainPage;
 
         [DefaultValue(true)]
-        [Label("Ancient Introduction Text")]
-        [Tooltip("Disables the Legend of Zelda-style boss introduction text for the Ancients.")]
+        [Label("$Mods.AAMod.AAConfig.AABossTitle")]
+        [Tooltip("$Mods.AAMod.AAConfig.AABossTitleInfo")]
         public bool AncientIntroText;
     }
 

@@ -64,7 +64,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 }
                 if (npc.ai[0] == 180)
                 {
-                    CombatText.NewText(npc.Hitbox, new Color(72, 78, 117), "...Ashe?");
+                    CombatText.NewText(npc.Hitbox, new Color(72, 78, 117), Lang.BossChat("HarukaFall1"));
                     npc.frame.Y = 78 * 6;
                 }
                 if (npc.ai[0] == 240)
@@ -74,7 +74,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
                 if (npc.ai[0] == 360)
                 {
-                    CombatText.NewText(npc.Hitbox, new Color(72, 78, 117), "...thanks for shutting her up.");
+                    CombatText.NewText(npc.Hitbox, new Color(72, 78, 117), Lang.BossChat("HarukaFall2"));
 
                     if (Main.expertMode)
                     {

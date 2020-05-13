@@ -638,12 +638,21 @@ namespace AAMod
 
         public override void UpdateBiomes()
         {
+            bool Akuma = BaseAI.GetNPC(player.Center, ModContent.NPCType<Akuma>(), 5000) != -1 || BaseAI.GetNPC(player.Center, ModContent.NPCType<AkumaA>(), 5000) != -1;
+            bool Yamata = BaseAI.GetNPC(player.Center, ModContent.NPCType<Yamata>(), 5000) != -1 || BaseAI.GetNPC(player.Center, ModContent.NPCType<YamataA>(), 5000) != -1;
+            bool Zero = BaseAI.GetNPC(player.Center, ModContent.NPCType<Zero>(), 5000) != -1 || BaseAI.GetNPC(player.Center, ModContent.NPCType<ZeroProtocol>(), 5000) != -1;
+            if(ModSupport.GetMod("AAModEXAI") != null)
+            {
+                Akuma = Akuma || BaseAI.GetNPC(player.Center, ModSupport.GetModNPC("AAModEXAI", "Akuma").npc.type, 5000) != -1 || BaseAI.GetNPC(player.Center, ModSupport.GetModNPC("AAModEXAI", "AkumaA").npc.type, 5000) != -1;
+                Yamata = Yamata || BaseAI.GetNPC(player.Center, ModSupport.GetModNPC("AAModEXAI", "Yamata").npc.type, 5000) != -1 || BaseAI.GetNPC(player.Center, ModSupport.GetModNPC("AAModEXAI", "YamataA").npc.type, 5000) != -1;
+                Zero = Zero || BaseAI.GetNPC(player.Center, ModSupport.GetModNPC("AAModEXAI", "Zero").npc.type, 5000) != -1 || BaseAI.GetNPC(player.Center, ModSupport.GetModNPC("AAModEXAI", "ZeroProtocol").npc.type, 5000) != -1;
+            }
             ZoneTower = player.ZoneTowerSolar || player.ZoneTowerNebula || player.ZoneTowerStardust || player.ZoneTowerVortex;
-            ZoneMire = (AAWorld.mireTiles > 100) || BaseAI.GetNPC(player.Center, ModContent.NPCType<Yamata>(), 5000) != -1 || BaseAI.GetNPC(player.Center, ModContent.NPCType<YamataA>(), 5000) != -1;
-            ZoneInferno = AAWorld.infernoTiles > 100 || BaseAI.GetNPC(player.Center, ModContent.NPCType<Akuma>(), 5000) != -1 || BaseAI.GetNPC(player.Center, ModContent.NPCType<AkumaA>(), 5000) != -1;
+            ZoneMire = (AAWorld.mireTiles > 100) || Yamata;
+            ZoneInferno = AAWorld.infernoTiles > 100 || Akuma;
             ZoneMush = AAWorld.mushTiles > 100;
             Terrarium = AAWorld.terraTiles >= 1;
-            ZoneVoid = (AAWorld.voidTiles > 20 && player.ZoneSkyHeight) || (AAWorld.voidTiles > 100 && !player.ZoneSkyHeight) || BaseAI.GetNPC(player.Center, ModContent.NPCType<Zero>(), 5000) != -1 || BaseAI.GetNPC(player.Center, ModContent.NPCType<ZeroProtocol>(), 5000) != -1;
+            ZoneVoid = (AAWorld.voidTiles > 20 && player.ZoneSkyHeight) || (AAWorld.voidTiles > 100 && !player.ZoneSkyHeight || Zero);
             ZoneRisingMoonLake = AAWorld.lakeTiles >= 1;
             ZoneRisingSunPagoda = AAWorld.pagodaTiles >= 1;
             ZoneStars = AAWorld.Radium >= 20;
@@ -660,6 +669,17 @@ namespace AAMod
             bool useAkuma = NPC.AnyNPCs(ModContent.NPCType<AkumaA>()) || AkumaAltar;
             bool useYamata = NPC.AnyNPCs(ModContent.NPCType<YamataA>()) || YamataAltar;
             bool useAnu = NPC.AnyNPCs(ModContent.NPCType<ForsakenAnubis>());
+
+            if(ModSupport.GetMod("AAModEXAI") != null)
+            {
+                useAthena = NPC.AnyNPCs(ModSupport.GetModNPC("AAModEXAI", "AthenaA").npc.type);
+                useShenA = NPC.AnyNPCs(ModSupport.GetModNPC("AAModEXAI", "ShenA").npc.type);
+                useShen = NPC.AnyNPCs(ModSupport.GetModNPC("AAModEXAI", "Shen").npc.type) && !useShenA;
+                useAkuma = NPC.AnyNPCs(ModSupport.GetModNPC("AAModEXAI", "AkumaA").npc.type) || AkumaAltar;
+                useYamata = NPC.AnyNPCs(ModSupport.GetModNPC("AAModEXAI", "YamataA").npc.type) || YamataAltar;
+                useAnu = NPC.AnyNPCs(ModSupport.GetModNPC("AAModEXAI", "ForsakenAnubis").npc.type);
+            }
+
             bool useMire = (ZoneMire || MoonAltar) && !useYamata && !useShen && !useShenA && !useAnu;
             bool useInferno = (ZoneInferno || SunAltar) && !useAkuma && !useShen && !useShenA && !useAnu;
             bool useVoid = (ZoneVoid || VoidUnit) && !useShen && !useShenA && !useAnu;
@@ -1590,37 +1610,37 @@ namespace AAMod
                     switch (ReminderChoice)
                     {
                         case 0:
-                            BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.WorldgenReminderInfo2"), new Color(45, 46, 70), false);
+                            BaseUtility.Chat(Lang.AAPlayerChat("WorldgenReminderInfo1"), new Color(45, 46, 70), false);
                             break;
                         case 1:
-                            BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.WorldgenReminderInfo2"), new Color(45, 46, 70), false);
+                            BaseUtility.Chat(Lang.AAPlayerChat("WorldgenReminderInfo2"), new Color(45, 46, 70), false);
                             break;
                         case 2:
-                            BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.WorldgenReminderInfo3"), new Color(255, 0, 0), false);
+                            BaseUtility.Chat(Lang.AAPlayerChat("WorldgenReminderInfo3"), new Color(255, 0, 0), false);
                             break;
                         case 3:
-                            BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.WorldgenReminderInfo4"), new Color(102, 20, 48), false);
+                            BaseUtility.Chat(Lang.AAPlayerChat("WorldgenReminderInfo4"), new Color(102, 20, 48), false);
                             break;
                         case 4:
-                            BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.WorldgenReminderInfo5"), new Color(72, 78, 117), false);
+                            BaseUtility.Chat(Lang.AAPlayerChat("WorldgenReminderInfo5"), new Color(72, 78, 117), false);
                             break;
                         case 5:
-                            BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.WorldgenReminderInfo6"), new Color(128, 0, 0), false);
+                            BaseUtility.Chat(Lang.AAPlayerChat("WorldgenReminderInfo6"), new Color(128, 0, 0), false);
                             break;
                         case 6:
-                            BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.WorldgenReminderInfo7"), new Color(216, 110, 40), false);
+                            BaseUtility.Chat(Lang.AAPlayerChat("WorldgenReminderInfo7"), new Color(216, 110, 40), false);
                             break;
                         case 7:
-                            BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.WorldgenReminderInfo8"), new Color(43, 46, 61), false);
+                            BaseUtility.Chat(Lang.AAPlayerChat("WorldgenReminderInfo8"), new Color(43, 46, 61), false);
                             break;
                         case 8:
-                            BaseUtility.Chat("Earthwalker..! There's no Ancients Awakened content in this world! Make a new world if you really wanna play the mod...idiot...", Color.CornflowerBlue, false);
+                            BaseUtility.Chat(Lang.AAPlayerChat("WorldgenReminderInfo9"), Color.CornflowerBlue, false);
                             break;
                         case 9:
-                            BaseUtility.Chat("HEY! THIS WORLD DOESN'T HAVE MY SHINIES IN IT! GENERATE A NEW WORLD SO I CAN HAVE MY LOOT YOU LAZY APE!!!", Color.Goldenrod, false);
+                            BaseUtility.Chat(Lang.AAPlayerChat("WorldgenReminderInfo10"), Color.Goldenrod, false);
                             break;
                         case 10:
-                            BaseUtility.Chat("I do not see any Ancients Awakened world generation, terrarian. If you want to experience the mod, generate a new world.", new Color(107, 137, 179), false);
+                            BaseUtility.Chat(Lang.AAPlayerChat("WorldgenReminderInfo11"), new Color(107, 137, 179), false);
                             break;
 
                     }

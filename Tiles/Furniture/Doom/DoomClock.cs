@@ -35,12 +35,11 @@ namespace AAMod.Tiles.Furniture.Doom
         {
             if (!AAWorld.downedZero)
             {
-                Main.NewText(@"The clock is counting down to something...you aren't sure what though.
-The number at the moment is so high you don't even know what the number is called.", 200, 0, 0);
+                Main.NewText(Lang.TilesInfo("DoomClockGetTime1"), 200, 0, 0);
             }
             else
             {
-                Main.NewText(@"The Clock reads one digit: 0", 200, 0, 0);
+                Main.NewText(Lang.TilesInfo("DoomClockGetTime2"), 200, 0, 0);
             }
             return true;
         }

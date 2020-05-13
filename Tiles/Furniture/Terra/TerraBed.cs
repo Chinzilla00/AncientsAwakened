@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
+using Terraria.Localization;
 
 namespace AAMod.Tiles.Furniture.Terra
 {
@@ -55,12 +56,12 @@ namespace AAMod.Tiles.Furniture.Terra
 			if (player.SpawnX == spawnX && player.SpawnY == spawnY)
 			{
 				player.RemoveSpawn();
-				Main.NewText("Spawn point removed!", 255, 240, 20, false);
+				Main.NewText(Language.GetTextValue("Game.SpawnPointRemoved"), 255, 240, 20, false);
 			}
 			else if (Player.CheckSpawn(spawnX, spawnY))
 			{
 				player.ChangeSpawn(spawnX, spawnY);
-				Main.NewText("Spawn point set!", 255, 240, 20, false);
+				Main.NewText(Language.GetTextValue("Game.SpawnPointSet"), 255, 240, 20, false);
 			}
             return true;
 		}
@@ -70,7 +71,7 @@ namespace AAMod.Tiles.Furniture.Terra
 			Player player = Main.LocalPlayer;
 			player.noThrow = 2;
 			player.showItemIcon = true;
-			player.showItemIcon2 = mod.ItemType("Terra Bed");
+			player.showItemIcon2 = mod.ItemType("TerraBed");
 		}
 	}
 }

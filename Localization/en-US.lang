@@ -199,10 +199,6 @@ Common.GoblinSlayerShopHalloweenLoot=Halloween Loot
 Common.GoblinSlayerShopChristmasLoot=Christmas Loot
 Common.GoblinSlayerShopMartianLoot=Martian Loot
 
-//AAMod.Tiles.RazewoodF
-
-Common.RazewoodClockGetTime=Maybe making a clock out of burned wood wasn't such a good idea. It doesn't even work.
-
 //lockedchest
 
 Common.InfernoChest_Locked=Locked Inferno Chest
@@ -315,12 +311,14 @@ Common.DevBag= Dev Bag
 
 //AAConfig
 
-Common.AATownNPC=Disable AA Town NPCs
-Common.AATownNPCInfo=Disables this mod's town npcs from spawning, for those who'd prefer to have other npcs spawn quicker. Note: This does not affect Anubis due to him being key to progression.
-Common.DisableBossDialogue=Disable Boss Dialogue
-Common.DisableBossDialogueInfo=Disables dialogue from bosses to prevent chatspam. Also makes animations that have boss dialogue go by a little quicker.
-Common.AAStyleMainPage=The AA style Main Menu
-Common.AAStyleMainPageInfo=Enables the AA style Main Menu instead of the Vanilla menu. If you wish to play AA and any other large content mod together, you should disable this.
+AAConfig.AATownNPC=Disable AA Town NPCs
+AAConfig.AATownNPCInfo=Disables this mod's town npcs from spawning, for those who'd prefer to have other npcs spawn quicker. Note: This does not affect Anubis due to him being key to progression.
+AAConfig.DisableBossDialogue=Disable Boss Dialogue
+AAConfig.DisableBossDialogueInfo=Disables dialogue from bosses to prevent chatspam. Also makes animations that have boss dialogue go by a little quicker.
+AAConfig.AAStyleMainPage=The AA style Main Menu
+AAConfig.AAStyleMainPageInfo=Enables the AA style Main Menu instead of the Vanilla menu. If you wish to play AA and any other large content mod together, you should disable this.
+AAConfig.AABossTitle=Ancient Introduction Text
+AAConfig.AABossTitleInfo=Disables the Legend of Zelda-style boss introduction text for the Ancients.
 
 //GlobalNPCSInfo
 

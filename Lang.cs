@@ -36,20 +36,16 @@ namespace AAMod
                         return "沙漠之风开始酝酿...";
                         case "downedBoss3Info3":
                         return "凛冬之山隆隆作响...";
-                        case "downedPlantBossInfo1":
-                        return "泰拉心球中的和谐之音回响";
-                        case "downedPlantBossInfo2":
-                        return "虚空枯萎机器重新运转";
-                        case "downedPlantBossInfo3":
-                        return "地下的恶魔开始密谋";
-                        case "downedPlantBossInfo4":
-                        return "嘿, 小子, 是我, 阿努比斯. 回城找我帮我个忙, 我想和你说点事.";
+                        case "downedPlantBossInfo":
+                        return "远古的机械在长久的遗忘中复苏...";
                         case "downedStormAnyInfo":
                         return "山洞里一道霹雳轰鸣...";
                         case "hardModeInfo":
                         return "愤怒和怨恨的灵魂被释放了!";
                         case "downedAllAncientsInfo":
                         return "真正的冥昧之息在大气中翻涌...";
+                        case "downedShenInfo":
+                        return "...在吗..? 请...尽快到泰拉心堡中来...有些东西你一定要看看...";
                     }
                 }
             else if(Language.ActiveCulture == GameCulture.Russian)
@@ -65,7 +61,7 @@ namespace AAMod
                     case "downedEquinoxInfo":
                     return "Дар небожителей искрится в атмосфере...";
                     case "StarIdolInfo":
-                    return "В небе множество звезд, дитя";
+                    return "В небе сейчас множество звезд, дитя";
                     case "downedMoonlordInfo1":
                     return "Древние Пробудились!";
                     case "downedMoonlordInfo2":
@@ -82,20 +78,16 @@ namespace AAMod
                     return "Ветры пустыни зашевелились..";
                     case "downedBoss3Info3":
                     return "Холмы тундры грохочут...";
-                    case "downedPlantBossInfo1":
-                    return "Хор единства звучит из Террариума.";
-                    case "downedPlantBossInfo2":
-                    return "Побитые машины пустоты снова активируются...";
-                    case "downedPlantBossInfo3":
-                    return "Красные Дьяволы подземного мира начинают строить козни...";
-                    case "downedPlantBossInfo4":
-                    return "Эй, малой, это Анубис. Сделай мне одолжение и встреться со мной в городе. Нам нужно поговорить.";
+                    case "downedPlantBossInfo":
+                    return "Ancient constructs Awaken in a place long forgotten...";
                     case "downedStormAnyInfo":
                     return "Хлопок молнии слышен в пещерах.";
                     case "hardModeInfo":
                     return "На волю выпущены духи гнева и ярости!";
                     case "downedAllAncientsInfo":
                     return "Хаус начинает шевелиться в атмосфере...";
+                    case "downedShenInfo":
+                    return "...hello..? Please...come to the keep as soon as possible...there is something you must see...";
                 }
             }
             else
@@ -128,20 +120,16 @@ namespace AAMod
                         return "The desert winds stir...";
                         case "downedBoss3Info3":
                         return "The winter hills rumble...";
-                        case "downedPlantBossInfo1":
-                        return "The choirs of unity hum from the terrarium.";
-                        case "downedPlantBossInfo2":
-                        return "The withered machines of the emptiness reactivate.";
-                        case "downedPlantBossInfo3":
-                        return "Devils in the underworld begin to plot.";
-                        case "downedPlantBossInfo4":
-                        return "Hey kid, it's me, Anubis. Do me a favor and meet me back in town, I wanna talk to ya about somethin'.";
+                        case "downedPlantBossInfo":
+                        return "Ancient constructs Awaken in a place long forgotten...";
                         case "downedStormAnyInfo":
                         return "The clap of a thunderbolt roars in the caverns...";
                         case "hardModeInfo":
                         return "The Souls of Fury and Wrath are unleashed upon the world!";
                         case "downedAllAncientsInfo":
                         return "Chaos begins to stir in the atmosphere...";
+                        case "downedShenInfo":
+                        return "...hello..? Please...come to the keep as soon as possible...there is something you must see...";
                     }
                 }
             return "";
@@ -172,6 +160,12 @@ namespace AAMod
                         return "创造……新世界……否则疯狂的蘑菇人……会压扁……你这个小泰拉人……";
                         case "WorldgenReminderInfo8":
                         return "…凡人。 如果我没有老眼昏花的话, 你的世界就没有远古觉醒的内容。 创造一个新的世界最吼的。 ";
+                        case "WorldgenReminderInfo9":
+                        return "地上的..! 这个世界没有远古觉醒的内容! 你真想玩这个mod的话就建一个新世界...蠢货...";
+                        case "WorldgenReminderInfo10":
+                        return "嘿! 这 个 世 界 没 有 我 琳 琅 满 目 的 财 宝! 创 造 一 个 新 世 界 让 我 放 我 的 收 藏 品，你 这 个 臭 傻 X!!!";
+                        case "WorldgenReminderInfo11":
+                        return "我没有发现任何远古觉醒生成的迹象, 泰拉人. 如果你想体验这个mod, 创建一个新世界.";
                     }
                 }
             else if(Language.ActiveCulture == GameCulture.Russian)
@@ -198,6 +192,12 @@ namespace AAMod
                     return "Делай новый мир...или грибное безумие тебя...убьет...маленький терраниан";
                     case "WorldgenReminderInfo8":
                     return "... Смертный, если мой старые глаза меня не обманывают, то в твоем мире нет контента из Ancients Awakened. Сгенерировать новый мир будет оптимальным решением.";
+                    case "WorldgenReminderInfo9":
+                    return "Earthwalker..! There's no Ancients Awakened content in this world! Make a new world if you really wanna play the mod...idiot...";
+                    case "WorldgenReminderInfo10":
+                    return "HEY! THIS WORLD DOESN'T HAVE MY SHINIES IN IT! GENERATE A NEW WORLD SO I CAN HAVE MY LOOT YOU LAZY APE!!!";
+                    case "WorldgenReminderInfo11":
+                    return "I do not see any Ancients Awakened world generation, terrarian. If you want to experience the mod, generate a new world.";
                 }
             }
             else
@@ -224,6 +224,12 @@ namespace AAMod
                         return "Make...new world....or mushmad...will squish...little terrarian...";
                         case "WorldgenReminderInfo8":
                         return "...Mortal. Your world doesn't have Ancients Awakened content if my old eyes do not deceive me. Generating a new world would be optimal.";
+                        case "WorldgenReminderInfo9":
+                        return "Earthwalker..! There's no Ancients Awakened content in this world! Make a new world if you really wanna play the mod...idiot...";
+                        case "WorldgenReminderInfo10":
+                        return "HEY! THIS WORLD DOESN'T HAVE MY SHINIES IN IT! GENERATE A NEW WORLD SO I CAN HAVE MY LOOT YOU LAZY APE!!!";
+                        case "WorldgenReminderInfo11":
+                        return "I do not see any Ancients Awakened world generation, terrarian. If you want to experience the mod, generate a new world.";
                     }
                 }
             return"";
@@ -1821,6 +1827,290 @@ Fishy";
                 }
             return"";
         }
+
+        public static string BossTitle(string Boss)
+        {
+            if(Language.ActiveCulture == GameCulture.Chinese)
+                {
+                    switch(Boss)
+                    {
+                        case "AnubisLegendscribeName":
+                        return "阿努比斯 史诗记述者";
+
+                        case "AthenaName":
+                        return "雅典娜";
+
+                        case "GreedName":
+                        return "金食饕餮";
+
+                        case "FAnubisName":
+                        return "阿努比斯";
+                        case "FAnubisTitle":
+                        return "逝落的断罪师";
+
+                        case "OAthenaName":
+                        return "奥林匹亚女武神雅典娜";
+                        case "OAthenaTitle":
+                        return "鸮姬女王";
+
+                        case "WKGName":
+                        return "金食饕餮";
+                        case "WKGTitle":
+                        return "鎏金万蟲王";
+
+                        case "AkumaName":
+                        return "邪鬼巨龙";
+                        case "AkumaTitle":
+                        return "凶煞恶魔";
+
+                        case "AkumaAName":
+                        return "狂煞魔豪鬼";
+                        case "AkumaATitle":
+                        return "激燃怒火的化身";
+
+                        case "YamataName":
+                        return "八岐大蛇";
+                        case "YamataTitle":
+                        return "惊惧梦魇";
+
+                        case "YamataAName":
+                        return "八俣远吕智";
+                        case "YamataATitle":
+                        return "渊暗恐惧的化身";
+
+                        case "ZER0Name":
+                        return "零";
+                        case "ZER0Title":
+                        return "末日机构";
+
+                        case "ZER0PName":
+                        return "零源协议";
+                        case "ZER0PTitle":
+                        return "深暗虚空的使徒";
+
+                        case "CRajahRabbitName":
+                        return "巨兔王公";
+                        case "CRajahRabbitTitle":
+                        return "无辜的保护者";
+
+                        case "ShenName":
+                        return "上神应龙";
+                        case "ShenTitle":
+                        return "冥昧末日的预言者";
+
+                        case "ShenAName":
+                        return "觉醒之上神应龙";
+                        case "ShenATitle":
+                        return "冥昭瞢暗的化身";
+
+                        case "AHName":
+                        return "艾希 和 遥香";
+                        case "AHTitle":
+                        return "混沌姐妹";
+                        case "AsheName":
+                        return "艾希";
+                        case "AHANd":
+                        return "和";
+                        case "HarukaName":
+                        return "遥香";
+
+                        case "EquinoxName":
+                        return "昼夜虫";
+                        case "EquinoxTitle":
+                        return "神虫";
+
+                        case "RajahName":
+                        return "巨兔王公";
+                    }
+                }
+            else if(Language.ActiveCulture == GameCulture.Russian)
+                {
+                    switch(Boss)
+                    {
+                        case "AnubisLegendscribe":
+                        return "Анубис Летописец Легенд";
+
+                        case "AthenaName":
+                        return "Афина";
+
+                        case "GreedName":
+                        return "Жадность";
+
+                        case "FAnubisName":
+                        return "Анубис";
+                        case "FAnubisTitle":
+                        return "Забытый Судья";
+
+                        case "OAthenaName":
+                        return "Олимпийская Афина";
+                        case "OAthenaTitle":
+                        return "Королева Серафимов";
+
+                        case "WKGName":
+                        return "Жадность";
+                        case "WKGTitle":
+                        return "Король Червей";
+
+                        case "AkumaName":
+                        return "Акума";
+                        case "AkumaTitle":
+                        return "Драконоподобный Демон";
+
+                        case "AkumaAName":
+                        return "Они Акума";
+                        case "AkumaATitle":
+                        return "Воплощение Опаляющей Ярости";
+
+                        case "YamataName":
+                        return "Ямата";
+                        case "YamataTitle":
+                        return "Ужасающий Кошмар";
+
+                        case "YamataAName":
+                        return "Ямата Но Орочи";
+                        case "YamataATitle":
+                        return "Воплощение Гнева Бездны";
+
+                        case "ZER0Name":
+                        return "ЗИР0";
+                        case "ZER0Title":
+                        return "Конструкт Судного дня";
+
+                        case "ZER0PName":
+                        return "ЗИР0 ПР0Т0К0Л";
+                        case "ZER0PTitle":
+                        return "ТЕМНЫЙ НУЛЬ";
+
+                        case "CRajahRabbitName":
+                        return "Кролик Раджа";
+                        case "CRajahRabbitTitle":
+                        return "Защитник Невинных";
+
+                        case "ShenName":
+                        return "Шен Дорагон";
+                        case "ShenTitle":
+                        return "Предвестник Раздора";
+
+                        case "ShenAName":
+                        return "Шен Дорагон Пробужденный";
+                        case "ShenATitle":
+                        return "Воплощение Несгибаемого Раздора";
+
+                        case "AHName":
+                        return "Аши и Харука";
+                        case "AHTitle":
+                        return "Сестры Раздора";
+                        case "AsheName":
+                        return "Аши";
+                        case "AHANd":
+                        return "и";
+                        case "HarukaName":
+                        return "Харука";
+
+                        case "EquinoxName":
+                        return "Равноденствия";
+                        case "EquinoxTitle":
+                        return "Черви";
+
+                        case "RajahName":
+                        return "Кролик Раджа";
+                    }
+                }
+            else
+                {
+                    switch(Boss)
+                    {
+                        case "AnubisLegendscribe":
+                        return "Anubis Legendscribe";
+
+                        case "AthenaName":
+                        return "Athena";
+
+                        case "GreedName":
+                        return "Greed";
+
+                        case "FAnubisName":
+                        return "Anubis";
+                        case "FAnubisTitle":
+                        return "Forsaken Judge";
+
+                        case "OAthenaName":
+                        return "Olympian Athena";
+                        case "OAthenaTitle":
+                        return "Seraph Queen";
+
+                        case "WKGName":
+                        return "Greed";
+                        case "WKGTitle":
+                        return "Worm King";
+
+                        case "AkumaName":
+                        return "Akuma";
+                        case "AkumaTitle":
+                        return "Draconian Demon";
+
+                        case "AkumaAName":
+                        return "Oni Akuma";
+                        case "AkumaATitle":
+                        return "Blazing Fury Incarnate";
+
+                        case "YamataName":
+                        return "Yamata";
+                        case "YamataTitle":
+                        return "Dread Nightmare";
+
+                        case "YamataAName":
+                        return "Yamata No Orochi";
+                        case "YamataATitle":
+                        return "Abyssal Wrath Incarnate";
+
+                        case "ZER0Name":
+                        return "ZER0";
+                        case "ZER0Title":
+                        return "Doomsday Construct";
+
+                        case "ZER0PName":
+                        return "ZER0 PR0T0C0L";
+                        case "ZER0PTitle":
+                        return "Dark Cipher";
+
+                        case "CRajahRabbitName":
+                        return "Rajah Rabbit";
+                        case "CRajahRabbitTitle":
+                        return "Champion of the Innocent";
+
+                        case "ShenName":
+                        return "Shen Doragon";
+                        case "ShenTitle":
+                        return "Discordian Doomsayer";
+
+                        case "ShenAName":
+                        return "Shen Doragon Awakened";
+                        case "ShenATitle":
+                        return "Unyielding Discord Incarnate";
+
+                        case "AHName":
+                        return "Ashe & Haruka";
+                        case "AHTitle":
+                        return "Sisters of Discord";
+                        case "AsheName":
+                        return "Ashe";
+                        case "AHANd":
+                        return "&";
+                        case "HarukaName":
+                        return "Haruka";
+
+                        case "EquinoxName":
+                        return "Equinox Worms";
+                        case "EquinoxTitle":
+                        return "The";
+
+                        case "RajahName":
+                        return "Rajah Rabbit";
+                    }
+                }
+            return"";
+        }
         public static string BossChat(string BossInfo)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
@@ -1845,6 +2135,11 @@ Fishy";
                         return "扑哧";
                         case "HarukaShadow":
                         return "真悲哀.";
+
+                        case "HarukaFall1":
+                        return "..艾希?";
+                        case "HarukaFall2":
+                        return "...很感谢你让她闭嘴.";
 
                         case "AHDeath1":
                         return "啊啊啊啊啊! 别又这样了!!!";
@@ -2032,6 +2327,9 @@ Fishy";
 
                         case "FAnubisWin":
                         return "...你做的很好，孩子. 让我们来制定一个前进的计划，准备好了就来找我. ";
+
+                        case "CoreSpawn":
+                        return "生态核心开始运转!";
 
                         case "Athena1":
                         return "哈..!";
@@ -2597,6 +2895,12 @@ Fishy";
 
                         case "AHDeath1":
                         return "РРРРРРРГХ! НЕТ, ТОЛЬКО НЕ СНОВА!!!";
+
+                        case "HarukaFall1":
+                        return "..Ashe?";
+                        case "HarukaFall2":
+                        return "...thanks for shutting her up.";
+
                         case "AHDeath2":
                         return "Видишь, Аше?? Я говорила тебе, что это тупая идея, но ТЫ не слушаешь...";
                         case "AHDeath3":
@@ -2785,6 +3089,9 @@ Fishy";
 
                         case "FAnubisWin":
                         return "... Ты справился хорошо, приятель. Давай продвинемся дальше. Поговори со мной, когда будешь готов..";
+
+                        case "CoreSpawn":
+                        return "The Biome Core whirs to life!";
 
                         case "Athena1":
                         return "Хмпф..!";
@@ -3358,6 +3665,11 @@ Fishy";
                         case "HarukaShadow":
                         return "pathetic.";
 
+                        case "HarukaFall1":
+                        return "..Ashe?";
+                        case "HarukaFall2":
+                        return "...thanks for shutting her up.";
+
                         case "AHDeath1":
                         return "RRRRRRRRRGH! NOT AGAIN!!!";
                         case "AHDeath2":
@@ -3548,6 +3860,9 @@ Fishy";
 
                         case "FAnubisWin":
                         return "...You done good, bud. Let's make a game plan moving forward. Come talk to me when you're ready.";
+
+                        case "CoreSpawn":
+                        return "The Biome Core whirs to life!";
 
                         case "Athena1":
                         return "Hmpf..!";
@@ -5252,13 +5567,21 @@ Fishy";
                 {
                     switch(Tiles)
                     {
-                        case "Spawnpointremoved":
-                        return "出生点移除!";
-                        case "Spawnpointset":
-                        return "出生点设置!";
+
+                        case "RazewoodClockGetTime":
+                        return "用烧焦的木头做一个钟可不是好主意. 这玩意根本不工作.";
+
+                        case "DoomClockGetTime1":
+                        return @"这个钟正在向什么东西倒计时...虽然你并不是很确定.
+现在这个数字非常大，你并不清楚它意味着什么.";
+                        case "DoomClockGetTime2":
+                        return @"这个钟只有一个读数: 0";
 
                         case "EnderMemoryInfo": 
                         return "用于纪念我们心中的一位早已逝去的朋友"; 
+
+                        case "TerraStatueInfo": 
+                        return "一位将我们从被混沌吞没的边缘拯救的英雄";
 
                         case "DracoAltar1":
                         return "臭小子. 龙不睡觉吗? 明天再来. ";
@@ -5294,13 +5617,21 @@ Fishy";
                 {
                     switch(Tiles)
                     {
-                        case "Spawnpointremoved":
-                        return "Точка возрождения задан!!";
-                        case "Spawnpointset":
-                        return "Точка возраждения задана!";
+
+                        case "RazewoodClockGetTime":
+                        return "Может быть делать часы из сгоревшей древесины была плохая идея? Они даже не работают.";
+
+                        case "DoomClockGetTime1":
+                        return @"The clock is counting down to something...you aren't sure what though.
+The number at the moment is so high you don't even know what the number is called.";
+                        case "DoomClockGetTime2":
+                        return @"The Clock reads one digit: 0";
 
                         case "EnderMemoryInfo": 
                         return "В память о нашем друге.";
+
+                        case "TerraStatueInfo": 
+                        return "The Hero who saved us all from the brink of chaos"; 
 
                         case "DracoAltar1":
                         return "Боже, сопляк. Может дракон поспать немного? Возвращайся утром. ";
@@ -5336,14 +5667,22 @@ Fishy";
                 {
                     switch(Tiles)
                     {
-                        case "Spawnpointremoved":
-                        return "Spawn point removed!";
-                        case "Spawnpointset":
-                        return "Spawn point set!";
+
+                        case "RazewoodClockGetTime":
+                        return "Maybe making a clock out of burned wood wasn't such a good idea. It doesn't even work.";
+
+                        case "DoomClockGetTime1":
+                        return @"The clock is counting down to something...you aren't sure what though.
+The number at the moment is so high you don't even know what the number is called.";
+                        case "DoomClockGetTime2":
+                        return @"The Clock reads one digit: 0";
 
 
                         case "EnderMemoryInfo": 
                         return "In memory of a long lost friend still in our hearts."; 
+
+                        case "TerraStatueInfo": 
+                        return "The Hero who saved us all from the brink of chaos"; 
 
                         case "DracoAltar1":
                         return "Geez, kid. Can't a dragon get a little shut-eye? Come back in the morning.";
