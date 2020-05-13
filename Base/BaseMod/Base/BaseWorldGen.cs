@@ -9,7 +9,7 @@ using Terraria.World.Generation;
 
 namespace AAMod
 {
-    public class BaseWorldGen
+	public class BaseWorldGen
     {
         //------------------------------------------------------//
         //---------------BASE WORLDGEN CLASS--------------------//
@@ -491,16 +491,15 @@ namespace AAMod
 			float rotPercent = MathHelper.Lerp(0f, 1f, (BaseUtility.RotationTo(start, end) / (float)(Math.PI * 2f)));
 			bool horizontal = rotPercent < 0.125f || (rotPercent > 0.375f && rotPercent < 0.625f) || rotPercent > 0.825f;
 			Vector2 topEnd = new Vector2(endX, endY);
-			int[] clearInt = new int[] { -2 };
 			Vector2 wallStart = new Vector2((horizontal ? x : x + (2 * nx)), (horizontal ? y + (2 * ny) : y)), wallEnd = new Vector2((horizontal ? endX : endX + (2 * nx)), (horizontal ? endY + (2 * ny) : endY));
 			Vector2 bottomStart = new Vector2((horizontal ? x : x + (((thickness * 2) + height) * nx)), (horizontal ? y + (((thickness * 2) + height) * ny) : y)), bottomEnd = new Vector2((horizontal ? endX : endX + (((thickness * 2) + height) * nx)), (horizontal ? endY + (((thickness * 2) + height)  * ny) : endY));
 			int[] tiles = gen.tiles, walls = gen.walls;
 			gen.tiles = null;
-			BaseWorldGen.GenerateLine(gen, (int)wallStart.X, (int)wallStart.Y, (int)wallEnd.X, (int)wallEnd.Y, (thickness * 3) + height - 2, false);
+			GenerateLine(gen, (int)wallStart.X, (int)wallStart.Y, (int)wallEnd.X, (int)wallEnd.Y, (thickness * 3) + height - 2, false);
 			gen.tiles = tiles;
 			gen.walls = null;
-			BaseWorldGen.GenerateLine(gen, x, y, (int)topEnd.X, (int)topEnd.Y, thickness, false);
-			BaseWorldGen.GenerateLine(gen, (int)bottomStart.X, (int)bottomStart.Y, (int)bottomEnd.X, (int)bottomEnd.Y, thickness, false);
+			GenerateLine(gen, x, y, (int)topEnd.X, (int)topEnd.Y, thickness, false);
+			GenerateLine(gen, (int)bottomStart.X, (int)bottomStart.Y, (int)bottomEnd.X, (int)bottomEnd.Y, thickness, false);
 			gen.walls = walls;
 		}
 
@@ -827,7 +826,6 @@ namespace AAMod
 				Vector2 rotVec = new Vector2((x + rotationX) * 16, (y + rotationY) * 16);
 
 				List<Point> points = new List<Point>();
-				Point? lastPoint = null;
 				foreach (TileData data in tiles)
 				{
 					Vector2 rot = new Vector2(data.X * 16, data.Y * 16);
@@ -846,7 +844,6 @@ namespace AAMod
 						else if (CheckTile(ref x1, ref y1, ref point, 1, -1)) { }
 						else if (CheckTile(ref x1, ref y1, ref point, 1, 1)) { }
 					}*/
-					lastPoint = point;
 					points.Add(point);
 					Main.tile[x1, y1] = data.tile;
 				}
@@ -921,24 +918,24 @@ namespace AAMod
 		
 		public ShapeChasmSideways(int startheight, int endheight, int length, int variance, int randomHeading, float[] heightVariance = null, bool dir = true)
 		{
-			this._startheight = startheight;
-			this._endheight = endheight;
-			this._length = length;
-			this._variance = variance;
-			this._randomHeading = randomHeading;
-			this._heightVariance = heightVariance;
-			this._dir = dir;
+			_startheight = startheight;
+			_endheight = endheight;
+			_length = length;
+			_variance = variance;
+			_randomHeading = randomHeading;
+			_heightVariance = heightVariance;
+			_dir = dir;
 		}
 		
 		public void ResetChasmParams(int startheight, int endheight, int length, int variance, int randomHeading, float[] heightVariance = null, bool dir = true)
 		{
-			this._startheight = startheight;
-			this._endheight = endheight;
-			this._length = length;
-			this._variance = variance;
-			this._randomHeading = randomHeading;
-			this._heightVariance = heightVariance;
-			this._dir = dir;
+			_startheight = startheight;
+			_endheight = endheight;
+			_length = length;
+			_variance = variance;
+			_randomHeading = randomHeading;
+			_heightVariance = heightVariance;
+			_dir = dir;
 		}
 
 		private bool DoChasm(Point origin, GenAction action, int startheight, int endheight, int length, int variance, int randomHeading, float[] heightVariance, bool dir)
@@ -962,11 +959,10 @@ namespace AAMod
 					y += randomHeading * (m / 2);
 				}
 				int yend = y + height - (startheight - height);	
-				int difference = yend - y;
 				for(int m2 = y; m2 < yend; m2++)
 				{
 					int y2 = m2;
-					if (!base.UnitApply(action, trueOrigin, x, y2, new object[0]) && this._quitOnFail)
+					if (!UnitApply(action, trueOrigin, x, y2, new object[0]) && _quitOnFail)
 					{
 						return false;
 					}					
@@ -977,7 +973,7 @@ namespace AAMod
 
 		public override bool Perform(Point origin, GenAction action)
 		{
-			return this.DoChasm(origin, action, this._startheight, this._endheight, this._length, this._variance, this._randomHeading, this._heightVariance, this._dir);
+			return DoChasm(origin, action, _startheight, _endheight, _length, _variance, _randomHeading, _heightVariance, _dir);
 		}
 	}		
 
@@ -989,24 +985,24 @@ namespace AAMod
 		
 		public ShapeChasm(int startwidth, int endwidth, int depth, int variance, int randomHeading, float[] widthVariance = null, bool dir = true)
 		{
-			this._startwidth = startwidth;
-			this._endwidth = endwidth;
-			this._depth = depth;
-			this._variance = variance;
-			this._randomHeading = randomHeading;
-			this._widthVariance = widthVariance;
-			this._dir = dir;
+			_startwidth = startwidth;
+			_endwidth = endwidth;
+			_depth = depth;
+			_variance = variance;
+			_randomHeading = randomHeading;
+			_widthVariance = widthVariance;
+			_dir = dir;
 		}
 
 		public void ResetChasmParams(int startwidth, int endwidth, int depth, int variance, int randomHeading, float[] widthVariance = null, bool dir = true)
 		{
-			this._startwidth = startwidth;
-			this._endwidth = endwidth;
-			this._depth = depth;
-			this._variance = variance;
-			this._randomHeading = randomHeading;
-			this._widthVariance = widthVariance;
-			this._dir = dir;
+			_startwidth = startwidth;
+			_endwidth = endwidth;
+			_depth = depth;
+			_variance = variance;
+			_randomHeading = randomHeading;
+			_widthVariance = widthVariance;
+			_dir = dir;
 		}		
 
 		private bool DoChasm(Point origin, GenAction action, int startwidth, int endwidth, int depth, int variance, int randomHeading, float[] widthVariance, bool dir)
@@ -1033,7 +1029,7 @@ namespace AAMod
 				for(int m2 = x; m2 < xend; m2++)
 				{
 					int x2 = m2;
-					if (!base.UnitApply(action, trueOrigin, x2, y, new object[0]) && this._quitOnFail)
+					if (!UnitApply(action, trueOrigin, x2, y, new object[0]) && _quitOnFail)
 					{
 						return false;
 					}					
@@ -1044,7 +1040,7 @@ namespace AAMod
 
 		public override bool Perform(Point origin, GenAction action)
 		{
-			return this.DoChasm(origin, action, this._startwidth, this._endwidth, this._depth, this._variance, this._randomHeading, this._widthVariance, this._dir);
+			return DoChasm(origin, action, _startwidth, _endwidth, _depth, _variance, _randomHeading, _widthVariance, _dir);
 		}
 	}	
 	
@@ -1060,8 +1056,8 @@ namespace AAMod
 		public override bool Apply(Point origin, int x, int y, params object[] args)
 		{
 			if(x < 0 || x > Main.maxTilesX || y < 0 || y > Main.maxTilesY)
-				return base.Fail();
-			return base.UnitApply(origin, x, y, args);
+				return Fail();
+			return UnitApply(origin, x, y, args);
 		}
 	}	
 	
@@ -1076,9 +1072,9 @@ namespace AAMod
 
 		public SetModTile(ushort type, bool setSelfFrames = false, bool setNeighborFrames = true)
 		{
-			this._type = type;
-			this._doFraming = setSelfFrames;
-			this._doNeighborFraming = setNeighborFrames;
+			_type = type;
+			_doFraming = setSelfFrames;
+			_doNeighborFraming = setNeighborFrames;
 		}
 		
 		public SetModTile ExtraParams(Func<int, int, Tile, bool> canReplace, int frameX = -1, int frameY = -1)
@@ -1093,20 +1089,20 @@ namespace AAMod
 		{
 			if(x < 0 || x > Main.maxTilesX || y < 0 || y > Main.maxTilesY) 
 				return false;
-			if(GenBase._tiles[x, y] == null) GenBase._tiles[x, y] = new Tile();		
-			if(_canReplace == null || (_canReplace != null && _canReplace(x, y, GenBase._tiles[x, y])))
+			if(_tiles[x, y] == null) _tiles[x, y] = new Tile();		
+			if(_canReplace == null || (_canReplace != null && _canReplace(x, y, _tiles[x, y])))
 			{
-				GenBase._tiles[x, y].ResetToType(this._type);
+				_tiles[x, y].ResetToType(_type);
 				if(_frameX > -1)
-					GenBase._tiles[x, y].frameX = _frameX;
+					_tiles[x, y].frameX = _frameX;
 				if(_frameY > -1)
-					GenBase._tiles[x, y].frameY = _frameY;				
-				if (this._doFraming)
+					_tiles[x, y].frameY = _frameY;				
+				if (_doFraming)
 				{
-					WorldUtils.TileFrame(x, y, this._doNeighborFraming);
+					WorldUtils.TileFrame(x, y, _doNeighborFraming);
 				}
 			}
-			return base.UnitApply(origin, x, y, args);
+			return UnitApply(origin, x, y, args);
 		}
 	}
 
@@ -1116,15 +1112,15 @@ namespace AAMod
 
 		public SetMapBrightness(byte brightness)
 		{
-			this._brightness = brightness;
+			_brightness = brightness;
 		}
 
 		public override bool Apply(Point origin, int x, int y, params object[] args)
 		{
 			if(x < 0 || x > Main.maxTilesX || y < 0 || y > Main.maxTilesY) return false;
-			if(GenBase._tiles[x, y] == null) GenBase._tiles[x, y] = new Tile();
+			if(_tiles[x, y] == null) _tiles[x, y] = new Tile();
 			Main.Map.UpdateLighting(x, y, Math.Max(Main.Map[x, y].Light, _brightness));
-			return base.UnitApply(origin, x, y, args);
+			return UnitApply(origin, x, y, args);
 		}
 	}	
 	
@@ -1137,8 +1133,8 @@ namespace AAMod
 		
 		public PlaceModWall(int type, bool neighbors = true)
 		{
-			this._type = (ushort)type;
-			this._neighbors = neighbors;
+			_type = (ushort)type;
+			_neighbors = neighbors;
 		}
 		
 		public PlaceModWall ExtraParams(Func<int, int, Tile, bool> canReplace)
@@ -1150,12 +1146,12 @@ namespace AAMod
 		public override bool Apply(Point origin, int x, int y, params object[] args)
 		{
 			if(x < 0 || x > Main.maxTilesX || y < 0 || y > Main.maxTilesY) return false;
-			if(GenBase._tiles[x, y] == null) GenBase._tiles[x, y] = new Tile();
-			if(_canReplace == null || (_canReplace != null && _canReplace(x, y, GenBase._tiles[x, y])))
-			{			
-				GenBase._tiles[x, y].wall = this._type;
+			if(_tiles[x, y] == null) _tiles[x, y] = new Tile();
+			if(_canReplace == null || (_canReplace != null && _canReplace(x, y, _tiles[x, y])))
+			{
+				_tiles[x, y].wall = _type;
 				WorldGen.SquareWallFrame(x, y, true);
-				if (this._neighbors)
+				if (_neighbors)
 				{
 					WorldGen.SquareWallFrame(x + 1, y, true);
 					WorldGen.SquareWallFrame(x - 1, y, true);
@@ -1163,53 +1159,26 @@ namespace AAMod
 					WorldGen.SquareWallFrame(x, y + 1, true);
 				}
 			}
-			return base.UnitApply(origin, x, y, args);
-		}
-	}
-	
-	public class RadialDitherTopMiddle : GenAction
-	{
-		private int _width, _height;
-		private float _innerRadius, _outerRadius;
-
-		public RadialDitherTopMiddle(int width, int height, float innerRadius, float outerRadius)
-		{
-			this._width = width;
-			this._height = height;
-			this._innerRadius = innerRadius;
-			this._outerRadius = outerRadius;
-		}
-
-		public override bool Apply(Point origin, int x, int y, params object[] args)
-		{
-			Vector2 value = new Vector2((float)origin.X + (_width / 2), origin.Y);
-			Vector2 value2 = new Vector2(x, y);
-			float num = Vector2.Distance(value2, value);
-			float num2 = Math.Max(0f, Math.Min(1f, (num - this._innerRadius) / (this._outerRadius - this._innerRadius)));
-			if (GenBase._random.NextDouble() > num2)
-			{
-				return base.UnitApply(origin, x, y, args);
-			}
-			return base.Fail();
+			return UnitApply(origin, x, y, args);
 		}
 	}
 	
 	public class ClearTileSafely : GenAction
 	{
-		private bool _frameNeighbors;
+		private readonly bool _frameNeighbors;
 
 		public ClearTileSafely(bool frameNeighbors = false)
 		{
-			this._frameNeighbors = frameNeighbors;
+			_frameNeighbors = frameNeighbors;
 		}
 
 		public override bool Apply(Point origin, int x, int y, params object[] args)
 		{
 			if(x < 0 || x >= Main.maxTilesX || y < 0 || y >= Main.maxTilesY)
 				return false;
-			if(GenBase._tiles[x, y] == null)
-				GenBase._tiles[x, y] = new Tile();
-			GenBase._tiles[x, y].ClearTile();
+			if(_tiles[x, y] == null)
+				_tiles[x, y] = new Tile();
+			_tiles[x, y].ClearTile();
 			if (_frameNeighbors)
 			{
 				WorldGen.TileFrame(x + 1, y, false, false);
@@ -1217,7 +1186,7 @@ namespace AAMod
 				WorldGen.TileFrame(x, y + 1, false, false);
 				WorldGen.TileFrame(x, y - 1, false, false);
 			}
-			return base.UnitApply(origin, x, y, args);
+			return UnitApply(origin, x, y, args);
 		}		
 	}
 	#endregion
@@ -1227,14 +1196,14 @@ namespace AAMod
 	{
 		protected override bool CheckValidity(int x, int y)
 		{
-			return GenBase._tiles[x, y].active() && GenBase._tiles[x, y].slope() == 0 && !GenBase._tiles[x, y].halfBrick();
+			return _tiles[x, y].active() && _tiles[x, y].slope() == 0 && !_tiles[x, y].halfBrick();
 		}
 	}	
 	public class IsSloped : GenCondition
 	{
 		protected override bool CheckValidity(int x, int y)
 		{
-			return GenBase._tiles[x, y].active() && (GenBase._tiles[x, y].slope() > 0 || GenBase._tiles[x, y].halfBrick());
+			return _tiles[x, y].active() && (_tiles[x, y].slope() > 0 || _tiles[x, y].halfBrick());
 		}
 	}
 	#endregion

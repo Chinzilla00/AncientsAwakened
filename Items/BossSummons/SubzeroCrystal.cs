@@ -34,7 +34,7 @@ namespace AAMod.Items.BossSummons
 
         public override bool UseItem(Player player)
         {
-            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("SerpentHead"), true, 0, 0, Language.GetTextValue("Mods.AAMod.Common.SubzeroSerpent"), false);
+            SpawnBoss(player, "SerpentHead", Language.GetTextValue("Mods.AAMod.Common.SubzeroSerpent"));
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }
@@ -84,7 +84,8 @@ namespace AAMod.Items.BossSummons
                 }
 
                 int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0, 0, 0, type);
-                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-2000, 2000, (float)Main.rand.NextDouble()), 1200f);
+                Main.npc[npcID].ai[2] = type;
+                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-2000, 2000, (float)Main.rand.NextDouble()), -1000);
                 Main.npc[npcID].netUpdate2 = true;
                 string npcName = !string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : displayName;
                 if (Main.netMode == NetmodeID.SinglePlayer) { if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }

@@ -33,8 +33,8 @@ namespace AAMod.Worldgeneration
             tileSand = (ushort)mod.TileType("Depthsand"), tileSandHardened = (ushort)mod.TileType("DepthsandHardened"), tileSandstone = (ushort)mod.TileType("Depthsandstone"),
             LivingWood = (ushort)ModContent.TileType<LivingBogwood>(), LivingLeaves = (ushort)ModContent.TileType<LivingBogleaves>();
 
-            byte StoneWall = (byte)ModContent.WallType<DepthstoneWall>(), SandstoneWall = (byte)ModContent.WallType<DepthsandstoneWall>(), HardenedSandWall = (byte)ModContent.WallType<DepthsandHardenedWall>(),
-            GrassWall = (byte)ModContent.WallType<LivingBogleafWall>(), JungleWall = (byte)ModContent.WallType<MireJungleWall>();
+            int StoneWall = ModContent.WallType<DepthstoneWall>(), SandstoneWall = ModContent.WallType<DepthsandstoneWall>(), HardenedSandWall = ModContent.WallType<DepthsandHardenedWall>(),
+            GrassWall = ModContent.WallType<LivingBogleafWall>(), JungleWall = ModContent.WallType<MireJungleWall>();
 
 			int worldSize = GetWorldSize();
 			int biomeRadius = worldSize == 3 ? 240 : worldSize == 2 ? 200 : 180; //how deep the biome is (scaled by world size)	
@@ -323,8 +323,8 @@ namespace AAMod.Worldgeneration
             tileIce = (ushort)mod.TileType("Torchice"), tileSand = (ushort)mod.TileType("Torchsand"), tileSandHardened = (ushort)mod.TileType("TorchsandHardened"), tileSandstone = (ushort)mod.TileType("Torchsandstone"),
             LivingWood = (ushort)ModContent.TileType<LivingRazewood>(), LivingLeaves = (ushort)ModContent.TileType<LivingRazeleaves>();
 
-            byte StoneWall = (byte)ModContent.WallType<TorchstoneWall>(), SandstoneWall = (byte)ModContent.WallType<TorchsandstoneWall>(), HardenedSandWall = (byte)ModContent.WallType<TorchsandHardenedWall>(),
-            GrassWall = (byte)ModContent.WallType<InfernoGrassWall>();
+            int StoneWall = ModContent.WallType<TorchstoneWall>(), SandstoneWall = ModContent.WallType<TorchsandstoneWall>(), 
+                HardenedSandWall = ModContent.WallType<TorchsandHardenedWall>(), GrassWall = ModContent.WallType<InfernoGrassWall>();
 
 
             int worldSize = GetWorldSize();

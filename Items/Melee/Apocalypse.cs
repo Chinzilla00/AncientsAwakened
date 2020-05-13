@@ -27,8 +27,8 @@ Horseman's Blade EX");
             item.width = 54;
 			item.height = 54;    
             item.knockBack = 6.5f;
-            item.useTime = 5;
-			item.useAnimation = 5;
+            item.useTime = 12;
+			item.useAnimation = 12;
 			item.value = 1000000;
             item.expert = true; item.expertOnly = true;
 

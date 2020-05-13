@@ -23,8 +23,8 @@ namespace AAMod.NPCs.Bosses.Serpent
 		public override void SetDefaults()
 		{
 			npc.npcSlots = 5f;
-            npc.width = 38;
-            npc.height = 38;
+            npc.width = 32;
+            npc.height = 32;
             if (npc.ai[2] == 2)
             {
                 npc.lifeMax = 7000;
@@ -38,7 +38,7 @@ namespace AAMod.NPCs.Bosses.Serpent
                 npc.lifeMax = 6000;
             }
             npc.damage = 35;
-            npc.defense = 25;
+            npc.defense = 10;
             npc.value = 50000f;
             npc.knockBackResist = 0f;
             npc.aiStyle = -1;
@@ -647,7 +647,7 @@ namespace AAMod.NPCs.Bosses.Serpent
             {
                 if (NPC.CountNPCS(ModContent.NPCType<IceCrystal>()) < 3)
                 {
-                    NPC.NewNPC((int)player.position.X + Main.rand.Next(-500, 500), (int)player.position.Y + 500, ModContent.NPCType<IceCrystal>(), 0, 0, 0, 0, 0, npc.target);
+                   NPC.NewNPC((int)player.position.X + Main.rand.Next(-500, 500), (int)player.position.Y + 500, ModContent.NPCType<IceCrystal>(), 0, npc.ai[2], 0, 0, 0, npc.target);
                 }
                 internalAI[2] = 2;
                 npc.netUpdate = true;
@@ -666,7 +666,8 @@ namespace AAMod.NPCs.Bosses.Serpent
                     attackTimer++;
                     if (attackTimer == 20 || attackTimer == 50 || attackTimer == 79)
                     {
-                        BaseAI.FireProjectile(Main.player[npc.target].Center, npc, ModContent.ProjectileType<IceBall2>(), damage, 3, 14f, 0, 0, -1);
+                        int p = BaseAI.FireProjectile(Main.player[npc.target].Center, npc, ModContent.ProjectileType<IceBall2>(), damage, 3, 14f, 0, 0, -1);
+                        Main.projectile[p].ai[1] = npc.ai[2]; 
                         npc.netUpdate = true;
                     }
                     if (attackTimer >= 80)
@@ -690,6 +691,7 @@ namespace AAMod.NPCs.Bosses.Serpent
                 if (fireAttack == true)
                 {
                     attackTimer++;
+
                     if ((attackTimer == 8 || attackTimer == 16 || attackTimer == 24 || attackTimer == 32 || attackTimer == 40 || attackTimer == 48 || attackTimer == 56 || attackTimer == 64 || attackTimer == 72 || attackTimer == 79) && !npc.HasBuff(103))
                     {
                         for (int i = 0; i < 5; ++i)
@@ -708,7 +710,7 @@ namespace AAMod.NPCs.Bosses.Serpent
                             PlayerPosX += npc.velocity.X * 0.5f;
                             PlayerDistance.X -= PlayerPosX * 1f;
                             PlayerDistance.Y -= PlayerPosY * 1f;
-                            Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, npc.velocity.X * 2f, npc.velocity.Y * 2f, mod.ProjectileType("SnowBreath"), damage, 0, Main.myPlayer);
+                            Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, npc.velocity.X * 1.5f, npc.velocity.Y * 1.5f, mod.ProjectileType("SnowBreath"), damage, 0, Main.myPlayer, 0, npc.ai[2]);
                         }
                     }
                     if (attackTimer >= 80)
@@ -842,10 +844,10 @@ namespace AAMod.NPCs.Bosses.Serpent
         public override void SetDefaults()
         {
             npc.npcSlots = 5f;
-            npc.width = 38;
-            npc.height = 38;
+            npc.width = 32;
+            npc.height = 32;
             npc.damage = 35;
-            npc.defense = 25;
+            npc.defense = 10;
             npc.lifeMax = 6000;
             npc.value = Item.buyPrice(0, 0, 0, 0);
             npc.knockBackResist = 0f;
@@ -1258,6 +1260,21 @@ namespace AAMod.NPCs.Bosses.Serpent
             BaseDrawing.DrawTexture(spriteBatch, tex, 0, npc, drawColor, true);
             return false;
         }
+
+        public override string BossHeadTexture => Head();
+
+        private string Head()
+        {
+            switch ((int)npc.ai[2])
+            {
+                case 1: return "NPCs/Bosses/Serpent/Variants/SerpentHead_Hallow";
+                case 2: return "NPCs/Bosses/Serpent/Variants/SerpentHead_Crimson";
+                case 3: return "NPCs/Bosses/Serpent/Variants/SerpentHead_Inferno";
+                case 4: return "NPCs/Bosses/Serpent/Variants/SerpentHead_Mire";
+                case 5: return "NPCs/Bosses/Serpent/Variants/SerpentHead_Hallow";
+                default: return "NPCs/Bosses/Serpent/SerpentHead_Head_Boss";
+            }
+        }
     }
 
     public class SerpentTail : ModNPC
@@ -1271,10 +1288,10 @@ namespace AAMod.NPCs.Bosses.Serpent
         public override void SetDefaults()
         {
             npc.npcSlots = 5f;
-            npc.width = 38;
-            npc.height = 38;
+            npc.width = 32;
+            npc.height = 32;
             npc.damage = 35;
-            npc.defense = 25;
+            npc.defense = 10;
             npc.lifeMax = 6000;
             npc.value = Item.buyPrice(0, 0, 0, 0);
             npc.knockBackResist = 0f;
@@ -1648,7 +1665,7 @@ namespace AAMod.NPCs.Bosses.Serpent
             switch ((int)npc.ai[2])
             {
                 case 0: break;
-                case 1: tex = mod.GetTexture("NPCs/Bosses/Serpent/Variants/CorruptTai"); break;
+                case 1: tex = mod.GetTexture("NPCs/Bosses/Serpent/Variants/CorruptTail"); break;
                 case 2: tex = mod.GetTexture("NPCs/Bosses/Serpent/Variants/CrimsonTail"); break;
                 case 3: tex = mod.GetTexture("NPCs/Bosses/Serpent/Variants/InfernoTail"); break;
                 case 4: tex = mod.GetTexture("NPCs/Bosses/Serpent/Variants/MireTail"); break;

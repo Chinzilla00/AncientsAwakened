@@ -7,6 +7,12 @@ namespace AAMod.NPCs.Bosses.Serpent
 {
     public class IceBall2 : ModProjectile
     {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Ice Ball");
+            Main.projFrames[projectile.type] = 6;
+        }
+
         public override void SetDefaults()
         {
             projectile.CloneDefaults(ProjectileID.BoulderStaffOfEarth);
@@ -18,10 +24,11 @@ namespace AAMod.NPCs.Bosses.Serpent
             projectile.friendly = false;
         }
 
-		public override void SetStaticDefaults()
-		{
-		    DisplayName.SetDefault("IceBall");
-		}
+        public override bool PreAI()
+        {
+            projectile.frame = (int)projectile.ai[1];
+            return true;
+        }
 
         public override bool PreKill(int timeLeft)
         {

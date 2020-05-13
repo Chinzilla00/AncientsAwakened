@@ -21,7 +21,8 @@ namespace AAMod.NPCs.Bosses.Serpent
 		public override void SetStaticDefaults()
 		{
 		    DisplayName.SetDefault("Ice Crystal");
-		}
+            Main.npcFrameCount[npc.type] = 6;
+        }
 
         public override void AI()
         {
@@ -35,9 +36,15 @@ namespace AAMod.NPCs.Bosses.Serpent
             }
             else
             {
-                BaseAI.ShootPeriodic(npc, npc.position, npc.width, npc.height, ModContent.ProjectileType<IceSpike>(), ref npc.ai[0], 180, npc.damage / 2, 7, true);
+                int p = BaseAI.ShootPeriodic(npc, npc.position, npc.width, npc.height, ModContent.ProjectileType<IceSpike>(), ref npc.ai[0], 180, npc.damage / 2, 7, true);
+                Main.projectile[p].ai[1] = npc.ai[1];
                 npc.alpha = 40;
             }
+        }
+
+        public override void FindFrame(int frameHeight)
+        {
+            npc.frame.Y = frameHeight * (int)npc.ai[1];
         }
 
         public override void NPCLoot()
