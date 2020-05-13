@@ -60,7 +60,30 @@ namespace AAMod.Items.BossSummons
             {
                 int bossType = mod.NPCType(name);
                 if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
-                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
+
+                int type = 0;
+                if (player.ZoneCorrupt)
+                {
+                    type = 1;
+                }
+                else if (player.ZoneCrimson)
+                {
+                    type = 2;
+                }
+                else if (player.GetModPlayer<AAPlayer>().ZoneInferno)
+                {
+                    type = 3;
+                }
+                else if (player.GetModPlayer<AAPlayer>().ZoneMire)
+                {
+                    type = 4;
+                }
+                else if (player.ZoneHoly)
+                {
+                    type = 5;
+                }
+
+                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0, 0, 0, type);
                 Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-2000, 2000, (float)Main.rand.NextDouble()), 1200f);
                 Main.npc[npcID].netUpdate2 = true;
                 string npcName = !string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : displayName;
