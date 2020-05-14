@@ -55,6 +55,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 writer.Write(internalAI[2]);
                 writer.Write(internalAI[3]);
                 writer.Write(internalAI[4]);
+                writer.Write(Counter);
                 writer.Write(isSupreme);
             }
         }
@@ -69,9 +70,12 @@ namespace AAMod.NPCs.Bosses.Rajah
                 internalAI[2] = reader.ReadFloat(); //Is Jumping
                 internalAI[3] = reader.ReadFloat(); //Minion/Rocket Timer
                 internalAI[4] = reader.ReadFloat(); //JumpFlyControl and Vertical dash
+                Counter = reader.ReadFloat(); // Stomp Counter
                 isSupreme = reader.ReadBool();
             }
         }
+
+        public float Counter = 0f;
 
         private Texture2D RajahTex;
         private Texture2D Glow;
@@ -341,21 +345,31 @@ namespace AAMod.NPCs.Bosses.Rajah
             }
             else if(internalAI[4] == 3f)
             {
-                npc.noTileCollide = true;
-                npc.noGravity = true;
-                isDashing = true;
-                if(player.velocity.X == 0)
+                if(Counter > 0)
                 {
-                    npc.velocity = (player.Center - npc.Center) * .06f;
+                    internalAI[0] = 0f;
+                    internalAI[4] = 0f;
+                    return;
                 }
                 else
                 {
-                    npc.velocity = (player.Center + new Vector2(100f * (player.velocity.X > 0? 1 : -1), 0) - npc.Center) * .06f;
+                    Counter = isSupreme? 600 : 1200;
+                    npc.noTileCollide = true;
+                    npc.noGravity = true;
+                    isDashing = true;
+                    if(player.velocity.X == 0)
+                    {
+                        npc.velocity = (player.Center - npc.Center) * .06f;
+                    }
+                    else
+                    {
+                        npc.velocity = (player.Center + new Vector2(100f * (player.velocity.X > 0? 1 : -1), 0) - npc.Center) * .06f;
+                    }
+                    npc.velocity = Vector2.Normalize(npc.velocity) * 26f;
+                    if(npc.velocity.X > 10f) npc.velocity.X = 10f;
+                    internalAI[0] = 0f;
+                    internalAI[4] = 1f;
                 }
-                npc.velocity = Vector2.Normalize(npc.velocity) * 26f;
-                if(npc.velocity.X > 10f) npc.velocity.X = 10f;
-                internalAI[0] = 0f;
-                internalAI[4] = 1f;
             }
             else if(internalAI[4] == 4f)
             {
@@ -367,6 +381,11 @@ namespace AAMod.NPCs.Bosses.Rajah
                     internalAI[0] = 0f;
                     internalAI[4] = 1f;
                 }
+            }
+
+            if(Counter > 0)
+            {
+                Counter --;
             }
 
             if (npc.target <= 0 || npc.target == 255 || Main.player[npc.target].dead)
@@ -735,7 +754,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                     {
                         npc.TargetClosest(true);
                         float longth = Math.Abs(npc.Center.X - Main.player[npc.target].Center.X);
-                        npc.velocity.X = (6 + longth * .01f) * npc.direction;
+                        npc.velocity.X = (6 + longth * .001f) * npc.direction;
                         npc.velocity.Y = -12.1f;
                         npc.ai[0] = 1f;
                         internalAI[2] = 0f;
@@ -773,7 +792,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                         
                         float num626 = 3f;
                         float longth = Math.Abs(npc.Center.X - Main.player[npc.target].Center.X);
-                        num626 = 3f + longth * .056f;
+                        num626 = 3f + longth * .036f;
                         
                         if (Main.player[npc.target].velocity.X != 0)
                         {
