@@ -989,6 +989,7 @@ namespace AAMod
                 if (AAWorld.downedSag)
                 {
                     pool.Add(mod.NPCType("SagittariusMini"), .005f);
+		    pool.Add(mod.NPCType("VoidFlowey"), .00000000000000000000000001f);
                 }
 
                 if (NPC.downedPlantBoss)
