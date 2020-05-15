@@ -41,7 +41,7 @@ namespace AAMod.NPCs.Bosses.Core.Projectiles
                 Main.dust[num469].noGravity = true;
             }
             Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
-            Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), ModContent.ProjectileType<HellFireball>(), projectile.damage, 2);
+            Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), ModContent.ProjectileType<HellBoom>(), projectile.damage, 2);
         }
 
         public override bool PreDraw(SpriteBatch sb, Color lightColor)

@@ -281,6 +281,18 @@ namespace AAMod.NPCs.Bosses.Core
                         break;
                     case 5: //Inferno
 
+                        npc.rotation += .01f;
+
+                        Vector2 Speed = npc.rotation.ToRotationVector2();
+
+                        if (npc.ai[0] % 6 == 0)
+                        {
+                            Main.PlaySound(SoundID.Item34, npc.position);
+
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, Speed.X * 5, Speed.Y , ModContent.ProjectileType<InfernoBreath>(), 20, 0, Main.myPlayer, 0f, 0f);
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, -Speed.X, -Speed.Y, ModContent.ProjectileType<InfernoBreath>(), 20, 0, Main.myPlayer, 0f, 0f);
+                        }
+
                         break;
                     case 6: //Glowing Mushroom
 
@@ -466,7 +478,7 @@ namespace AAMod.NPCs.Bosses.Core
             }
             foreach (Point current2 in list4)
             {
-                Projectile.NewProjectile(current2.X * 16, current2.Y * 16, 0f, 0f, 658, 0, 0f, Main.myPlayer, 0f, 0f);
+                Projectile.NewProjectile(current2.X * 16, current2.Y * 16, 0f, 0f, ModContent.ProjectileType<SandstormProj>(), 0, 0f, Main.myPlayer, 0f, 0f);
             }
         }
 
@@ -553,7 +565,7 @@ namespace AAMod.NPCs.Bosses.Core
             BaseDrawing.DrawTexture(sb, CoreBack, 0, npc.position, npc.width, npc.height, 1, 0, 0, 1, CoreBackSprite, dColor, true);
             BaseDrawing.DrawTexture(sb, Core, 0, npc.position, npc.width, npc.height, 1, 0, 0, 8, npc.frame, npc.GetAlpha(GlowColor()), true);
             BaseDrawing.DrawTexture(sb, CoreShell, 0, npc.position, npc.width, npc.height, 1, 0, 1, 4, ShellFrame, dColor, true);
-            BaseDrawing.DrawTexture(sb, Glow, 0, npc.position, npc.width, npc.height, 1, npc.rotation, 0, 16, GlowFrame, Color.White, true);
+            BaseDrawing.DrawTexture(sb, Glow, 0, npc.position, npc.width, npc.height, 1,0, 0, 16, GlowFrame, Color.White, true);
             
             return false;
         }
@@ -573,13 +585,13 @@ namespace AAMod.NPCs.Bosses.Core
                 case 5:
                     return Color.OrangeRed;
                 case 6:
-                    return Color.LightBlue;
+                    return Color.MediumSlateBlue;
                 case 7:
                     return Color.Orange;
                 case 8:
-                    return Color.Brown;
+                    return Color.Sienna;
                 case 9:
-                    return new Color(30, 30, 30);
+                    return new Color(50, 50, 60);
                 case 10:
                     return Color.White;
                 case 11:
@@ -591,9 +603,9 @@ namespace AAMod.NPCs.Bosses.Core
                 case 14:
                     return Color.Blue;
                 case 15:
-                    return Color.Pink;
+                    return Color.Fuchsia;
                 case 16:
-                    return Color.SkyBlue;
+                    return Color.DeepSkyBlue;
                 default:
                     return Color.Green;
             }

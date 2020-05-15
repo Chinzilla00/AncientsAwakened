@@ -35,7 +35,7 @@ namespace AAMod.NPCs.Bosses.Core.Projectiles
 
 			Lighting.AddLight((int)((projectile.position.X + (projectile.width / 2)) / 16f), (int)((projectile.position.Y + (projectile.height / 2)) / 16f), num, num2, num3);
 			
-			int num421 = 120;
+			int num421 = 40;
 			if (projectile.ai[1] == 0)
 			{
 				if (projectile.owner == Main.myPlayer)
@@ -137,18 +137,6 @@ namespace AAMod.NPCs.Bosses.Core.Projectiles
 				return new Color(num, num2, num3, 0);
 			}
 		}
-
-		public override void Kill(int timeLeft)
-        {
-            for (int num468 = 0; num468 < 5; num468++)
-            {
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, DustID.Fire, -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 100, default, 2f);
-                Main.dust[num469].noGravity = true;
-            }
-            Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
-            Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), ModContent.ProjectileType<HellFireball>(), projectile.damage, 2);
-        }
 
         public override bool PreDraw(SpriteBatch sb, Color lightColor)
 		{
