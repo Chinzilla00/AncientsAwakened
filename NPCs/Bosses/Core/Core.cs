@@ -170,29 +170,39 @@ namespace AAMod.NPCs.Bosses.Core
                 {
                     int pos = Main.rand.Next(6);
 
-                    switch (pos)
+                    Vector2 CurrentPos = npc.Center;
+                    Vector2 newPos = CurrentPos;
+
+                    while (newPos == CurrentPos)
                     {
-                        case 0:
-                            npc.Center = topCenter;
-                            break;
-                        case 1:
-                            npc.Center = topRight;
-                            break;
-                        case 2:
-                            npc.Center = topLeft;
-                            break;
-                        case 3:
-                            npc.Center = BottomLeft;
-                            break;
-                        case 4:
-                            npc.Center = BottomRight;
-                            break;
-                        default:
-                            npc.Center = BottomCenter;
-                            break;
+                        switch (pos)
+                        {
+                            case 0:
+                                newPos = topCenter;
+                                break;
+                            case 1:
+                                newPos = topRight;
+                                break;
+                            case 2:
+                                newPos = topLeft;
+                                break;
+                            case 3:
+                                newPos = BottomLeft;
+                                break;
+                            case 4:
+                                newPos = BottomRight;
+                                break;
+                            default:
+                                newPos = BottomCenter;
+                                break;
+                        }
                     }
+
+                    npc.Center = newPos;
+
                     npc.ai[0] = 0;
                     npc.ai[1] = 1;
+                    npc.ai[3] = Main.rand.Next(1, 17);
                     npc.netUpdate = true;
                 }
                 return;
@@ -201,7 +211,7 @@ namespace AAMod.NPCs.Bosses.Core
             {
                 if (npc.ai[0] % 15 == 0)
                 {
-                    npc.ai[3] = Main.rand.Next(1, 17);
+                    npc.ai[3]++;
                 }
 
                 int chooseTime = Main.expertMode ? 60 : 90;
@@ -327,7 +337,7 @@ namespace AAMod.NPCs.Bosses.Core
 
                         if (npc.ai[0] % 198 == 0)
                         {
-                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<SnowCloud>(), 40, 0, Main.myPlayer, player.Center.X, player.Center.Y + 150);
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<SnowCloud>(), 40, 0, Main.myPlayer, player.Center.X, player.Center.Y - Main.rand.Next(100, 150));
                         }
 
                         break;
@@ -579,7 +589,7 @@ namespace AAMod.NPCs.Bosses.Core
                 case 2:
                     return Color.Yellow;
                 case 3:
-                    return Color.Purple;
+                    return new Color(104, 90, 144);
                 case 4:
                     return Color.LightGreen;
                 case 5:
@@ -587,7 +597,7 @@ namespace AAMod.NPCs.Bosses.Core
                 case 6:
                     return Color.MediumSlateBlue;
                 case 7:
-                    return Color.Orange;
+                    return Color.DarkOrange;
                 case 8:
                     return Color.Sienna;
                 case 9:

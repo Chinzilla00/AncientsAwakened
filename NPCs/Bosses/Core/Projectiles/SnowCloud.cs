@@ -68,12 +68,13 @@ namespace AAMod.NPCs.Bosses.Core.Projectiles
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Snowstorm");
-			Main.projFrames[projectile.type] = 4;
+			Main.projFrames[projectile.type] = 6;
 		}
 
 		public override void SetDefaults()
 		{
 			projectile.netImportant = true;
+			projectile.tileCollide = true;
 			projectile.width = 28;
 			projectile.height = 28;
 			projectile.aiStyle = -1;
