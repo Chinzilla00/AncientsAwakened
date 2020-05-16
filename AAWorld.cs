@@ -946,14 +946,14 @@ namespace AAMod
 
             private void PlayButtonClicked(UIMouseEvent evt, UIElement listeningElement)
             {
-                Main.PlaySound(10, -1, -1, 1);
+                Main.PlaySound(SoundID.MenuOpen, -1, -1, 1);
                 GenAAContent = true;
                 continueWorldGen = true;
             }
 
             private void CloseButtonClicked(UIMouseEvent evt, UIElement listeningElement)
             {
-                Main.PlaySound(10, -1, -1, 1);
+                Main.PlaySound(SoundID.MenuOpen, -1, -1, 1);
                 continueWorldGen = false;
                 GenAAContent = true;
             }
@@ -1308,7 +1308,7 @@ namespace AAMod
                     {
                         for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
                         {
-                            if (chest.item[inventoryIndex].type == 0)
+                            if (chest.item[inventoryIndex].type == ItemID.None)
                             {
                                 chest.item[inventoryIndex].SetDefaults(itemsToPlaceInDungeonChests[itemsToPlaceInDungeonChestsChoice]);
                                 itemsToPlaceInDungeonChestsChoice = (itemsToPlaceInDungeonChestsChoice + 1) % itemsToPlaceInDungeonChests.Length;
@@ -1351,7 +1351,7 @@ namespace AAMod
                 {
                     if (Main.time == 1 && !WorldGen.spawnEye)
                     {
-                        if (!downedGrips && Main.netMode != 1)
+                        if (!downedGrips && Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             bool flag3 = false;
                             for (int n = 0; n < 255; n++)
@@ -1375,27 +1375,27 @@ namespace AAMod
                                 if (num8 >= 4)
                                 {
                                     spawnGrips = true;
-                                    if (Main.netMode == 0)
+                                    if (Main.netMode == NetmodeID.SinglePlayer)
                                     {
                                         Main.NewText(Lang.BossSummonsInfo("GripsAwoken"), 50, 255, 130, false);
                                     }
-                                    else if (Main.netMode == 2)
+                                    else if (Main.netMode == NetmodeID.Server)
                                     {
-                                        NetMessage.SendData(25, -1, -1, null, 255, 50f, 255f, 130f, 0, 0, 0);
+                                        NetMessage.SendData(MessageID.ChatText, -1, -1, null, 255, 50f, 255f, 130f, 0, 0, 0);
                                     }
                                 }
                             }
                         }
                     }
-                    if (spawnGrips && Main.netMode != 1 && Main.time > 4860.0)
+                    if (spawnGrips && Main.netMode != NetmodeID.MultiplayerClient && Main.time > 4860.0)
                     {
                         for (int k = 0; k < 255; k++)
                         {
                             if (Main.player[k].active && !Main.player[k].dead && Main.player[k].position.Y < Main.worldSurface * 16.0)
                             {
-                                if (Main.netMode == 0) { if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Grips.GripsofChaosAwoken"), 175, 75, 255, false); }
-                                else if (Main.netMode == 2)
-                                    if (Main.netMode == NetmodeID.SinglePlayer) { if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Grips.GripsofChaosAwoken"), 175, 75, 255, false); }
+                                if (Main.netMode == NetmodeID.SinglePlayer) { if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Grips.GripsofChaosAwoken"), 175, 75, 255, false); }
+                                else if (Main.netMode == NetmodeID.Server)
+                                    if (Main.netMode == NetmodeID.SinglePlayer) { if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Grips.GripsofChaosAwoken"), 175, 75, 255, false); }
                                     else if (Main.netMode == NetmodeID.Server)
                                     {
                                         NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(Language.GetTextValue("Mods.AAMod.Grips.GripsofChaosAwoken")), new Color(175, 75, 255), -1);
@@ -1414,7 +1414,7 @@ namespace AAMod
                 if (RadiumOre == false)
                 {
                     RadiumOre = true;
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedEquinoxInfo"), Color.Violet);
+                    if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.Worldtext("downedEquinoxInfo"), Color.Violet);
                     for (int i = 0; i < Main.maxTilesX / 50; ++i)
                     {
                         int X = WorldGen.genRand.Next(Main.maxTilesX / 10 * 2, (int)(Main.maxTilesX / 10 * 4.5f));
@@ -1454,12 +1454,12 @@ namespace AAMod
                 if (Ancients == false)
                 {
                     Ancients = true;
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedMoonlordInfo1"), Color.ForestGreen);
+                    if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.Worldtext("downedMoonlordInfo1"), Color.ForestGreen);
                 }
                 if (Luminite == false)
                 {
                     Luminite = true;
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedMoonlordInfo2"), Color.DarkSeaGreen);
+                    if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.Worldtext("downedMoonlordInfo2"), Color.DarkSeaGreen);
                     for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
                     {
                         WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(5, 9), WorldGen.genRand.Next(6, 10), (ushort)mod.TileType("LuminiteOre"));
@@ -1472,7 +1472,7 @@ namespace AAMod
                 if (HallowedOre == false)
                 {
                     HallowedOre = true;
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedMechBossAnyInfo"), Color.Goldenrod);
+                    if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.Worldtext("downedMechBossAnyInfo"), Color.Goldenrod);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
                     for (int k = 0; k < (int)(x * y * 15E-05); k++)
@@ -1489,7 +1489,7 @@ namespace AAMod
                 if (!DiscordOres)
                 {
                     DiscordOres = true;
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedSistersInfo"), Color.Magenta);
+                    if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.Worldtext("downedSistersInfo"), Color.Magenta);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
                     for (int k = 0; k < (int)(x * y * 15E-05); k++)
@@ -1518,7 +1518,7 @@ namespace AAMod
                 if (!Terra1)
                 {
                     Terra1 = true;
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedBoss2Info"), Color.LimeGreen);
+                    if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.Worldtext("downedBoss2Info"), Color.LimeGreen);
                     for (int j = 0; j < Main.maxTilesX; j++)
                     {
                         for (int k = 0; k < Main.maxTilesY; k++)
@@ -1536,7 +1536,7 @@ namespace AAMod
                 if (!Terra2)
                 {
                     Terra2 = true;
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedPlantBossInfo"), Color.LimeGreen);
+                    if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.Worldtext("downedPlantBossInfo"), Color.LimeGreen);
                     for (int j = 0; j < Main.maxTilesX; j++)
                     {
                         for (int k = 0; k < Main.maxTilesY; k++)
@@ -1554,7 +1554,7 @@ namespace AAMod
                 if (!Terra3)
                 {
                     Terra3 = true;
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedShenInfo"), Color.LimeGreen);
+                    if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.Worldtext("downedShenInfo"), Color.LimeGreen);
                     for (int j = 0; j < Main.maxTilesX; j++)
                     {
                         for (int k = 0; k < Main.maxTilesY; k++)
@@ -1573,9 +1573,9 @@ namespace AAMod
                 if (!Dynaskull)
                 {
                     Dynaskull = true;
-                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedBoss3Info1"), Color.DarkOrange);
-                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedBoss3Info2"), Color.Orange);
-                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedBoss3Info3"), Color.Cyan);
+                    if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedBoss3Info1"), Color.DarkOrange);
+                    if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedBoss3Info2"), Color.Orange);
+                    if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedBoss3Info3"), Color.Cyan);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
                     for (int k = 0; k < (int)(x * y * 15E-05); k++)
@@ -1594,7 +1594,7 @@ namespace AAMod
                 if (!AMessage)
                 {
                     AMessage = true;
-                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedMechBossInfo"), Color.Gold.R, Color.Gold.G, Color.Gold.B);
+                    if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedMechBossInfo"), Color.Gold.R, Color.Gold.G, Color.Gold.B);
                 }
             }
 
@@ -1612,7 +1612,7 @@ namespace AAMod
             {
                 if (downedAllAncients == false)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedAllAncientsInfo"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedAllAncientsInfo"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                     downedAllAncients = true;
                 }
             }
@@ -1621,7 +1621,7 @@ namespace AAMod
                 if (InfernoStripe == false)
                 {
                     InfernoStripe = true;
-                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.hardModeInfo"), Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
+                    if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.hardModeInfo"), Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
                     ConversionHandler.ConvertDown((int)InfernoCenter.X, 0, 120, ConversionType.INFERNO);
                 }
                 if (MireStripe == false)

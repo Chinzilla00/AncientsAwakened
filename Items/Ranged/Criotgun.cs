@@ -1,9 +1,6 @@
 using Terraria;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
-using System;
-using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
 using Terraria.ModLoader;
 namespace AAMod.Items.Ranged
 {

@@ -1,4 +1,3 @@
-using BaseMod;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -87,7 +86,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostEquinox
                 int type = mod.ProjectileType("TerraKrakenProj");
                 Main.PlaySound(SoundID.Item33, npc.position);
                 float rotation = (float)Math.Atan2(vector8.Y - (player.position.Y + (player.height * 0.5f)), vector8.X - (player.position.X + (player.width * 0.5f)));
-                int num54 = Projectile.NewProjectile(vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, 0);
+                Projectile.NewProjectile(vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, 0);
             }
             if (npc.ai[0] == 2f)
             {
