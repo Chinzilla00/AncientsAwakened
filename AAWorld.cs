@@ -17,6 +17,9 @@ using AAMod.Worldgen;
 using Terraria.Utilities;
 using Terraria.Localization;
 using AAMod.Walls;
+using Terraria.UI;
+using Terraria.GameContent.UI.Elements;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod
 {
@@ -144,6 +147,9 @@ namespace AAMod
         public static int RabbitKills = 0;
         public static bool TimeStopped = false;
         public static double PausedTime = 0;
+
+        public static bool continueWorldGen = false;
+        public static bool GenAAContent = false;
         #endregion
 
         #region Save/Load
@@ -173,7 +179,7 @@ namespace AAMod
             downedSerpent = false;
             downedBrood = false;
             downedHydra = false;
-            downedAshe = false ;
+            downedAshe = false;
             downedHaruka = false;
             downedSisters = false;
             downedSag = false;
@@ -299,8 +305,8 @@ namespace AAMod
 
             return new TagCompound {
                 {"downed", downed},
-				{"MCenter", MireCenter },
-				{"ICenter", InfernoCenter },
+                {"MCenter", MireCenter },
+                {"ICenter", InfernoCenter },
                 {"squid1", squid1},
                 {"squid2", squid2},
                 {"squid3", squid3},
@@ -561,7 +567,7 @@ namespace AAMod
             downedCore = flags6[1];
 
             MireCenter = reader.ReadVector2();
-			InfernoCenter = reader.ReadVector2();		
+            InfernoCenter = reader.ReadVector2();
 
             squid1 = reader.ReadInt32();
             squid2 = reader.ReadInt32();
@@ -598,9 +604,18 @@ namespace AAMod
 
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
         {
-            
+            if (tasks.FindIndex(genpass => genpass.Name.Equals("Terrain")) > -1)
+            {
+                SmallWarning();
+            }
+
+            if (!GenAAContent && Main.maxTilesX <= 4200)
+            {
+                return;
+            }
+
             int shiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Shinies"));
-            if(shiniesIndex > -1)
+            if (shiniesIndex > -1)
             {
                 tasks.Insert(shiniesIndex + 1, new PassLegacy("Prisms", delegate (GenerationProgress progress)
                 {
@@ -625,7 +640,7 @@ namespace AAMod
             }
 
             int ChaosIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Micro Biomes"));
-            if(ChaosIndex > -1)
+            if (ChaosIndex > -1)
             {
                 tasks.Insert(ChaosIndex + 1, new PassLegacy("Mire and Inferno", delegate (GenerationProgress progress)
                 {
@@ -643,9 +658,9 @@ namespace AAMod
                     ThePitTeaser(progress);
                 }));
             }
-            
+
             int shiniesIndex2 = tasks.FindIndex(genpass => genpass.Name.Equals("Final Cleanup"));
-            if(shiniesIndex2 > -1)
+            if (shiniesIndex2 > -1)
             {
 
                 tasks.Insert(shiniesIndex2, new PassLegacy("Ender", delegate (GenerationProgress progress)
@@ -738,7 +753,7 @@ namespace AAMod
                                         chest.item[4].stack = WorldGen.genRand.Next(15, 31);
                                         chest.item[5].SetDefaults(73, false);
                                         chest.item[5].stack = WorldGen.genRand.Next(1, 3);
-                                        placed = true ;
+                                        placed = true;
                                         break;
                                     }
                                     break;
@@ -861,9 +876,104 @@ namespace AAMod
                     }
                 }));
             }
-            
+
             ModContentGenerated = true;
         }
+
+        public void SmallWarning()
+        {
+            Main.MenuUI.SetState(new ExampleUI());
+            while (true)
+            {
+                if (continueWorldGen)
+                {
+                    Main.MenuUI.GoBack();
+                    continueWorldGen = false;
+                    break;
+                }
+            }
+        }
+
+        class ExampleUI : UIState
+        {
+            public UIPanel coinCounterPanel;
+            private UIText buttonLabel;
+
+            public override void OnInitialize()
+            {
+                coinCounterPanel = new UIPanel();
+                coinCounterPanel.SetPadding(0);
+                coinCounterPanel.HAlign = .5f;
+                coinCounterPanel.VAlign = .5f;
+                coinCounterPanel.Width.Set(300f, 0f);
+                coinCounterPanel.Height.Set(100f, 0f);
+                coinCounterPanel.BackgroundColor = new Color(73, 94, 171);
+
+                UITextPanel<string> text = new UITextPanel<string>("Ancients Awakened does not work well at all on small worlds. It is highly recommended you generate on a medium or larger world! Do you wish to continue?");
+                text.HAlign = 0.5f;
+                text.Top.Set(5f, 0f);
+                coinCounterPanel.Append(text);
+
+                buttonLabel = new UIText("", 1f, false);
+                buttonLabel.VAlign = .8f;
+                buttonLabel.HAlign = .5f;
+                coinCounterPanel.Append(buttonLabel);
+
+                Texture2D buttonPlayTexture = ModContent.GetTexture("Terraria/UI/ButtonPlay");
+                UIImageButton playButton = new UIImageButton(buttonPlayTexture);
+                playButton.Width.Set(22, 0f);
+                playButton.Height.Set(22, 0f);
+                playButton.VAlign = .8f;
+                playButton.HAlign = .25f;
+                playButton.OnClick += new MouseEvent(PlayButtonClicked);
+                playButton.OnMouseOver += new MouseEvent(PlayMouseOver);
+                playButton.OnMouseOut += new MouseEvent(ButtonMouseOut);
+                coinCounterPanel.Append(playButton);
+
+                Texture2D buttonDeleteTexture = ModContent.GetTexture("Terraria/UI/ButtonDelete");
+                UIImageButton closeButton = new UIImageButton(buttonDeleteTexture);
+                closeButton.Width.Set(22, 0f);
+                closeButton.Height.Set(22, 0f);
+                closeButton.VAlign = .8f;
+                closeButton.HAlign = .75f;
+                closeButton.OnClick += new MouseEvent(CloseButtonClicked);
+                closeButton.OnMouseOver += new MouseEvent(DeleteMouseOver);
+                closeButton.OnMouseOut += new MouseEvent(ButtonMouseOut);
+                coinCounterPanel.Append(closeButton);
+
+                Append(coinCounterPanel);
+            }
+
+            private void PlayButtonClicked(UIMouseEvent evt, UIElement listeningElement)
+            {
+                Main.PlaySound(10, -1, -1, 1);
+                GenAAContent = true;
+                continueWorldGen = true;
+            }
+
+            private void CloseButtonClicked(UIMouseEvent evt, UIElement listeningElement)
+            {
+                Main.PlaySound(10, -1, -1, 1);
+                continueWorldGen = false;
+                GenAAContent = true;
+            }
+
+            private void PlayMouseOver(UIMouseEvent evt, UIElement listeningElement)
+            {
+                buttonLabel.SetText("I like suffering");
+            }
+
+            private void DeleteMouseOver(UIMouseEvent evt, UIElement listeningElement)
+            {
+                buttonLabel.SetText("Thanks for Letting me know, I'll generate a larger world.");
+            }
+
+            private void ButtonMouseOut(UIMouseEvent evt, UIElement listeningElement)
+            {
+                buttonLabel.SetText("");
+            }
+        }
+
 
         private void GenIncinerite()
         {
@@ -1097,7 +1207,7 @@ namespace AAMod
                 }
             }
         }
-        
+
         public int ChestNumber = 0;
 
         public void VoidHouses(int X, int Y, int type = 30, int sizeX = 10, int sizeY = 7)
@@ -1486,7 +1596,7 @@ namespace AAMod
                     AMessage = true;
                     if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedMechBossInfo"), Color.Gold.R, Color.Gold.G, Color.Gold.B);
                 }
-            }       
+            }
 
             if (downedAkuma || downedYamata || downedZero)
             {
@@ -1527,10 +1637,10 @@ namespace AAMod
         {
             Main.sandTiles += tileCounts[ModContent.TileType<Torchsand>()] + tileCounts[ModContent.TileType<Torchsandstone>()] + tileCounts[ModContent.TileType<TorchsandHardened>()] + tileCounts[ModContent.TileType<Depthsand>()] + tileCounts[ModContent.TileType<Depthsandstone>()] + tileCounts[ModContent.TileType<DepthsandHardened>()];
             Main.snowTiles += tileCounts[ModContent.TileType<Torchice>()] + tileCounts[ModContent.TileType<IndigoIce>()] + tileCounts[ModContent.TileType<TorchAsh>()];
-            mireTiles = tileCounts[ModContent.TileType<MireGrass>()]+ tileCounts[ModContent.TileType<Depthstone>()] + tileCounts[ModContent.TileType<Depthsand>()] + tileCounts[ModContent.TileType<Depthsandstone>()] + tileCounts[ModContent.TileType<DepthsandHardened>()] + tileCounts[ModContent.TileType<IndigoIce>()];
-            infernoTiles = tileCounts[ModContent.TileType<InfernoGrass>()]+ tileCounts[ModContent.TileType<Torchstone>()] + tileCounts[ModContent.TileType<Torchsand>()] + tileCounts[ModContent.TileType<Torchsandstone>()] + tileCounts[ModContent.TileType<TorchsandHardened>()] + tileCounts[ModContent.TileType<Torchice>()] + tileCounts[ModContent.TileType<TorchAsh>()];
+            mireTiles = tileCounts[ModContent.TileType<MireGrass>()] + tileCounts[ModContent.TileType<Depthstone>()] + tileCounts[ModContent.TileType<Depthsand>()] + tileCounts[ModContent.TileType<Depthsandstone>()] + tileCounts[ModContent.TileType<DepthsandHardened>()] + tileCounts[ModContent.TileType<IndigoIce>()];
+            infernoTiles = tileCounts[ModContent.TileType<InfernoGrass>()] + tileCounts[ModContent.TileType<Torchstone>()] + tileCounts[ModContent.TileType<Torchsand>()] + tileCounts[ModContent.TileType<Torchsandstone>()] + tileCounts[ModContent.TileType<TorchsandHardened>()] + tileCounts[ModContent.TileType<Torchice>()] + tileCounts[ModContent.TileType<TorchAsh>()];
             voidTiles = tileCounts[ModContent.TileType<Doomstone>()] + tileCounts[ModContent.TileType<Apocalyptite>()] + tileCounts[ModContent.TileType<Doomgrass>()] + tileCounts[ModContent.TileType<DoomstoneB>()];
-            mushTiles = tileCounts[ModContent.TileType<Mycelium>() ];
+            mushTiles = tileCounts[ModContent.TileType<Mycelium>()];
             Main.jungleTiles += mireTiles;
             pagodaTiles = tileCounts[ModContent.TileType<ScorchedDynastyWoodS>()] + tileCounts[ModContent.TileType<ScorchedShinglesS>()];
             lakeTiles = tileCounts[ModContent.TileType<Darkmud>()] + tileCounts[ModContent.TileType<AbyssGrass>()] + tileCounts[ModContent.TileType<AbyssWood>()] + tileCounts[ModContent.TileType<AbyssWoodSolid>()];
@@ -2287,4 +2397,6 @@ namespace AAMod
             }
         }
     }
+
+    
 }

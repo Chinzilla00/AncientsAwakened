@@ -14,8 +14,8 @@ namespace AAMod.Items.Armor.Champion.Drone
         }
         public override void SetDefaults()
         {
-            projectile.width = 248;
-            projectile.height = 142;
+            projectile.width = 54;
+            projectile.height = 98;
             projectile.penetrate = -1;
             projectile.hostile = false;
             projectile.friendly = false;

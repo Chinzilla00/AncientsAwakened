@@ -109,7 +109,7 @@ namespace AAMod
           */
         public static Chest[] GetVanillaChests(int minY, int maxY, int[] chestStyles = default(int[]), int special = -1)
         {
-            System.Collections.Generic.List<Chest> chests = new System.Collections.Generic.List<Chest>();
+            List<Chest> chests = new List<Chest>();
             for(int m = 0; m < Main.chest.Length; m++)
             {
                 Chest chest = Main.chest[m];

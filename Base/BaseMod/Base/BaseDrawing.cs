@@ -123,14 +123,14 @@ namespace AAMod
 				Vector2 vector4 = basePosition + Vector2.UnitY * scalarY + Vector2.UnitX * 1f;
 				Utils.DrawBorderString(Main.spriteBatch, displayText2, vector4, Color.White * displayAlpha, displayScalar, 0.5f, 1f, -1);
 				vector4 += Vector2.UnitX * (progressPercent - 0.5f) * scalarX;
-				Main.spriteBatch.Draw(Main.magicPixel, vector4, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, 0, 1, 1)), new Microsoft.Xna.Framework.Color(255, 241, 51) * displayAlpha, 0f, new Vector2(1f, 0.5f), new Vector2(scalarX * progressPercent, scalarY), SpriteEffects.None, 0f);
-				Main.spriteBatch.Draw(Main.magicPixel, vector4, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, 0, 1, 1)), new Microsoft.Xna.Framework.Color(255, 165, 0, 127) * displayAlpha, 0f, new Vector2(1f, 0.5f), new Vector2(2f, scalarY), SpriteEffects.None, 0f);
-				Main.spriteBatch.Draw(Main.magicPixel, vector4, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, 0, 1, 1)), Color.Black * displayAlpha, 0f, new Vector2(0f, 0.5f), new Vector2(scalarX * (1f - progressPercent), scalarY), SpriteEffects.None, 0f);
+				Main.spriteBatch.Draw(Main.magicPixel, vector4, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, 0, 1, 1)), new Color(255, 241, 51) * displayAlpha, 0f, new Vector2(1f, 0.5f), new Vector2(scalarX * progressPercent, scalarY), SpriteEffects.None, 0f);
+				Main.spriteBatch.Draw(Main.magicPixel, vector4, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, 0, 1, 1)), new Color(255, 165, 0, 127) * displayAlpha, 0f, new Vector2(1f, 0.5f), new Vector2(2f, scalarY), SpriteEffects.None, 0f);
+				Main.spriteBatch.Draw(Main.magicPixel, vector4, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, 0, 1, 1)), Color.Black * displayAlpha, 0f, new Vector2(0f, 0.5f), new Vector2(scalarX * (1f - progressPercent), scalarY), SpriteEffects.None, 0f);
 			}
 
 			Vector2 center = new Vector2(Main.screenWidth - 120, Main.screenHeight - 80) + offset;
 			Vector2 stringLength = Main.fontItemStack.MeasureString(displayText);
-			Microsoft.Xna.Framework.Rectangle textRect = Utils.CenteredRectangle(center, (stringLength + new Vector2(iconTex.Width + 20, 10f)) * displayScalar);
+            Rectangle textRect = Utils.CenteredRectangle(center, (stringLength + new Vector2(iconTex.Width + 20, 10f)) * displayScalar);
 			Utils.DrawInvBG(Main.spriteBatch, textRect, backgroundColor);
 			Main.spriteBatch.Draw(iconTex, textRect.Left() + Vector2.UnitX * displayScalar * 8f, null, Color.White * displayAlpha, 0f, new Vector2(0f, iconTex.Height / 2), displayScalar * 0.8f, SpriteEffects.None, 0f);
 			Utils.DrawBorderString(Main.spriteBatch, displayText, textRect.Right() + Vector2.UnitX * displayScalar * -8f, Color.White * displayAlpha, displayScalar * 0.9f, 1f, 0.4f, -1);
@@ -1020,11 +1020,11 @@ namespace AAMod
 					if(overrideColor == null)
 					{
 						color = Lighting.GetColor((int)mountedCenter.X / 16, (int)(mountedCenter.Y / 16f), color);
-						color = new Microsoft.Xna.Framework.Color((byte)(color.R * colorScalar), (byte)(color.G * colorScalar), (byte)(color.B * colorScalar), (byte)(color.A * colorScalar));
+						color = new Color((byte)(color.R * colorScalar), (byte)(color.G * colorScalar), (byte)(color.B * colorScalar), (byte)(color.A * colorScalar));
 					}
 					Texture2D tex = (overrideTex != null ? overrideTex : Main.fishingLineTexture);
 					Vector2 texCenter = new Vector2(tex.Width * 0.5f, tex.Height * 0.5f);	
-					Main.spriteBatch.Draw(Main.fishingLineTexture, new Vector2(mountedCenter.X - Main.screenPosition.X + texCenter.X, mountedCenter.Y - Main.screenPosition.Y + texCenter.Y) - new Vector2(6f, 0f), new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, 0, tex.Width, (int)textureHeight)), color, rotation, new Vector2(tex.Width * 0.5f, 0f), 1f, SpriteEffects.None, 0f);
+					Main.spriteBatch.Draw(Main.fishingLineTexture, new Vector2(mountedCenter.X - Main.screenPosition.X + texCenter.X, mountedCenter.Y - Main.screenPosition.Y + texCenter.Y) - new Vector2(6f, 0f), new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, 0, tex.Width, (int)textureHeight)), color, rotation, new Vector2(tex.Width * 0.5f, 0f), 1f, SpriteEffects.None, 0f);
 				}
 			}
 		}
@@ -1118,7 +1118,7 @@ namespace AAMod
 						Color color2 = Lighting.GetColor((int)mountedCenter.X / 16, (int)(mountedCenter.Y / 16f), (overrideColor != null ? (Color)overrideColor : new Color(200, 200, 200, 100)));
 						Texture2D tex = (overrideTex != null ? overrideTex : Main.fishingLineTexture);
 						Vector2 texCenter = new Vector2(tex.Width * 0.5f, tex.Height * 0.5f);
-						sb.Draw(tex, new Vector2(mountedCenter.X - Main.screenPosition.X + texCenter.X * 0.5f, mountedCenter.Y - Main.screenPosition.Y + texCenter.Y * 0.5f), new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, 0, tex.Width, (int)num16)), color2, rotation2, new Vector2(tex.Width * 0.5f, 0f), 1f, SpriteEffects.None, 0f);
+						sb.Draw(tex, new Vector2(mountedCenter.X - Main.screenPosition.X + texCenter.X * 0.5f, mountedCenter.Y - Main.screenPosition.Y + texCenter.Y * 0.5f), new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, 0, tex.Width, (int)num16)), color2, rotation2, new Vector2(tex.Width * 0.5f, 0f), 1f, SpriteEffects.None, 0f);
 					}
 				}
 			}

@@ -29,7 +29,7 @@ namespace AAMod.Items.Blocks.Bricks
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "KeepBrick", 300);
-            recipe.AddIngredient(ModContent.ItemType<Items.Materials.HeroShards>(), 1);
+            recipe.AddIngredient(ModContent.ItemType<Materials.HeroShards>(), 1);
             recipe.AddTile(TileID.Furnaces);
             recipe.SetResult(this, 300);
             recipe.AddRecipe();

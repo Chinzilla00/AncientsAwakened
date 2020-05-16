@@ -32,7 +32,7 @@ Dark, yet still barely visible");
             AARarity = 12;
         }
 
-        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        public override void ModifyTooltips(List<TooltipLine> list)
         {
             foreach (TooltipLine line2 in list)
             {

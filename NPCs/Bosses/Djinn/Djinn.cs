@@ -211,10 +211,9 @@ namespace AAMod.NPCs.Bosses.Djinn
             }
             else if (internalAI[0] == 1)
             {
-                npc.damage = 60 * (Main.expertMode ? (int)(npc.damage * 1.6f) : 1); ;
+                npc.damage = 60 * (Main.expertMode ? (int)(npc.damage * 1.6f) : 1);
                 npc.ai[3]++;
                 BaseAI.AIFlier(npc, ref npc.ai, true, 0.1f, 0.1f, 6f, 6f, false, 300);
-                npc.damage = 40;
 
                 if (npc.ai[3] % 30 == 0)
                 {
@@ -240,8 +239,6 @@ namespace AAMod.NPCs.Bosses.Djinn
                     {
                         if (selectPoint)
                         {
-							
-							 
                             float point = 700 * npc.direction;
                             MovePoint = player.Center + new Vector2(point, 0);
 							MoveToPoint(MovePoint, 10f);
