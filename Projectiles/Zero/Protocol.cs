@@ -270,7 +270,7 @@ namespace AAMod.Projectiles.Zero
                         value20.Normalize();
                         projectile.velocity = value20 * 8f;
                         projectile.netUpdate = true;
-						int num659 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, value20.X*8, value20.Y*8, 389, projectile.damage/2, 0f, Main.myPlayer, 0f, 0f);
+						int num659 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, value20.X*8, value20.Y*8, ProjectileID.MiniRetinaLaser, projectile.damage/2, 0f, Main.myPlayer, 0f, 0f);
 						Main.projectile[num659].minion = true;
 						Main.projectile[num659].usesLocalNPCImmunity = true;
 						Main.projectile[num659].localNPCHitCooldown = 0;

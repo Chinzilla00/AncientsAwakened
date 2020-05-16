@@ -172,7 +172,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HarukaTrophy"));
             }
-            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("HarukaDowned"), new Color(72, 78, 117));
+            if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("HarukaDowned"), new Color(72, 78, 117));
             NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<HarukaVanish>());
 
         }
@@ -217,7 +217,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 if (flag)
                 {
                     npc.TargetClosest(false);
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<HarukaVanish>(), 0);
                         Main.npc[DeathAnim].velocity = npc.velocity;
@@ -263,7 +263,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 }
             }
 
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 internalAI[1]++;
                 internalAI[5]++;
@@ -300,7 +300,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     npc.netUpdate = true;
                 }
             }
-            if (internalAI[5] > InvisTimer2 && Main.netMode != 1 && internalAI[0] != AISTATE_Shadowkilling)
+            if (internalAI[5] > InvisTimer2 && Main.netMode != NetmodeID.MultiplayerClient && internalAI[0] != AISTATE_Shadowkilling)
             {
                 Invisible = false;
                 Backstab();
@@ -359,7 +359,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             
             if (ProjectileShoot == 0 || internalAI[0] == AISTATE_SLASH)
             {
-                if (Main.netMode != 1)
+                if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     if (internalAI[1] > 4)
                     {
@@ -370,7 +370,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             }
             else
             {
-                if (Main.netMode != 1)
+                if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     if (internalAI[1] > 8)
                     {
@@ -427,7 +427,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
             if (internalAI[0] == AISTATE_IDLE)
             {
-                if (Main.netMode != 1) 
+                if (Main.netMode != NetmodeID.MultiplayerClient) 
                 {
                     internalAI[3]++;
 
@@ -455,7 +455,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     }
                 }
 
-                if (internalAI[2] > 3 && Main.netMode != 1)
+                if (internalAI[2] > 3 && Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     internalAI[1] = 0;
                     internalAI[2] = 0;
@@ -463,13 +463,13 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             }
             else if (internalAI[0] == AISTATE_PROJ)
             {
-                if (ProjectileShoot == -1 && Main.netMode != 1)
+                if (ProjectileShoot == -1 && Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     ProjectileShoot = Main.rand.Next(2);
                 }
                 if (ProjectileShoot == 0)
                 {
-                    if (internalAI[2] == 5 && internalAI[1] == 3 && Main.netMode != 1)
+                    if (internalAI[2] == 5 && internalAI[1] == 3 && Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         repeat -= 1;
                         int projType = ModContent.ProjectileType<HarukaKunai>();
@@ -485,7 +485,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                             Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, damage*1, 5, Main.myPlayer);
                         }
                     }
-                    if ((internalAI[2] < 4 || internalAI[2] > 6) && Main.netMode != 1) 
+                    if ((internalAI[2] < 4 || internalAI[2] > 6) && Main.netMode != NetmodeID.MultiplayerClient) 
                     {
                         internalAI[1] = 0;
                         internalAI[2] = 4;
@@ -494,7 +494,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     {
                         npc.frameCounter = 0;
                         Frame = 0;
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             internalAI[0] = 3;
                             internalAI[1] = 0;
@@ -510,7 +510,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 else if (ProjectileShoot == 1)
                 {
                     internalAI[3]++;
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         if (internalAI[3] == 100 || internalAI[3] == 200 || internalAI[3] == 299)
                         {
@@ -534,7 +534,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                         }
                     }
 
-                    if (internalAI[2] == 8 && internalAI[1] == 4 && Main.netMode != 1)
+                    if (internalAI[2] == 8 && internalAI[1] == 4 && Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         Vector2 targetCenter = player.position + new Vector2(player.width * 0.5f, player.height * 0.5f);
                         Vector2 fireTarget = npc.Center;
@@ -542,7 +542,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                         BaseAI.FireProjectile(targetCenter, fireTarget, projType, damage*1, 0f, 12f);
                         npc.netUpdate = true;
                     }
-                    if (isSlashing && internalAI[2] > 9 && Main.netMode != 1)
+                    if (isSlashing && internalAI[2] > 9 && Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         isSlashing = false;
                         npc.netUpdate = true;
@@ -551,7 +551,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     {
                         npc.frameCounter = 0;
                         Frame = 0;
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             internalAI[0] = 3;
                             internalAI[1] = 0;
@@ -589,7 +589,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     {
                         npc.frameCounter = 0;
                         Frame = 0;
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             internalAI[0] = 3;
                             internalAI[1] = 0;
@@ -664,7 +664,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     double startAngle = Math.Atan2(dir.X, dir.Y) - .1d;
                     double deltaAngle = spread / 6f;
 
-                    if(Main.netMode != 1)
+                    if(Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         for (int i = 0; i < 3; i++)
                         {
@@ -728,7 +728,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             }
             else
             {
-                if (Main.netMode != 1)
+                if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     internalAI[0] = 3;
                     internalAI[1] = 0;
@@ -947,12 +947,12 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 {
                     k2 = 0;
                 }
-                if(Main.netMode != 1)
+                if(Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     ShadowNPC[1] = NPC.NewNPC((int)spawnpoint[k1].X, (int)spawnpoint[k1].Y, ModContent.NPCType<HarukaClone>(), 0, npc.whoAmI);
-                    NetMessage.SendData(23, -1, -1, null, ShadowNPC[1], 0f, 0f, 0f, 0, 0, 0);
+                    NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, ShadowNPC[1], 0f, 0f, 0f, 0, 0, 0);
                     ShadowNPC[2] = NPC.NewNPC((int)spawnpoint[k2].X, (int)spawnpoint[k2].Y, ModContent.NPCType<HarukaClone>(), 0, npc.whoAmI);
-                    NetMessage.SendData(23, -1, -1, null, ShadowNPC[2], 0f, 0f, 0f, 0, 0, 0);
+                    NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, ShadowNPC[2], 0f, 0f, 0f, 0, 0, 0);
                 }
                 npc.netUpdate = true;
                 npc.alpha = 250;
@@ -1026,7 +1026,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             if(internalAI[4] >= 160 || Main.npc[ShadowNPC[1]].Hitbox.Intersects(Main.npc[ShadowNPC[0]].Hitbox) || Main.npc[ShadowNPC[1]].Hitbox.Intersects(Main.npc[ShadowNPC[2]].Hitbox) || Main.npc[ShadowNPC[2]].Hitbox.Intersects(Main.npc[ShadowNPC[0]].Hitbox))
             {
                 Vector2 shoot;
-                if (Main.netMode != 1)
+                if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     Projectile.NewProjectile(ShadowkingPosition.X, ShadowkingPosition.Y, 0, 0, ModContent.ProjectileType<HarukaStrike>(), damage*1, 5, Main.myPlayer);
                     int projType = ModContent.ProjectileType<HarukaProj>();

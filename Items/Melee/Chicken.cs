@@ -19,12 +19,12 @@ namespace AAMod.Items.Melee
 			item.height = 60;
 			item.useTime = 25;
             item.useAnimation = 25;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 3;
 			item.value = 1000;
             item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
-            item.rare = 11;
+            item.rare = ItemRarityID.Purple;
 		}
 
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)

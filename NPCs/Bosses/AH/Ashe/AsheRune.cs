@@ -64,7 +64,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public override void AI()
         {
-            if (!SpinCheck && Main.netMode != 1)
+            if (!SpinCheck && Main.netMode != NetmodeID.MultiplayerClient)
             {
                 if (Main.rand.Next(2) == 0)
                 {
@@ -86,7 +86,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     {
                         Runeshootspeed = 10f * Vector2.Normalize(Main.player[Main.npc[(int)npc.ai[3]].target].position - new Vector2(npc.ai[0], npc.ai[1]));
                     }
-                    if(Main.netMode != 1)
+                    if(Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         int SootProj = Projectile.NewProjectile(npc.Center.X + Runeshootspeed.X, npc.Center.Y + Runeshootspeed.Y, Runeshootspeed.X, Runeshootspeed.Y, ModContent.ProjectileType<AsheShot>(), (int)npc.ai[2]/2, 0, Main.myPlayer, npc.whoAmI, 0);
                         Main.projectile[SootProj].alpha = 0;

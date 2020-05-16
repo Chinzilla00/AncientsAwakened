@@ -1,3 +1,5 @@
+using Terraria.ID;
+
 namespace AAMod.Items.Materials
 {
     public class MadnessFragment : BaseAAItem
@@ -11,7 +13,7 @@ namespace AAMod.Items.Materials
             item.width = 16;
             item.height = 24;
             item.maxStack = 99;
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
         }
     }
 }

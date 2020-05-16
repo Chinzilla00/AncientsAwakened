@@ -26,12 +26,12 @@ Non-Consumable");
         {
             item.width = 36;
             item.height = 46;
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
             item.value = Item.sellPrice(0, 0, 0, 0);
             item.useAnimation = 45;
             item.useTime = 45;
-            item.useStyle = 4;
-            item.rare = 11;
+            item.useStyle = ItemUseStyleID.HoldingUp;
+            item.rare = ItemRarityID.Purple;
             item.noUseGraphic = true;
         }
 
@@ -47,19 +47,19 @@ Non-Consumable");
 
             if (AAWorld.SistersSummoned && !AAWorld.downedSisters)
             {
-                if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.SistersDownedInfo1"), new Color(102, 20, 48));
+                if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.SistersDownedInfo1"), new Color(102, 20, 48));
 
                 AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Ashe"), false, -1, 0, "Ashe Akuma", false);
 
-                if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.SistersDownedInfo2"), new Color(72, 78, 117));
+                if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.SistersDownedInfo2"), new Color(72, 78, 117));
                 AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Haruka"), false, 1, 0, "Haruka Yamata", false);
                 return true;
             }
             else if (AAWorld.SistersSummoned && AAWorld.downedSisters)
             {
-                if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.SistersInfo1"), new Color(72, 78, 117));
+                if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.SistersInfo1"), new Color(72, 78, 117));
 
-                if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.SistersInfo2"), new Color(102, 20, 48));
+                if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.SistersInfo2"), new Color(102, 20, 48));
                 AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Ashe"), false, -1, 0, "Ashe Akuma", false);
                 AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Haruka"), false, 1, 0, "Haruka Yamata", false);
                 return true;

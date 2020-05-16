@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Vanity.Eliza.Cat
 {
@@ -33,7 +34,7 @@ namespace AAMod.Items.Vanity.Eliza.Cat
         {
             item.width = 22;
             item.height = 18;
-            item.rare = 11;
+            item.rare = ItemRarityID.Purple;
             item.vanity = true;
             item.accessory = true;
         }

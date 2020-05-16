@@ -1,6 +1,7 @@
 using Terraria;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.ID;
 
 namespace AAMod.Items.Accessories
 {
@@ -11,7 +12,7 @@ namespace AAMod.Items.Accessories
 			item.width = 20;
 			item.height = 24;
 			item.value = Item.sellPrice(0, 6, 0, 0);
-			item.rare = 8;
+			item.rare = ItemRarityID.Yellow;
 			item.accessory = true;
             
         }

@@ -1,3 +1,5 @@
+using Terraria.ID;
+
 namespace AAMod.Items.Materials
 {
     public class SeraphFeather : BaseAAItem
@@ -12,7 +14,7 @@ namespace AAMod.Items.Materials
             item.width = 22;
             item.height = 36;
             item.maxStack = 99;
-            item.rare = 7;
+            item.rare = ItemRarityID.Lime;
         }
     }
 }

@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Tiles
 {
@@ -11,7 +12,7 @@ namespace AAMod.Tiles
             Main.tileSolid[Type] = true;
 			Main.tileMergeDirt[Type] = true;
             //true for block to emit light
-            soundType = 21;
+            soundType = SoundID.Tink;
             Main.tileBlockLight[Type] = true;
             drop = mod.ItemType("OroborosWood");   
             dustType = mod.DustType("DoomDust");

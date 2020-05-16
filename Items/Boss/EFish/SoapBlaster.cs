@@ -21,7 +21,7 @@ namespace AAMod.Items.Boss.EFish
 			item.useTime = 3;
 			item.useAnimation = 3;
             item.damage = 125;
-            item.rare = 11;
+            item.rare = ItemRarityID.Purple;
         }
 		
 		public override Vector2? HoldoutOffset()

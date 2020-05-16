@@ -1,6 +1,6 @@
 using Terraria;
 using Terraria.ModLoader;
-
+using Terraria.ID;
 
 namespace AAMod.Items.Armor.Radium
 {
@@ -20,7 +20,7 @@ namespace AAMod.Items.Armor.Radium
 			item.height = 20;
 			item.value = 300000;
 			item.defense = 28;
-			item.rare = 9;
+			item.rare = ItemRarityID.Cyan;
 			AARarity = 12;
 		}
 

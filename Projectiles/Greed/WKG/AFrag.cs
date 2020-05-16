@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ModLoader;
 using AAMod.Dusts;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.ID;
 
 namespace AAMod.Projectiles.Greed.WKG
 {
@@ -32,7 +33,7 @@ namespace AAMod.Projectiles.Greed.WKG
             if ((projectile.velocity.X != oldVelocity.X && (oldVelocity.X < -3f || oldVelocity.X > 3f)) || (projectile.velocity.Y != oldVelocity.Y && (oldVelocity.Y < -3f || oldVelocity.Y > 3f)))
             {
                 Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
-                Main.PlaySound(0, (int)projectile.Center.X, (int)projectile.Center.Y, 1, 1f, 0f);
+                Main.PlaySound(SoundID.Dig, (int)projectile.Center.X, (int)projectile.Center.Y, 1, 1f, 0f);
             }
             return false;
         }

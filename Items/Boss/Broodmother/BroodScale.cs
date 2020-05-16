@@ -1,6 +1,8 @@
 using Terraria;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.ID;
+
 namespace AAMod.Items.Boss.Broodmother
 {
     public class BroodScale : BaseAAItem
@@ -11,7 +13,7 @@ namespace AAMod.Items.Boss.Broodmother
             item.width = 22;
             item.height = 24;
             item.maxStack = 99;
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
 			
         }
 

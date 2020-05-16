@@ -16,7 +16,7 @@ namespace AAMod.Tiles
             Main.tileBlockLight[Type] = true;
             Main.tileSolidTop[Type] = false;
             Main.tileMerge[Type][mod.TileType("AbyssWood")] = true;
-            soundType = 21;
+            soundType = SoundID.Tink;
             Main.tileLighted[Type] = true;
             dustType = DustID.Blood;
             AddMapEntry(new Color(200, 0, 70));

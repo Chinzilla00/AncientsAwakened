@@ -16,9 +16,9 @@ Terra Blade EX");
         }
         public override void SetDefaults()
 		{
-			item.rare = 11;
+			item.rare = ItemRarityID.Purple;
 			item.UseSound = SoundID.Item1;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.damage = 1200;
 			item.useAnimation = 21;
 			item.useTime = 21;

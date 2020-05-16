@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.NPCs.Bosses.AH
 {
@@ -49,11 +50,11 @@ namespace AAMod.NPCs.Bosses.AH
             {
                 if (AAWorld.downedSisters)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AHDeath1"), new Color(102, 20, 48));
+                    if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("AHDeath1"), new Color(102, 20, 48));
                 }
                 else
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AHDeath2"), new Color(72, 78, 117));
+                    if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("AHDeath2"), new Color(72, 78, 117));
                 }
             }
 

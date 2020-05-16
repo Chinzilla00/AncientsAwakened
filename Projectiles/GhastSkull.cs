@@ -143,7 +143,7 @@ namespace AAMod.Projectiles
             projectile.penetrate = -1;
             projectile.Damage();
             Main.PlaySound(SoundID.Item14, projectile.position);
-            Main.PlaySound(4, projectile.position, 39);
+            Main.PlaySound(SoundID.NPCKilled, projectile.position, 39);
             Vector2 position = projectile.Center + (Vector2.One * -20f);
             int num84 = 40;
             int height3 = num84;

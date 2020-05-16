@@ -21,7 +21,7 @@ namespace AAMod.Items.Boss.Athena.Olympian
             item.height = 10;
             item.maxStack = 999;
             item.value = 10000;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 12;
         }
 

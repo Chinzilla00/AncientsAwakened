@@ -18,18 +18,18 @@ Tsunami EX");
 
         public override void SetDefaults()
         {
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.useAnimation = 20;
             item.useTime = 10;
             item.width = 30;
             item.height = 62;
-            item.shoot = 1;
+            item.shoot = ProjectileID.WoodenArrowFriendly;
             item.useAmmo = AmmoID.Arrow;
             item.UseSound = SoundID.Item5;
             item.damage = 100;
             item.shootSpeed = 13f;
             item.knockBack = 4f;
-            item.rare = 8;
+            item.rare = ItemRarityID.Yellow;
             item.noMelee = true;
             item.value = 200000;
             item.ranged = true;

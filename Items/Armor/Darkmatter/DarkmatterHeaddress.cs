@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using System;
 using Terraria.Localization;
+using Terraria.ID;
 
 namespace AAMod.Items.Armor.Darkmatter
 {
@@ -26,7 +27,7 @@ Dark, yet still barely visible");
 			item.height = 24;
 			item.value = 300000;
 			item.defense = 20;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 12;
         }
 

@@ -22,17 +22,17 @@ Can only be used at night");
             item.height = 22;
             item.maxStack = 20;
             item.value = 1000;
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
             item.useAnimation = 30;
             item.useTime = 30;
-            item.useStyle = 4;
+            item.useStyle = ItemUseStyleID.HoldingUp;
             item.consumable = true;
         }
 
         public override bool UseItem(Player player)
         {
             AAModGlobalNPC.SpawnBoss(player, NPCID.SkeletronHead, true, 0, 0, Language.GetTextValue("Mods.AAMod.Common.Skeletron"), false);
-            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
+            Main.PlaySound(SoundID.Roar, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }
 

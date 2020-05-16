@@ -20,7 +20,7 @@ namespace AAMod.Items.Boss.Akuma
         public override void SetDefaults()
         {
             item.crit = 14;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.autoReuse = true;
             item.useAnimation = 25;
             item.useTime = 25;
@@ -34,7 +34,7 @@ namespace AAMod.Items.Boss.Akuma
             item.noMelee = true;
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.knockBack = 2f;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 13;
             item.ranged = true;
         }

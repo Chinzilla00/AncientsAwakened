@@ -649,7 +649,7 @@ namespace AAMod
 			{
 				npc.timeLeft = 50;
 			}
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
 				if (!singlePiece)
 				{
@@ -787,8 +787,8 @@ namespace AAMod
                         npc.active = false;
                     }
                 }
-                if (!npc.active && Main.netMode == 2)
-					NetMessage.SendData(28, -1, -1, NetworkText.FromLiteral(""), npc.whoAmI, 1, 0f, 0f, -1);
+                if (!npc.active && Main.netMode == NetmodeID.Server)
+					NetMessage.SendData(MessageID.StrikeNPC, -1, -1, NetworkText.FromLiteral(""), npc.whoAmI, 1, 0f, 0f, -1);
             }
             int tileX = (int)(npc.position.X / 16f) - 1;
             int tileCenterX = (int)((npc.Center.X) / 16f) + 2;
@@ -915,7 +915,7 @@ namespace AAMod
                         if (distSoundDelay < 10f) { distSoundDelay = 10f; }
                         if (distSoundDelay > 20f) { distSoundDelay = 20f; }
                         npc.soundDelay = (int)distSoundDelay;
-                        Main.PlaySound(15, (int)npc.position.X, (int)npc.position.Y, 1);
+                        Main.PlaySound(SoundID.Roar, (int)npc.position.X, (int)npc.position.Y, 1);
                     }
                     dist = (float)Math.Sqrt(playerCenterX * playerCenterX + playerCenterY * playerCenterY);
                     float absPlayerCenterX = Math.Abs(playerCenterX);

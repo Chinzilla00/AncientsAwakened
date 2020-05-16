@@ -737,9 +737,9 @@ namespace AAMod
                     }
                 }
             }
-            if (Main.netMode == 1 && itemcreat > 0)
+            if (Main.netMode == NetmodeID.MultiplayerClient && itemcreat > 0)
             {
-                NetMessage.SendData(21, -1, -1, null, itemcreat, 1f, 0f, 0f, 0, 0, 0);
+                NetMessage.SendData(MessageID.SyncItem, -1, -1, null, itemcreat, 1f, 0f, 0f, 0, 0, 0);
             }
         }
 
@@ -757,9 +757,9 @@ namespace AAMod
                     if(Utils.NextFloat(Main.rand, SecondDrop) < 1)
                     {
                         int itemcreat = Item.NewItem(x * 16, y * 16, 32, 32, itemtype, 1, false, 0, false, false);
-                        if (Main.netMode == 1)
+                        if (Main.netMode == NetmodeID.MultiplayerClient)
                         {
-                            NetMessage.SendData(21, -1, -1, null, itemcreat, 1f, 0f, 0f, 0, 0, 0);
+                            NetMessage.SendData(MessageID.SyncItem, -1, -1, null, itemcreat, 1f, 0f, 0f, 0, 0, 0);
                         }
                     }
                     SecondDrop -= 1;

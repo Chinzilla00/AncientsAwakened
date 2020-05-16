@@ -1,6 +1,8 @@
 using Terraria;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.ID;
+
 namespace AAMod.Items.Boss.Equinox
 {
     public class EquinoxBag : BaseAAItem
@@ -19,7 +21,7 @@ Contained loot depends on the time of day");
 			item.consumable = true;
 			item.width = 32;
 			item.height = 36;
-			item.rare = 11;
+			item.rare = ItemRarityID.Purple;
 			item.expert = true; item.expertOnly = true;
         }
         public override int BossBagNPC => mod.NPCType("DaybringerHead");

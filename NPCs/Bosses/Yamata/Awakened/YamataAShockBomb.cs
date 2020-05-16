@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.NPCs.Bosses.Yamata.Awakened
 {
@@ -37,7 +38,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         	if (projectile.ai[1] == 0f)
 			{
 				projectile.ai[1] = 1f;
-				Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 20);
+				Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 20);
 			}
             projectile.velocity.Y += 0.2f;
             if (projectile.ai[0] > -1 && projectile.ai[0] < 255 && projectile.Center.Y > Main.player[(int)projectile.ai[0]].Center.Y)
@@ -52,7 +53,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         public override void Kill(int timeLeft)
         {
             Main.PlaySound(new LegacySoundStyle(2, 89, Terraria.Audio.SoundType.Sound));
-	    	if (Main.netMode != 1)
+	    	if (Main.netMode != NetmodeID.MultiplayerClient)
 	    	{
                 const float ai0 = 20;
                 Projectile.NewProjectile(projectile.Center, Vector2.Zero, mod.ProjectileType("Shockwave2"), projectile.damage, projectile.knockBack, projectile.owner, ai0);

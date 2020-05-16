@@ -1,3 +1,5 @@
+using Terraria.ID;
+
 namespace AAMod.Items.Blocks
 {
     public class RadiumOre : BaseAAItem
@@ -11,9 +13,9 @@ namespace AAMod.Items.Blocks
             item.useTurn = true;
             item.autoReuse = true;
             item.useAnimation = 15;
-            item.rare = 10;
+            item.rare = ItemRarityID.Red;
             item.useTime = 10;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.consumable = true;
             item.createTile = mod.TileType("RadiumOre"); //put your CustomBlock Tile name
         }

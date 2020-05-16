@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using System.Collections.Generic;
+using Terraria.ID;
 
 namespace AAMod.Items.Vanity.Alphakip
 {
@@ -31,7 +32,7 @@ namespace AAMod.Items.Vanity.Alphakip
         {
             item.width = 18;
             item.height = 20;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             item.vanity = true;
         }
 	}

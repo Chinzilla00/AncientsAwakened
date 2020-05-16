@@ -13,13 +13,13 @@ namespace AAMod.Items.Boss.Athena.Olympian
 			item.height = 52;
             item.useTime = 26;
 			item.useAnimation = 26;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 7;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
             item.shoot = ModContent.ProjectileType<Projectiles.Athena.Skyrazor>();
             item.shootSpeed = 10;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 12;
         }
 

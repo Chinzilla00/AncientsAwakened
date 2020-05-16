@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Accessories.Wings
 {
@@ -18,7 +19,7 @@ Grants a dash while flying");
 			item.width = 26;
 			item.height = 30;
             item.value = Item.sellPrice(0, 8, 0, 0);
-            item.rare = 8;
+            item.rare = ItemRarityID.Yellow;
 			item.accessory = true;
         }
 

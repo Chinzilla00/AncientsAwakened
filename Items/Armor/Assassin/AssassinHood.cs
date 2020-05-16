@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Armor.Assassin
 {
@@ -19,7 +20,7 @@ A dark hood infused with the shadow of midnight");
 			item.width = 16;
 			item.height = 16;
             item.value = 300000;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 12;
             item.defense = 25;
 		}

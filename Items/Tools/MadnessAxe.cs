@@ -10,7 +10,7 @@ namespace AAMod.Items.Tools
             item.width = 40;
             item.height = 40;
 
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.useTurn = true;
             item.useAnimation = 20;
             item.useTime = 20;

@@ -28,7 +28,7 @@ namespace AAMod.Items.Currency
             item.height = 16;
             item.maxStack = 999;
             item.value = 1000;
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
         }
 
         int counter = 0;

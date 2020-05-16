@@ -10,7 +10,7 @@ namespace AAMod.Tiles.Bars
     {
         public override void SetDefaults()
         {
-            soundType = 21;
+            soundType = SoundID.Tink;
 
             Main.tileShine[Type] = 1100;
             Main.tileSolid[Type] = true;

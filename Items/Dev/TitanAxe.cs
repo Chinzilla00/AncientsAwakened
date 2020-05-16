@@ -22,10 +22,10 @@ namespace AAMod.Items.Dev
 			item.height = 72;
 			item.useTime = 26;
 			item.useAnimation = 26;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 6;
 			item.value = 100000;
-			item.rare = 11;
+			item.rare = ItemRarityID.Purple;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
             item.shootSpeed = 12f;
@@ -58,7 +58,7 @@ namespace AAMod.Items.Dev
             }
             else
             {
-                item.shoot = 0;
+                item.shoot = ProjectileID.None;
                 item.noMelee = false;
                 item.noUseGraphic = false;
             }

@@ -126,7 +126,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 				return;
             if (!Body.active)
             {
-                if (Main.netMode != 1) //force a kill to prevent 'ghost hands'
+                if (Main.netMode != NetmodeID.MultiplayerClient) //force a kill to prevent 'ghost hands'
                 {
                     npc.life = 0;
                     npc.checkDead();
@@ -233,7 +233,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 {
                     if (attackTimer == 40)
                     {
-                        Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 20);
+                        Main.PlaySound(SoundID.Item, (int)npc.Center.X, (int)npc.Center.Y, 20);
                         int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * 2f, npc.velocity.Y * 2f, mod.ProjectileType("YamataBomb"), projDamage, 0, Main.myPlayer);
                         Main.projectile[proj2].damage = projDamage;
                         attackTimer = 0;
@@ -249,10 +249,10 @@ namespace AAMod.NPCs.Bosses.Yamata
                 {
                     if (attackTimer == 8 || attackTimer == 16 || attackTimer == 24 || attackTimer == 32 || attackTimer == 40 || attackTimer == 48 || attackTimer == 56 || attackTimer == 64 || attackTimer == 72 || attackTimer == 79)
                     {
-                        Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 20);
+                        Main.PlaySound(SoundID.Item, (int)npc.Center.X, (int)npc.Center.Y, 20);
                         for (int i = 0; i < 5; ++i)
                         {
-                            if (Main.netMode != 1)
+                            if (Main.netMode != NetmodeID.MultiplayerClient)
                             {
                                 Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX * 2f, PlayerPosY * 2f, mod.ProjectileType("YamataBreath"), projDamage, 0f, Main.myPlayer);
                             }
@@ -299,7 +299,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 if (!QuoteSaid && sayQuote)
                 {
                     laughTimer = 120;
-                    if (Main.netMode != 1) AAMod.Chat((!Quote1) ? Lang.BossChat("YamataHead1") : Lang.BossChat("YamataHead2"), new Color(45, 46, 70));
+                    if (Main.netMode != NetmodeID.MultiplayerClient) AAMod.Chat((!Quote1) ? Lang.BossChat("YamataHead1") : Lang.BossChat("YamataHead2"), new Color(45, 46, 70));
                     QuoteSaid = true;
                     Quote1 = true;
                 }
@@ -310,7 +310,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 if (!QuoteSaid && sayQuote)
                 {
                     laughTimer = 120;
-                    if (Main.netMode != 1) AAMod.Chat((!Quote3) ? Lang.BossChat("YamataHead3") : Lang.BossChat("YamataHead4"), new Color(45, 46, 70));
+                    if (Main.netMode != NetmodeID.MultiplayerClient) AAMod.Chat((!Quote3) ? Lang.BossChat("YamataHead3") : Lang.BossChat("YamataHead4"), new Color(45, 46, 70));
                     QuoteSaid = true;
                     Quote3 = true;
                 }
@@ -321,7 +321,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 if (!QuoteSaid && sayQuote)
                 {
                     laughTimer = 120;
-                    if (Main.netMode != 1) AAMod.Chat((!Quote3) ? Lang.BossChat("YamataHead5") : Lang.BossChat("YamataHead6"), new Color(45, 46, 70));
+                    if (Main.netMode != NetmodeID.MultiplayerClient) AAMod.Chat((!Quote3) ? Lang.BossChat("YamataHead5") : Lang.BossChat("YamataHead6"), new Color(45, 46, 70));
                     QuoteSaid = true;
                     Quote3 = true;
                 }
@@ -332,7 +332,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 if (!QuoteSaid && sayQuote)
                 {
                     laughTimer = 120;
-                    if (Main.netMode != 1) AAMod.Chat((!Quote4) ? (Lang.BossChat("YamataHead7") + (player.Male ? Lang.BossChat("male2") : Lang.BossChat("fimale2")) + Lang.BossChat("YamataHead8")) : Lang.BossChat("YamataHead9"), new Color(45, 46, 70));
+                    if (Main.netMode != NetmodeID.MultiplayerClient) AAMod.Chat((!Quote4) ? (Lang.BossChat("YamataHead7") + (player.Male ? Lang.BossChat("male2") : Lang.BossChat("fimale2")) + Lang.BossChat("YamataHead8")) : Lang.BossChat("YamataHead9"), new Color(45, 46, 70));
                     QuoteSaid = true;
                     Quote4 = true;
                 }

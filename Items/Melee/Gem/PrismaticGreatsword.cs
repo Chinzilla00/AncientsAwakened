@@ -17,10 +17,10 @@ namespace AAMod.Items.Melee.Gem   //where is located
             item.height = 60;             
             item.useTime = 20;          
             item.useAnimation = 20;     
-            item.useStyle = 1;        
+            item.useStyle = ItemUseStyleID.SwingThrow;        
             item.knockBack = 5;
             item.value = 20000;        
-            item.rare = 4;
+            item.rare = ItemRarityID.LightRed;
             item.UseSound = new LegacySoundStyle(2, 8, Terraria.Audio.SoundType.Sound);
             item.autoReuse = true;   
             item.useTurn = true; 

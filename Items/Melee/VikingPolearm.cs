@@ -25,9 +25,9 @@ namespace AAMod.Items.Melee
             item.noMelee = true;
             item.noUseGraphic = true;
             item.autoReuse = true;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.value = Item.sellPrice(0, 0, 40, 0);
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
             item.shootSpeed = 5f;
             item.shoot = mod.ProjectileType("VikingPolearm");  //put your Spear projectile name
         }

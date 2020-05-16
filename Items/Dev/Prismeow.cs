@@ -27,11 +27,11 @@ namespace AAMod.Items.Dev
 			item.height = 58;
 			item.useTime = 18;
 			item.useAnimation = 18;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.noMelee = true;
 			item.knockBack = 5;
 			item.value = 1000000;
-			item.rare = 11;
+			item.rare = ItemRarityID.Purple;
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = true;
 			item.shoot = ProjectileID.Meowmere;

@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Tiles
 {
@@ -13,7 +14,7 @@ namespace AAMod.Tiles
             Terraria.ID.TileID.Sets.Conversion.Stone[Type] = true;
             Main.tileMergeDirt[Type] = true;
             Main.tileBlockLight[Type] = true;
-            soundType = 21;
+            soundType = SoundID.Tink;
             dustType = mod.DustType("RazewoodDust");
             drop = mod.ItemType("Torchstone");   
             AddMapEntry(new Color(50, 25, 12));

@@ -19,7 +19,7 @@ namespace AAMod.Tiles.Ore
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Luminite Ore");
             dustType = ModContent.DustType<Dusts.LuminiteDust>();
-            soundType = 21;
+            soundType = SoundID.Tink;
             AddMapEntry(new Color(0, 90, 60), name);
 			minPick = 225;
         }

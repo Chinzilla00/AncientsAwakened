@@ -60,7 +60,7 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
             {
                 npc.velocity.Y -= npc.ai[1];
                 npc.ai[1]++;
-                if (npc.ai[1] > 40 && Main.netMode != 1)
+                if (npc.ai[1] > 40 && Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     npc.active = false;
                     npc.netUpdate = true;

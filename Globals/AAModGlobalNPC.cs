@@ -182,7 +182,7 @@ namespace AAMod
 
         public override bool PreAI(NPC npc)
         {
-            if(npc.type != 395 && (npc.boss || npc.type == 13 || npc.type == 15))
+            if(npc.type != NPCID.MartianSaucerCore && (npc.boss || npc.type == NPCID.EaterofWorldsHead || npc.type == NPCID.EaterofWorldsTail))
             {
                 Main.player[Main.myPlayer].GetModPlayer<AAPlayer>().bossactive = true;
             }
@@ -543,7 +543,7 @@ namespace AAMod
                 int bunnyKills = NPC.killCount[Item.NPCtoBanner(NPCID.Bunny)];
                 if (bunnyKills % 100 == 0 && bunnyKills < 1000)
                 {
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.RajahGlobalInfo1"), 107, 137, 179);
                     }
@@ -555,7 +555,7 @@ namespace AAMod
 
                 if (bunnyKills % 100 == 0 && bunnyKills >= 1000)
                 {
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.RajahGlobalInfo2") + player.name.ToUpper() + "!", 107, 137, 179);
                     }
@@ -566,7 +566,7 @@ namespace AAMod
 
                 if (bunnyKills % 50 == 0 && bunnyKills % 100 != 0)
                 {
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.RajahGlobalInfo3"), 107, 137, 179);
                     }
@@ -578,7 +578,7 @@ namespace AAMod
                 if (Main.rand.Next(8) == 0) npc.DropLoot(ModContent.ItemType<BloodRune>());
             }
 
-            if ((npc.type >= 212 && npc.type <= 216) || npc.type == NPCID.Parrot || npc.type == NPCID.PirateShip)
+            if ((npc.type >= NPCID.PirateDeckhand && npc.type <= NPCID.PirateCaptain) || npc.type == NPCID.Parrot || npc.type == NPCID.PirateShip)
             {
                 if (Main.rand.Next(8) == 0) npc.DropLoot(ModContent.ItemType<PirateBooty>());
             }
@@ -591,22 +591,22 @@ namespace AAMod
                 if (Main.rand.Next(8) == 0) npc.DropLoot(ModContent.ItemType<MonsterSoul>());
             }
 
-            if ((npc.type >= 212 && npc.type <= 216) || npc.type == NPCID.Parrot || npc.type == NPCID.PirateShip)
+            if ((npc.type >= NPCID.PirateDeckhand && npc.type <= NPCID.PirateCaptain) || npc.type == NPCID.Parrot || npc.type == NPCID.PirateShip)
             {
                 if (Main.rand.Next(8) == 0) npc.DropLoot(ModContent.ItemType<PirateBooty>());
             }
 
-            if ((npc.type >= 305 && npc.type <= 315) || (npc.type >= 325 && npc.type <= 330 && npc.type !=  328))
+            if ((npc.type >= NPCID.Scarecrow1 && npc.type <= NPCID.HeadlessHorseman) || (npc.type >= NPCID.MourningWood && npc.type <= NPCID.Poltergeist && npc.type !=  NPCID.PumpkingBlade))
             {
                 if (Main.rand.Next(8)== 0) npc.DropLoot(ModContent.ItemType<HalloweenTreat>());
             }
 
-            if (npc.type >= 338 && npc.type <= 351)
+            if (npc.type >= NPCID.ZombieElf && npc.type <= NPCID.Krampus)
             {
                 if (Main.rand.Next(8) == 0) npc.DropLoot(ModContent.ItemType<ChristmasCheer>());
             }
 
-            if (npc.type >= 381 && npc.type <= 392 && npc.type != 384)
+            if (npc.type >= NPCID.BrainScrambler && npc.type <= NPCID.MartianSaucer && npc.type != NPCID.ForceBubble)
             {
                 if (Main.rand.Next(8) == 0) npc.DropLoot(ModContent.ItemType<MartianCredit>());
             }
@@ -850,7 +850,7 @@ namespace AAMod
             }
             catch (Exception e)
             {
-                if (Main.netMode != 1)
+                if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     BaseUtility.Chat(e.StackTrace);
                 }
@@ -1238,9 +1238,9 @@ namespace AAMod
                 }
             }
 
-            if (Main.netMode == 2 && npcid < 200)
+            if (Main.netMode == NetmodeID.Server && npcid < 200)
             {
-                NetMessage.SendData(23, -1, -1, null, npcid, 0f, 0f, 0f, 0, 0, 0);
+                NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, npcid, 0f, 0f, 0f, 0, 0, 0);
                 return;
             }
         }
@@ -1348,7 +1348,7 @@ namespace AAMod
                 npcCenter = player.Center;
             }
 
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 if (NPC.AnyNPCs(bossType))
                 {
@@ -1420,7 +1420,7 @@ namespace AAMod
                 RajahType = ModContent.NPCType<SupremeRajah>();
             }
 
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 if (NPC.AnyNPCs(RajahType))
                 {

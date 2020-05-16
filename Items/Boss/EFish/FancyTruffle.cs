@@ -16,7 +16,7 @@ namespace AAMod.Items.Boss.EFish
 			item.width = 32;
 			item.height = 30;
 			item.value = 500000;
-			item.rare = 11;
+			item.rare = ItemRarityID.Purple;
 			item.mountType = mod.MountType("PrinceFishron");
 		}
 

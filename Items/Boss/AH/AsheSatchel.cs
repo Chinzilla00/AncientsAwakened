@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.ID;
 
 namespace AAMod.Items.Boss.AH
 {
@@ -10,7 +11,7 @@ namespace AAMod.Items.Boss.AH
             item.consumable = true;
             item.width = 16;
             item.height = 16;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 12;
         }
 

@@ -22,7 +22,7 @@ namespace AAMod.Items.Vanity.Eliza.Cat
 			item.width = 42;
 			item.height = 42;
 			item.value = 500000;
-			item.rare = 11;
+			item.rare = ItemRarityID.Purple;
 			item.accessory = true;
 		}
 

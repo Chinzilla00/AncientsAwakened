@@ -45,7 +45,7 @@ namespace AAMod.NPCs.Enemies.Sky
             {
                 npc.velocity.Y -= .2f;
                 npc.velocity.X *= .95f;
-                if (npc.position.Y + npc.velocity.Y <= 0f && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate = true; }
+                if (npc.position.Y + npc.velocity.Y <= 0f && Main.netMode != NetmodeID.MultiplayerClient) { BaseAI.KillNPC(npc); npc.netUpdate = true; }
                 return false;
             }
             return true;
@@ -72,7 +72,7 @@ namespace AAMod.NPCs.Enemies.Sky
                 npc.alpha = 0;
             }
 
-            if (npc.ai[3]++ > 30 && Main.netMode != 1)
+            if (npc.ai[3]++ > 30 && Main.netMode != NetmodeID.MultiplayerClient)
             {
                 int projType = ModContent.ProjectileType<SeraphFeather>();
                 float spread = 30f * 0.0174f;

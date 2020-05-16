@@ -20,7 +20,7 @@ Allows to freely move in liquids");
 			item.width = 22;
 			item.height = 24;
 			item.value = Item.sellPrice(0, 0, 5, 0);
-			item.rare = 4;
+			item.rare = ItemRarityID.LightRed;
 			item.defense = 6;
 		}
         

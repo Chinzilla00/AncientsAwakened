@@ -1,4 +1,5 @@
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Blocks
 {
@@ -21,8 +22,8 @@ Combiles all vanilla and Ancients Awakened crafting stations together");
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.rare = 9;
-            item.useStyle = 1;
+            item.rare = ItemRarityID.Cyan;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.consumable = true;
             item.value = 100000;
             item.createTile = mod.TileType("TerraPrism");

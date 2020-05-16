@@ -21,16 +21,16 @@ namespace AAMod.Items.Boss.Serpent
 			item.height = 24;
 			item.useAnimation = 40;
 			item.useTime = 40;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.noMelee = true;
 			item.knockBack = 2;
             item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
 			item.UseSound = SoundID.Item40;
 			item.autoReuse = false;
 			item.shootSpeed = 16f;
 			item.useAmmo = AmmoID.Bullet;
-            item.shoot = 10;
+            item.shoot = ProjectileID.PurificationPowder;
             item.crit = 3;
 		}
 

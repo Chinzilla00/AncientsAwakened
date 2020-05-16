@@ -21,7 +21,7 @@ namespace AAMod.Items.Armor.GlowingMushium
 			item.width = 22;
 			item.height = 16;
 			item.value = 90;
-			item.rare = 1;
+			item.rare = ItemRarityID.Blue;
 			item.defense = 2;
             item.value = Item.sellPrice(0, 0, 25, 0);
         }

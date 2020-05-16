@@ -236,9 +236,9 @@ namespace AAMod
                         if (CreatItem.stack > 0)
                         {
                             int number = Item.NewItem((int)projectile.position.X, (int)projectile.position.Y, projectile.width, projectile.height, item.type, 1, false, 0, true, false);
-                            if (Main.netMode == 1)
+                            if (Main.netMode == NetmodeID.MultiplayerClient)
                             {
-                                NetMessage.SendData(21, -1, -1, null, number, 1f, 0f, 0f, 0, 0, 0);
+                                NetMessage.SendData(MessageID.SyncItem, -1, -1, null, number, 1f, 0f, 0f, 0, 0, 0);
                             }
                         }
                         else
@@ -373,7 +373,7 @@ namespace AAMod
 			num10 = num7 / num10;
 			num8 *= num10;
 			num9 *= num10;
-			int soul = Projectile.NewProjectile(Position.X, Position.Y, num8, num9, 356, num, 0f, projectile.owner, num6, 0f);
+			int soul = Projectile.NewProjectile(Position.X, Position.Y, num8, num9, ProjectileID.SpectreWrath, num, 0f, projectile.owner, num6, 0f);
             Main.projectile[soul].magic = false;
             Main.projectile[soul].minion = true;
 		}

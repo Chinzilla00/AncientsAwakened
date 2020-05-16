@@ -26,10 +26,10 @@ namespace AAMod.Items.Melee
             item.UseSound = SoundID.Item1;
             item.noMelee = true;
             item.noUseGraphic = true;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.value = Item.sellPrice(0, 5, 0, 0);
 			item.autoReuse = true;
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
             item.shootSpeed = 5f;
             item.shoot = mod.ProjectileType("IchorSpear");  //put your Spear projectile name
         }

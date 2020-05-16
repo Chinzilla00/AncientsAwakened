@@ -15,7 +15,7 @@ namespace AAMod.Items.Boss.Djinn
 
         public override void SetDefaults()
         {
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("DustDevil");
             item.damage = 25;
@@ -27,7 +27,7 @@ namespace AAMod.Items.Boss.Djinn
             item.noMelee = true;
             item.value = Item.sellPrice(0, 1, 0, 0);
             item.knockBack = 5f;
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
             item.summon = true;
             item.mana = 5;
         }

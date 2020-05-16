@@ -17,10 +17,10 @@ namespace AAMod.Items.Usable
             item.width = 16;
             item.height = 16;
             item.maxStack = 999;
-            item.rare = 8;
+            item.rare = ItemRarityID.Yellow;
             item.value = BaseUtility.CalcValue(0, 0, 0, 5);
 
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.useAnimation = 15;
             item.useTime = 10;
             item.autoReuse = true;

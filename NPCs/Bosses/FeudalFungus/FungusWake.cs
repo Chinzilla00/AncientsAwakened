@@ -59,7 +59,7 @@ namespace AAMod.NPCs.Bosses.FeudalFungus
 
             npc.frame.Y = 80 * frame;
 
-            if (npc.ai[0] == 160 && Main.netMode != 1)
+            if (npc.ai[0] == 160 && Main.netMode != NetmodeID.MultiplayerClient)
             {
                 NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<FeudalFungus>());
                 npc.active = false;

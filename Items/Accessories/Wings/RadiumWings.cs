@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Accessories.Wings
 {
@@ -17,7 +18,7 @@ namespace AAMod.Items.Accessories.Wings
 			item.width = 28;
 			item.height = 40;
             item.value = Item.sellPrice(0, 8, 0, 0);
-            item.rare = 11;
+            item.rare = ItemRarityID.Purple;
 			item.accessory = true;
 		}
 		

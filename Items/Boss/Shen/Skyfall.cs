@@ -26,7 +26,7 @@ namespace AAMod.Items.Boss.Shen
             item.useTime = 5;
             item.useAnimation = 5;
             item.useAmmo = AmmoID.Arrow;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.noMelee = true;
             item.channel = true;
             item.knockBack = 5f;
@@ -35,7 +35,7 @@ namespace AAMod.Items.Boss.Shen
             item.shoot = mod.ProjectileType("Skyfall");
             item.shootSpeed = 14f;
             item.UseSound = new LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound);
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 14;
         }
 

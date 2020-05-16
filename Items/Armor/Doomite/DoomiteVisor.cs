@@ -18,7 +18,7 @@ namespace AAMod.Items.Armor.Doomite
         {
             item.width = 26;
             item.height = 20;
-            item.rare = 4;
+            item.rare = ItemRarityID.LightRed;
             item.defense = 6;
             item.value = 9000;
         }

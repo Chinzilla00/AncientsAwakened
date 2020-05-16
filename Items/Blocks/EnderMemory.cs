@@ -1,3 +1,5 @@
+using Terraria.ID;
+
 namespace AAMod.Items.Blocks
 {
     public class EnderMemory : BaseAAItem
@@ -18,8 +20,8 @@ A somber engraving is etched into the base.");
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.rare = 9;
-            item.useStyle = 1;
+            item.rare = ItemRarityID.Cyan;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.consumable = true;
             item.value = 0;
             item.createTile = mod.TileType("EnderMemory");

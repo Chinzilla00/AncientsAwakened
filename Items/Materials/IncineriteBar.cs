@@ -22,8 +22,8 @@ namespace AAMod.Items.Materials
             item.useAnimation = 15;
             item.useTime = 10;
             item.value = 16000;
-            item.rare = 2;
-            item.useStyle = 1;
+            item.rare = ItemRarityID.Green;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.consumable = true;
             item.createTile = mod.TileType("IncineriteBar");
         }

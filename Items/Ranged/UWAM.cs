@@ -28,7 +28,7 @@ namespace AAMod.Items.Ranged
 			item.useTime = 3;
 			item.useAnimation = 3;
 			item.value = 1000000;
-			item.rare = 11;
+			item.rare = ItemRarityID.Purple;
 			item.autoReuse = true;
 		}
 		

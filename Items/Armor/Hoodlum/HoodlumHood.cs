@@ -22,7 +22,7 @@ Hopping Mad.");
 			item.width = 20;
 			item.height = 24;
 			item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = 8;
+            item.rare = ItemRarityID.Yellow;
             item.defense = 13;
 		}
 

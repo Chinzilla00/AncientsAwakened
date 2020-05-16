@@ -242,7 +242,7 @@ namespace AAMod.Items.Dev.Minions
                         Vector2 value19 = vector46 - projectile.Center;
                         value19.Normalize();
                         value19 *= scaleFactor3;
-                        int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, value19.X, value19.Y, 449, projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f);
+                        int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, value19.X, value19.Y, ProjectileID.SaucerLaser, projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f);
                         Main.projectile[proj].hostile = false;
                         Main.projectile[proj].friendly = true;
                         Main.projectile[proj].magic = false;

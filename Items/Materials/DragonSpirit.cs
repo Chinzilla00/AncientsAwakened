@@ -27,7 +27,7 @@ namespace AAMod.Items.Materials
             item.height = refItem.height;
             item.maxStack = 999;
             item.value = 1000;
-            item.rare = 7;
+            item.rare = ItemRarityID.Lime;
         }
 
         //>:(

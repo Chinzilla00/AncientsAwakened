@@ -21,7 +21,7 @@ namespace AAMod.Tiles
             TileID.Sets.NeedsGrassFraming[Type] = true;
             TileID.Sets.JungleSpecial[Type] = true;
             dustType = mod.DustType("AbyssiumDust");
-            soundType = 21;
+            soundType = SoundID.Tink;
             minPick = 65;
             AddMapEntry(new Color(0, 50, 140));
             drop = ModContent.ItemType<Items.Blocks.Depthstone>();

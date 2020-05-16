@@ -15,7 +15,7 @@ namespace AAMod.Tiles.Ore
             Main.tileSpelunker[Type] = true;
             Main.tileValue[Type] = 420; 
             TileID.Sets.Ore[Type] = true;
-            soundType = 21;
+            soundType = SoundID.Tink;
             Main.tileLighted[Type] = true;
             drop = mod.ItemType("Prism");   
             dustType = DustID.Stone;

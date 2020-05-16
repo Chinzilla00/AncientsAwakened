@@ -25,15 +25,15 @@ namespace AAMod.Items.Boss.Akuma
             item.height = 24;
             item.useTime = 65;
             item.useAnimation = 65;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.shoot = mod.ProjectileType("Dawnstrike");
             item.channel = true;
             item.knockBack = 12;
             item.value = Item.sellPrice(0, 30, 0, 0);
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             item.shootSpeed = 8f;
             item.crit = 5;
-            item.rare = 9; AARarity = 13;
+            item.rare = ItemRarityID.Cyan; AARarity = 13;
         }
 
         public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)

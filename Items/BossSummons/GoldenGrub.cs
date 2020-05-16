@@ -19,7 +19,7 @@ Can only be used in Greed's Hoard at the Altar of Desire
             item.width = 24;
             item.height = 22;
             item.maxStack = 20;
-            item.rare = 6;
+            item.rare = ItemRarityID.LightPurple;
         }
 
         public override void AddRecipes()

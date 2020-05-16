@@ -30,7 +30,7 @@ namespace AAMod.Items.Currency
             item.height = 16;
             item.maxStack = 999;
             item.value = 1000;
-            item.rare = 7;
+            item.rare = ItemRarityID.Lime;
         }
 
         int counter = 0;

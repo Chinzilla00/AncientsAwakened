@@ -22,14 +22,14 @@ namespace AAMod.Items.Boss.Djinn
 	        item.useTime = 19;
 	        item.reuseDelay = 0;
 	        item.useAnimation = 19;
-	        item.useStyle = 5;
+	        item.useStyle = ItemUseStyleID.HoldingOut;
 	        item.noMelee = true;
 	        item.knockBack = 2.5f;
 	        item.value = 50000;
-	        item.rare = 3;
+	        item.rare = ItemRarityID.Orange;
 	        item.UseSound = SoundID.Item5;
 	        item.autoReuse = true;
-	        item.shoot = 10;
+	        item.shoot = ProjectileID.PurificationPowder;
 	        item.shootSpeed = 8f;
 	        item.useAmmo = 40;
 	    }

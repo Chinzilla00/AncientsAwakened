@@ -2,7 +2,7 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
-
+using Terraria.ID;
 
 namespace AAMod.Items.Armor.Doomsday
 {
@@ -24,7 +24,7 @@ The power to destroy entire planets rests in this armor");
 			item.height = 20;
 			item.value = 3000000;
 			item.defense = 38;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 13;
         }
 

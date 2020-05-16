@@ -15,10 +15,10 @@ namespace AAMod.Items.Tools
             item.useAnimation = 25;
             item.useTime = 10;
             item.pick = 110;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.knockBack = 1;
             item.value = Terraria.Item.sellPrice(0, 1, 8, 0);
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.useTurn = true;

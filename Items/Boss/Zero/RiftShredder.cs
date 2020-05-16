@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Boss.Zero
 {
@@ -26,12 +27,12 @@ namespace AAMod.Items.Boss.Zero
             item.shoot = mod.ProjectileType("Rift");
             item.shootSpeed = 10f;
             item.useAnimation = 22;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 3;
 			item.value = Item.sellPrice(0, 30, 0, 0);
             item.UseSound = new LegacySoundStyle(2, 15, Terraria.Audio.SoundType.Sound);
 			item.autoReuse = true;
-            item.rare = 9; AARarity = 13;
+            item.rare = ItemRarityID.Cyan; AARarity = 13;
         }
 
         public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)

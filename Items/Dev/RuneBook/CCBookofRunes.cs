@@ -34,7 +34,7 @@ When player has 3 minion slots it summons terra, chaos and void rune.");
             item.width = 32;
             item.height = 32;
             item.value = 100000;
-            item.rare = 11;
+            item.rare = ItemRarityID.Purple;
             item.accessory = true;
         }
 

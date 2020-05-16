@@ -1,3 +1,4 @@
+using Terraria.ID;
 
 namespace AAMod.Items.Banners
 {
@@ -12,9 +13,9 @@ namespace AAMod.Items.Banners
 			item.autoReuse = true;
 			item.useAnimation = 15;
 			item.useTime = 10;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.consumable = true;
-			item.rare = 1;
+			item.rare = ItemRarityID.Blue;
 			item.value = 1000;
 			item.createTile = mod.TileType("Banners");
 			item.placeStyle = 70;        //Place style means which frame(Horizontally, starting from 0) of the tile should be placed

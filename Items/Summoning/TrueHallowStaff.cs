@@ -24,10 +24,10 @@ namespace AAMod.Items.Summoning
             item.useTime = 36;
             item.useAnimation = 36;
             item.value = Item.sellPrice(0, 10, 0, 0);
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.noMelee = true;
             item.knockBack = 3;
-            item.rare = 7;
+            item.rare = ItemRarityID.Lime;
             item.UseSound = SoundID.Item44;
             item.shoot = mod.ProjectileType("TrueHallowedPrism");
             item.shootSpeed = 10f;

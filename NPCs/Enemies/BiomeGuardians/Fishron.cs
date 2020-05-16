@@ -36,10 +36,10 @@ namespace AAMod.NPCs.Enemies.BiomeGuardians
         {
             if (Main.rand.Next(1000) == 0)
             {
-                Main.PlaySound(29, (int)npc.position.X, (int)npc.position.Y, 9, 1f, 0f);
+                Main.PlaySound(SoundID.Zombie, (int)npc.position.X, (int)npc.position.Y, 9, 1f, 0f);
             }
             npc.noGravity = true;
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 npc.ai[3]++;
                 if (npc.ai[3] > 400)
@@ -189,7 +189,7 @@ namespace AAMod.NPCs.Enemies.BiomeGuardians
                 }
                 MeleeMovement(MovePoint);
                 npc.netUpdate = true;
-                if (Vector2.Distance(MovePoint, npc.Center) < 20 && Main.netMode != 1)
+                if (Vector2.Distance(MovePoint, npc.Center) < 20 && Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     npc.ai[2] = 0;
                     npc.ai[3] = 0;

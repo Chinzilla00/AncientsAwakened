@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Boss.Shen
 {
@@ -29,7 +30,7 @@ Grants a strong dash that shreds through enemies in a fiery blaze of glory");
             item.width = 32;
             item.height = 34;
             item.value = Item.sellPrice(5, 0, 0, 0);
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             item.expert = true; item.expertOnly = true;
             item.accessory = true;
             item.defense = 8;

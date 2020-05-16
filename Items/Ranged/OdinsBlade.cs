@@ -17,7 +17,7 @@ namespace AAMod.Items.Ranged
             item.damage = 70;
             item.knockBack = 5f;
             item.ranged = true;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.UseSound = SoundID.Item1;
             item.useAnimation = 30;
             item.useTime = 30;
@@ -28,7 +28,7 @@ namespace AAMod.Items.Ranged
             item.noMelee = true;
             item.autoReuse = true;
             item.value = 100000;
-            item.rare = 7;
+            item.rare = ItemRarityID.Lime;
         }
     }
 }

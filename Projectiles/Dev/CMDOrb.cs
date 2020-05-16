@@ -38,7 +38,7 @@ namespace AAMod.Projectiles.Dev
 
         public override bool OnPickup(Player player)
         {
-            Main.PlaySound(7, (int)player.position.X, (int)player.position.Y, 1, 1f, 0f);
+            Main.PlaySound(SoundID.Grab, (int)player.position.X, (int)player.position.Y, 1, 1f, 0f);
 
             player.statLife += player.statLifeMax2 / 12;
 

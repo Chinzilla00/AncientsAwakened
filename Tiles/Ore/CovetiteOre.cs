@@ -22,7 +22,7 @@ namespace AAMod.Tiles.Ore
             dustType = DustID.Gold;
             AddMapEntry(new Color(150, 130, 50), name);
 			minPick = 180;
-            soundType = 21;
+            soundType = SoundID.Tink;
         }
 
         public override bool CanExplode(int i, int j)

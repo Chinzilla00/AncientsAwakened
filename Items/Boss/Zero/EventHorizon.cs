@@ -26,13 +26,13 @@ namespace AAMod.Items.Boss.Zero
             item.melee = true;
             item.useAnimation = 10;
             item.useTime = 10;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.knockBack = 2f;
             item.UseSound = SoundID.Item116;
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.shoot = mod.ProjectileType("EventHorizon");
             item.shootSpeed = 22f;
-            item.rare = 9; AARarity = 13;
+            item.rare = ItemRarityID.Cyan; AARarity = 13;
         }
 
 

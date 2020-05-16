@@ -173,7 +173,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
                     npc.velocity.Y = -5f;
                     npc.ai[2] = 1f;
                 }
-                if (Main.netMode != 1)
+                if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     npc.localAI[2] += 1f;
                     if (npc.localAI[2] >= 360 + Main.rand.Next(360) && npc.Distance(Main.player[npc.target].Center) < 400f && Math.Abs(npc.DirectionTo(Main.player[npc.target].Center).Y) < 0.5f && Collision.CanHitLine(npc.Center, 0, 0, Main.player[npc.target].Center, 0, 0))
@@ -189,7 +189,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
                         for (int num86 = 0; num86 < 4; num86++)
                         {
                             Vector2 vector15 = vector14 + Utils.RandomVector2(Main.rand, -0.8f, 0.8f);
-                            Projectile.NewProjectile(vector13.X, vector13.Y, vector15.X, vector15.Y, 577, num85, 1f, Main.myPlayer, 0f, 0f);
+                            Projectile.NewProjectile(vector13.X, vector13.Y, vector15.X, vector15.Y, ProjectileID.VortexLaser, num85, 1f, Main.myPlayer, 0f, 0f);
                         }
                     }
                 }

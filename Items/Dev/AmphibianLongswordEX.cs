@@ -19,10 +19,10 @@ namespace AAMod.Items.Dev
 			item.height = 64;
             item.useTime = 30;
 			item.useAnimation = 30;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 7;
             item.value = Item.sellPrice(0, 30, 0, 0);
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("AmphibiousProjectileEX");

@@ -2,6 +2,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.NPCs.Bosses.Zero.Protocol
 {
@@ -29,7 +30,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
         public override void PostAI()
         {
-            if (Main.netMode != 1) a++;
+            if (Main.netMode != NetmodeID.MultiplayerClient) a++;
             if (a == 40)
             {
                 projectile.tileCollide = true;

@@ -1,5 +1,6 @@
 using Terraria.ModLoader;
 using Terraria;
+using Terraria.ID;
 
 namespace AAMod.Items.Dev.DevTile
 {
@@ -18,7 +19,7 @@ namespace AAMod.Items.Dev.DevTile
                         {
                             WorldGen.PlaceTile(i, j - 1, mod.TileType("CCMireBox"), true, false);
                             DevWorld.CCBoxSetOK = false;
-                            if (Main.netMode == 2 && Main.tile[i, j].active())
+                            if (Main.netMode == NetmodeID.Server && Main.tile[i, j].active())
                             {
                                 NetMessage.SendTileSquare(-1, i, j, 1, 0);
                             }
@@ -34,7 +35,7 @@ namespace AAMod.Items.Dev.DevTile
                         {
                             WorldGen.PlaceTile(i, j - 1, mod.TileType("InvokerBookTile"), true, false);
                             DevWorld.InvokerBookSetOK = false;
-                            if (Main.netMode == 2 && Main.tile[i, j].active())
+                            if (Main.netMode == NetmodeID.Server && Main.tile[i, j].active())
                             {
                                 NetMessage.SendTileSquare(-1, i, j, 1, 0);
                             }

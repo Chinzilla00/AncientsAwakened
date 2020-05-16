@@ -1,3 +1,5 @@
+using Terraria.ID;
+
 namespace AAMod.Items.Usable
 {
     public class GreedKey : BaseAAItem
@@ -11,7 +13,7 @@ namespace AAMod.Items.Usable
         public override void SetDefaults()
         {
             item.width = item.height = 16;
-            item.rare = 6;
+            item.rare = ItemRarityID.LightPurple;
             item.maxStack = 99;
 			item.value = 800000;
             item.noMelee = true;

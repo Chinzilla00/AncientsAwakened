@@ -8,7 +8,7 @@ namespace AAMod.Items.Usable
         public override void SetDefaults()
         {
             item.shoot = mod.ProjectileType("Sunpowder");
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.shootSpeed = 4f;
             item.width = 16;
             item.height = 24;

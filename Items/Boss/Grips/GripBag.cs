@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.ID;
 
 namespace AAMod.Items.Boss.Grips
 {
@@ -16,7 +17,7 @@ namespace AAMod.Items.Boss.Grips
 			item.consumable = true;
 			item.width = 36;
 			item.height = 32;
-			item.rare = 9;
+			item.rare = ItemRarityID.Cyan;
 			item.expert = true; item.expertOnly = true;
         }
         public override int BossBagNPC => mod.NPCType("GripOfChaosBlue");

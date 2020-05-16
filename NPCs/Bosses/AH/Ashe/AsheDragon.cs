@@ -86,7 +86,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 }
             }
 
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 if (npc.ai[0] == 0f)
                 {
@@ -114,10 +114,10 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                             type = ModContent.NPCType<AsheDragonTail>();
                         }
 
-                        if(Main.netMode != 1)
+                        if(Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             int newNPC = NPC.NewNPC((int)npc.Center.X, (int)(npc.position.Y + npc.height), type, npc.whoAmI, 0f, 0f, 0f, 0f, 255);
-                            if (Main.netMode == 2 && newNPC < 200) NetMessage.SendData(23, -1, -1, null, newNPC);
+                            if (Main.netMode == NetmodeID.Server && newNPC < 200) NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, newNPC);
                             Main.npc[newNPC].ai[3] = npc.whoAmI;
                             Main.npc[newNPC].realLife = npc.whoAmI;
                             Main.npc[newNPC].ai[1] = npcWhoAmI;
@@ -434,7 +434,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
             npc.direction = npc.velocity.X < 0f ? -1 : 1;
 
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 if (!Main.npc[(int)npc.ai[1]].active)
                 {
@@ -579,7 +579,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 npc.timeLeft = 300;
             }
 
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 if (!Main.npc[(int)npc.ai[1]].active)
                 {
@@ -720,7 +720,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 npc.timeLeft = 300;
             }
 
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 if (!Main.npc[(int)npc.ai[1]].active)
                 {
@@ -860,7 +860,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 npc.timeLeft = 300;
             }
 
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 if (!Main.npc[(int)npc.ai[1]].active)
                 {
@@ -1000,7 +1000,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 npc.timeLeft = 300;
             }
 
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 if (!Main.npc[(int)npc.ai[1]].active)
                 {

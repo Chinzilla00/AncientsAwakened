@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Boss.Zero
 {
@@ -18,7 +19,7 @@ namespace AAMod.Items.Boss.Zero
         {
             item.ranged = true;
             item.useTime = 4;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.noMelee = true;
             item.knockBack = 2.5f;
             item.autoReuse = true;
@@ -31,7 +32,7 @@ namespace AAMod.Items.Boss.Zero
             item.UseSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Glitch");
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.shoot = mod.ProjectileType("Teslashock");
-            item.rare = 9; AARarity = 13;
+            item.rare = ItemRarityID.Cyan; AARarity = 13;
         }
 
         public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)

@@ -24,10 +24,10 @@ Grants 1 soul essence on direct hit");
             item.width = 40;
             item.height = 40;
             item.maxStack = 1;
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
             item.value = BaseUtility.CalcValue(0, 5, 50, 50);
 
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.useAnimation = 27;
             item.useTime = 27;
             item.UseSound = SoundID.Item1;

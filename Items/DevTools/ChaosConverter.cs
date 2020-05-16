@@ -1,6 +1,7 @@
 
 using Terraria;
 using AAMod.Worldgen;
+using Terraria.ID;
 
 namespace AAMod.Items.DevTools
 {
@@ -17,9 +18,9 @@ namespace AAMod.Items.DevTools
             item.width = 20;
             item.height = 20;
             item.maxStack = 1;
-            item.rare = 10;
+            item.rare = ItemRarityID.Red;
             item.value = 0;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
             item.useAnimation = 45;
             item.useTime = 45;		
         }

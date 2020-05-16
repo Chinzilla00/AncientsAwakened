@@ -1,3 +1,5 @@
+using Terraria.ID;
+
 namespace AAMod.Items.Blocks
 {
     public class Depthsandstone : BaseAAItem
@@ -12,9 +14,9 @@ namespace AAMod.Items.Blocks
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.consumable = true;
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
             item.createTile = mod.TileType("Depthsandstone"); //put your CustomBlock Tile name
         }
 

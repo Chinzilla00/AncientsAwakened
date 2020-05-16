@@ -24,7 +24,7 @@ Shines with the light of a starry night sky");
             item.height = 14;
             item.value = 300000;
             item.defense = 22;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 12;
         }
 

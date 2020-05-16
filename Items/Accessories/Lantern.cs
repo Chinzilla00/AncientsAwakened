@@ -14,7 +14,7 @@ namespace AAMod.Items.Accessories
             item.width = 24;
             item.height = 32;
             item.value = Item.sellPrice(0, 8, 0, 0);
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
             item.accessory = true;
         }
 

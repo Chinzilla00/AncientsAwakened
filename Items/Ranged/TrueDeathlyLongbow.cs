@@ -23,14 +23,14 @@ Fires an explosive ghast skull every other shot");
 			item.height = 86;
 			item.useTime = 30;
 			item.useAnimation = 30;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 0;
             item.value = Item.sellPrice(0, 7, 0, 0);
-            item.rare = 8;
+            item.rare = ItemRarityID.Yellow;
 			item.UseSound = SoundID.Item5;
 			item.autoReuse = true;
-			item.shoot = 10; //idk why but all the guns in the vanilla source have this
+			item.shoot = ProjectileID.PurificationPowder; //idk why but all the guns in the vanilla source have this
 			item.shootSpeed = 10f;
 			item.useAmmo = AmmoID.Arrow;
         }

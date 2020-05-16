@@ -23,14 +23,14 @@ namespace AAMod.Items.Boss.Akuma
 			item.height = 100;
 			item.useTime = 7;
 			item.useAnimation = 7;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.noMelee = true; 
 			item.knockBack = 0;
             item.value = Item.sellPrice(0, 7, 0, 0);
-            item.rare = 8;
+            item.rare = ItemRarityID.Yellow;
 			item.UseSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Dayshot");
 			item.autoReuse = true;
-			item.shoot = 10;
+			item.shoot = ProjectileID.PurificationPowder;
 			item.shootSpeed = 30;
         }
 

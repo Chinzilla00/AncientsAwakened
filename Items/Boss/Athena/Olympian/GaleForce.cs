@@ -11,7 +11,7 @@ namespace AAMod.Items.Boss.Athena.Olympian
             item.magic = true;                     
             item.width = 24;
             item.height = 28;
-            item.useStyle = 5;        
+            item.useStyle = ItemUseStyleID.HoldingOut;        
             item.noMelee = true;
             item.knockBack = 6;
             item.mana = 8;             
@@ -21,7 +21,7 @@ namespace AAMod.Items.Boss.Athena.Olympian
             item.useAnimation = 28;
             item.shoot = mod.ProjectileType("HurricaneSpawn");
             item.shootSpeed = 9f;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 12;
         }
 

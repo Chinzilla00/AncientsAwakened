@@ -23,11 +23,11 @@ namespace AAMod.Items.BossSummons
 			item.width = 32;
 			item.height = 24;
 			item.maxStack = 20;
-			item.rare = 2;
+			item.rare = ItemRarityID.Green;
             item.value = Item.sellPrice(0, 0, 0, 0);
             item.useAnimation = 45;
 			item.useTime = 45;
-			item.useStyle = 4;
+			item.useStyle = ItemUseStyleID.HoldingUp;
 			item.UseSound = SoundID.Item44;
 			item.consumable = true;
 		}
@@ -35,7 +35,7 @@ namespace AAMod.Items.BossSummons
         public override bool UseItem(Player player)
         {
             SpawnBoss(player, "SerpentHead", Language.GetTextValue("Mods.AAMod.Common.SubzeroSerpent"));
-            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
+            Main.PlaySound(SoundID.Roar, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }
 
@@ -43,12 +43,12 @@ namespace AAMod.Items.BossSummons
         {
             if (!player.ZoneSnow)
             {
-                if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.SubzeroCrystalSnowZoneFalse"), Color.Cyan.R, Color.Cyan.G, Color.Cyan.B, false);
+                if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.SubzeroCrystalSnowZoneFalse"), Color.Cyan.R, Color.Cyan.G, Color.Cyan.B, false);
                 return false;
             }
             if (NPC.AnyNPCs(mod.NPCType("SerpentHead")))
             {
-                if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.SubzeroCrystalFalse"), Color.Cyan.R, Color.Cyan.G, Color.Cyan.B, false);
+                if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.SubzeroCrystalFalse"), Color.Cyan.R, Color.Cyan.G, Color.Cyan.B, false);
                 return false;
             }
             return true;
@@ -56,7 +56,7 @@ namespace AAMod.Items.BossSummons
 
         public void SpawnBoss(Player player, string name, string displayName)
         {
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 int bossType = mod.NPCType(name);
                 if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
@@ -88,7 +88,7 @@ namespace AAMod.Items.BossSummons
                 Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-2000, 2000, (float)Main.rand.NextDouble()), -1000);
                 Main.npc[npcID].netUpdate2 = true;
                 string npcName = !string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : displayName;
-                if (Main.netMode == NetmodeID.SinglePlayer) { if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
+                if (Main.netMode == NetmodeID.SinglePlayer) { if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
                 else
                 if (Main.netMode == NetmodeID.Server)
                 {

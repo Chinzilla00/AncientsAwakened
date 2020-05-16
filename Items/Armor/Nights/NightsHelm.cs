@@ -20,7 +20,7 @@ namespace AAMod.Items.Armor.Nights
 			item.width = 26;
 			item.height = 28;
 			item.value = 90000;
-			item.rare = 4;
+			item.rare = ItemRarityID.LightRed;
 			item.defense = 6;
 		}
 		

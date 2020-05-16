@@ -20,7 +20,7 @@ Forged in the flames of the blazing sun");
 		{
 			item.width = 22;
 			item.height = 18;
-			item.rare = 4;
+			item.rare = ItemRarityID.LightRed;
 			item.defense = 8;
 		}
 		

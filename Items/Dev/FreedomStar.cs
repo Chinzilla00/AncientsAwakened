@@ -1,5 +1,6 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Dev
 {
@@ -24,11 +25,11 @@ Mobian Buster EX");
             item.shoot = mod.ProjectileType("FreedomStar");
             item.useTime = 10;
             item.useAnimation = 10;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.channel = true;
             Item.sellPrice(3, 0, 0, 0);
             item.noMelee = true;
-			item.rare = 11;
+			item.rare = ItemRarityID.Purple;
 			item.shootSpeed = 12f;
 			item.noUseGraphic = true;
         }

@@ -17,7 +17,7 @@ namespace AAMod.Items.Boss.Zero
 
         public override void SetDefaults()
         {
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.mana = 10;
             item.shootSpeed = 16f;
             item.knockBack = 0f;
@@ -26,7 +26,7 @@ namespace AAMod.Items.Boss.Zero
             item.height = 32;
             item.damage = 483;
             item.channel = true;
-            item.rare = 5;
+            item.rare = ItemRarityID.Pink;
             item.useTime = 20;
             item.UseSound = SoundID.Item13;
             item.useAnimation = 20;
@@ -35,7 +35,7 @@ namespace AAMod.Items.Boss.Zero
             item.noMelee = true;
             item.magic = true;
             item.autoReuse = true;
-            item.rare = 9; AARarity = 13;
+            item.rare = ItemRarityID.Cyan; AARarity = 13;
         }
 
         public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)

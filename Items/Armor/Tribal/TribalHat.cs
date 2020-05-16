@@ -21,7 +21,7 @@ Increases maximum mana by 20");
             item.width = 28;
             item.height = 24;
             item.value = 90000;
-            item.rare = 4;
+            item.rare = ItemRarityID.LightRed;
             item.defense = 7;
         }
 

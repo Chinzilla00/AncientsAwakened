@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Boss.Yamata
 {
@@ -21,7 +22,7 @@ namespace AAMod.Items.Boss.Yamata
             item.height = 34;
             item.maxStack = 999;
             item.value = Item.sellPrice(0, 1, 0, 0);
-            item.rare = 9; AARarity = 13;
+            item.rare = ItemRarityID.Cyan; AARarity = 13;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

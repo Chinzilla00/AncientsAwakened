@@ -22,7 +22,7 @@ Weightless as shadow itself");
             item.width = 20;
             item.height = 20;
             item.value = 7500;
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
             item.defense = 5;
         }
 

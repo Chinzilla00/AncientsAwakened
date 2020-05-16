@@ -24,10 +24,10 @@ Grants 1 soul essence on direct hit");
             item.width = 40;
             item.height = 40;
             item.maxStack = 1;
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
             item.value = BaseUtility.CalcValue(0, 5, 50, 50);
 
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.useAnimation = 25;
             item.useTime = 25;
             item.UseSound = SoundID.Item1;
@@ -95,13 +95,13 @@ Grants 1 soul essence on direct hit");
         {
             if (ModSupport.GetMod("ThoriumMod") == null) return;
             ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(1306);
+			recipe.AddIngredient(ItemID.IceSickle);
             recipe.AddIngredient(ItemID.AdamantiteBar, 8);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
 			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(1306);
+			recipe.AddIngredient(ItemID.IceSickle);
             recipe.AddIngredient(ItemID.TitaniumBar, 8);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);

@@ -1,3 +1,5 @@
+using Terraria.ID;
+
 namespace AAMod.Items.Blocks
 {
     public class Torchsand : BaseAAItem
@@ -12,8 +14,8 @@ namespace AAMod.Items.Blocks
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.useStyle = 1;
-            item.rare = 2;
+            item.useStyle = ItemUseStyleID.SwingThrow;
+            item.rare = ItemRarityID.Green;
             item.consumable = true;
             item.createTile = mod.TileType("Torchsand"); //put your CustomBlock Tile name
         }

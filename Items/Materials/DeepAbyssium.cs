@@ -14,9 +14,9 @@ namespace AAMod.Items.Materials
 			item.useTurn = true;
             item.autoReuse = true;
             item.useAnimation = 15;
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
             item.useTime = 10;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.consumable = true;
             item.createTile = mod.TileType("DeepAbyssium");
             item.value = Terraria.Item.sellPrice(0, 1, 0, 0);

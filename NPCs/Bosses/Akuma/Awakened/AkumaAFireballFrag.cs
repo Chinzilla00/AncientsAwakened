@@ -2,6 +2,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.NPCs.Bosses.Akuma.Awakened
 {
@@ -46,7 +47,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
         public override void Kill(int timeLeft)
         {
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 Vector2 vel = Vector2.Normalize(projectile.velocity) * 5;
                 for (int i = 0; i < 6; ++i)

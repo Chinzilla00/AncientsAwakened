@@ -1,5 +1,6 @@
 ﻿using Terraria;
 using Terraria.DataStructures;
+using Terraria.ID;
 
 namespace AAMod.Items.Boss.Greed.WKG
 {
@@ -18,7 +19,7 @@ namespace AAMod.Items.Boss.Greed.WKG
             item.height = 10;
             item.maxStack = 999;
             item.value = 10000;
-            item.rare = 11;
+            item.rare = ItemRarityID.Purple;
         }
     }
 }

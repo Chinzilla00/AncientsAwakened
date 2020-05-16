@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Tiles
 {
@@ -16,7 +17,7 @@ namespace AAMod.Tiles
             Main.tileSolid[Type] = false;
             Main.tileMerge[Type][mod.TileType("TerraLeaves")] = true;
             Main.tileMerge[Type][mod.TileType("TerraCrystal")] = true;
-            soundType = 21;
+            soundType = SoundID.Tink;
             Main.tileLighted[Type] = true;
             dustType = 107;
             AddMapEntry(new Color(52, 200, 0));

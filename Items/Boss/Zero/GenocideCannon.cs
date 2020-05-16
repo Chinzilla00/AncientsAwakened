@@ -23,7 +23,7 @@ namespace AAMod.Items.Boss.Zero
             item.height = 28;
             item.useTime = 30;
             item.useAnimation = 30;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.noMelee = true; //so the item's animation doesn't do damage
             item.knockBack = 10f;
             item.value = Item.sellPrice(0, 10, 0, 0);
@@ -32,7 +32,7 @@ namespace AAMod.Items.Boss.Zero
             item.shootSpeed = 24f;
             item.shoot = mod.ProjectileType("GRocket");
             item.useAmmo = AmmoID.Rocket;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 13;
         }
 

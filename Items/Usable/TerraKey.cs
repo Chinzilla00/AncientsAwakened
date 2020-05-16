@@ -1,3 +1,5 @@
+using Terraria.ID;
+
 namespace AAMod.Items.Usable
 {
     public class TerraKey : BaseAAItem
@@ -11,7 +13,7 @@ namespace AAMod.Items.Usable
         public override void SetDefaults()
         {
             item.width = item.height = 16;
-            item.rare = 7;
+            item.rare = ItemRarityID.Lime;
             item.maxStack = 99;
 			item.value = 0;
             item.noMelee = true;

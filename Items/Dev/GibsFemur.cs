@@ -21,9 +21,9 @@ namespace AAMod.Items.Dev
             item.ranged = true;
             item.damage = 120;                            
             item.value = 600000;
-            item.rare = 11;
+            item.rare = ItemRarityID.Purple;
             item.knockBack = 5;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.useAnimation = 24;
             item.useTime = 24;
             item.shoot = mod.ProjectileType("GibsFemur");

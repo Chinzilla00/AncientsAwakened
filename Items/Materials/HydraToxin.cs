@@ -1,3 +1,5 @@
+using Terraria.ID;
+
 namespace AAMod.Items.Materials
 {
     public class HydraToxin : BaseAAItem
@@ -12,7 +14,7 @@ namespace AAMod.Items.Materials
             item.width = 16;
             item.height = 22;
             item.maxStack = 99;
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
             item.value = 900;
         }
     }

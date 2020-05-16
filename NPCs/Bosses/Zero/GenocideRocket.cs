@@ -3,6 +3,7 @@ using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
@@ -101,7 +102,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void PostAI()
         {
-            if (Main.netMode != 1) a++;
+            if (Main.netMode != NetmodeID.MultiplayerClient) a++;
             if (a == 40)
             {
                 projectile.tileCollide = true;
@@ -139,7 +140,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void Kill(int timeLeft)
         {
-            if (Main.netMode != 2)
+            if (Main.netMode != NetmodeID.Server)
             {
                 for (int m = 0; m < 6; m++)
                 {

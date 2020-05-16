@@ -15,8 +15,8 @@ namespace AAMod.Items.Boss.Greed
         {
             item.width = 44;
             item.height = 30;
-            item.rare = 8;
-            item.useStyle = 5;
+            item.rare = ItemRarityID.Yellow;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.useAnimation = 28;
             item.useTime = 28;
             item.UseSound = SoundID.Item41;
@@ -25,7 +25,7 @@ namespace AAMod.Items.Boss.Greed
             item.ranged = true;
             item.autoReuse = false;
             item.noMelee = true;
-            item.shoot = 158;
+            item.shoot = ProjectileID.CopperCoin;
             item.shootSpeed = 12;
             item.useAmmo = AmmoID.Coin;
         }

@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria.Audio;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Dev
 {
@@ -25,11 +26,11 @@ namespace AAMod.Items.Dev
 			item.height = 36;
 			item.useTime = 20;
 			item.useAnimation = 20;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 4;
 			item.value = 1000000;
-			item.rare = 2;
+			item.rare = ItemRarityID.Green;
             item.expert = true; item.expertOnly = true;
 			item.UseSound = new LegacySoundStyle(29, 10, Terraria.Audio.SoundType.Sound);
             item.autoReuse = true;

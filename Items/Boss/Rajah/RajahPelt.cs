@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.ID;
 
 namespace AAMod.Items.Boss.Rajah
 {
@@ -16,7 +17,7 @@ namespace AAMod.Items.Boss.Rajah
 			item.height = 20;
 			item.maxStack = 999;
 			item.value = Item.sellPrice(0, 1, 0, 0);
-			item.rare = 8;
+			item.rare = ItemRarityID.Yellow;
 		}
 	}
 }

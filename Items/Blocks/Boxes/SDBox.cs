@@ -15,7 +15,7 @@ namespace AAMod.Items.Blocks.Boxes
 
 		public override void SetDefaults()
 		{
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.useTurn = true;
 			item.useAnimation = 15;
 			item.useTime = 10;
@@ -24,11 +24,11 @@ namespace AAMod.Items.Blocks.Boxes
 			item.createTile = mod.TileType("SDBox");
             item.width = 72;
 			item.height = 36;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 14;
             item.value = 10000;
 			item.accessory = true;
-            item.rare = 11;
+            item.rare = ItemRarityID.Purple;
         }
 
         public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)

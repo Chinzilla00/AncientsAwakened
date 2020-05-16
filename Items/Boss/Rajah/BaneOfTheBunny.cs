@@ -23,13 +23,13 @@ Throwing Javelins right after a spear thrust throws javelins faster for a moment
             item.noUseGraphic = true;
             item.channel = true;
             item.useAnimation = 20;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.useTime = 20;
             item.knockBack = 4f;
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.shoot = mod.ProjectileType("BaneS");
             item.shootSpeed = 4f;
-            item.rare = 8;
+            item.rare = ItemRarityID.Yellow;
         }
 
         public override bool AltFunctionUse(Player player)
@@ -44,7 +44,7 @@ Throwing Javelins right after a spear thrust throws javelins faster for a moment
                 item.useTime = 15;
                 item.useAnimation = 15;
                 item.UseSound = SoundID.Item1;
-                item.useStyle = 5;
+                item.useStyle = ItemUseStyleID.HoldingOut;
                 item.shoot = mod.ProjectileType("BaneS");  
                 item.shootSpeed = 10f;
                 item.autoReuse = true;
@@ -54,7 +54,7 @@ Throwing Javelins right after a spear thrust throws javelins faster for a moment
                 item.useAnimation = 13;
                 item.useTime = 13;
                 item.UseSound = SoundID.Item1;
-                item.useStyle = 1;
+                item.useStyle = ItemUseStyleID.SwingThrow;
                 item.shoot = mod.ProjectileType("BaneT");
                 item.shootSpeed = 10f;
                 item.autoReuse = true;

@@ -34,7 +34,7 @@ Cat's Eye Rifle EX");
             item.height = 22; 
             item.useTime = 30; 
             item.useAnimation = 30;  
-            item.useStyle = 5; 
+            item.useStyle = ItemUseStyleID.HoldingOut; 
             item.shoot = mod.ProjectileType("CatsEye");
             item.knockBack = 12; 
             item.value = Item.sellPrice(3, 0, 0, 0);
@@ -42,7 +42,7 @@ Cat's Eye Rifle EX");
             item.shootSpeed = 25f; 
             item.crit = 5;
             item.expert = true; item.expertOnly = true;
-            item.rare = 10;
+            item.rare = ItemRarityID.Red;
 
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.
             glowmaskDrawType = GLOWMASKTYPE_GUN; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	

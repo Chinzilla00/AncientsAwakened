@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.NPCs.Bosses.Serpent
 {
@@ -26,7 +27,7 @@ namespace AAMod.NPCs.Bosses.Serpent
 
         public override void AI()
         {
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 npc.ai[2]++;
             }
@@ -49,7 +50,7 @@ namespace AAMod.NPCs.Bosses.Serpent
 
         public override void NPCLoot()
         {
-            Main.PlaySound(2, npc.position, 50);
+            Main.PlaySound(SoundID.Item, npc.position, 50);
             int pieCut = 20;
             for (int m = 0; m < pieCut; m++)
             {

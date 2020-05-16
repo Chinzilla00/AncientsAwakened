@@ -22,7 +22,7 @@ namespace AAMod.Items.Ranged.Ammo
 			item.ammo = AmmoID.Bullet;
 			item.knockBack = 2f;
 			item.value = 15;
-            item.rare = 4;
+            item.rare = ItemRarityID.LightRed;
             item.ranged = true;
 		}
 

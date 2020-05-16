@@ -16,7 +16,7 @@ namespace AAMod.Items.Summoning
 
         public override void SetDefaults()
         {
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("CrimeraMinion");
             item.damage = 20;
@@ -28,7 +28,7 @@ namespace AAMod.Items.Summoning
             item.noMelee = true;
             item.value = Item.sellPrice(0, 1, 0, 0);
             item.knockBack = 5f;
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.summon = true;
             item.mana = 5;
         }

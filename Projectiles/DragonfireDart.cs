@@ -31,7 +31,7 @@ namespace AAMod.Projectiles
 
 		public override void Kill(int timeLeft)
 		{
-			Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 7);
+			Main.PlaySound(SoundID.NPCHit, (int)projectile.position.X, (int)projectile.position.Y, 7);
 			for (int h = 0; h < 5; h++)
 			{
 				Vector2 vel = new Vector2(0, -1);

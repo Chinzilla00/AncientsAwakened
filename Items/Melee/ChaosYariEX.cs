@@ -26,9 +26,9 @@ namespace AAMod.Items.Melee
             item.noMelee = true;
             item.noUseGraphic = true;
             item.autoReuse = true;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.value = Item.sellPrice(5, 0, 0, 0);
-            item.rare = 11;
+            item.rare = ItemRarityID.Purple;
             item.expert = true; item.expertOnly = true;
             item.shootSpeed = 12f;
             item.shoot = mod.ProjectileType("ChaosYariEX");

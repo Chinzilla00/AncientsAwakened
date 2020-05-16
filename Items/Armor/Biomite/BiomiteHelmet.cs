@@ -18,7 +18,7 @@ namespace AAMod.Items.Armor.Biomite
 			item.width = 24;
 			item.height = 20;
 			item.value = 7500;
-			item.rare = 2;
+			item.rare = ItemRarityID.Green;
 			item.defense = 5;
 		}
 

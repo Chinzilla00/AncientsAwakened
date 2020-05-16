@@ -57,12 +57,12 @@ namespace AAMod.Items.Dev.Invoker
 			item.scale = 0.65f;
 			item.width = 41;
 			item.height = 41;
-			item.rare = 11;
+			item.rare = ItemRarityID.Purple;
 			item.damage = 200;
 			item.noMelee = true;
 			item.autoReuse = true;
 			item.reuseDelay = 20;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.useTime = 16;
 			item.useAnimation = 16;
 			item.shoot = mod.ProjectileType("InvokerStaffproj"); 
@@ -75,7 +75,7 @@ namespace AAMod.Items.Dev.Invoker
 			{
 				item.noMelee = false;
 				Item.staff[item.type] = false;
-				item.useStyle = 1;
+				item.useStyle = ItemUseStyleID.SwingThrow;
 				item.damage = (int)(200 * player.minionDamage);
 				item.summon = true;
 				return true;
@@ -84,7 +84,7 @@ namespace AAMod.Items.Dev.Invoker
 			{
 				item.noMelee = true;
 				Item.staff[item.type] = true;
-				item.useStyle = 5;
+				item.useStyle = ItemUseStyleID.HoldingOut;
 				return true;
 			}
 			return true;
@@ -334,10 +334,10 @@ namespace AAMod.Items.Dev.Invoker
 			{
 				for (int i = 0; i < 200; i++)
 				{
-					if (Main.npc[i].active && !Main.npc[i].dontTakeDamage && ((projectile.friendly && (!Main.npc[i].friendly || projectile.type == 318 || (Main.npc[i].type == 22 && projectile.owner < 255 && Main.player[projectile.owner].killGuide) || (Main.npc[i].type == 54 && projectile.owner < 255 && Main.player[projectile.owner].killClothier))) || (projectile.hostile && Main.npc[i].friendly && !Main.npc[i].dontTakeDamageFromHostiles)) && (projectile.owner < 0 || Main.npc[i].immune[projectile.owner] == 0 || projectile.maxPenetrate == 1) && (Main.npc[i].noTileCollide || !projectile.ownerHitCheck || projectile.CanHit(Main.npc[i])))
+					if (Main.npc[i].active && !Main.npc[i].dontTakeDamage && ((projectile.friendly && (!Main.npc[i].friendly || projectile.type == 318 || (Main.npc[i].type == NPCID.Guide && projectile.owner < 255 && Main.player[projectile.owner].killGuide) || (Main.npc[i].type == NPCID.Clothier && projectile.owner < 255 && Main.player[projectile.owner].killClothier))) || (projectile.hostile && Main.npc[i].friendly && !Main.npc[i].dontTakeDamageFromHostiles)) && (projectile.owner < 0 || Main.npc[i].immune[projectile.owner] == 0 || projectile.maxPenetrate == 1) && (Main.npc[i].noTileCollide || !projectile.ownerHitCheck || projectile.CanHit(Main.npc[i])))
 					{
 						bool flag;
-						if (Main.npc[i].type == 414)
+						if (Main.npc[i].type == NPCID.SolarCrawltipedeTail)
 						{
 							Rectangle rect = Main.npc[i].getRect();
 							int num = 8;
@@ -476,7 +476,7 @@ namespace AAMod.Items.Dev.Invoker
 				
 				if(npc.realLife >= 0) 
 				{
-					if(npc.type == 13) Main.npc[npc.realLife].boss = true;
+					if(npc.type == NPCID.EaterofWorldsHead) Main.npc[npc.realLife].boss = true;
 					Main.npc[npc.realLife].NPCLoot();//This need change in AAMod
 					for(int i = 0; i < 200 ; i++)
 					{
@@ -810,7 +810,7 @@ namespace AAMod.Items.Dev.Invoker
 					{
 						Main.player[num492].statLife = Main.player[num492].statLifeMax2;
 					}
-					NetMessage.SendData(66, -1, -1, null, num492, num497, 0f, 0f, 0, 0, 0);
+					NetMessage.SendData(MessageID.SpiritHeal, -1, -1, null, num492, num497, 0f, 0f, 0, 0, 0);
 				}
 				projectile.Kill();
 			}

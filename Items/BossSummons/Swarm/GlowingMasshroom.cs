@@ -24,23 +24,23 @@ Can only be used in glowing mushroom biomes");
             item.height = 22;
             item.maxStack = 20;
             item.value = 1000;
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.useAnimation = 30;
             item.useTime = 30;
-            item.useStyle = 4;
+            item.useStyle = ItemUseStyleID.HoldingUp;
             item.consumable = true;
         }
 
         public override bool UseItem(Player player)
         {
-            if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != 1) BaseUtility.Chat("You are being assaulted by a bunch of fungis", Color.SkyBlue, false);
+            if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat("You are being assaulted by a bunch of fungis", Color.SkyBlue, false);
 
             for (int i = 0; i < 10; i++)
             {
                 NPC.NewNPC((int)player.position.X + Main.rand.Next(-1000, 1000), (int)player.position.Y + Main.rand.Next(-1000, -400), mod.NPCType("Feudal Fungus"));
             }
 
-            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
+            Main.PlaySound(SoundID.Roar, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }
 
@@ -48,12 +48,12 @@ Can only be used in glowing mushroom biomes");
         {
             if (!player.ZoneGlowshroom)
             {
-                if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != 1) BaseUtility.Chat("Stop waving a bunch of shrooms around in the middle of nowhere like a nutcase.",  Color.SkyBlue, false);
+                if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat("Stop waving a bunch of shrooms around in the middle of nowhere like a nutcase.",  Color.SkyBlue, false);
                 return false;
             }
             if (NPC.AnyNPCs(ModContent.NPCType<MushroomMonarch>()))
             {
-                if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ConfusingMushroomFalse2"), Color.SkyBlue, false);
+                if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ConfusingMushroomFalse2"), Color.SkyBlue, false);
                 return false;
             }
             return true;

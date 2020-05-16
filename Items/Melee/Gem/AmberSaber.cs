@@ -14,10 +14,10 @@ namespace AAMod.Items.Melee.Gem   //where is located
             item.height = 44;               //Item Description
             item.useTime = 20;          
             item.useAnimation = 20;     
-            item.useStyle = 1;        
+            item.useStyle = ItemUseStyleID.SwingThrow;        
             item.knockBack = 5;      
             item.value = 1000;        
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
             item.UseSound = SoundID.Item1;       
             item.autoReuse = false;   
             item.useTurn = true;               

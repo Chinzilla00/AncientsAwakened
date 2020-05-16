@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Projectiles.Anubis.Forsaken
 {
@@ -50,7 +51,7 @@ namespace AAMod.Projectiles.Anubis.Forsaken
             if (projectile.soundDelay == 0)
             {
                 projectile.soundDelay = 8;
-                Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 7);
+                Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 7);
             }
             if (projectile.ai[0] == 0f)
             {
@@ -112,7 +113,7 @@ namespace AAMod.Projectiles.Anubis.Forsaken
                             {
                                 player.statLife = player.statLifeMax2;
                             }
-                            NetMessage.SendData(66, -1, -1, null, projectile.owner, 1, 0f, 0f, 0, 0, 0);
+                            NetMessage.SendData(MessageID.SpiritHeal, -1, -1, null, projectile.owner, 1, 0f, 0f, 0, 0, 0);
                         }
                         projectile.Kill(); 
                     }

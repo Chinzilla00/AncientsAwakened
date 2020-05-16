@@ -16,7 +16,7 @@ Right click the item to turn it on");
         public override void SetDefaults()
         {
             item.width = item.height = 16;
-            item.rare = 4;
+            item.rare = ItemRarityID.LightRed;
             item.maxStack = 1;
 			item.value = 8000;
         }

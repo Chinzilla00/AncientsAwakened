@@ -15,7 +15,7 @@ namespace AAMod.Items.Summoning
 
         public override void SetDefaults()
         {
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("ProbeMinion");
             item.damage = 14;
@@ -27,7 +27,7 @@ namespace AAMod.Items.Summoning
             item.noMelee = true;
             item.value = Item.sellPrice(0, 0, 27, 0);
             item.knockBack = 7.5f;
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.summon = true;
             item.mana = 5;
         }

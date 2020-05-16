@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 using Terraria;
 using Terraria.ModLoader;
-
+using Terraria.ID;
 
 namespace AAMod.Projectiles
 {
@@ -49,7 +49,7 @@ namespace AAMod.Projectiles
 
 		public override void PostAI()
 		{
-			if (Main.netMode != 2 && projectile.alpha < 170 && projectile.alpha + 5 >= 170)
+			if (Main.netMode != NetmodeID.Server && projectile.alpha < 170 && projectile.alpha + 5 >= 170)
 			{
 				for (int j = 0; j < 4; j++)
 				{

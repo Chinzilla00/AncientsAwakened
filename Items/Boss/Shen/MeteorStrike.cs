@@ -4,6 +4,7 @@ using Terraria;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 using Terraria.Audio;
+using Terraria.ID;
 
 namespace AAMod.Items.Boss.Shen   //where is located
 {
@@ -31,7 +32,7 @@ Inflicts Discordian Inferno");
             item.height = 36;             
             item.useTime = 16;          
             item.useAnimation = 16;
-            item.useStyle = 5;      
+            item.useStyle = ItemUseStyleID.HoldingOut;      
             item.knockBack = .5f;
             item.value = Item.sellPrice(1, 50, 0, 0);
             item.mana = 10;

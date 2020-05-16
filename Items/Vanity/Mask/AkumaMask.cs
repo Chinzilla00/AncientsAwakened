@@ -1,4 +1,5 @@
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Vanity.Mask
 {
@@ -16,7 +17,7 @@ namespace AAMod.Items.Vanity.Mask
         {
             item.width = 22;
             item.height = 26;
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
             item.vanity = true;
         }
     }

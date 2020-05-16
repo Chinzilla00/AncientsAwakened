@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Projectiles.Anubis.Forsaken
 {
@@ -53,7 +54,7 @@ namespace AAMod.Projectiles.Anubis.Forsaken
 			bool target = false;
 			for (int k = 0; k < 200; k++)
 			{
-				if (Main.npc[k].active && !Main.npc[k].dontTakeDamage && !Main.npc[k].friendly && Main.npc[k].lifeMax > 5 && Main.npc[k].type != 488)
+				if (Main.npc[k].active && !Main.npc[k].dontTakeDamage && !Main.npc[k].friendly && Main.npc[k].lifeMax > 5 && Main.npc[k].type != NPCID.TargetDummy)
 				{
 					Vector2 newMove = Main.npc[k].Center - projectile.Center;
 					float distanceTo = (float)Math.Sqrt(newMove.X * newMove.X + newMove.Y * newMove.Y);
@@ -84,7 +85,7 @@ namespace AAMod.Projectiles.Anubis.Forsaken
 
         public override void Kill(int timeleft)
         {
-            Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 1);
+            Main.PlaySound(SoundID.NPCHit, (int)projectile.position.X, (int)projectile.position.Y, 1);
         }
     }
 }

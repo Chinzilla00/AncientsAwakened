@@ -1,3 +1,5 @@
+using Terraria.ID;
+
 namespace AAMod.Items.FishingItem
 {
     public class SharpeningLavaFish : BaseAAItem
@@ -17,9 +19,9 @@ namespace AAMod.Items.FishingItem
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.rare = 4;
+            item.rare = ItemRarityID.LightRed;
             AARarity = 6;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.consumable = true;
             item.value = 128000;
             item.createTile = mod.TileType("SharpeningLavaFishTile");

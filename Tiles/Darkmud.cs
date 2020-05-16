@@ -16,7 +16,7 @@ namespace AAMod.Tiles
 			Main.tileMerge[TileID.Mud][Type] = true;
             Main.tileLighted[Type] = false;
             Main.tileBlockLight[Type] = true;
-            soundType = 21;
+            soundType = SoundID.Tink;
             dustType = mod.DustType("DeepAbyssiumDust");
             AddMapEntry(new Color(0, 0, 100));
 			minPick = 65;

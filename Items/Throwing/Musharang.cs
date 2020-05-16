@@ -16,10 +16,10 @@ namespace AAMod.Items.Throwing
 			item.useTime = 16;
 			item.useAnimation = 16;
             item.noUseGraphic = true;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 0;
             item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
 			item.shootSpeed = 6f;
 			item.shoot = mod.ProjectileType ("Musharang");
 			item.UseSound = SoundID.Item1;

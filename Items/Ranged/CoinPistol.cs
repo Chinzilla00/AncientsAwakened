@@ -14,20 +14,20 @@ namespace AAMod.Items.Ranged
 
 		public override void SetDefaults()
 		{
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.autoReuse = true;
 			item.useAnimation = 20;
 			item.useTime = 20;
 			item.width = 50;
 			item.height = 18;
-			item.shoot = 158;
+			item.shoot = ProjectileID.CopperCoin;
 			item.useAmmo = AmmoID.Coin;
 			item.UseSound = SoundID.Item11;
 			item.damage = 0;
 			item.shootSpeed = 10f;
 			item.noMelee = true;
 			item.value = 20000;
-			item.rare = 3;
+			item.rare = ItemRarityID.Orange;
 			item.knockBack = 2f;
 			item.ranged = true;
 		}

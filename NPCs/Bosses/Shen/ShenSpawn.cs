@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.NPCs.Bosses.Shen
 {
@@ -73,12 +74,12 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (npc.ai[0] == 180)
             {
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ShenSpawn1"), new Color(180, 41, 32));
+                if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("ShenSpawn1"), new Color(180, 41, 32));
             }
 
             if (npc.ai[0] == 360)
             {
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ShenSpawn2"), new Color(45, 46, 70));
+                if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("ShenSpawn2"), new Color(45, 46, 70));
             }
 
             if (npc.ai[0] == 540)

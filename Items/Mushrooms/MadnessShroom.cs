@@ -1,3 +1,5 @@
+using Terraria.ID;
+
 namespace AAMod.Items.Mushrooms
 {
     public class MadnessShroom : BaseAAItem
@@ -13,7 +15,7 @@ Maybe the Mushman knows what to do with it?");
             item.width = 16;
             item.height = 16;
             item.maxStack = 99;
-            item.rare = 11;
+            item.rare = ItemRarityID.Purple;
         }
     }
 }

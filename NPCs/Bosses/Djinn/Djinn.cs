@@ -140,7 +140,7 @@ namespace AAMod.NPCs.Bosses.Djinn
                 if (!soundPlayed)
                 {
                     soundPlayed = true;
-                    Main.PlaySound(15, (int)npc.position.X, (int)npc.position.Y, 0);
+                    Main.PlaySound(SoundID.Roar, (int)npc.position.X, (int)npc.position.Y, 0);
                 }
                 npc.damage = 200 * (Main.expertMode ? (int)(npc.damage * 1.6f) : 1);
                 npc.defense = 1000;
@@ -170,7 +170,7 @@ namespace AAMod.NPCs.Bosses.Djinn
             }
 
 
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 npc.damage = 30 * (Main.expertMode ? (int)(npc.damage * 1.6f) : 1); ;
                 internalAI[1]++;
@@ -194,13 +194,13 @@ namespace AAMod.NPCs.Bosses.Djinn
                 npc.velocity.Y = 0;
                 if (npc.ai[3] == 9 || npc.ai[3] == 36 || npc.ai[3] == 72)
                 {
-                    if (Main.netMode != 1 && AAGlobalProjectile.CountProjectiles(658) < 5)
+                    if (Main.netMode != NetmodeID.MultiplayerClient && AAGlobalProjectile.CountProjectiles(658) < 5)
                     {
                         FireProjectile();
                         npc.netUpdate = true;
                     }
                 }
-                if (npc.ai[3] > 90 && Main.netMode != 1)
+                if (npc.ai[3] > 90 && Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     internalAI[0] = 10;
                     internalAI[1] = 0;
@@ -219,7 +219,7 @@ namespace AAMod.NPCs.Bosses.Djinn
                 {
                     Projectile.NewProjectile(npc.position + new Vector2(Main.rand.Next(70), Main.rand.Next(80)), Vector2.Zero, ModContent.ProjectileType<Menacing>(), 0, 0, Main.myPlayer);
                 }
-                if (npc.ai[3] > 200 && Main.netMode != 1)
+                if (npc.ai[3] > 200 && Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     internalAI[0] = 10;
                     internalAI[1] = 0;
@@ -235,7 +235,7 @@ namespace AAMod.NPCs.Bosses.Djinn
                 npc.damage = 50 * (Main.expertMode ? (int)(npc.damage * 1.6f) : 1); ;
                 if (npc.ai[3] < 120 && npc.ai[3] > 60)
                 {
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         if (selectPoint)
                         {
@@ -251,7 +251,7 @@ namespace AAMod.NPCs.Bosses.Djinn
                 }
                 else
                 {
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         if (npc.ai[3] == 120)
                         {
@@ -268,7 +268,7 @@ namespace AAMod.NPCs.Bosses.Djinn
 
                
 
-                if (npc.ai[3] > 160 && Main.netMode != 1)
+                if (npc.ai[3] > 160 && Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     npc.damage = 30;
                     internalAI[0] = 10;
@@ -453,7 +453,7 @@ namespace AAMod.NPCs.Bosses.Djinn
             }
             foreach (Point current2 in list4)
             {
-                Projectile.NewProjectile(current2.X * 16, current2.Y * 16, 0f, 0f, 658, damage, 0f, Main.myPlayer, 0f, 0f);
+                Projectile.NewProjectile(current2.X * 16, current2.Y * 16, 0f, 0f, ProjectileID.SandnadoHostileMark, damage, 0f, Main.myPlayer, 0f, 0f);
             }
         }
 
@@ -611,9 +611,9 @@ namespace AAMod.NPCs.Bosses.Djinn
             {
                 Sandstorm.IntendedSeverity = Main.rand.NextFloat() * 0.3f;
             }
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
-                NetMessage.SendData(7, -1, -1, null, 0, 0f, 0f, 0f, 0, 0, 0);
+                NetMessage.SendData(MessageID.WorldData, -1, -1, null, 0, 0f, 0f, 0f, 0, 0, 0);
             }
         }
     }

@@ -15,7 +15,7 @@ namespace AAMod.Items.Blocks.Boxes
 
 		public override void SetDefaults()
 		{
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.useTurn = true;
 			item.useAnimation = 15;
 			item.useTime = 10;
@@ -24,7 +24,7 @@ namespace AAMod.Items.Blocks.Boxes
 			item.createTile = mod.TileType("ZeroBox");
 			item.width = 24;
 			item.height = 24;
-			item.rare = 4;
+			item.rare = ItemRarityID.LightRed;
 			item.value = 10000;
 			item.accessory = true;
 		}

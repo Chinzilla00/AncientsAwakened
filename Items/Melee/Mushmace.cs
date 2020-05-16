@@ -17,9 +17,9 @@ namespace AAMod.Items.Melee
             item.width = 16;
             item.height = 16;
             item.value = Item.sellPrice(0, 0, 20, 0);
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.noMelee = true;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.useAnimation = 30;
             item.useTime = 30;
             item.knockBack = 4f;

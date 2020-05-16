@@ -84,7 +84,7 @@ namespace AAMod.NPCs.Enemies.Inferno
         
         public override void NPCLoot()
         {
-			if(Main.netMode != 1)
+			if(Main.netMode != NetmodeID.MultiplayerClient)
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DragonFire"), 1 + Main.rand.Next(2));
 			}

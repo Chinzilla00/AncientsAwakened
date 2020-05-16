@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 using AAMod.Tiles.Trees;
+using Terraria.ID;
 
 namespace AAMod.Tiles
 {
@@ -17,7 +18,7 @@ namespace AAMod.Tiles
             Main.tileMergeDirt[Type] = true;
             Main.tileBlockLight[Type] = true;
             SetModTree(new OroborosTree());
-            soundType = 21;
+            soundType = SoundID.Tink;
             drop = mod.ItemType("DoomstoneB");   
             dustType = mod.DustType("DoomDust");
             AddMapEntry(new Color(40, 20, 20));

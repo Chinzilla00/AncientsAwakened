@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Projectiles.Yamata
 {
@@ -94,7 +95,7 @@ namespace AAMod.Projectiles.Yamata
 
         public override void OnHitNPC (NPC target, int damage, float knockback, bool crit)
 		{
-            if (Main.netMode != 1 && Main.rand.Next(2) == 0)
+            if (Main.netMode != NetmodeID.MultiplayerClient && Main.rand.Next(2) == 0)
             {
             target.immune[projectile.owner] = 1;
                 Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));

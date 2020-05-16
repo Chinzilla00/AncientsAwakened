@@ -17,7 +17,7 @@ namespace AAMod.Items.Potions.LuckyPotions
 		public override void SetDefaults()
 		{
             item.UseSound = SoundID.Item3;
-            item.useStyle = 2;
+            item.useStyle = ItemUseStyleID.EatingUsing;
 			item.useTurn = true;
 			item.useAnimation = 15;
 			item.useTime = 15;
@@ -26,7 +26,7 @@ namespace AAMod.Items.Potions.LuckyPotions
 			item.width = 16;
 			item.height = 16;
 			item.value = Item.sellPrice(0, 10, 0, 0);
-			item.rare = 7;
+			item.rare = ItemRarityID.Lime;
 			item.buffType = mod.BuffType("luckyironskin");
 			item.buffTime = 18000;
 		}

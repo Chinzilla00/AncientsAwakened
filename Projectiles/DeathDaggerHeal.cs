@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Projectiles
 {
@@ -44,7 +45,7 @@ namespace AAMod.Projectiles
 					{
 						Main.player[num487].statLife = Main.player[num487].statLifeMax2;
 					}
-					NetMessage.SendData(66, -1, -1, null, num487, 1, 0f, 0f, 0, 0, 0);
+					NetMessage.SendData(MessageID.SpiritHeal, -1, -1, null, num487, 1, 0f, 0f, 0, 0, 0);
 				}
 				projectile.Kill();
             }
@@ -82,7 +83,7 @@ namespace AAMod.Projectiles
 
         public override void Kill(int timeLeft)
         {
-        	Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 14);
+        	Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 14);
 			projectile.position.X = projectile.position.X + projectile.width / 2;
 			projectile.position.Y = projectile.position.Y + projectile.height / 2;
 			projectile.width = 50;

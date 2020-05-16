@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Enums;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.NPCs.Bosses.Shen
 {
@@ -55,7 +56,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             if (projectile.localAI[0] == 0f)
             {
-                Main.PlaySound(29, (int)Main.player[Main.myPlayer].Center.X, (int)Main.player[Main.myPlayer].Center.Y, 104, 1f, 0f);
+                Main.PlaySound(SoundID.Zombie, (int)Main.player[Main.myPlayer].Center.X, (int)Main.player[Main.myPlayer].Center.Y, 104, 1f, 0f);
             }
             float num801 = 5f;
             projectile.localAI[0] += 1f;
@@ -244,7 +245,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             if (projectile.localAI[0] == 0f)
             {
-                Main.PlaySound(29, (int)projectile.position.X, (int)projectile.position.Y, 104, 1f, 0f);
+                Main.PlaySound(SoundID.Zombie, (int)projectile.position.X, (int)projectile.position.Y, 104, 1f, 0f);
             }
             float num801 = 1f;
             projectile.localAI[0] += 1f;

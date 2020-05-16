@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Boss.Akuma
 {
@@ -25,7 +26,7 @@ During the day, you gain 6% damage resistance and your melee & magic attacks inf
             item.expert = true; item.expertOnly = true;
             item.accessory = true;
             item.defense = 8;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 13;
         }
 

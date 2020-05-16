@@ -19,7 +19,7 @@ namespace AAMod.Items.Armor.Terra
             item.width = 22;
             item.height = 16;
             item.defense = 22;
-            item.rare = 7;
+            item.rare = ItemRarityID.Lime;
         }
 
         public override void UpdateEquip(Player player)

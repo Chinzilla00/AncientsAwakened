@@ -25,10 +25,10 @@ Can only be used in the desert on the surface
             item.width = 24;
             item.height = 22;
             item.value = 0;
-            item.rare = 6;
+            item.rare = ItemRarityID.LightPurple;
             item.useAnimation = 30;
             item.useTime = 30;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.noMelee = true;
             item.consumable = false;
         }
@@ -37,12 +37,12 @@ Can only be used in the desert on the surface
         {
             if (!player.ZoneDesert && !player.ZoneUndergroundDesert)
             {
-                if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ScepterBossFalse1"), Color.Gold, false);
+                if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ScepterBossFalse1"), Color.Gold, false);
                 return true;
             }
             if (NPC.AnyNPCs(ModContent.NPCType<Anubis>()))
             {
-                if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ScepterBossFalse2"), Color.Gold, false);
+                if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ScepterBossFalse2"), Color.Gold, false);
                 return true;
             }
 
@@ -54,7 +54,7 @@ Can only be used in the desert on the surface
 
 
             int a = NPC.NewNPC((int)player.position.X + Main.rand.Next(-300, 300), (int)player.position.Y - 400, ModContent.NPCType<Anubis>());
-            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
+            Main.PlaySound(SoundID.Roar, (int)player.position.X, (int)player.position.Y, 0);
 
             NPC npc = Main.npc[a];
 

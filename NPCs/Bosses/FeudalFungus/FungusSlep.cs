@@ -60,7 +60,7 @@ namespace AAMod.NPCs.Bosses.FeudalFungus
             {
                 Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<Dusts.MushDust>(), hitDirection, -1f, 0, default, 1f);
             }
-            if (Main.netMode != 1 && (NPC.CountNPCS(mod.NPCType("FungusWake")) + NPC.CountNPCS(mod.NPCType("FeudalFungus"))) < 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient && (NPC.CountNPCS(mod.NPCType("FungusWake")) + NPC.CountNPCS(mod.NPCType("FeudalFungus"))) < 1)
             {
                 int id = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("FungusWake"));
                 Main.npc[id].position = npc.position;

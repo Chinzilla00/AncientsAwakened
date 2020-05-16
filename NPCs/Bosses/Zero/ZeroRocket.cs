@@ -78,7 +78,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void PostAI()
         {
-            if (Main.netMode != 1) a++;
+            if (Main.netMode != NetmodeID.MultiplayerClient) a++;
             if (a == 40)
             {
                 projectile.tileCollide = true;

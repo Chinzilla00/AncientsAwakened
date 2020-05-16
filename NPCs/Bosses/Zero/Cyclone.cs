@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
@@ -28,7 +29,7 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             projectile.rotation += 0.03f;
             projectile.velocity *= 0;
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 projectile.ai[1]++;
             }

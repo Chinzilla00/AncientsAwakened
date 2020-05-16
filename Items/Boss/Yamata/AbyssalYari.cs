@@ -27,12 +27,12 @@ namespace AAMod.Items.Boss.Yamata
             item.UseSound = SoundID.Item1;
             item.noMelee = true;
             item.noUseGraphic = true;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.shootSpeed = 5f;
             item.shoot = mod.ProjectileType("AbyssalYariP");  
             item.autoReuse = true;
-            item.rare = 9; AARarity = 13;
+            item.rare = ItemRarityID.Cyan; AARarity = 13;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

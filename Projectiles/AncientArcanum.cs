@@ -144,7 +144,7 @@ namespace AAMod.Projectiles
 				if (projectile.ai[0] % 30f == 0f && projectile.ai[0] < 241f && Main.myPlayer == projectile.owner)
 				{
 					Vector2 vector144 = Vector2.UnitY.RotatedByRandom(6.2831854820251465) * 12f;
-					Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vector144.X, vector144.Y, 618, projectile.damage / 2, 0f, projectile.owner, 0f, projectile.whoAmI);
+					Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vector144.X, vector144.Y, ProjectileID.NebulaArcanumSubshot, projectile.damage / 2, 0f, projectile.owner, 0f, projectile.whoAmI);
 				}
 				Vector2 vector145 = projectile.Center;
 				float num1015 = 800f;
@@ -315,7 +315,7 @@ namespace AAMod.Projectiles
 						vector5.Y *= -1f;
 					}
 					vector5 *= Main.rand.Next(70, 101) * 0.1f;
-					Projectile.NewProjectile(vector4.X, vector4.Y, vector5.X, vector5.Y, 620, (int)(projectile.damage * 0.65), projectile.knockBack * 0.8f, projectile.owner, num108, 0f);
+					Projectile.NewProjectile(vector4.X, vector4.Y, vector5.X, vector5.Y, ProjectileID.NebulaArcanumExplosionShotShard, (int)(projectile.damage * 0.65), projectile.knockBack * 0.8f, projectile.owner, num108, 0f);
 					num3 = num110;
 				}
 				for (int num111 = 0; num111 < num107; num111 = num3 + 1)
@@ -332,7 +332,7 @@ namespace AAMod.Projectiles
 						vector7.Y *= -1f;
 					}
 					vector7 *= Main.rand.Next(40, 81) * 0.1f;
-					Projectile.NewProjectile(vector6.X, vector6.Y, vector7.X, vector7.Y, 620, (int)(projectile.damage * 0.65), projectile.knockBack * 0.8f, projectile.owner, num109, 0f);
+					Projectile.NewProjectile(vector6.X, vector6.Y, vector7.X, vector7.Y, ProjectileID.NebulaArcanumExplosionShotShard, (int)(projectile.damage * 0.65), projectile.knockBack * 0.8f, projectile.owner, num109, 0f);
 					num3 = num111;
 				}
 			}

@@ -16,7 +16,7 @@ namespace AAMod.Items.Throwing
             item.maxStack = 999;
 			item.useAnimation = 8;
             item.noUseGraphic = true;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 0;
 			item.shootSpeed = 15f;
 			item.shoot = mod.ProjectileType ("DMK");
@@ -24,7 +24,7 @@ namespace AAMod.Items.Throwing
 			item.autoReuse = true;
             item.consumable = true;
             item.noMelee = true;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 12;
         }
 

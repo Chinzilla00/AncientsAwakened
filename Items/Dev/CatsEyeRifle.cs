@@ -36,11 +36,11 @@ Doesn't require ammo
             item.height = 22;
             item.useTime = 30; 
             item.useAnimation = 30; 
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.shoot = mod.ProjectileType("CatsEye");
             item.knockBack = 12;
             item.value = Item.sellPrice(0, 30, 0, 0);
-            item.rare = 9; 
+            item.rare = ItemRarityID.Cyan; 
             item.UseSound = new LegacySoundStyle(2, 40, Terraria.Audio.SoundType.Sound);
             item.autoReuse = false; 
             item.shootSpeed = 20f;

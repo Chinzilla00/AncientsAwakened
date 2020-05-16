@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
-
+using Terraria.ID;
 
 namespace AAMod.Items.Armor.Draco
 {
@@ -47,7 +47,7 @@ The blazing fury of the Inferno rests in this armor");
 			item.height = 18;
 			item.value = 3000000;
 			item.defense = 32;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 13;
         }
 

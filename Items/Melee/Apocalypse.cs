@@ -20,7 +20,7 @@ Horseman's Blade EX");
 		{
             item.melee = true;
             item.damage = 1000;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.autoReuse = true;
             item.UseSound = SoundID.Item1;
             item.shootSpeed = 20f;

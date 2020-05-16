@@ -15,10 +15,10 @@ namespace AAMod.Items.Boss.Djinn
             item.maxStack = 999;
 			item.useAnimation = 8;
             item.noUseGraphic = true;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 0;
 			item.value = 8;
-			item.rare = 3;
+			item.rare = ItemRarityID.Orange;
 			item.shootSpeed = 9f;
 			item.shoot = mod.ProjectileType ("Sandagger");
 			item.UseSound = SoundID.Item1;

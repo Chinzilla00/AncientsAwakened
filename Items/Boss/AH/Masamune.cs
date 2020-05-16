@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.ID;
 
 namespace AAMod.Items.Boss.AH
 {
@@ -23,14 +24,14 @@ Right click to shoot a blade wave");
             item.channel = true;
             item.useAnimation = 25;
             item.useTime = 15;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.useTime = 5;
             item.knockBack = 4f;
             item.autoReuse = false;
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.shoot = mod.ProjectileType("Surasshu");
             item.shootSpeed = 15f;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 12;
         }
 

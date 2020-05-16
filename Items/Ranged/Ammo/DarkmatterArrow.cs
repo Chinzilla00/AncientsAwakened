@@ -24,7 +24,7 @@ namespace AAMod.Items.Ranged.Ammo
 			item.shoot = mod.ProjectileType("DarkmatterArrow");   //The projectile shoot when your weapon using this ammo
 			item.shootSpeed = 1f;                  //The speed of the projectile
 			item.ammo = AmmoID.Arrow;
-			item.rare = 9;
+			item.rare = ItemRarityID.Cyan;
 			AARarity = 12;
 		}
 

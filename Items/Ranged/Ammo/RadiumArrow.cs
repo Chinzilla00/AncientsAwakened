@@ -20,11 +20,11 @@ namespace AAMod.Items.Ranged.Ammo
 			item.consumable = true;
 			item.knockBack = 4f;
 			item.value = 30;
-			item.rare = 11;
+			item.rare = ItemRarityID.Purple;
 			item.shoot = mod.ProjectileType("RadiumArrow");
 			item.shootSpeed = 6f; 
 			item.ammo = AmmoID.Arrow;
-			item.rare = 9;
+			item.rare = ItemRarityID.Cyan;
 			AARarity = 12;
 		}
 

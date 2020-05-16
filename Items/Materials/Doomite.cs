@@ -1,3 +1,5 @@
+using Terraria.ID;
+
 namespace AAMod.Items.Materials
 {
     public class Doomite : BaseAAItem
@@ -12,12 +14,12 @@ namespace AAMod.Items.Materials
             item.width = 16;
             item.height = 16;
             item.maxStack = 99;
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
             item.useTurn = true;
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.rare = 10;
+            item.rare = ItemRarityID.Red;
             item.useStyle = 1;
             item.consumable = true;
             item.createTile = mod.TileType("DoomiteBar");

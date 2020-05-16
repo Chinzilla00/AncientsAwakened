@@ -69,7 +69,7 @@ namespace AAMod
                     }
 
                     // Set item time anyway, if not shoot, also make next slash upwards
-                    if (item.shoot <= 0 && player.itemTime == 0)
+                    if (item.shoot <= ProjectileID.None && player.itemTime == 0)
                     { player.itemTime = item.useTime; item.isBeingGrabbed = false; }
                 }
 
@@ -77,7 +77,7 @@ namespace AAMod
             }
             else
             {
-                item.useStyle = 1;
+                item.useStyle = ItemUseStyleID.SwingThrow;
                 item.beingGrabbed = false;
             }
 
@@ -206,7 +206,7 @@ namespace AAMod
                 }
             }
 
-            if (!quiet && Main.netMode == 1 && Main.myPlayer == player.whoAmI)
+            if (!quiet && Main.netMode == NetmodeID.MultiplayerClient && Main.myPlayer == player.whoAmI)
             {
                 NetMessage.SendData(MessageID.PlayerControls, -1, -1, null, player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
                 NetMessage.SendData(MessageID.ItemAnimation, -1, -1, null, player.whoAmI, 0f, 0f, 0f, 0, 0, 0);

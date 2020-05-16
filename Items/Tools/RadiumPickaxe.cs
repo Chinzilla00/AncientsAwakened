@@ -14,13 +14,13 @@ namespace AAMod.Items.Tools
             item.useTime = 4;
             item.useAnimation = 12;
             item.pick = 235;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.knockBack = 1;
             item.value = 10;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.useTurn = true;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 12;
         }
 

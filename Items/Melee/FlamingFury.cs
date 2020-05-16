@@ -22,10 +22,10 @@ namespace AAMod.Items.Melee
 			item.height = 48;
 			item.useTime = 27;
 			item.useAnimation = 27;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 5;
 			item.value = 3000;
-			item.rare = 2;
+			item.rare = ItemRarityID.Green;
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = false;
 

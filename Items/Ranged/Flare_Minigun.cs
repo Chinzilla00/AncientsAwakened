@@ -26,9 +26,9 @@ namespace AAMod.Items.Ranged
 			item.useTime = 10;
 			item.useAnimation = 10;
 			item.value = 200000;
-			item.rare = 5;
+			item.rare = ItemRarityID.Pink;
 			item.autoReuse = true;
-			item.shoot = 163;
+			item.shoot = ProjectileID.Flare;
 			item.useAmmo = AmmoID.Flare;
 			item.UseSound = SoundID.Item11;
 		}

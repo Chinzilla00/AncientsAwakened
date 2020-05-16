@@ -1,5 +1,6 @@
 using Terraria;
 using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Materials
 {
@@ -20,8 +21,8 @@ namespace AAMod.Items.Materials
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.rare = 10;
-            item.useStyle = 1;
+            item.rare = ItemRarityID.Red;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.consumable = true;
             item.createTile = mod.TileType("Darkmatter");
             item.value = Item.sellPrice(0, 2, 0, 0);

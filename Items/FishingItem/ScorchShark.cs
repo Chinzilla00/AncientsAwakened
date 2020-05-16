@@ -13,10 +13,10 @@ namespace AAMod.Items.FishingItem
 			item.useTime = 7;
 			item.useAnimation = 20;
 			item.pick = 180;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 5;
             item.value = 108000;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 			item.useTurn = true;

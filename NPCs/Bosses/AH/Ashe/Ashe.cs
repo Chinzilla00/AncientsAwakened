@@ -118,7 +118,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
                     MoveToPoint(wantedVelocity);
                     
-                    if(Main.netMode != 1)
+                    if(Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         if (npc.ai[1] > 60 && npc.ai[1] <= 180)
                         {
@@ -163,7 +163,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     if (++npc.ai[2] > 3)
                     {
                         npc.ai[2] = 0;
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             const float ai0 = 0.01f;
                             Projectile.NewProjectile(npc.Center, Vector2.Normalize(npc.velocity).RotatedBy(Math.PI / 2), mod.ProjectileType("AsheSpell"), npc.damage / 4, 0f, Main.myPlayer, ai0);
@@ -225,7 +225,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     {
                         if (npc.life < npc.lifeMax / 3)
                         {
-                            if (Main.netMode != 1)
+                            if (Main.netMode != NetmodeID.MultiplayerClient)
                             {
                                 for(int i = 0; i < 8; i++)
                                 {
@@ -265,7 +265,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     if (npc.ai[1]++ > 200)
                     {
                         int id = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<AsheDragon>());
-                        if (Main.netMode == 2 && id < 200) NetMessage.SendData(23, -1, -1, null, id);
+                        if (Main.netMode == NetmodeID.Server && id < 200) NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, id);
                         npc.netUpdate = true;
                         AIChange();
                     }
@@ -303,10 +303,10 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     
                     float RunepositionX = Runeposition.X;
                     float RunepositionY = Runeposition.Y;
-                    if(Main.netMode != 1)
+                    if(Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         int id = NPC.NewNPC((int)RunepositionX, (int)RunepositionY, ModContent.NPCType<AsheRune>(), 0, RunepositionX, RunepositionY, npc.damage / 4, npc.whoAmI, player.whoAmI);
-                        if (Main.netMode == 2 && id < 200) NetMessage.SendData(23, -1, -1, null, id);
+                        if (Main.netMode == NetmodeID.Server && id < 200) NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, id);
                     }
                     npc.ai[2] = 0;
                 }
@@ -459,7 +459,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             if (player.dead || !player.active || (npc.position.X - Main.player[npc.target].position.X) > 6000f || (npc.position.X - Main.player[npc.target].position.X) < -6000f || (npc.position.Y - Main.player[npc.target].position.Y) > 6000f || (npc.position.Y - Main.player[npc.target].position.Y) < -6000f)
             {
                 npc.TargetClosest(true);
-                if (Main.netMode != 1)
+                if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<AsheVanish>(), 0);
                     Main.npc[DeathAnim].velocity = npc.velocity;
@@ -488,7 +488,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public void FireMagic(NPC npc)
         {
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 if (Health)
                 {
@@ -510,8 +510,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     for (int m = 0; m < 4; m++)
                     {
                         int n = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AsheOrbiter"), 0, npc.whoAmI, distance, 300, rotation * m);
-                        if (Main.netMode == 2 && n < 200)
-                            NetMessage.SendData(23, -1, -1, null, n);
+                        if (Main.netMode == NetmodeID.Server && n < 200)
+                            NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, n);
                     }
                 }
                 if (Health && npc.life < npc.lifeMax * .66f && npc.life >= npc.lifeMax * .33f)
@@ -520,8 +520,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     for (int m = 0; m < OrbiterCount; m++)
                     {
                         int n = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AsheOrbiter"), 0, npc.whoAmI, distance, 300, rotation * m);
-                        if (Main.netMode == 2 && n < 200)
-                            NetMessage.SendData(23, -1, -1, null, n);
+                        if (Main.netMode == NetmodeID.Server && n < 200)
+                            NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, n);
                     }
                 }
                 if (Health && npc.life < npc.lifeMax * .33f)
@@ -531,8 +531,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     for (int m = 0; m < OrbiterCount; m++)
                     {
                         int n = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AsheOrbiter"), 0, npc.whoAmI, distance, 300, rotation * m);
-                        if (Main.netMode == 2 && n < 200)
-                            NetMessage.SendData(23, -1, -1, null, n);
+                        if (Main.netMode == NetmodeID.Server && n < 200)
+                            NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, n);
                     }
                     OrbiterCount -= 2;
                 }
@@ -562,7 +562,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<AsheVanish>(), 0);
             Main.npc[DeathAnim].velocity = npc.velocity;
-            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AsheDowned"), new Color(102, 20, 48));
+            if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("AsheDowned"), new Color(102, 20, 48));
             npc.value = 0f;
             npc.boss = false;
         }

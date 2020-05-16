@@ -60,7 +60,7 @@ namespace AAMod.Projectiles.Anubis.Forsaken
                 float shootToY = target.position.Y + target.height * 0.5f - projectile.Center.Y;
                 float distance = (float)Math.Sqrt(shootToX * shootToX + shootToY * shootToY);
 
-                if (projectile.scale >= 1f && distance < 600f && target.catchItem == 0 && !target.friendly && target.active && target.type != 488 && Collision.CanHit(projectile.position, projectile.width, projectile.height, target.position, target.width, target.height))
+                if (projectile.scale >= 1f && distance < 600f && target.catchItem == 0 && !target.friendly && target.active && target.type != NPCID.TargetDummy && Collision.CanHit(projectile.position, projectile.width, projectile.height, target.position, target.width, target.height))
                 {
                     if (projectile.ai[0] > 15f) // Time in (60 = 1 second) 
                     {

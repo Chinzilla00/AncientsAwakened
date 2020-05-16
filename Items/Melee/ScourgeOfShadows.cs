@@ -15,7 +15,7 @@ namespace AAMod.Items.Melee
         public override void SetDefaults()
 		{
             item.autoReuse = true;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.shootSpeed = 14f;
 			item.shoot = mod.ProjectileType("ScourgeOfShadowsP");
 			item.damage = 130;
@@ -29,7 +29,7 @@ namespace AAMod.Items.Melee
 			item.value = Item.sellPrice(0, 50, 0, 0);
 			item.knockBack = 5f;
 			item.melee = true;
-			item.rare = 11;
+			item.rare = ItemRarityID.Purple;
         }
 
         public override void AddRecipes()

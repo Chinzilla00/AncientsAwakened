@@ -20,7 +20,7 @@ Dashing ability has 10 seconds CD
 		public override void SetDefaults()
 		{
 			item.autoReuse = true;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.useAnimation = 30;
 			item.useTime = 30;
 			item.knockBack = 5f;
@@ -30,7 +30,7 @@ Dashing ability has 10 seconds CD
 			item.crit = 14;
 			item.scale = 1.15f;
 			item.UseSound = SoundID.Item71;
-			item.rare = 7;
+			item.rare = ItemRarityID.Lime;
 			item.shoot = mod.ProjectileType("GrimReaperScythe");
 			item.shootSpeed = 14f;
 			item.value = 500000;

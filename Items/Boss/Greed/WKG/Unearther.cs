@@ -22,12 +22,12 @@ namespace AAMod.Items.Boss.Greed.WKG
             item.useTime = 5;
             item.pick = 230;
             item.tileBoost += 4;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.knockBack = 3;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.useTurn = true;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 12;
         }
 

@@ -22,7 +22,7 @@ Right click and hold to release and aim manually");
         {
             item.autoReuse = true;
             item.mana = 15;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.damage = 450;
             item.useAnimation = 30;
             item.useTime = 30;
@@ -33,7 +33,7 @@ Right click and hold to release and aim manually");
             item.knockBack = 4.5f;
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.magic = true;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 13;
             item.noMelee = true;
             item.UseSound = new LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound);

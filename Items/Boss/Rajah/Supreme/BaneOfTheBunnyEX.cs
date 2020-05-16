@@ -23,12 +23,12 @@ Bane of the Bunny EX");
             item.noMelee = true;
             item.noUseGraphic = true;
             item.channel = true;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.knockBack = 4f;
             item.UseSound = SoundID.Item1;
             item.value = Item.sellPrice(1, 0, 0, 0);
             item.shoot = mod.ProjectileType("BaneEX");
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             item.expert = true; item.expertOnly = true;
             item.useAnimation = 13;
             item.useTime = 13;
@@ -47,14 +47,14 @@ Bane of the Bunny EX");
             {
                 item.useAnimation = 11;
                 item.useTime = 11;
-                item.useStyle = 5;
+                item.useStyle = ItemUseStyleID.HoldingOut;
                 item.shoot = mod.ProjectileType("BaneEX");  
             }
             else
             {
                 item.useAnimation = 13;
                 item.useTime = 13;
-                item.useStyle = 1;
+                item.useStyle = ItemUseStyleID.SwingThrow;
                 item.shoot = mod.ProjectileType("BaneTEX");
             }
             return base.CanUseItem(player);

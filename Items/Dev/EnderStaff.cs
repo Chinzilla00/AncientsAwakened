@@ -28,11 +28,11 @@ I thought the sky was purple
 			item.height = 64;
 			item.useTime = 26;
 			item.useAnimation = 26;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.noMelee = true;
 			item.knockBack = 3;
 			item.value = Item.sellPrice(0, 20, 0, 0);
-			item.rare = 8;
+			item.rare = ItemRarityID.Yellow;
             item.expert = true; item.expertOnly = true;
 			item.UseSound = SoundID.Item44;
 			item.shoot = mod.ProjectileType("EnderMinion");

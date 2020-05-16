@@ -133,7 +133,7 @@ namespace AAMod.NPCs.Bosses.Core.Projectiles
 				{
 					num1135 = 35;
 				}
-				Projectile.NewProjectile(projectile.Center, Vector2.Zero, 657, num1135, 3f, projectile.owner, 0f, 0f);
+				Projectile.NewProjectile(projectile.Center, Vector2.Zero, ProjectileID.SandnadoHostile, num1135, 3f, projectile.owner, 0f, 0f);
 			}
 			if (projectile.localAI[1] >= 120f)
 			{

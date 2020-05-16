@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-
+using Terraria.ID;
 
 namespace AAMod.NPCs.Bosses.Rajah.Supreme
 {
@@ -33,14 +33,14 @@ namespace AAMod.NPCs.Bosses.Rajah.Supreme
 
         public override void AI()
         {
-            if (npc.velocity.Y == 0 && Main.netMode != 1)
+            if (npc.velocity.Y == 0 && Main.netMode != NetmodeID.MultiplayerClient)
             {
                 npc.ai[0]++;
             }
 
             if (npc.ai[0] == 120)
             {
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("SupremeRajahDefeat1"), 107, 137, 179, true);
+                if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("SupremeRajahDefeat1"), 107, 137, 179, true);
             }
             if (npc.ai[0] == 240)
             {

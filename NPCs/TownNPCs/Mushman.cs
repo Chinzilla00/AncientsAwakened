@@ -150,7 +150,7 @@ namespace AAMod.NPCs.TownNPCs
 
             if (!firstButton)
             {
-                Main.PlaySound(12, -1, -1, 1);
+                Main.PlaySound(SoundID.MenuTick, -1, -1, 1);
 
                 Player player = Main.LocalPlayer;
 
@@ -188,7 +188,7 @@ namespace AAMod.NPCs.TownNPCs
                     Main.npcChatText = SpecialChat();
                     player.QuickSpawnItem(ModContent.ItemType<Items.Mushrooms.Rainbow>(), 5);
 
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                     return;
                 }
                 else if (Item >= 0)
@@ -202,7 +202,7 @@ namespace AAMod.NPCs.TownNPCs
                     Main.npcChatText = MushroomChat();
                     player.QuickSpawnItem(mod.ItemType(lootTable[loot]), 5);
 
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                     return;
                 }
                 else if (Item2 >= 0)
@@ -216,7 +216,7 @@ namespace AAMod.NPCs.TownNPCs
                     Main.npcChatText = MushroomChat();
                     player.QuickSpawnItem(mod.ItemType(lootTable[loot]), 5);
 
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                     return;
                 }
                 else if (Item3 >= 0)
@@ -230,7 +230,7 @@ namespace AAMod.NPCs.TownNPCs
                     Main.npcChatText = MushroomChat();
                     player.QuickSpawnItem(mod.ItemType(lootTable[loot]), 5);
 
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                     return;
                 }
                 else if (Item4 >= 0)
@@ -244,7 +244,7 @@ namespace AAMod.NPCs.TownNPCs
                     Main.npcChatText = MushroomChat();
                     player.QuickSpawnItem(mod.ItemType(lootTable[loot]), 5);
 
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                     return;
                 }
                 else if (DyeRed >= 0)
@@ -258,7 +258,7 @@ namespace AAMod.NPCs.TownNPCs
                     Main.npcChatText = MushroomChat();
                     player.QuickSpawnItem(ModContent.ItemType<Items.Mushrooms.Red>(), 5);
 
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                     return;
                 }
                 else if (DyeOrange >= 0)
@@ -272,7 +272,7 @@ namespace AAMod.NPCs.TownNPCs
                     Main.npcChatText = MushroomChat();
                     player.QuickSpawnItem(ModContent.ItemType<Items.Mushrooms.Orange>(), 5);
 
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                     return;
                 }
                 else if (DyeYellow >= 0)
@@ -286,7 +286,7 @@ namespace AAMod.NPCs.TownNPCs
                     Main.npcChatText = MushroomChat();
                     player.QuickSpawnItem(ModContent.ItemType<Items.Mushrooms.Yellow>(), 5);
 
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                     return;
                 }
                 else if (DyeGreen1 >= 0)
@@ -300,7 +300,7 @@ namespace AAMod.NPCs.TownNPCs
                     Main.npcChatText = MushroomChat();
                     player.QuickSpawnItem(ModContent.ItemType<Items.Mushrooms.Green>(), 5);
 
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                     return;
                 }
                 else if (DyeGreen2 >= 0)
@@ -314,7 +314,7 @@ namespace AAMod.NPCs.TownNPCs
                     Main.npcChatText = MushroomChat();
                     player.QuickSpawnItem(ModContent.ItemType<Items.Mushrooms.Green>(), 5);
 
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                     return;
                 }
                 else if (DyeGreen3 >= 0)
@@ -328,7 +328,7 @@ namespace AAMod.NPCs.TownNPCs
                     Main.npcChatText = MushroomChat();
                     player.QuickSpawnItem(ModContent.ItemType<Items.Mushrooms.Green>(), 5);
 
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                     return;
                 }
                 else if (DyeBlue1 >= 0)
@@ -342,7 +342,7 @@ namespace AAMod.NPCs.TownNPCs
                     Main.npcChatText = MushroomChat();
                     player.QuickSpawnItem(ModContent.ItemType<Items.Mushrooms.Blue>(), 5);
 
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                     return;
                 }
                 else if (DyeBlue2 >= 0)
@@ -356,7 +356,7 @@ namespace AAMod.NPCs.TownNPCs
                     Main.npcChatText = MushroomChat();
                     player.QuickSpawnItem(ModContent.ItemType<Items.Mushrooms.Blue>(), 5);
 
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                     return;
                 }
                 else if (DyeBlue3 >= 0)
@@ -370,7 +370,7 @@ namespace AAMod.NPCs.TownNPCs
                     Main.npcChatText = MushroomChat();
                     player.QuickSpawnItem(ModContent.ItemType<Items.Mushrooms.Blue>(), 5);
 
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                     return;
                 }
                 else if (DyePurple1 >= 0)
@@ -384,7 +384,7 @@ namespace AAMod.NPCs.TownNPCs
                     Main.npcChatText = MushroomChat();
                     player.QuickSpawnItem(ModContent.ItemType<Items.Mushrooms.Purple>(), 5);
 
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                     return;
                 }
                 else if (DyePurple2 >= 0)
@@ -398,7 +398,7 @@ namespace AAMod.NPCs.TownNPCs
                     Main.npcChatText = MushroomChat();
                     player.QuickSpawnItem(ModContent.ItemType<Items.Mushrooms.Purple>(), 5);
 
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                     return;
                 }
                 else if (DyeGray >= 0)
@@ -412,7 +412,7 @@ namespace AAMod.NPCs.TownNPCs
                     Main.npcChatText = MushroomChat();
                     player.QuickSpawnItem(ModContent.ItemType<Items.Mushrooms.Gray>(), 5);
 
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                     return;
                 }
                 else if (DyePink >= 0)
@@ -426,14 +426,14 @@ namespace AAMod.NPCs.TownNPCs
                     Main.npcChatText = MushroomChat();
                     player.QuickSpawnItem(ModContent.ItemType<Items.Mushrooms.Pink>(), 5);
 
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                     return;
                 }
                 else
                 {
                     Main.npcChatText = NoMushroomChat();
                     Main.npcChatCornerItem = 0;
-                    Main.PlaySound(12, -1, -1, 1);
+                    Main.PlaySound(SoundID.MenuTick, -1, -1, 1);
                 }
             }
         }

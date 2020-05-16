@@ -23,10 +23,10 @@ namespace AAMod.Items.Melee
 			item.height = 120;
 			item.useTime = 20;
 			item.useAnimation = 20;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 10;
             item.value = Item.sellPrice(5, 0, 0, 0);
-            item.rare = 8;
+            item.rare = ItemRarityID.Yellow;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("ChaosShotP");

@@ -24,10 +24,10 @@ namespace AAMod.Items.Dev
 			item.height = 72;
 			item.useTime = 26;
 			item.useAnimation = 26;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 6;
 			item.value = 100000;
-			item.rare = 9;
+			item.rare = ItemRarityID.Cyan;
 			item.UseSound = SoundID.Item43;
 			item.autoReuse = true;
             item.noMelee = true;
@@ -56,13 +56,13 @@ namespace AAMod.Items.Dev
             if (player.altFunctionUse == 2)
             {
                 Item.staff[item.type] = false;
-                item.useStyle = 1;
+                item.useStyle = ItemUseStyleID.SwingThrow;
                 item.shoot = mod.ProjectileType("VoidWave");
             }
             else
             {
                 Item.staff[item.type] = true;
-                item.useStyle = 5;
+                item.useStyle = ItemUseStyleID.HoldingOut;
                 item.shoot = mod.ProjectileType("VoidSpear");
             }
             return base.CanUseItem(player);

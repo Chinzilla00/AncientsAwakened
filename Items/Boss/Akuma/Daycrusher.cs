@@ -23,7 +23,7 @@ Inflicts Daybroken");
             item.height = 44;
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.noMelee = true;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.useAnimation = 40;
             item.useTime = 40;
             item.reuseDelay = 10;
@@ -34,7 +34,7 @@ Inflicts Daybroken");
             item.shootSpeed = 20F;
             item.UseSound = SoundID.Item20;
             item.melee = true;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 13;
         }
 

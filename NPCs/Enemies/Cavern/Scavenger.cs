@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 
 using Terraria.Audio;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.ID;
 
 namespace AAMod.NPCs.Enemies.Cavern
 {
@@ -70,7 +71,7 @@ namespace AAMod.NPCs.Enemies.Cavern
                     Main.npc[a].ai[2] = npc.whoAmI;
                     Main.npc[a].ai[1] = Previous;
                     Main.npc[Previous].ai[0] = a;
-                    NetMessage.SendData(23, -1, -1, null, a, 0f, 0f, 0f, 0);
+                    NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, a, 0f, 0f, 0f, 0);
                     Previous = a;
                 }
                 npc.ai[2] = 1;
@@ -257,7 +258,7 @@ namespace AAMod.NPCs.Enemies.Cavern
                             num65 = 20f;
                         }
                         npc.soundDelay = (int)num65;
-                        Main.PlaySound(15, (int)npc.position.X, (int)npc.position.Y, 1);
+                        Main.PlaySound(SoundID.Roar, (int)npc.position.X, (int)npc.position.Y, 1);
                     }
                     num63 = (float)System.Math.Sqrt(num61 * num61 + num62 * num62);
                     float num66 = System.Math.Abs(num61);

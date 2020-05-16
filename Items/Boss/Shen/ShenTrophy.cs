@@ -1,5 +1,6 @@
 using Terraria.ModLoader;
 using System.Collections.Generic;
+using Terraria.ID;
 
 namespace AAMod.Items.Boss.Shen
 {
@@ -21,8 +22,8 @@ namespace AAMod.Items.Boss.Shen
 			item.autoReuse = true;
 			item.useAnimation = 15;
 			item.useTime = 10;
-            item.rare = 1;
-            item.useStyle = 1;
+            item.rare = ItemRarityID.Blue;
+            item.useStyle = ItemUseStyleID.SwingThrow;
 			item.consumable = true;
 			item.value = 2000;
 			item.rare = 2;

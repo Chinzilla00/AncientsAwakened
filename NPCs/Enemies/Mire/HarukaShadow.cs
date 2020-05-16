@@ -44,14 +44,14 @@ namespace AAMod.NPCs.Enemies.Mire
                 if (npc.ai[1] < 255)
                 {
                     npc.alpha += 4;
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         npc.ai[1] += 4;
                     }
                 }
                 else
                 {
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         npc.active = false;
                         npc.netUpdate = true;

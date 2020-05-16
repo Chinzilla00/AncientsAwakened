@@ -146,7 +146,7 @@ namespace AAMod.Items.Dev.RuneBook
                         {
                             Main.player[projectile.owner].statLife = Main.player[projectile.owner].statLifeMax2;
                         }
-                        NetMessage.SendData(66, -1, -1, null, projectile.owner, 1, 0f, 0f, 0, 0, 0);
+                        NetMessage.SendData(MessageID.SpiritHeal, -1, -1, null, projectile.owner, 1, 0f, 0f, 0, 0, 0);
                         projectile.netUpdate = true;
                     }
                 }

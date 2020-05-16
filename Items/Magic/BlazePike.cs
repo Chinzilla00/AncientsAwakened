@@ -22,14 +22,14 @@ namespace AAMod.Items.Magic
 			item.height = 56;
 			item.useTime = 27;
 			item.useAnimation = 27;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 5;
 			item.value = 10000;
-			item.rare = 3;
+			item.rare = ItemRarityID.Orange;
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = true;
-			item.shoot = 664;
+			item.shoot = ProjectileID.DD2FlameBurstTowerT1Shot;
 			item.shootSpeed = 6f;
 		}
 

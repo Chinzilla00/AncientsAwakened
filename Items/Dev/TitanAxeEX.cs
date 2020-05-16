@@ -24,7 +24,7 @@ Titan Axe EX");
             item.noUseGraphic = true;
             item.channel = true;
             item.useAnimation = 20;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.useTime = 20;
             item.knockBack = 4f;
             item.autoReuse = false;
@@ -46,7 +46,7 @@ Titan Axe EX");
             if (player.altFunctionUse == 2)
             {
                 item.damage = 300;
-                item.useStyle = 1;
+                item.useStyle = ItemUseStyleID.SwingThrow;
                 item.thrown = true;
                 item.melee = false;
                 item.shoot = mod.ProjectileType("TitanAxeEX");
@@ -54,7 +54,7 @@ Titan Axe EX");
             else
             {
                 item.damage = 450;
-                item.useStyle = 5;
+                item.useStyle = ItemUseStyleID.HoldingOut;
                 item.melee = true;
                 item.thrown = false;
                 item.shoot = mod.ProjectileType("TitanEX");

@@ -13,9 +13,9 @@ namespace AAMod.Items.Throwing
             item.melee = true;
             item.damage = 140;                            
             item.value = 20;
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
             item.knockBack = 2;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.useAnimation = 19;
             item.useTime = 19;
             item.shoot = mod.ProjectileType("SpookerangP");

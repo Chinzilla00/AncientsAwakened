@@ -21,7 +21,7 @@ Not Consumable");
 			item.height = 32;
 			item.knockBack = 4f;
 			item.value = 30;
-			item.rare = 1;
+			item.rare = ItemRarityID.Blue;
 			item.shoot = mod.ProjectileType("TerraArrow");
             item.shootSpeed = 1f;
 			item.ammo = AmmoID.Arrow;

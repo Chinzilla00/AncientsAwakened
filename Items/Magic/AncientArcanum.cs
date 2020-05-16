@@ -16,7 +16,7 @@ namespace AAMod.Items.Magic
 		{
 			item.mana = 35;
 			item.damage = 195;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.shootSpeed = 9f;
 			item.shoot = mod.ProjectileType("AncientArcanum");
 			item.width = 26;
@@ -27,7 +27,7 @@ namespace AAMod.Items.Magic
 			item.autoReuse = true;
 			item.noMelee = true;
 			item.knockBack = 8f;
-			item.rare = 11;
+			item.rare = ItemRarityID.Purple;
 			item.value = Item.sellPrice(0, 30, 0, 0);
 			item.magic = true;
 			item.glowMask = 194;

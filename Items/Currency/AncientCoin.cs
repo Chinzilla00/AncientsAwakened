@@ -2,6 +2,7 @@
 using Terraria;
 using Terraria.GameContent.UI;
 using Terraria.Localization;
+using Terraria.ID;
 
 namespace AAMod.Items.Currency
 {
@@ -18,7 +19,7 @@ namespace AAMod.Items.Currency
             item.width = 16;
             item.height = 16;
             item.maxStack = 999;
-            item.rare = 6;
+            item.rare = ItemRarityID.LightPurple;
         }
     }
 

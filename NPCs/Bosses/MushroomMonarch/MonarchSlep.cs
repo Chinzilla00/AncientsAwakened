@@ -55,7 +55,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             {
                 Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<Dusts.MushDust>(), hitDirection, -1f, 0, default, 1f);
             }
-            if (Main.netMode != 1 && (NPC.CountNPCS(mod.NPCType("MonarchWake")) + NPC.CountNPCS(mod.NPCType("MushroomMonarch"))) < 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient && (NPC.CountNPCS(mod.NPCType("MonarchWake")) + NPC.CountNPCS(mod.NPCType("MushroomMonarch"))) < 1)
             {
                 int id = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("MonarchWake"));
                 Main.npc[id].position = npc.position;

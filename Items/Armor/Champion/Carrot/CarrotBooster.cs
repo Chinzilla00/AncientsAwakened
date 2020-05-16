@@ -41,8 +41,8 @@ namespace AAMod.Items.Armor.Champion.Carrot
 
         public override bool OnPickup(Player player)
         {
-            Main.PlaySound(7, (int)player.position.X, (int)player.position.Y, 1, 1f, 0f);
-            if (Main.netMode != 1)
+            Main.PlaySound(SoundID.Grab, (int)player.position.X, (int)player.position.Y, 1, 1f, 0f);
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 player.GetModPlayer<AAPlayer>().CarrotLevelup();
             }

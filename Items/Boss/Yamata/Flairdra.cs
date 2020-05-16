@@ -25,7 +25,7 @@ Inflicts Moonraze");
             item.height = 22;
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.noMelee = true;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.useAnimation = 12;
             item.useTime = 12;
             item.knockBack = 3.5f;
@@ -36,7 +36,7 @@ Inflicts Moonraze");
             item.UseSound = SoundID.Item21;
             item.melee = true;
             item.autoReuse = true;
-            item.rare = 9; AARarity = 13;
+            item.rare = ItemRarityID.Cyan; AARarity = 13;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

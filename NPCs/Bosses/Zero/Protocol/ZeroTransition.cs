@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.NPCs.Bosses.Zero.Protocol
 {
@@ -55,7 +56,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             {
                 npc.frame.Y = 152 * 25;
             }
-            if (npc.ai[0] >= 135 && !NPC.AnyNPCs(mod.NPCType("ZeroProtocol")) && Main.netMode != 1)
+            if (npc.ai[0] >= 135 && !NPC.AnyNPCs(mod.NPCType("ZeroProtocol")) && Main.netMode != NetmodeID.MultiplayerClient)
             {
                 AAModGlobalNPC.SpawnBoss(player, mod.NPCType("ZeroProtocol"), false, npc.Center, "", false);
 

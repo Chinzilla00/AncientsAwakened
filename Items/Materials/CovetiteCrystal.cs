@@ -1,3 +1,5 @@
+using Terraria.ID;
+
 namespace AAMod.Items.Materials
 {
     public class CovetiteCrystal : BaseAAItem
@@ -13,7 +15,7 @@ despite you already owning it.");
             item.width = 22;
             item.height = 20;
 			item.maxStack = 99;
-            item.rare = 6;
+            item.rare = ItemRarityID.LightPurple;
         }
     }
 }

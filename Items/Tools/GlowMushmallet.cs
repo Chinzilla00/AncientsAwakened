@@ -15,10 +15,10 @@ namespace AAMod.Items.Tools
             item.useTime = 18;
             item.useAnimation = 29;
             item.hammer = 55;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.knockBack = 1;
             item.value = Item.sellPrice(0, 0, 10, 0);
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.useTurn = true;

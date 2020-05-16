@@ -48,9 +48,9 @@ Includes the effects of all the pieces used to make this.
         {
             item.width = 18;
             item.height = 20;
-            item.rare = 11;
+            item.rare = ItemRarityID.Purple;
             item.accessory = true;
-            item.useStyle = 4;
+            item.useStyle = ItemUseStyleID.HoldingUp;
             item.useTime = 1;
             item.expertOnly = true;
             item.useTime = 30;

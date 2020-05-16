@@ -62,7 +62,7 @@ namespace AAMod.Tiles.Crafters
         {
             Player player = Main.player[Main.myPlayer];
             player.AddBuff(mod.BuffType("HydratoxinFlaskBuff"), 36000, true);
-			Main.PlaySound(7, (int)player.position.X, (int)player.position.Y, 1, 1f, 0f);
+			Main.PlaySound(SoundID.Grab, (int)player.position.X, (int)player.position.Y, 1, 1f, 0f);
             return true;
         }
 

@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Tiles.Altar
 {
@@ -51,11 +52,11 @@ namespace AAMod.Tiles.Altar
 
             npc.ai[0]++;
 
-            string s = Main.netMode == 0 ? "" : Lang.TheEquinox("s");
+            string s = Main.netMode == NetmodeID.SinglePlayer ? "" : Lang.TheEquinox("s");
 
             if (npc.ai[0] == 180)
             {
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.TheEquinox("WormSpawn1"), new Color(0, 255, 181));
+                if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.TheEquinox("WormSpawn1"), new Color(0, 255, 181));
             }
 
             if (npc.ai[0] == 360)

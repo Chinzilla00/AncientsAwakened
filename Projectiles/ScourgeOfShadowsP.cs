@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 using System;
+using Terraria.ID;
 
 namespace AAMod.Projectiles
 {
@@ -72,7 +73,7 @@ namespace AAMod.Projectiles
 					float num629 = Main.rand.Next(-35, 36) * 0.02f;
 					num628 *= 10f;
 					num629 *= 10f;
-					int p = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, num628, num629, 307, projectile.damage, (int)(projectile.knockBack * 0.35), Main.myPlayer, 0f, 0f);
+					int p = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, num628, num629, ProjectileID.TinyEater, projectile.damage, (int)(projectile.knockBack * 0.35), Main.myPlayer, 0f, 0f);
 					Main.projectile[p].timeLeft = 180;
 				}
 			}
@@ -86,7 +87,7 @@ namespace AAMod.Projectiles
 		
 		public override void Kill(int timeLeft)
 		{
-			Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 1, 1f, 0f);
+			Main.PlaySound(SoundID.NPCHit, (int)projectile.position.X, (int)projectile.position.Y, 1, 1f, 0f);
 			int num3;
 			for (int num622 = 0; num622 < 20; num622 = num3 + 1)
 			{

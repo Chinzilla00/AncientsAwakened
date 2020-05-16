@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.ID;
 
 namespace AAMod.Items.Banners
 {
@@ -13,9 +14,9 @@ namespace AAMod.Items.Banners
 			item.autoReuse = true;
 			item.useAnimation = 15;
 			item.useTime = 10;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.consumable = true;
-			item.rare = 1;
+			item.rare = ItemRarityID.Blue;
 			item.value = Item.sellPrice(0, 1, 0, 0);
 			item.createTile = mod.TileType("FatPixieBanner");
 			item.placeStyle = 0;

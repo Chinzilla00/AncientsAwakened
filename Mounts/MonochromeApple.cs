@@ -20,7 +20,7 @@ namespace AAMod.Mounts
 			item.height = 30;
 			item.useTime = 20;
 			item.useAnimation = 20;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.value = 300000;
 			item.UseSound = SoundID.Item79;
 			item.noMelee = true;

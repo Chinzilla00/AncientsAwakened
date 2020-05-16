@@ -27,7 +27,7 @@ namespace AAMod.Items.Materials
             item.height = refItem.height;
             item.maxStack = 999;
             item.value = 10000;
-            item.rare = 7;
+            item.rare = ItemRarityID.Lime;
         }
 
         // The following 2 methods are purely to show off these 2 hooks. Don't use them in your own code.

@@ -1,3 +1,5 @@
+using Terraria.ID;
+
 namespace AAMod.Items.Flasks
 {
     public class SquidList : BaseAAItem
@@ -25,7 +27,7 @@ namespace AAMod.Items.Flasks
             item.width = 22;
             item.height = 22;
             item.value = 0;
-            item.rare = 0;
+            item.rare = ItemRarityID.White;
         }
     }
 }

@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.Enums;
+using Terraria.ID;
 
 namespace AAMod.NPCs.Bosses.Zero.Protocol
 {
@@ -76,7 +77,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             }
             if (projectile.localAI[0] == 0f)
             {
-                Main.PlaySound(29, (int)projectile.position.X, (int)projectile.position.Y, 104, 1f, 0f);
+                Main.PlaySound(SoundID.Zombie, (int)projectile.position.X, (int)projectile.position.Y, 104, 1f, 0f);
             }
             float num801 = Main.npc[ai1].type == ModContent.NPCType<ZeroProtocol>() ? 2f:1f;
             projectile.localAI[0] += 1f;

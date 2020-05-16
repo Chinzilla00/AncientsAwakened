@@ -33,7 +33,7 @@ WARNING: May permanently displace appendages until game restart. This is a featu
             item.value = Item.sellPrice(3, 0, 0, 0);
             item.expert = true; item.expertOnly = true;
             item.accessory = true;
-            item.rare = 9; AARarity = 13;
+            item.rare = ItemRarityID.Cyan; AARarity = 13;
         }
 
         public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
@@ -74,7 +74,7 @@ WARNING: May permanently displace appendages until game restart. This is a featu
                     if ((Main.tile[num246, num247].wall != 87 || num247 <= Main.worldSurface || NPC.downedPlantBoss) && !Collision.SolidCollision(vector32, player.width, player.height))
                     {
                         player.Teleport(vector32, 1, 0);
-                        NetMessage.SendData(65, -1, -1, null, 0, player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
+                        NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
                         Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Glitch"));
                         CodeCD = 600;
                         player.AddBuff(ModContent.BuffType<Buffs.Glitched>(), 300);

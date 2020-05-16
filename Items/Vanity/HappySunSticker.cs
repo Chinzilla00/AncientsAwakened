@@ -9,7 +9,7 @@ namespace AAMod.Items.Vanity
         {
             item.width = 26;
             item.height = 24;
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
             item.accessory = true;
             item.vanity = true;
         }

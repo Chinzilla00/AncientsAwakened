@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.NPCs.Bosses.AH
 {
@@ -59,7 +60,7 @@ namespace AAMod.NPCs.Bosses.AH
 
             if (npc.ai[1] == 60)          //if the timer has gotten to 7.5 seconds, this happens (60 = 1 second)
             {
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AHSpawn1"), new Color(102, 20, 48));
+                if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("AHSpawn1"), new Color(102, 20, 48));
                 music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ChaosSissy");
             }
 
@@ -67,7 +68,7 @@ namespace AAMod.NPCs.Bosses.AH
             {
                 if (AAWorld.downedBrood)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AHSpawn2"), new Color(102, 20, 48));
+                    if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("AHSpawn2"), new Color(102, 20, 48));
                 }
                 else
                 {

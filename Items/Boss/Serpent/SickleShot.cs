@@ -23,12 +23,12 @@ namespace AAMod.Items.Boss.Serpent
             item.height = 62;
             item.useTime = 30;
             item.useAnimation = 30;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.shoot = Terraria.ModLoader.ModContent.ProjectileType<Projectiles.Serpent.IceArrow>();
             item.useAmmo = AmmoID.Arrow;
             item.knockBack = 2;
             item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
             item.UseSound = SoundID.Item5;
             item.autoReuse = true;
             item.shootSpeed = 30f;

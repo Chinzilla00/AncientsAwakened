@@ -35,7 +35,7 @@ namespace AAMod.Projectiles
 
         public override void Kill(int timeLeft)
         {
-            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 50);
+            Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 50);
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)

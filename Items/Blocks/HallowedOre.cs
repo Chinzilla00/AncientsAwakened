@@ -1,3 +1,5 @@
+using Terraria.ID;
+
 namespace AAMod.Items.Blocks
 {
     public class HallowedOre : BaseAAItem
@@ -12,8 +14,8 @@ namespace AAMod.Items.Blocks
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.rare = 4;
-            item.useStyle = 1;
+            item.rare = ItemRarityID.LightRed;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.consumable = true;
             item.createTile = mod.TileType("HallowedOre");
             item.value = 10000;

@@ -20,10 +20,10 @@ namespace AAMod.Items.Tools
             item.useTime = 13;
 			item.useAnimation = 22;
 			item.pick = 200;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 4;
 			item.value = 3600;
-			item.rare = 6;
+			item.rare = ItemRarityID.LightPurple;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 		}

@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Vanity.Gibs
 {
@@ -22,7 +23,7 @@ Hold down and jump to hover for an extended period of time
 			item.width = 42;
 			item.height = 42;
 			item.value = 500000;
-			item.rare = 10;
+			item.rare = ItemRarityID.Red;
 			item.accessory = true;
 		}
 

@@ -23,11 +23,11 @@ namespace AAMod.Items.Boss.Djinn
             item.shoot = mod.ProjectileType("DesertGust");
             item.shootSpeed = 5f;
 	        item.UseSound = SoundID.Item1;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 3;
             item.value = 50000;
             item.autoReuse = true;
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
 		}
 	}
 }

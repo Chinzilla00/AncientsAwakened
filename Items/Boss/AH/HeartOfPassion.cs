@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Boss.AH
 {
@@ -18,7 +19,7 @@ Below 1/3 of your maximum life, your magic attacks and minions inflict Daybroken
             item.width = 66;
             item.height = 78;
             item.value = Item.sellPrice(0, 10, 0, 0);
-            item.rare = 11;
+            item.rare = ItemRarityID.Purple;
             item.accessory = true;
             item.expert = true; item.expertOnly = true;
             item.defense = 3;

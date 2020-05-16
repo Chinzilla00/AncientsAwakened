@@ -18,7 +18,7 @@ Sock Puppet Staff EX");
 
         public override void SetDefaults()
         {
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("SoccMinion");
             item.damage = 240;
@@ -30,7 +30,7 @@ Sock Puppet Staff EX");
             item.noMelee = true;
             item.value = Item.sellPrice(0, 1, 0, 0);
             item.knockBack = 5f;
-            item.rare = 8;
+            item.rare = ItemRarityID.Yellow;
             item.summon = true;
             item.mana = 20;
         }

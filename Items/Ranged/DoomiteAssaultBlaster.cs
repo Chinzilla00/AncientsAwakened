@@ -10,7 +10,7 @@ namespace AAMod.Items.Ranged
         public override void SetDefaults()
         {
             item.autoReuse = true;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.useAnimation = 19;
             item.useTime = 19;
             item.width = 52;
@@ -20,7 +20,7 @@ namespace AAMod.Items.Ranged
             item.damage = 15;
             item.shootSpeed = 9f;
             item.noMelee = true;
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
             item.autoReuse = true;
             item.ranged = true;
             item.value = 20000;

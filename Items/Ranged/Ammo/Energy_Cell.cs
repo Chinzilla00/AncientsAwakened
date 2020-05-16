@@ -1,6 +1,7 @@
 using Terraria;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Terraria.ID;
 
 namespace AAMod.Items.Ranged.Ammo
 {
@@ -13,7 +14,7 @@ namespace AAMod.Items.Ranged.Ammo
 			item.height = 16;
 			item.maxStack = 999;
 			item.value = Item.sellPrice(0, 0, 1, 0);
-			item.rare = 5;
+			item.rare = ItemRarityID.Pink;
 			item.consumable = true;
 			item.shoot = mod.ProjectileType("Energy_Cell_Pro");
 			item.ammo = item.type;

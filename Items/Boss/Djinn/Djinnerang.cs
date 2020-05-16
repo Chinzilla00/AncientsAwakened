@@ -22,10 +22,10 @@ namespace AAMod.Items.Boss.Djinn
 			item.useTime = 12;
 			item.useAnimation = 12;
             item.noUseGraphic = true;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 0;
 			item.value = 8;
-			item.rare = 6;
+			item.rare = ItemRarityID.LightPurple;
 			item.shootSpeed = 6f;
 			item.shoot = mod.ProjectileType ("Djinnerang");
 			item.UseSound = SoundID.Item1;

@@ -22,10 +22,10 @@ namespace AAMod.Items.Boss.Serpent
             item.height = 56;
             item.useTime = 21;
             item.useAnimation = 21;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.knockBack = 5;
             item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.shoot = ProjectileID.CrystalBullet;

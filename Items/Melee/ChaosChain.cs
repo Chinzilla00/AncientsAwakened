@@ -17,7 +17,7 @@ namespace AAMod.Items.Melee
         public override void SetDefaults()
         {
             item.autoReuse = true;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.useAnimation = 24;
             item.useTime = 24;
             item.knockBack = 15f;
@@ -27,7 +27,7 @@ namespace AAMod.Items.Melee
             item.shoot = mod.ProjectileType("ChaosChain");
             item.shootSpeed = 14f;
             item.UseSound = SoundID.Item10;
-            item.rare = 8;
+            item.rare = ItemRarityID.Yellow;
             item.value = Item.sellPrice(0, 20, 0, 0);
             item.melee = true;
             item.noMelee = true;

@@ -24,14 +24,14 @@ namespace AAMod.Items.Tools
             item.tileBoost += 4;
             item.damage = 60;
             item.knockBack = 4;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.useTime = 5;
             item.useAnimation = 19;
             item.melee = true;
             item.useTurn = true;
             item.autoReuse = true;
             item.UseSound = SoundID.Item1;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 12;
         }
 

@@ -1,4 +1,5 @@
 ﻿using Terraria;
+using Terraria.ID;
 
 namespace AAMod.Items.Dev
 {
@@ -22,11 +23,11 @@ namespace AAMod.Items.Dev
             item.shoot = mod.ProjectileType("MobianBuster");
             item.useTime = 10;
             item.useAnimation = 10;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.channel = true;
             Item.sellPrice(0, 30, 0, 0);
             item.noMelee = true;
-			item.rare = 10;
+			item.rare = ItemRarityID.Red;
 			item.shootSpeed = 12f;
 			item.noUseGraphic = true;
         }

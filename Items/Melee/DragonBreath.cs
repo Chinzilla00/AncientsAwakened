@@ -13,10 +13,10 @@ namespace AAMod.Items.Melee   //where is located
 
             item.damage = 60;
             item.value = 100000;
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
             item.knockBack = 1;
             item.channel = true;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.useAnimation = 18;
             item.useTime = 18;
             item.shoot = mod.ProjectileType("DragonBreathP");

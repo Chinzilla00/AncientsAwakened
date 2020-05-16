@@ -35,7 +35,7 @@ namespace AAMod.Projectiles.Yamata   //The directory for your .cs and .png; Exam
 
         public override void PostAI()
         {
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 ProjTimer++;
                 if (ProjTimer >= 50)

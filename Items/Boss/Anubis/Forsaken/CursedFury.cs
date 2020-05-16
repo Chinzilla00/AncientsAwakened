@@ -21,7 +21,7 @@ namespace AAMod.Items.Boss.Anubis.Forsaken
 			item.height = 38;
 			item.useTime = 5;
 			item.useAnimation = 10;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.noMelee = true;
 			item.knockBack = 4f;
 			item.UseSound = SoundID.Item34;
@@ -30,7 +30,7 @@ namespace AAMod.Items.Boss.Anubis.Forsaken
 			item.shoot = mod.ProjectileType("ForsakenFlame");
 			item.shootSpeed = 10f;
 			item.useAmmo = 23;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 12;
         }
 

@@ -29,7 +29,7 @@ namespace AAMod.Projectiles.Serpent
 			{
 				Dust.NewDust(projectile.position, projectile.width, projectile.height, ModContent.DustType<Dusts.IceDust>());
 			}
-			Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y);
+			Main.PlaySound(SoundID.Dig, (int)projectile.position.X, (int)projectile.position.Y);
 		}
 
 	}

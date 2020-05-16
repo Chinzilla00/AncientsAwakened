@@ -20,7 +20,7 @@ namespace AAMod.Items.Ranged
             item.damage = 40;
             item.knockBack = 5f;
             item.ranged = true;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.UseSound = SoundID.Item1;
             item.useAnimation = 24;
             item.useTime = 24;
@@ -30,7 +30,7 @@ namespace AAMod.Items.Ranged
             item.noMelee = true;
             item.autoReuse = true;
             item.value = Terraria.Item.sellPrice(0, 1, 0, 0);
-            item.rare = 4;
+            item.rare = ItemRarityID.LightRed;
         }
 
         public override void AddRecipes()

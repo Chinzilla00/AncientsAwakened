@@ -18,7 +18,7 @@ namespace AAMod.Items.Boss.Yamata        //We need this to basically indicate th
             item.height = 28;    
             item.useTime = 26; 
             item.useAnimation = 26; 
-            item.useStyle = 5;        
+            item.useStyle = ItemUseStyleID.HoldingOut;        
             item.noMelee = true;   
             item.knockBack = 1; 
             item.value = Item.sellPrice(0, 30, 0, 0);
@@ -27,7 +27,7 @@ namespace AAMod.Items.Boss.Yamata        //We need this to basically indicate th
             item.autoReuse = true; 
             item.shoot = mod.ProjectileType("SmallToxibomb");  
             item.shootSpeed = 20f;
-            item.rare = 9; AARarity = 13;
+            item.rare = ItemRarityID.Cyan; AARarity = 13;
         }
 
 		public override void SetStaticDefaults()

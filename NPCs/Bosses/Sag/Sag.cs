@@ -206,7 +206,7 @@ namespace AAMod.NPCs.Bosses.Sag
                     Main.dust[num243].shader = GameShaders.Armor.GetSecondaryShader(59, Main.LocalPlayer);
                 }
 
-                if (!lowHealth && Main.netMode != 1)
+                if (!lowHealth && Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     CombatText.NewText(npc.getRect(), new Color(233, 46, 46), Lang.BossChat("SagChat"), true, true);
                     lowHealth = true;
@@ -228,7 +228,7 @@ namespace AAMod.NPCs.Bosses.Sag
                     BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<SagShot>(), ref npc.ai[2], 60, npc.damage / 4, 9, false, new Vector2(-36 * npc.direction, -51));
                     break;
                 case 1:
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         internalAI[0]++;
                         if (internalAI[0] > 180)
@@ -243,7 +243,7 @@ namespace AAMod.NPCs.Bosses.Sag
                     }
                     break;
                 case 2:
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         internalAI[0]++;
                         if (internalAI[0] > 210)
@@ -258,7 +258,7 @@ namespace AAMod.NPCs.Bosses.Sag
                     }
                     break;
                 case 3:
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         internalAI[0]++;
                         if (internalAI[0] > 240)
@@ -273,7 +273,7 @@ namespace AAMod.NPCs.Bosses.Sag
                     }
                     break;
                 case 4:
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         internalAI[0]++;
                     }

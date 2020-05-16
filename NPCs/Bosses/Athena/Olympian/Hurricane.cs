@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.ID;
 
 namespace AAMod.NPCs.Bosses.Athena.Olympian
 {
@@ -26,7 +27,7 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
             if (projectile.soundDelay == 0)
             {
                 projectile.soundDelay = -1;
-                Main.PlaySound(2, projectile.Center, 122);
+                Main.PlaySound(SoundID.Item, projectile.Center, 122);
             }
             projectile.ai[0] += 1f;
             if (projectile.ai[0] >= num1125)

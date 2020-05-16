@@ -17,10 +17,10 @@ namespace AAMod.Items.Ranged
             item.height = 24;
             item.useTime = 25;
             item.useAnimation = 25;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.shoot = ModContent.ProjectileType<Projectiles.Vulcan>();
             item.knockBack = 4;
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
             item.UseSound = SoundID.Item34;
             item.autoReuse = false;
             item.shootSpeed = 10f;

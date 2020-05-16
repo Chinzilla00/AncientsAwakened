@@ -93,7 +93,7 @@ namespace AAMod.NPCs.Enemies.Hallow
 
         public override void NPCLoot()
         {
-			if(Main.netMode != 1)
+			if(Main.netMode != NetmodeID.MultiplayerClient)
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.PixieDust, Main.rand.Next(5, 7));
         }
 

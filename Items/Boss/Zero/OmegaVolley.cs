@@ -11,21 +11,21 @@ namespace AAMod.Items.Boss.Zero
 	{
 		public override void SetDefaults()
 		{
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.autoReuse = true;
 			item.useAnimation = 2;
 			item.useTime = 5;
             item.reuseDelay = 2;
 			item.width = 72;
 			item.height = 34;
-			item.shoot = 10;
+			item.shoot = ProjectileID.PurificationPowder;
 			item.useAmmo = AmmoID.Bullet;
 			item.UseSound = SoundID.Item41;
 			item.damage = 85;
 			item.shootSpeed = 32f;
 			item.noMelee = true;
 			item.value = Item.sellPrice(0, 30, 0, 0);
-			item.rare = 11;
+			item.rare = ItemRarityID.Purple;
 			item.knockBack = 3f;
 			item.ranged = true;
 		}

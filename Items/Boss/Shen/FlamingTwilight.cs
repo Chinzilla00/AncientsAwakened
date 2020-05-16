@@ -16,12 +16,12 @@ namespace AAMod.Items.Boss.Shen
 			item.height = 36;
 			item.useTime = 14;
 			item.useAnimation = 14;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.noMelee = true;
 			item.knockBack = 6;
 			item.UseSound = SoundID.Item34;
             item.value = Item.sellPrice(1, 50, 0, 0);
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 14;
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("DiscordianInfernoF");

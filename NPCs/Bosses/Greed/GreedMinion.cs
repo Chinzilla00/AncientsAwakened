@@ -67,7 +67,7 @@ namespace AAMod.NPCs.Bosses.Greed
 
             if (npc.ai[2] == 0)
             {
-                if (Main.netMode != 1)
+                if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     npc.ai[2]++;
                 }
@@ -127,7 +127,7 @@ namespace AAMod.NPCs.Bosses.Greed
                     npc.noTileCollide = true;
                     BaseAI.AISkull(npc, ref internalAI, false, 6, 350, 0.14f, .2f);
 
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         int p;
                         if (MinionType == 8) //Demonite
@@ -171,7 +171,7 @@ namespace AAMod.NPCs.Bosses.Greed
                             num6 = num5 / num6;
                             num3 *= num6;
                             num4 *= num6;
-                            int l = Projectile.NewProjectile(num, num2, num3, num4, 221, 36, 0f, Main.myPlayer, 0f, 0f);
+                            int l = Projectile.NewProjectile(num, num2, num3, num4, ProjectileID.FlowerPetal, 36, 0f, Main.myPlayer, 0f, 0f);
                             Main.projectile[l].friendly = false;
                             Main.projectile[l].hostile = true;
                             npc.netUpdate = true;
@@ -184,7 +184,7 @@ namespace AAMod.NPCs.Bosses.Greed
                 shadowDodge = shadowDodgeTimer > 0;
                 if (shadowDodge)
                 {
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         if (!npc.dontTakeDamage)
                         {
@@ -202,7 +202,7 @@ namespace AAMod.NPCs.Bosses.Greed
                 }
                 else
                 {
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         if (npc.dontTakeDamage)
                         {
@@ -462,7 +462,7 @@ namespace AAMod.NPCs.Bosses.Greed
         {
             int pID = -1;
             if (damage == -1) { Projectile proj = new Projectile(); proj.SetDefaults(projType); damage = proj.damage; }
-            bool properSide = codable is NPC ? Main.netMode != 1 : codable is Projectile ? ((Projectile)codable).owner == Main.myPlayer : true;
+            bool properSide = codable is NPC ? Main.netMode != NetmodeID.MultiplayerClient : codable is Projectile ? ((Projectile)codable).owner == Main.myPlayer : true;
             if (properSide)
             {
                 Vector2 targetCenter = position + new Vector2(width * 0.5f, height * 0.5f);

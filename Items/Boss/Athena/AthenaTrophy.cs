@@ -1,3 +1,5 @@
+using Terraria.ID;
+
 namespace AAMod.Items.Boss.Athena
 {
     public class AthenaTrophy : BaseAAItem
@@ -16,8 +18,8 @@ namespace AAMod.Items.Boss.Athena
 			item.autoReuse = true;
 			item.useAnimation = 15;
 			item.useTime = 10;
-            item.rare = 1;
-            item.useStyle = 1;
+            item.rare = ItemRarityID.Blue;
+            item.useStyle = ItemUseStyleID.SwingThrow;
 			item.consumable = true;
 			item.value = 2000;
 			item.rare = 1;

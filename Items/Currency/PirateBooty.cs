@@ -2,6 +2,7 @@
 using Terraria;
 using Terraria.GameContent.UI;
 using Terraria.Localization;
+using Terraria.ID;
 
 namespace AAMod.Items.Currency
 {
@@ -19,7 +20,7 @@ namespace AAMod.Items.Currency
             item.height = 16;
             item.maxStack = 999;
             item.value = 1000;
-            item.rare = 4;
+            item.rare = ItemRarityID.LightRed;
         }
     }
     public class PBooty : CustomCurrencySingleCoin

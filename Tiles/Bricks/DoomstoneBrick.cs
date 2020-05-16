@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Tiles.Bricks
 {
@@ -13,7 +14,7 @@ namespace AAMod.Tiles.Bricks
 			Main.tileMergeDirt[Type] = true;
             Main.tileBlockLight[Type] = true;
             //true for block to emit light
-            soundType = 21;
+            soundType = SoundID.Tink;
             drop = mod.ItemType("DoomstoneBrick");   
             dustType = mod.DustType("DoomDust");
             AddMapEntry(new Color(40, 20, 20));

@@ -18,10 +18,10 @@ namespace AAMod.Items.Boss.AH
             item.width = 45;
             item.height = 18;
             item.maxStack = 1;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 12;
             item.value = BaseUtility.CalcValue(0, 20, 0, 0);
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.useAnimation = 35;
             item.useTime = 35;
             item.UseSound = SoundID.Item20;

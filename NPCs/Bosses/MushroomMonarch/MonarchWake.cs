@@ -56,7 +56,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 
             npc.frame.Y = 70 * frame;
 
-            if (npc.ai[0] == 160 && Main.netMode != 1)
+            if (npc.ai[0] == 160 && Main.netMode != NetmodeID.MultiplayerClient)
             {
                 NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<MushroomMonarch>());
                 npc.active = false;

@@ -18,7 +18,7 @@ Ignores 5 Enemy defense");
             item.width = 58;
             item.height = 54;
             item.value = Item.sellPrice(0, 10, 0, 0);
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
             item.accessory = true;
             item.expert = true; item.expertOnly = true;
             item.defense = 3;

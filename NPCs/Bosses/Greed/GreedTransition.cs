@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.NPCs.Bosses.Greed
 {
@@ -42,7 +43,7 @@ namespace AAMod.NPCs.Bosses.Greed
             Player player = Main.player[npc.target];
             MoveToPoint(player.Center - new Vector2(0, 300f));
 
-            if (Main.netMode != 2) //clientside stuff
+            if (Main.netMode != NetmodeID.Server) //clientside stuff
             {
                 if (npc.ai[0] > 175)
                 {
@@ -54,7 +55,7 @@ namespace AAMod.NPCs.Bosses.Greed
                 }
             }
 
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 npc.ai[0]++;
 

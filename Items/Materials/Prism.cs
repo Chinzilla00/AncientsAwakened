@@ -1,5 +1,6 @@
 using Terraria;
 using Microsoft.Xna.Framework;
+using Terraria.ID;
 
 namespace AAMod.Items.Materials
 {
@@ -22,7 +23,7 @@ namespace AAMod.Items.Materials
             item.width = 22;
             item.height = 22;
 			item.maxStack = 99;
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
             item.value = 1000;
         }
     }

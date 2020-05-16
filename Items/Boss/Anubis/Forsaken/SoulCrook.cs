@@ -16,7 +16,7 @@ namespace AAMod.Items.Boss.Anubis.Forsaken
         {
             item.width = 50;
             item.height = 50;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.useAnimation = 15;
             item.useTime = 15;
             item.UseSound = SoundID.Item1;
@@ -28,7 +28,7 @@ namespace AAMod.Items.Boss.Anubis.Forsaken
             item.noMelee = true;
             item.shoot = mod.ProjType("Crook");
             item.shootSpeed = 15;
-            item.rare = 11;
+            item.rare = ItemRarityID.Purple;
         }
 
         public override bool CanUseItem(Player player)       //this make that you can shoot only 1 boomerang at once

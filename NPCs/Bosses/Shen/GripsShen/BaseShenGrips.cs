@@ -196,7 +196,7 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
 				Vector2 point = targetPlayer.Center + offsetBasePoint + new Vector2(0f, -ChangingPosY);
 				MoveToPoint(point);
                 internalAI[0] ++;
-				if(Main.netMode != 1 && (Vector2.Distance(npc.Center, point) < 10f || internalAI[0] > 100))
+				if(Main.netMode != NetmodeID.MultiplayerClient && (Vector2.Distance(npc.Center, point) < 10f || internalAI[0] > 100))
 				{
                     npc.ai[0] = 4;
                     npc.ai[1] = 0;
@@ -219,7 +219,7 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
                 if(Keepmove != new Vector2(0,0))
                 {
                     MoveToPoint(Keepmove);
-                    if(Main.netMode != 1)
+                    if(Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         Main.PlaySound(SoundID.Roar, npc.position, 0);
                         npc.ai[0] = 3;			
@@ -239,7 +239,7 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
                 if(internalAI[2] >= 1) internalAI[2] ++;
 				moveSpeed = 22f;
 				MoveToPoint(Keepmove);
-				if(Main.netMode != 1 && (Vector2.Distance(npc.Center, Keepmove) < 10f || npc.ai[3] ++ > 60))
+				if(Main.netMode != NetmodeID.MultiplayerClient && (Vector2.Distance(npc.Center, Keepmove) < 10f || npc.ai[3] ++ > 60))
 				{
                     npc.ai[0] = 2;
                     npc.ai[1] = targetPlayer.Center.X;
@@ -267,7 +267,7 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
 				Vector2 point = targetPlayer.Center + offsetBasePoint + new Vector2(-ChangingPosX, 0);
 				MoveToPoint(point);
                 internalAI[0] ++;
-                if(internalAI[0] == 100 && Main.netMode != 1)
+                if(internalAI[0] == 100 && Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     if(BlazeGrip)
                     {
@@ -288,7 +288,7 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
                 
                 if(internalAI[0] > 200)
                 {
-                    if(Main.netMode != 1)
+                    if(Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         npc.ai[0] = 5;
                         npc.ai[1] = 0;
@@ -322,7 +322,7 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
                     
 
                     internalAI[2] ++;
-                    if(internalAI[2] == 160 && Main.netMode != 1)
+                    if(internalAI[2] == 160 && Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
                         float baseSpeed = (float)Math.Sqrt((dir.X * dir.X) + (dir.Y * dir.Y));
@@ -357,7 +357,7 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
                     if(Keepmove != new Vector2(0,0))
                     {
                         MoveToPoint(Keepmove);
-                        if(Main.netMode != 1)
+                        if(Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             Main.PlaySound(SoundID.Roar, npc.position, 0);
                             npc.ai[0] = 3;			
@@ -411,7 +411,7 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
 				moveSpeed = 14f;
 				Vector2 point = targetPlayer.Center + offsetBasePoint;
 				MoveToPoint(point);
-				if(Main.netMode != 1)
+				if(Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					npc.ai[1]++;
 					if(npc.ai[1] > 90)

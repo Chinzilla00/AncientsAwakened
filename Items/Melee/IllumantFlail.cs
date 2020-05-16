@@ -17,7 +17,7 @@ namespace AAMod.Items.Melee   //where is located
 
             item.knockBack = 6;
             item.value = Item.sellPrice(0, 1, 0, 0);
-            item.rare = 7;
+            item.rare = ItemRarityID.Lime;
             item.autoReuse = true;   
             item.useTurn = false;
             item.shoot = mod.ProjectileType("IllumantBall");

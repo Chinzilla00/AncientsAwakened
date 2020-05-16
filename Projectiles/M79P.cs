@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Projectiles
 {
@@ -28,7 +29,7 @@ namespace AAMod.Projectiles
 		public override void Kill(int timeLeft)
 		{
 			projectile.type = 133;
-			Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
+			Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 62);
 			int num3;
 			for (int num729 = 0; num729 < 30; num729 = num3 + 1)
 			{

@@ -27,13 +27,13 @@ Reign of Fire EX");
             item.height = 86;             
             item.useTime = 60;          
             item.useAnimation = 60;     
-            item.useStyle = 1;        
+            item.useStyle = ItemUseStyleID.SwingThrow;        
             item.knockBack = 6.5f;      
             item.value = Item.sellPrice(3, 0, 0, 0);
 			item.UseSound = SoundID.Item20;
             item.autoReuse = true;   
             item.expert = true; item.expertOnly = true;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
 			item.useTurn = true;
             AARarity = 13;
         }
@@ -84,8 +84,8 @@ Reign of Fire EX");
 		{
 			if (Main.rand.NextBool(8))
 			{
-				Main.PlaySound(2, player.Center, 124);
-				Main.PlaySound(2, player.Center, 124);
+				Main.PlaySound(SoundID.Item, player.Center, 124);
+				Main.PlaySound(SoundID.Item, player.Center, 124);
 				Vector2 vector12 = new Vector2(0,0);
 				vector12 = new Vector2(Main.mouseX + Main.screenPosition.X, player.Center.Y);
 				Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);

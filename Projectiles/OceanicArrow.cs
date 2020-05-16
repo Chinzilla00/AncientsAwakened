@@ -36,14 +36,14 @@ namespace AAMod.Projectiles
 		
 		public override void Kill(int timeLeft)
 		{
-			Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 112);
+			Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 112);
 			for (int h = 0; h < 4; h++)
 			{
 				Vector2 vel = new Vector2(0, -1);
 				float rand = Main.rand.NextFloat() * 6.3f;
 				vel = vel.RotatedBy(rand);
 				vel *= 4f;
-				int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vel.X, vel.Y, 405, projectile.damage/4, 0, Main.myPlayer);
+				int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vel.X, vel.Y, ProjectileID.FlaironBubble, projectile.damage/4, 0, Main.myPlayer);
 				Main.projectile[proj].melee = false;
 				Main.projectile[proj].ranged = true;
 			}

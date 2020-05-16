@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
+using Terraria.ID;
 
 namespace AAMod.Tiles.Plants
 {
@@ -16,7 +17,7 @@ namespace AAMod.Tiles.Plants
             TileObjectData.addTile(Type);
             drop = ModContent.ItemType<Items.Potions.Carrot>();
             dustType = ModContent.DustType<Dusts.CarrotDust>();
-            soundType = 6;
+            soundType = SoundID.Grass;
         }
 
         public override bool Dangersense(int i, int j, Player player)

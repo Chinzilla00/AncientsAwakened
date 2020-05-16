@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 using Terraria.Enums;
 using Terraria.GameContent.Shaders;
 using Terraria.Graphics.Effects;
+using Terraria.ID;
 
 namespace AAMod.Projectiles
 {
@@ -239,7 +240,7 @@ namespace AAMod.Projectiles
 				float value43 = 0.1f * (float)Math.Sin(Main.GlobalTime * 20f);
 				Vector2 size = new Vector2(projectile.velocity.Length() * projectile.localAI[1], projectile.width * projectile.scale);
 				float num848 = projectile.velocity.ToRotation();
-				if (Main.netMode != 2) 
+				if (Main.netMode != NetmodeID.Server) 
 				{
 					((WaterShaderData)Filters.Scene["WaterDistortion"].GetShader()).QueueRipple(projectile.position + new Vector2(size.X * 0.5f, 0f).RotatedBy(num848, default), new Color(0.5f, 0.1f * Math.Sign(value43) + 0.5f, 0f, 1f) * Math.Abs(value43), size, RippleShape.Square, num848);
 				}

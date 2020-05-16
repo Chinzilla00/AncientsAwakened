@@ -36,7 +36,7 @@ namespace AAMod.NPCs.Bosses.Hydra
         public override void AI()
         {
             npc.dontTakeDamage = true;
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 if (npc.velocity.Y == 0)
                 {

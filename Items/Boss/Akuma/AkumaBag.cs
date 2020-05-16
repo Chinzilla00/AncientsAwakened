@@ -1,6 +1,7 @@
 using Terraria;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.ID;
 
 namespace AAMod.Items.Boss.Akuma
 {
@@ -20,7 +21,7 @@ namespace AAMod.Items.Boss.Akuma
             item.width = 32;
             item.height = 32;
             item.expert = true; item.expertOnly = true;
-            item.rare = 10;
+            item.rare = ItemRarityID.Red;
         }
 
 

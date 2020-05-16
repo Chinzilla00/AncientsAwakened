@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.NPCs.Bosses.Equinox
 {
@@ -122,7 +123,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             {
                 Vector2 shoot = new Vector2((float)Math.Sin(i * 0.125f * (float)Math.PI), (float)Math.Cos(i * 0.125f * (float)Math.PI));
                 shoot *= 12f;
-                int ball = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, shoot.X, shoot.Y, 258, projectile.damage, 5, Main.myPlayer);
+                int ball = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, shoot.X, shoot.Y, ProjectileID.Fireball, projectile.damage, 5, Main.myPlayer);
                 Main.projectile[ball].timeLeft = 1500;
                 Main.projectile[ball].tileCollide = false;
             }

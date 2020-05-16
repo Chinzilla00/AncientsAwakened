@@ -18,7 +18,7 @@ namespace AAMod.Items.Ranged
 
         public override void SetDefaults()
         {
-            item.CloneDefaults(3859);
+            item.CloneDefaults(ItemID.DD2BetsyBow);
 			item.damage = 475;
 			item.shootSpeed = 16f;
         }
@@ -26,7 +26,7 @@ namespace AAMod.Items.Ranged
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(3859);
+            recipe.AddIngredient(ItemID.DD2BetsyBow);
 			recipe.AddIngredient(ItemID.DaedalusStormbow);
             recipe.AddIngredient(null, "EXSoul");
             recipe.AddTile(null, "QuantumFusionAccelerator");
@@ -67,8 +67,8 @@ namespace AAMod.Items.Ranged
 			vector6.X = Main.mouseX + Main.screenPosition.X - vector2.X;
 			vector6.Y = Main.mouseY + Main.screenPosition.Y - vector2.Y - 1000f;
 			player.itemRotation = (float)Math.Atan2(vector6.Y * player.direction, vector6.X * player.direction);
-			NetMessage.SendData(13, -1, -1, null, player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
-			NetMessage.SendData(41, -1, -1, null, player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
+			NetMessage.SendData(MessageID.PlayerControls, -1, -1, null, player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
+			NetMessage.SendData(MessageID.ItemAnimation, -1, -1, null, player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
 			int num90 = 5;
 			if (Main.rand.Next(2) == 0)
 			{
@@ -97,7 +97,7 @@ namespace AAMod.Items.Ranged
 				float SpeedY = num83 + Main.rand.Next(-40, 41) * 0.03f;
 				num92 *= Main.rand.Next(75, 150) * 0.01f;
 				vector2.X += Main.rand.Next(-50, 51);
-				int num93 = Projectile.NewProjectile(vector2.X, vector2.Y, num92, SpeedY, 710, damage, knockBack, player.whoAmI, 0f, 0f);
+				int num93 = Projectile.NewProjectile(vector2.X, vector2.Y, num92, SpeedY, ProjectileID.DD2BetsyArrow, damage, knockBack, player.whoAmI, 0f, 0f);
 				Main.projectile[num93].noDropItem = true;
 				Main.projectile[num93].tileCollide = false;
 			}

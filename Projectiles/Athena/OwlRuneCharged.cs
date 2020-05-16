@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ModLoader;
 
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.ID;
 
 namespace AAMod.Projectiles.Athena
 {
@@ -174,7 +175,7 @@ namespace AAMod.Projectiles.Athena
                 }
             }
             shoot += 1f;
-            if (shoot % 30f == 0f && shoot < 180f && Main.netMode != 1)
+            if (shoot % 30f == 0f && shoot < 180f && Main.netMode != NetmodeID.MultiplayerClient)
             {
                 int[] array4 = new int[5];
                 Vector2[] array5 = new Vector2[5];

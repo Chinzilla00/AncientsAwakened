@@ -22,17 +22,17 @@ Can only be used in the Void");
             item.width = 24;
             item.height = 22;
             item.maxStack = 20;
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.useAnimation = 30;
             item.useTime = 30;
-            item.useStyle = 4;
+            item.useStyle = ItemUseStyleID.HoldingUp;
             item.consumable = true;
         }
 
         public override bool UseItem(Player player)
         {
             AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Sag"), true, 0, 0, Language.GetTextValue("Mods.AAMod.Common.Sagittarius"), false);
-            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
+            Main.PlaySound(SoundID.Roar, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }
 
@@ -40,12 +40,12 @@ Can only be used in the Void");
         {
             if (!player.GetModPlayer<AAPlayer>().ZoneVoid)
             {
-                if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.LifescannerFalse"), new Color(216, 60, 0), false);
+                if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.LifescannerFalse"), new Color(216, 60, 0), false);
                 return false;
             }
             if (NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.Sag.Sag>()))
             {
-                if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.LifescannerFalse"), new Color(216, 60, 0), false);
+                if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.LifescannerFalse"), new Color(216, 60, 0), false);
                 return false;
             }
             return true;

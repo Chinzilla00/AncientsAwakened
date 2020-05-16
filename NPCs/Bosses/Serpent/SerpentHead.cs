@@ -138,7 +138,7 @@ namespace AAMod.NPCs.Bosses.Serpent
                 npc.TargetClosest(true);
             }
             npc.velocity.Length();
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 if (internalAI[4] != 1)
                 {
@@ -155,7 +155,7 @@ namespace AAMod.NPCs.Bosses.Serpent
                         int segment = NPC.NewNPC((int)(npc.position.X + npc.width / 2), (int)(npc.position.Y + npc.height), type, npc.whoAmI, 0f, npc.whoAmI, npc.ai[2], npc.whoAmI, 255);
                         Main.npc[segment].realLife = npc.whoAmI;
                         npc.ai[0] = segment;
-                        NetMessage.SendData(23, -1, -1, null, segment, 0f, 0f, 0f, 0, 0, 0);
+                        NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, segment, 0f, 0f, 0f, 0, 0, 0);
                         npc.whoAmI = segment;
                     }
                     internalAI[4] = 1;
@@ -331,7 +331,7 @@ namespace AAMod.NPCs.Bosses.Serpent
                         num54 = 20f;
                     }
                     npc.soundDelay = (int)num54;
-                    Main.PlaySound(15, (int)npc.position.X, (int)npc.position.Y, 1, 1f, 0f);
+                    Main.PlaySound(SoundID.Roar, (int)npc.position.X, (int)npc.position.Y, 1, 1f, 0f);
                 }
                 num52 = (float)Math.Sqrt(targetX * targetX + targetY * targetY);
                 float TargetPosX = Math.Abs(targetX);
@@ -469,7 +469,7 @@ namespace AAMod.NPCs.Bosses.Serpent
 
         public override void FindFrame(int frameHeight)
         {
-            if (Main.netMode != 2 && !tongueFlick && Main.rand.Next(20) == 0)
+            if (Main.netMode != NetmodeID.Server && !tongueFlick && Main.rand.Next(20) == 0)
             {
                 tongueFlick = true;
             }
@@ -605,7 +605,7 @@ namespace AAMod.NPCs.Bosses.Serpent
                     Main.raining = true;
                     if (Main.netMode == NetmodeID.Server)
                     {
-                        NetMessage.SendData(7, -1, -1, null, 0, 0f, 0f, 0f, 0, 0, 0);
+                        NetMessage.SendData(MessageID.WorldData, -1, -1, null, 0, 0f, 0f, 0f, 0, 0, 0);
                     }
                 }
                 RunOnce = 1;
@@ -620,7 +620,7 @@ namespace AAMod.NPCs.Bosses.Serpent
                 Main.raining = false;
                 if (Main.netMode == NetmodeID.Server)
                 {
-                    NetMessage.SendData(7, -1, -1, null, 0, 0f, 0f, 0f, 0, 0, 0);
+                    NetMessage.SendData(MessageID.WorldData, -1, -1, null, 0, 0f, 0f, 0f, 0, 0, 0);
                 }
             }
         }
@@ -1081,7 +1081,7 @@ namespace AAMod.NPCs.Bosses.Serpent
                         num24 = 20f;
                     }
                     npc.soundDelay = (int)num24;
-                    Main.PlaySound(15, (int)npc.position.X, (int)npc.position.Y, 1, 1f, 0f);
+                    Main.PlaySound(SoundID.Roar, (int)npc.position.X, (int)npc.position.Y, 1, 1f, 0f);
                 }
                 num22 = (float)Math.Sqrt(num20 * num20 + num21 * num21);
                 float num25 = Math.Abs(num20);
@@ -1506,7 +1506,7 @@ namespace AAMod.NPCs.Bosses.Serpent
                         num24 = 20f;
                     }
                     npc.soundDelay = (int)num24;
-                    Main.PlaySound(15, (int)npc.position.X, (int)npc.position.Y, 1, 1f, 0f);
+                    Main.PlaySound(SoundID.Roar, (int)npc.position.X, (int)npc.position.Y, 1, 1f, 0f);
                 }
                 num22 = (float)Math.Sqrt(num20 * num20 + num21 * num21);
                 float num25 = Math.Abs(num20);

@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.Graphics.Shaders;
+using Terraria.ID;
 
 namespace AAMod.NPCs.Bosses.Zero.Protocol
 {
@@ -37,7 +38,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     projectile.frame = 0;
                 }
             }
-            if (projectile.ai[1]++ == 120 && Main.netMode != 1)
+            if (projectile.ai[1]++ == 120 && Main.netMode != NetmodeID.MultiplayerClient)
             {
                 switch (projectile.ai[0])
                 {

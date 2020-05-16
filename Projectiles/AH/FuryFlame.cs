@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Projectiles.AH
 {
@@ -86,7 +87,7 @@ namespace AAMod.Projectiles.AH
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-			Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 14);
+			Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 14);
             int Boom = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, ModContent.ProjectileType<MagicBoom>(), damage, knockback, Main.myPlayer, 0, 0);
             Main.projectile[Boom].Center = projectile.Center;
         }

@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 using AAMod.Items.DevTools.Cinematic;
+using Terraria.ID;
 
 namespace AAMod.Items.DevTools
 {
@@ -19,10 +20,10 @@ namespace AAMod.Items.DevTools
             item.height = 16;
             item.useTime = 60;
             item.useAnimation = 60;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.knockBack = 1;
             item.value = 0;
-            item.rare = 11;
+            item.rare = ItemRarityID.Purple;
             item.autoReuse = false;
             item.useTurn = true;
             item.expert = true; item.expertOnly = true;

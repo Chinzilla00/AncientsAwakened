@@ -1,3 +1,5 @@
+using Terraria.ID;
+
 namespace AAMod.Items.Materials
 {
     public class DragonScale : BaseAAItem
@@ -11,7 +13,7 @@ namespace AAMod.Items.Materials
             item.width = 20;
             item.height = 24;
             item.maxStack = 99;
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
         }
     }
 }

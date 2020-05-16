@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using System.Collections.Generic;
+using Terraria.ID;
 
 namespace AAMod.Items.Vanity.Delly
 {
@@ -29,7 +30,7 @@ namespace AAMod.Items.Vanity.Delly
         {
             item.width = 22;
             item.height = 30;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             item.vanity = true;
         }
 	}

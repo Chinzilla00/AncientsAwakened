@@ -44,7 +44,7 @@ namespace AAmod.Projectiles
         public override void Kill(int timeLeft)
         {
             Main.PlaySound(SoundID.Item54, projectile.position);
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 for (int k = 0; k < Main.rand.Next(3) + 5; k++)
                 {

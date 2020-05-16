@@ -24,7 +24,7 @@ Allows the ability to climb walls");
             item.width = 34;
             item.height = 32;
             item.value = Item.sellPrice(0, 15, 0, 0);
-            item.rare = 8;
+            item.rare = ItemRarityID.Yellow;
             item.accessory = true;
         }
 

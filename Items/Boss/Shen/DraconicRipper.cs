@@ -10,7 +10,7 @@ namespace AAMod.Items.Boss.Shen
 	{
 		public override void SetDefaults()
 		{
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.autoReuse = true;
 			item.useAnimation = 2;
 			item.useTime = 2;
@@ -22,7 +22,7 @@ namespace AAMod.Items.Boss.Shen
 			item.shootSpeed = 16f;
 			item.noMelee = true;
 			item.value = Item.sellPrice(0, 30, 0, 0);
-			item.rare = 11;
+			item.rare = ItemRarityID.Purple;
 			item.knockBack = 3f;
 			item.ranged = true;
             item.useAmmo = AmmoID.Bullet;

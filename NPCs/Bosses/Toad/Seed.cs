@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.NPCs.Bosses.Toad
 {
@@ -32,7 +33,7 @@ namespace AAMod.NPCs.Bosses.Toad
         public override bool OnTileCollide(Vector2 oldVelocity)
         { 
             Collision.HitTiles(projectile.position, oldVelocity, projectile.width, projectile.height);
-            Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y, 1);
+            Main.PlaySound(SoundID.Dig, (int)projectile.position.X, (int)projectile.position.Y, 1);
             NPC.NewNPC((int)projectile.Top.X, (int)projectile.Top.Y, mod.NPCType("ShroomGlow"), mod.ProjectileType("ShroomGlow"), projectile.damage, 0, projectile.owner, 0, 1);
             return true;
         }

@@ -12,18 +12,18 @@ namespace AAMod.Items.Ranged
 
         public override void SetDefaults()
         {
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.useAnimation = 28;
             item.useTime = 28;
             item.width = 12;
             item.height = 28;
-            item.shoot = 1;
+            item.shoot = ProjectileID.WoodenArrowFriendly;
             item.useAmmo = AmmoID.Arrow;
             item.UseSound = SoundID.Item5;
             item.damage = 11;
             item.shootSpeed = 5f;
             item.knockBack = 1f;
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
             item.noMelee = true;
             item.value = 3000;
             item.ranged = true;

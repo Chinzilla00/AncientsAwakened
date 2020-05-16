@@ -28,11 +28,11 @@ Prismeow EX");
             item.height = 52;
 			item.useTime = 60;
 			item.useAnimation = 60;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 3;
 			item.value = Item.sellPrice(0, 30, 0, 0);
-			item.rare = 11;
+			item.rare = ItemRarityID.Purple;
 			item.UseSound = SoundID.Item44;
 			item.autoReuse = false;
 			item.shoot = mod.ProjectileType("RainbowCatPro");

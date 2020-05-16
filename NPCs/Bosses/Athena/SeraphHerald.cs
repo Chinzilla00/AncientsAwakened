@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.NPCs.Bosses.Athena
 {
@@ -50,7 +51,7 @@ namespace AAMod.NPCs.Bosses.Athena
             Vector2 wantedVelocity = player.Center - new Vector2(pos, 200);
             MoveToPoint(wantedVelocity);
 
-            if (Main.netMode != 2)
+            if (Main.netMode != NetmodeID.Server)
             {
                 npc.frameCounter++;
                 if (npc.frameCounter >= 6)
@@ -63,7 +64,7 @@ namespace AAMod.NPCs.Bosses.Athena
                     npc.frame.Y = 0;
                 }
             }
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 if (Vector2.Distance(player.Center, npc.Center) > 2200)
                 {

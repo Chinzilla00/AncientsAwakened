@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Boss.Zero
 {
@@ -22,9 +23,9 @@ namespace AAMod.Items.Boss.Zero
 			item.autoReuse = true;
 			item.useAnimation = 15;
 			item.useTime = 10;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 13;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
 			item.consumable = true;
 			item.value = 2000;
 			item.rare = 1;

@@ -12,7 +12,7 @@ namespace AAMod.Tiles
             Main.tileSolid[Type] = true;
             Main.tileMergeDirt[Type] = true;
             Main.tileBlendAll[Type] = true;
-            soundType = 21;
+            soundType = SoundID.Tink;
             Main.tileBlockLight[Type] = true;
             dustType = DustID.Stone;
             AddMapEntry(new Color(40, 50, 40));

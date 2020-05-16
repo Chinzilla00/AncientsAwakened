@@ -16,10 +16,10 @@ namespace AAMod.Items.Throwing
 			item.useTime = 16;
 			item.useAnimation = 16;
             item.noUseGraphic = true;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 0;
             item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = 6;
+            item.rare = ItemRarityID.LightPurple;
 			item.shootSpeed = 15f;
 			item.shoot = mod.ProjectileType ("AntimonBoomerangP");
 			item.UseSound = SoundID.Item1;

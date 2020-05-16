@@ -137,7 +137,7 @@ namespace AAMod.Projectiles.Akuma
 		public override void OnHitNPC (NPC target, int damage, float knockback, bool crit)
 		{
             target.AddBuff(BuffID.Daybreak, 600);
-			Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 14);
+			Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 14);
 			int p = Projectile.NewProjectile(target.Center.X, target.Center.Y, 0f, 0f, mod.ProjectileType("AkumaExp"), projectile.damage, projectile.knockBack, projectile.owner);
 			Main.projectile[p].melee = true;
 			Main.projectile[p].friendly = true;

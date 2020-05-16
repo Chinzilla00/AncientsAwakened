@@ -20,7 +20,7 @@ namespace AAMod.Items.Armor.Chaos
 			item.width = 22;
 			item.height = 24;
             item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = 7;
+            item.rare = ItemRarityID.Lime;
             item.defense = 15;
         }
 		

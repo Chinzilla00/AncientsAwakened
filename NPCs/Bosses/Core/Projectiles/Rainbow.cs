@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.NPCs.Bosses.Core.Projectiles
 {
@@ -43,7 +44,7 @@ namespace AAMod.NPCs.Bosses.Core.Projectiles
 					if (projectile.localAI[0] > 4f)
 					{
 						projectile.localAI[0] = 3f;
-						Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X * 0.001f, projectile.velocity.Y * 0.001f, 251, projectile.damage, projectile.knockBack, projectile.owner, 0f, 1f);
+						Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X * 0.001f, projectile.velocity.Y * 0.001f, ProjectileID.RainbowBack, projectile.damage, projectile.knockBack, projectile.owner, 0f, 1f);
 					}
 					if (projectile.timeLeft > num421)
 					{

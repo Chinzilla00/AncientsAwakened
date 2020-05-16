@@ -485,7 +485,7 @@ namespace AAMod.Projectiles.Greed.WKG
             {
                 if(projectile.ai[1] == ModSupport.GetModItem("CalamityMod", "CryonicOre").item.type)
                 {
-                    Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27, 1f, 0f);
+                    Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 27, 1f, 0f);
 					float num36 = 0.783f;
 					double num37 = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - num36 / 2f;
 					double num38 = num36 / 8f;
@@ -503,7 +503,7 @@ namespace AAMod.Projectiles.Greed.WKG
                 }
                 else if (projectile.ai[1] == ModSupport.GetModItem("CalamityMod", "ChaoticOre").item.type)
                 {
-                    Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 74, 1f, 0f);
+                    Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 74, 1f, 0f);
                     int projtype = ModSupport.GetModProjectile("CalamityMod", "ChaosBlaze").projectile.type;
 					int p = NewProjectile(projectile.Center.X, projectile.Center.Y, 0f, 0f, projtype, projectile.damage / 3, 1f, projectile.owner, 0f, 0f);
                     Main.projectile[p].ranged = true;
@@ -615,10 +615,10 @@ namespace AAMod.Projectiles.Greed.WKG
                 {
                     for (int i = 0; i < 200; i++)
                     {
-                        if (Main.npc[i].active && !Main.npc[i].dontTakeDamage && ((projectile.friendly && (!Main.npc[i].friendly || projectile.type == 318 || (Main.npc[i].type == 22 && projectile.owner < 255 && Main.player[projectile.owner].killGuide) || (Main.npc[i].type == 54 && projectile.owner < 255 && Main.player[projectile.owner].killClothier))) || (projectile.hostile && Main.npc[i].friendly && !Main.npc[i].dontTakeDamageFromHostiles)) && (projectile.owner < 0 || Main.npc[i].immune[projectile.owner] == 0 || projectile.maxPenetrate == 1) && (Main.npc[i].noTileCollide || !projectile.ownerHitCheck || projectile.CanHit(Main.npc[i])))
+                        if (Main.npc[i].active && !Main.npc[i].dontTakeDamage && ((projectile.friendly && (!Main.npc[i].friendly || projectile.type == 318 || (Main.npc[i].type == NPCID.Guide && projectile.owner < 255 && Main.player[projectile.owner].killGuide) || (Main.npc[i].type == NPCID.Clothier && projectile.owner < 255 && Main.player[projectile.owner].killClothier))) || (projectile.hostile && Main.npc[i].friendly && !Main.npc[i].dontTakeDamageFromHostiles)) && (projectile.owner < 0 || Main.npc[i].immune[projectile.owner] == 0 || projectile.maxPenetrate == 1) && (Main.npc[i].noTileCollide || !projectile.ownerHitCheck || projectile.CanHit(Main.npc[i])))
                         {
                             bool flag;
-                            if (Main.npc[i].type == 414)
+                            if (Main.npc[i].type == NPCID.SolarCrawltipedeTail)
                             {
                                 Rectangle rect = Main.npc[i].getRect();
                                 int num = 8;
@@ -662,9 +662,9 @@ namespace AAMod.Projectiles.Greed.WKG
                 {
                     int itemcreat = 0;
                     itemcreat = Item.NewItem((int)target.position.X, (int)target.position.Y, 16, 16, ItemID.SilverCoin, Main.rand.Next(15, 20), false, 0, false, false);
-                    if (Main.netMode == 1 && itemcreat > 0)
+                    if (Main.netMode == NetmodeID.MultiplayerClient && itemcreat > 0)
                     {
-                        NetMessage.SendData(21, -1, -1, null, itemcreat, 1f, 0f, 0f, 0, 0, 0);
+                        NetMessage.SendData(MessageID.SyncItem, -1, -1, null, itemcreat, 1f, 0f, 0f, 0, 0, 0);
                     }
                 }
             }
@@ -961,7 +961,7 @@ namespace AAMod.Projectiles.Greed.WKG
                 }
                 else if(k == ModSupport.GetModItem("CalamityMod", "PerennialOre").item.type)
                 {
-                    Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 1, 1f, 0f);
+                    Main.PlaySound(SoundID.NPCHit, (int)projectile.position.X, (int)projectile.position.Y, 1, 1f, 0f);
 					float num46 = 0.783f;
 					double num47 = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - num46 / 2f;
 					double num48 = num46 / 8f;
@@ -999,17 +999,17 @@ namespace AAMod.Projectiles.Greed.WKG
                     {
                         int itemcreat = 0;
                         itemcreat = Item.NewItem((int)target.position.X, (int)target.position.Y, 16, 16, 58, 1, false, 0, false, false);
-                        if (Main.netMode == 1 && itemcreat > 0)
+                        if (Main.netMode == NetmodeID.MultiplayerClient && itemcreat > 0)
                         {
-                            NetMessage.SendData(21, -1, -1, null, itemcreat, 1f, 0f, 0f, 0, 0, 0);
+                            NetMessage.SendData(MessageID.SyncItem, -1, -1, null, itemcreat, 1f, 0f, 0f, 0, 0, 0);
                         }
                         if(Main.bloodMoon)
                         {
                             int droptype = ModSupport.GetModItem("CalamityMod", "BloodOrb").item.type;
                             itemcreat = Item.NewItem((int)target.position.X, (int)target.position.Y, 16, 16, droptype, 1, false, 0, false, false);
-                            if (Main.netMode == 1 && itemcreat > 0)
+                            if (Main.netMode == NetmodeID.MultiplayerClient && itemcreat > 0)
                             {
-                                NetMessage.SendData(21, -1, -1, null, itemcreat, 1f, 0f, 0f, 0, 0, 0);
+                                NetMessage.SendData(MessageID.SyncItem, -1, -1, null, itemcreat, 1f, 0f, 0f, 0, 0, 0);
                             }
                         }
                     }

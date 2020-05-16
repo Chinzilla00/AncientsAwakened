@@ -21,7 +21,7 @@ namespace AAMod.Items.Boss.Rajah
             item.height = 28;
             item.useTime = 32;
             item.useAnimation = 32;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.noMelee = true; //so the item's animation doesn't do damage
             item.knockBack = 7.5f;
             item.value = Item.sellPrice(0, 5, 0, 0);
@@ -30,7 +30,7 @@ namespace AAMod.Items.Boss.Rajah
             item.shootSpeed = 24f;
             item.shoot = mod.ProjectileType("RabbitRocket3");
             item.useAmmo = AmmoID.Rocket;
-            item.rare = 8;
+            item.rare = ItemRarityID.Yellow;
         }
         public override Vector2? HoldoutOffset()
         {

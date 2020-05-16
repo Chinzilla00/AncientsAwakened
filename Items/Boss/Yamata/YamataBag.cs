@@ -1,6 +1,8 @@
 using Terraria;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.ID;
+
 namespace AAMod.Items.Boss.Yamata
 {
     public class YamataBag : BaseAAItem
@@ -18,7 +20,7 @@ namespace AAMod.Items.Boss.Yamata
             item.consumable = true;
             item.width = 32;
             item.height = 32;
-            item.rare = 10;
+            item.rare = ItemRarityID.Red;
             item.expert = true; item.expertOnly = true;
         }
 

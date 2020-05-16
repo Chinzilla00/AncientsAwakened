@@ -378,7 +378,7 @@ namespace AAMod.NPCs.TownNPCs
                     Main.npcChatText = Lang.TownNPCAnubis("GetBookChat");
                     player.QuickSpawnItem(ModContent.ItemType<Items.Magic.AnubisBlockBook>(), 1);
 
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                     return;
                 }
                 Main.npcChatText = BossChat();

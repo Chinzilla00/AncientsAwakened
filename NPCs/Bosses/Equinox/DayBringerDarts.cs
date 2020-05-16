@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.NPCs.Bosses.Equinox
 {
@@ -38,7 +39,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 
         public override void Kill(int timeLeft)
         {
-            int id = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0f, 0f, 612, projectile.damage, 10f, projectile.owner, 0f, 0.85f + Main.rand.NextFloat() * 1.15f);
+            int id = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0f, 0f, ProjectileID.SolarWhipSwordExplosion, projectile.damage, 10f, projectile.owner, 0f, 0.85f + Main.rand.NextFloat() * 1.15f);
             Main.projectile[id].hostile = true;
             Main.projectile[id].friendly = false;
         }

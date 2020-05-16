@@ -11,18 +11,18 @@ namespace AAMod.Items.Magic
             item.height = 54;
             item.maxStack = 1;
             item.value = 10000;
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
 			item.damage = 20;                        
             item.magic = true;
 			item.useTime = 30;
             item.useAnimation = 30;
-            item.useStyle = 5;        
+            item.useStyle = ItemUseStyleID.HoldingOut;        
             item.noMelee = true;
             item.knockBack = 4;
 			item.mana = 8;             
             item.UseSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/GONG");
             item.autoReuse = true;
-            item.shoot = 122;
+            item.shoot = ProjectileID.TopazBolt;
 			item.shootSpeed = 10f;
         }
 

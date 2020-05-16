@@ -15,7 +15,7 @@ namespace AAMod.Items.Boss.Anubis
 
         public override void SetDefaults()
         {
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("TheEye");
             item.damage = 65;
@@ -27,7 +27,7 @@ namespace AAMod.Items.Boss.Anubis
             item.noMelee = true;
             item.value = Item.sellPrice(0, 0, 27, 0);
             item.knockBack = 7.5f;
-            item.rare = 6;
+            item.rare = ItemRarityID.LightPurple;
             item.summon = true;
             item.mana = 30;
             item.sentry = true;

@@ -22,7 +22,7 @@ namespace AAMod.Items.Boss.Yamata
             item.height = 34;
             item.useTime = 2;
             item.useAnimation = 10;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.noMelee = true; //so the item's animation doesn't do damage
             item.knockBack = 3.25f;
             item.UseSound = SoundID.Item34;
@@ -31,7 +31,7 @@ namespace AAMod.Items.Boss.Yamata
             item.shoot = mod.ProjectileType("AcidFlame"); //idk why but all the guns in the vanilla source have this
             item.shootSpeed = 20f;
             item.useAmmo = 23;
-            item.rare = 9; AARarity = 13;
+            item.rare = ItemRarityID.Cyan; AARarity = 13;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

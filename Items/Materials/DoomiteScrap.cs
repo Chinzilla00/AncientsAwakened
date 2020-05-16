@@ -1,3 +1,5 @@
+using Terraria.ID;
+
 namespace AAMod.Items.Materials
 {
     public class DoomiteScrap : BaseAAItem
@@ -18,7 +20,7 @@ namespace AAMod.Items.Materials
             item.autoReuse = true;
             item.useAnimation = 10;
             item.useTime = 10;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.consumable = true;
             item.createTile = mod.TileType("DoomitePlate");
         }

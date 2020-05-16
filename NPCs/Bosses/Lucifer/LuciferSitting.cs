@@ -40,7 +40,7 @@ namespace AAMod.NPCs.Bosses.Lucifer
             npc.velocity.X = npc.velocity.Y = 0f;
             npc.dontTakeDamage = true;
             npc.immune[255] = 30;
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 npc.homeless = false;
                 npc.homeTileX = -1;
@@ -119,7 +119,7 @@ namespace AAMod.NPCs.Bosses.Lucifer
                     Main.npcChatText = @"See you around. Come back when I finish, I'd love to see you get gored! BWAHAHAHAHAHAHAHAHAH!!!";
                 }
                 chatNumber++;
-                Main.PlaySound(12, -1, -1, 1);
+                Main.PlaySound(SoundID.MenuTick, -1, -1, 1);
             }
         }
 

@@ -1,4 +1,5 @@
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Boss.Rajah.Supreme
 {
@@ -14,7 +15,7 @@ namespace AAMod.Items.Boss.Rajah.Supreme
             item.width = 20;
             item.height = 20;
 			item.maxStack = 99;
-            item.rare = 11;
+            item.rare = ItemRarityID.Purple;
         }
 
         public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)

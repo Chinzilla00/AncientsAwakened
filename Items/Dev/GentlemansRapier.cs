@@ -26,10 +26,10 @@ Left clicking swings the blade
 			item.height = 66;
 			item.useTime = 10;
 			item.useAnimation = 10;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 3;
 			item.value = 100000;
-			item.rare = 11;
+			item.rare = ItemRarityID.Purple;
             item.shoot = mod.ProjectileType("TopHat");
             item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
@@ -56,11 +56,11 @@ Left clicking swings the blade
 		{
             if (player.altFunctionUse == 2)
             {
-                item.useStyle = 3;
+                item.useStyle = ItemUseStyleID.Stabbing;
             }
             else
             {
-                item.useStyle = 1;
+                item.useStyle = ItemUseStyleID.SwingThrow;
             }
             return base.CanUseItem(player);
 		}

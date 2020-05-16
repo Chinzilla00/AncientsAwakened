@@ -29,7 +29,7 @@ namespace AAMod.Projectiles
             projectile.soundDelay--;
             if (projectile.soundDelay <= 0)
             {
-                Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 15);
+                Main.PlaySound(SoundID.Item, (int)projectile.Center.X, (int)projectile.Center.Y, 15);
                 projectile.soundDelay = 45;
             }
             Player player = Main.player[projectile.owner];

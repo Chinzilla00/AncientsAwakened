@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.ID;
 
 namespace AAMod.Items.Boss.Greed.WKG
 {
@@ -16,7 +17,7 @@ namespace AAMod.Items.Boss.Greed.WKG
 			item.consumable = true;
 			item.width = 32;
 			item.height = 36;
-			item.rare = 11;
+			item.rare = ItemRarityID.Purple;
 			item.expert = true; item.expertOnly = true;
         }
         public override int BossBagNPC => mod.NPCType("GreedA");

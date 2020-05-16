@@ -21,7 +21,7 @@ namespace AAMod.Items.Ranged.Ammo
 			item.knockBack = 3f;
 			item.shootSpeed = 4f;
 			item.ranged = true;
-			item.rare = 4;
+			item.rare = ItemRarityID.LightRed;
 			item.consumable = true;
 		}
 

@@ -3,6 +3,7 @@ using Terraria.Localization;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using System.Collections.Generic;
+using Terraria.ID;
 
 namespace AAMod.Items.Boss.Rajah
 {
@@ -24,7 +25,7 @@ All effects of the Sash of Vengeance
             item.width = 66;
             item.height = 78;
             item.value = Item.sellPrice(0, 1, 0, 0);
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             item.accessory = true;
             item.expert = true; item.expertOnly = true;
             item.defense = 10;

@@ -16,7 +16,7 @@ Hydra Staff EX");
 
         public override void SetDefaults()
         {
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("BlizzardDragon");
             item.damage = 222;
@@ -28,7 +28,7 @@ Hydra Staff EX");
             item.noMelee = true;
             item.value = Item.sellPrice(0, 15, 0, 0);
             item.knockBack = 8f;
-            item.rare = 11;
+            item.rare = ItemRarityID.Purple;
             item.summon = true;
             item.mana = 50;
             item.sentry = true;
@@ -69,7 +69,7 @@ Hydra Staff EX");
         public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(1572);
+			recipe.AddIngredient(ItemID.StaffoftheFrostHydra);
 			recipe.AddIngredient(null, "EXSoul");
 			recipe.AddTile(null, "QuantumFusionAccelerator");
 			recipe.SetResult(this);

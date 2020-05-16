@@ -25,7 +25,7 @@ namespace AAMod.Items.Dev
 	        item.useTime = 10;
 	        item.useAnimation = 10;
 	        item.reuseDelay = 5;
-	        item.useStyle = 5;
+	        item.useStyle = ItemUseStyleID.HoldingOut;
 	        item.UseSound = SoundID.Item13;
 	        item.noMelee = true;
             item.noUseGraphic = true;

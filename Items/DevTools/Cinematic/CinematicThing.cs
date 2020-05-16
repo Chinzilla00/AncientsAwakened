@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.DevTools.Cinematic
 {
@@ -53,7 +54,7 @@ namespace AAMod.Items.DevTools.Cinematic
 			mountData.swimFrameCount = 0;
 			mountData.swimFrameDelay = 0;
 			mountData.swimFrameStart = 0;
-			if (Main.netMode != 2)
+			if (Main.netMode != NetmodeID.Server)
 			{
 				mountData.textureWidth = mountData.backTexture.Width;
 				mountData.textureHeight = mountData.backTexture.Height;

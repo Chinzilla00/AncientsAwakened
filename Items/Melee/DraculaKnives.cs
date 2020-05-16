@@ -20,9 +20,9 @@ Vampire Knives EX");
         public override void SetDefaults()
 		{
             item.autoReuse = true;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.shootSpeed = 15f;
-            item.shoot = 304;
+            item.shoot = ProjectileID.VampireKnife;
             item.damage = 60;
             item.width = 18;
             item.height = 20;

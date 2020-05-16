@@ -1,3 +1,5 @@
+using Terraria.ID;
+
 namespace AAMod.Items.FishingItem
 {
     public class ShinyCharmFish : BaseAAItem
@@ -7,7 +9,7 @@ namespace AAMod.Items.FishingItem
 			item.width = 34;
             item.height = 36;
             item.maxStack = 99;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
 		}
 
 		public override void SetStaticDefaults()

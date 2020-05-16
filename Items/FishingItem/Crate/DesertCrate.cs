@@ -9,12 +9,12 @@ namespace AAMod.Items.FishingItem.Crate
         {
             item.width = 16;
             item.height = 16;
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
             item.maxStack = 99;
             item.useAnimation = 15;
             item.useTime = 15;
             item.autoReuse = true;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.consumable = true;
             item.value = Item.sellPrice(0, 1, 0, 0);
             item.createTile = mod.TileType("DesertCrate");
@@ -58,7 +58,7 @@ namespace AAMod.Items.FishingItem.Crate
 
                 if (Main.netMode == NetmodeID.MultiplayerClient)
                 {
-                    NetMessage.SendData(21, -1, -1, null, index, 1f, 0f, 0f, 0, 0, 0);
+                    NetMessage.SendData(MessageID.SyncItem, -1, -1, null, index, 1f, 0f, 0f, 0, 0, 0);
                 }
             }
             

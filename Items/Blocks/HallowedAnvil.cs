@@ -20,8 +20,8 @@ namespace AAMod.Items.Blocks
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.rare = 7;
-            item.useStyle = 1;
+            item.rare = ItemRarityID.Lime;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.consumable = true;
             item.value = 100000;
             item.createTile = mod.TileType("HallowedAnvil");

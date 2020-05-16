@@ -22,7 +22,7 @@ Scythe of the Grim Reaper EX");
 		public override void SetDefaults()
 		{
 			item.autoReuse = true;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.useAnimation = 30;
 			item.useTime = 30;
 			item.knockBack = 6f;
@@ -32,7 +32,7 @@ Scythe of the Grim Reaper EX");
 			item.crit = 14;
 			item.scale = 1.15f;
 			item.UseSound = SoundID.Item71;
-			item.rare = 11;
+			item.rare = ItemRarityID.Purple;
 			item.shoot = mod.ProjectileType("GrimReaperScytheEX");
 			item.shootSpeed = 16f;
 			item.value = 1000000;

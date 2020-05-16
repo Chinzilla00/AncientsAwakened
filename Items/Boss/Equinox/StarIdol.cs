@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 
 using Terraria.Localization;
 using Microsoft.Xna.Framework;
+using Terraria.ID;
 
 namespace AAMod.Items.Boss.Equinox
 {
@@ -20,11 +21,11 @@ Can only be used if there arent many radium stars in the world.");
             item.width = 20;
             item.height = 20;
             item.maxStack = 30;
-            item.rare = 7;
+            item.rare = ItemRarityID.Lime;
 			item.expert = true;
             item.value = BaseUtility.CalcValue(0, 15, 0, 0);
 
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
             item.useAnimation = 45;
             item.useTime = 45;
             item.consumable = true;		

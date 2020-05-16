@@ -18,7 +18,7 @@ namespace AAMod.Items.Armor.Viking
 			item.width = 22;
 			item.height = 24;
             item.value = Item.sellPrice(0, 0, 5, 0);
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
             item.defense = 8;
         }
 		

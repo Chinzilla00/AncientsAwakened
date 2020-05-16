@@ -212,7 +212,7 @@ namespace AAMod.NPCs.Bosses.Toad
                 }
                 AIChangeRate = 120;
                 JumpX = 8f; JumpY = -10f; JumpX2 = 10f; JumpY2 = -14f;
-                if (Main.netMode != 2 && Main.LocalPlayer.miscCounter % 2 == 0)
+                if (Main.netMode != NetmodeID.Server && Main.LocalPlayer.miscCounter % 2 == 0)
                 {
                     for (int m = 0; m < Shrooms.Length; m++)
                     {
@@ -266,9 +266,9 @@ namespace AAMod.NPCs.Bosses.Toad
                 internalAI[1]++;
                 if (internalAI[1] == 179)
                 {
-                    Main.PlaySound(29, (int)npc.position.X, (int)npc.position.Y, 13);
+                    Main.PlaySound(SoundID.Zombie, (int)npc.position.X, (int)npc.position.Y, 13);
                 }
-                if (internalAI[1] >= AIChangeRate && Main.netMode != 1)
+                if (internalAI[1] >= AIChangeRate && Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     npc.velocity.X = 0f;
                     internalAI[1] = 0;
@@ -280,14 +280,14 @@ namespace AAMod.NPCs.Bosses.Toad
             }
             else if (internalAI[0] == AISTATE_BARF)
             {
-                if (Main.netMode != 1 && npc.velocity.Y == 0)
+                if (Main.netMode != NetmodeID.MultiplayerClient && npc.velocity.Y == 0)
                 {
                     internalAI[1]++;
                 }
                 npc.velocity.X *= .98f;
                 if (internalAI[1] >= 35)
                 {
-                    if (npc.velocity.Y == 0 && Main.netMode != 1)
+                    if (npc.velocity.Y == 0 && Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         internalAI[2]++;
                     }
@@ -319,7 +319,7 @@ namespace AAMod.NPCs.Bosses.Toad
                 AITortoise();
                 npc.wet = false;
                 //BaseAI.AISlime(npc, ref npc.ai, false, -10, JumpX, JumpY, JumpX2, JumpY2);
-                if (Main.netMode != 1)
+                if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     internalAI[1]++;
                 }
@@ -335,14 +335,14 @@ namespace AAMod.NPCs.Bosses.Toad
             }
             else if (internalAI[0] == AISTATE_BUBBLES)
             {
-                if (Main.netMode != 1 && npc.velocity.Y == 0)
+                if (Main.netMode != NetmodeID.MultiplayerClient && npc.velocity.Y == 0)
                 {
                     internalAI[1]++;
                 }
                 npc.velocity.X *= .98f;
                 if (internalAI[1] >= 35)
                 {
-                    if (npc.velocity.Y == 0 && Main.netMode != 1)
+                    if (npc.velocity.Y == 0 && Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         internalAI[2]++;
                     }
@@ -371,14 +371,14 @@ namespace AAMod.NPCs.Bosses.Toad
             }
             else if (internalAI[0] == AISTATE_SEED)
             {
-                if (Main.netMode != 1 && npc.velocity.Y == 0)
+                if (Main.netMode != NetmodeID.MultiplayerClient && npc.velocity.Y == 0)
                 {
                     internalAI[1]++;
                 }
                 npc.velocity.X *= .98f;
                 if (internalAI[1] >= 35)
                 {
-                    if (npc.velocity.Y == 0 && Main.netMode != 1)
+                    if (npc.velocity.Y == 0 && Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         internalAI[2]++;
                     }
@@ -409,7 +409,7 @@ namespace AAMod.NPCs.Bosses.Toad
             {
                 if (internalAI[2] == 0)
                 {
-                    if (Main.netMode != 1 && npc.velocity.Y == 0)
+                    if (Main.netMode != NetmodeID.MultiplayerClient && npc.velocity.Y == 0)
                     {
                         npc.TargetClosest(true);
                         npc.velocity.X = 6 * npc.direction;
@@ -489,14 +489,14 @@ namespace AAMod.NPCs.Bosses.Toad
             }
             else if (internalAI[0] == AISTATE_BUBBLES2)
             {
-                if (Main.netMode != 1 && npc.velocity.Y == 0)
+                if (Main.netMode != NetmodeID.MultiplayerClient && npc.velocity.Y == 0)
                 {
                     internalAI[1]++;
                 }
                 npc.velocity.X *= .98f;
                 if (internalAI[1] >= 35)
                 {
-                    if (npc.velocity.Y == 0 && Main.netMode != 1)
+                    if (npc.velocity.Y == 0 && Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         internalAI[2]++;
                     }
@@ -524,7 +524,7 @@ namespace AAMod.NPCs.Bosses.Toad
             }
             else if (internalAI[0] == AISTATE_TOADS)
             {
-                if (Main.netMode != 1 && npc.velocity.Y == 0)
+                if (Main.netMode != NetmodeID.MultiplayerClient && npc.velocity.Y == 0)
                 {
                     internalAI[1]++;
                 }

@@ -22,11 +22,11 @@ If the enemy hits the ground after being hit, they will take damage");
 			item.height = 90;
 			item.useTime = 30;
 			item.useAnimation = 30;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 20;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 12;
         }
 

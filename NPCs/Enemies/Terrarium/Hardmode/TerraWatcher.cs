@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.Hardmode
             Player player = Main.player[npc.target];
             bool playerActive = player != null && player.active && !player.dead;
             BaseAI.LookAt(playerActive ? player.Center : (npc.Center + npc.velocity), npc, 0);
-            if (Main.netMode != 1 && playerActive)
+            if (Main.netMode != NetmodeID.MultiplayerClient && playerActive)
             {
                 npc.ai[2]++;
                 if (npc.ai[2] >= 69)

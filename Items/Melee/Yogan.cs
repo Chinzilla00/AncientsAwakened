@@ -16,7 +16,7 @@ namespace AAMod.Items.Melee
             item.height = 66;    
             item.knockBack = 5;
             item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = 4;
+            item.rare = ItemRarityID.LightRed;
             item.autoReuse = false;
             item.useTurn = false;
             item.shoot = mod.ProjectileType("Yogan");

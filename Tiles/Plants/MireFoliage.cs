@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
+using Terraria.ID;
 
 namespace AAMod.Tiles.Plants
 {
@@ -17,7 +18,7 @@ namespace AAMod.Tiles.Plants
 			Main.tileLighted[Type] = false;
 
 			dustType = ModContent.DustType<Dusts.BogwoodDust>();
-			soundType = 6;
+			soundType = SoundID.Grass;
 
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
 			TileObjectData.newTile.LavaDeath = true;

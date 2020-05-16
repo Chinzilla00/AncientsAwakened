@@ -12,9 +12,9 @@ namespace AAMod.Items.Boss.EFish
 
 		public override void SetDefaults()
 		{
-			item.CloneDefaults(2621);
+			item.CloneDefaults(ItemID.TempestStaff);
 			item.damage = 150;
-			item.rare = 11;
+			item.rare = ItemRarityID.Purple;
 			item.shoot = mod.ProjectileType("Fishnado");
         }
 

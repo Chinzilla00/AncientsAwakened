@@ -1,4 +1,5 @@
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Materials
 {
@@ -18,8 +19,8 @@ namespace AAMod.Items.Materials
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.rare = 11;
-            item.useStyle = 1;
+            item.rare = ItemRarityID.Purple;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.consumable = true;
             item.createTile = mod.TileType("DaybreakIncineriteBar");
             item.value = Terraria.Item.sellPrice(0, 3, 0, 0);

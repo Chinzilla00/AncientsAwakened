@@ -14,7 +14,7 @@ namespace AAMod.Tiles.Ore
             Main.tileSpelunker[Type] = true;
             Main.tileValue[Type] = 825; 
             Main.tileBlendAll[Type] = false;
-            soundType = 21;
+            soundType = SoundID.Tink;
             Main.tileLighted[Type] = true;
             drop = mod.ItemType("SkyCrystal"); 
             ModTranslation name = CreateMapEntryName();

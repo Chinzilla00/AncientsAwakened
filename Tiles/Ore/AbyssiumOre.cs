@@ -18,7 +18,7 @@ namespace AAMod.Tiles.Ore
             Main.tileBlockLight[Type] = true;
             Main.tileMerge[TileID.Mud][Type] = true;
             TileID.Sets.JungleSpecial[Type] = true;
-            soundType = 21;
+            soundType = SoundID.Tink;
             Main.tileLighted[Type] = true;
             drop = mod.ItemType("Abyssium");   
             dustType = mod.DustType("AbyssiumDust");

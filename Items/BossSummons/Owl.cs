@@ -19,7 +19,7 @@ Can only be used in the Acropolis at the Owl Altar
             item.width = 24;
             item.height = 22;
             item.maxStack = 20;
-            item.rare = 6;
+            item.rare = ItemRarityID.LightPurple;
         }
 
         public override void AddRecipes()

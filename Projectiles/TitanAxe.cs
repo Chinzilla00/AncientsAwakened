@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Projectiles
 {
@@ -39,7 +40,7 @@ namespace AAMod.Projectiles
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-			Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y);
+			Main.PlaySound(SoundID.Dig, (int)projectile.position.X, (int)projectile.position.Y);
             projectile.ai[0] = 1f;
             projectile.velocity.X = -oldVelocity.X;
             projectile.velocity.Y = -oldVelocity.Y;

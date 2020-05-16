@@ -23,10 +23,10 @@ namespace AAMod.Items.Summoning
             item.height = 28;
             item.useTime = 36;
             item.useAnimation = 36;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.noMelee = true;
             item.knockBack = 3;
-            item.rare = 7;
+            item.rare = ItemRarityID.Lime;
             item.UseSound = SoundID.Item44;
             item.shoot = mod.ProjectileType("TerraWizard");
             item.shootSpeed = 10f;

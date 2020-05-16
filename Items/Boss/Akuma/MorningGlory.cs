@@ -25,7 +25,7 @@ namespace AAMod.Items.Boss.Akuma
             item.damage = 197;
             item.knockBack = 4f;
             item.melee = true;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.UseSound = SoundID.Item20;
             item.useAnimation = 19;
             item.useTime = 19;
@@ -35,7 +35,7 @@ namespace AAMod.Items.Boss.Akuma
             item.noMelee = true;
             item.autoReuse = true;
             item.value = Item.sellPrice(0, 30, 0, 0);
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 13;
         }
 

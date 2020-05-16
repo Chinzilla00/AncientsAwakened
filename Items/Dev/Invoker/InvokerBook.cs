@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.ID;
 
 namespace AAMod.Items.Dev.Invoker
 {
@@ -35,9 +36,9 @@ I need more powerful souls, *****,*********,**********");
         {
             item.width = 18;
             item.height = 20;
-            item.rare = 11;
+            item.rare = ItemRarityID.Purple;
             item.accessory = true;
-            item.useStyle = 4;
+            item.useStyle = ItemUseStyleID.HoldingUp;
             item.useTime = 1;
             item.expertOnly = true;
             item.useTime = 30;

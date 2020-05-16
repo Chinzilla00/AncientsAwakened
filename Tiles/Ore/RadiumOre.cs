@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Tiles.Ore
 {
@@ -17,7 +18,7 @@ namespace AAMod.Tiles.Ore
             Main.tileBlockLight[Type] = true;  
             Main.tileLighted[Type] = true;
             Main.tileValue[Type] = 830; 
-            soundType = 21;
+            soundType = SoundID.Tink;
             drop = mod.ItemType("RadiumOre");
             dustType = mod.DustType("RadiumDust");
             ModTranslation name = CreateMapEntryName();

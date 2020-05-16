@@ -11,13 +11,13 @@ namespace AAMod.Items.Tools
             item.melee = true;
             item.width = 54;
             item.height = 60;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.useTime = 4;
             item.useAnimation = 16;
             item.tileBoost += 25;
             item.knockBack = 3;
             item.value = Item.sellPrice(1, 50, 0, 0);
-            item.rare = 11;
+            item.rare = ItemRarityID.Purple;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.useTurn = true;

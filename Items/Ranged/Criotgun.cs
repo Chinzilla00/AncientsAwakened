@@ -21,14 +21,14 @@ namespace AAMod.Items.Ranged
 			item.height = 26;
 			item.useTime = 20;
 			item.useAnimation = 20;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.noMelee = true; 
 			item.knockBack = 0;
                         item.value = Item.sellPrice(0, 7, 0, 0);
-                        item.rare = 8;
+                        item.rare = ItemRarityID.Yellow;
 			item.UseSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/CriotG");
 			item.autoReuse = true;
-			item.shoot = 10;
+			item.shoot = ProjectileID.PurificationPowder;
 			item.shootSpeed = 10;
                         item.useAmmo = AmmoID.Bullet;
         }

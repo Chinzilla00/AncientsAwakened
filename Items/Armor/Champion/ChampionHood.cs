@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.Localization;
+using Terraria.ID;
 
 namespace AAMod.Items.Armor.Champion
 {
@@ -23,7 +24,7 @@ The armor of a champion feared across the land");
 			item.width = 20;
 			item.height = 24;
 			item.value = Item.sellPrice(3, 0, 0, 0);
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 14;
             item.defense = 30;
 		}

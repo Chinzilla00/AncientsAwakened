@@ -27,15 +27,15 @@ OreCannonEX");
             item.height = 20;
             item.useTime = 45;
             item.useAnimation = 45;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.knockBack = 0;
-			item.shoot = 10;
+			item.shoot = ProjectileID.PurificationPowder;
             item.UseSound = SoundID.Item14;
             item.shootSpeed = 14f;
             item.expert = true; 
 			item.expertOnly = true;
             item.autoReuse = true;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 12;
         }
 

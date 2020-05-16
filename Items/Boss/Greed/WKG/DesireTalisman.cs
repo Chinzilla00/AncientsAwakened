@@ -2,6 +2,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Terraria.Localization;
 using System.Collections.Generic;
+using Terraria.ID;
 
 namespace AAMod.Items.Boss.Greed.WKG
 {
@@ -23,7 +24,7 @@ Hitting enemies will sometimes drop extra coins");
             item.width = 20;
             item.height = 20;
             item.value = Item.sellPrice(0, 12, 0, 0);
-            item.rare = 11;
+            item.rare = ItemRarityID.Purple;
             item.accessory = true;
             item.expertOnly = true;
             item.expert = true;

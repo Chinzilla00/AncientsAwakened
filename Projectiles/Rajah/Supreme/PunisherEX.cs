@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Projectiles.Rajah.Supreme
 {
@@ -28,7 +29,7 @@ namespace AAMod.Projectiles.Rajah.Supreme
             Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
             projectile.ai[0] = 1f;
             projectile.netUpdate = true;
-            Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y, 1, 1f, 0f);
+            Main.PlaySound(SoundID.Dig, (int)projectile.position.X, (int)projectile.position.Y, 1, 1f, 0f);
             return false;
         }
 

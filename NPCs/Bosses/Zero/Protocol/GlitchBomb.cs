@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.NPCs.Bosses.Zero.Protocol
 {
@@ -68,7 +69,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
         public override void Kill(int timeLeft)
         {
-            if (Main.netMode != 2)
+            if (Main.netMode != NetmodeID.Server)
             {
                 for (int m = 0; m < 6; m++)
                 {
@@ -77,7 +78,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     Main.dust[dustID].noGravity = true;
                     Main.dust[dustID].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
                 }
-                Main.PlaySound(4, (int)projectile.Center.X, (int)projectile.Center.Y, 3);
+                Main.PlaySound(SoundID.NPCKilled, (int)projectile.Center.X, (int)projectile.Center.Y, 3);
             }
 
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Glitch"), (int)projectile.Center.X, (int)projectile.Center.Y);

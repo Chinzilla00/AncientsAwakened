@@ -1,7 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-
+using Terraria.ID;
 
 namespace AAMod.Items.Armor.Champion.Drone
 {
@@ -55,7 +55,7 @@ namespace AAMod.Items.Armor.Champion.Drone
 
                 Target();
 
-                if (target != null && Main.netMode != 2 && projectile.owner == Main.myPlayer)
+                if (target != null && Main.netMode != NetmodeID.Server && projectile.owner == Main.myPlayer)
                 {
                     projectile.localAI[0]--;
                     if (projectile.localAI[0] <= 0)

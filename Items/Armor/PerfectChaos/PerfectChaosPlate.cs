@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.ID;
 
 namespace AAMod.Items.Armor.PerfectChaos
 {
@@ -23,7 +24,7 @@ The power of discordian rage radiates from this armor");
 			item.width = 26;
 			item.height = 20;
 			item.value = Item.sellPrice(3, 0, 0, 0);
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 14;
             item.defense = 60;
         }

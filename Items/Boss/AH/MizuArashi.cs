@@ -17,12 +17,12 @@ namespace AAMod.Items.Boss.AH
             item.useTime = 2;
             item.reuseDelay = 12;
             item.useAnimation = 12;
-            item.useStyle = 5;
-            item.shoot = 10;
+            item.useStyle = ItemUseStyleID.HoldingOut;
+            item.shoot = ProjectileID.PurificationPowder;
             item.useAmmo = AmmoID.Arrow;
             item.knockBack = 4;
             item.value = Item.sellPrice(0, 25, 0, 0);
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 12;
             item.UseSound = SoundID.Item5;
             item.autoReuse = true;

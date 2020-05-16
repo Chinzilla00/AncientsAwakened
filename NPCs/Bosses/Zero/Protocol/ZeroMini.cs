@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ModLoader;
 
 using Terraria.Graphics.Shaders;
+using Terraria.ID;
 
 namespace AAMod.NPCs.Bosses.Zero.Protocol
 {
@@ -74,7 +75,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 npc.ai[1] ++;
                 if(npc.ai[1] % 180 == 60)
                 {
-                    if(Main.netMode != 1)
+                    if(Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, -14f), mod.ProjectileType("ProtoStar"), npc.damage/2, 3);
                         Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, 14f), mod.ProjectileType("ProtoStar"), npc.damage/2, 3);
@@ -84,7 +85,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 }
                 if(npc.ai[1] % 180 == 120)
                 {
-                    if(Main.netMode != 1)
+                    if(Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(10f, -10f), mod.ProjectileType("ProtoStar"), npc.damage/2, 3);
                         Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-10f, -10f), mod.ProjectileType("ProtoStar"), npc.damage/2, 3);

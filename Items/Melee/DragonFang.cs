@@ -20,10 +20,10 @@ namespace AAMod.Items.Melee
             item.useTime = 4;
             item.useAnimation = 4;
             item.knockBack = 3;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.knockBack = 3;
             item.value = Item.sellPrice(0, 12, 0, 0);
-            item.rare = 7;
+            item.rare = ItemRarityID.Lime;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.useTurn = true;
@@ -46,7 +46,7 @@ namespace AAMod.Items.Melee
                 item.channel = false;
                 item.useAnimation = 15;
                 item.useTime = 15;
-                item.useStyle = 1;
+                item.useStyle = ItemUseStyleID.SwingThrow;
                 item.autoReuse = true;
                 item.channel = false;
                 item.shoot = ModContent.ProjectileType<Projectiles.AsgardianIce>();
@@ -59,7 +59,7 @@ namespace AAMod.Items.Melee
                 item.channel = true;
                 item.useAnimation = 25;
                 item.useTime = 5;
-                item.useStyle = 5;
+                item.useStyle = ItemUseStyleID.HoldingOut;
                 item.autoReuse = false;
                 item.channel = true;
                 item.shoot = ModContent.ProjectileType<Projectiles.ValkyrieSlash>();

@@ -23,7 +23,7 @@ Hopping Mad.");
             item.height = 16;
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.defense = 17;
-            item.rare = 8;
+            item.rare = ItemRarityID.Yellow;
         }
 
         public override void UpdateEquip(Player player)

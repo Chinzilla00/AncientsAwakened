@@ -19,10 +19,10 @@ namespace AAMod.Items.Boss.AH
 			item.useAnimation = 8;
 			item.shoot = mod.ProjectileType("HarukaKunaiF");
 			item.shootSpeed = 15f;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 0;
 			item.value = Item.sellPrice(0, 30, 0, 0);
-			item.rare = 11;
+			item.rare = ItemRarityID.Purple;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 		}

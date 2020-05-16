@@ -21,14 +21,14 @@ namespace AAMod.Items.Melee
             item.damage = 350;
             item.knockBack = 3;
             item.autoReuse = true;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.UseSound = SoundID.Item1;
             item.useTime = 30 / 2; //dont change the 30 unless you want to soft lock your computer. instead use it as a value and use 15 as the number 2, doing this will divide the 30 with 15 to get a use time of 2
             item.useAnimation = 13;
             item.shoot = mod.ProjectileType("MS");
             item.shootSpeed = 25f;
             item.value = 25000;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 12;
         }
 
@@ -98,7 +98,7 @@ namespace AAMod.Items.Melee
         public override void SetStaticDefaults()
         {
             Main.projFrames[projectile.type] = 7;
-            if (Main.netMode == 2) return;
+            if (Main.netMode == NetmodeID.Server) return;
         Player projOwner = Main.player[projectile.owner];
           projectile.position.X = projOwner.Center.X - (projectile.width / 2);
           projectile.position.Y = projOwner.Center.Y - (projectile.height / 2);

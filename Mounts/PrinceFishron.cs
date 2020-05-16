@@ -2,6 +2,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Mounts
 {
@@ -53,7 +54,7 @@ namespace AAMod.Mounts
 			mountData.swimFrameCount = 8;
 			mountData.swimFrameDelay = 4;
 			mountData.swimFrameStart = 15;
-			if (Main.netMode != 2)
+			if (Main.netMode != NetmodeID.Server)
 			{
 				mountData.backTexture = mod.GetTexture("Mounts/PrinceFishron");
 				mountData.backTextureGlow = mod.GetTexture("Mounts/PrinceFishron_Glow");

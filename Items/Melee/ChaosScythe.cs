@@ -12,7 +12,7 @@ namespace AAMod.Items.Melee   //where is located
         public override void SetDefaults()
         {
             item.noUseGraphic = true;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.damage = 350;
             item.melee = true;           
             item.width = 56;              

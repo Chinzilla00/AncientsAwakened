@@ -1,6 +1,6 @@
 using Terraria;
 using Terraria.ModLoader;
-
+using Terraria.ID;
 
 namespace AAMod.Items.Armor.Witch
 {
@@ -22,7 +22,7 @@ Boots enchanted with the firey spirit of a supreme dragon acolyte");
 			item.height = 16;
 			item.value = 300000;
 			item.defense = 20;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 12;
         }
 

@@ -18,7 +18,7 @@ Chaos Chain EX");
         public override void SetDefaults()
         {
             item.autoReuse = true;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.useAnimation = 18;
             item.useTime = 18;
             item.knockBack = 1f;
@@ -28,7 +28,7 @@ Chaos Chain EX");
             item.shoot = mod.ProjectileType("ChaosChainEX");
             item.shootSpeed = 18f;
             item.UseSound = SoundID.Item116;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             item.expert = true; item.expertOnly = true;
             item.value = Item.sellPrice(1, 0, 0, 0);
             item.melee = true;

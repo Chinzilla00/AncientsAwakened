@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
+using Terraria.ID;
 
 namespace AAMod.Projectiles.Akuma.Dawnstrike
 {
@@ -175,7 +175,7 @@ namespace AAMod.Projectiles.Akuma.Dawnstrike
 					num5 = num1 / num4;
 				float SpeedX = f1 * num5;
 				float SpeedY = f2 * num5;
-                Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 89);
+                Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 89);
                 Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, type, (int)damage, 1f, player.whoAmI);
             }
         }

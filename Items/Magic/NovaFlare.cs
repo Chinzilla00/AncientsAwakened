@@ -2,6 +2,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Magic
 {
@@ -16,7 +17,7 @@ namespace AAMod.Items.Magic
 
 		public override void SetDefaults()
 		{
-			item.CloneDefaults(3570);
+			item.CloneDefaults(ItemID.LunarFlareBook);
 			item.useTime = 8;
 			item.useAnimation = 8;
 			item.damage = 175;
@@ -69,7 +70,7 @@ namespace AAMod.Items.Magic
 				num82 *= num84;
 				num83 *= num84;
 				Vector2 vector11 = new Vector2(num82, num83) / 2f;
-				int p = Projectile.NewProjectile(vector2.X, vector2.Y, vector11.X*1.5f, vector11.Y*1.5f, 616, damage, knockBack, player.whoAmI);
+				int p = Projectile.NewProjectile(vector2.X, vector2.Y, vector11.X*1.5f, vector11.Y*1.5f, ProjectileID.VortexBeaterRocket, damage, knockBack, player.whoAmI);
 				Main.projectile[p].usesLocalNPCImmunity = true;
 				Main.projectile[p].localNPCHitCooldown = 1;
 				Main.projectile[p].tileCollide = false;

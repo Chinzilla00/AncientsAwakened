@@ -12,7 +12,7 @@ namespace AAMod.Items.Boss.Sagittarius
 
         public override void SetDefaults()
         {
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.useAnimation = 38;
             item.useTime = 38;
             item.knockBack = 8f;
@@ -21,7 +21,7 @@ namespace AAMod.Items.Boss.Sagittarius
             item.damage = 42;
             item.scale = 1.05f;
             item.UseSound = SoundID.Item1;
-            item.rare = 4;
+            item.rare = ItemRarityID.LightRed;
             item.value = 150000;
             item.melee = true;
             item.autoReuse = true;

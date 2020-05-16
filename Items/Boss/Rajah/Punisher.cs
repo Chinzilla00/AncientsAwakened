@@ -13,7 +13,7 @@ namespace AAMod.Items.Boss.Rajah
 
         public override void SetDefaults()
         {
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.useAnimation = 17;
             item.useTime = 17;
             item.autoReuse = true;
@@ -24,7 +24,7 @@ namespace AAMod.Items.Boss.Rajah
             item.shoot = Terraria.ModLoader.ModContent.ProjectileType<Projectiles.Rajah.Punisher>();
             item.shootSpeed = 15f;
             item.UseSound = SoundID.Item1;
-            item.rare = 8;
+            item.rare = ItemRarityID.Yellow;
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.melee = true;
             item.noUseGraphic = true;

@@ -19,7 +19,7 @@ namespace AAMod.Items.Armor.Imp
             item.width = 30;
             item.height = 22;
             item.value = 7000;
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
             item.defense = 4;
         }
 

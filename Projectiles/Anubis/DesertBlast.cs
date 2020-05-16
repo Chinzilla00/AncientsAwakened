@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Projectiles.Anubis
 {
@@ -47,7 +48,7 @@ namespace AAMod.Projectiles.Anubis
 
         public override void Kill(int timeleft)
         {
-            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
+            Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 27);
             for (int num506 = 0; num506 < 15; num506++)
             {
                 Dust dust1;

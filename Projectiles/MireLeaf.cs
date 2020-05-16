@@ -35,7 +35,7 @@ namespace AAMod.Projectiles
 
         public override void Kill(int i)
         {
-            Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y, 1);
+            Main.PlaySound(SoundID.Dig, (int)projectile.position.X, (int)projectile.position.Y, 1);
 
             for (int m = 0; m < 12; m++)
             {

@@ -21,14 +21,14 @@ namespace AAMod.Items.Ranged
 			item.height = 22;
 			item.useAnimation = 14;
 			item.useTime = 14;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.noMelee = true;
 			item.knockBack = 2;
 			item.value = Item.sellPrice(0, 4, 72, 0);
-			item.rare = 5;
+			item.rare = ItemRarityID.Pink;
 			item.UseSound = SoundID.Item12;
 			item.autoReuse = true;
-			item.shoot = 10;
+			item.shoot = ProjectileID.PurificationPowder;
 			item.shootSpeed = 22f;
 			item.useAmmo = mod.ItemType("Energy_Cell");			
 			item.crit = 5;

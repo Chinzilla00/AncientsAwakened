@@ -22,12 +22,12 @@ Non-consumable");
         {
             item.width = 24;
             item.height = 24;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 14;
             item.value = Item.sellPrice(0, 0, 0, 0);
             item.useAnimation = 45;
             item.useTime = 45;
-            item.useStyle = 4;
+            item.useStyle = ItemUseStyleID.HoldingUp;
             item.noUseGraphic = true;
             item.consumable = false;
             item.UseSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah");
@@ -54,12 +54,12 @@ Non-consumable");
         {
             if (!AAWorld.downedRajahsRevenge)
             {
-                if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.DiamondCarrotRajahText1"), 107, 137, 179);
+                if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.DiamondCarrotRajahText1"), 107, 137, 179);
             }
             else
             {
                 string Name;
-                if (Main.netMode != 0)
+                if (Main.netMode != NetmodeID.SinglePlayer)
                 {
                     Name = "Terrarians";
                 }
@@ -67,7 +67,7 @@ Non-consumable");
                 {
                     Name = Main.LocalPlayer.name;
                 }
-                if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.DiamondCarrotRajahText2") + Name + "!", 107, 137, 179);
+                if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.DiamondCarrotRajahText2") + Name + "!", 107, 137, 179);
             }
             int overrideDirection = Main.rand.Next(2) == 0 ? -1 : 1;
             AAModGlobalNPC.SpawnBoss(player, mod.NPCType("SupremeRajah"), false, player.Center + new Vector2(MathHelper.Lerp(500f, 800f, (float)Main.rand.NextDouble()) * overrideDirection, -1200), Language.GetTextValue("Mods.AAMod.Common.SupremeRajah"));

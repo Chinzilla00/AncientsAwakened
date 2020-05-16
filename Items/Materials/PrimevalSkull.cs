@@ -1,5 +1,6 @@
 ﻿using Terraria;
 using Terraria.DataStructures;
+using Terraria.ID;
 
 namespace AAMod.Items.Materials
 {
@@ -19,7 +20,7 @@ namespace AAMod.Items.Materials
             item.height = 16;
             item.maxStack = 999;
             item.value = 1000;
-            item.rare = 7;
+            item.rare = ItemRarityID.Lime;
         }
 
         public override void PostUpdate()

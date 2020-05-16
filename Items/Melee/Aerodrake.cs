@@ -15,9 +15,9 @@ namespace AAMod.Items.Melee
 
 		public override void SetDefaults()
 		{
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             item.UseSound = SoundID.DD2_SonicBoomBladeSlash;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.damage = 1250;
             item.useAnimation = 15;
             item.useTime = 15;

@@ -17,7 +17,7 @@ namespace AAMod.Items.Melee
         public override void SetDefaults()
 		{
             item.autoReuse = true;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.shootSpeed = 8f;
             item.shoot = ModContent.ProjectileType<Projectiles.DeathDagger>();
             item.damage = 29;
@@ -32,7 +32,7 @@ namespace AAMod.Items.Melee
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.knockBack = 1f;
             item.melee = true;
-            item.rare = 4;
+            item.rare = ItemRarityID.LightRed;
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

@@ -48,7 +48,7 @@ namespace AAMod.Tiles.Boss
                     int n = NPC.NewNPC(i + 1, j + 1, mod.NPCType("LuciferSitting"));
                     if (Main.netMode == NetmodeID.Server)
                     {
-                        NetMessage.SendData(23, -1, -1, null, n);
+                        NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, n);
                     }
                 }
             }

@@ -15,10 +15,10 @@ namespace AAMod.Items.Usable
         public override void SetDefaults()
         {
             item.width = item.height = 16;
-            item.rare = 0;
+            item.rare = ItemRarityID.White;
             item.maxStack = 99;
             item.value = 100;
-            item.useStyle = 4;
+            item.useStyle = ItemUseStyleID.HoldingUp;
             item.useTime = item.useAnimation = 19;
             item.noMelee = true;
         }

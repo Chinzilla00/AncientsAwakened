@@ -25,14 +25,14 @@ Terra Ballista EX");
 	        item.useTime = 3;
 	        item.reuseDelay = 15;
 	        item.useAnimation = 9;
-	        item.useStyle = 5;
+	        item.useStyle = ItemUseStyleID.HoldingOut;
 	        item.noMelee = true;
 	        item.knockBack = 3f;
 	        item.value = 500000;
-	        item.rare = 11;
+	        item.rare = ItemRarityID.Purple;
 	        item.UseSound = SoundID.Item5;
 	        item.autoReuse = true;
-	        item.shoot = 10;
+	        item.shoot = ProjectileID.PurificationPowder;
 	        item.shootSpeed = 16f;
 	        item.useAmmo = 40;
 	    }

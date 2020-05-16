@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ModLoader;
 
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.ID;
 
 namespace AAMod.NPCs.Bosses.Anubis.Forsaken
 {
@@ -40,7 +41,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                     npc.scale += .02f;
                 }
                 npc.rotation += .1f;
-                if (Main.netMode != 1)
+                if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     npc.ai[0]++;
                     if (npc.ai[0] >= 120)

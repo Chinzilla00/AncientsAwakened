@@ -19,7 +19,7 @@ namespace AAMod.Items.Magic
         {
             item.autoReuse = true;
             item.mana = 11;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.damage = 220;
             item.useAnimation = 3;
             item.useTime = 3;
@@ -30,7 +30,7 @@ namespace AAMod.Items.Magic
             item.knockBack = 5f;
             item.value = Item.sellPrice(0, 10, 0, 0);
             item.magic = true;
-            item.rare = 11;
+            item.rare = ItemRarityID.Purple;
             item.noMelee = true;
             item.expert = true; item.expertOnly = true;
         }

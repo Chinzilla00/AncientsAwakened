@@ -26,16 +26,16 @@ Right click to fire normal arrows");
 			item.height = 58;
 			item.useTime = 10;
 			item.useAnimation = 10;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.noMelee = true;
 			item.knockBack = 0;
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.UseSound = new LegacySoundStyle(2, 75, Terraria.Audio.SoundType.Sound);
             item.autoReuse = true;
             item.useAmmo = AmmoID.Arrow;
-            item.shoot = 10;
+            item.shoot = ProjectileID.PurificationPowder;
 			item.shootSpeed = 8f;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 13;
         }
 

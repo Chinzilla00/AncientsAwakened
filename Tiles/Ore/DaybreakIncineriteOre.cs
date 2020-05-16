@@ -20,7 +20,7 @@ namespace AAMod.Tiles.Ore
             Main.tileBlockLight[Type] = true;
             Main.tileMerge[TileID.Mud][Type] = true;
             //true for block to emit light
-            soundType = 21;
+            soundType = SoundID.Tink;
             Main.tileLighted[Type] = true;
             drop = mod.ItemType("DaybreakIncineriteOre");   
             dustType = mod.DustType("AkumaADust");

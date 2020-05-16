@@ -22,12 +22,12 @@ Non-Consumable");
         {
             item.width = 18;
             item.height = 28;
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
             item.value = Item.sellPrice(0, 0, 0, 0);
             item.useAnimation = 45;
             item.useTime = 45;
-            item.useStyle = 4;
-            item.rare = 11;
+            item.useStyle = ItemUseStyleID.HoldingUp;
+            item.rare = ItemRarityID.Purple;
         }
 
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
@@ -38,9 +38,9 @@ Non-Consumable");
 
         public override bool UseItem(Player player)
         {
-            if (Main.netMode == 0) { if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.EquinoxWormawoken"), 175, 75, 255, false); }
-            else if (Main.netMode == 2)
-                if (Main.netMode == NetmodeID.SinglePlayer) { if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.EquinoxWormawoken"), 175, 75, 255, false); }
+            if (Main.netMode == NetmodeID.SinglePlayer) { if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.EquinoxWormawoken"), 175, 75, 255, false); }
+            else if (Main.netMode == NetmodeID.Server)
+                if (Main.netMode == NetmodeID.SinglePlayer) { if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.EquinoxWormawoken"), 175, 75, 255, false); }
                 else if (Main.netMode == NetmodeID.Server)
                 {
                     NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(Language.GetTextValue("Mods.AAMod.Common.EquinoxWormawoken")), new Color(175, 75, 255), -1);

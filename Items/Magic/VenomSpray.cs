@@ -14,11 +14,11 @@ namespace AAMod.Items.Magic
             item.magic = true;                     
             item.width = 24;
             item.height = 28;
-            item.useStyle = 5;        
+            item.useStyle = ItemUseStyleID.HoldingOut;        
             item.noMelee = true;
             item.knockBack = 4;
             item.value = Item.sellPrice(0, 0, 20, 0);
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.mana = 5;             
             item.UseSound = SoundID.Item21;            
             item.autoReuse = true;

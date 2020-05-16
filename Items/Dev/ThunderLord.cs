@@ -34,11 +34,11 @@ namespace AAMod.Items.Dev
             item.height = 24;
             item.useTime = 20; 
             item.useAnimation = 20; 
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.shoot = mod.ProjectileType("ThunderSpark");
             item.knockBack = 3;
             item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             item.UseSound = SoundID.Item92;
             item.autoReuse = true; 
             item.shootSpeed = 9f;

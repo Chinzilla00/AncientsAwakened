@@ -40,7 +40,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 if (++projectile.frame > 3)
                 {
 					projectile.frame = 3;
-                    if(Main.netMode != 1) 
+                    if(Main.netMode != NetmodeID.MultiplayerClient) 
 						projectile.Kill();
                 }
             }			

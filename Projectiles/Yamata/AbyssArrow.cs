@@ -12,7 +12,7 @@ namespace AAMod.Projectiles.Yamata
         public short customGlowMask = 0;
         public override void SetStaticDefaults()
          {
-            if (Main.netMode != 2)
+            if (Main.netMode != NetmodeID.Server)
             {
                 Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
                 for (int i = 0; i < Main.glowMaskTexture.Length; i++)
@@ -59,7 +59,7 @@ namespace AAMod.Projectiles.Yamata
 
             if (projectile.ai[0] == bulletFadeTime && projectile.ai[1] == 0)
             {
-                Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 54);
+                Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 54);
                 projectile.damage = 2 * projectile.damage / 2; //nerf damage because 2 shot
                 if (Main.myPlayer == projectile.owner) //spawn extra 1 copies
                 {
@@ -109,7 +109,7 @@ namespace AAMod.Projectiles.Yamata
         }
 		public override void Kill(int timeLeft)
             {
-                Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y, 1);
+                Main.PlaySound(SoundID.Dig, (int)projectile.position.X, (int)projectile.position.Y, 1);
 
                 for (int num468 = 0; num468 < 4; num468++)
                 {

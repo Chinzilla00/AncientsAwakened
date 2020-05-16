@@ -19,11 +19,11 @@ namespace AAMod.Items.Ranged
 
             item.useTime = 30;
             item.useAnimation = 30;
-            item.useStyle = 5;
-            item.shoot = 3;
+            item.useStyle = ItemUseStyleID.HoldingOut;
+            item.shoot = ProjectileID.Shuriken;
             item.useAmmo = AmmoID.Arrow;
             item.knockBack = 2;
-            item.rare = 5;
+            item.rare = ItemRarityID.Pink;
             item.UseSound = SoundID.Item5;
             item.autoReuse = true;
             item.shootSpeed = 25f;

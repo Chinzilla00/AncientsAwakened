@@ -13,9 +13,9 @@ namespace AAMod.Items.Boss.Rajah.Supreme
 			item.height = 80;
 			item.useTime = 27;
 			item.useAnimation = 27;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
             item.value = Item.sellPrice(0, 50, 0, 0);
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("Excalihare");

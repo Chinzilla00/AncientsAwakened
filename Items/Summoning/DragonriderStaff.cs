@@ -17,13 +17,13 @@ namespace AAMod.Items.Summoning
         {
             item.mana = 20;
             item.damage = 50;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.shootSpeed = 10f;
             item.shoot = mod.ProjectileType("DragonHead");
             item.width = 64;
             item.height = 64;
             item.UseSound = SoundID.Item44;
-            item.rare = 8;
+            item.rare = ItemRarityID.Yellow;
             item.useAnimation = 24;
             item.useTime = 24;
             item.noMelee = true;

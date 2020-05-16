@@ -30,9 +30,9 @@ Inflicts Daybroken and Moonraze");
             item.noUseGraphic = true;
             item.useTurn = true;
 			item.autoReuse = true;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.value = Item.sellPrice(1, 50, 0, 0);
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             item.shoot = mod.ProjectileType("TimesplitterP");  //put your Spear projectile name
             item.shootSpeed = 9f;
             AARarity = 14;

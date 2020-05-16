@@ -23,9 +23,9 @@ namespace AAMod.Items.Melee
             item.noUseGraphic = true;
             item.useTurn = true;
 			item.autoReuse = true;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.value = Item.sellPrice(0, 6, 0, 0);
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
             item.shoot = mod.ProjectileType("Executioner");  //put your Spear projectile name
             item.shootSpeed = 5f;
         }

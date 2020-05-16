@@ -17,7 +17,7 @@ namespace AAMod.Items.Armor.Olympian
 			item.width = 22;
 			item.height = 24;
 			item.value = Item.sellPrice(0, 5, 0, 0);
-			item.rare = 6;
+			item.rare = ItemRarityID.LightPurple;
 			item.defense = 8;
 		}
 		

@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
+using Terraria.ID;
 
 namespace AAMod.Tiles.Plants
 {
@@ -15,7 +16,7 @@ namespace AAMod.Tiles.Plants
             TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
             TileObjectData.addTile(Type);
             drop = mod.ItemType("BlackLotus");
-            soundType = 6;
+            soundType = SoundID.Grass;
         }
 
         public override bool CreateDust(int i, int j, ref int type)

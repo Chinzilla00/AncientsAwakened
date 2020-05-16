@@ -36,7 +36,7 @@ namespace AAMod.NPCs.Enemies.Mire
         {
             if (Main.rand.Next(1000) == 0)
             {
-                Main.PlaySound(29, (int)npc.position.X, (int)npc.position.Y, 9, 1f, 0f);
+                Main.PlaySound(SoundID.Zombie, (int)npc.position.X, (int)npc.position.Y, 9, 1f, 0f);
             }
             npc.noGravity = true;
             if (!npc.noTileCollide)

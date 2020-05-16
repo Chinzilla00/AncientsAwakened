@@ -22,7 +22,7 @@ Increases magic crit by 15%");
             item.width = 28;
             item.height = 24;
             item.value = 90000;
-            item.rare = 7;
+            item.rare = ItemRarityID.Lime;
             item.defense = 22;
         }
 

@@ -17,7 +17,7 @@ namespace AAMod.Items.Armor.Bogwood
             item.width = 26;
             item.height = 18;
             item.value = 100;
-            item.rare = 0;
+            item.rare = ItemRarityID.White;
             item.defense = 1;
         }
 

@@ -21,16 +21,16 @@ Potential lag warning");
             item.height = 76;
             item.useTime = 10;
             item.useAnimation = 10;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.noMelee = true;
             item.knockBack = 3f;
             item.value = Item.sellPrice(0, 60, 0, 0);
             item.UseSound = SoundID.Item5;
             item.autoReuse = true;
-            item.shoot = 1;
+            item.shoot = ProjectileID.WoodenArrowFriendly;
             item.shootSpeed = 16f;
             item.useAmmo = AmmoID.Arrow;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 14;
         }
 

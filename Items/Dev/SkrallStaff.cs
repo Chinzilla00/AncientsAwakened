@@ -26,11 +26,11 @@ It's the stick that's magic. The diamond is just for show
 			item.height = 58;
 			item.useTime = 5;
 			item.useAnimation = 5;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 5;
 			item.value = 1000000;
-			item.rare = 11;
+			item.rare = ItemRarityID.Purple;
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("Crystal");
@@ -61,7 +61,7 @@ It's the stick that's magic. The diamond is just for show
                 item.mana = 6;
                 item.useTime = 30;
                 item.useAnimation = 30;
-                item.useStyle = 5;
+                item.useStyle = ItemUseStyleID.HoldingOut;
                 item.noMelee = true; //so the item's animation doesn't do damage
                 item.damage = 270;
                 item.shoot = mod.ProjectileType("BigCrystal");
@@ -70,7 +70,7 @@ It's the stick that's magic. The diamond is just for show
             else
             {
                 item.mana = 6;
-                item.useStyle = 5;
+                item.useStyle = ItemUseStyleID.HoldingOut;
                 item.useTime = 5;
                 item.useAnimation = 5;
                 item.melee = true;

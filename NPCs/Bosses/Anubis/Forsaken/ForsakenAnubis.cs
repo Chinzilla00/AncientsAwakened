@@ -131,7 +131,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
             {
                 if (internalAI[2] == 0)
                 {
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         for (int m = 0; m < RuneCount; m++)
                         {
@@ -320,7 +320,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                         Max = 4;
                     }
 
-                    if (npc.ai[1] > 120 &&  Main.netMode != 1)
+                    if (npc.ai[1] > 120 &&  Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         float rotation = 2f * (float)Math.PI / Max;
                         Vector2 vel = npc.velocity;
@@ -559,7 +559,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
 
             if (!AAWorld.downedAnubisA)
             {
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("FAnubisWin"), Color.ForestGreen);
+                if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("FAnubisWin"), Color.ForestGreen);
             }
 
             AAWorld.downedAnubisA = true;
@@ -596,9 +596,9 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                 if (!player.active || player.dead || Vector2.Distance(npc.Center, player.Center) > 5000f || !player.ZoneDesert)
                 {
                     deathtimer++;
-                    if (Main.netMode != 1 && deathtimer > 240)
+                    if (Main.netMode != NetmodeID.MultiplayerClient && deathtimer > 240)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("FAnubis"), Color.ForestGreen);
+                        if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("FAnubis"), Color.ForestGreen);
                         int a = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<TownNPCs.Anubis>());
                         Main.npc[a].Center = npc.Center;
                         npc.active = false;

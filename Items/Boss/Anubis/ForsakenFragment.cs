@@ -1,3 +1,5 @@
+using Terraria.ID;
+
 namespace AAMod.Items.Boss.Anubis
 {
     public class ForsakenFragment : BaseAAItem
@@ -13,7 +15,7 @@ namespace AAMod.Items.Boss.Anubis
 			item.height = 32;
 			item.maxStack = 99;
 			item.value = 20000;
-			item.rare = 5;
+			item.rare = ItemRarityID.Pink;
 		}
 	}
 }

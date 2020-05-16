@@ -23,11 +23,11 @@ namespace AAMod.Items.Blocks
 			item.autoReuse = true;
 			item.useAnimation = 15;
 			item.useTime = 10;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.consumable = true;
 			item.createTile = mod.TileType("HydratoxinTorch");
 			item.flame = true;
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
             item.value = Item.sellPrice(0, 0, 1, 0);
 		}
 

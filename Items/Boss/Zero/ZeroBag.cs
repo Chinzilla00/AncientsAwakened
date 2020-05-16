@@ -1,6 +1,7 @@
 using Terraria;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.ID;
 
 namespace AAMod.Items.Boss.Zero
 {
@@ -21,7 +22,7 @@ namespace AAMod.Items.Boss.Zero
             item.width = 36;
             item.height = 32;
             item.expert = true; item.expertOnly = true;
-            item.rare = 10;
+            item.rare = ItemRarityID.Red;
         }
 
         public override int BossBagNPC => mod.NPCType("ZeroProtocol");

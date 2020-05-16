@@ -12,13 +12,13 @@ namespace AAMod.Items.Melee
             item.CloneDefaults(ItemID.Terrarian);
             item.damage = 190;                            
             item.value = 1000000;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             item.knockBack = 1;
             item.channel = true;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.useAnimation = 12;
             item.useTime = 12;
-            item.rare = 11;
+            item.rare = ItemRarityID.Purple;
             item.shoot = mod.ProjectileType("Void");  
 		}
 

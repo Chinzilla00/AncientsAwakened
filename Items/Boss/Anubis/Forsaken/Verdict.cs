@@ -23,11 +23,11 @@ Creates 2 forsaken phantom blades which hit enemy horizontally as well");
 			item.height = 92;
 			item.useTime = 20;
 			item.useAnimation = 20;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
             item.knockBack = 4;
             item.autoReuse = true;
 			item.UseSound = SoundID.Item1;
-			item.rare = 11;
+			item.rare = ItemRarityID.Purple;
 		}
 
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)

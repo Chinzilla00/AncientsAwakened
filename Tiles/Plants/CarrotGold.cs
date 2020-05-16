@@ -19,7 +19,7 @@ namespace AAMod.Tiles.Plants
             TileObjectData.addTile(Type);
             drop = ModContent.ItemType<Items.BossSummons.GoldenCarrot>();
             dustType = DustID.GoldCoin;
-            soundType = 6;
+            soundType = SoundID.Grass;
         }
 
         public override void NumDust(int i, int j, bool fail, ref int num)

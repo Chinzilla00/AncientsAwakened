@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using System.Collections.Generic;
+using Terraria.ID;
 
 namespace AAMod.Items.Vanity.Fazer
 
@@ -30,7 +31,7 @@ namespace AAMod.Items.Vanity.Fazer
         {
             item.width = 26;
             item.height = 20;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             item.vanity = true;
         }
     }

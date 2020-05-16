@@ -110,7 +110,7 @@ namespace AAMod
                     }
                 }
             }
-            if(item.magic && item.useStyle == 5 && !Item.staff[item.type] && item.width < item.height * 1.25 && !item.channel)
+            if(item.magic && item.useStyle == ItemUseStyleID.HoldingOut && !Item.staff[item.type] && item.width < item.height * 1.25 && !item.channel)
             {
                 spellbookmagic = true;
             }
@@ -486,13 +486,13 @@ namespace AAMod
             {
                 int tileTargetX = (int)((Main.mouseX + Main.screenPosition.X) / 16f);
 				int tileTargetY = (int)((Main.mouseY + Main.screenPosition.Y) / 16f);
-                if(Main.tile[tileTargetX, tileTargetY].active() && Main.tile[tileTargetX, tileTargetY].type == 219 && item.createTile > 0 && (Main.tileSand[item.createTile] || TileID.Sets.Conversion.Sand[item.createTile]))
+                if(Main.tile[tileTargetX, tileTargetY].active() && Main.tile[tileTargetX, tileTargetY].type == 219 && item.createTile > TileID.Dirt && (Main.tileSand[item.createTile] || TileID.Sets.Conversion.Sand[item.createTile]))
                 {
                     bool flag = player.position.X / 16f - Player.tileRangeX - player.inventory[player.selectedItem].tileBoost - player.blockRange <= Player.tileTargetX && (player.position.X + player.width) / 16f + Player.tileRangeX + player.inventory[player.selectedItem].tileBoost - 1f + player.blockRange >= Player.tileTargetX && player.position.Y / 16f - Player.tileRangeY - player.inventory[player.selectedItem].tileBoost - player.blockRange <= Player.tileTargetY && (player.position.Y + player.height) / 16f + Player.tileRangeY + player.inventory[player.selectedItem].tileBoost - 2f + player.blockRange >= Player.tileTargetY;
                     if(flag && player.itemTime == 0 && player.itemAnimation > 0 && player.controlUseItem)
                     {
                         player.itemTime = (int)(player.inventory[player.selectedItem].useTime / PlayerHooks.TotalUseTimeMultiplier(player, player.inventory[player.selectedItem]));
-					    Main.PlaySound(7, -1, -1, 1, 1f, 0f);
+					    Main.PlaySound(SoundID.Grab, -1, -1, 1, 1f, 0f);
                         ExtractinatorUse2(item.type);
                         for (int i = 0; i < 58; i++)
                         {
@@ -973,9 +973,9 @@ namespace AAMod
             {
                 Vector2 vector = Main.ReverseGravitySupport(Main.MouseScreen, 0f) + Main.screenPosition;
                 int number = Item.NewItem((int)vector.X, (int)vector.Y, 1, 1, result, stack, false, -1, false, false);
-                if (Main.netMode == 1)
+                if (Main.netMode == NetmodeID.MultiplayerClient)
                 {
-                    NetMessage.SendData(21, -1, -1, null, number, 1f, 0f, 0f, 0, 0, 0);
+                    NetMessage.SendData(MessageID.SyncItem, -1, -1, null, number, 1f, 0f, 0f, 0, 0, 0);
                 }
             }
         }

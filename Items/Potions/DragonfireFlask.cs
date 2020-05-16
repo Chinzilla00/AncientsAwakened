@@ -15,7 +15,7 @@ namespace AAMod.Items.Potions
 		public override void SetDefaults()
 		{
 			item.UseSound = SoundID.Item3;
-			item.useStyle = 2;
+			item.useStyle = ItemUseStyleID.EatingUsing;
 			item.useTurn = true;
 			item.useAnimation = 15;
 			item.useTime = 15;
@@ -24,7 +24,7 @@ namespace AAMod.Items.Potions
 			item.width = 22;
 			item.height = 30;
 			item.value = Item.sellPrice(0, 5, 0, 0);
-			item.rare = 3;
+			item.rare = ItemRarityID.Orange;
 			item.buffType = mod.BuffType("DragonfireFlaskBuff");
 			item.buffTime = 52000;
 		}

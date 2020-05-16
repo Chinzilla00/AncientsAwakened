@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Tiles.Ore
 {
@@ -14,7 +15,7 @@ namespace AAMod.Tiles.Ore
             Main.tileSolid[Type] = true;
             Main.tileMergeDirt[Type] = false;
             Main.tileValue[Type] = 870; 
-            soundType = 21;
+            soundType = SoundID.Tink;
             drop = mod.ItemType("DiscordiumOre");   
             dustType = mod.DustType("DoomDust");
             ModTranslation name = CreateMapEntryName();

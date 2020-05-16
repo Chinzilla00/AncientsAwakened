@@ -1,6 +1,6 @@
 using Terraria;
 using Terraria.ModLoader;
-
+using Terraria.ID;
 
 namespace AAMod.Items.Armor.GoblinSlayer
 {
@@ -19,7 +19,7 @@ namespace AAMod.Items.Armor.GoblinSlayer
 			item.width = 32;
 			item.height = 20;
             item.value = Item.sellPrice(0, 0, 5, 0);
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
             item.defense = 7;
         }
 	}

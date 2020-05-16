@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 
 namespace AAMod.Items.Boss.Rajah.Supreme
 {
@@ -22,14 +23,14 @@ namespace AAMod.Items.Boss.Rajah.Supreme
             item.useTime = 6;
             item.useAnimation = 10;
             item.reuseDelay = 10;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.noMelee = true;
             item.knockBack = .5f;
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.autoReuse = true;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("CarrotEX");
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 14;
         }
 

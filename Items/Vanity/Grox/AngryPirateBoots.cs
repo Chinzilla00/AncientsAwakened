@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Vanity.Grox
 {
@@ -35,7 +36,7 @@ namespace AAMod.Items.Vanity.Grox
         {
             item.width = 18;
             item.height = 20;
-            item.rare = 7;
+            item.rare = ItemRarityID.Lime;
             item.vanity = true;
         }
     }

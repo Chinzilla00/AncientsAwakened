@@ -17,7 +17,7 @@ Magic Acorn EX");
 
         public override void SetDefaults()
         {
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("DapperSquirrel1");
             item.damage = 200;
@@ -28,7 +28,7 @@ Magic Acorn EX");
             item.useTime = 30;
             item.noMelee = true;
             item.value = Item.sellPrice(0, 1, 0, 0);
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             item.summon = true;
             item.mana = 10;
 			item.buffType = mod.BuffType("DapperSquirrel");

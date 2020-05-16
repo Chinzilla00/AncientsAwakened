@@ -17,7 +17,7 @@ namespace AAMod.Items.Dev
 		public override void SetDefaults()
 		{
 			item.damage = 220;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
 			item.melee = true;
             item.useAnimation = 25;
             item.useTime = 25;
@@ -26,7 +26,7 @@ namespace AAMod.Items.Dev
             item.height = 56;
             item.scale = 1.15f;
             item.UseSound = SoundID.Item71;
-            item.rare = 11;
+            item.rare = ItemRarityID.Purple;
             item.shootSpeed = 9f;
             item.value = 500000;
             item.autoReuse = true;

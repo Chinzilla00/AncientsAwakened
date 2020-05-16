@@ -1,4 +1,5 @@
 using AAMod.Items;
+using Terraria.ID;
 
 namespace AAMod.Tiles.Altar
 {
@@ -9,7 +10,7 @@ namespace AAMod.Tiles.Altar
             item.width = 26;
             item.height = 26;
             item.maxStack = 1;
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.value = 1;
         }
     }

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Vanity.Tied   //We need this to basically indicate the folder where it is to be read from, so you the texture will load correctly
 {
@@ -17,7 +18,7 @@ namespace AAMod.Items.Vanity.Tied   //We need this to basically indicate the fol
         {
             item.width = 24; //The size in width of the sprite in pixels.
             item.height = 28;   //The size in height of the sprite in pixels.
-            item.rare = 9;    //The color the title of your item when hovering over it ingame
+            item.rare = ItemRarityID.Cyan;    //The color the title of your item when hovering over it ingame
             item.vanity = true; //this defines if this item is vanity or not.
         }
 

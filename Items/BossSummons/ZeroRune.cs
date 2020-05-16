@@ -26,11 +26,11 @@ N0N-C0NSUMABLE");
         {
             item.width = 32;
             item.height = 32;
-            item.rare = 11;
+            item.rare = ItemRarityID.Purple;
             item.value = Item.sellPrice(0, 0, 0, 0);
             item.useAnimation = 45;
             item.useTime = 45;
-            item.useStyle = 4;
+            item.useStyle = ItemUseStyleID.HoldingUp;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -51,25 +51,25 @@ N0N-C0NSUMABLE");
             {
                 if (NPC.AnyNPCs(mod.NPCType("Zero")))
                 {
-                    if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ZeroUnitFalse"), new Color(255, 0, 0), false);
+                    if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ZeroUnitFalse"), new Color(255, 0, 0), false);
                     return false;
                 }
                 if (NPC.AnyNPCs(mod.NPCType("ZeroProtocol")))
                 {
-                    if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ZeroUnitFalse"), new Color(255, 0, 0), false);
+                    if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ZeroUnitFalse"), new Color(255, 0, 0), false);
                     return false;
                 }
                 return true;
             }
-            if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ZeroUnitVoidZoneFalse"), new Color(255, 0, 0), false);
+            if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ZeroUnitVoidZoneFalse"), new Color(255, 0, 0), false);
             return false;
         }
 
         public override bool UseItem(Player player)
         {
-            if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ZeroUnitRuneTrue"), Color.Red.R, Color.Red.G, Color.Red.B);
+            if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ZeroUnitRuneTrue"), Color.Red.R, Color.Red.G, Color.Red.B);
 
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 AAWorld.zeroUS = true;
                 if (!NPC.AnyNPCs(mod.NPCType("ZeroDeactivated")))

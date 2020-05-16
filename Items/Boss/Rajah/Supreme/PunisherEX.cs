@@ -14,7 +14,7 @@ namespace AAMod.Items.Boss.Rajah.Supreme
 
         public override void SetDefaults()
         {
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.useAnimation = 14;
             item.useTime = 14;
             item.autoReuse = true;
@@ -25,7 +25,7 @@ namespace AAMod.Items.Boss.Rajah.Supreme
             item.shoot = Terraria.ModLoader.ModContent.ProjectileType<Projectiles.Rajah.Supreme.PunisherEX>();
             item.shootSpeed = 15f;
             item.UseSound = SoundID.Item1;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             item.expert = true; item.expertOnly = true;
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.melee = true;

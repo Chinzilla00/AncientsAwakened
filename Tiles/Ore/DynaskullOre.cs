@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Tiles.Ore
 {
@@ -15,7 +16,7 @@ namespace AAMod.Tiles.Ore
             Main.tileSpelunker[Type] = true;
             Main.tileBlockLight[Type] = true;
             //true for block to emit light
-            soundType = 21;
+            soundType = SoundID.Tink;
             Main.tileLighted[Type] = true;
             drop = mod.ItemType("DynaskullOre");
             dustType = mod.DustType("InfinityOverloadY");

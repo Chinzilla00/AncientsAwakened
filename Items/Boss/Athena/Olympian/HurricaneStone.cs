@@ -20,7 +20,7 @@ namespace AAMod.Items.Boss.Athena.Olympian
         {
             item.mana = 10;
             item.damage = 200;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("OwlRuneCharged");
             item.width = 64;
@@ -33,7 +33,7 @@ namespace AAMod.Items.Boss.Athena.Olympian
             item.knockBack = 5f;
             item.summon = true;
             item.sentry = true;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 12;
         }
 

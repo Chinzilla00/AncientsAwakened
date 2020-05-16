@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Projectiles.EFish
 {
@@ -86,7 +87,7 @@ namespace AAMod.Projectiles.EFish
                 vector55.Normalize();
                 vector55 *= Main.rand.Next(45, 65) * 0.1f;
                 vector55 = vector55.RotatedBy((Main.rand.NextDouble() - 0.5) * 1.5707963705062866, default);
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vector55.X, vector55.Y, 405, projectile.damage, projectile.knockBack, projectile.owner, -10f, 0f);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vector55.X, vector55.Y, ProjectileID.FlaironBubble, projectile.damage, projectile.knockBack, projectile.owner, -10f, 0f);
                 return;
             }
         }
@@ -99,7 +100,7 @@ namespace AAMod.Projectiles.EFish
 				float rand = Main.rand.NextFloat() * 6.3f;
 				vel = vel.RotatedBy(rand);
 				vel *= 4f;
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vel.X, vel.Y, 405, projectile.damage, 0, Main.myPlayer);
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vel.X, vel.Y, ProjectileID.FlaironBubble, projectile.damage, 0, Main.myPlayer);
 			}
 		}
 

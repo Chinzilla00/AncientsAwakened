@@ -58,7 +58,7 @@ namespace AAMod.Projectiles.Anubis
                 float shootToY = target.position.Y + target.height * 0.5f - projectile.Center.Y;
                 float distance = (float)Math.Sqrt(shootToX * shootToX + shootToY * shootToY);
 
-                if (distance < 600f && target.catchItem == 0 && !target.friendly && target.active && target.type != 488 && Collision.CanHit(projectile.position, projectile.width, projectile.height, target.position, target.width, target.height))
+                if (distance < 600f && target.catchItem == 0 && !target.friendly && target.active && target.type != NPCID.TargetDummy && Collision.CanHit(projectile.position, projectile.width, projectile.height, target.position, target.width, target.height))
                 {
                     if (projectile.ai[0] > 20f)
                     {
@@ -66,7 +66,7 @@ namespace AAMod.Projectiles.Anubis
 
                         shootToX *= distance * 3;
                         shootToY *= distance * 3;
-                        int id = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, shootToX*4, shootToY*4, 668, projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f);
+                        int id = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, shootToX*4, shootToY*4, ProjectileID.DD2FlameBurstTowerT3Shot, projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f);
                         Main.projectile[id].minion = true;
                         projectile.ai[0] = 0f;
                     }

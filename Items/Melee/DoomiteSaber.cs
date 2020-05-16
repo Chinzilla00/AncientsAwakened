@@ -14,7 +14,7 @@ namespace AAMod.Items.Melee
 
         public override void SetDefaults()
         {
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.useTurn = true;
             item.autoReuse = true;
             item.useAnimation = 27;
@@ -25,7 +25,7 @@ namespace AAMod.Items.Melee
             item.knockBack = 4f;
             item.UseSound = SoundID.Item1;
             item.melee = true;
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
             item.value = 5400;
             item.melee = true;
             item.shoot = mod.ProjectileType("DoomShot");

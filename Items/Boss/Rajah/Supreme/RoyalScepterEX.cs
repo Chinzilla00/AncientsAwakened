@@ -10,7 +10,7 @@ namespace AAMod.Items.Boss.Rajah.Supreme
         {
             item.mana = 5;
             item.damage = 260;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.shootSpeed = 9f;
             item.shoot = Terraria.ModLoader.ModContent.ProjectileType<Projectiles.Rajah.Supreme.CarrotEX>();
             item.width = 58;
@@ -19,7 +19,7 @@ namespace AAMod.Items.Boss.Rajah.Supreme
             item.useAnimation = 30;
             item.useTime = 10;
             item.autoReuse = true;
-            item.rare = 8;
+            item.rare = ItemRarityID.Yellow;
             item.noMelee = true;
             item.knockBack = 2f;
             item.value = Item.sellPrice(0, 5, 0, 0);

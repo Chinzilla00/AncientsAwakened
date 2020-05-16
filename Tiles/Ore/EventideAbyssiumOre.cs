@@ -18,7 +18,7 @@ namespace AAMod.Tiles.Ore
             Main.tileValue[Type] = 840; 
             Main.tileBlockLight[Type] = true;
             Main.tileMerge[TileID.Mud][Type] = true;
-            soundType = 21;
+            soundType = SoundID.Tink;
             TileID.Sets.JungleSpecial[Type] = true;
             Main.tileLighted[Type] = true;
             drop = mod.ItemType("EventideAbyssiumOre");   

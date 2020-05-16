@@ -20,7 +20,7 @@ namespace AAMod.Items.Armor.Terra
 			item.width = 26;
 			item.height = 20;
 			item.value = Item.sellPrice(3, 0, 0, 0);
-            item.rare = 7;
+            item.rare = ItemRarityID.Lime;
             item.defense = 22;
 		}
 

@@ -22,10 +22,10 @@ namespace AAMod.Items.Dev
 			item.height = 52;
 			item.useTime = 32;
 			item.useAnimation = 32;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 4;
             item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 		}

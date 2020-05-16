@@ -160,7 +160,7 @@ namespace AAMod.NPCs.TownNPCs
 
             if (!firstButton)
             {
-                Main.PlaySound(12, -1, -1, 1);
+                Main.PlaySound(SoundID.MenuTick, -1, -1, 1);
 
                 int Mushman = NPC.FindFirstNPC(mod.NPCType("Mushman"));
 
@@ -198,7 +198,7 @@ namespace AAMod.NPCs.TownNPCs
 						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)1);
                     }
                     AAWorld.squid1++;
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                 }
                 else if (Item2 >= 0 && AAWorld.squid2 < 5) //Item 2: 3 Teal Mushrooms
                 {
@@ -220,7 +220,7 @@ namespace AAMod.NPCs.TownNPCs
 						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)2);
                     }
                     AAWorld.squid2++;
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                 }
                 else if (Item3 >= 0 && AAWorld.squid3 < 5)
                 {
@@ -242,7 +242,7 @@ namespace AAMod.NPCs.TownNPCs
 						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)3);
 					}
                     AAWorld.squid3++;
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                 }
                 else if (Item4 >= 0 && AAWorld.squid4 < 5)
                 {
@@ -264,7 +264,7 @@ namespace AAMod.NPCs.TownNPCs
 						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)4);
 					}
                     AAWorld.squid4++;
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                 }
                 else if (Item5 >= 0 && AAWorld.squid5 < 5)
                 {
@@ -285,7 +285,7 @@ namespace AAMod.NPCs.TownNPCs
 						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)5);
 					}
                     AAWorld.squid5++;
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                 }
                 else if (Item6 >= 0 && AAWorld.squid6 < 5)
                 {
@@ -306,7 +306,7 @@ namespace AAMod.NPCs.TownNPCs
 						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)6);
 					}
                     AAWorld.squid6++;
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                 }
                 else if (Item7 >= 0 && AAWorld.squid7 < 5)
                 {
@@ -327,7 +327,7 @@ namespace AAMod.NPCs.TownNPCs
 						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)7);
 					}
                     AAWorld.squid7++;
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                 }
                 else if (Item8 >= 0 && AAWorld.squid8 < 5)
                 {
@@ -348,7 +348,7 @@ namespace AAMod.NPCs.TownNPCs
 						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)8);
 					}
                     AAWorld.squid8++;
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                 }
                 else if (Item9 >= 0 && AAWorld.squid9 < 5 && Mushman >= 0)
                 {
@@ -369,7 +369,7 @@ namespace AAMod.NPCs.TownNPCs
 						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)9);
 					}
                     AAWorld.squid9++;
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                 }
                 else if (Item10 >= 0 && AAWorld.squid10 < 5 && Mushman >= 0)
                 {
@@ -390,7 +390,7 @@ namespace AAMod.NPCs.TownNPCs
 						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)10);
 					}
                     AAWorld.squid10++;
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                 }
                 else if (Item11 >= 0 && AAWorld.squid11 < 5)
                 {
@@ -411,7 +411,7 @@ namespace AAMod.NPCs.TownNPCs
                         AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)11);
                     }
                     AAWorld.squid11++;
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                 }
                 else if (Item12 >= 0 && AAWorld.squid12 < 1)
                 {
@@ -433,7 +433,7 @@ namespace AAMod.NPCs.TownNPCs
                         AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)12);
                     }
                     AAWorld.squid12++;
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                 }
                 else if (Item13 >= 0 && AAWorld.squid13 < 5)
                 {
@@ -454,7 +454,7 @@ namespace AAMod.NPCs.TownNPCs
                         AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)13);
                     }
                     AAWorld.squid13++;
-                    Main.PlaySound(24, -1, -1, 1);
+                    Main.PlaySound(SoundID.Chat, -1, -1, 1);
                 }
                 else
                 {
@@ -464,7 +464,7 @@ namespace AAMod.NPCs.TownNPCs
                         int itemID = Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, mod.ItemType("SquidList"), 1, false, 0, false, false);
                         if (Main.netMode == NetmodeID.MultiplayerClient)
                         {
-                            NetMessage.SendData(21, -1, -1, null, itemID, 1f, 0f, 0f, 0, 0, 0);
+                            NetMessage.SendData(MessageID.SyncItem, -1, -1, null, itemID, 1f, 0f, 0f, 0, 0, 0);
                         }
                     }
                     else
@@ -472,7 +472,7 @@ namespace AAMod.NPCs.TownNPCs
                         Main.npcChatText = Lang.TownNPCLovecraftian("NothingChat");
                     }
                     Main.npcChatCornerItem = 0;
-                    Main.PlaySound(12, -1, -1, 1);
+                    Main.PlaySound(SoundID.MenuTick, -1, -1, 1);
                 }
             }
         }

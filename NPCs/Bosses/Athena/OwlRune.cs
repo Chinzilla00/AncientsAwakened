@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 using Microsoft.Xna.Framework.Graphics;
 using AAMod.NPCs.Enemies.Sky;
+using Terraria.ID;
 
 namespace AAMod.NPCs.Bosses.Athena
 {
@@ -35,7 +36,7 @@ namespace AAMod.NPCs.Bosses.Athena
             {
                 npc.alpha -= 5;
                 npc.scale += .019f;
-                if (Main.netMode != 1)
+                if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     npc.ai[0]++;
                     if (npc.ai[0] >= 51)
@@ -58,7 +59,7 @@ namespace AAMod.NPCs.Bosses.Athena
                 {
                     npc.scale = 1;
                 }
-                if (Main.netMode != 1)
+                if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     npc.ai[0]++;
                     if (npc.ai[0] >= 300)

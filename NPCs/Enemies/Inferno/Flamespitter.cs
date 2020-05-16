@@ -83,7 +83,7 @@ namespace AAMod.NPCs.Enemies.Inferno
                 npc.ai[1] = 30f;
                 npc.netUpdate = true;
             }
-            else if (npc.ai[0] >= teleportInterval && Main.netMode != 1)
+            else if (npc.ai[0] >= teleportInterval && Main.netMode != NetmodeID.MultiplayerClient)
             {
                 npc.ai[0] = 1f;
                 if (teleport == true)
@@ -137,7 +137,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 
             npc.frameCounter++;
 
-            if (npc.ai[0] >= teleportInterval && Main.netMode != 1) //walk or charge
+            if (npc.ai[0] >= teleportInterval && Main.netMode != NetmodeID.MultiplayerClient) //walk or charge
             {
                 if (npc.frameCounter >= 6)
                 {

@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.ReforgeSouls
 {
@@ -10,7 +11,7 @@ namespace AAMod.Items.ReforgeSouls
             item.width = 32;
             item.height = 32;
             item.value = Item.sellPrice(0, 10, 0, 0);
-            item.rare = 6;
+            item.rare = ItemRarityID.LightPurple;
         }
 
         public override void SetStaticDefaults()

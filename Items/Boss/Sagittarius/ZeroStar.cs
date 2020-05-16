@@ -18,7 +18,7 @@ namespace AAMod.Items.Boss.Sagittarius
 	        item.height = 46;
 	        item.useTime = 30;
 	        item.useAnimation = 30;
-	        item.useStyle = 1;
+	        item.useStyle = ItemUseStyleID.SwingThrow;
 	        item.knockBack = 6;
 	        item.value = Item.sellPrice(0, 30, 0, 0);
             item.UseSound = SoundID.Item1;
@@ -28,7 +28,7 @@ namespace AAMod.Items.Boss.Sagittarius
             item.shootSpeed = 10f;
             item.noMelee = true;
             item.noUseGraphic = true;
-            item.rare = 4;
+            item.rare = ItemRarityID.LightRed;
         }
 
         public override bool CanUseItem(Player player)

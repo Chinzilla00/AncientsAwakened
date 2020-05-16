@@ -1,6 +1,7 @@
 using Terraria;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.ID;
 
 namespace AAMod.Items.Boss.Anubis
 {
@@ -19,7 +20,7 @@ namespace AAMod.Items.Boss.Anubis
             item.width = 32;
             item.height = 32;
             item.expert = true; item.expertOnly = true;
-            item.rare = 10;
+            item.rare = ItemRarityID.Red;
         }
 
         public override int BossBagNPC => mod.NPCType("Anubis");

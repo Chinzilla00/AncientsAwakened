@@ -19,7 +19,7 @@ namespace AAMod.Items.Blocks.Terra
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.consumable = true;
             item.value = 250;
             item.createTile = mod.TileType("TerraCandelabra");

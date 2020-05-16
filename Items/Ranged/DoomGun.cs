@@ -11,7 +11,7 @@ namespace AAMod.Items.Ranged
         {
 
             item.autoReuse = true;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.useAnimation = 22;
             item.useTime = 22;
             item.width = 24;
@@ -22,7 +22,7 @@ namespace AAMod.Items.Ranged
             item.shootSpeed = 25f;
             item.noMelee = true;
             item.scale = 0.8f;
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.ranged = true;
             item.value = 2000;
             item.shoot = Terraria.ModLoader.ModContent.ProjectileType<Projectiles.Darkray>();

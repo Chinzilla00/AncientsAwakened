@@ -16,9 +16,9 @@ namespace AAMod.Items.Flasks
             item.useAnimation = 28;
             item.shoot = ModContent.ProjectileType<Projectiles.OrderSolution>();
             item.shootSpeed = 1f;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.value = Item.sellPrice(0, 0, 1, 0);
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
             item.UseSound = SoundID.Item1;
             item.autoReuse = false;
             item.noUseGraphic = false;

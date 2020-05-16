@@ -1,3 +1,5 @@
+using Terraria.ID;
+
 namespace AAMod.Items.Materials
 {
     public class OrderBar : BaseAAItem
@@ -12,12 +14,12 @@ namespace AAMod.Items.Materials
             item.width = 30;
             item.height = 24;
 			item.maxStack = 99;
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
             item.useTurn = true;
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.rare = 10;
+            item.rare = ItemRarityID.Red;
             item.useStyle = 1;
             item.consumable = true;
             item.createTile = mod.TileType("OrderBar");

@@ -23,7 +23,7 @@ Last Prism EX");
 	        item.useTime = 10;
 	        item.useAnimation = 10;
 	        item.reuseDelay = 5;
-	        item.useStyle = 5;
+	        item.useStyle = ItemUseStyleID.HoldingOut;
 	        item.UseSound = SoundID.Item13;
 	        item.noMelee = true;
 	        item.noUseGraphic = true;
@@ -32,7 +32,7 @@ Last Prism EX");
 	        item.value = 1000000;
 	        item.shoot = mod.ProjectileType("Spectrum");
 	        item.shootSpeed = 30f;
-			item.rare = 9;
+			item.rare = ItemRarityID.Cyan;
 	    }
 		
 		public override void AddRecipes()

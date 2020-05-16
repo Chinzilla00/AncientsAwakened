@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.NPCs.Enemies.Terrarium.PostEquinox
 {
@@ -62,7 +63,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostEquinox
 
         public override void Kill(int timeleft)
         {
-			Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 14);
+			Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 14);
             for (int num468 = 0; num468 < 10; num468++)
             {
             }

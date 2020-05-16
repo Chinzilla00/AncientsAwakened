@@ -25,10 +25,10 @@ namespace AAMod.Items.Tools
 			item.noUseGraphic = true;
 			item.noMelee = true;
 			item.pick = 65;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.knockBack = 0;
 			item.value = Item.sellPrice(0, 0, 30, 0);
-			item.rare = 1;
+			item.rare = ItemRarityID.Blue;
 			item.UseSound = SoundID.Item23;
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("HydraTuneller");

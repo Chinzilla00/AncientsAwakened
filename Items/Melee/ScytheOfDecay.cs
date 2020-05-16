@@ -29,7 +29,7 @@ Death Sickle EX");
             item.useStyle = 100;  
             item.knockBack = 2f; 
             item.value = Item.sellPrice(0, 30, 0, 0); 
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             item.expert = true; item.expertOnly = true;
             item.shoot = mod.ProjectileType("DecayScythe"); 
             item.noUseGraphic = true;

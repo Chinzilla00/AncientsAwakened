@@ -15,7 +15,7 @@ namespace AAMod.Items.Boss.AH
 
         public override void SetDefaults()
         {
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("ChaosBaton");
             item.damage = 100;
@@ -28,7 +28,7 @@ namespace AAMod.Items.Boss.AH
             item.noMelee = true;
             item.value = Item.sellPrice(0, 10, 0, 0);
             item.knockBack = 5f;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 12;
             item.summon = true;
             item.mana = 5;

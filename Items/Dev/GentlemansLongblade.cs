@@ -25,10 +25,10 @@ Gentleman's Rapier EX");
 			item.height = 96;
 			item.useTime = 8;
 			item.useAnimation = 8;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 3;
 			item.value = 100000;
-			item.rare = 11;
+			item.rare = ItemRarityID.Purple;
             item.shoot = mod.ProjectileType("TopHat");
             item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
@@ -55,11 +55,11 @@ Gentleman's Rapier EX");
 		{
             if (player.altFunctionUse == 2)
             {
-                item.useStyle = 3;
+                item.useStyle = ItemUseStyleID.Stabbing;
             }
             else
             {
-                item.useStyle = 1;
+                item.useStyle = ItemUseStyleID.SwingThrow;
             }
             return base.CanUseItem(player);
 		}

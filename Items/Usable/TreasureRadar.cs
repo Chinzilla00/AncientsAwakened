@@ -1,6 +1,6 @@
 using System;
 using Terraria;
-
+using Terraria.ID;
 
 namespace AAMod.Items.Usable
 {
@@ -16,10 +16,10 @@ namespace AAMod.Items.Usable
         {
             item.width = 30;
             item.height = 38;
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
             item.value = BaseUtility.CalcValue(0, 2, 0, 0);
 
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.useAnimation = 50;
             item.useTime = 50;
             //item.UseSound = mod.SoundItem("LiquidRadarUse");			

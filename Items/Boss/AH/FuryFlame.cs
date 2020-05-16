@@ -21,12 +21,12 @@ namespace AAMod.Items.Boss.AH
             item.height = 46;
             item.useTime = 2;
             item.useAnimation = 15;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.shoot = mod.ProjectileType("FuryFlame");
             item.mana = 4;
             item.knockBack = 0;
             item.value = Item.sellPrice(0, 25, 0, 0);
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 12;
             item.UseSound = SoundID.Item20;
             item.autoReuse = true;

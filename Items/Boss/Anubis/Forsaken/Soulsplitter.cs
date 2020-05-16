@@ -16,7 +16,7 @@ namespace AAMod.Items.Boss.Anubis.Forsaken
 		public override void SetDefaults()
 		{
 			item.autoReuse = true;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.useAnimation = 20;
 			item.useTime = 20;
 			item.knockBack = 5f;
@@ -29,7 +29,7 @@ namespace AAMod.Items.Boss.Anubis.Forsaken
 			item.melee = true;
             item.noMelee = true;
             item.noUseGraphic = true;
-			item.rare = 11;
+			item.rare = ItemRarityID.Purple;
 		}
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

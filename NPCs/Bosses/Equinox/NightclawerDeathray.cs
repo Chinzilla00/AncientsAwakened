@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.Enums;
+using Terraria.ID;
 
 namespace AAMod.NPCs.Bosses.Equinox
 {
@@ -68,7 +69,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             }
             if (projectile.localAI[0] == 0f && maxScale >= 1)
             {
-                Main.PlaySound(29, (int)projectile.position.X, (int)projectile.position.Y, 104, 1f, 0f);
+                Main.PlaySound(SoundID.Zombie, (int)projectile.position.X, (int)projectile.position.Y, 104, 1f, 0f);
             }
             float num801 = maxScale;
             projectile.localAI[0] += 1f;
@@ -215,7 +216,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 
         public override void Kill(int timeLeft)
         {
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
                 Projectile.NewProjectile(projectile.Center, projectile.velocity, ModContent.ProjectileType<NightclawerDeathray>(), projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], projectile.ai[1]);
             base.Kill(timeLeft);
         }

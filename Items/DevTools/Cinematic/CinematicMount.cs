@@ -17,7 +17,7 @@ namespace AAMod.Items.DevTools.Cinematic
 			item.height = 28;
 			item.useTime = 20;
 			item.useAnimation = 20;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.value = Item.sellPrice(0, 0, 0, 0);
 			item.rare = -12;
 			item.UseSound = SoundID.Item25;

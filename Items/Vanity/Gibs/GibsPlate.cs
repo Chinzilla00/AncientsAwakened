@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using System.Collections.Generic;
+using Terraria.ID;
 
 namespace AAMod.Items.Vanity.Gibs
 
@@ -41,7 +42,7 @@ namespace AAMod.Items.Vanity.Gibs
         {
             item.width = 16;
             item.height = 16;
-            item.rare = 10;
+            item.rare = ItemRarityID.Red;
             item.vanity = true;
         }
     }

@@ -1573,7 +1573,7 @@ namespace AAMod
                 {
                     player.minionDamage += AAGlobalProjectile.CountProjectiles(ModContent.ProjectileType<Projectiles.AH.FireOrbiter>()) * .1f;
 
-                    if (Main.netMode != 2 && Main.LocalPlayer.miscCounter % 3 == 0)
+                    if (Main.netMode != NetmodeID.Server && Main.LocalPlayer.miscCounter % 3 == 0)
                     {
                         for (int m = 0; m < Spheres.Length; m++)
                         {
@@ -1604,7 +1604,7 @@ namespace AAMod
                 int ReminderChoice = Main.rand.Next(11);
 
 
-                if (Main.netMode != 1)
+                if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     switch (ReminderChoice)
                     {
@@ -1732,7 +1732,7 @@ namespace AAMod
                     int i = 0;
                     while (i < 3)
                     {
-                        if(Main.netMode != 1) Projectile.NewProjectile(Spwanposition[i].X, Spwanposition[i].Y, SpeedVector.X, SpeedVector.Y, mod.ProjectileType("AssassinDagger"), (int)(player.inventory[player.selectedItem].damage * 1.3), 2f, player.whoAmI, 0f, 1f);
+                        if(Main.netMode != NetmodeID.MultiplayerClient) Projectile.NewProjectile(Spwanposition[i].X, Spwanposition[i].Y, SpeedVector.X, SpeedVector.Y, mod.ProjectileType("AssassinDagger"), (int)(player.inventory[player.selectedItem].damage * 1.3), 2f, player.whoAmI, 0f, 1f);
                         float round = 16f;
                         int k = 0;
                         while (k < round)
@@ -1954,7 +1954,7 @@ namespace AAMod
 			Main.PlaySound(item.UseSound, player.position);
 			if (item.potion)
 			{
-				if (item.type == 227)
+				if (item.type == ItemID.RestorationPotion)
 				{
 					player.potionDelay = player.restorationDelayTime;
 					player.AddBuff(21, player.potionDelay, true);
@@ -2011,12 +2011,12 @@ namespace AAMod
 			}
 			for (int i = 0; i < 58; i++)
 			{
-				if (player.inventory[i].stack > 0 && player.inventory[i].type > 0 && player.inventory[i].healMana > 0 && (player.potionDelay == 0 || !player.inventory[i].potion) && ItemLoader.CanUseItem(player.inventory[i], player))
+				if (player.inventory[i].stack > 0 && player.inventory[i].type > ItemID.None && player.inventory[i].healMana > 0 && (player.potionDelay == 0 || !player.inventory[i].potion) && ItemLoader.CanUseItem(player.inventory[i], player))
 				{
 					Main.PlaySound(player.inventory[i].UseSound, player.position);
 					if (player.inventory[i].potion)
 					{
-						if (player.inventory[i].type == 227)
+						if (player.inventory[i].type == ItemID.RestorationPotion)
 						{
 							player.potionDelay = player.restorationDelayTime;
 							player.AddBuff(21, player.potionDelay, true);
@@ -3124,7 +3124,7 @@ namespace AAMod
             {
                 if (AAMod.ArmorAbilityKey.JustPressed && AsheCooldown == 0)
                 {
-                    Main.PlaySound(29, (int)player.position.X, (int)player.position.Y, 104, 1f, 0f);
+                    Main.PlaySound(SoundID.Zombie, (int)player.position.X, (int)player.position.Y, 104, 1f, 0f);
                     if(player.inventory[player.selectedItem].magic || player.inventory[player.selectedItem].summon)
                     {
                         for(int i = 0; i < 8; i++)
@@ -3147,7 +3147,7 @@ namespace AAMod
                 if (AAMod.AccessoryAbilityKey.JustPressed && DD2Event.Ongoing && DD2Event.TimeLeftBetweenWaves > 0)
                 {
                     DD2Event.TimeLeftBetweenWaves = 60;
-                    if (Main.netMode != 0)
+                    if (Main.netMode != NetmodeID.SinglePlayer)
                     {
                         AANet.SendNetMessage(AANet.DD2EventTime, (byte)DD2Event.TimeLeftBetweenWaves);
                     }
@@ -3464,19 +3464,19 @@ namespace AAMod
                 long num = 0;
                 for (int i = 0; i < 54; i++)
                 {
-                    if (player.inventory[i].type == 71)
+                    if (player.inventory[i].type == ItemID.CopperCoin)
                     {
                         num += player.inventory[i].stack;
                     }
-                    if (player.inventory[i].type == 72)
+                    if (player.inventory[i].type == ItemID.SilverCoin)
                     {
                         num += player.inventory[i].stack * 100;
                     }
-                    if (player.inventory[i].type == 73)
+                    if (player.inventory[i].type == ItemID.GoldCoin)
                     {
                         num += player.inventory[i].stack * 10000;
                     }
-                    if (player.inventory[i].type == 74)
+                    if (player.inventory[i].type == ItemID.PlatinumCoin)
                     {
                         num += player.inventory[i].stack * 1000000;
                     }
@@ -3485,22 +3485,22 @@ namespace AAMod
                 {
                     for (int i = 0; i < 54; i++)
                     {
-                        if (player.inventory[i].type == 71)
+                        if (player.inventory[i].type == ItemID.CopperCoin)
                         {
                             player.inventory[i].stack = 0;
                             player.inventory[i].TurnToAir();
                         }
-                        if (player.inventory[i].type == 72)
+                        if (player.inventory[i].type == ItemID.SilverCoin)
                         {
                             player.inventory[i].stack = 0;
                             player.inventory[i].TurnToAir();
                         }
-                        if (player.inventory[i].type == 73)
+                        if (player.inventory[i].type == ItemID.GoldCoin)
                         {
                             player.inventory[i].stack = 0;
                             player.inventory[i].TurnToAir();
                         }
-                        if (player.inventory[i].type == 74)
+                        if (player.inventory[i].type == ItemID.PlatinumCoin)
                         {
                             player.inventory[i].stack = 0;
                             player.inventory[i].TurnToAir();
@@ -3916,7 +3916,7 @@ namespace AAMod
 
             for (int i = 0; i < 40; i++)
             {
-                if (Main.chest[chestIndex].item[i] == null || Main.chest[chestIndex].item[i].type <= 0)
+                if (Main.chest[chestIndex].item[i] == null || Main.chest[chestIndex].item[i].type <= ItemID.None)
                 {
                     continue;
                 }

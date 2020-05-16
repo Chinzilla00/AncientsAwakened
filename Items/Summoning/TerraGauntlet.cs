@@ -15,11 +15,11 @@ namespace AAMod.Items.Summoning
             item.height = 42;
             item.useTime = 30;
             item.useAnimation = 30;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.shoot = mod.ProjectileType("Minion1");
             item.buffType = mod.BuffType("TerraSummon");
             item.knockBack = 2;
-            item.rare = 8;
+            item.rare = ItemRarityID.Yellow;
             item.UseSound = SoundID.Item44;
             item.autoReuse = false;
             item.shootSpeed = 1f;

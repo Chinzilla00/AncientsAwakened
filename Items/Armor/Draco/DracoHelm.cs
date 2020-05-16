@@ -27,7 +27,7 @@ The blazing fury of the Inferno rests in this armor");
 			item.height = 22;
 			item.value = 3000000;
 			item.defense = 38;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 13;
         }
 

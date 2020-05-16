@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Dev
 {
@@ -24,14 +25,14 @@ namespace AAMod.Items.Dev
 			item.height = 42;
 			item.useTime = 10;
 			item.useAnimation = 10;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 4;
 			item.value = 3000000;
             item.expert = true; item.expertOnly = true;
 			item.UseSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/QUAK");
             item.autoReuse = true;
-			item.shoot = 10;
+			item.shoot = ProjectileID.PurificationPowder;
 			item.shootSpeed = 15f;
             item.shoot = mod.ProjectileType("Duck");
             item.rare = 10;

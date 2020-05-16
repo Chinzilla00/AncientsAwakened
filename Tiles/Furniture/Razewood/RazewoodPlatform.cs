@@ -17,7 +17,7 @@ namespace AAMod.Tiles.Furniture.Razewood
 			Main.tileNoAttach[Type] = true;
 			Main.tileTable[Type] = true;
 			Main.tileLavaDeath[Type] = true;
-            soundType = 21;
+            soundType = SoundID.Tink;
 			TileID.Sets.Platforms[Type] = true;
 			TileObjectData.newTile.CoordinateHeights = new int[]{ 16 };
 			TileObjectData.newTile.CoordinateWidth = 16;

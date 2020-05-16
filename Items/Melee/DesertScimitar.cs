@@ -19,10 +19,10 @@ namespace AAMod.Items.Melee
             item.height = 38;
             item.useTime = 26;
             item.useAnimation = 26;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.knockBack = 4;
             item.value = Item.sellPrice(0, 0, 50, 0);
-            item.rare = 5;
+            item.rare = ItemRarityID.Pink;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("SandPro");

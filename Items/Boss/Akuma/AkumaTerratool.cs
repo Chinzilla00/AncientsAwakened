@@ -10,13 +10,13 @@ namespace AAMod.Items.Boss.Akuma
             item.melee = true;
             item.width = 54;
             item.height = 60;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.useTime = 4;
             item.useAnimation = 20;
             item.tileBoost += 20;
             item.knockBack = 3;
             item.value = Item.sellPrice(0, 20, 0, 0);
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 13;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;

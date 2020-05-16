@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.NPCs.Bosses.Yamata.Awakened
 {
@@ -41,7 +42,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         	if (projectile.ai[1] == 0f)
 			{
 				projectile.ai[1] = 1f;
-				Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 20);
+				Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 20);
 			}
         	int num103 = Player.FindClosest(projectile.Center, 1, 1);
 			projectile.ai[1] += 1f;

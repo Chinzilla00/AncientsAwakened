@@ -19,7 +19,7 @@ namespace AAMod.Items.Ranged
             item.damage = 32;
             item.knockBack = 5f;
             item.ranged = true;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.UseSound = SoundID.Item1;
             item.useAnimation = 24;
             item.useTime = 24;
@@ -31,7 +31,7 @@ namespace AAMod.Items.Ranged
             item.noMelee = true;
             item.autoReuse = true;
             item.value = 60;
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
         }
 
         public override void AddRecipes()

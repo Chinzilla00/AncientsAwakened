@@ -48,7 +48,7 @@ namespace AAMod.NPCs.Bosses.Athena
                     }
                 }
                 npc.alpha += 3;
-                if (npc.alpha >= 255 && Main.netMode != 1)
+                if (npc.alpha >= 255 && Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     npc.active = false;
                 }

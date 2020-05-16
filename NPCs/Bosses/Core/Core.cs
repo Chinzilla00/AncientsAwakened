@@ -119,7 +119,7 @@ namespace AAMod.NPCs.Bosses.Core
                     npc.alpha -= 5;
                 }
 
-                if (internalAI[1] >= 220 && Main.netMode != 1)
+                if (internalAI[1] >= 220 && Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     internalAI[0]++;
                     npc.dontTakeDamage = false;
@@ -166,7 +166,7 @@ namespace AAMod.NPCs.Bosses.Core
                     }
                 }
 
-                if (npc.ai[0] > 75 && Main.netMode != 1)
+                if (npc.ai[0] > 75 && Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     int pos = Main.rand.Next(6);
 
@@ -216,7 +216,7 @@ namespace AAMod.NPCs.Bosses.Core
 
                 int chooseTime = Main.expertMode ? 60 : 90;
 
-                if (npc.ai[0] == chooseTime && Main.netMode != 1)
+                if (npc.ai[0] == chooseTime && Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     npc.ai[0] = 0;
                     npc.ai[1] = 2;
@@ -244,7 +244,7 @@ namespace AAMod.NPCs.Bosses.Core
                 {
                     default: //Terra
 
-                        if (npc.ai[0] > 180 && NPC.CountNPCS(ModContent.NPCType<TerraProbe>()) + NPC.CountNPCS(ModContent.NPCType<TerraWatcher>()) < 5 && Main.netMode != 1)
+                        if (npc.ai[0] > 180 && NPC.CountNPCS(ModContent.NPCType<TerraProbe>()) + NPC.CountNPCS(ModContent.NPCType<TerraWatcher>()) < 5 && Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             int MinType = Main.rand.Next(2) == 0 ? ModContent.NPCType<TerraProbe>() : ModContent.NPCType<TerraWatcher>();
 
@@ -281,7 +281,7 @@ namespace AAMod.NPCs.Bosses.Core
                         {
                             for(int i = 0; i < 8; i++)
                             {
-                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 5f * (float)Math.Sin(i * (Math.PI / 4)), 5f * (float)Math.Cos(i * (Math.PI / 4)), 96, 50, 1f, Main.myPlayer, -1f, 0f);
+                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 5f * (float)Math.Sin(i * (Math.PI / 4)), 5f * (float)Math.Cos(i * (Math.PI / 4)), ProjectileID.CursedFlameHostile, 50, 1f, Main.myPlayer, -1f, 0f);
                             }
                         }
 
@@ -370,12 +370,12 @@ namespace AAMod.NPCs.Bosses.Core
                                 ShootY = 6;
                             }
 
-                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, ShootX, ShootY, 270, 50, 1f, Main.myPlayer, -1f, 0f);
-                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, -ShootX, -ShootY, 270, 50, 1f, Main.myPlayer, -1f, 0f);
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, ShootX, ShootY, ProjectileID.Skull, 50, 1f, Main.myPlayer, -1f, 0f);
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, -ShootX, -ShootY, ProjectileID.Skull, 50, 1f, Main.myPlayer, -1f, 0f);
                             if (ShootY != 0)
                             {
-                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, ShootX, -ShootY, 270, 50, 1f, Main.myPlayer, -1f, 0f);
-                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, -ShootX, ShootY, 270, 50, 1f, Main.myPlayer, -1f, 0f);
+                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, ShootX, -ShootY, ProjectileID.Skull, 50, 1f, Main.myPlayer, -1f, 0f);
+                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, -ShootX, ShootY, ProjectileID.Skull, 50, 1f, Main.myPlayer, -1f, 0f);
                             }
                         }
 
@@ -410,7 +410,7 @@ namespace AAMod.NPCs.Bosses.Core
                         break;
                     case 16: //Sky
 
-                        if (npc.ai[0] % 60f == 0f && Main.netMode != 1)
+                        if (npc.ai[0] % 60f == 0f && Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             int[] array4 = new int[5];
                             Vector2[] array5 = new Vector2[5];

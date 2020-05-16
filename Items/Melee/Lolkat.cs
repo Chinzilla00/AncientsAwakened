@@ -26,15 +26,15 @@ Meowmere EX");
             item.height = 70;
             item.useTime = 10;
             item.useAnimation = 10;     
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.knockBack = 4;
             item.value = Item.sellPrice(0, 30, 0, 0);
-            item.rare = 11;
+            item.rare = ItemRarityID.Purple;
             item.UseSound = new LegacySoundStyle(2, 57, Terraria.Audio.SoundType.Sound);
             item.autoReuse = true;
             item.useTurn = true;
             item.expert = true; item.expertOnly = true;
-			item.shoot = 502;
+			item.shoot = ProjectileID.Meowmere;
 			item.shootSpeed = 12f;
 
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow";

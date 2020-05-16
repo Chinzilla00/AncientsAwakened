@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Tiles.Ore
 {
@@ -18,7 +19,7 @@ namespace AAMod.Tiles.Ore
             Main.tileMerge[Type][mod.TileType("Torchstone")] = true;
             Main.tileBlockLight[Type] = true;  //true for block to emit light
             Main.tileLighted[Type] = true;
-            soundType = 21;
+            soundType = SoundID.Tink;
             drop = mod.ItemType("Incinerite");   
             dustType = mod.DustType("IncineriteDust");
             ModTranslation name = CreateMapEntryName();

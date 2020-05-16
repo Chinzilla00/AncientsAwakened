@@ -14,7 +14,7 @@ namespace AAMod.Tiles
             Main.tileBlendAll[Type] = false;
 			Main.tileMerge[TileID.SnowBlock][Type] = true;
             Main.tileBlockLight[Type] = true;
-            soundType = 21;
+            soundType = SoundID.Tink;
             dustType = mod.DustType("DeepAbyssiumDust");
             drop = mod.ItemType("DepthIce");   
             AddMapEntry(new Color(0, 60, 127));

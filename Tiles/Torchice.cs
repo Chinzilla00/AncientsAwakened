@@ -14,7 +14,7 @@ namespace AAMod.Tiles
             TileID.Sets.Conversion.Ice[Type] = true;
             Main.tileMerge[TileID.SnowBlock][Type] = true;
             Main.tileBlockLight[Type] = true;
-            soundType = 21;
+            soundType = SoundID.Tink;
             dustType = mod.DustType("RazewoodDust");
             drop = mod.ItemType("Torchice");   
             AddMapEntry(new Color(50, 35, 0));

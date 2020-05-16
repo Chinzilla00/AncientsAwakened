@@ -44,7 +44,7 @@ namespace AAMod.Projectiles
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             Collision.HitTiles(projectile.position, oldVelocity, projectile.width, projectile.height);
-            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 50);
+            Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 50);
             return true;
         }
     }
