@@ -32,7 +32,6 @@ Storm Rifle EX");
             item.autoReuse = true; 
             item.shootSpeed = 9f;
             item.useAmmo = AmmoID.Bullet;
-            item.crit = 10; 
         }
         public override Vector2? HoldoutOffset()
         {
