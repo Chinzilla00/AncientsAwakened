@@ -517,9 +517,12 @@ namespace AAMod.NPCs.Bosses.Core
                 {
                     npc.DropLoot(mod.ItemType("CoreMask"));
                 }
+                /*
                 string[] lootTable = {  };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
+                */
+                //What the HELL IS THAT ^
                 Item.NewItem(npc.Center, ModContent.ItemType<Items.Materials.TerraCrystal>(), Main.rand.Next(1, 4));
             }
             else

@@ -21,7 +21,7 @@ namespace AAMod.Backgrounds
         public float fadeOpacity = 0f;
         public float dayTimeOpacity = 0f;
 
-        public FogOverlay(string textureName, string shaderName = "Default", EffectPriority priority = EffectPriority.VeryLow, RenderLayers layer = RenderLayers.All) : base(priority, layer)
+        public FogOverlay(string textureName, string shaderName = "Default") : base(EffectPriority.VeryLow, RenderLayers.All)
         {
             texture = TextureManager.AsyncLoad(textureName ?? "");
             shader = new ScreenShaderData(Main.ScreenShaderRef, shaderName);

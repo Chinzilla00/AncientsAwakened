@@ -54,6 +54,8 @@ namespace AAMod.Items.Dev.RuneBook
 
             projectile.timeLeft ++;
 
+            float num633 = 700f;
+            float num634 = 800f;
             for (int num638 = 0; num638 < 1000; num638++)
             {
                 bool flag23 = Main.projectile[num638].type == mod.ProjectileType("TerraRune");

@@ -81,6 +81,7 @@ namespace AAMod.Projectiles
 
             if (target.defense < 300 && !target.boss)
             {
+                // This does literally nothing, because damage is not a reference variable, and onhitnpc is called after damage is calculated. Move to ModifyHitNPC!
                 damage += target.defense * 2;
             }
             {
