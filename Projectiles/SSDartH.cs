@@ -79,7 +79,7 @@ namespace AAMod.Projectiles
             target.immune[projectile.owner] = 1;
             target.AddBuff(mod.BuffType("Moonraze"), 500);
 
-            if (target.defense < 300 && !target.boss);
+            if (target.defense < 300 && !target.boss)
             {
                 damage += target.defense * 2;
             }
