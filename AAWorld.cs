@@ -149,7 +149,7 @@ namespace AAMod
         public static double PausedTime = 0;
 
         public static bool continueWorldGen = false;
-        public static bool GenAAContent = false;
+        public static bool GenAAContent = true;
         #endregion
 
         #region Save/Load
@@ -604,11 +604,6 @@ namespace AAMod
 
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
         {
-            if (tasks.FindIndex(genpass => genpass.Name.Equals("Terrain")) > -1)
-            {
-                SmallWarning();
-            }
-
             if (!GenAAContent && Main.maxTilesX <= 4200)
             {
                 return;
@@ -617,23 +612,27 @@ namespace AAMod
             int shiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Shinies"));
             if (shiniesIndex > -1)
             {
-                tasks.Insert(shiniesIndex + 1, new PassLegacy("Prisms", delegate (GenerationProgress progress)
+                tasks.Insert(shiniesIndex + 2, new PassLegacy("SmallWorldWarning", delegate (GenerationProgress progress)
+                {
+                    SmallWarning();
+                }));
+                tasks.Insert(shiniesIndex + 2, new PassLegacy("Prisms", delegate (GenerationProgress progress)
                 {
                     GenPrisms(progress);
                 }));
-                tasks.Insert(shiniesIndex + 2, new PassLegacy("Abyssium", delegate (GenerationProgress progress)
+                tasks.Insert(shiniesIndex + 3, new PassLegacy("Abyssium", delegate (GenerationProgress progress)
                 {
                     GenAbyssium();
                 }));
-                tasks.Insert(shiniesIndex + 3, new PassLegacy("Incinerite", delegate (GenerationProgress progress)
+                tasks.Insert(shiniesIndex + 4, new PassLegacy("Incinerite", delegate (GenerationProgress progress)
                 {
                     GenIncinerite();
                 }));
-                tasks.Insert(shiniesIndex + 4, new PassLegacy("Everleaf", delegate (GenerationProgress progress)
+                tasks.Insert(shiniesIndex + 5, new PassLegacy("Everleaf", delegate (GenerationProgress progress)
                 {
                     GenEverleaf();
                 }));
-                tasks.Insert(shiniesIndex + 5, new PassLegacy("Relic", delegate (GenerationProgress progress)
+                tasks.Insert(shiniesIndex + 6, new PassLegacy("Relic", delegate (GenerationProgress progress)
                 {
                     GenRelicOre();
                 }));
@@ -882,7 +881,7 @@ namespace AAMod
 
         public void SmallWarning()
         {
-            Main.MenuUI.SetState(new ExampleUI());
+            Main.MenuUI.SetState(new WarningUI());
             while (true)
             {
                 if (continueWorldGen)
@@ -894,7 +893,7 @@ namespace AAMod
             }
         }
 
-        class ExampleUI : UIState
+        class WarningUI : UIState
         {
             public UIPanel coinCounterPanel;
             private UIText buttonLabel;
@@ -954,8 +953,8 @@ namespace AAMod
             private void CloseButtonClicked(UIMouseEvent evt, UIElement listeningElement)
             {
                 Main.PlaySound(SoundID.MenuOpen, -1, -1, 1);
-                continueWorldGen = false;
                 GenAAContent = true;
+                continueWorldGen = false;
             }
 
             private void PlayMouseOver(UIMouseEvent evt, UIElement listeningElement)
