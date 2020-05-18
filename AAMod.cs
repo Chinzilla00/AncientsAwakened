@@ -520,19 +520,18 @@ namespace AAMod
             {
                 vanillaBGBackups.Add(id, Main.backgroundTexture[id]);
             }
-            else if(id == -1)
+            switch (id)
             {
-                vanillaBGBackups.Add(-1, Main.logoTexture);
-            }
-            else if(id == -2)
-            {
-                vanillaBGBackups.Add(-2, Main.logo2Texture);
-            }
-            else if(id == -3)
-            {
-                vanillaBGBackups.Add(-3, Main.sunTexture);
-            }
-           
+                case -1:
+                    vanillaBGBackups.Add(id, Main.logoTexture);
+                    break;
+                case -2:
+                    vanillaBGBackups.Add(-2, Main.logo2Texture);
+                    break;
+                case -3:
+                    vanillaBGBackups.Add(-3, Main.sunTexture);
+                    break;
+            }    
         }
 
         public void ResetBGTexture(int id)
@@ -543,17 +542,17 @@ namespace AAMod
                 {
                     Main.backgroundTexture[id] = vanillaBGBackups[id];
                 }
-                else if(id == -1)
+                switch (id)
                 {
-                    Main.logoTexture = vanillaBGBackups[-1];
-                }
-                else if(id == -2)
-                {
-                    Main.logo2Texture = vanillaBGBackups[-2];
-                }
-                else if(id == -3)
-                {
-                    Main.sunTexture = vanillaBGBackups[-3];
+                    case -1:
+                        Main.logoTexture = vanillaBGBackups[id];
+                        break;
+                    case -2:
+                        Main.logo2Texture = vanillaBGBackups[id];
+                        break;
+                    case -3:
+                        Main.sunTexture = vanillaBGBackups[id];
+                        break;
                 }
             }
         }
