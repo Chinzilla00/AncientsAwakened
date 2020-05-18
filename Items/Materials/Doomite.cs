@@ -20,7 +20,7 @@ namespace AAMod.Items.Materials
             item.useAnimation = 15;
             item.useTime = 10;
             item.rare = ItemRarityID.Red;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.consumable = true;
             item.createTile = mod.TileType("DoomiteBar");
             item.value = Terraria.Item.sellPrice(0, 0, 32, 0);

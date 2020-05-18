@@ -88,19 +88,19 @@ namespace AAMod
 			}
 			if(player.editedChestName)
 			{
-				NetMessage.SendData(33, -1, -1, NetworkText.FromLiteral(Main.chest[player.chest].name), player.chest, 1f, 0f, 0f, 0, 0, 0);
+				NetMessage.SendData(MessageID.SyncPlayerChest, -1, -1, NetworkText.FromLiteral(Main.chest[player.chest].name), player.chest, 1f, 0f, 0f, 0, 0, 0);
 				player.editedChestName = false;
 			}
-			if(Main.netMode == 1)
+			if(Main.netMode == NetmodeID.MultiplayerClient)
 			{
 				if(left == player.chestX && top == player.chestY && player.chest >= 0)
 				{
 					player.chest = -1;
 					Recipe.FindRecipes();
-					Main.PlaySound(11, -1, -1, 1);
+					Main.PlaySound(SoundID.MenuClose, -1, -1, 1);
 				}else
 				{
-					NetMessage.SendData(31, -1, -1, NetworkText.FromLiteral(""), left, top, 0f, 0f, 0, 0, 0);
+					NetMessage.SendData(MessageID.RequestChestOpen, -1, -1, NetworkText.FromLiteral(""), left, top, 0f, 0f, 0, 0, 0);
 					Main.stackSplit = 600;
 				}
 			}else
@@ -112,7 +112,7 @@ namespace AAMod
 					if(chest == player.chest)
 					{
 						player.chest = -1;
-						Main.PlaySound(11, -1, -1, 1);
+						Main.PlaySound(SoundID.MenuClose, -1, -1, 1);
 					}else
 					{
 						player.chest = chest;
@@ -308,18 +308,18 @@ namespace AAMod
         private static FieldInfo soundField = null, soundInstanceField = null;
         public static void PlaySound(object soundType, int x, int y, object sound, bool stop = true, bool newInstance = true, float? overrideVolume = null, float? overridePitch = null)
         {
-			if (Main.netMode == 2 || Main.dedServ || Main.soundVolume == 0f) return;
+			if (Main.netMode == NetmodeID.Server || Main.dedServ || Main.soundVolume == 0f) return;
 
 			Rectangle screenRect = new Rectangle((int)(Main.screenPosition.X - Main.screenWidth * 2), (int)(Main.screenPosition.Y - Main.screenHeight * 2), Main.screenWidth * 5, Main.screenHeight * 5);
 			Rectangle locRect = new Rectangle(x, y, 1, 1);
 			bool usePan = locRect.Intersects(screenRect);
 			if ((x == -1 && y == -1) || usePan)
 			{
-				SoundEffect soundEffect = null;
+				SoundEffect soundEffect;
 				float pitch = 0f;
-				int soundID = -1;
-				SoundEffect[] soundArray = null;
-				SoundEffectInstance[] soundInstanceArray = null;
+				int soundID;
+				SoundEffect[] soundArray;
+				SoundEffectInstance[] soundInstanceArray;
 				int soundType2 = (soundType is int ? (int)soundType : 0);
 				if (soundType is SoundType)
 				{
@@ -889,9 +889,9 @@ namespace AAMod
          */
         public static void Chat(string s, byte colorR = 255, byte colorG = 255, byte colorB = 255, bool sync = true)
         {
-            if (Main.netMode == 0) { Main.NewText(s, colorR, colorG, colorB); }else
-			if (Main.netMode == 1) { Main.NewText(s, colorR, colorG, colorB); }else //if(sync){ NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(s), new Color(colorR, colorG, colorB), Main.myPlayer); } }else
-            if (sync && Main.netMode == 2) { NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(s), new Color(colorR, colorG, colorB), -1); }
+            if (Main.netMode == NetmodeID.SinglePlayer) { Main.NewText(s, colorR, colorG, colorB); }
+            else if (Main.netMode == NetmodeID.MultiplayerClient) { Main.NewText(s, colorR, colorG, colorB); }
+            else if (sync && Main.netMode == NetmodeID.Server) { NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(s), new Color(colorR, colorG, colorB), -1); }
         }
 
         public static Vector2[] ChainVector2(Vector2 start, Vector2 end, float jump = 0f)

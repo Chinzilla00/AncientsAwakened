@@ -61,26 +61,26 @@ namespace AAMod.NPCs.Bosses.Greed
 
 				if (npc.ai[0] == 175)    
 				{
-					if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Greed1"), Color.Goldenrod);
+					if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("Greed1"), Color.Goldenrod);
 					npc.netUpdate = true;
 				}else
 				if (npc.ai[0] == 350)
 				{
-					if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Greed2"), Color.Goldenrod);
+					if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("Greed2"), Color.Goldenrod);
 				}else
 				if (npc.ai[0] == 500)
 				{
-					if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Greed3"), Color.Goldenrod);
+					if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("Greed3"), Color.Goldenrod);
                     npc.netUpdate = true;
 				}else
 				if (npc.ai[0] == 610)
 				{
-					if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Greed4"), Color.Goldenrod);
+					if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("Greed4"), Color.Goldenrod);
 				}else
 				if (npc.ai[0] >= 755 && !NPC.AnyNPCs(mod.NPCType("Greed")))
 				{
 					AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Greed"), true, npc.Center, Lang.BossChat("GreedName"), false);
-					if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Greed5"), Color.Goldenrod);
+					if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("Greed5"), Color.Goldenrod);
 
                     npc.netUpdate = true;
 					npc.active = false;				

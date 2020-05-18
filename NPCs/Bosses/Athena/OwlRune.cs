@@ -88,7 +88,7 @@ namespace AAMod.NPCs.Bosses.Athena
             }
             else
             {
-                if (Main.netMode != 1)
+                if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     npc.ai[0]++;
                     if (npc.ai[0] >= 51)

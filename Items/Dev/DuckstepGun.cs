@@ -34,7 +34,7 @@ namespace AAMod.Items.Dev
             item.expert = true; item.expertOnly = true;
 			item.UseSound = new LegacySoundStyle(29, 10, Terraria.Audio.SoundType.Sound);
             item.autoReuse = true;
-			item.shoot = 10; //idk why but all the guns in the vanilla source have this
+			item.shoot = ProjectileID.PurificationPowder; //idk why but all the guns in the vanilla source have this
 			item.shootSpeed = 12f;
             item.shoot = mod.ProjectileType("Duck");
 

@@ -243,7 +243,7 @@ namespace AAMod
                 }
             }
             int size = (width > height ? width : height);
-            if (sync && Main.netMode != 0)
+            if (sync && Main.netMode != NetmodeID.SinglePlayer)
             {
                 NetMessage.SendTileSquare(-1, x + (int)(width * 0.5F) - 1, y + (int)(height * 0.5F) - 1, size + 4);
             }
@@ -361,7 +361,7 @@ namespace AAMod
                 Main.tile[x, y].wall = 0;
                 WorldGen.PlaceWall(x, y, wall, true);
             }
-            if (sync && Main.netMode != 0)
+            if (sync && Main.netMode != NetmodeID.SinglePlayer)
             {
                 int sizeWidth = tileWidth + Math.Max(0, (width - 1));
                 int sizeHeight = tileHeight + Math.Max(0, (height - 1));
@@ -422,11 +422,11 @@ namespace AAMod
 				{
 					//SmoothTiles(x, y, x + (vertical ? thickness : Math.Abs(endX - x)), y + (vertical ? Math.Abs(endY - y) : thickness));
 				}
-				if (sync && Main.netMode != 0)
+				if (sync && Main.netMode != NetmodeID.SinglePlayer)
 				{
 					int size = ((endY - y) > (endX - x) ? (endY - y) : (endX - x));
 					if (thickness > size) size = thickness;
-					NetMessage.SendData(20, -1, -1, NetworkText.FromLiteral(""), size, x, y, 0f, 0);
+					NetMessage.SendData(MessageID.TileSquare, -1, -1, NetworkText.FromLiteral(""), size, x, y, 0f, 0);
 				}
 			}else //genning a line that isn't straight
 			{
@@ -462,10 +462,10 @@ namespace AAMod
 							//if (gen.slope) SmoothTiles(x2, y2, x2 + 1, y2 + 1);
 						}
 					}
-					if (sync && Main.netMode != 0 && ((!horizontal && Math.Abs(lastY - point.Y) >= 5) || (horizontal && Math.Abs(lastY - point.Y) >= 5) || (way + 1 > length)))
+					if (sync && Main.netMode != NetmodeID.SinglePlayer && ((!horizontal && Math.Abs(lastY - point.Y) >= 5) || (horizontal && Math.Abs(lastY - point.Y) >= 5) || (way + 1 > length)))
 					{
 						int size = Math.Max(5, thickness);
-						NetMessage.SendData(10, -1, -1, NetworkText.FromLiteral(""), lastX, lastY, size, size, 0);
+						NetMessage.SendData(MessageID.TileSection, -1, -1, NetworkText.FromLiteral(""), lastX, lastY, size, size, 0);
 						lastX = point.X; lastY = point.Y;
 					}
 					way += 1;
@@ -581,7 +581,7 @@ namespace AAMod
                 }
             }
             int size = (width > height ? width : height);
-            if(sync && Main.netMode != 0)
+            if(sync && Main.netMode != NetmodeID.SinglePlayer)
             {
                 NetMessage.SendTileSquare(-1, x + (int)(width * 0.5F) - 1, y + (int)(height * 0.5F) - 1, size + 4);
             }
@@ -633,7 +633,7 @@ namespace AAMod
                 }
             }
             WorldGen.SquareTileFrame(x + 1, y, true);
-            if(sync && Main.netMode != 0)
+            if(sync && Main.netMode != NetmodeID.SinglePlayer)
             {
                 NetMessage.SendTileSquare(-1, x, y, 2);
             }

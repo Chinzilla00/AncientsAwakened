@@ -37,10 +37,10 @@ namespace AAMod
 		 #region JustChestyThings
 		 public static Chest GetClosestVanillaChest(Vector2 origin, float distance, int chestStyle = -1, int special = -1)
 		 {
-			 return GetClosestVanillaChest(origin, distance, chestStyle == -1 ? default(int[]) : new int[] { chestStyle }, special);
+			 return GetClosestVanillaChest(origin, distance, chestStyle == -1 ? default : new int[] { chestStyle }, special);
 		 }
 
-		 public static Chest GetClosestVanillaChest(Vector2 origin, float distance, int[] chestStyles = default(int[]), int special = -1)
+		 public static Chest GetClosestVanillaChest(Vector2 origin, float distance, int[] chestStyles = default, int special = -1)
 		 {
 			 Chest[] chests = GetVanillaChestsNear(origin, distance, chestStyles, special);
 			 if (chests.Length == 0) { return null; }
@@ -59,10 +59,10 @@ namespace AAMod
 
 		 public static Chest[] GetVanillaChestsNear(Vector2 origin, float distance, int chestStyle = -1, int special = -1)
 		 {
-			 return GetVanillaChestsNear(origin, distance, chestStyle == -1 ? default(int[]) : new int[] { chestStyle }, special);
+			 return GetVanillaChestsNear(origin, distance, chestStyle == -1 ? default : new int[] { chestStyle }, special);
 		 }
 
-		 public static Chest[] GetVanillaChestsNear(Vector2 origin, float distance, int[] chestStyles = default(int[]), int special = -1)
+		 public static Chest[] GetVanillaChestsNear(Vector2 origin, float distance, int[] chestStyles = default, int special = -1)
 		 {
 			 List<Chest> chests = new List<Chest>();
 			 for (int m = 0; m < Main.chest.Length; m++)
@@ -73,7 +73,7 @@ namespace AAMod
 				 if (distance != -1 && Vector2.Distance(origin, new Vector2((x * 16f) + 8f, (y * 16f) + 8f)) > distance){ continue; }
 				 Tile tile = Main.tile[x, y];
 				 if (tile == null || !tile.active() || tile.type != 21) { continue; } //if not a vanilla chest, ignore it
-				 if (chestStyles == default(int[]) || IsVanillaChestOfStyle(chest, chestStyles))
+				 if (chestStyles == default || IsVanillaChestOfStyle(chest, chestStyles))
 				 {
 					 if (special == -1) 
 					 {
@@ -94,7 +94,7 @@ namespace AAMod
 
 		 public static Chest[] GetVanillaChests(int minY, int maxY, int chestStyle = -1, int special = -1)
 		 {
-			 return GetVanillaChests(minY, maxY, chestStyle == -1 ? default(int[]) : new int[] { chestStyle }, special);
+			 return GetVanillaChests(minY, maxY, chestStyle == -1 ? default : new int[] { chestStyle }, special);
 		 }
 
          /*
@@ -102,13 +102,13 @@ namespace AAMod
           * 
           * minY : the minimum tile Y to get chests.
           * maxY : the maximum tile Y to get chests.
-          * chestStyles : the styles of chest to find. default(int[]) means all chest styles.
+          * chestStyles : the styles of chest to find. default means all chest styles.
           * special : extra requirements.
           *           -1 > no special requirements.
           *            0 > needs a dungeon tile below it.
           *            1 > needs a sky island brick tile below it.
           */
-        public static Chest[] GetVanillaChests(int minY, int maxY, int[] chestStyles = default(int[]), int special = -1)
+        public static Chest[] GetVanillaChests(int minY, int maxY, int[] chestStyles = default, int special = -1)
         {
             List<Chest> chests = new List<Chest>();
             for(int m = 0; m < Main.chest.Length; m++)
@@ -119,7 +119,7 @@ namespace AAMod
                 if (y < minY || y > maxY) { continue; }
                 Tile tile = Main.tile[x, y];
                 if (tile == null || !tile.active() || tile.type != 21) { continue; } //if not a vanilla chest, ignore it
-                if (chestStyles == default(int[]) || IsVanillaChestOfStyle(chest, chestStyles))
+                if (chestStyles == default || IsVanillaChestOfStyle(chest, chestStyles))
                 {
                     if (special == -1) { chests.Add(chest); }else
                     {
@@ -190,7 +190,6 @@ namespace AAMod
 
 		public static void SetTileFrame(int x, int y, int tileWidth, int tileHeight, int frame, int tileFrameWidth = 16)
 		{
-			int type = Main.tile[x, y].type;
 			int frameWidth = (tileFrameWidth + 2) * tileWidth;
 			for (int x1 = 0; x1 < tileWidth; x1++)
 			{
@@ -215,7 +214,7 @@ namespace AAMod
 			int leftY = Math.Max(10, y - distance);
 			int rightX = Math.Min(Main.maxTilesX - 10, x + distance);
 			int rightY = Math.Min(Main.maxTilesY - 10, y + distance);
-			Vector2 pos = default(Vector2);
+			Vector2 pos = default;
 			float dist = -1;
 			for (int x1 = leftX; x1 < rightX; x1++)
 			{
@@ -2055,12 +2054,12 @@ namespace AAMod
                 if (tile.frameY == 0)
                 {
                     y++;
-                    tile = Main.tile[x, y]; type = tile.type;
+                    tile = Main.tile[x, y];
                 }
                 if (tile.frameY == 36)
                 {
                     y--;
-                    tile = Main.tile[x, y]; type = tile.type;
+                    tile = Main.tile[x, y];
                 }
                 int i = tile.frameX;
                 bool frameXOver5000 = i >= 5000;
@@ -2070,7 +2069,7 @@ namespace AAMod
                     int num2 = i / 18;
                     num2 %= 3;
                     x -= num2;
-                    tile = Main.tile[x, y]; type = tile.type;
+                    tile = Main.tile[x, y];
                     if (tile.frameX >= 5000) frameXOver5000 = true;
                 }
                 if (frameXOver5000)
@@ -2246,13 +2245,13 @@ namespace AAMod
                 Main.PlaySound(tile.soundStyle, (int)x, (int)y, tile.soundType);
             }
             else if (tileType == 127)
-                Main.PlaySound(2, (int)x, (int)y, 27);
+                Main.PlaySound(SoundID.Item, (int)x, (int)y, 27);
             else if (AlchemyFlower(tileType) || tileType == 3 || tileType == 110 || tileType == 24 || tileType == 32 || tileType == 51 || tileType == 52 || tileType == 61 || tileType == 62 || tileType == 69 || tileType == 71 || tileType == 73 || tileType == 74 || tileType == 113 || tileType == 115)
-                Main.PlaySound(6, (int)x, (int)y, 1);
+                Main.PlaySound(SoundID.Grass, (int)x, (int)y, 1);
             else if (tileType == 1 || tileType == 6 || tileType == 7 || tileType == 8 || tileType == 9 || tileType == 22 || tileType == 140 || tileType == 25 || tileType == 37 || tileType == 38 || tileType == 39 || tileType == 41 || tileType == 43 || tileType == 44 || tileType == 45 || tileType == 46 || tileType == 47 || tileType == 48 || tileType == 56 || tileType == 58 || tileType == 63 || tileType == 64 || tileType == 65 || tileType == 66 || tileType == 67 || tileType == 68 || tileType == 75 || tileType == 76 || tileType == 107 || tileType == 108 || tileType == 111 || tileType == 117 || tileType == 118 || tileType == 119 || tileType == 120 || tileType == 121 || tileType == 122)
-                Main.PlaySound(21, (int)x, (int)y, 1);
+                Main.PlaySound(SoundID.Tink, (int)x, (int)y, 1);
             else if (tileType != 138)
-                Main.PlaySound(0, (int)x, (int)y, 1);
+                Main.PlaySound(SoundID.Dig, (int)x, (int)y, 1);
         }
 
         /*
@@ -2383,8 +2382,7 @@ namespace AAMod
         public static int GetTileAndWallCount(Vector2 tileCenter, int[] tileTypes, int[] wallTypes, int distance = 35)
         {
             int tileCount = 0;
-            bool addedTile = false;
-            for (int x = -distance; x < distance + 1; x++)
+			for (int x = -distance; x < distance + 1; x++)
             {
                 for (int y = -distance; y < distance + 1; y++)
                 {
@@ -2393,8 +2391,8 @@ namespace AAMod
                     if (x2 < 0 || y2 < 0 || x2 > Main.maxTilesX || y2 > Main.maxTilesY) { continue; }
                     Tile tile = Main.tile[x2, y2];
                     if (tile == null) { continue; }
-                    addedTile = false;
-                    if (tile.active())
+					bool addedTile = false;
+					if (tile.active())
                     {
                         foreach (int i in tileTypes)
                         {
@@ -2408,7 +2406,6 @@ namespace AAMod
                             if (tile.wall == i) { tileCount++; break; }
                         }
                     }
-                    addedTile = false;
                 }
             }
             return tileCount;

@@ -80,29 +80,29 @@ namespace AAMod.NPCs.Bosses.Athena
 
                 if (npc.ai[0] == 1)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("SeraphHerald1"), Color.CadetBlue);
+                    if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("SeraphHerald1"), Color.CadetBlue);
                     npc.netUpdate = true;
                 }
                 else
                 if (npc.ai[0] == 120)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("SeraphHerald2"), Color.CadetBlue);
+                    if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("SeraphHerald2"), Color.CadetBlue);
                 }
                 else
                 if (npc.ai[0] == 240)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("SeraphHerald3"), Color.CadetBlue);
+                    if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("SeraphHerald3"), Color.CadetBlue);
                 }
                 else
                 if (npc.ai[0] == 360)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("SeraphHerald4"), Color.CadetBlue);
+                    if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("SeraphHerald4"), Color.CadetBlue);
                 }
                 if (!AAWorld.downedGreed)
                 {
                     if (npc.ai[0] >= 480)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("SeraphHerald5"), Color.CadetBlue);
+                        if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("SeraphHerald5"), Color.CadetBlue);
 
                         for (int i = 0; i < 5; i++)
                         {
@@ -117,12 +117,12 @@ namespace AAMod.NPCs.Bosses.Athena
                 {
                     if (npc.ai[0] == 480)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("SeraphHerald6"), Color.CadetBlue);
+                        if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("SeraphHerald6"), Color.CadetBlue);
                     }
 
                     if (npc.ai[0] >= 600)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("SeraphHerald5"), Color.CadetBlue);
+                        if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("SeraphHerald5"), Color.CadetBlue);
 
                         for (int i = 0; i < 5; i++)
                         {
@@ -148,7 +148,7 @@ namespace AAMod.NPCs.Bosses.Athena
                 npc.spriteDirection = -1;
             }
             npc.rotation = npc.velocity.X * 0.1f;
-            if (npc.type == 210 || npc.type == 211)
+            if (npc.type == NPCID.Bee || npc.type == NPCID.BeeSmall)
             {
                 npc.frameCounter += 1.0;
                 npc.rotation = npc.velocity.X * 0.2f;

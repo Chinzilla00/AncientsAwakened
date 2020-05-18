@@ -26,8 +26,8 @@ namespace AAMod.Items.Boss.Shen
             item.useStyle = ItemUseStyleID.SwingThrow;
 			item.consumable = true;
 			item.value = 2000;
-			item.rare = 2;
-			item.createTile = mod.TileType("ShenTrophy");
+            //item.rare = 2; duplicated fsr
+            item.createTile = mod.TileType("ShenTrophy");
             AARarity = 14;
         }
 

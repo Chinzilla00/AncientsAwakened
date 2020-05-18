@@ -37,8 +37,8 @@ namespace AAMod.Items.Boss.Yamata
             item.useStyle = ItemUseStyleID.SwingThrow;
 			item.consumable = true;
 			item.value = 2000;
-			item.rare = 1;
-			item.createTile = mod.TileType("YamataTrophy");
+            //item.rare = 1; duplicated fsr
+            item.createTile = mod.TileType("YamataTrophy");
 		}
 	}
 }

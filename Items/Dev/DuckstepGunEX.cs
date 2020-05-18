@@ -35,7 +35,7 @@ namespace AAMod.Items.Dev
 			item.shoot = ProjectileID.PurificationPowder;
 			item.shootSpeed = 15f;
             item.shoot = mod.ProjectileType("Duck");
-            item.rare = 10;
+            item.rare = ItemRarityID.Red;
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow";
             glowmaskDrawType = GLOWMASKTYPE_GUN;
             glowmaskDrawColor = Color.White;  

@@ -27,7 +27,7 @@ namespace AAMod.Items.Usable
 
         public override bool UseItem(Player p)
         {
-            if (Main.myPlayer == p.whoAmI && Main.netMode != 2)
+            if (Main.myPlayer == p.whoAmI && Main.netMode != NetmodeID.Server)
             {
                 int cX = (int)(p.Center.X / 16f); int cY = (int)(p.Center.Y / 16f);
                 int range = 200;

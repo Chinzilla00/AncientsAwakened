@@ -149,7 +149,7 @@ namespace AAMod.NPCs.Bosses.Zero
                     Main.dust[dustID].noGravity = true;
                     Main.dust[dustID].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
                 }
-                Main.PlaySound(4, (int)projectile.Center.X, (int)projectile.Center.Y, 3);
+                Main.PlaySound(SoundID.NPCKilled, (int)projectile.Center.X, (int)projectile.Center.Y, 3);
             }
 
             Main.PlaySound(new LegacySoundStyle(2, 14, Terraria.Audio.SoundType.Sound));

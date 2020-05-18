@@ -790,7 +790,7 @@ namespace AAMod.NPCs.Bosses.Toad
                         npc.knockBackResist = 0f;
                         if (Main.rand.Next(3) < 2)
                         {
-                            int num536 = Dust.NewDust(npc.Center - new Vector2(30f), 60, 60, 6, npc.velocity.X * 0.5f, npc.velocity.Y * 0.5f, 90, default(Color), 1.5f);
+                            int num536 = Dust.NewDust(npc.Center - new Vector2(30f), 60, 60, 6, npc.velocity.X * 0.5f, npc.velocity.Y * 0.5f, 90, default, 1.5f);
                             Main.dust[num536].noGravity = true;
                             Dust dust3 = Main.dust[num536];
                             dust3.velocity *= 0.2f;
@@ -805,11 +805,11 @@ namespace AAMod.NPCs.Bosses.Toad
                                 Vector2 vector68 = npc.Center - new Vector2(50f);
                                 for (int num537 = 0; num537 < 32; num537 = num + 1)
                                 {
-                                    int num538 = Dust.NewDust(vector68, 100, 100, 6, 0f, 0f, 100, default(Color), 2.5f);
+                                    int num538 = Dust.NewDust(vector68, 100, 100, 6, 0f, 0f, 100, default, 2.5f);
                                     Main.dust[num538].noGravity = true;
                                     Dust dust3 = Main.dust[num538];
                                     dust3.velocity *= 3f;
-                                    num538 = Dust.NewDust(vector68, 100, 100, 6, 0f, 0f, 100, default(Color), 1.5f);
+                                    num538 = Dust.NewDust(vector68, 100, 100, 6, 0f, 0f, 100, default, 1.5f);
                                     dust3 = Main.dust[num538];
                                     dust3.velocity *= 2f;
                                     Main.dust[num538].noGravity = true;
@@ -817,7 +817,7 @@ namespace AAMod.NPCs.Bosses.Toad
                                 }
                                 for (int num539 = 0; num539 < 4; num539 = num + 1)
                                 {
-                                    int num540 = Gore.NewGore(vector68 + new Vector2(50 * Main.rand.Next(100) / 100f, 50 * Main.rand.Next(100) / 100f) - Vector2.One * 10f, default(Vector2), Main.rand.Next(61, 64), 1f);
+                                    int num540 = Gore.NewGore(vector68 + new Vector2(50 * Main.rand.Next(100) / 100f, 50 * Main.rand.Next(100) / 100f) - Vector2.One * 10f, default, Main.rand.Next(61, 64), 1f);
                                     Gore gore = Main.gore[num540];
                                     gore.velocity *= 0.3f;
                                     Gore gore2 = Main.gore[num540];
@@ -829,7 +829,7 @@ namespace AAMod.NPCs.Bosses.Toad
                             }
                             for (int num541 = 0; num541 < 5; num541 = num + 1)
                             {
-                                int num542 = Dust.NewDust(npc.position, npc.width, npc.height, 31, 0f, 0f, 100, default(Color), 1.5f);
+                                int num542 = Dust.NewDust(npc.position, npc.width, npc.height, 31, 0f, 0f, 100, default, 1.5f);
                                 Main.dust[num542].velocity = Main.dust[num542].velocity * Main.rand.NextFloat();
                                 num = num541;
                             }

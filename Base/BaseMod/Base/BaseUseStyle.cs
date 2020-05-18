@@ -17,15 +17,16 @@ namespace AAMod
         //  Author(s): Grox the Great                           //
         //------------------------------------------------------//
 
-		/*
+        /*
 		 * Simulates the Harpoon useStyle.
 		 * 
 		 * projType : The type of the projectile to be aiming at.
 		 * isIndex : If true, takes projType as the index in the projectile array instead of as a type.
 		 */
+
 		public static void SetStyleHarpoon(Player player, Item item, int projType, bool isIndex = false)
 		{
-			int projID = (isIndex ? projType : BaseAI.GetProjectile(player.Center, projType, player.whoAmI, default(int[])));
+            int projID = isIndex ? projType : BaseAI.GetProjectile(player.Center, projType, player.whoAmI, 0f);
 			if(projID != -1)
 			{
 				Vector2 center = Main.projectile[projID].Center;
@@ -37,7 +38,7 @@ namespace AAMod
 				if (player.whoAmI == Main.myPlayer && Main.netMode != NetmodeID.SinglePlayer)
 				{
 					NetMessage.SendData(MessageID.PlayerControls, -1, -1, NetworkText.FromLiteral(""), player.whoAmI, 0f, 0f, 0f, 0);
-					NetMessage.SendData(41, -1, -1, NetworkText.FromLiteral(""), player.whoAmI, 0f, 0f, 0f, 0);
+					NetMessage.SendData(MessageID.ItemAnimation, -1, -1, NetworkText.FromLiteral(""), player.whoAmI, 0f, 0f, 0f, 0);
 				}
 			}
 			MoveItemLocationGun(player, item);
@@ -51,7 +52,7 @@ namespace AAMod
 		 */
 		public static void SetStyleBoss(Player player, Item item, bool useItemHitbox = false, bool center = false)
 		{
-			Rectangle hitbox = (useItemHitbox || Main.netMode == 2 || Main.dedServ ? item.Hitbox : new Rectangle(0, 0, Main.itemTexture[item.type].Width, Main.itemTexture[item.type].Height));
+			Rectangle hitbox = useItemHitbox || Main.netMode == NetmodeID.Server || Main.dedServ ? item.Hitbox : new Rectangle(0, 0, Main.itemTexture[item.type].Width, Main.itemTexture[item.type].Height);
 			player.itemRotation = 0f;
 			player.itemLocation.X = player.position.X + player.width * 0.5f + ((center ? 0f : hitbox.Width * 0.5f) - 9f - player.itemRotation * 14f * player.direction - 4f) * player.direction;
 			player.itemLocation.Y = player.position.Y + hitbox.Height * 0.5f + 4f;
@@ -60,10 +61,10 @@ namespace AAMod
 				player.itemRotation = -player.itemRotation;
 				player.itemLocation.Y = player.position.Y + player.height + (player.position.Y - player.itemLocation.Y);
 			}
-			if (Main.myPlayer == player.whoAmI && Main.netMode != 0)
+			if (Main.myPlayer == player.whoAmI && Main.netMode != NetmodeID.SinglePlayer)
 			{
-				NetMessage.SendData(13, -1, -1, NetworkText.FromLiteral(""), player.whoAmI, 0f, 0f, 0f, 0);
-				NetMessage.SendData(41, -1, -1, NetworkText.FromLiteral(""), player.whoAmI, 0f, 0f, 0f, 0);
+				NetMessage.SendData(MessageID.PlayerControls, -1, -1, NetworkText.FromLiteral(""), player.whoAmI, 0f, 0f, 0f, 0);
+				NetMessage.SendData(MessageID.ItemAnimation, -1, -1, NetworkText.FromLiteral(""), player.whoAmI, 0f, 0f, 0f, 0);
 			}
 		}
 
@@ -88,10 +89,10 @@ namespace AAMod
                 float distY = Main.mouseY + Main.screenPosition.Y - player.Center.Y; 
                 player.itemRotation = (float)Math.Atan2(distY * player.direction, distX * player.direction);
 
-                if(Main.netMode != 0)
+                if(Main.netMode != NetmodeID.SinglePlayer)
                 {
-                    NetMessage.SendData(13, -1, -1, NetworkText.FromLiteral(""), player.whoAmI, 0f, 0f, 0f, 0);
-                    NetMessage.SendData(41, -1, -1, NetworkText.FromLiteral(""), player.whoAmI, 0f, 0f, 0f, 0);
+                    NetMessage.SendData(MessageID.PlayerControls, -1, -1, NetworkText.FromLiteral(""), player.whoAmI, 0f, 0f, 0f, 0);
+                    NetMessage.SendData(MessageID.ItemAnimation, -1, -1, NetworkText.FromLiteral(""), player.whoAmI, 0f, 0f, 0f, 0);
                 }
             }
             MoveItemLocationGun(player, item);
@@ -118,10 +119,10 @@ namespace AAMod
         {
 			player.itemRotation = ((float)player.itemAnimation / player.itemAnimationMax - 0.5f) * -player.direction * 3.5f - player.direction * 0.3f;
 			if (player.gravDir == -1f) { player.itemRotation *= -1; }
-			if (Main.myPlayer == player.whoAmI && Main.netMode != 0)
+			if (Main.myPlayer == player.whoAmI && Main.netMode != NetmodeID.SinglePlayer)
 			{
-				NetMessage.SendData(13, -1, -1, NetworkText.FromLiteral(""), player.whoAmI, 0.0f, 0.0f, 0.0f, 0);
-                NetMessage.SendData(41, -1, -1, NetworkText.FromLiteral(""), player.whoAmI, 0.0f, 0.0f, 0.0f, 0);
+				NetMessage.SendData(MessageID.PlayerControls, -1, -1, NetworkText.FromLiteral(""), player.whoAmI, 0.0f, 0.0f, 0.0f, 0);
+                NetMessage.SendData(MessageID.ItemAnimation, -1, -1, NetworkText.FromLiteral(""), player.whoAmI, 0.0f, 0.0f, 0.0f, 0);
             }
 			MoveItemLocationSword(player, item, basedOnRot);
         }
@@ -146,8 +147,8 @@ namespace AAMod
          */
         public static Vector2 MoveItemLocationGun(Vector2 center, Vector2 itemLocation, int direction, Item item)
         {
-            itemLocation.X = center.X - (Main.netMode == 2 || Main.dedServ ? item.width * 0.5f : Main.itemTexture[item.type].Width * 0.5f) - direction * 2;
-			itemLocation.Y = center.Y - (Main.netMode == 2 || Main.dedServ ? item.height * 0.5f : Main.itemTexture[item.type].Height * 0.5f);
+            itemLocation.X = center.X - (Main.netMode == NetmodeID.Server || Main.dedServ ? item.width * 0.5f : Main.itemTexture[item.type].Width * 0.5f) - direction * 2;
+			itemLocation.Y = center.Y - (Main.netMode == NetmodeID.Server || Main.dedServ ? item.height * 0.5f : Main.itemTexture[item.type].Height * 0.5f);
             return itemLocation;
         }
 

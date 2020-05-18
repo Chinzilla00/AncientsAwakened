@@ -24,7 +24,7 @@ namespace AAMod.Items.Boss.MushroomMonarch
             item.useStyle = ItemUseStyleID.SwingThrow;
 			item.consumable = true;
 			item.value = 2000;
-            item.rare = 2;
+			//item.rare = 2; duplicated fsr
 			item.createTile = mod.TileType("MonarchTrophy");
 		}
 	}

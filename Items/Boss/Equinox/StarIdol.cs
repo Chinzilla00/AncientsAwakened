@@ -48,11 +48,11 @@ Can only be used if there arent many radium stars in the world.");
                         {
                             if (Main.dayTime)
                             {
-                                if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("StarIdolInfo"), new Color(43, 178, 245));
+                                if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.Worldtext("StarIdolInfo"), new Color(43, 178, 245));
                             }
                             else
                             {
-                                if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("StarIdolInfo"), new Color(0, 255, 181));
+                                if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.Worldtext("StarIdolInfo"), new Color(0, 255, 181));
                             }
                             return false;
                         }
@@ -66,7 +66,7 @@ Can only be used if there arent many radium stars in the world.");
         public override bool UseItem(Player player)
         {
             
-            if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedEquinoxInfo"), Color.Violet);
+            if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedEquinoxInfo"), Color.Violet);
             for (int i = 0; i < Main.maxTilesX / 50; ++i)
             {
                 int X = WorldGen.genRand.Next(Main.maxTilesX / 10 * 2, (int)(Main.maxTilesX / 10 * 4.5f));

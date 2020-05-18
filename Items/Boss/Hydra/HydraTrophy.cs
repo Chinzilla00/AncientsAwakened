@@ -24,7 +24,7 @@ namespace AAMod.Items.Boss.Hydra
             item.useStyle = ItemUseStyleID.SwingThrow;
 			item.consumable = true;
 			item.value = 2000;
-            item.rare = 2;
+            //item.rare = 2; duplicated fsr
             item.expert = true; item.expertOnly = true;
 			item.createTile = mod.TileType("HydraTrophy");
 		}

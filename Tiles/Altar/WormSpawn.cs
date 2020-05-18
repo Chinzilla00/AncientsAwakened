@@ -54,60 +54,63 @@ namespace AAMod.Tiles.Altar
 
             string s = Main.netMode == NetmodeID.SinglePlayer ? "" : Lang.TheEquinox("s");
 
-            if (npc.ai[0] == 180)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
-                if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.TheEquinox("WormSpawn1"), new Color(0, 255, 181));
-            }
+                if (npc.ai[0] == 180)
+                {
+                    BaseUtility.Chat(Lang.TheEquinox("WormSpawn1"), new Color(0, 255, 181));
+                }
 
-            if (npc.ai[0] == 360)
-            {
+                if (npc.ai[0] == 360)
+                {
 
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.TheEquinox("WormSpawn2") + s + Lang.TheEquinox("WormSpawn3"), new Color(43, 178, 245));
-            }
+                    BaseUtility.Chat(Lang.TheEquinox("WormSpawn2") + s + Lang.TheEquinox("WormSpawn3"), new Color(43, 178, 245));
+                }
 
-            if (npc.ai[0] == 540)
-            {
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.TheEquinox("WormSpawn4"), new Color(0, 255, 181));
-            }
+                if (npc.ai[0] == 540)
+                {
+                    BaseUtility.Chat(Lang.TheEquinox("WormSpawn4"), new Color(0, 255, 181));
+                }
 
-            if (npc.ai[0] == 720)
-            {
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.TheEquinox("WormSpawn5"), new Color(43, 178, 245));
-            }
-            if (npc.ai[0] == 900)
-            {
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.TheEquinox("WormSpawn6") + s + Lang.TheEquinox("WormSpawn7"), new Color(43, 178, 245));
-            }
+                if (npc.ai[0] == 720)
+                {
+                    BaseUtility.Chat(Lang.TheEquinox("WormSpawn5"), new Color(43, 178, 245));
+                }
+                if (npc.ai[0] == 900)
+                {
+                    BaseUtility.Chat(Lang.TheEquinox("WormSpawn6") + s + Lang.TheEquinox("WormSpawn7"), new Color(43, 178, 245));
+                }
 
-            if (npc.ai[0] == 960)
-            {
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.TheEquinox("WormSpawn8"), new Color(0, 255, 181));
-            }
+                if (npc.ai[0] == 960)
+                {
+                    BaseUtility.Chat(Lang.TheEquinox("WormSpawn8"), new Color(0, 255, 181));
+                }
 
-            if (npc.ai[0] == 1140)
-            {
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.TheEquinox("WormSpawn9"), new Color(43, 178, 245));
-            }
+                if (npc.ai[0] == 1140)
+                {
+                    BaseUtility.Chat(Lang.TheEquinox("WormSpawn9"), new Color(43, 178, 245));
+                }
 
-            if (npc.ai[0] == 1320)
-            {
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.TheEquinox("WormSpawn10"), new Color(0, 255, 181));
-            }
+                if (npc.ai[0] == 1320)
+                {
+                    BaseUtility.Chat(Lang.TheEquinox("WormSpawn10"), new Color(0, 255, 181));
+                }
 
-            if (npc.ai[0] == 1520)
-            {
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.TheEquinox("WormSpawn11"), new Color(0, 255, 181));
-            }
+                if (npc.ai[0] == 1520)
+                {
+                    BaseUtility.Chat(Lang.TheEquinox("WormSpawn11"), new Color(0, 255, 181));
+                }
 
-            if (npc.ai[0] >= 1880)
-            {
-                string name = Main.netMode == 0 ? player.name : Lang.TheEquinox("heroes");
+                if (npc.ai[0] >= 1880)
+                {
+                    string name = Main.netMode == NetmodeID.SinglePlayer ? player.name : Lang.TheEquinox("heroes");
 
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.TheEquinox("WormSpawn12") + name + ".", new Color(0, 255, 181));
+                    BaseUtility.Chat(Lang.TheEquinox("WormSpawn12") + name + ".", new Color(0, 255, 181));
 
-                AAWorld.WormActive = true;
-                npc.active = false;
-                npc.netUpdate = true;
+                    AAWorld.WormActive = true;
+                    npc.active = false;
+                    npc.netUpdate = true;
+                }
             }
         }
 

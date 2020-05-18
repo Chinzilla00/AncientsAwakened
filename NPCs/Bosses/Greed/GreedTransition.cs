@@ -61,7 +61,7 @@ namespace AAMod.NPCs.Bosses.Greed
 
                 if (npc.ai[0] == 175)
                 {
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         BaseUtility.Chat(Lang.BossChat("GreedTransition1"), Color.Goldenrod);
                     }
@@ -71,14 +71,14 @@ namespace AAMod.NPCs.Bosses.Greed
                 }
                 else if (npc.ai[0] == 350)
                 {
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         BaseUtility.Chat(Lang.BossChat("GreedTransition2"), Color.Goldenrod);
                     }
                 }
                 else if (npc.ai[0] == 500)
                 {
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         BaseUtility.Chat(Lang.BossChat("GreedTransition3"), Color.Goldenrod);
                     }
@@ -89,7 +89,7 @@ namespace AAMod.NPCs.Bosses.Greed
                 {
                     AAModGlobalNPC.SpawnBoss(player, mod.NPCType("GreedA"), true, npc.Center, Lang.BossChat("GreedAName"), false);
 
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         BaseUtility.Chat(Lang.BossChat("GreedTransition4"), Color.Goldenrod);
                     }

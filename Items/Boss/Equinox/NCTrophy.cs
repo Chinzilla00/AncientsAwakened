@@ -25,7 +25,7 @@ namespace AAMod.Items.Boss.Equinox
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.consumable = true;
             item.value = 2000;
-            item.rare = 1;
+            //item.rare = 1; duplicated fsr
             item.createTile = mod.TileType("NCTrophy");
 
         }

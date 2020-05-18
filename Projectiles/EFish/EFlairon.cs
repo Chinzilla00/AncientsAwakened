@@ -112,7 +112,7 @@ namespace AAMod.Projectiles.EFish
 				float rand = Main.rand.NextFloat() * 6.3f;
 				vel = vel.RotatedBy(rand);
 				vel *= 4f;
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vel.X, vel.Y, 405, projectile.damage, 0, Main.myPlayer);
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vel.X, vel.Y, ProjectileID.FlaironBubble, projectile.damage, 0, Main.myPlayer);
 			}
             Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
             if (projectile.type == 33 || projectile.type == 106)
@@ -131,7 +131,7 @@ namespace AAMod.Projectiles.EFish
                 projectile.ai[0] = 1f;
             }
             projectile.netUpdate = true;
-            Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y, 1, 1f, 0f);
+            Main.PlaySound(SoundID.Dig, (int)projectile.position.X, (int)projectile.position.Y, 1, 1f, 0f);
             return false;
 		}
 		

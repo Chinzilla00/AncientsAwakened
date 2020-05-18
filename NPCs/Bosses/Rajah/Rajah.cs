@@ -790,7 +790,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                     else
                     {
                         
-                        float num626 = 3f;
+                        float num626;
                         float longth = Math.Abs(npc.Center.X - Main.player[npc.target].Center.X);
                         num626 = 3f + longth * .036f;
                         
@@ -882,9 +882,9 @@ namespace AAMod.NPCs.Bosses.Rajah
             internalAI[1] = 0;
         }
 
-        public static void AISpaceOctopus(NPC npc, Vector2 targetCenter = default(Vector2), float moveSpeed = 0.15f, float velMax = 5f, float hoverDistance = 250f)
+        public static void AISpaceOctopus(NPC npc, Vector2 targetCenter = default, float moveSpeed = 0.15f, float velMax = 5f, float hoverDistance = 250f)
 		{
-            float pos = 200f;
+            float pos;
             if(Main.player[npc.target].velocity.X == 0)
             {
                 pos = 0;

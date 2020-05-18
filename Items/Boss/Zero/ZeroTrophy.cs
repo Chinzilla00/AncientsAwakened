@@ -28,8 +28,8 @@ namespace AAMod.Items.Boss.Zero
             item.useStyle = ItemUseStyleID.SwingThrow;
 			item.consumable = true;
 			item.value = 2000;
-			item.rare = 1;
-			item.createTile = mod.TileType("ZeroTrophy");
+            //item.rare = 1; duplicated fsr
+            item.createTile = mod.TileType("ZeroTrophy");
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

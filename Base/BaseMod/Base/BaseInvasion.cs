@@ -49,7 +49,7 @@ namespace AAMod
 		{
 			if(Main.netMode == 1) return;
 			int oldCount = undeadipedeCount;
-			undeadipedeCount = AAMod.BaseAI.GetNPCs(default(Vector2), GRealm.UNDEADIPEDE_TYPES[0], -1, null).Length + AAMod.BaseAI.GetNPCs(default(Vector2), GRealm.UNDEADIPEDE_TYPES[1], -1, null).Length;	
+			undeadipedeCount = AAMod.BaseAI.GetNPCs(default, GRealm.UNDEADIPEDE_TYPES[0], -1, null).Length + AAMod.BaseAI.GetNPCs(default, GRealm.UNDEADIPEDE_TYPES[1], -1, null).Length;	
 			if(oldCount == 0 && undeadipedeCount > 0)
 			{
 				HandleHardMobSpawn(GRealm.UNDEADIPEDE_TYPES[0]);

@@ -28,8 +28,8 @@ namespace AAMod.Items.Boss.Broodmother
             item.useStyle = ItemUseStyleID.SwingThrow;
 			item.consumable = true;
 			item.value = 2000;
-			item.rare = 1;
-			item.createTile = mod.TileType("BroodTrophy");
+            //item.rare = 1;  duplicated fsr
+            item.createTile = mod.TileType("BroodTrophy");
             
 		}
 

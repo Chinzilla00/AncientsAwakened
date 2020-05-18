@@ -20,7 +20,7 @@ namespace AAMod.Items.Materials
             item.useAnimation = 15;
             item.useTime = 10;
             item.rare = ItemRarityID.Red;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.consumable = true;
             item.createTile = mod.TileType("OrderBar");
             item.value = Terraria.Item.sellPrice(0, 1, 0, 0);

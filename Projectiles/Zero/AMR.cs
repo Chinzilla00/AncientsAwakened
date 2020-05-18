@@ -93,16 +93,6 @@ namespace AAMod.Projectiles.Zero
 						projectile.netUpdate = true;
 					}
 					projectile.velocity = vector4;
-					float scaleFactor2 = 14f;
-					int num7 = 7;
-				
-					vector3 = projectile.Center + new Vector2(Main.rand.Next(-num7, num7 + 1), Main.rand.Next(-num7, num7 + 1));
-					Vector2 vector5 = Vector2.Normalize(projectile.velocity) * scaleFactor2;
-					vector5 = vector5.RotatedBy(Main.rand.NextDouble() * 0.19634954631328583 - 0.098174773156642914, default);
-					if (float.IsNaN(vector5.X) || float.IsNaN(vector5.Y))
-					{
-						vector5 = -Vector2.UnitY;
-					}
 				}
 			}
 			if (player.direction == 1)
@@ -134,13 +124,13 @@ namespace AAMod.Projectiles.Zero
 
             else if (counter >= 40)
             {
-                Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 13);
+                Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 13);
                 chargeLevel = 2;
             }
 
             else if (counter <= 40)
             {
-                Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 13);
+                Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 13);
                 chargeLevel = 1;
             }
 
@@ -191,7 +181,7 @@ namespace AAMod.Projectiles.Zero
 					num5 = num1 / num4;
 				float SpeedX = f1 * num5;
 				float SpeedY = f2 * num5;
-                Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 89);
+                Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 89);
                 int proj = Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, mod.ProjectileType("Antimatter"), damage, 1f, player.whoAmI);
                 Main.projectile[proj].penetrate = chargeLevel;
             }

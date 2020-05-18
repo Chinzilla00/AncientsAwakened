@@ -29,10 +29,9 @@ namespace AAMod.Items.Blocks
 			item.rare = ItemRarityID.Red;
 			item.value = Item.sellPrice(0, 10, 0, 0);
 			item.createTile = mod.TileType("VoidUnit");
-            item.rare = 10;
-        }
+		}
 
-        public override void ModifyTooltips(List<TooltipLine> list)
+		public override void ModifyTooltips(List<TooltipLine> list)
         {
             foreach (TooltipLine line2 in list)
             {

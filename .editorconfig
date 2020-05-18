@@ -2,3 +2,18 @@
 
 # IDE0054: Use compound assignment
 dotnet_style_prefer_compound_assignment = true:none
+
+# CS0618: Type or member is obsolete
+dotnet_diagnostic.CS0618.severity = none
+
+# IDE0060: Remove unused parameter
+dotnet_code_quality_unused_parameters = all:none
+
+# IDE0039: Use local function
+csharp_style_pattern_local_over_anonymous_function = true:none
+
+# IDE1006: Naming Styles
+dotnet_diagnostic.IDE1006.severity = none
+
+# ChangeMagicNumberToID: Change magic numbers into appropriate ID values
+dotnet_diagnostic.ChangeMagicNumberToID.severity = warning

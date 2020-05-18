@@ -26,8 +26,8 @@ namespace AAMod.Items.Boss.Grips
             item.useStyle = ItemUseStyleID.SwingThrow;
 			item.consumable = true;
 			item.value = 2000;
-			item.rare = 1;
-			item.createTile = mod.TileType("GripRedTrophy");
+            //item.rare = 1; duplicated fsr
+            item.createTile = mod.TileType("GripRedTrophy");
 		}
 
 

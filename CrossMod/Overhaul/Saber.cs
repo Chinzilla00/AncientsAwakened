@@ -58,7 +58,7 @@ namespace AAMod
                         Vector2 mouse = new Vector2(Main.screenPosition.X + Main.mouseX, Main.screenPosition.Y + Main.mouseY);
                         SetAttackRotation(player);
                         Vector2 velocity = (mouse - player.MountedCenter).SafeNormalize(new Vector2(player.direction, 0));
-                        int p = Projectile.NewProjectile(
+                        Projectile.NewProjectile(
                             player.MountedCenter,
                             velocity,
                             slashProjectileID,
@@ -139,8 +139,7 @@ namespace AAMod
                 if (player.itemTime <= 1)
                 {
                     player.itemTime = 1;
-                    if (customCharge != null)
-                    { customCharge(player, true); }
+                    customCharge?.Invoke(player, true);
                 }
             }
 
@@ -178,7 +177,6 @@ namespace AAMod
             if (Main.myPlayer == player.whoAmI)
             {
                 Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
-                Vector2 value = Vector2.UnitX.RotatedBy(player.fullRotation, default);
                 float num79 = Main.mouseX + Main.screenPosition.X - vector2.X;
                 float num80 = Main.mouseY + Main.screenPosition.Y - vector2.Y;
                 if (player.gravDir == -1f)
@@ -195,7 +193,6 @@ namespace AAMod
                 if (Main.myPlayer == player.whoAmI)
                 {
                     Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
-                    Vector2 value = Vector2.UnitX.RotatedBy(player.fullRotation, default);
                     float num79 = Main.mouseX + Main.screenPosition.X - vector2.X;
                     float num80 = Main.mouseY + Main.screenPosition.Y - vector2.Y;
                     if (player.gravDir == -1f)
@@ -218,7 +215,6 @@ namespace AAMod
         {
             //counts down from 1 to 0
             float anim = player.itemAnimation / (float)(player.itemAnimationMax);
-            int frames = player.itemAnimationMax - player.itemAnimation;
 
             // animation frames;
             int start, swing, swing2, end;
@@ -298,7 +294,7 @@ namespace AAMod
 
                 // DEBUG hitbox
                 //for (int i = 0; i < 256; i++)
-                //{ Dust d = Dust.NewDustDirect(hitbox.Location.ToVector2() - new Vector2(2, 2), hitbox.Width, hitbox.Height, 60, 0, 0, 0, default(Color), 0.75f); d.velocity = Vector2.Zero; d.noGravity = true; }
+                //{ Dust d = Dust.NewDustDirect(hitbox.Location.ToVector2() - new Vector2(2, 2), hitbox.Width, hitbox.Height, 60, 0, 0, 0, default, 0.75f); d.velocity = Vector2.Zero; d.noGravity = true; }
             }
             else
             {

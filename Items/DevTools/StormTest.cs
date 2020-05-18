@@ -28,7 +28,7 @@ namespace AAMod.Items.DevTools
             item.useTurn = true;
             item.expert = true; item.expertOnly = true;
             item.shootSpeed = 9f;
-            item.shoot = 1;
+            item.shoot = ProjectileID.WoodenArrowFriendly;
             item.noUseGraphic = true;
         }
 		

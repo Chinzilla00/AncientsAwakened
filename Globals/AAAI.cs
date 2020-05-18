@@ -144,15 +144,10 @@ namespace AAMod
 
         public static void BreatheFire(NPC npc, bool UseNPCVelocity = false, int ProjectileType = 85, float SpeedBoost = 1, float DamageReduction = 2)
         {
-            int num429 = 1;
-            if (npc.position.X + (npc.width / 2) < Main.player[npc.target].position.X + Main.player[npc.target].width)
-            {
-                num429 = -1;
-            }
             Vector2 Origin = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-            float PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) + (num429 * 180) - Origin.X;
-            float PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - Origin.Y;
-            float PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX) + (PlayerPosY * PlayerPosY));
+            float PlayerPosX;
+            float PlayerPosY;
+            float PlayerPos;
             float num433 = 6f;
             PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - Origin.X;
             PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - Origin.Y;
@@ -189,7 +184,6 @@ namespace AAMod
 
         public static void DownedBoss(NPC npc, Mod mod, string[] Loot, bool DownedBoss, bool HasItemDrop = false, int ItemType = 0, int ItemMin = 0, int ItemMax = 1, bool HasMask = false, bool ExpertMaskDrop = false, bool HasTrophy = false, int MaskType = 0, int TrophyType = 0, bool HasExpertBag = false)
         {
-            DownedBoss = true;
             if (HasMask && !Main.expertMode)
             {
                 npc.DropLoot(MaskType, 1 / 10);
@@ -752,7 +746,7 @@ namespace AAMod
                         npc.TargetClosest(true);
                         npc.netUpdate = true;
                         npc.whoAmI = npcID;
-						if(onChangeType != null) onChangeType(npc, oldType, true);
+                        onChangeType?.Invoke(npc, oldType, true);
                     }
                     else
 					if (isBody && !Main.npc[(int)npc.ai[0]].active) //if the body was just split, turn it into a tail
@@ -768,8 +762,8 @@ namespace AAMod
 						npc.TargetClosest(true);
 						npc.netUpdate = true;
 						npc.whoAmI = npcID;
-						if(onChangeType != null) onChangeType(npc, oldType, false);
-					}
+                        onChangeType?.Invoke(npc, oldType, false);
+                    }
                 }
                 else
 				if (!singlePiece)
@@ -876,7 +870,7 @@ namespace AAMod
                 dist = (dist - npc.width - partDistanceAddon) / dist;
                 playerCenterX *= dist;
                 playerCenterY *= dist;
-                npc.velocity = default(Vector2);
+                npc.velocity = default;
                 npc.position.X = npc.position.X + playerCenterX;
                 npc.position.Y = npc.position.Y + playerCenterY;
                 if (fly)
@@ -1037,7 +1031,6 @@ namespace AAMod
             lightColor.G = (byte)(lightColor.G * percentLight);
             lightColor.B = (byte)(lightColor.B * percentLight);
             lightColor.A = (byte)(lightColor.A * percentLight);
-            Vector2 position2 = position;
             for (int m = 0; m < 4; m++)
             {
                 float offX = offsetX;
@@ -1049,8 +1042,8 @@ namespace AAMod
                     case 2: offY += percentHalf; break;
                     case 3: offY -= percentHalf; break;
                 }
-                position2 = new Vector2(position.X + offX, position.Y + offY);
-                BaseDrawing.DrawTexture(sb, texture, shader, position2, width, height, scale, rotation, direction, framecount, frame, lightColor, true);
+                position += new Vector2(offX, offY);
+                BaseDrawing.DrawTexture(sb, texture, shader, position, width, height, scale, rotation, direction, framecount, frame, lightColor, true);
             }
         }
     }

@@ -26,37 +26,17 @@ namespace AAMod.Items.Magic
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-			Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
+			Vector2 vector2;
 			float num75 = item.shootSpeed;
-			float num82 = Main.mouseX + Main.screenPosition.X - vector2.X;
-			float num83 = Main.mouseY + Main.screenPosition.Y - vector2.Y;
-			if (player.gravDir == -1f)
-			{
-				num83 = Main.screenPosition.Y + Main.screenHeight - Main.mouseY - vector2.Y;
-			}
-			float num84 = (float)Math.Sqrt(num82 * num82 + num83 * num83);
-			float num85 = num84;
-			if ((float.IsNaN(num82) && float.IsNaN(num83)) || (num82 == 0f && num83 == 0f))
-			{
-				num82 = player.direction;
-				num83 = 0f;
-				num84 = 11f;
-			}
-			else
-			{
-				num84 = 11f / num84;
-			}
-			num82 *= num84;
-			num83 *= num84;
+			float num84;
 			int num117 = 6;
 			for (int num118 = 0; num118 < num117; num118++)
 			{
 				vector2 = new Vector2(player.position.X + player.width * 0.5f + Main.rand.Next(201) * -(float)player.direction + (Main.mouseX + Main.screenPosition.X - player.position.X), player.MountedCenter.Y - 600f);
 				vector2.X = (vector2.X + player.Center.X) / 2f + Main.rand.Next(-350, 351);
 				vector2.Y -= 100 * num118;
-				num82 = Main.mouseX + Main.screenPosition.X - vector2.X;
-				num83 = Main.mouseY + Main.screenPosition.Y - vector2.Y;
-				float ai2 = num83 + vector2.Y;
+				float num82 = Main.mouseX + Main.screenPosition.X - vector2.X;
+				float num83 = Main.mouseY + Main.screenPosition.Y - vector2.Y;
 				if (num83 < 0f)
 				{
 					num83 *= -1f;
@@ -84,7 +64,7 @@ namespace AAMod.Items.Magic
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(3570);
+			recipe.AddIngredient(ItemID.LunarFlareBook);
 			recipe.AddIngredient(null, "EXSoul");
 			recipe.AddTile(null, "QuantumFusionAccelerator");
 			recipe.SetResult(this);

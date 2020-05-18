@@ -41,7 +41,7 @@ namespace AAMod
 			}
 		}
 
-		public static void AIMinionPlant(Projectile projectile, ref float[] ai, Entity owner, Vector2 endPoint, bool setTime = true, float vineLength = 150f, float vineLengthLong = 200f, int vineTimeExtend = 300, int vineTimeMax = 450, float moveInterval = 0.035f, float speedMax = 2f, Vector2 targetOffset = default(Vector2), Func<Entity, Entity, Entity> GetTarget = null, Func<Entity, Entity, Entity, bool> ShootTarget = null)
+		public static void AIMinionPlant(Projectile projectile, ref float[] ai, Entity owner, Vector2 endPoint, bool setTime = true, float vineLength = 150f, float vineLengthLong = 200f, int vineTimeExtend = 300, int vineTimeMax = 450, float moveInterval = 0.035f, float speedMax = 2f, Vector2 targetOffset = default, Func<Entity, Entity, Entity> GetTarget = null, Func<Entity, Entity, Entity, bool> ShootTarget = null)
 		{
 			if (setTime){ projectile.timeLeft = 10; }
 			Entity target = (GetTarget == null ? null : GetTarget(projectile, owner));
@@ -53,7 +53,7 @@ namespace AAMod
 				vineLength = vineLengthLong;
 				if (ai[0] > vineTimeMax) { ai[0] = 0f; }
 			}
-			Vector2 targetCenter = target.Center + targetOffset + (target == owner ? new Vector2(0f, (owner is Player ? ((Player)owner).gfxOffY : owner is NPC ? ((NPC)owner).gfxOffY : ((Projectile)owner).gfxOffY)) : default(Vector2));
+			Vector2 targetCenter = target.Center + targetOffset + (target == owner ? new Vector2(0f, owner is Player ? ((Player)owner).gfxOffY : owner is NPC ? ((NPC)owner).gfxOffY : ((Projectile)owner).gfxOffY) : default);
 			if (!targetOwner)
 			{
 				float distTargetX = targetCenter.X - endPoint.X;
@@ -150,7 +150,6 @@ namespace AAMod
 			AIMinionFlier(projectile, ref ai, owner, ref tileCollide, ref projectile.netUpdate, pet ? 0 : projectile.minionPos, movementFixed, hover, hoverHeight, lineDist, returnDist, teleportDist, moveInterval, maxSpeed, maxSpeedFlying, GetTarget, ShootTarget);
 			if(!dummyTileCollide) projectile.tileCollide = tileCollide;
 			if (autoSpriteDir) { projectile.spriteDirection = projectile.direction; }
-			float dist = Vector2.Distance(projectile.Center, owner.Center);
 			if (ai[0] == 1) { projectile.spriteDirection = (owner.velocity.X == 0 ? projectile.spriteDirection : owner.velocity.X > 0 ? 1 : -1); }
 			if ((GetTarget == null || GetTarget(projectile, owner) == null || GetTarget(projectile, owner) == owner) && Math.Abs(projectile.velocity.X + projectile.velocity.Y) <= 0.025f) { projectile.spriteDirection = (owner.Center.X > projectile.Center.X ? 1 : -1); }
 		}
@@ -170,7 +169,7 @@ namespace AAMod
 		 * moveInterval : How much to move each tick.
 		 * maxSpeed : The maxmimum speed of the minion.
 		 * maxSpeedFlying : The maximum speed whist 'flying' back to the player.
-		 * GetTarget : a Func(Entity codable, Entity owner), returns a Vector2 of the a target's position. If GetTarget is null or it returns default(Vector2) the target is assumed to be the owner.
+		 * GetTarget : a Func(Entity codable, Entity owner), returns a Vector2 of the a target's position. If GetTarget is null or it returns default the target is assumed to be the owner.
 		 */
 		public static void AIMinionFlier(Entity codable, ref float[] ai, Entity owner, ref bool tileCollide, ref bool netUpdate, int minionPos, bool movementFixed, bool hover = false, int hoverHeight = 40, int lineDist = 40, int returnDist = 400, int teleportDist = 800, float moveInterval = 0.2f, float maxSpeed = 4.5f, float maxSpeedFlying = 4.5f, Func<Entity, Entity, Entity> GetTarget = null, Func<Entity, Entity, Entity, bool> ShootTarget = null)
 		{
@@ -231,7 +230,6 @@ namespace AAMod
 			projectile.timeLeft = 10;
 			AIMinionFighter(projectile, ref ai, owner, ref projectile.tileCollide, ref projectile.netUpdate, ref projectile.gfxOffY, ref projectile.stepSpeed, pet ? 0 : projectile.minionPos, jumpDistX, jumpDistY, lineDist, returnDist, teleportDist, moveInterval, maxSpeed, maxSpeedFlying, GetTarget);
 			projectile.spriteDirection = projectile.direction;
-			float dist = Vector2.Distance(projectile.Center, owner.Center);
 			if (ai[0] == 1) { projectile.spriteDirection = (owner.velocity.X == 0 ? projectile.spriteDirection : owner.velocity.X > 0 ? 1 : -1); }
 			if ((GetTarget == null ||  GetTarget(projectile, owner) == null || GetTarget(projectile, owner) == owner) && (projectile.velocity.X >= -0.025f || projectile.velocity.X <= 0.025f) && projectile.velocity.Y == 0) { projectile.spriteDirection = (owner.Center.X > projectile.Center.X ? 1 : -1); }
 		}
@@ -254,7 +252,7 @@ namespace AAMod
 		 * moveInterval : How much to move each tick.
 		 * maxSpeed : The maxmimum speed of the minion.
 		 * maxSpeedFlying : The maximum speed whist 'flying' back to the player.
-		 * GetTarget : a Func(Entity codable, Entity owner), returns a Vector2 of the a target's position. If GetTarget is null or it returns default(Vector2) the target is assumed to be the owner.
+		 * GetTarget : a Func(Entity codable, Entity owner), returns a Vector2 of the a target's position. If GetTarget is null or it returns default the target is assumed to be the owner.
 		 */
 		public static void AIMinionFighter(Entity codable, ref float[] ai, Entity owner, ref bool tileCollide, ref bool netUpdate, ref float gfxOffY, ref float stepSpeed, int minionPos, int jumpDistX = 4, int jumpDistY = 5, int lineDist = 40, int returnDist = 400, int teleportDist = 800, float moveInterval = 0.2f, float maxSpeed = 4.5f, float maxSpeedFlying = 4.5f, Func<Entity, Entity, Entity> GetTarget = null)
 		{
@@ -270,9 +268,9 @@ namespace AAMod
 			{
 				tileCollide = true;
 				Entity target = (GetTarget == null ? null : GetTarget(codable, owner));
-				Vector2 targetCenter = (target == null ? default(Vector2) : target.Center);
+				Vector2 targetCenter = (target == null ? default : target.Center);
 				bool isOwner = (target == null || targetCenter == owner.Center);
-				if (targetCenter == default(Vector2))
+				if (targetCenter == default)
 				{
 					targetCenter = owner.Center;
 					targetCenter.X += (owner.width + 10 + (lineDist * minionPos)) * -owner.direction;
@@ -324,9 +322,9 @@ namespace AAMod
 				Vector2 targetCenter = owner.Center;
 				if (owner.velocity.Y != 0f && dist < 80)
 				{
-					targetCenter = owner.Center + BaseUtility.RotateVector(default(Vector2), new Vector2(10, 0f), BaseUtility.RotationTo(codable.Center, owner.Center));
+					targetCenter = owner.Center + BaseUtility.RotateVector(default, new Vector2(10, 0f), BaseUtility.RotationTo(codable.Center, owner.Center));
 				}
-				Vector2 newVel = BaseUtility.RotateVector(default(Vector2), new Vector2(maxSpeedFlying, 0f), BaseUtility.RotationTo(codable.Center, targetCenter));
+				Vector2 newVel = BaseUtility.RotateVector(default, new Vector2(maxSpeedFlying, 0f), BaseUtility.RotationTo(codable.Center, targetCenter));
 				if (owner.velocity.Y != 0f && ((newVel.X > 0 && codable.velocity.X < 0) || (newVel.X < 0 && codable.velocity.X > 0)))
 				{
 					codable.velocity *= 0.98f; newVel *= 0.02f; codable.velocity += newVel;
@@ -342,7 +340,6 @@ namespace AAMod
 			projectile.timeLeft = 10;
 			AIMinionSlime(projectile, ref ai, owner, ref projectile.tileCollide, ref projectile.netUpdate, pet ? 0 : projectile.minionPos, lineDist, returnDist, teleportDist, jumpVelX, jumpVelY, maxSpeedFlying, GetTarget);
 			projectile.spriteDirection = projectile.direction;
-			float dist = Vector2.Distance(projectile.Center, owner.Center);
 			if (ai[0] == 1) { projectile.spriteDirection = (owner.velocity.X == 0 ? projectile.spriteDirection : owner.velocity.X > 0 ? 1 : -1); }
 			if ((GetTarget == null ||  GetTarget(projectile, owner) == null || GetTarget(projectile, owner) == owner) && (projectile.velocity.X >= -0.025f || projectile.velocity.X <= 0.025f) && projectile.velocity.Y == 0) { projectile.spriteDirection = (owner.Center.X > projectile.Center.X ? 1 : -1); }
 		}		
@@ -362,7 +359,7 @@ namespace AAMod
 		 * jumpVelX : The velocity to bounce on the X axis.
 		 * jumpVelY : The velocity to boucne on the Y axis.
 		 * maxSpeedFlying : The maximum speed whist 'flying' back to the player.
-		 * GetTarget : a Func(Entity codable, Entity owner), returns a Vector2 of the a target's position. If GetTarget is null or it returns default(Vector2) the target is assumed to be the owner.
+		 * GetTarget : a Func(Entity codable, Entity owner), returns a Vector2 of the a target's position. If GetTarget is null or it returns default the target is assumed to be the owner.
 		 */
 		public static void AIMinionSlime(Entity codable, ref float[] ai, Entity owner, ref bool tileCollide, ref bool netUpdate, int minionPos, int lineDist = 40, int returnDist = 400, int teleportDist = 800, float jumpVelX = 2f, float jumpVelY = 20f, float maxSpeedFlying = 4.5f, Func<Entity, Entity, Entity> GetTarget = null)
 		{
@@ -378,17 +375,15 @@ namespace AAMod
 			{
 				tileCollide = true;
 				Entity target = (GetTarget == null ? null : GetTarget(codable, owner));
-				Vector2 targetCenter = (target == null ? default(Vector2) : target.Center);
+				Vector2 targetCenter = (target == null ? default : target.Center);
 				bool isOwner = (target == null || targetCenter == owner.Center);
-				if (targetCenter == default(Vector2))
+				if (targetCenter == default)
 				{
 					targetCenter = owner.Center;
 					targetCenter.X += (lineDist + (lineDist * minionPos)) * -owner.direction;
 				}
 				float targetDistX = Math.Abs(codable.Center.X - targetCenter.X);
-				float targetDistY = Math.Abs(codable.Center.Y - targetCenter.Y);
-				int moveDirection = (targetCenter.X > codable.Center.X ? 1 : -1);
-				int moveDirectionY = (targetCenter.Y > codable.Center.Y ? 1 : -1);					
+				int moveDirection = (targetCenter.X > codable.Center.X ? 1 : -1);			
 				if (isOwner && owner.velocity.X < 0.025f && codable.velocity.Y == 0f && targetDistX < 8f)
 				{
 					codable.velocity.X *= (Math.Abs(codable.velocity.X) > 0.01f ? 0.8f : 0f);
@@ -458,9 +453,9 @@ namespace AAMod
 				Vector2 targetCenter = owner.Center;
 				if (owner.velocity.Y != 0f && dist < 80)
 				{
-					targetCenter = owner.Center + BaseUtility.RotateVector(default(Vector2), new Vector2(10, 0f), BaseUtility.RotationTo(codable.Center, owner.Center));
+					targetCenter = owner.Center + BaseUtility.RotateVector(default, new Vector2(10, 0f), BaseUtility.RotationTo(codable.Center, owner.Center));
 				}
-				Vector2 newVel = BaseUtility.RotateVector(default(Vector2), new Vector2(maxSpeedFlying, 0f), BaseUtility.RotationTo(codable.Center, targetCenter));
+				Vector2 newVel = BaseUtility.RotateVector(default, new Vector2(maxSpeedFlying, 0f), BaseUtility.RotationTo(codable.Center, targetCenter));
 				if (owner.velocity.Y != 0f && ((newVel.X > 0 && codable.velocity.X < 0) || (newVel.X < 0 && codable.velocity.X > 0)))
 				{
 					codable.velocity *= 0.98f; newVel *= 0.02f; codable.velocity += newVel;
@@ -487,7 +482,7 @@ namespace AAMod
 			if (absolute)
 			{
 				moveRot += rotAmount;
-				Vector2 rotVec = BaseUtility.RotateVector(default(Vector2), new Vector2(rotDistance, 0f), moveRot) + rotateCenter;
+				Vector2 rotVec = BaseUtility.RotateVector(default, new Vector2(rotDistance, 0f), moveRot) + rotateCenter;
 				codable.Center = rotVec;
 				rotVec.Normalize();
 				rotation = BaseUtility.RotationTo(codable.Center, rotateCenter) - 1.57f;
@@ -500,16 +495,16 @@ namespace AAMod
 					if (rotDistance - dist > rotThreshold) //too close, get back into position
 					{
 						moveRot += rotAmount;
-						Vector2 rotVec = BaseUtility.RotateVector(default(Vector2), new Vector2(rotDistance, 0f), moveRot) + rotateCenter;
+						Vector2 rotVec = BaseUtility.RotateVector(default, new Vector2(rotDistance, 0f), moveRot) + rotateCenter;
 						float rot2 = BaseUtility.RotationTo(codable.Center, rotVec);
-						codable.velocity = BaseUtility.RotateVector(default(Vector2), new Vector2(5f, 0f), rot2);
+						codable.velocity = BaseUtility.RotateVector(default, new Vector2(5f, 0f), rot2);
 						rotation = BaseUtility.RotationTo(codable.Center, codable.Center + codable.velocity);
 					}else
 					{
 						moveRot += rotAmount;
-						Vector2 rotVec = BaseUtility.RotateVector(default(Vector2), new Vector2(rotDistance, 0f), moveRot) + rotateCenter;
+						Vector2 rotVec = BaseUtility.RotateVector(default, new Vector2(rotDistance, 0f), moveRot) + rotateCenter;
 						float rot2 = BaseUtility.RotationTo(codable.Center, rotVec);
-						codable.velocity = BaseUtility.RotateVector(default(Vector2), new Vector2(5f, 0f), rot2);
+						codable.velocity = BaseUtility.RotateVector(default, new Vector2(5f, 0f), rot2);
 						rotation = BaseUtility.RotationTo(codable.Center, codable.Center + codable.velocity);
 					}
 				}else
@@ -566,14 +561,14 @@ namespace AAMod
         public static void AIPath(NPC npc, ref float[] ai, Vector2[] points, float moveInterval = 0.11f, float maxSpeed = 3f, bool direct = false)
         {
             Vector2 destVec = new Vector2(ai[0], ai[1]);
-            if (Main.netMode != NetmodeID.MultiplayerClient && destVec != default(Vector2) && Vector2.Distance(npc.Center, destVec) <= Math.Max(5f, ((npc.width + npc.height) / 2f) * 0.45f))
+            if (Main.netMode != NetmodeID.MultiplayerClient && destVec != default && Vector2.Distance(npc.Center, destVec) <= Math.Max(5f, ((npc.width + npc.height) / 2f) * 0.45f))
             {
-                ai[0] = 0f; ai[1] = 0f; destVec = default(Vector2);
+                ai[0] = 0f; ai[1] = 0f; destVec = default;
             }
             if (npc.ai[2] < points.Length)
             {
                 //if the destination vec is default (0, 0), get the current point.
-                if (destVec == default(Vector2))
+                if (destVec == default)
                 {
                     npc.velocity *= 0.95f;
                     if(Main.netMode != NetmodeID.MultiplayerClient)
@@ -603,12 +598,12 @@ namespace AAMod
         public static void AITackle(NPC npc, ref float[] ai, Vector2 point, float moveInterval = 0.11f, float maxSpeed = 3f, bool direct = false, int tackleDelay = 50, float drift = 0.95f)
         {
             Vector2 destVec = new Vector2(ai[0], ai[1]);
-            if (destVec != default(Vector2) && Vector2.Distance(npc.Center, destVec) <= Math.Max(5f, ((npc.width + npc.height) / 2f) * 0.45f))
+            if (destVec != default && Vector2.Distance(npc.Center, destVec) <= Math.Max(5f, ((npc.width + npc.height) / 2f) * 0.45f))
             {
-                ai[0] = 0f; ai[1] = 0f; destVec = default(Vector2);
+                ai[0] = 0f; ai[1] = 0f; destVec = default;
             }
             //if the destination vec is default (0, 0), get the current point.
-            if (destVec == default(Vector2))
+            if (destVec == default)
             {
                 npc.velocity *= drift;
                 ai[2]--;
@@ -649,19 +644,19 @@ namespace AAMod
             if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 //used to prevent the npc from getting 'stuck' trying to reach a point
-                if (!idleTooLong && destVec != default(Vector2) && Vector2.Distance(npc.Center, destVec) <= Math.Max(12f, ((npc.width + npc.height) / 2f) * 3f * (moveInterval / 0.06f)))
+                if (!idleTooLong && destVec != default && Vector2.Distance(npc.Center, destVec) <= Math.Max(12f, ((npc.width + npc.height) / 2f) * 3f * (moveInterval / 0.06f)))
                 {
                     ai[2]++;
                     if (ai[2] > 100) { ai[2] = 0; idleTooLong = true; }
                 }
                 //if the destination vec is not null and the npc is close to the point (or has been idle too long), set it to default.
-                if (idleTooLong || (destVec != default(Vector2) && Vector2.Distance(npc.Center, destVec) <= Math.Max(5f, ((npc.width + npc.height) / 2f) * 0.75f)))
+                if (idleTooLong || (destVec != default && Vector2.Distance(npc.Center, destVec) <= Math.Max(5f, ((npc.width + npc.height) / 2f) * 0.75f)))
                 {
-                    ai[0] = 0f; ai[1] = 0f; destVec = default(Vector2);
+                    ai[0] = 0f; ai[1] = 0f; destVec = default;
                 }
             }
             //if the destination vec is default (0, 0)...
-            if (destVec == default(Vector2))
+            if (destVec == default)
             {
                 if (npc.velocity.X > 0.3f || npc.velocity.Y > 0.3f) { npc.velocity.X *= 0.95f; }
                 if (canCrossCenter)
@@ -675,7 +670,7 @@ namespace AAMod
                     Vector2 bottomLeft = new Vector2(topLeft.X, point.Y + (minDistance + rand.Next(distance)));
                     Vector2 bottomRight = new Vector2(topRight.X, bottomLeft.Y);
                     float tempDist = 9999999f;
-                    Vector2 closestPoint = default(Vector2);
+                    Vector2 closestPoint = default;
                     for (int m = 0; m < 4; m++)
                     {
                         Vector2 corner = (m == 0 ? topLeft : m == 1 ? topRight : m == 2 ? bottomLeft : bottomRight);
@@ -691,7 +686,7 @@ namespace AAMod
                 ai[0] = destVec.X; ai[1] = destVec.Y;
                 if(Main.netMode == NetmodeID.Server){ npc.netUpdate = true; }
             }else
-            if (destVec != default(Vector2)) //otherwise move towards the point.
+            if (destVec != default) //otherwise move towards the point.
             {
                 npc.velocity = AIVelocityLinear(npc, destVec, moveInterval, maxSpeed, direct);
             }
@@ -762,15 +757,15 @@ namespace AAMod
 						float newRot = projectile.rotation + ((Main.rand.Next(2) == 1) ? -1f : 1f) * 1.57079637f;
 						float rotMultiplier = (float)Main.rand.NextDouble() * 0.8f + 1f;
 						Vector2 dustVel = new Vector2((float)Math.Cos((double)newRot) * rotMultiplier, (float)Math.Sin((double)newRot) * rotMultiplier);
-						int dustID = Dust.NewDust(projectile.Center, 0, 0, 226, dustVel.X, dustVel.Y, 0, default(Color), 1f);
+						int dustID = Dust.NewDust(projectile.Center, 0, 0, 226, dustVel.X, dustVel.Y, 0, default, 1f);
 						Main.dust[dustID].noGravity = true;
 						Main.dust[dustID].scale = 1.2f;
 						projFrameCounter = m2;
 					}
 					if (Main.rand.Next(5) == 0)
 					{
-						Vector2 dustPos = projectile.velocity.RotatedBy(1.5707963705062866, default(Vector2)) * ((float)Main.rand.NextDouble() - 0.5f) * (float)projectile.width;
-						int dustID = Dust.NewDust(projectile.Center + dustPos - Vector2.One * 4f, 8, 8, 31, 0f, 0f, 100, default(Color), 1.5f);
+						Vector2 dustPos = projectile.velocity.RotatedBy(1.5707963705062866, default) * ((float)Main.rand.NextDouble() - 0.5f) * (float)projectile.width;
+						int dustID = Dust.NewDust(projectile.Center + dustPos - Vector2.One * 4f, 8, 8, 31, 0f, 0f, 100, default, 1.5f);
 						Dust dust = Main.dust[dustID];
 						dust.velocity *= 0.5f;
 						Main.dust[dustID].velocity.Y = -Math.Abs(Main.dust[dustID].velocity.Y);
@@ -827,7 +822,7 @@ namespace AAMod
 				if (projectile.velocity != Vector2.Zero)
 				{
 					projectile.localAI[0] += projVelocity.X * (projectile.extraUpdates + 1) * 2f * velSpeed;
-					projectile.velocity = projVelocity.RotatedBy(projectile.ai[0] + 1.57079637f, default(Vector2)) * velSpeed;
+					projectile.velocity = projVelocity.RotatedBy(projectile.ai[0] + 1.57079637f, default) * velSpeed;
 					projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
 					return;
 				}
@@ -908,7 +903,6 @@ namespace AAMod
 								if (npcTargetDist < minAttackDist)
 								{
 									target = m;
-									bool boss = npcTarget.boss;
 								}
 							}
 							dummy = m;
@@ -1017,7 +1011,6 @@ namespace AAMod
 					float projScale = MathHelper.Clamp(Main.projectile[byUUID].scale, 0f, 50f);
 					projectileScale = projScale;
 					tileScalar = 16f;
-					int num1064 = Main.projectile[byUUID].alpha;
 					Main.projectile[byUUID].localAI[0] = p.localAI[0] + 1f;
 					if (Main.projectile[byUUID].type != wormTypes[0])
 					{
@@ -1044,7 +1037,7 @@ namespace AAMod
 				if (projRot != p.rotation)
 				{
 					float rotDist = MathHelper.WrapAngle(projRot - p.rotation);
-					centerDist = centerDist.RotatedBy(rotDist * 0.1f, default(Vector2));
+					centerDist = centerDist.RotatedBy(rotDist * 0.1f, default);
 				}
 				p.rotation = centerDist.ToRotation() + 1.57079637f;
 				p.position = p.Center;
@@ -1093,7 +1086,7 @@ namespace AAMod
 						projectile.velocity *= 6f / projectile.velocity.Length();
 					}
 				}
-				if(SpawnDust != null) SpawnDust(0, projectile);
+				SpawnDust?.Invoke(0, projectile);
 				projectile.rotation = projectile.velocity.X * 0.1f;
 			}
 			if (ai[0] == hoverTime)
@@ -1144,7 +1137,7 @@ namespace AAMod
 			if (ai[0] >= hoverTime)
 			{
 				projectile.rotation = projectile.rotation.AngleLerp(projectile.velocity.ToRotation() + 1.57079637f, 0.4f);
-				if(SpawnDust != null) SpawnDust(1, projectile);
+				SpawnDust?.Invoke(1, projectile);
 			}
 		}
 		 
@@ -1153,16 +1146,16 @@ namespace AAMod
 			if(yoyoTimeMax == -1) yoyoTimeMax = ProjectileID.Sets.YoyosLifeTimeMultiplier[p.type];
 			if(maxRange == -1) maxRange = ProjectileID.Sets.YoyosMaximumRange[p.type];
 			if(topSpeed == -1) topSpeed = ProjectileID.Sets.YoyosTopSpeed[p.type];	
-			AIYoyo(p, ref ai, ref localAI, Main.player[p.owner], Main.player[p.owner].channel, default(Vector2), yoyoTimeMax, maxRange, topSpeed, dontChannel, rotAmount);
+			AIYoyo(p, ref ai, ref localAI, Main.player[p.owner], Main.player[p.owner].channel, default, yoyoTimeMax, maxRange, topSpeed, dontChannel, rotAmount);
 		}
 
-		public static void AIYoyo(Projectile p, ref float[] ai, ref float[] localAI, Entity owner, bool isChanneling, Vector2 targetPos = default(Vector2), float yoyoTimeMax = 120, float maxRange = 150, float topSpeed = 8f, bool dontChannel = false, float rotAmount = 0.45f)
+		public static void AIYoyo(Projectile p, ref float[] ai, ref float[] localAI, Entity owner, bool isChanneling, Vector2 targetPos = default, float yoyoTimeMax = 120, float maxRange = 150, float topSpeed = 8f, bool dontChannel = false, float rotAmount = 0.45f)
 		{
 			bool playerYoyo = owner is Player;
 			Player powner = (playerYoyo ? (Player)owner : null);
 			float meleeSpeed = (playerYoyo ? powner.meleeSpeed : 1f);
 			Vector2 targetP = targetPos;
-			if(playerYoyo && Main.myPlayer == p.owner && targetPos == default(Vector2)) targetP = Main.ReverseGravitySupport(Main.MouseScreen, 0f) + Main.screenPosition;
+			if(playerYoyo && Main.myPlayer == p.owner && targetPos == default) targetP = Main.ReverseGravitySupport(Main.MouseScreen, 0f) + Main.screenPosition;
 
 			bool yoyoFound = false;
 			if(owner is Player)
@@ -1514,7 +1507,7 @@ namespace AAMod
 				if (flag || p.type == 562 || p.type == 547 || p.type == 555 || p.type == 564 || p.type == 552 || p.type == 563 || p.type == 549 || p.type == 550 || p.type == 554 || p.type == 553 || p.type == 603)
 				{
 					float num6 = 800f;
-					Vector2 vector6 = default(Vector2);
+					Vector2 vector6 = default;
 					bool flag4 = false;
 					if (p.type == 549)
 					{
@@ -1965,9 +1958,9 @@ namespace AAMod
          * rotationInterval : the amount for the projectile to rotate by each tick.
          * direct : If true, when returning simply reverses the boomerang velocity.
          */
-        public static void AIBoomerang(Projectile p, ref float[] ai, Vector2 position = default(Vector2), int width = -1, int height = -1, bool playSound = true, float maxDistance = 9f, int returnDelay = 35, float speedInterval = 0.4f, float rotationInterval = 0.4f, bool direct = false)
+        public static void AIBoomerang(Projectile p, ref float[] ai, Vector2 position = default, int width = -1, int height = -1, bool playSound = true, float maxDistance = 9f, int returnDelay = 35, float speedInterval = 0.4f, float rotationInterval = 0.4f, bool direct = false)
         {
-            if (position == default(Vector2)) { position = Main.player[p.owner].position; }
+            if (position == default) { position = Main.player[p.owner].position; }
             if (width == -1) { width = Main.player[p.owner].width; }
             if (height == -1) { height = Main.player[p.owner].height; }
             Vector2 center = position + new Vector2(width * 0.5f, height * 0.5f);
@@ -1997,7 +1990,7 @@ namespace AAMod
                 }
                 if (direct)
                 {
-                    p.velocity = BaseUtility.RotateVector(default(Vector2), new Vector2(speedInterval, 0f), BaseUtility.RotationTo(p.Center, center));
+                    p.velocity = BaseUtility.RotateVector(default, new Vector2(speedInterval, 0f), BaseUtility.RotationTo(p.Center, center));
                 }else
                 {
                     distPlayer = maxDistance / distPlayer;
@@ -2362,7 +2355,7 @@ namespace AAMod
 			AISpaceOctopus(npc, ref ai, Main.player[npc.target].Center, moveSpeed, velMax, hoverDistance, shootProjInterval, FireProj);
 		}
 
-		public static void AISpaceOctopus(NPC npc, ref float[] ai, Vector2 targetCenter = default(Vector2), float moveSpeed = 0.15f, float velMax = 5f, float hoverDistance = 250f, float shootProjInterval = 70f, Action<NPC, Vector2> FireProj = null)
+		public static void AISpaceOctopus(NPC npc, ref float[] ai, Vector2 targetCenter = default, float moveSpeed = 0.15f, float velMax = 5f, float hoverDistance = 250f, float shootProjInterval = 70f, Action<NPC, Vector2> FireProj = null)
 		{
 			Vector2 wantedVelocity = targetCenter - npc.Center + new Vector2(0f, -hoverDistance);
 			float dist = wantedVelocity.Length();
@@ -2430,7 +2423,6 @@ namespace AAMod
 			if(noDmg) npc.dontTakeDamage = false;
 			Player targetPlayer = (npc.target < 0 ? null : Main.player[npc.target]);
 			Vector2 playerCenter = (targetPlayer == null ? npc.Center + new Vector2(0, 5f) : targetPlayer.Center);
-			Vector2 dist = playerCenter - npc.Center;
 			
 			if (npc.justHit && Main.netMode != NetmodeID.MultiplayerClient && noDmg && Main.rand.Next(6) == 0)
 			{
@@ -2455,7 +2447,7 @@ namespace AAMod
 				npc.TargetClosest(true);
 				targetPlayer = Main.player[npc.target];
 				playerCenter = targetPlayer.Center;
-				dist = playerCenter - npc.Center;
+				//dist = playerCenter - npc.Center;
 				if (Collision.CanHit(npc.Center, 1, 1, playerCenter, 1, 1))
 				{
 					ai[0] = 1f;
@@ -3792,9 +3784,9 @@ namespace AAMod
 		 * speedMax : the max speed of the npc.
 		 * targetOffset : A vector2 representing an 'offset' from the target, allows for some variation and misaccuracy.
 		 */
-		public static void AIPlant(NPC npc, ref float[] ai, bool checkTilePoint = true, Vector2 endPoint = default(Vector2), bool isTilePos = true, float vineLength = 150f, float vineLengthLong = 200f, int vineTimeExtend = 300, int vineTimeMax = 450, float moveInterval = 0.035f, float speedMax = 2f, Vector2 targetOffset = default(Vector2))
+		public static void AIPlant(NPC npc, ref float[] ai, bool checkTilePoint = true, Vector2 endPoint = default, bool isTilePos = true, float vineLength = 150f, float vineLengthLong = 200f, int vineTimeExtend = 300, int vineTimeMax = 450, float moveInterval = 0.035f, float speedMax = 2f, Vector2 targetOffset = default)
         {
-            if (endPoint != default(Vector2))
+            if (endPoint != default)
             {
                 ai[0] = endPoint.X;
                 ai[1] = endPoint.Y;
@@ -4045,8 +4037,8 @@ namespace AAMod
                         npc.TargetClosest(true);
                         npc.netUpdate = true;
                         npc.whoAmI = npcID;
-						if(onChangeType != null) onChangeType(npc, oldType, true);
-                    }
+						onChangeType?.Invoke(npc, oldType, true);
+					}
                     else
 					if (isBody && !Main.npc[(int)npc.ai[0]].active) //if the body was just split, turn it into a tail
 					{
@@ -4061,7 +4053,7 @@ namespace AAMod
 						npc.TargetClosest(true);
 						npc.netUpdate = true;
 						npc.whoAmI = npcID;
-						if(onChangeType != null) onChangeType(npc, oldType, false);						
+						onChangeType?.Invoke(npc, oldType, false);
 					}
                 }
                 else
@@ -4169,7 +4161,7 @@ namespace AAMod
                 dist = (dist - npc.width - partDistanceAddon) / dist;
                 playerCenterX *= dist;
                 playerCenterY *= dist;
-                npc.velocity = default(Vector2);
+                npc.velocity = default;
                 npc.position.X = npc.position.X + playerCenterX;
                 npc.position.Y = npc.position.Y + playerCenterY;
                 if (fly)
@@ -4334,13 +4326,13 @@ namespace AAMod
             if (ai[0] == 0f) { ai[0] = Math.Max(0, Math.Max(teleportInterval, (teleportInterval - 150))); }
             if (ai[2] != 0f && ai[3] != 0f)
             {
-                if (TeleportEffects != null) { TeleportEffects(true); }
-                npc.position.X = ai[2] * 16f - npc.width / 2 + 8f;
+				TeleportEffects?.Invoke(true); 
+				npc.position.X = ai[2] * 16f - npc.width / 2 + 8f;
                 npc.position.Y = ai[3] * 16f - npc.height;
                 npc.velocity.X = 0f; npc.velocity.Y = 0f;
                 ai[2] = 0f; ai[3] = 0f;
-                if (TeleportEffects != null) { TeleportEffects(false); }
-            }
+				TeleportEffects?.Invoke(false);
+			}
 			if (npc.justHit) { ai[0] = 0; }
 			ai[0]++;
             if (attackInterval != -1 && ai[0] < stopAttackInterval && ai[0] % attackInterval == 0)
@@ -4881,8 +4873,10 @@ namespace AAMod
 						{
 							if (!Main.tileSolidTop[tile.type])
 							{
-								Rectangle tileHitbox = new Rectangle(tileX * 16, y * 16, 16, 16);
-								tileHitbox.Y = hitbox.Y;
+								Rectangle tileHitbox = new Rectangle(tileX * 16, y * 16, 16, 16)
+								{
+									Y = hitbox.Y
+								};
 								if (tileHitbox.Intersects(hitbox)) { newVelocity = velocity; break; }
 							}			
 							if (tileNear.nactive() && Main.tileSolid[tileNear.type] && !Main.tileSolidTop[tileNear.type]){ newVelocity = velocity; break; }
@@ -5048,7 +5042,7 @@ namespace AAMod
         {
             if (!noYMovement || codable.velocity.Y == 0f)
             {
-                Vector2 dummyVec = default(Vector2);
+                Vector2 dummyVec = default;
                 return HitTileOnSide(codable.position, codable.width, codable.height, dir, ref dummyVec);
             }
             return false;
@@ -5221,82 +5215,82 @@ namespace AAMod
             if (damager == null)
             {
                 int parsedDamage = dmgAmt; if (dmgVariation){ parsedDamage = Main.DamageVar(dmgAmt); }
-                int dmgDealt = (int)player.Hurt(PlayerDeathReason.ByOther(-1), parsedDamage, hitDirection, false, false, false, 0);
+                player.Hurt(PlayerDeathReason.ByOther(-1), parsedDamage, hitDirection, false, false, false, 0);
                 if (Main.netMode != NetmodeID.SinglePlayer)
                 {
                     NetMessage.SendData(MessageID.HurtPlayer, -1, -1, PlayerDeathReason.LegacyDefault().GetDeathText(player.name), player.whoAmI, hitDirection, 1, knockback, parsedDamage);
                 }
             }else
-            if (damager is Player)
-            {
-                Player subPlayer = (Player)damager;
+			if (damager is Player subPlayer)
+			{
 				//bool crit = false;
 				//if (critChance > 0) { crit = Main.rand.Next(1, 101) <= critChance; }
 				//float mult = 2f;
-                //TODO: fix these by adding in the tmodloader equivilants
+				//TODO: fix these by adding in the tmodloader equivilants
 
 				//player.ItemDamagePVP(subPlayer, hitDirection, ref dmgAmt, ref crit, ref mult);
 				//BuffDef.RunBuffMethod(player, (modbuff) => { modbuff.DamagePVP(player, subPlayer, hitDirection, ref dmgAmt, ref crit, ref mult); });
 				//ItemDef.RunEquipMethod(player, (item) => { item.DamagePVP(player, subPlayer, hitDirection, ref dmgAmt, ref crit, ref mult); }, true, true, false, true);
 
-                int parsedDamage = dmgAmt; if (dmgVariation){ parsedDamage = Main.DamageVar(dmgAmt); }
+				int parsedDamage = dmgAmt; if (dmgVariation) { parsedDamage = Main.DamageVar(dmgAmt); }
 
-				int dmgDealt = (int)player.Hurt(PlayerDeathReason.ByPlayer(subPlayer.whoAmI), parsedDamage, hitDirection, true, false, false, 0);
+				player.Hurt(PlayerDeathReason.ByPlayer(subPlayer.whoAmI), parsedDamage, hitDirection, true, false, false, 0);
 
 				//crit = false;
 				//player.ItemDealtPVP(subPlayer, hitDirection, dmgAmt, crit);
 				//BuffDef.RunBuffMethod(player, (modbuff) => { modbuff.DealtPVP(player, subPlayer, hitDirection, dmgAmt, crit); });
 				//ItemDef.RunEquipMethod(player, (item) => { item.DealtPVP(player, subPlayer, hitDirection, dmgAmt, crit); }, true, true, false, true);
 
-                if (Main.netMode != NetmodeID.SinglePlayer)
-                {
-                    NetMessage.SendData(MessageID.HurtPlayer, -1, -1, PlayerDeathReason.ByPlayer(subPlayer.whoAmI).GetDeathText(player.name), player.whoAmI, hitDirection, 1, knockback, parsedDamage);
-                }
-                subPlayer.attackCD = (int)(subPlayer.itemAnimationMax * 0.33f);
-            }else
-            if (damager is Projectile)
-            {
-                Projectile p = (Projectile)damager;
-                if(p.friendly)
-                {
+				if (Main.netMode != NetmodeID.SinglePlayer)
+				{
+					NetMessage.SendData(MessageID.HurtPlayer, -1, -1, PlayerDeathReason.ByPlayer(subPlayer.whoAmI).GetDeathText(player.name), player.whoAmI, hitDirection, 1, knockback, parsedDamage);
+				}
+				subPlayer.attackCD = (int)(subPlayer.itemAnimationMax * 0.33f);
+			}
+			else
+			if (damager is Projectile p)
+			{
+				if (p.friendly)
+				{
 					//bool crit = false; float mult = 2f;
-                    //TODO: fix these by adding in the tmodloader equivilants
+					//TODO: fix these by adding in the tmodloader equivilants
 
 					//p.DamagePVP(player, hitDirection, ref dmgAmt, ref crit, ref mult);
 
-                    int parsedDamage = dmgAmt; if (dmgVariation) { parsedDamage = Main.DamageVar(dmgAmt); }
-                    int dmgDealt = (int)player.Hurt(PlayerDeathReason.ByProjectile(p.owner, p.whoAmI), parsedDamage, hitDirection, true, false, false, 0);
-					
+					int parsedDamage = dmgAmt; if (dmgVariation) { parsedDamage = Main.DamageVar(dmgAmt); }
+					player.Hurt(PlayerDeathReason.ByProjectile(p.owner, p.whoAmI), parsedDamage, hitDirection, true, false, false, 0);
+
 					//crit = false;
 					//p.DealtPVP(player, hitDirection, dmgDealt, crit);
-                    if (Main.netMode != NetmodeID.SinglePlayer)
-                    {
-                        NetMessage.SendData(MessageID.HurtPlayer, -1, -1, PlayerDeathReason.ByProjectile(p.owner, p.whoAmI).GetDeathText(player.name), player.whoAmI, hitDirection, 1, knockback, parsedDamage);
-                    }
-                    p.playerImmune[player.whoAmI] = 40;
-                }else
-                if(p.hostile)
-                {
+					if (Main.netMode != NetmodeID.SinglePlayer)
+					{
+						NetMessage.SendData(MessageID.HurtPlayer, -1, -1, PlayerDeathReason.ByProjectile(p.owner, p.whoAmI).GetDeathText(player.name), player.whoAmI, hitDirection, 1, knockback, parsedDamage);
+					}
+					p.playerImmune[player.whoAmI] = 40;
+				}
+				else
+				if (p.hostile)
+				{
 					//bool crit = false; float mult = 2f;
 					//p.DamagePlayer(player, hitDirection, ref dmgAmt, ref crit, ref mult);
-                    
+
 					int parsedDamage = dmgAmt; if (dmgVariation) { parsedDamage = Main.DamageVar(dmgAmt); }
-                    int dmgDealt = (int)player.Hurt(PlayerDeathReason.ByProjectile(-1, p.whoAmI), parsedDamage, hitDirection, false, false, false, 0);
-					
+					player.Hurt(PlayerDeathReason.ByProjectile(-1, p.whoAmI), parsedDamage, hitDirection, false, false, false, 0);
+
 					//crit = false;
 					//p.DealtPlayer(player, hitDirection, dmgDealt, crit);
-                    if (Main.netMode != NetmodeID.SinglePlayer)
-                    {
-                        NetMessage.SendData(MessageID.HurtPlayer, -1, -1, PlayerDeathReason.ByProjectile(p.owner, p.whoAmI).GetDeathText(player.name), player.whoAmI, hitDirection, 1, knockback, parsedDamage);
-                    }
-                }
-            }else
-            if (damager is NPC)
-            {
-                NPC npc = (NPC)damager;
+					if (Main.netMode != NetmodeID.SinglePlayer)
+					{
+						NetMessage.SendData(MessageID.HurtPlayer, -1, -1, PlayerDeathReason.ByProjectile(p.owner, p.whoAmI).GetDeathText(player.name), player.whoAmI, hitDirection, 1, knockback, parsedDamage);
+					}
+				}
+			}
+			else
+			if (damager is NPC npc)
+			{
 
 				//bool crit = false; float mult = 2f;
-                //TODO: fix these by adding in the tmodloader equivilants
+				//TODO: fix these by adding in the tmodloader equivilants
 
 				//npc.DamagePlayer(player, hitDirection, ref dmgAmt, ref crit, ref mult);
 				//BuffDef.RunBuffMethod(npc, (modbuff) => { modbuff.DamagePlayer(npc, player, hitDirection, ref dmgAmt, ref crit, ref mult); });
@@ -5304,8 +5298,8 @@ namespace AAMod
 				//BuffDef.RunBuffMethod(player, (modbuff) => { modbuff.DamagePlayer(player, npc, hitDirection, ref dmgAmt, ref crit, ref mult); });
 				//ItemDef.RunEquipMethod(player, (item) => { item.DamagePlayer(npc, player, hitDirection, ref dmgAmt, ref crit, ref mult); }, true, true, false, true);
 
-                int parsedDamage = dmgAmt; if (dmgVariation){ parsedDamage = Main.DamageVar(dmgAmt); }
-                int dmgDealt = (int)player.Hurt(PlayerDeathReason.ByNPC(npc.whoAmI), parsedDamage, hitDirection, false, false, false, 0);
+				int parsedDamage = dmgAmt; if (dmgVariation) { parsedDamage = Main.DamageVar(dmgAmt); }
+				player.Hurt(PlayerDeathReason.ByNPC(npc.whoAmI), parsedDamage, hitDirection, false, false, false, 0);
 
 				//npc.DealtPlayer(player, hitDirection, dmgDealt, crit);
 				//BuffDef.RunBuffMethod(npc, (modbuff) => { modbuff.DealtPlayer(npc, player, hitDirection, dmgAmt, crit); });
@@ -5313,12 +5307,12 @@ namespace AAMod
 				//BuffDef.RunBuffMethod(player, (modbuff) => { modbuff.DealtPlayer(player, npc, hitDirection, dmgAmt, crit); });
 				//ItemDef.RunEquipMethod(player, (item) => { item.DealtPlayer(npc, player, hitDirection, dmgAmt, crit); }, true, true, false, true);
 
-                if (Main.netMode != NetmodeID.SinglePlayer)
-                {
-                    NetMessage.SendData(MessageID.HurtPlayer, -1, -1, PlayerDeathReason.ByNPC(npc.whoAmI).GetDeathText(player.name), player.whoAmI, hitDirection, 1, knockback, parsedDamage);
-                }
-            }
-        }
+				if (Main.netMode != NetmodeID.SinglePlayer)
+				{
+					NetMessage.SendData(MessageID.HurtPlayer, -1, -1, PlayerDeathReason.ByNPC(npc.whoAmI).GetDeathText(player.name), player.whoAmI, hitDirection, 1, knockback, parsedDamage);
+				}
+			}
+		}
 
         /*
          *  Damages the given NPC by the given amount.
@@ -5352,31 +5346,30 @@ namespace AAMod
                     NetMessage.SendData(MessageID.StrikeNPC, -1, -1, NetworkText.FromLiteral(""), npc.whoAmI, 1, knockback, hitDirection, parsedDamage);
                 }
             }else
-            if (damager is Projectile)
-            {
-                Projectile p = (Projectile)damager;
-                if (p.owner == Main.myPlayer)
-                {
+			if (damager is Projectile p)
+			{
+				if (p.owner == Main.myPlayer)
+				{
 					//bool crit = false;
 					//float mult = 1f;
 					//p.DamageNPC(npc, hitDirection, ref dmgAmt, ref knockback, ref crit, ref mult);
 
-                    int parsedDamage = dmgAmt; if (dmgVariation){ parsedDamage = Main.DamageVar(dmgAmt); }
-                    int resultDmg = (int)npc.StrikeNPC(parsedDamage, knockback, hitDirection, false, false, false);
+					int parsedDamage = dmgAmt; if (dmgVariation) { parsedDamage = Main.DamageVar(dmgAmt); }
+					npc.StrikeNPC(parsedDamage, knockback, hitDirection, false, false, false);
 
 					//p.DealtNPC(npc, hitDirection, resultDmg, knockback, false);
-                    if (Main.netMode != NetmodeID.SinglePlayer)
-                    {
-                        NetMessage.SendData(MessageID.StrikeNPC, -1, -1, NetworkText.FromLiteral(""), npc.whoAmI, 1, knockback, hitDirection, parsedDamage);
-                    }
-                    if (p.penetrate != 1){ npc.immune[p.owner] = 10; }
-                }
-            }else
-            if (damager is Player)
-            {
-                Player player = (Player)damager;
-                if (player.whoAmI == Main.myPlayer)
-                {
+					if (Main.netMode != NetmodeID.SinglePlayer)
+					{
+						NetMessage.SendData(MessageID.StrikeNPC, -1, -1, NetworkText.FromLiteral(""), npc.whoAmI, 1, knockback, hitDirection, parsedDamage);
+					}
+					if (p.penetrate != 1) { npc.immune[p.owner] = 10; }
+				}
+			}
+			else
+			if (damager is Player player)
+			{
+				if (player.whoAmI == Main.myPlayer)
+				{
 					//bool crit = false;
 					//float mult = 1f;
 					//npc.DamageNPC(player, hitDirection, ref dmgAmt, ref knockback, ref crit, ref mult);
@@ -5384,9 +5377,9 @@ namespace AAMod
 					//player.ItemDamageNPC(npc, hitDirection, ref dmgAmt, ref knockback, ref crit, ref mult);
 					//BuffDef.RunBuffMethod(player, (modbuff) => { modbuff.DamageNPC(player, npc, hitDirection, ref dmgAmt, ref knockback, ref crit, ref mult); });
 					//ItemDef.RunEquipMethod(player, (item) => { item.DamageNPC(player, npc, hitDirection, ref dmgAmt, ref knockback, ref crit, ref mult); }, true, true, false, true);
-                    
-					int parsedDamage = dmgAmt; if (dmgVariation){ parsedDamage = Main.DamageVar(dmgAmt); }
-                    int dmgDealt = (int)npc.StrikeNPC(parsedDamage, knockback, hitDirection, false, false, false);
+
+					int parsedDamage = dmgAmt; if (dmgVariation) { parsedDamage = Main.DamageVar(dmgAmt); }
+					npc.StrikeNPC(parsedDamage, knockback, hitDirection, false, false, false);
 
 					//crit = false;
 					//npc.DealtNPC(player, hitDirection, dmgDealt, knockback, crit);
@@ -5395,14 +5388,14 @@ namespace AAMod
 					//BuffDef.RunBuffMethod(player, (modbuff) => { modbuff.DealtNPC(player, npc, hitDirection, dmgAmt, knockback, crit); });
 					//ItemDef.RunEquipMethod(player, (item) => { item.DealtNPC(player, npc, hitDirection, dmgAmt, knockback, crit); }, true, true, false, true);
 
-                    if (Main.netMode != NetmodeID.SinglePlayer)
-                    {
-                        NetMessage.SendData(MessageID.StrikeNPC, -1, -1, NetworkText.FromLiteral(""), npc.whoAmI, 1, knockback, hitDirection, parsedDamage);
-                    }
-                    npc.immune[player.whoAmI] = player.itemAnimation;
-                }
-            }
-        }
+					if (Main.netMode != NetmodeID.SinglePlayer)
+					{
+						NetMessage.SendData(MessageID.StrikeNPC, -1, -1, NetworkText.FromLiteral(""), npc.whoAmI, 1, knockback, hitDirection, parsedDamage);
+					}
+					npc.immune[player.whoAmI] = player.itemAnimation;
+				}
+			}
+		}
 
         /*
          * Convenience method that handles killing an NPC and having it drop loot.
@@ -5451,7 +5444,7 @@ namespace AAMod
             for (int m = 0; m < loopAmount; m++)
             {
                 Vector2 gorePos = new Vector2(center.X - 24f, center.Y - 24f);
-                Vector2 velocityDefault = default(Vector2);
+                Vector2 velocityDefault = default;
                 int goreID = Gore.NewGore(gorePos, velocityDefault, Main.rand.Next(61, 64), 1f);
                 Gore gore = Main.gore[goreID];
                 gore.scale = scale * 1.5f;
@@ -5477,7 +5470,7 @@ namespace AAMod
 
 		public static int GetProjectile(Vector2 center, int projType = -1, int owner = -1, float distance = -1, Func<Projectile, bool> CanAdd = null)
 		{
-			return GetProjectile(center, projType, owner, default(int[]), distance, CanAdd);
+			return GetProjectile(center, projType, owner, default, distance, CanAdd);
 		}
 		/*
 		 * Gets the closest Projectile with the given type within the given distance from the center. If distance is -1, it gets the closest Projectile.
@@ -5486,7 +5479,7 @@ namespace AAMod
 		 * projsToExclude : An array of projectile whoAmIs to exclude from the search.
 		 * distance : The distance to check.
 		 */
-		public static int GetProjectile(Vector2 center, int projType = -1, int owner = -1, int[] projsToExclude = default(int[]), float distance = -1, Func<Projectile, bool> CanAdd = null)
+		public static int GetProjectile(Vector2 center, int projType = -1, int owner = -1, int[] projsToExclude = default, float distance = -1, Func<Projectile, bool> CanAdd = null)
 		{
 			int currentProj = -1;
 			for (int i = 0; i < Main.projectile.Length; i++)
@@ -5495,7 +5488,7 @@ namespace AAMod
 				if (proj != null && proj.active && (projType == -1 || proj.type == projType) && (owner == -1f || proj.owner == owner) && (distance == -1f || proj.Distance(center) < distance))
 				{
 					bool add = true;
-					if (projsToExclude != default(int[]))
+					if (projsToExclude != default)
 					{
 						foreach (int m in projsToExclude)
 						{
@@ -5515,7 +5508,7 @@ namespace AAMod
 
 		public static int[] GetProjectiles(Vector2 center, int projType = -1, int owner = -1, float distance = 500f, Func<Projectile, bool> CanAdd = null)
 		{
-			return GetProjectiles(center, projType, owner, default(int[]), distance, CanAdd);
+			return GetProjectiles(center, projType, owner, default, distance, CanAdd);
 		}
 		/*
 		 * Gets the all Projectiles with the given type within the given distance from the center.
@@ -5524,7 +5517,7 @@ namespace AAMod
          * projsToExclude : An array of projectile whoAmIs to exclude from the search.
          * distance : The distance to check.
 		 */
-		public static int[] GetProjectiles(Vector2 center, int projType = -1, int owner = -1, int[] projsToExclude = default(int[]), float distance = 500f, Func<Projectile, bool> CanAdd = null)
+		public static int[] GetProjectiles(Vector2 center, int projType = -1, int owner = -1, int[] projsToExclude = default, float distance = 500f, Func<Projectile, bool> CanAdd = null)
 		{
 			List<int> allProjs = new List<int>();
 			for (int i = 0; i < Main.projectile.Length; i++)
@@ -5533,7 +5526,7 @@ namespace AAMod
 				if (proj != null && proj.active && (projType == -1 || proj.type == projType) && (owner == -1 || proj.owner == owner) && (distance == -1 || proj.Distance(center) < distance))
 				{
 					bool add = true;
-					if (projsToExclude != default(int[]))
+					if (projsToExclude != default)
 					{
 						foreach (int m in projsToExclude)
 						{
@@ -5550,7 +5543,7 @@ namespace AAMod
 
 		public static int[] GetProjectiles(Vector2 center, int[] projTypes, int owner = -1, float distance = 500f, Func<Projectile, bool> CanAdd = null)
 		{
-			return GetProjectiles(center, projTypes, owner, default(int[]), distance, CanAdd);
+			return GetProjectiles(center, projTypes, owner, default, distance, CanAdd);
 		}
 
 		/*
@@ -5560,7 +5553,7 @@ namespace AAMod
          * projsToExclude : An array of projectile whoAmIs to exclude from the search.
          * distance : The distance to check.
 		 */
-		public static int[] GetProjectiles(Vector2 center, int[] projTypes, int owner = -1, int[] projsToExclude = default(int[]), float distance = 500f, Func<Projectile, bool> CanAdd = null)
+		public static int[] GetProjectiles(Vector2 center, int[] projTypes, int owner = -1, int[] projsToExclude = default, float distance = 500f, Func<Projectile, bool> CanAdd = null)
 		{
 			List<int> allProjs = new List<int>();
 			for (int i = 0; i < Main.projectile.Length; i++)
@@ -5572,7 +5565,7 @@ namespace AAMod
 					foreach (int type in projTypes) { if (proj.type == type) { isType = true; break; } }
 					if (!isType) { continue; }
 					bool add = true;
-					if (projsToExclude != default(int[]))
+					if (projsToExclude != default)
 					{
 						foreach (int m in projsToExclude)
 						{
@@ -5593,7 +5586,7 @@ namespace AAMod
 		 * npcType : If -1, check for ANY npcs in the area. If not, check for the npcs who match the type given.
 		 * npcsToExclude : An array of npc whoAmIs to exclude from the search.
 		 */
-		public static int[] GetNPCsInBox(Rectangle rect, int npcType = -1, int[] npcsToExclude = default(int[]), Func<NPC, bool> CanAdd = null)
+		public static int[] GetNPCsInBox(Rectangle rect, int npcType = -1, int[] npcsToExclude = default, Func<NPC, bool> CanAdd = null)
 		{
 			List<int> allNPCs = new List<int>();
 			for (int i = 0; i < Main.npc.Length; i++)
@@ -5603,7 +5596,7 @@ namespace AAMod
 				{
 					if (!rect.Intersects(npc.Hitbox)) continue;
 					bool add = true;
-					if (npcsToExclude != default(int[]))
+					if (npcsToExclude != default)
 					{
 						foreach (int m in npcsToExclude)
 						{
@@ -5619,7 +5612,7 @@ namespace AAMod
 
         public static int GetNPC(Vector2 center, int npcType = -1, float distance = -1, Func<NPC, bool> CanAdd = null)
         {
-            return GetNPC(center, npcType, default(int[]), distance, CanAdd);
+            return GetNPC(center, npcType, default, distance, CanAdd);
         }
         /*
          * Gets the closest NPC with the given type within the given distance from the center. If distance is -1, it gets the closest NPC.
@@ -5628,7 +5621,7 @@ namespace AAMod
          * npcsToExclude : An array of npc whoAmIs to exclude from the search.
          * distance : The distance to check.
          */
-		public static int GetNPC(Vector2 center, int npcType = -1, int[] npcsToExclude = default(int[]), float distance = -1, Func<NPC, bool> CanAdd = null)
+		public static int GetNPC(Vector2 center, int npcType = -1, int[] npcsToExclude = default, float distance = -1, Func<NPC, bool> CanAdd = null)
         {
             int currentNPC = -1;
             for (int i = 0; i < Main.npc.Length; i++)
@@ -5637,7 +5630,7 @@ namespace AAMod
                 if (npc != null && npc.active && npc.life > 0 && (npcType == -1 || npc.type == npcType) && npc.type != NPCID.TargetDummy && (distance == -1f || npc.Distance(center) < distance))
                 {
                     bool add = true;
-                    if (npcsToExclude != default(int[]))
+                    if (npcsToExclude != default)
                     {
                         foreach (int m in npcsToExclude)
                         {
@@ -5666,7 +5659,7 @@ namespace AAMod
          * npcsToExclude : an array of npc whoAmIs to exclude from the search.
          * distance : the distance to check.
          */
-		public static int[] GetNPCs(Vector2 center, int npcType = -1, int[] npcsToExclude = default(int[]), float distance = 500F, Func<NPC, bool> CanAdd = null)
+		public static int[] GetNPCs(Vector2 center, int npcType = -1, int[] npcsToExclude = default, float distance = 500F, Func<NPC, bool> CanAdd = null)
         {
             List<int> allNPCs = new List<int>();
             for (int i = 0; i < Main.npc.Length; i++)
@@ -5675,7 +5668,7 @@ namespace AAMod
                 if (npc != null && npc.active && npc.life > 0 && (npcType == -1 || npc.type == npcType) && npc.type != NPCID.TargetDummy && (distance == -1 || npc.Distance(center) < distance))
                 {
                     bool add = true;
-                    if (npcsToExclude != default(int[]))
+                    if (npcsToExclude != default)
                     {
                         foreach (int m in npcsToExclude)
                         {
@@ -5695,7 +5688,7 @@ namespace AAMod
          * rect : The rectangle to search.
          * playersToExclude : An array of player whoAmis that will be excluded from the search.
          */
-		public static int[] GetPlayersInBox(Rectangle rect, int[] playersToExclude = default(int[]), Func<Player, bool> CanAdd = null)
+		public static int[] GetPlayersInBox(Rectangle rect, int[] playersToExclude = default, Func<Player, bool> CanAdd = null)
         {
             List<int> allPlayers = new List<int>();
             for (int i = 0; i < Main.player.Length; i++)
@@ -5705,7 +5698,7 @@ namespace AAMod
                 {
                     if (!rect.Intersects(plr.Hitbox)) { continue; }
                     bool add = true;
-                    if (playersToExclude != default(int[]))
+                    if (playersToExclude != default)
                     {
                         foreach (int m in playersToExclude)
                         {
@@ -5739,7 +5732,7 @@ namespace AAMod
 
 		public static int GetPlayer(Vector2 center, float distance = -1, Func<Player, bool> CanAdd = null)
         {
-            return GetPlayer(center, default(int[]), true, distance, CanAdd);
+            return GetPlayer(center, default, true, distance, CanAdd);
         }
         /*
          * Gets the closest player within the given distance from the center. If distance is -1, it gets the closest player.
@@ -5748,7 +5741,7 @@ namespace AAMod
          * aliveOnly : If true, it only returns the player whoAmI if the player is not dead.
          * distance : The distance to search.
          */
-		public static int GetPlayer(Vector2 center, int[] playersToExclude = default(int[]), bool activeOnly = true, float distance = -1, Func<Player, bool> CanAdd = null)
+		public static int GetPlayer(Vector2 center, int[] playersToExclude = default, bool activeOnly = true, float distance = -1, Func<Player, bool> CanAdd = null)
         {
             int currentPlayer = -1;
             for (int i = 0; i < Main.player.Length; i++)
@@ -5757,7 +5750,7 @@ namespace AAMod
                 if (player != null && (!activeOnly || (player.active && !player.dead)) && (distance == -1f || player.Distance(center) < distance))
                 {
                     bool add = true;
-                    if (playersToExclude != default(int[]))
+                    if (playersToExclude != default)
                     {
                         foreach (int m in playersToExclude)
                         {
@@ -5777,7 +5770,7 @@ namespace AAMod
 
 		public static int[] GetPlayers(Vector2 center, float distance = 500F, Func<Player, bool> CanAdd = null)
         {
-            return GetPlayers(center, default(int[]), true, distance, CanAdd);
+            return GetPlayers(center, default, true, distance, CanAdd);
         }
         /*
          * Gets all players within a given distance from the center.
@@ -5785,7 +5778,7 @@ namespace AAMod
          * playersToExclude is an array of player ids you do not want included in the array.
          * aliveOnly : If true, it only returns the player whoAmI if the player is not dead.
          */
-		public static int[] GetPlayers(Vector2 center, int[] playersToExclude = default(int[]), bool aliveOnly = true, float distance = 500F, Func<Player, bool> CanAdd = null)
+		public static int[] GetPlayers(Vector2 center, int[] playersToExclude = default, bool aliveOnly = true, float distance = 500F, Func<Player, bool> CanAdd = null)
         {
             List<int> allPlayers = new List<int>();
             for (int i = 0; i < Main.player.Length; i++)
@@ -5794,7 +5787,7 @@ namespace AAMod
                 if (player != null && player.active && (!aliveOnly || !player.dead) && player.Distance(center) < distance)
                 {
                     bool add = true;
-                    if (playersToExclude != default(int[]))
+                    if (playersToExclude != default)
                     {
                         foreach (int m in playersToExclude)
                         {
@@ -5813,17 +5806,16 @@ namespace AAMod
          */
         public static bool CanTarget(Player player, Entity codable)
         {
-            if (codable is NPC)
-            {
-                NPC npc = (NPC)codable;
-                return npc.life > 0 && (!npc.friendly || (npc.type == NPCID.Guide && player.killGuide)) && !npc.dontTakeDamage;
-            }else
-            if (codable is Player)
-            {
-                Player player2 = (Player)codable;
-                return player2.statLife > 0 && !player2.immune && (player2.hostile && (player.team == 0 || player2.team == 0 || player.team != player2.team));
-            }
-            return false;
+			if (codable is NPC npc)
+			{
+				return npc.life > 0 && (!npc.friendly || (npc.type == NPCID.Guide && player.killGuide)) && !npc.dontTakeDamage;
+			}
+			else
+			if (codable is Player player2)
+			{
+				return player2.statLife > 0 && !player2.immune && (player2.hostile && (player.team == 0 || player2.team == 0 || player.team != player2.team));
+			}
+			return false;
         }
 
         /*
@@ -5852,7 +5844,7 @@ namespace AAMod
          * checkCanHit : If true, check if the codable can see the target point before firing.
          * offset : offset from the center of the codable that the projectile should spawn at.
          */
-        public static int ShootPeriodic(Entity codable, Vector2 position, int width, int height, int projType, ref float delayTimer, float delayTimerMax = 100f, int damage = -1, float speed = 10f, bool checkCanHit = true, Vector2 offset = default(Vector2))
+        public static int ShootPeriodic(Entity codable, Vector2 position, int width, int height, int projType, ref float delayTimer, float delayTimerMax = 100f, int damage = -1, float speed = 10f, bool checkCanHit = true, Vector2 offset = default)
         {
             int pID = -1;
             if (damage == -1) { Projectile proj = new Projectile(); proj.SetDefaults(projType); damage = proj.damage; }
@@ -5933,7 +5925,7 @@ namespace AAMod
          *             2 -> hurt BOTH Players/Townies and NPCs
          *             3 -> hurt NEITHER Players/Townies and NPCs (inert projectile)
          */
-        public static int FireProjectile(Vector2 fireTarget, Vector2 position, int projectileType, int damage, float knockback, float speedScalar = 1f, int hostility = 0, int owner = -1, Vector2 targetOffset = default(Vector2))
+        public static int FireProjectile(Vector2 fireTarget, Vector2 position, int projectileType, int damage, float knockback, float speedScalar = 1f, int hostility = 0, int owner = -1, Vector2 targetOffset = default)
         {
             Vector2 rotVec = BaseUtility.RotateVector(position, position + new Vector2(speedScalar, 0f), BaseUtility.RotationTo(position, fireTarget));
             rotVec -= position;
@@ -6096,7 +6088,7 @@ namespace AAMod
 
         public static Vector2 Trace(Vector2 start, Vector2 end, object ignore, int ignoreType, object dim, bool npcCheck = true, bool tileCheck = true, bool playerCheck = true, bool returnCenter = false, float Jump = 1F, bool ignorePlatforms = true)
         {
-            return Trace(start, end, ignore, ignoreType, dim, npcCheck, tileCheck, playerCheck, returnCenter, (ignorePlatforms ? new int[] { 19 } : default(int[])), Jump); //ignores wooden platforms
+            return Trace(start, end, ignore, ignoreType, dim, npcCheck, tileCheck, playerCheck, returnCenter, (ignorePlatforms ? new int[] { 19 } : default), Jump); //ignores wooden platforms
         }
 
         /* **Code edited from Yoraiz0r's 'Holowires' Mod!**
@@ -6111,7 +6103,7 @@ namespace AAMod
          * tileTypesToIgnore : An array of tile types that it will assume it can trace through.
          * Jump: The amount to iterate by.
          */
-        public static Vector2 Trace(Vector2 start, Vector2 end, object ignore, int ignoreType, object dim, bool npcCheck = true, bool tileCheck = true, bool playerCheck = true, bool returnCenter = false, int[] tileTypesToIgnore = default(int[]), float Jump = 1F)
+        public static Vector2 Trace(Vector2 start, Vector2 end, object ignore, int ignoreType, object dim, bool npcCheck = true, bool tileCheck = true, bool playerCheck = true, bool returnCenter = false, int[] tileTypesToIgnore = default, float Jump = 1F)
         {
 			try
 			{
@@ -6198,7 +6190,6 @@ namespace AAMod
             Vector2 dir = end - start;
             dir.Normalize();
             float length = Vector2.Distance(start, end); float way = 0f;
-            float rotation = BaseUtility.RotationTo(start, end) - 1.57f;
             List<Vector2> vList = new List<Vector2>();
             while (way < length)
             {

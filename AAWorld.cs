@@ -908,14 +908,18 @@ namespace AAMod
                 coinCounterPanel.Height.Set(100f, 0f);
                 coinCounterPanel.BackgroundColor = new Color(73, 94, 171);
 
-                UITextPanel<string> text = new UITextPanel<string>("Ancients Awakened does not work well at all on small worlds. It is highly recommended you generate on a medium or larger world! Do you wish to continue?");
-                text.HAlign = 0.5f;
+                UITextPanel<string> text = new UITextPanel<string>("Ancients Awakened does not work well at all on small worlds. It is highly recommended you generate on a medium or larger world! Do you wish to continue?")
+                {
+                    HAlign = 0.5f
+                };
                 text.Top.Set(5f, 0f);
                 coinCounterPanel.Append(text);
 
-                buttonLabel = new UIText("", 1f, false);
-                buttonLabel.VAlign = .8f;
-                buttonLabel.HAlign = .5f;
+                buttonLabel = new UIText("", 1f, false)
+                {
+                    VAlign = .8f,
+                    HAlign = .5f
+                };
                 coinCounterPanel.Append(buttonLabel);
 
                 Texture2D buttonPlayTexture = ModContent.GetTexture("Terraria/UI/ButtonPlay");
@@ -1790,6 +1794,7 @@ namespace AAMod
             biome.Place(origin, WorldGen.structures);
         }
 
+        /*
         private void ThePit(GenerationProgress progress)
         {
             progress.Message = "Sinking the Pit";
@@ -1797,6 +1802,7 @@ namespace AAMod
             Pit biome = new Pit();
             biome.Place(origin, WorldGen.structures);
         }
+        */
 
         private void ThePitTeaser(GenerationProgress progress)
         {

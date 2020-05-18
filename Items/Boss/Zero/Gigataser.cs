@@ -31,7 +31,7 @@ namespace AAMod.Items.Boss.Zero
             item.rare = ItemRarityID.Cyan;
             item.shootSpeed = 12f;
             item.crit += 5;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             AARarity = 13;
             item.autoReuse = true;
         }

@@ -72,7 +72,7 @@ namespace AAMod.NPCs.Bosses.AH
                 }
                 else
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AHSpawn3"), new Color(102, 20, 48));
+                    if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("AHSpawn3"), new Color(102, 20, 48));
                 }
             }
 
@@ -82,16 +82,16 @@ namespace AAMod.NPCs.Bosses.AH
                 {
                     if (AAWorld.downedBrood)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AHSpawn4"), new Color(72, 78, 117));
+                        if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("AHSpawn4"), new Color(72, 78, 117));
                     }
                     else
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AHSpawn5"), new Color(72, 78, 117));
+                        if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("AHSpawn5"), new Color(72, 78, 117));
                     }
                 }
                 else
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AHSpawn6"), new Color(72, 78, 117));
+                    if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("AHSpawn6"), new Color(72, 78, 117));
                 }
             }
 
@@ -102,7 +102,7 @@ namespace AAMod.NPCs.Bosses.AH
 
             if (npc.ai[1] == 700)
             {
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AHSpawn7"), new Color(102, 20, 48));
+                if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("AHSpawn7"), new Color(102, 20, 48));
             }
 
             if (npc.ai[1] == 550)
@@ -114,13 +114,13 @@ namespace AAMod.NPCs.Bosses.AH
             {
                 music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/AH");
                 Main.npc[BaseAI.GetNPC(npc.Center, mod.NPCType("AsheSpawn"), -1)].Transform(mod.NPCType("Ashe"));
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AHSpawn8"), new Color(102, 20, 48));
+                if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("AHSpawn8"), new Color(102, 20, 48));
                 SpawnBoss(player, "Ashe");
             }
 
             if (npc.ai[1] >= 960)
             {
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AHSpawn9"), new Color(72, 78, 117));
+                if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("AHSpawn9"), new Color(72, 78, 117));
                 Main.npc[BaseAI.GetNPC(npc.Center, mod.NPCType("HarukaSpawn"), -1)].Transform(mod.NPCType("Haruka"));
                 SpawnBoss(player, "Haruka");
                 npc.active = false;
@@ -129,7 +129,7 @@ namespace AAMod.NPCs.Bosses.AH
 
         public void SpawnBoss(Player player, string name)
         {
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 int bossType = mod.NPCType(name);
                 if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
@@ -141,7 +141,7 @@ namespace AAMod.NPCs.Bosses.AH
 
         public void SpawnBoss2(Player player, string name)
         {
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 int bossType = mod.NPCType(name);
                 if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
@@ -150,7 +150,5 @@ namespace AAMod.NPCs.Bosses.AH
                 Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
             }
         }
-
-
     }
 }

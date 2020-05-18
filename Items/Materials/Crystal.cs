@@ -93,7 +93,7 @@ namespace AAMod.Items.Materials
             item.height = 16;
             item.maxStack = 999;
             item.value = 10000;
-            item.rare = 8;
+            item.rare = ItemRarityID.Yellow;
         }
 
         public override Color? GetAlpha(Color lightColor)
