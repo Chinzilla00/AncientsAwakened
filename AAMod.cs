@@ -84,7 +84,6 @@ namespace AAMod
                 AutoloadSounds = true,
                 AutoloadBackgrounds = true
             };
-            instance = this;
         }
 
         public static void SetupBannerItemTextures()
@@ -237,6 +236,8 @@ namespace AAMod
 
         public override void Load()
         {
+            instance = ModContent.GetInstance<AAMod>();
+
             blankTexture = GetTexture("BlankTex");
 
             Logger.InfoFormat("{0} AA log", Name);
