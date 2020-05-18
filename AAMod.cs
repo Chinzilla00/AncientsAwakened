@@ -26,6 +26,8 @@ namespace AAMod
 {
     public class AAMod : Mod
     {
+        public static Texture2D blankTexture;
+
         // Miscellaneous
         public static int Coin = -1;
         public static int GoblinSoul = -1;
@@ -235,6 +237,8 @@ namespace AAMod
 
         public override void Load()
         {
+            blankTexture = GetTexture("BlankTex");
+
             Logger.InfoFormat("{0} AA log", Name);
 
             instance = this;
@@ -555,6 +559,8 @@ namespace AAMod
 
         public override void Unload()
         {
+            blankTexture = null;
+
             AAMenuset = false;
 
             if (!Main.dedServ)
@@ -731,15 +737,15 @@ namespace AAMod
                             if(SkyManager.Instance["AAMod:VoidSky"] != null) SkyManager.Instance.Activate("AAMod:VoidSky",default, new object[0]);
                             if(Main.dayTime && (Main.bgAlpha2[0] < 0.10f || Main.bgAlpha2[0] == 1f))
                             {
-                                Main.backgroundTexture[0] = instance.GetTexture("BlankTex");
-                                Main.backgroundTexture[171] = instance.GetTexture("BlankTex");
-                                Main.backgroundTexture[172] = instance.GetTexture("BlankTex");
-                                Main.backgroundTexture[173] = instance.GetTexture("BlankTex");
-                                Main.backgroundTexture[24] = instance.GetTexture("BlankTex");
-                                Main.backgroundTexture[25] = instance.GetTexture("BlankTex");
-                                Main.backgroundTexture[56] = instance.GetTexture("BlankTex");
-                                Main.backgroundTexture[57] = instance.GetTexture("BlankTex");
-                                Main.backgroundTexture[58] = instance.GetTexture("BlankTex");
+                                Main.backgroundTexture[0] = blankTexture;
+                                Main.backgroundTexture[171] = blankTexture;
+                                Main.backgroundTexture[172] = blankTexture;
+                                Main.backgroundTexture[173] = blankTexture;
+                                Main.backgroundTexture[24] = blankTexture;
+                                Main.backgroundTexture[25] = blankTexture;
+                                Main.backgroundTexture[56] = blankTexture;
+                                Main.backgroundTexture[57] = blankTexture;
+                                Main.backgroundTexture[58] = blankTexture;
                             }
                             break;
                         default:
