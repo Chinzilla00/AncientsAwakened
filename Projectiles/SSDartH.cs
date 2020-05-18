@@ -79,17 +79,18 @@ namespace AAMod.Projectiles
             target.immune[projectile.owner] = 1;
             target.AddBuff(mod.BuffType("Moonraze"), 500);
 
+            int num580 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.YamataDust>(), -projectile.velocity.X * 0.2f, -projectile.velocity.Y * 0.2f, 100, default, 2f);
+            Main.dust[num580].noGravity = true;
+            Main.dust[num580].velocity *= 1.5f;
+            num580 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.YamataDust>(), -projectile.velocity.X * 0.2f, -projectile.velocity.Y * 0.2f, 100);
+            Main.dust[num580].velocity *= 1.5f;
+        }
+
+        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
             if (target.defense < 300 && !target.boss)
             {
-                // This does literally nothing, because damage is not a reference variable, and onhitnpc is called after damage is calculated. Move to ModifyHitNPC!
                 damage += target.defense * 2;
-            }
-            {
-                int num580 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.YamataDust>(), -projectile.velocity.X * 0.2f, -projectile.velocity.Y * 0.2f, 100, default, 2f);
-                Main.dust[num580].noGravity = true;
-                Main.dust[num580].velocity *= 1.5f;
-                num580 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.YamataDust>(), -projectile.velocity.X * 0.2f, -projectile.velocity.Y * 0.2f, 100);
-                Main.dust[num580].velocity *= 1.5f;
             }
         }
     }
