@@ -460,7 +460,7 @@ namespace AAMod
             LuckyCheckProgress();
             foreach(Mod mo in ModLoader.Mods)
             {
-                if(mo.Name != "ModLoader" && mo.Name != "AAMod" && mo.Name != "AAMod")
+                if(mo.Name != "ModLoader" && mo.Name != "AAMod")
                 {
                     AAloadedOnly = false;
                 }
