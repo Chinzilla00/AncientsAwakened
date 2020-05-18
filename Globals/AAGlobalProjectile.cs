@@ -4,6 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using AAMod.Tiles;
+using AAMod.Items.FishingItem.Crate;
 
 namespace AAMod
 {
@@ -168,23 +169,23 @@ namespace AAMod
                             }
                             else if (Main.rand.Next(3) == 0 && Main.player[projectile.owner].ZoneSnow)
                             {
-                                itemtype = mod.ItemType("IceCrate");
+                                itemtype = ModContent.ItemType<IceCrate>();
                             }
                             else if (Main.rand.Next(3) == 0 && Main.player[projectile.owner].ZoneDesert)
                             {
-                                itemtype = mod.ItemType("DesertCrate");
+                                itemtype = ModContent.ItemType<DesertCrate>();
                             }
                             else if (Main.rand.Next(3) == 0 && Main.player[projectile.owner].GetModPlayer<AAPlayer>().ZoneInferno)
                             {
-                                itemtype = mod.ItemType("InfernoCrate");
+                                itemtype = ModContent.ItemType<InfernoCrate>();
                             }
                             else if (Main.rand.Next(3) == 0 && Main.player[projectile.owner].GetModPlayer<AAPlayer>().ZoneMire)
                             {
-                                itemtype = mod.ItemType("MireCrate");
+                                itemtype = ModContent.ItemType<MireCrate>();
                             }
                             else if (Main.rand.Next(3) == 0 && Main.player[projectile.owner].GetModPlayer<AAPlayer>().ZoneVoid)
                             {
-                                itemtype = mod.ItemType("VoidCrate");
+                                itemtype = ModContent.ItemType<VoidCrate>();
                             }
                             else if (Main.rand.Next(3) == 0 && Main.player[projectile.owner].GetModPlayer<AAPlayer>().ZoneHoard)
                             {
@@ -192,7 +193,7 @@ namespace AAMod
                             }
                             else if (Main.rand.Next(3) == 0 && Main.player[projectile.owner].ZoneUnderworldHeight)
                             {
-                                itemtype = mod.ItemType("HellCrate");
+                                itemtype = ModContent.ItemType<HellCrate>();
                             }
                             else if (Main.rand.Next(3) == 0 && WorldHeightType == 0)
                             {

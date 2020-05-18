@@ -37,8 +37,6 @@ namespace AAMod
 				}
 			}
 			inext = 0;
-			inextp = 21;
-			Seed = 1;
 		}
 
 		protected override double Sample()
@@ -95,7 +93,7 @@ namespace AAMod
 			}
 			long numfake = (long)((maxValue - minValue) * 1.3f);
             long num = maxValue - (long)minValue;
-			double result = 0.0;
+			double result;
 			if (numfake <= 2147483647L)
 			{
 				result = Sample() * numfake;
@@ -127,9 +125,6 @@ namespace AAMod
 			else if(result > 1.2) return 0.999999;
 			return result;
 		}
-		private const int MBIG = 2147483647;
-		private const int MSEED = 161803398;
-		private const int MZ = 0;
 		private int inext;
 		private int inextp;
 		private readonly int[] SeedArray = new int[56];

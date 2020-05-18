@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using AAMod.Items.Blocks;
 
 namespace AAMod
 {
@@ -752,7 +753,7 @@ namespace AAMod
 				float chance = Config.LuckyOre[itemtype];
                 chance -= Main.player[Main.myPlayer].inventory[Main.player[Main.myPlayer].selectedItem].pick;
                 chance = chance/ChanceBalance * 100f;
-                if(chance < 100 && !(itemtype == ItemID.DemoniteOre || itemtype == ItemID.CrimtaneOre || itemtype == mod.ItemType("Abyssium") || itemtype == mod.ItemType("Incinerite") || itemtype == mod.ItemType("Apocalyptite")))
+                if(chance < 100 && !(itemtype == ItemID.DemoniteOre || itemtype == ItemID.CrimtaneOre || itemtype == ModContent.ItemType<Abyssium>() || itemtype == ModContent.ItemType<Incinerite>() || itemtype == ModContent.ItemType<Apocalyptite>()))
                 {
                     if(Utils.NextFloat(Main.rand, SecondDrop) < 1)
                     {
@@ -772,23 +773,23 @@ namespace AAMod
                         return itemtype;
                     }
                 }
-                else if(itemtype == mod.ItemType("Abyssium"))
+                else if(itemtype == ModContent.ItemType<Abyssium>())
                 {
-                    if(Utils.NextFloat(Main.rand, chance) < 1 && type == mod.TileType("Depthstone"))
+                    if(Utils.NextFloat(Main.rand, chance) < 1 && type == ModContent.TileType<Tiles.Depthstone>())
                     {
                         return itemtype;
                     }
                 }
-                else if(itemtype == mod.ItemType("Incinerite"))
+                else if(itemtype == ModContent.ItemType<Incinerite>())
                 {
-                    if(Utils.NextFloat(Main.rand, chance) < 1 && type == mod.TileType("Torchstone"))
+                    if(Utils.NextFloat(Main.rand, chance) < 1 && type == ModContent.TileType<Tiles.Torchstone>())
                     {
                         return itemtype;
                     }
                 }
-                else if(itemtype == mod.ItemType("Apocalyptite"))
+                else if(itemtype == ModContent.ItemType<Apocalyptite>())
                 {
-                    if(Utils.NextFloat(Main.rand, chance) < 1 && type == mod.TileType("Doomstone") && AAWorld.downedZero)
+                    if(Utils.NextFloat(Main.rand, chance) < 1 && type == ModContent.TileType<Tiles.Doomstone>() && AAWorld.downedZero)
                     {
                         return itemtype;
                     }

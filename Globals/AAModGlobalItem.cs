@@ -8,6 +8,15 @@ using AAMod.Items.Boss.Grips;
 using AAMod.Items;
 using AAMod.Items.Dev.Invoker;
 using AAMod.Items.Usable;
+using AAMod.Tiles.Ore;
+using AAMod.Items.Boss.Shen;
+using AAMod.Items.Melee;
+using AAMod.Items.Ranged;
+using AAMod.Items.Magic;
+using AAMod.Items.Pets;
+using AAMod.Items.Accessories;
+using AAMod.Items.Materials;
+using AAMod.Items.Blocks;
 
 namespace AAMod
 {
@@ -15,6 +24,7 @@ namespace AAMod
 	{
         public override bool InstancePerEntity => true;
 		public override bool CloneNewInstances => true;
+
 		public bool AAOnly = false;
         public bool NOHitPlayer = false;
         public bool HardCoreMode = false;
@@ -28,7 +38,7 @@ namespace AAMod
 
             if (item.type == ItemID.LunarOre)
             {
-                item.createTile = mod.TileType("LuminiteOre");
+                item.createTile = ModContent.TileType<LuminiteOre>();
             }
 
             if (item.modItem != null && item.modItem.mod.Name == mod.Name && (item.damage > 0 || item.accessory || item.defense > 0) && item.maxStack < 2)
@@ -146,7 +156,7 @@ namespace AAMod
 
         public override bool CanEquipAccessory(Item item, Player player, int slot)
         {
-            if (item.type == ItemID.AnkhShield || item.type == ItemID.ObsidianShield || item.type == ModContent.ItemType<TaiyangBaolei>() || item.type == mod.ItemType("Duality"))
+            if (item.type == ItemID.AnkhShield || item.type == ItemID.ObsidianShield || item.type == ModContent.ItemType<TaiyangBaolei>() || item.type == ModContent.ItemType<Duality>())
             {
                 if (slot < 10)
                 {
@@ -169,7 +179,7 @@ namespace AAMod
                             return false;
                         }
 
-                        if (slot != i && player.armor[i].type == mod.ItemType("Duality"))
+                        if (slot != i && player.armor[i].type == ModContent.ItemType<Duality>())
                         {
                             return false;
                         }
@@ -390,8 +400,6 @@ namespace AAMod
                 player.QuickSpawnItem(item, Main.rand.Next(2, 7));
             }
 
-            Mod mod = AAMod.instance;
-
             if (CrateType < 2)
             {
                 if (Main.rand.Next(6) == 0)
@@ -403,23 +411,23 @@ namespace AAMod
                         switch (item)
                         {
                             case 0:
-                                item = mod.ItemType("Pyrosphere");
+                                item = ModContent.ItemType<Pyrosphere>();
                                 break;
                             case 1:
-                                item = mod.ItemType("Firebuster");
+                                item = ModContent.ItemType<Firebuster>();
                                 break;
                             case 2:
-                                item = mod.ItemType("Volley");
+                                item = ModContent.ItemType<Volley>();
                                 break;
                             case 3:
-                                item = mod.ItemType("DragonsSoul");
+                                item = ModContent.ItemType<DragonsSoul>();
                                 break;
                             default:
-                                item = mod.ItemType("DragonsGuard");
+                                item = ModContent.ItemType<DragonsGuard>();
                                 break;
                         }
                         player.QuickSpawnItem(item);
-                        player.QuickSpawnItem(mod.ItemType("IncineriteBar"), Main.rand.Next(1, 12));
+                        player.QuickSpawnItem(ModContent.ItemType<IncineriteBar>(), Main.rand.Next(1, 12));
 
                     }
                     if (CrateType == 1)
@@ -429,24 +437,24 @@ namespace AAMod
                         switch (item)
                         {
                             case 0:
-                                item = mod.ItemType("HydrasSpear");
+                                item = ModContent.ItemType<HydrasSpear>();
                                 break;
                             case 1:
-                                item = mod.ItemType("Mossket");
+                                item = ModContent.ItemType<Mossket>();
                                 break;
                             case 2:
-                                item = mod.ItemType("GlowmossBall");
+                                item = ModContent.ItemType<GlowmossBall>();
                                 break;
                             case 3:
-                                item = mod.ItemType("ShadowBand");
+                                item = ModContent.ItemType<ShadowBand>();
                                 break;
                             default:
-                                item = mod.ItemType("GunkWand");
+                                item = ModContent.ItemType<GunkWand>();
                                 break;
                         }
 
                         player.QuickSpawnItem(item);
-                        player.QuickSpawnItem(mod.ItemType("AbyssiumBar"), Main.rand.Next(1, 12));
+                        player.QuickSpawnItem(ModContent.ItemType<AbyssiumBar>(), Main.rand.Next(1, 12));
 
                     }
                 }
@@ -554,11 +562,11 @@ namespace AAMod
                     }
                 }
             }
-            else if(extractType == mod.ItemType("Depthsand"))
+            else if(extractType == ModContent.ItemType<Depthsand>())
             {
                 if(Main.rand.Next(10) == 0)
                 {
-                    result = mod.ItemType("Abyssium");
+                    result = ModContent.ItemType<Abyssium>();
                     if (Main.rand.Next(5) == 0)
                     {
                         stack += Main.rand.Next(2);
@@ -573,11 +581,11 @@ namespace AAMod
                     }
                 }
             }
-            else if(extractType == mod.ItemType("Torchsand"))
+            else if(extractType == ModContent.ItemType<Torchsand>())
             {
                 if(Main.rand.Next(10) == 0)
                 {
-                    result = mod.ItemType("Incinerite");
+                    result = ModContent.ItemType<Incinerite>();
                     if (Main.rand.Next(5) == 0)
                     {
                         stack += Main.rand.Next(2);
@@ -667,81 +675,45 @@ namespace AAMod
                     if (Main.rand.Next(12000) == 0)
                     {
                         result = 74;
-                        if (Main.rand.Next(14) == 0)
+                        for (int i = 0; i < 3; i++)
                         {
-                            stack += Main.rand.Next(0, 2);
-                        }
-                        if (Main.rand.Next(14) == 0)
-                        {
-                            stack += Main.rand.Next(0, 2);
-                        }
-                        if (Main.rand.Next(14) == 0)
-                        {
-                            stack += Main.rand.Next(0, 2);
+                            if (Main.rand.Next(14) == 0)
+                            {
+                                stack += Main.rand.Next(0, 2);
+                            }
                         }
                     }
                     else if (Main.rand.Next(800) == 0)
                     {
                         result = 73;
-                        if (Main.rand.Next(6) == 0)
+                        for (int i = 0; i < 5; i++)
                         {
-                            stack += Main.rand.Next(1, 21);
-                        }
-                        if (Main.rand.Next(6) == 0)
-                        {
-                            stack += Main.rand.Next(1, 21);
-                        }
-                        if (Main.rand.Next(6) == 0)
-                        {
-                            stack += Main.rand.Next(1, 21);
-                        }
-                        if (Main.rand.Next(6) == 0)
-                        {
-                            stack += Main.rand.Next(1, 21);
-                        }
-                        if (Main.rand.Next(6) == 0)
-                        {
-                            stack += Main.rand.Next(1, 20);
+                            if (Main.rand.Next(6) == 0)
+                            {
+                                stack += Main.rand.Next(1, 21);
+                            }
                         }
                     }
                     else if (Main.rand.Next(60) == 0)
                     {
                         result = 72;
-                        if (Main.rand.Next(4) == 0)
+                        for (int i = 0; i < 4; i++)
                         {
-                            stack += Main.rand.Next(5, 26);
-                        }
-                        if (Main.rand.Next(4) == 0)
-                        {
-                            stack += Main.rand.Next(5, 26);
-                        }
-                        if (Main.rand.Next(4) == 0)
-                        {
-                            stack += Main.rand.Next(5, 26);
-                        }
-                        if (Main.rand.Next(4) == 0)
-                        {
-                            stack += Main.rand.Next(5, 25);
+                            if (Main.rand.Next(4) == 0)
+                            {
+                                stack += Main.rand.Next(5, 26);
+                            }
                         }
                     }
                     else
                     {
                         result = 71;
-                        if (Main.rand.Next(3) == 0)
+                        for (int i = 0; i < 4; i++)
                         {
-                            stack += Main.rand.Next(10, 26);
-                        }
-                        if (Main.rand.Next(3) == 0)
-                        {
-                            stack += Main.rand.Next(10, 26);
-                        }
-                        if (Main.rand.Next(3) == 0)
-                        {
-                            stack += Main.rand.Next(10, 26);
-                        }
-                        if (Main.rand.Next(3) == 0)
-                        {
-                            stack += Main.rand.Next(10, 25);
+                            if (Main.rand.Next(3) == 0)
+                            {
+                                stack += Main.rand.Next(10, 26);
+                            }
                         }
                     }
                 }
@@ -915,37 +887,32 @@ namespace AAMod
                 else
                 {
                     result = Main.rand.Next(8);
-                    if (result == 0)
+                    switch (result)
                     {
-                        result = 12;
-                    }
-                    else if (result == 1)
-                    {
-                        result = 11;
-                    }
-                    else if (result == 2)
-                    {
-                        result = 14;
-                    }
-                    else if (result == 3)
-                    {
-                        result = 13;
-                    }
-                    else if (result == 4)
-                    {
-                        result = 699;
-                    }
-                    else if (result == 5)
-                    {
-                        result = 700;
-                    }
-                    else if (result == 6)
-                    {
-                        result = 701;
-                    }
-                    else
-                    {
-                        result = 702;
+                        case 0:
+                            result = 12;
+                            break;
+                        case 1:
+                            result = 11;
+                            break;
+                        case 2:
+                            result = 14;
+                            break;
+                        case 3:
+                            result = 13;
+                            break;
+                        case 4:
+                            result = 699;
+                            break;
+                        case 5:
+                            result = 700;
+                            break;
+                        case 6:
+                            result = 701;
+                            break;
+                        case 7:
+                            result = 702;
+                            break;
                     }
                     if (Main.rand.Next(20) == 0)
                     {
@@ -987,7 +954,7 @@ namespace AAMod
             {
                 if(Main.rand.Next(50) == 0)
                 {
-                    result = mod.ItemType("VikingRelic");
+                    result = ModContent.ItemType<VikingRelic>();
                     if (Main.rand.Next(5) == 0)
                     {
                         stack += Main.rand.Next(2);
@@ -1006,7 +973,7 @@ namespace AAMod
             {
                 if(Main.rand.Next(50) == 0)
                 {
-                    result = mod.ItemType("DynaskullOre");
+                    result = ModContent.ItemType<Items.Blocks.DynaskullOre>();
                     if (Main.rand.Next(5) == 0)
                     {
                         stack += Main.rand.Next(2);
@@ -1057,7 +1024,7 @@ namespace AAMod
                     {
                         if(Main.rand.Next(2) == 0)
                         {
-                            result = mod.ItemType("DynaskullOre");
+                            result = ModContent.ItemType<Items.Blocks.DynaskullOre>();
                             stack += 1;
                             if (Main.rand.Next(5) == 0)
                             {
@@ -1074,7 +1041,7 @@ namespace AAMod
                         }
                         else
                         {
-                            result = mod.ItemType("VikingRelic");
+                            result = ModContent.ItemType<VikingRelic>();
                             stack += 1;
                             if (Main.rand.Next(5) == 0)
                             {
@@ -1090,20 +1057,6 @@ namespace AAMod
                             }
                         }
                     }
-                    else if (Main.rand.Next(300) == 0)
-                    {
-                        switch(Main.rand.Next(8))
-                        {
-                            case 0: result = 12; return;
-                            case 1: result=11; return;
-                            case 2: result=14; return;
-                            case 3: result=13; return;
-                            case 4: result=699; return;
-                            case 5: result=700; return;
-                            case 6: result=701; return;
-                            default: result=702; return;
-                        }
-                    }
                     else if (Main.rand.Next(20) == 0)
                     {
                         result = 999;
@@ -1115,18 +1068,6 @@ namespace AAMod
                         if (Main.rand.Next(20) == 0)
                         {
                             stack += 5;
-                        }
-                    }
-                    else
-                    {
-                        switch(Main.rand.Next(6))
-                        {
-                            case 0: result=181; return;
-                            case 1: result=180; return;
-                            case 2: result=177; return;
-                            case 3: result=179; return;
-                            case 4: result=178; return;
-                            default: result=182; return;
                         }
                     }
                 }
@@ -1146,40 +1087,18 @@ namespace AAMod
                 resultType = result;
                 resultStack = stack;
             }
-            /*
-            if (result > 0)
-			{
-				Vector2 vector = Main.ReverseGravitySupport(Main.MouseScreen, 0f) + Main.screenPosition;
-				int number = Item.NewItem((int)vector.X, (int)vector.Y, 1, 1, resultType, resultStack, false, -1, false, false);
-				if (Main.netMode == 1)
-				{
-					NetMessage.SendData(21, -1, -1, null, number, 1f, 0f, 0f, 0, 0, 0);
-				}
-			}
-            */
 		}
     }
 
     public class InvokerCaligulaItem : GlobalItem
     {
-        public override bool InstancePerEntity
-        {
-            get
-            {
-                return true;
-            }
-        }
+        public override bool InstancePerEntity => true;
 
-        public override bool CloneNewInstances
-        {
-            get
-            {
-                return true;
-            }
-        }
+        public override bool CloneNewInstances => true;
+
         public override bool CanUseItem(Item item, Player player)
         {
-            if (player.GetModPlayer<InvokerPlayer>().InvokedCaligula && item.damage > 0 && !(player.GetModPlayer<InvokerPlayer>().DarkCaligula && player.inventory[player.selectedItem].type == mod.ItemType("InvokerStaff") && player.altFunctionUse == 2))
+            if (player.GetModPlayer<InvokerPlayer>().InvokedCaligula && item.damage > 0 && !(player.GetModPlayer<InvokerPlayer>().DarkCaligula && player.inventory[player.selectedItem].type == ModContent.ItemType<InvokerStaff>() && player.altFunctionUse == 2))
             {
                 return false;
             }
