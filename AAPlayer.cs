@@ -28,6 +28,21 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using Terraria.Utilities;
 using Terraria.Audio;
+using AAMod.Items.FishingItem.Crate;
+using AAMod.Items.Misc;
+using AAMod.Projectiles.AH;
+using AAMod.Items.Armor.Assassin;
+using AAMod.Dusts;
+using AAMod.Projectiles.Anubis.Forsaken;
+using AAMod.Items.Armor.Terra.Projectiles;
+using AAMod.Items.Armor.Champion.Carrot;
+using AAMod.Items.Armor.Champion.Drone;
+using AAMod.Items.Potions;
+using AAMod.NPCs.Bosses.AH.Ashe;
+using AAMod.Items.Armor.Chaos;
+using AAMod.Items.Materials;
+using AAMod.Items.Armor.StripeMan;
+using AAMod.Items.Boss.Equinox;
 
 namespace AAMod
 {
@@ -782,7 +797,7 @@ namespace AAMod
 
         public override void ModifyHitByNPC(NPC npc, ref int damage, ref bool crit) 
 		{
-			if (npc.HasBuff(mod.BuffType("ForsakenWeak")))
+			if (npc.HasBuff(ModContent.BuffType<ForsakenWeak>()))
 			{
 				damage -= damage/5;
 			}
@@ -870,7 +885,7 @@ namespace AAMod
                 }
             }
 
-            if (target.HasBuff(mod.BuffType("Forsaken")) && proj.type == mod.ProjectileType("EnchancedMummyArrow"))
+            if (target.HasBuff(ModContent.BuffType<Forsaken>()) && proj.type == ModContent.ProjectileType<EnchancedMummyArrow>())
             {
 				float num1 = 9f;
 				Vector2 vector2 = new Vector2(player.position.X + player.width * 0.5f, player.position.Y + player.height * 0.5f);
@@ -895,9 +910,9 @@ namespace AAMod
 				for (int i = 0; i < numberProjectiles; i++)
 				{
 					Vector2 perturbedSpeed = new Vector2(SpeedX, SpeedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * 1f;
-					Projectile.NewProjectile(vector2.X, vector2.Y, perturbedSpeed.X*2, perturbedSpeed.Y*2, mod.ProjectileType("ForsakenArrow"), damage/2, knockback, player.whoAmI);
+					Projectile.NewProjectile(vector2.X, vector2.Y, perturbedSpeed.X*2, perturbedSpeed.Y*2, ModContent.ProjectileType<ForsakenArrow>(), damage/2, knockback, player.whoAmI);
 				}
-				target.buffImmune[mod.BuffType("Forsaken")] = true;
+				target.buffImmune[ModContent.BuffType<Forsaken>()] = true;
 			}
         }
 
@@ -917,7 +932,7 @@ namespace AAMod
         {
             if (TerraMe)
             {
-                Projectile.NewProjectile(player.Center, Vector2.Zero, mod.ProjectileType("TerraSphere"), 30, 4, Main.myPlayer, 0, npc.whoAmI);
+                Projectile.NewProjectile(player.Center, Vector2.Zero, ModContent.ProjectileType<TerraSphere>(), 30, 4, Main.myPlayer, 0, npc.whoAmI);
             }
 
             if (DragonsGuard || ChaosMe)
@@ -959,8 +974,8 @@ namespace AAMod
 
             if (ChaosMe)
             {
-                npc.AddBuff(ModContent.BuffType<DragonFire>(), 180);
-                npc.AddBuff(ModContent.BuffType<HydraToxin>(), 180);
+                npc.AddBuff(ModContent.BuffType<Buffs.DragonFire>(), 180);
+                npc.AddBuff(ModContent.BuffType<Buffs.HydraToxin>(), 180);
             }
 
             if (BrokenCode)
@@ -1033,19 +1048,19 @@ namespace AAMod
 
             if (Naitokurosu)
             {
-                int buff = Main.dayTime ? BuffID.Venom : ModContent.BuffType<Moonraze>();
+                int buff = Main.dayTime ? BuffID.Venom : ModContent.BuffType<Buffs.Moonraze>();
                 target.AddBuff(buff, 1000);
             }
 
             if (Duality)
             {
-                int buff = Main.dayTime ? BuffID.Daybreak : ModContent.BuffType<Moonraze>();
+                int buff = Main.dayTime ? BuffID.Daybreak : ModContent.BuffType<Buffs.Moonraze>();
                 target.AddBuff(buff, 1000);
             }
 
             if (darkmatterSetMe)
             {
-                target.AddBuff(mod.BuffType("Electrified"), 500);
+                target.AddBuff(ModContent.BuffType<Electrified>(), 500);
             }
 
             if (kindledSet)
@@ -1072,7 +1087,7 @@ namespace AAMod
 
             if (HeartP && player.statLife > (player.statLifeMax / 3))
             {
-                target.AddBuff(ModContent.BuffType<DragonFire>(), 600);
+                target.AddBuff(ModContent.BuffType<Buffs.DragonFire>(), 600);
             }
             else if (HeartP && player.statLife < (player.statLifeMax / 3))
             {
@@ -1081,11 +1096,11 @@ namespace AAMod
 
             if (HeartS && player.statLife > (player.statLifeMax / 3))
             {
-                target.AddBuff(ModContent.BuffType<HydraToxin>(), 600);
+                target.AddBuff(ModContent.BuffType<Buffs.HydraToxin>(), 600);
             }
             else if (HeartS && player.statLife < (player.statLifeMax / 3))
             {
-                target.AddBuff(ModContent.BuffType<Moonraze>(), 600);
+                target.AddBuff(ModContent.BuffType<Buffs.Moonraze>(), 600);
             }
 
             if (dracoSet)
@@ -1098,14 +1113,14 @@ namespace AAMod
                 target.AddBuff(BuffID.Wet, 600);
             }
 
-            if (player.HasBuff(mod.BuffType("DragonfireFlaskBuff")))
+            if (player.HasBuff(ModContent.BuffType<DragonfireFlaskBuff>()))
             {
-                target.AddBuff(mod.BuffType("DragonFire"), 900);
+                target.AddBuff(ModContent.BuffType<Buffs.DragonFire>(), 900);
             }
 
-            if (player.HasBuff(mod.BuffType("HydratoxinFlaskBuff")))
+            if (player.HasBuff(ModContent.BuffType<HydratoxinFlaskBuff>()))
             {
-                target.AddBuff(mod.BuffType("Hydratoxin"), 900);
+                target.AddBuff(ModContent.BuffType<Buffs.HydraToxin>(), 900);
             }
             if (StoneSoldier)
             {
@@ -1116,7 +1131,7 @@ namespace AAMod
             {
                 if (Main.rand.Next(30) == 0)
                 {
-                    int i = Item.NewItem(target.Hitbox, mod.ItemType("CarrotBooster"), 1, false, 0, true);
+                    int i = Item.NewItem(target.Hitbox, ModContent.ItemType<CarrotBooster>(), 1, false, 0, true);
                     Main.item[i].velocity = new Vector2(Main.rand.Next(-5, 5), Main.rand.Next(-5, 5));
                 }
             }
@@ -1145,13 +1160,13 @@ namespace AAMod
 
                 if (darkmatterSetMe)
                 {
-                    target.AddBuff(mod.BuffType("Electrified"), 500);
+                    target.AddBuff(ModContent.BuffType<Electrified>(), 500);
                 }
 
                 if (ChaosMe || ChaosMe1)
                 {
-                    string buffName = Main.rand.Next(2) == 0 ? "DragonFire" : "HydraToxin";
-                    target.AddBuff(mod.BuffType(buffName), 180);
+                    int type = Main.rand.Next(2) == 0 ? ModContent.BuffType<Buffs.DragonFire>() : ModContent.BuffType<Buffs.HydraToxin>();
+                    target.AddBuff(type, 180);
                 }
 
                 if (demonGauntlet)
@@ -1160,14 +1175,14 @@ namespace AAMod
                     target.AddBuff(buff, 180);
                 }
 
-                if (player.HasBuff(mod.BuffType("DragonfireFlaskBuff")))
+                if (player.HasBuff(ModContent.BuffType<DragonfireFlaskBuff>()))
                 {
-                    target.AddBuff(mod.BuffType("DragonFire"), 900);
+                    target.AddBuff(ModContent.BuffType<Buffs.DragonFire>(), 900);
                 }
 
-                if (player.HasBuff(mod.BuffType("HydratoxinFlaskBuff")))
+                if (player.HasBuff(ModContent.BuffType<HydratoxinFlaskBuff>()))
                 {
-                    target.AddBuff(mod.BuffType("Hydratoxin"), 900);
+                    target.AddBuff(ModContent.BuffType<Buffs.HydraToxin>(), 900);
                 }
             }
 
@@ -1180,7 +1195,7 @@ namespace AAMod
 
                 if (dreadSet)
                 {
-                    target.AddBuff(ModContent.BuffType<Moonraze>(), 600);
+                    target.AddBuff(ModContent.BuffType<Buffs.Moonraze>(), 600);
                 }
 
                 if (DynaskullSet && Main.rand.Next(4) == 0)
@@ -1195,13 +1210,13 @@ namespace AAMod
 
                 if (darkmatterSetRa)
                 {
-                    target.AddBuff(mod.BuffType("Electrified"), 500);
+                    target.AddBuff(ModContent.BuffType<Electrified>(), 500);
                 }
 
                 if (ChaosRa || ChaosRa2)
                 {
-                    string buffName = Main.rand.Next(2) == 0 ? "DragonFire" : "HydraToxin";
-                    target.AddBuff(mod.BuffType(buffName), 180);
+                    int type = Main.rand.Next(2) == 0 ? ModContent.BuffType<Buffs.DragonFire>() : ModContent.BuffType<Buffs.HydraToxin>();
+                    target.AddBuff(type, 180);
                 }
             }
 
@@ -1209,7 +1224,7 @@ namespace AAMod
             {
                 if (MoonSet)
                 {
-                    target.AddBuff(ModContent.BuffType<Moonraze>(), 300);
+                    target.AddBuff(ModContent.BuffType<Buffs.Moonraze>(), 300);
                 }
 
                 if (zeroSet)
@@ -1224,18 +1239,18 @@ namespace AAMod
 
                 if (darkmatterSetMa)
                 {
-                    target.AddBuff(mod.BuffType("Electrified"), 500);
+                    target.AddBuff(ModContent.BuffType<Electrified>(), 500);
                 }
 
                 if (ChaosMa)
                 {
-                    string buffName = Main.rand.Next(2) == 0 ? "DragonFire" : "HydraToxin";
-                    target.AddBuff(mod.BuffType(buffName), 180);
+                    int type = Main.rand.Next(2) == 0 ? ModContent.BuffType<Buffs.DragonFire>() : ModContent.BuffType<Buffs.HydraToxin>();
+                    target.AddBuff(type, 180);
                 }
 
                 if (BlackLotusEmblem)
                 {
-                    target.AddBuff(mod.BuffType("Moonraze"), 180);
+                    target.AddBuff(ModContent.BuffType<Buffs.Moonraze>(), 180);
                 }
             }
 
@@ -1258,7 +1273,7 @@ namespace AAMod
 
                 if (darkmatterSetSu)
                 {
-                    target.AddBuff(mod.BuffType("Electrified"), 500);
+                    target.AddBuff(ModContent.BuffType<Electrified>(), 500);
                 }
             }
 
@@ -1266,7 +1281,7 @@ namespace AAMod
             {
                 if (darkmatterSetTh)
                 {
-                    target.AddBuff(mod.BuffType("Electrified"), 500);
+                    target.AddBuff(ModContent.BuffType<Electrified>(), 500);
                 }
 
                 if (Alpha && Main.rand.Next(2) == 0 && !target.boss)
@@ -1279,7 +1294,7 @@ namespace AAMod
             {
                 if (Main.rand.Next(30) == 0)
                 {
-                    int i = Item.NewItem(target.Hitbox, mod.ItemType("CarrotBooster"), 1, false, 0, true);
+                    int i = Item.NewItem(target.Hitbox, ModContent.ItemType<CarrotBooster>(), 1, false, 0, true);
                     Main.item[i].velocity = new Vector2(Main.rand.Next(-5, 5), Main.rand.Next(-5, 5));
                 }
             }
@@ -1292,13 +1307,13 @@ namespace AAMod
 
             if (Naitokurosu && (proj.ranged || proj.minion))
             {
-                int buff = Main.dayTime ? BuffID.Venom : ModContent.BuffType<Moonraze>();
+                int buff = Main.dayTime ? BuffID.Venom : ModContent.BuffType<Buffs.Moonraze>();
                 target.AddBuff(buff, 1000);
             }
 
             if (Duality)
             {
-                int buff = Main.dayTime ? BuffID.Daybreak : ModContent.BuffType<Moonraze>();
+                int buff = Main.dayTime ? BuffID.Daybreak : ModContent.BuffType<Buffs.Moonraze>();
                 target.AddBuff(buff, 1000);
             }
 
@@ -1327,27 +1342,27 @@ namespace AAMod
             {
                 if (liquidType == 0 && player.ZoneSnow)
                 {
-                    caughtType = mod.ItemType("IceCrate");
+                    caughtType = ModContent.ItemType<IceCrate>();
                 }
 
                 if (liquidType == 0 && player.ZoneDesert)
                 {
-                    caughtType = mod.ItemType("DesertCrate");
+                    caughtType = ModContent.ItemType<DesertCrate>();
                 }
 
                 if ((liquidType == 0 || liquidType == 1) && player.GetModPlayer<AAPlayer>().ZoneInferno)
                 {
-                    caughtType = mod.ItemType("InfernoCrate");
+                    caughtType = ModContent.ItemType<InfernoCrate>();
                 }
 
                 if (liquidType == 0 && player.GetModPlayer<AAPlayer>().ZoneMire)
                 {
-                    caughtType = mod.ItemType("MireCrate");
+                    caughtType = ModContent.ItemType<MireCrate>();
                 }
 
                 if (liquidType == 0 && player.GetModPlayer<AAPlayer>().ZoneVoid)
                 {
-                    caughtType = mod.ItemType("VoidCrate");
+                    caughtType = ModContent.ItemType<VoidCrate>();
                 }
 
                 if (liquidType == 0 && player.GetModPlayer<AAPlayer>().ZoneHoard)
@@ -1357,34 +1372,34 @@ namespace AAMod
 
                 if (liquidType == 1 && ItemID.Sets.CanFishInLava[fishingRod.type] && player.ZoneUnderworldHeight)
                 {
-                    caughtType = mod.ItemType("HellCrate");
+                    caughtType = ModContent.ItemType<HellCrate>();
                 }
             }
 
-            if (questFish == mod.ItemType("TriHeadedKoi") && player.GetModPlayer<AAPlayer>().ZoneMire && Main.rand.NextBool())
+            if (questFish == ModContent.ItemType<TriHeadedKoi>() && player.GetModPlayer<AAPlayer>().ZoneMire && Main.rand.NextBool())
             {
-                caughtType = mod.ItemType("TriHeadedKoi");
+                caughtType = questFish;
             }
 
-            if (questFish == mod.ItemType("Fishmother") && player.GetModPlayer<AAPlayer>().ZoneInferno && Main.rand.NextBool())
+            if (questFish == ModContent.ItemType<Fishmother>() && player.GetModPlayer<AAPlayer>().ZoneInferno && Main.rand.NextBool())
             {
-                caughtType = mod.ItemType("Fishmother");
+                caughtType = questFish;
             }
 
-            if (questFish == mod.ItemType("GlitchFish") && player.GetModPlayer<AAPlayer>().ZoneVoid && Main.rand.NextBool())
+            if (questFish == ModContent.ItemType<GlitchFish>() && player.GetModPlayer<AAPlayer>().ZoneVoid && Main.rand.NextBool())
             {
-                caughtType = mod.ItemType("GlitchFish");
+                caughtType = questFish;
             }
 
             if (player.GetModPlayer<AAPlayer>().ZoneInferno)
             {
                 if(Main.rand.Next(50) == 0 && Main.hardMode)
                 {
-                    caughtType = mod.ItemType("ScorchShark");
+                    caughtType = ModContent.ItemType<ScorchShark>();
                 }
                 else if(Main.rand.Next(49) == 0)
                 {
-                    caughtType = mod.ItemType("SharpeningLavaFish");
+                    caughtType = ModContent.ItemType<SharpeningLavaFish>();
                 }
             }
 
@@ -1392,11 +1407,11 @@ namespace AAMod
             {
                 if(Main.rand.Next(50) == 0 && Main.hardMode)
                 {
-                    caughtType = mod.ItemType("SwimmingHydra");
+                    caughtType = ModContent.ItemType<SwimmingHydra>();
                 }
                 else if(Main.rand.Next(49) == 0)
                 {
-                    caughtType = mod.ItemType("ToxinMonkfish");
+                    caughtType = ModContent.ItemType<ToxinMonkfish>();
                 }
             }
 
@@ -1438,12 +1453,12 @@ namespace AAMod
             }
 			if (artifactJudgementCharge >= 250)
 			{
-				player.AddBuff(mod.BuffType("EyeOfJudgement"), 900);
+				player.AddBuff(ModContent.BuffType<EyeOfJudgement>(), 900);
 				artifactJudgementCharge = 0;
 			}
 			if (artifactGuiltCharge >= 250)
 			{
-				player.AddBuff(mod.BuffType("EyeOfForsaken"), 900);
+				player.AddBuff(ModContent.BuffType<Buffs.EyeOfForsaken>(), 900);
 				artifactGuiltCharge = 0;
 			}
             if (!Greed1 && !Greed2)
@@ -1469,8 +1484,8 @@ namespace AAMod
 
             if (BasePlayer.HasAccessory(player, ModContent.ItemType<Items.Vanity.HappySunSticker>(), true, true))
             {
-                Main.sunTexture = mod.GetTexture("Backgrounds/DemonSun");
-                Main.sun3Texture = mod.GetTexture("Backgrounds/DemonSunEclipse");
+                Main.sunTexture = ModContent.GetTexture("Backgrounds/DemonSun");
+                Main.sun3Texture = ModContent.GetTexture("Backgrounds/DemonSunEclipse");
             }
             else
             {
@@ -1567,9 +1582,9 @@ namespace AAMod
 
             if (Orbiters)
             {
-                Spheres = BaseAI.GetProjectiles(player.Center, mod.ProjectileType("FireOrbiter"), Main.myPlayer, 48);
+                Spheres = BaseAI.GetProjectiles(player.Center, ModContent.ProjectileType<FireOrbiter>(), Main.myPlayer, 48);
 
-                if (player.ownedProjectileCounts[mod.ProjectileType("FireOrbiter")] > 0)
+                if (player.ownedProjectileCounts[ModContent.ProjectileType<FireOrbiter>()] > 0)
                 {
                     player.minionDamage += AAGlobalProjectile.CountProjectiles(ModContent.ProjectileType<Projectiles.AH.FireOrbiter>()) * .1f;
 
@@ -1732,7 +1747,7 @@ namespace AAMod
                     int i = 0;
                     while (i < 3)
                     {
-                        if(Main.netMode != NetmodeID.MultiplayerClient) Projectile.NewProjectile(Spwanposition[i].X, Spwanposition[i].Y, SpeedVector.X, SpeedVector.Y, mod.ProjectileType("AssassinDagger"), (int)(player.inventory[player.selectedItem].damage * 1.3), 2f, player.whoAmI, 0f, 1f);
+                        if(Main.netMode != NetmodeID.MultiplayerClient) Projectile.NewProjectile(Spwanposition[i].X, Spwanposition[i].Y, SpeedVector.X, SpeedVector.Y, ModContent.ProjectileType<AssassinDagger>(), (int)(player.inventory[player.selectedItem].damage * 1.3), 2f, player.whoAmI, 0f, 1f);
                         float round = 16f;
                         int k = 0;
                         while (k < round)
@@ -1740,7 +1755,7 @@ namespace AAMod
                             Vector2 vector12 = Vector2.UnitX * 0f;
                             vector12 += -Vector2.UnitY.RotatedBy(k * (6.28318548f / round), default) * new Vector2(1f, 4f);
                             vector12 = vector12.RotatedBy(SpeedVector.ToRotation(), default);
-                            int Dusti = Dust.NewDust(Spwanposition[i], 0, 0, mod.DustType("AcidDust"), 0f, 0f, 0, default, 1f);
+                            int Dusti = Dust.NewDust(Spwanposition[i], 0, 0, ModContent.DustType<AcidDust>(), 0f, 0f, 0, default, 1f);
                             Main.dust[Dusti].scale = 1.5f;
                             Main.dust[Dusti].noGravity = true;
                             Main.dust[Dusti].position = Spwanposition[i] + vector12;
@@ -1864,13 +1879,13 @@ namespace AAMod
                 player.armorEffectDrawShadowLokis = true;
             }
 
-            if (ChampionRa && AAMod.ArmorAbilityKey.JustPressed && !player.HasBuff(mod.BuffType("DroneCool")) && 
-                !AAGlobalProjectile.AnyProjectiles(mod.ProjectileType("RajahDrone")))
+            if (ChampionRa && AAMod.ArmorAbilityKey.JustPressed && !player.HasBuff(ModContent.BuffType<DroneCool>()) && 
+                !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<RajahDrone>()))
             {
                 Vector2 vector2;
                 vector2.X = Main.mouseX + Main.screenPosition.X;
                 vector2.Y = Main.mouseY + Main.screenPosition.Y;
-                Projectile.NewProjectile(vector2.X, vector2.Y, 0, 0, mod.ProjectileType("RajahDrone"), (int)(100 * player.rangedDamage), 2, Main.myPlayer, 0f, 0f);
+                Projectile.NewProjectile(vector2.X, vector2.Y, 0, 0, ModContent.ProjectileType<RajahDrone>(), (int)(100 * player.rangedDamage), 2, Main.myPlayer, 0f, 0f);
             }
 
             if (TerraSu)
@@ -1915,9 +1930,9 @@ namespace AAMod
             {
                 for (int i = 0; i < 22; i++)
                 {
-                    if (player.buffType[i] == mod.BuffType("CBoost1") || 
-                        player.buffType[i] == mod.BuffType("CBoost2") ||
-                        player.buffType[i] == mod.BuffType("CBoost3"))
+                    if (player.buffType[i] == ModContent.BuffType<CBoost1>() || 
+                        player.buffType[i] == ModContent.BuffType<CBoost2>() ||
+                        player.buffType[i] == ModContent.BuffType<CBoost3>())
                     {
                         player.DelBuff(i);
                     }
@@ -1938,7 +1953,7 @@ namespace AAMod
             for (int i = 0; i < 58; i++)
 			{
                 item = player.inventory[i];
-				if (item.type == mod.ItemType("RoninPotion") && ItemLoader.CanUseItem(item, player))
+				if (item.type == ModContent.ItemType<RoninPotion>() && ItemLoader.CanUseItem(item, player))
 				{
                     break;
                 }
@@ -1947,7 +1962,7 @@ namespace AAMod
 			{
 				return;
 			}
-			if (player.potionDelay > 0 || (player.statLife == player.statLifeMax2 && item.type != mod.ItemType("RoninPotion")))
+			if (player.potionDelay > 0 || (player.statLife == player.statLifeMax2 && item.type != ModContent.ItemType<RoninPotion>()))
 			{
 				return;
 			}
@@ -2119,7 +2134,7 @@ namespace AAMod
                     Spwanposition[2] = new Vector2(player.Center.X - player.direction * Main.rand.NextFloat(25f, RandomX), player.Center.Y - Main.rand.NextFloat(-RandomY,RandomY));
                     for (int i = 0; i < 3; i++)
                     {
-                        Projectile.NewProjectile(Spwanposition[i].X, Spwanposition[i].Y, speedX, speedY, mod.ProjectileType("AssassinArrow"), (int)(item.damage * 1.3), 2f, player.whoAmI, 0f, 1f);
+                        Projectile.NewProjectile(Spwanposition[i].X, Spwanposition[i].Y, speedX, speedY, ModContent.ProjectileType<AssassinArrow>(), (int)(item.damage * 1.3), 2f, player.whoAmI, 0f, 1f);
                         float round = 16f;
                         int k = 0;
                         while (k < round)
@@ -2127,7 +2142,7 @@ namespace AAMod
                             Vector2 vector12 = Vector2.UnitX * 0f;
                             vector12 += -Vector2.UnitY.RotatedBy(k * (6.28318548f / round), default) * new Vector2(1f, 4f);
                             vector12 = vector12.RotatedBy(SpeedVector.ToRotation(), default);
-                            int Dusti = Dust.NewDust(Spwanposition[i], 0, 0, mod.DustType("AcidDust"), 0f, 0f, 0, default, 1f);
+                            int Dusti = Dust.NewDust(Spwanposition[i], 0, 0, ModContent.DustType<AcidDust>(), 0f, 0f, 0, default, 1f);
                             Main.dust[Dusti].scale = 1.5f;
                             Main.dust[Dusti].noGravity = true;
                             Main.dust[Dusti].position = Spwanposition[i] + vector12;
@@ -3131,7 +3146,7 @@ namespace AAMod
                         {
                             Vector2 shoot = new Vector2((float)Math.Sin(i * 0.25f * 3.1415926f), (float)Math.Cos(i * 0.25f * 3.1415926f));
                             shoot *= 8f;
-                            int id = Projectile.NewProjectile(player.Center.X, player.Center.Y, shoot.X, shoot.Y, mod.ProjectileType("AsheFire"), player.inventory[player.selectedItem].damage, 5, Main.myPlayer, 0f, 1f);
+                            int id = Projectile.NewProjectile(player.Center.X, player.Center.Y, shoot.X, shoot.Y, ModContent.ProjectileType<AsheFire>(), player.inventory[player.selectedItem].damage, 5, Main.myPlayer, 0f, 1f);
                             Main.projectile[id].magic = true;
                             Main.projectile[id].hostile = false;
                             Main.projectile[id].friendly = true;
@@ -3181,7 +3196,7 @@ namespace AAMod
                     vector2.X = Main.mouseX + Main.screenPosition.X;
                     vector2.Y = Main.mouseY + Main.screenPosition.Y;
 
-                    Projectile.NewProjectile(player.Center.X, player.Center.Y, speedX, speedY, mod.ProjectileType("DragonShot"), damage, knockback, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(player.Center.X, player.Center.Y, speedX, speedY, ModContent.ProjectileType<DragonShot>(), damage, knockback, Main.myPlayer, 0f, 0f);
                 }
             }
 
@@ -3204,7 +3219,7 @@ namespace AAMod
             for (int i = 0; i < 58; i++)
             {
                 Item item = player.inventory[i];
-                if (item.type == mod.ItemType("ShinyCharm"))
+                if (item.type == ModContent.ItemType<ShinyCharm>())
                 {
                     if (Main.rand.Next(2048) == 0)
                     {
@@ -3485,25 +3500,16 @@ namespace AAMod
                 {
                     for (int i = 0; i < 54; i++)
                     {
-                        if (player.inventory[i].type == ItemID.CopperCoin)
+                        int type = player.inventory[i].type;
+                        switch (type)
                         {
-                            player.inventory[i].stack = 0;
-                            player.inventory[i].TurnToAir();
-                        }
-                        if (player.inventory[i].type == ItemID.SilverCoin)
-                        {
-                            player.inventory[i].stack = 0;
-                            player.inventory[i].TurnToAir();
-                        }
-                        if (player.inventory[i].type == ItemID.GoldCoin)
-                        {
-                            player.inventory[i].stack = 0;
-                            player.inventory[i].TurnToAir();
-                        }
-                        if (player.inventory[i].type == ItemID.PlatinumCoin)
-                        {
-                            player.inventory[i].stack = 0;
-                            player.inventory[i].TurnToAir();
+                            case ItemID.CopperCoin:
+                            case ItemID.SilverCoin:
+                            case ItemID.GoldCoin:
+                            case ItemID.PlatinumCoin:
+                                player.inventory[i].stack = 0;
+                                player.inventory[i].TurnToAir();
+                                break;
                         }
                     }
                     damage = 0;
@@ -3558,7 +3564,7 @@ namespace AAMod
             {
                 if (Main.rand.Next(4) == 0 && drawInfo.shadow == 0f)
                 {
-                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, mod.DustType("ForsakenDust"), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, default, 1.5f);
+                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, ModContent.DustType<ForsakenDust>(), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, default, 1.5f);
 
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].velocity *= 1.8f;
@@ -3575,7 +3581,7 @@ namespace AAMod
             {
                 if (Main.rand.Next(4) == 0 && drawInfo.shadow == 0f)
                 {
-                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, mod.DustType("InfinityOverloadB"), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100);
+                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, ModContent.DustType<InfinityOverloadB>(), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100);
 
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].velocity *= 1.8f;
@@ -3590,7 +3596,7 @@ namespace AAMod
 
                 if (Main.rand.Next(4) == 0 && drawInfo.shadow == 0f)
                 {
-                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, mod.DustType("InfinityOverloadR"), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100);
+                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, ModContent.DustType<InfinityOverloadR>(), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100);
 
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].velocity *= 1.8f;
@@ -3605,7 +3611,7 @@ namespace AAMod
 
                 if (Main.rand.Next(4) == 0 && drawInfo.shadow == 0f)
                 {
-                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, mod.DustType("InfinityOverloadG"), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100);
+                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, ModContent.DustType<InfinityOverloadG>(), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100);
 
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].velocity *= 1.8f;
@@ -3620,7 +3626,7 @@ namespace AAMod
 
                 if (Main.rand.Next(4) == 0 && drawInfo.shadow == 0f)
                 {
-                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, mod.DustType("InfinityOverloadY"), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100);
+                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, ModContent.DustType<InfinityOverloadY>(), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100);
 
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].velocity *= 1.8f;
@@ -3635,7 +3641,7 @@ namespace AAMod
 
                 if (Main.rand.Next(4) == 0 && drawInfo.shadow == 0f)
                 {
-                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, mod.DustType("InfinityOverloadP"), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100);
+                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, ModContent.DustType<InfinityOverloadP>(), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100);
 
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].velocity *= 1.8f;
@@ -3650,7 +3656,7 @@ namespace AAMod
 
                 if (Main.rand.Next(4) == 0 && drawInfo.shadow == 0f)
                 {
-                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, mod.DustType("InfinityOverloadO"), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100);
+                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, ModContent.DustType<InfinityOverloadO>(), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100);
 
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].velocity *= 1.8f;
@@ -3759,15 +3765,15 @@ namespace AAMod
         {
             if (ZoneMire || ZoneRisingMoonLake)
             {
-                return mod.GetTexture("Map/MireMap");
+                return ModContent.GetTexture("Map/MireMap");
             }
             else if (ZoneInferno || ZoneRisingSunPagoda)
             {
-                return mod.GetTexture("Map/InfernoMap");
+                return ModContent.GetTexture("Map/InfernoMap");
             }
             else if (ZoneVoid)
             {
-                return mod.GetTexture("Map/VoidMap");
+                return ModContent.GetTexture("Map/VoidMap");
             }
 
             return null;
@@ -3833,7 +3839,7 @@ namespace AAMod
             for (int n = 10; n < 18 + player.extraAccessorySlots; n++)
             {
                 Item item = player.armor[n];
-                if (item.type == mod.ItemType("StripeManShirt"))
+                if (item.type == ModContent.ItemType<StripeManShirt>())
                 {
                     player.accWatch = 3;
                     player.accDepthMeter = 1;
@@ -3853,7 +3859,7 @@ namespace AAMod
                     onoHideVanity = false;
                     onoForceVanity = true;
                 }
-                if (item.type == mod.ItemType("Equinox"))
+                if (item.type == ModContent.ItemType<Equinox>())
                 {
                     player.hideWolf = false;
                     player.forceWerewolf = true;
