@@ -604,7 +604,7 @@ namespace AAMod
 
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
         {
-            if (!GenAAContent && Main.maxTilesX <= 4200)
+            if (!GenAAContent)
             {
                 return;
             }
@@ -612,10 +612,13 @@ namespace AAMod
             int shiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Shinies"));
             if (shiniesIndex > -1)
             {
-                tasks.Insert(shiniesIndex + 2, new PassLegacy("SmallWorldWarning", delegate (GenerationProgress progress)
+                if (Main.maxTilesX <= 4200)
                 {
-                    SmallWarning();
-                }));
+                    tasks.Insert(shiniesIndex + 2, new PassLegacy("SmallWorldWarning", delegate (GenerationProgress progress)
+                    {
+                        SmallWarning();
+                    }));
+                }
                 tasks.Insert(shiniesIndex + 2, new PassLegacy("Prisms", delegate (GenerationProgress progress)
                 {
                     GenPrisms(progress);
@@ -957,7 +960,7 @@ namespace AAMod
             private void CloseButtonClicked(UIMouseEvent evt, UIElement listeningElement)
             {
                 Main.PlaySound(SoundID.MenuOpen, -1, -1, 1);
-                GenAAContent = true;
+                GenAAContent = false;
                 continueWorldGen = false;
             }
 
