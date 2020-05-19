@@ -3765,15 +3765,15 @@ namespace AAMod
         {
             if (ZoneMire || ZoneRisingMoonLake)
             {
-                return ModContent.GetTexture("Map/MireMap");
+                return mod.GetTexture("Map/MireMap");
             }
             else if (ZoneInferno || ZoneRisingSunPagoda)
             {
-                return ModContent.GetTexture("Map/InfernoMap");
+                return mod.GetTexture("Map/InfernoMap");
             }
             else if (ZoneVoid)
             {
-                return ModContent.GetTexture("Map/VoidMap");
+                return mod.GetTexture("Map/VoidMap");
             }
 
             return null;
