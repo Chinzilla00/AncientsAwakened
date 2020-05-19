@@ -3,6 +3,8 @@ using Terraria.ID;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria.ModLoader;
+using AAMod.Projectiles.Greed.WKG;
+using AAMod.Items.Blocks;
 
 namespace AAMod.Items.Boss.Greed.WKG
 {
@@ -19,7 +21,6 @@ OreCannonEX");
 
         public override void SetDefaults()
         {
-
             item.damage = 700;
             item.noMelee = true;
             item.ranged = true;
@@ -90,7 +91,7 @@ OreCannonEX");
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-            int p = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("OreChunk"), damage + Damage(), knockBack, player.whoAmI);
+            int p = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ModContent.ProjectileType<OreChunk>(), damage + Damage(), knockBack, player.whoAmI);
             Main.projectile[p].ai[1] = projType;
             if (Main.projectile[p].ai[1] == ItemID.TinOre || Main.projectile[p].ai[1] == ItemID.CopperOre)
             {
@@ -135,7 +136,7 @@ OreCannonEX");
                     num92 *= Main.rand.Next(75, 150) * 0.01f;
                     vector2.X += Main.rand.Next(-50, 51);
                     Vector2 speedfinal = Vector2.Normalize(new Vector2(num92, speedY2)) * (new Vector2(speedX, speedY)).Length();
-                    Projectile.NewProjectile(vector2.X, vector2.Y, speedfinal.X, speedfinal.Y, mod.ProjectileType("OreChunk"), damage + Damage(), knockBack, player.whoAmI, 0f, ItemID.Meteorite);
+                    Projectile.NewProjectile(vector2.X, vector2.Y, speedfinal.X, speedfinal.Y, ModContent.ProjectileType<OreChunk>(), damage + Damage(), knockBack, player.whoAmI, 0f, ItemID.Meteorite);
                 }
             }
             else if (Main.projectile[p].ai[1] == ItemID.CobaltOre)
@@ -158,14 +159,14 @@ OreCannonEX");
                 for (int i = 0; i < 2; i++)
                 {
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20));
-                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("OreChunk"), damage + (int)(Damage() * 0.8), knockBack, player.whoAmI, 0, ItemID.TitaniumOre);
+                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, ModContent.ProjectileType<OreChunk>(), damage + (int)(Damage() * 0.8), knockBack, player.whoAmI, 0, ItemID.TitaniumOre);
                 }
             }
             else if(Main.projectile[p].ai[1] == ItemID.LunarOre)
             {
                 Main.projectile[p].velocity *= 2;
             }
-            else if(Main.projectile[p].ai[1] == mod.ItemType("RadiumOre"))
+            else if(Main.projectile[p].ai[1] == ModContent.ItemType<RadiumOre>())
             {
                 Main.projectile[p].damage = (int)(Main.projectile[p].damage / 1.3);
                 Main.projectile[p].velocity /= 2;
@@ -175,18 +176,17 @@ OreCannonEX");
 
         public int Damage()
         {
-            int orevalue = 0;
-            if(Config.LuckyOre.TryGetValue(projType, out orevalue))
+            if (Config.LuckyOre.TryGetValue(projType, out int orevalue))
             {
-                return (int)Math.Exp(orevalue * 0.94/100);
+                return (int)Math.Exp(orevalue * 0.94 / 100);
             }
-            else if(projType == ItemID.Hellstone)
+            else if (projType == ItemID.Hellstone)
             {
-                return (int)Math.Exp(500 * 0.94/100);
+                return (int)Math.Exp(500 * 0.94 / 100);
             }
             else
             {
-                return (int)Math.Exp(100 * 0.94/100);
+                return (int)Math.Exp(100 * 0.94 / 100);
             }
         }
 
