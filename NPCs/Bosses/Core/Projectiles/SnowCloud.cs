@@ -22,12 +22,12 @@ namespace AAMod.NPCs.Bosses.Core.Projectiles
 			projectile.penetrate = -1;
 		}
 
-        public override void AI()
-        {
-
+		public override void AI()
+		{
 			Move(new Vector2(projectile.ai[0], projectile.ai[1]));
 			if (Vector2.Distance(projectile.Center, new Vector2(projectile.ai[0], projectile.ai[1])) < 10)
 			{
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<SnowCloud1>(), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
 				Kill(projectile.timeLeft);
 			}
 
@@ -43,11 +43,6 @@ namespace AAMod.NPCs.Bosses.Core.Projectiles
 					return;
 				}
 			}
-		}
-
-		public override void Kill(int timeLeft)
-		{
-			Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<SnowCloud1>(), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
 		}
 
 		public void Move(Vector2 point)
@@ -79,6 +74,7 @@ namespace AAMod.NPCs.Bosses.Core.Projectiles
 			projectile.height = 28;
 			projectile.aiStyle = -1;
 			projectile.penetrate = -1;
+			projectile.timeLeft = 240;
 		}
 
 		public override void AI()
@@ -93,8 +89,8 @@ namespace AAMod.NPCs.Bosses.Core.Projectiles
 					projectile.frame = 0;
 				}
 			}
-			projectile.ai[1] += 1f;
-			if (projectile.ai[1] >= 7200f)
+
+			if (projectile.timeLeft < 60)
 			{
 				projectile.alpha += 5;
 				if (projectile.alpha > 255)
@@ -105,18 +101,27 @@ namespace AAMod.NPCs.Bosses.Core.Projectiles
 			}
 			else
 			{
-				projectile.ai[0] += 1f;
-				if (projectile.ai[0] > 8f)
+				if (projectile.ai[0]++ > 10f)
 				{
-					projectile.ai[0] = 0f;
 					if (projectile.owner == Main.myPlayer)
 					{
 						int X = (int)(projectile.position.X + 14f + Main.rand.Next(projectile.width - 28));
 						int Y = (int)(projectile.position.Y + projectile.height + 4f);
 						Projectile.NewProjectile(X, Y, 0f, 5f, ModContent.ProjectileType<Snowflakes>(), projectile.damage, 0f, projectile.owner, 0f, 0f);
 					}
+					projectile.ai[0] = 0f;
 				}
 			}
+		}
+
+		public override void Kill(int a)
+		{
+			int X = (int)(projectile.position.X + 14f + Main.rand.Next(projectile.width - 28));
+			int Y = (int)(projectile.position.Y + projectile.height + 4f);
+
+			Projectile.NewProjectile(X, Y, -2f, -3f, ModContent.ProjectileType<Snowflakes>(), projectile.damage, 0f, projectile.owner, 0f, 0f);
+			Projectile.NewProjectile(X, Y, 0f, -5f, ModContent.ProjectileType<Snowflakes>(), projectile.damage, 0f, projectile.owner, 0f, 0f);
+			Projectile.NewProjectile(X, Y, 2f, -3f, ModContent.ProjectileType<Snowflakes>(), projectile.damage, 0f, projectile.owner, 0f, 0f);
 		}
 	}
 }

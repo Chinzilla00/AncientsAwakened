@@ -77,15 +77,6 @@ namespace AAMod.NPCs.Bosses.Core.Projectiles
         {
             projectile.ai[0]++;
 
-            for (int d = 0; d < 25; d++)
-            {
-                Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), 250, 2, Main.rand.Next(3) == 0 ? DustID.Dirt : DustID.Stone);
-            }
-
-            if (projectile.ai[0] % 45 == 0)
-            {
-                Projectile.NewProjectile(new Vector2(projectile.position.X + Main.rand.Next(250), projectile.position.Y), Vector2.Zero, ModContent.ProjectileType<Rock>(), 50 / 4, 0, Main.myPlayer);
-            }
 
             if (Main.npc[(int)projectile.ai[0]].ai[1] != 2)
             {

@@ -324,9 +324,16 @@ namespace AAMod.NPCs.Bosses.Core
                         break;
                     case 8: //Cavern
 
-                        if (npc.ai[0] == 91)
+                        Vector2 RockPos = npc.Center - new Vector2(125, 100);
+
+                        for (int d = 0; d < 10; d++)
                         {
-                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<RockFall>(), 40, 0, Main.myPlayer, npc.whoAmI);
+                            Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), 250, 2, Main.rand.Next(3) == 0 ? DustID.Dirt : DustID.Stone);
+                        }
+
+                        if (npc.ai[0] % 45 == 0)
+                        {
+                            Projectile.NewProjectile(new Vector2(RockPos.X + Main.rand.Next(250), RockPos.Y), Vector2.Zero, ModContent.ProjectileType<Rock>(), 50 / 4, 0, Main.myPlayer);
                         }
 
                         break;
@@ -445,7 +452,7 @@ namespace AAMod.NPCs.Bosses.Core
                         break;
                 }
 
-                int ChangeRate = (npc.life < (int)(npc.lifeMax * .66f)) ? 300 : (npc.life < npc.lifeMax / 3) ? 450 : 600;
+                int ChangeRate = (npc.life < (int)(npc.lifeMax * .66f)) ? 220 : (npc.life < npc.lifeMax / 3) ? 260 : 300;
 
                 if (npc.ai[0] > ChangeRate)
                 {
@@ -594,7 +601,7 @@ namespace AAMod.NPCs.Bosses.Core
                 case 3:
                     return new Color(104, 90, 144);
                 case 4:
-                    return Color.LightGreen;
+                    return Color.DarkGreen;
                 case 5:
                     return Color.OrangeRed;
                 case 6:
