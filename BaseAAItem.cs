@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.Items
+namespace AAMod
 {
     public abstract class BaseAAItem : ModItem
     {
@@ -58,9 +58,10 @@ namespace AAMod.Items
                 }
                 return;
             }
-
+	    
+	    
             BaseAAItem AAitem = (BaseAAItem)item.modItem;
-            if (AAitem.AARarity != 0)
+            if (AAItem != null && AAitem.AARarity != 0)
             {
                 Color Rare;
                 switch (AAitem.AARarity)
