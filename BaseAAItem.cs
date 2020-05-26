@@ -60,8 +60,7 @@ namespace AAMod
             }
 	    
 	    
-            BaseAAItem AAitem = (BaseAAItem)item.modItem;
-            if (AAitem != null && AAitem.AARarity != 0)
+            if (item.modItem is BaseAAItem AAitem && AAitem.AARarity != 0)
             {
                 Color Rare;
                 switch (AAitem.AARarity)
