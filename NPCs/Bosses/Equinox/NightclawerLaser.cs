@@ -190,7 +190,7 @@ namespace AAMod.NPCs.Bosses.Equinox
                 else if (num291 == 1)
                 {
                     scale16 = new Vector2(projectile.scale) * 0.4f;
-                    DelegateMethods.c_1 = AAColor.Nightcrawler * 0.5f;
+                    DelegateMethods.c_1 = Globals.AAColor.Nightcrawler * 0.5f;
                 }
                 else
                 {

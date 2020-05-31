@@ -1,7 +1,6 @@
+using AAMod.Globals;
 using System;
-
 using Terraria;
-
 
 namespace AAMod.Projectiles.AH
 {

@@ -1,4 +1,5 @@
 using System;
+using AAMod.CrossMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -46,7 +47,7 @@ namespace AAMod.NPCs.Enemies.BiomeGuardians
 				}
 			}
             BaseAI.DropItem(npc, mod.ItemType("AcidSac"), 1 + Main.rand.Next(2) + (Main.expertMode ? 2 : 0), 2, 65, true);
-			if(ModSupport.GetMod("CalamityMod") != null)
+			if(ModLoader.GetMod("CalamityMod") != null)
 			{
                 BaseAI.DropItem(npc, ModSupport.GetModItem("CalamityMod", "BeetleJuice").item.type, 1, 1, 65, true);
                 BaseAI.DropItem(npc, ModSupport.GetModItem("CalamityMod", "EssenceofCinder").item.type, 1, 1, Main.expertMode ? 20 : 15, true);

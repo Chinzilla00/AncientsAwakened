@@ -61,7 +61,7 @@ namespace AAMod.Items.Pets
             Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 5, 0, 0);
 
             BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 5, frame, lightColor, true);
-            BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture("Glowmasks/ZeroBab_Glow"), 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 5, frame, AAColor.COLOR_WHITEFADE1, true);
+            BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture("Glowmasks/ZeroBab_Glow"), 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 5, frame, Globals.AAColor.COLOR_WHITEFADE1, true);
             return false;
         }
     }

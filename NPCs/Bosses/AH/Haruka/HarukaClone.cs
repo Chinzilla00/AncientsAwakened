@@ -53,7 +53,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 npc.life = 0;
                 npc.active = false;
             }
-            if(((Haruka)Haruka.modNPC).internalAI[0] != 4)
+            if(Haruka.modNPC is Haruka haruka && haruka.internalAI[0] != 4)
             {
                 npc.boss = false;
                 npc.life = 0;

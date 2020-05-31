@@ -27,7 +27,7 @@ namespace AAMod.Items.Summoning.Minions
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return AAColor.Snow;
+            return Globals.AAColor.Snow;
         }
 
         public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)

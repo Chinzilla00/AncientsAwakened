@@ -44,7 +44,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
         public override Color? GetAlpha(Color drawColor)
         {
-            return AAColor.Oblivion;
+            return Globals.AAColor.Oblivion;
         }
 
         public Vector2 point = new Vector2(0f,0f);

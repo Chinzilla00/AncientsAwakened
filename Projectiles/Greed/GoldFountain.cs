@@ -47,7 +47,7 @@ namespace AAMod.Projectiles.Greed
                 projectile.alpha -= 5;
             }
 
-            int FountainCount = AAGlobalProjectile.CountProjectiles(ModContent.ProjectileType<GoldFountain>());
+            int FountainCount = Globals.AAGlobalProjectile.CountProjectiles(ModContent.ProjectileType<GoldFountain>());
             if (FountainCount < 1) FountainCount = 1;
             if (Main.netMode != NetmodeID.MultiplayerClient && projectile.ai[0]++ >= 5 * FountainCount)
             {

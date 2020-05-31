@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AAMod.CrossMod;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
@@ -76,7 +77,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public Color GetGlowAlpha()
         {
-            return AAColor.ZeroShield;
+            return Globals.AAColor.ZeroShield;
         }
 
 
@@ -95,7 +96,7 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             BaseDrawing.DrawTexture(spritebatch, Shield, 0, npc.position, npc.width, npc.height, ShieldScale, 0, 0, 1, new Rectangle(0, 0, Shield.Width, Shield.Height), GetGlowAlpha(), true);
             BaseDrawing.DrawTexture(spritebatch, Ring, 0, npc.position, npc.width, npc.height, 1, RingRoatation, 0, 1, new Rectangle(0, 0, RingGlow.Width, RingGlow.Height), drawColor, true);
-            BaseDrawing.DrawTexture(spritebatch, RingGlow, 0, npc.position, npc.width, npc.height, 1, RingRoatation, 0, 1, new Rectangle(0, 0, RingGlow.Width, RingGlow.Height), AAColor.COLOR_WHITEFADE1, true);
+            BaseDrawing.DrawTexture(spritebatch, RingGlow, 0, npc.position, npc.width, npc.height, 1, RingRoatation, 0, 1, new Rectangle(0, 0, RingGlow.Width, RingGlow.Height), Globals.AAColor.COLOR_WHITEFADE1, true);
             
             return false;
         }
@@ -163,7 +164,7 @@ namespace AAMod.NPCs.Bosses.Zero
 			Point spawnTilePos = new Point((Main.maxTilesX / 15 * 14) + (Main.maxTilesX / 15 / 2) - 100, VoidHeight);				
 			Vector2 spawnPos = new Vector2(spawnTilePos.X * 16, spawnTilePos.Y * 16);
 			bool anyZerosExist = NPC.AnyNPCs(mod.NPCType("ZeroDeactivated")) || NPC.AnyNPCs(mod.NPCType("Zero")) || NPC.AnyNPCs(mod.NPCType("ZeroProtocol")) || NPC.AnyNPCs(mod.NPCType("ZeroTransition"));			
-			if(ModSupport.GetMod("AAModEXAI") != null)
+			if(ModLoader.GetMod("AAModEXAI") != null)
             {
                 anyZerosExist = anyZerosExist || NPC.AnyNPCs(ModSupport.GetModNPC("AAModEXAI", "Zero").npc.type) || NPC.AnyNPCs(ModSupport.GetModNPC("AAModEXAI", "ZeroProtocol").npc.type);
             }

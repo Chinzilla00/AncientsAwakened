@@ -40,7 +40,7 @@ namespace AAMod.Tiles
             if (glow && tile != null && tile.active() && tile.type == Type)
             {
                 if (glowTex == null) glowTex = mod.GetTexture("Tiles/TerraLeaves");
-                BaseDrawing.DrawTileTexture(sb, glowTex, x, y, true, false, false, null, AAGlobalTile.GetTerra2ColorDim);
+                BaseDrawing.DrawTileTexture(sb, glowTex, x, y, true, false, false, null, Globals.AAGlobalTile.GetTerra2ColorDim);
             }
         }
 

@@ -18,7 +18,7 @@ namespace AAMod.Items.Boss.Zero
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return AAColor.Oblivion;
+            return Globals.AAColor.Oblivion;
         }
 
         public override void SetDefaults()
@@ -49,7 +49,7 @@ namespace AAMod.Items.Boss.Zero
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Rarity13;
+                    line2.overrideColor = Globals.AAColor.Rarity13;
                 }
             }
         }
@@ -99,7 +99,7 @@ namespace AAMod.Items.Boss.Zero
 
         public override void PostUpdate()
         {
-            Lighting.AddLight(item.Center, AAColor.Oblivion.ToVector3() * 0.55f * Main.essScale);
+            Lighting.AddLight(item.Center, Globals.AAColor.Oblivion.ToVector3() * 0.55f * Main.essScale);
         }
     }
 }

@@ -36,7 +36,7 @@ The power of discordian rage radiates from this armor");
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Rarity14;
+                    line2.overrideColor = Globals.AAColor.Rarity14;
                 }
             }
         }
@@ -75,7 +75,7 @@ The power of discordian rage radiates from this armor");
         public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
             Texture2D Glow = mod.GetTexture("Glowmasks/PerfectChaosKabuto_Glow");
-            spriteBatch.Draw(Glow, position, null, AAColor.Shen3, 0, origin, scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw(Glow, position, null, Globals.AAColor.Shen3, 0, origin, scale, SpriteEffects.None, 0f);
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
@@ -90,7 +90,7 @@ The power of discordian rage radiates from this armor");
                     item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
                 ),
                 new Rectangle(0, 0, texture.Width, texture.Height),
-                AAColor.Shen3,
+                Globals.AAColor.Shen3,
                 rotation,
                 texture.Size() * 0.5f,
                 scale,

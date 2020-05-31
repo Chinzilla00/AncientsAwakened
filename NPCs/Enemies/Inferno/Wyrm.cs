@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 using Terraria.Audio;
+using AAMod.Misc;
 
 namespace AAMod.NPCs.Bosses.Wyrm
 {
@@ -48,7 +49,6 @@ namespace AAMod.NPCs.Bosses.Wyrm
         public override bool PreAI()
         {
             Lighting.AddLight(npc.Center, Color.DarkOrange.R / 255, Color.DarkOrange.G / 255, Color.DarkOrange.B / 255);
-            Player player = Main.player[npc.target];
             if (npc.alpha != 0)
             {
                 for (int spawnDust = 0; spawnDust < 2; spawnDust++)
@@ -211,7 +211,6 @@ namespace AAMod.NPCs.Bosses.Wyrm
                 if (npc.position.Y > Main.rockLayer * 16.0)
                 {
                     npc.velocity.Y = npc.velocity.Y + 1f;
-                    speed = 30f;
                 }
                 if (npc.position.Y > Main.rockLayer * 16.0)
                 {
@@ -252,7 +251,7 @@ namespace AAMod.NPCs.Bosses.Wyrm
         {
             Texture2D texture = Main.npcTexture[npc.type];
             var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-            spriteBatch.Draw(texture, npc.Center - Main.screenPosition, npc.frame, drawColor, npc.rotation, npc.frame.Size() / 2, npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+            spriteBatch.Draw(texture, npc.Center - Main.screenPosition, npc.frame, drawColor, npc.rotation, npc.frame.Size() / 2, npc.scale, effects, 0f);
             return false;
         }
 

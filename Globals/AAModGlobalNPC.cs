@@ -36,8 +36,9 @@ using AAMod.NPCs.Enemies.Mire;
 using AAMod.NPCs.Enemies.Mire.Toxitoad;
 using AAMod.NPCs.Enemies.Void;
 using AAMod.NPCs.Critters;
+using AAMod.Misc;
 
-namespace AAMod
+namespace AAMod.Globals
 {
     public class AAModGlobalNPC : GlobalNPC
     {
@@ -256,14 +257,6 @@ namespace AAMod
                     npc.DropLoot(ModContent.ItemType<PlanteraPetal>(), Main.rand.Next(30, 40));
                     npc.DropLoot(ItemID.ChlorophyteOre, Main.rand.Next(50, 80));
                     break;
-                /* class didn't exist fsr
-                case NPCID.GreekSkeleton:
-                    if (Main.rand.NextFloat() < 0.1f)
-                    {
-                        npc.DropLoot(ModContent.ItemType<GladiatorsGlory>());
-                    }
-                    break;
-                */
                 case NPCID.DukeFishron:
                     if (Main.rand.NextFloat() < 0.1f)
                     {
@@ -438,26 +431,6 @@ namespace AAMod
                     npc.DropLoot(ModContent.ItemType<GoldenCarrot>());
                 }
             }
-
-            /* couldnt find this either
-            if (npc.type == NPCID.GiantFlyingFox)
-            {
-                if (Main.rand.NextBool(4))
-                {
-                    npc.DropLoot(ModContent.ItemType<TheFox>());
-                }
-            }
-            */
-
-            /* or this!
-            if (npc.type == NPCID.Necromancer)
-            {
-                if (Main.rand.NextFloat() < 0.1f)
-                {
-                    npc.DropLoot(ModContent.ItemType<Exorcist>());
-                }
-            }
-            */
 
             if (Main.hardMode)
             {
@@ -1385,7 +1358,7 @@ namespace AAMod
             else
             {
                 //I have no idea how to convert this to the standard system so im gonna post this method too lol
-                AANet.SendNetMessage(AANet.SummonNPCFromClient, (byte)player.whoAmI, (short)bossType, spawnMessage, (int)npcCenter.X, (int)npcCenter.Y, overrideDisplayName, namePlural);
+                Globals.AANet.SendNetMessage(Globals.AANet.SummonNPCFromClient, (byte)player.whoAmI, (short)bossType, spawnMessage, (int)npcCenter.X, (int)npcCenter.Y, overrideDisplayName, namePlural);
             }
         }
 
@@ -1416,7 +1389,7 @@ namespace AAMod
             else
             {
                 //I have no idea how to convert this to the standard system so im gonna post this method too lol
-                AANet.SendNetMessage(AANet.SummonNPCFromClient, (byte)player.whoAmI, (short)RajahType, spawnMessage, (int)npcCenter.X, (int)npcCenter.Y, overrideDisplayName, namePlural);
+                Globals.AANet.SendNetMessage(Globals.AANet.SummonNPCFromClient, (byte)player.whoAmI, (short)RajahType, spawnMessage, (int)npcCenter.X, (int)npcCenter.Y, overrideDisplayName, namePlural);
             }
         }
     }

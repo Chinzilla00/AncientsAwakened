@@ -33,7 +33,7 @@ namespace AAMod.Items.FishingItem.Crate
 
         public override void RightClick(Player player)
         {
-            AAModGlobalItem.OpenAACrate(player, 1);
+            Globals.AAModGlobalItem.OpenAACrate(player, 1);
         }
     }
 }

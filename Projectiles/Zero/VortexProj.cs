@@ -70,7 +70,7 @@ namespace AAMod.Projectiles.Zero
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return AAColor.ZeroShield;
+            return Globals.AAColor.ZeroShield;
         }
 
         private int HomeOnTarget()

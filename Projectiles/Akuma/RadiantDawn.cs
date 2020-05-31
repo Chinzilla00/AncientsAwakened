@@ -30,7 +30,7 @@ namespace AAMod.Projectiles.Akuma
             projectile.ignoreWater = true;
         }
 
-        public Color GlowColor = AAColor.Akuma;
+        public Color GlowColor = Globals.AAColor.Akuma;
 
         public override void AI()
         {
@@ -109,7 +109,7 @@ namespace AAMod.Projectiles.Akuma
 
             if (counter >= 60)
             {
-                GlowColor = AAColor.AkumaA;
+                GlowColor = Globals.AAColor.AkumaA;
                 chargeLevel = 2;
             }
             else if (counter >= 40)

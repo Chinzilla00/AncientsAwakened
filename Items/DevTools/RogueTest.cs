@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.DevTools
 {
@@ -35,7 +36,7 @@ namespace AAMod.Items.DevTools
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-            if (ModSupport.GetMod("CalamityMod") != null)
+            if (ModLoader.GetMod("CalamityMod") != null)
             {
                 int num = Projectile.NewProjectile(position, new Vector2(speedX, speedY), mod.ProjectileType("Noodle"), damage, knockBack, player.whoAmI, 0f, 1f);
                 Main.projectile[num].GetGlobalProjectile<RogueProj>().rogue = true;
@@ -59,7 +60,7 @@ namespace AAMod.Items.DevTools
 
         public override void UpdateInventory(Player player)
         {
-            if (ModSupport.GetMod("CalamityMod") == null)
+            if (ModLoader.GetMod("CalamityMod") == null)
             {
                 item.TurnToAir();
             }

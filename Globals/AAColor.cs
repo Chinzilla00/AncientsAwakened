@@ -3,7 +3,7 @@ using Terraria;
 
 using System;
 
-namespace AAMod
+namespace AAMod.Globals
 {
 	public static class AAColor
     {

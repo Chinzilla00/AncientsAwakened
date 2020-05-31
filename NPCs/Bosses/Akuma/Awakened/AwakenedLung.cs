@@ -51,7 +51,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         {
             Player player = Main.player[npc.target];
        
-            AAAI.DustOnNPCSpawn(npc, mod.DustType("AkumaADust"), 2, 12);
+            Globals.AAAI.DustOnNPCSpawn(npc, mod.DustType("AkumaADust"), 2, 12);
 
             npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
             npc.ai[1]++;
@@ -337,7 +337,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             if (Main.player[npc.target].dead && npc.timeLeft > 300)
                 npc.timeLeft = 300;
 
-            AAAI.DustOnNPCSpawn(npc, mod.DustType("AkumaADust"), 2, 12);
+            Globals.AAAI.DustOnNPCSpawn(npc, mod.DustType("AkumaADust"), 2, 12);
 
             if (Main.netMode != NetmodeID.MultiplayerClient)
             {
@@ -438,7 +438,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 npc.TargetClosest(true);
             if (Main.player[npc.target].dead && npc.timeLeft > 300)
                 npc.timeLeft = 300;
-            AAAI.DustOnNPCSpawn(npc, mod.DustType("AkumaADust"), 2, 12);
+            Globals.AAAI.DustOnNPCSpawn(npc, mod.DustType("AkumaADust"), 2, 12);
 
             if (Main.netMode != NetmodeID.MultiplayerClient)
             {

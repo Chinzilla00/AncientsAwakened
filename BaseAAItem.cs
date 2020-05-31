@@ -66,10 +66,10 @@ namespace AAMod
                 switch (AAitem.AARarity)
                 {
                     default: Rare = Color.White; break;
-                    case 12: Rare = AAColor.Rarity12; break; //Ashe and Haruka
-                    case 13: Rare = AAColor.Rarity13; break; //Ancients
-                    case 14: Rare = AAColor.Rarity14; break; //Super Ancients	
-                    case 15: Rare = AAColor.Rarity15; break; //Hyper Ancients				
+                    case 12: Rare = Globals.AAColor.Rarity12; break; //Ashe and Haruka
+                    case 13: Rare = Globals.AAColor.Rarity13; break; //Ancients
+                    case 14: Rare = Globals.AAColor.Rarity14; break; //Super Ancients	
+                    case 15: Rare = Globals.AAColor.Rarity15; break; //Hyper Ancients				
                 }
                 foreach (TooltipLine line2 in list)
                 {

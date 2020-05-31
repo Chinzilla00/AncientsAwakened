@@ -1,7 +1,7 @@
+using AAMod.Globals;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
-
 using Terraria.ModLoader;
 
 namespace AAMod.Projectiles.Akuma

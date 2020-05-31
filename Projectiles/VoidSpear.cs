@@ -21,7 +21,7 @@ namespace AAMod.Projectiles
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return AAColor.COLOR_WHITEFADE1;
+            return Globals.AAColor.COLOR_WHITEFADE1;
         }
 
         public override void Kill(int timeleft)

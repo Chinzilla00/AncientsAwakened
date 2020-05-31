@@ -4,6 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 using AAMod.Dusts;
+using AAMod.Misc;
 
 namespace AAMod.NPCs.Enemies.Other
 {

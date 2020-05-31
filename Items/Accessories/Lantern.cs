@@ -38,7 +38,7 @@ namespace AAMod.Items.Accessories
                     item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
                 ),
                 new Rectangle(0, 0, texture.Width, texture.Height),
-                AAColor.Lantern,
+                Globals.AAColor.Lantern,
                 rotation,
                 texture.Size() * 0.5f,
                 scale,
@@ -55,7 +55,7 @@ namespace AAMod.Items.Accessories
             for (int i = 0; i < 4; i++)
             {
                 //Vector2 offsetPositon = Vector2.UnitY.RotatedBy(MathHelper.PiOver2 * i) * 2;
-                spriteBatch.Draw(texture, position, null, AAColor.Lantern, 0, origin, scale, SpriteEffects.None, 0f);
+                spriteBatch.Draw(texture, position, null, Globals.AAColor.Lantern, 0, origin, scale, SpriteEffects.None, 0f);
 
             }
 

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using AAMod.Globals;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -29,7 +30,7 @@ namespace AAMod.Projectiles.Akuma.Lung
             projectile.timeLeft *= 5;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 5;
-            projectile.GetGlobalProjectile<AAGlobalProjectile>().LongMinion = true;
+            projectile.GetGlobalProjectile<Globals.AAGlobalProjectile>().LongMinion = true;
         }
 
         public override Color? GetAlpha(Color lightColor)
@@ -222,7 +223,7 @@ namespace AAMod.Projectiles.Akuma.Lung
             ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
             projectile.timeLeft *= 5;
             projectile.minionSlots = .5f;
-            projectile.GetGlobalProjectile<AAGlobalProjectile>().LongMinion = true;
+            projectile.GetGlobalProjectile<Globals.AAGlobalProjectile>().LongMinion = true;
         }
         public override Color? GetAlpha(Color lightColor)
         {
@@ -377,7 +378,7 @@ namespace AAMod.Projectiles.Akuma.Lung
             projectile.timeLeft = 18000;
             ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
             projectile.timeLeft *= 5;
-            projectile.GetGlobalProjectile<AAGlobalProjectile>().LongMinion = true;
+            projectile.GetGlobalProjectile<Globals.AAGlobalProjectile>().LongMinion = true;
         }
         public override Color? GetAlpha(Color lightColor)
         {

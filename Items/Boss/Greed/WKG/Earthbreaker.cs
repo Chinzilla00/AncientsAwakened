@@ -36,7 +36,7 @@ If the enemy hits the ground after being hit, they will take damage");
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Rarity12;
+                    line2.overrideColor = Globals.AAColor.Rarity12;
                 }
             }
         }

@@ -38,10 +38,10 @@ Inflicts Ichor in Crimson Worlds/Cursed Flame in Corruption worlds");
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
-            Color GlowColor = AAColor.CursedInferno;
+            Color GlowColor = Globals.AAColor.CursedInferno;
             if (WorldGen.crimson)
             {
-                GlowColor = AAColor.Ichor;
+                GlowColor = Globals.AAColor.Ichor;
             }
             spriteBatch.Draw
                 (
@@ -65,10 +65,10 @@ Inflicts Ichor in Crimson Worlds/Cursed Flame in Corruption worlds");
         {
             Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
             Texture2D texture2 = Main.itemTexture[item.type];
-            Color GlowColor = AAColor.CursedInferno;
+            Color GlowColor = Globals.AAColor.CursedInferno;
             if (WorldGen.crimson)
             {
-                GlowColor = AAColor.Ichor;
+                GlowColor = Globals.AAColor.Ichor;
             }
             spriteBatch.Draw(texture2, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
             for (int i = 0; i < 4; i++)

@@ -145,7 +145,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             Texture2D texture2D20 = mod.GetTexture("NPCs/Bosses/Zero/Protocol/EchoRayBody");
             Texture2D texture2D21 = mod.GetTexture("NPCs/Bosses/Zero/Protocol/EchoRayEnd");
             float num223 = projectile.localAI[1];
-            Color color44 = AAColor.Oblivion * 0.9f;
+            Color color44 = Globals.AAColor.Oblivion * 0.9f;
             SpriteBatch arg_ABD8_0 = Main.spriteBatch;
             Texture2D arg_ABD8_1 = texture2D19;
             Vector2 arg_ABD8_2 = projectile.Center - Main.screenPosition;

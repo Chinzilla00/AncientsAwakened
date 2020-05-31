@@ -1,6 +1,7 @@
 using Terraria.ModLoader;
 using Terraria.Graphics.Effects;
 using Terraria;
+using AAMod.Projectiles.Dev;
 
 namespace AAMod
 {
@@ -40,13 +41,13 @@ namespace AAMod
             }
             if (!Main.dedServ)
             {
-                Filters.Scene["Shockwave"].GetShader().UseProgress(progress).UseOpacity(100f * (1 - progress / 3f));
+                Filters.Scene["AAMod:Shockwave"].GetShader().UseProgress(progress).UseOpacity(100f * (1 - progress / 3f));
                 projectile.localAI[1]++;
                 if (projectile.localAI[1] >= 0 && projectile.localAI[1] <= 60)
                 {
-                    if (!Filters.Scene["Shockwave"].IsActive())
+                    if (!Filters.Scene["AAMod:Shockwave"].IsActive())
                     {                                                             //pulseCount rippleSize speed
-                        Filters.Scene.Activate("Shockwave", projectile.Center).GetShader().UseColor(pulseCount, rippleSize, speed).UseTargetPosition(projectile.Center);
+                        Filters.Scene.Activate("AAMod:Shockwave", projectile.Center).GetShader().UseColor(pulseCount, rippleSize, speed).UseTargetPosition(projectile.Center);
                     }
                 }
             }
@@ -55,7 +56,7 @@ namespace AAMod
         {
             if (!Main.dedServ)
             {
-                Filters.Scene["Shockwave"].Deactivate();
+                Filters.Scene["AAMod:Shockwave"].Deactivate();
             }
         }
     }
@@ -64,9 +65,9 @@ namespace AAMod
     {
         public override void PostUpdate()
         {
-            if (!Main.dedServ && Filters.Scene["Shockwave"].IsActive() && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<ShockwaveBoom>()))
+            if (!Main.dedServ && Filters.Scene["AAMod:Shockwave"].IsActive() && !Globals.AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<ShockwaveBoom>()) && !Globals.AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<TemporalAnomalyEX>()))
             {
-                Filters.Scene["Shockwave"].Deactivate();
+                Filters.Scene["AAMod:Shockwave"].Deactivate();
             }
         }
     }

@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework.Graphics;
+using AAMod.Globals;
 
 namespace AAMod.Items.Melee
 {
@@ -38,7 +39,7 @@ namespace AAMod.Items.Melee
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Rarity12;
+                    line2.overrideColor = Globals.AAColor.Rarity12;
                 }
             }
         }

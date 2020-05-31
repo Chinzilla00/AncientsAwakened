@@ -1,3 +1,4 @@
+using AAMod.Misc;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -305,7 +306,6 @@ namespace AAMod.NPCs.Bosses.Broodmother
             }
         }
 		
-		
 		public Color GetGlowAlpha()
 		{
 			return ColorUtils.COLOR_GLOWPULSE;
@@ -315,6 +315,5 @@ namespace AAMod.NPCs.Bosses.Broodmother
         {
 			BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/Broodmini_Glow"), 0, npc, GetGlowAlpha());
         }		
-		
     }
 }

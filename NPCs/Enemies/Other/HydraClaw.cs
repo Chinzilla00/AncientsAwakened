@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.ID;
 using System;
 using Terraria.ModLoader;
+using AAMod.Misc;
 
 namespace AAMod.NPCs.Enemies.Other
 {
@@ -34,7 +35,7 @@ namespace AAMod.NPCs.Enemies.Other
 
         public override void AI()
         {
-            AAAI.AIClaw(npc, ref npc.ai, false, true, 0.1f, 0.04f, 5f, 2f, 1f, 1f);
+            Globals.AAAI.AIClaw(npc, ref npc.ai, false, true, 0.1f, 0.04f, 5f, 2f, 1f, 1f);
             if (npc.velocity.X > 0f)
             {
                 npc.spriteDirection = 1;
@@ -63,6 +64,7 @@ namespace AAMod.NPCs.Enemies.Other
         {
             return SpawnCondition.OverworldNightMonster.Chance * 0.04f;
         }
+
         public override void HitEffect(int hitDirection, double damage)
         {
             if (npc.life <= 0)          //this make so when the npc has 0 life(dead) he will spawn this
@@ -74,6 +76,7 @@ namespace AAMod.NPCs.Enemies.Other
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HydraClawGore3"), 1f);
             }
         }
+
         public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
         {
             target.AddBuff(BuffID.Poisoned, 180);
@@ -83,9 +86,8 @@ namespace AAMod.NPCs.Enemies.Other
         {
             if(Main.rand.NextBool())
             {
-                npc.DropLoot(mod.ItemType("HydraClaw"), 1);
+                npc.DropLoot(mod.ItemType("HydraClaw"));
             }
-            
         }
     }
 }

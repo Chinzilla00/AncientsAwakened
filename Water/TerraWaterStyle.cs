@@ -35,7 +35,7 @@ namespace AAMod.Water
 
 		public override Color BiomeHairColor()
 		{
-			return AAColor.TerraGlow;
+			return Globals.AAColor.TerraGlow;
 		}
 	}
 }

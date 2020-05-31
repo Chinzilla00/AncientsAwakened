@@ -33,8 +33,8 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         }
         public override void AI()
         {
-            Lighting.AddLight(npc.Center, AAColor.YamataA.R / 255, AAColor.YamataA.G / 255, AAColor.YamataA.B / 255);
-            AAAI.AIShadowflameGhost(npc, ref npc.ai, false, 660f, 0.3f, 15f, 0.2f, 8f, 5f, 10f, 0.4f, 0.4f, 0.95f, 5f);
+            Lighting.AddLight(npc.Center, Globals.AAColor.YamataA.R / 255, Globals.AAColor.YamataA.G / 255, Globals.AAColor.YamataA.B / 255);
+            Globals.AAAI.AIShadowflameGhost(npc, ref npc.ai, false, 660f, 0.3f, 15f, 0.2f, 8f, 5f, 10f, 0.4f, 0.4f, 0.95f, 5f);
             if (!NPC.AnyNPCs(ModContent.NPCType<YamataA>()))
             {
                 npc.life = 0;

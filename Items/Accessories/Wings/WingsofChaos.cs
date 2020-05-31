@@ -51,7 +51,7 @@ namespace AAMod.Items.Accessories.Wings
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Rarity14;
+                    line2.overrideColor = Globals.AAColor.Rarity14;
                 }
             }
         }

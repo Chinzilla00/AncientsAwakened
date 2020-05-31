@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using AAMod.Misc;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -45,7 +46,7 @@ namespace AAMod.NPCs.Enemies.Snow
         public override void AI()
         {
             Player player = Main.player[npc.target];
-			AAAI.AIWorm(npc, new int[]{ mod.NPCType("SnakeHead"), mod.NPCType("SnakeBody"), mod.NPCType("SnakeTail") }, 9, 8f, 12f, 0.1f, false, false);
+			Globals.AAAI.AIWorm(npc, new int[]{ mod.NPCType("SnakeHead"), mod.NPCType("SnakeBody"), mod.NPCType("SnakeTail") }, 9, 8f, 12f, 0.1f, false, false);
             
             if (npc.velocity.X < 0f)
             {

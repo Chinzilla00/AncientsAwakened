@@ -11,7 +11,7 @@ using AAMod.Items.Usable;
 using AAMod.Items.Materials;
 using Terraria;
 
-namespace AAMod.Globals
+namespace AAMod.CrossMod
 {
     internal class WeakReferences
     {

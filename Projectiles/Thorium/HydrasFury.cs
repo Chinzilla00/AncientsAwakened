@@ -104,7 +104,7 @@ namespace AAMod.Projectiles.Thorium
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
             Player player = Main.player[projectile.owner];
-            if (Main.rand.Next(100) <= ((ModSupportPlayer)player.GetModPlayer(mod, "ModSupportPlayer")).Thorium_radiantCrit)
+            if (Main.rand.Next(100) <= ((CrossMod.ModSupportPlayer)player.GetModPlayer(mod, "CrossMod.ModSupportPlayer")).Thorium_radiantCrit)
             {
                 crit = true;
             }
@@ -138,7 +138,7 @@ namespace AAMod.Projectiles.Thorium
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
             Player player = Main.player[projectile.owner];
-            if (Main.rand.Next(100) <= ((ModSupportPlayer)player.GetModPlayer(mod, "ModSupportPlayer")).Thorium_radiantCrit)
+            if (Main.rand.Next(100) <= ((CrossMod.ModSupportPlayer)player.GetModPlayer(mod, "CrossMod.ModSupportPlayer")).Thorium_radiantCrit)
             {
                 crit = true;
             }

@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Enemies.Void
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return AAColor.ZeroShield;
+            return Globals.AAColor.ZeroShield;
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

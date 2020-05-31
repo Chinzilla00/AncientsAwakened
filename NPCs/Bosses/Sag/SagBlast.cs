@@ -166,7 +166,7 @@ namespace AAMod.NPCs.Bosses.Sag
             spriteBatch.Draw(texture,
                 projectile.position - Main.screenPosition + centre,
                 new Rectangle?(new Rectangle(0, 0, texture.Width, texture.Height)),
-                AAColor.ZeroShield,
+                Globals.AAColor.ZeroShield,
                 projectile.rotation,
                 centre,
                 projectile.scale,
@@ -207,7 +207,7 @@ namespace AAMod.NPCs.Bosses.Sag
         //define which frames are used in each stage (0 = start, 1 = mid, 2 = end
         private void ZeroLaser(int stage, Vector2 currentPosition, float distanceLeft, Rectangle lastFrame, out float distCovered, out Rectangle frame, out Vector2 origin, out Color color)
         {
-            color = AAColor.ZeroShield;
+            color = Globals.AAColor.ZeroShield;
 			if (stage == 0)
 			{
 				distCovered = 33f;

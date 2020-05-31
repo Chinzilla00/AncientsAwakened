@@ -268,7 +268,7 @@ namespace AAMod.Projectiles.Athena
                             num658 = ModContent.ProjectileType<RGust>();
                             break;
                         case 3:
-                            if (!AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<AthenaHurricane>()) && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<HurricaneSpawn>()))
+                            if (!Globals.AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<AthenaHurricane>()) && !Globals.AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<HurricaneSpawn>()))
                             {
                                 num658 = ModContent.ProjectileType<HurricaneSpawn>();
                             }

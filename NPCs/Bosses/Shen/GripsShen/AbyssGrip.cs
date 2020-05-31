@@ -58,7 +58,7 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
         {
             if (npc.alpha > 0)
             {
-                return AAColor.Yamata;
+                return Globals.AAColor.Yamata;
             }
             return lightColor;
         }

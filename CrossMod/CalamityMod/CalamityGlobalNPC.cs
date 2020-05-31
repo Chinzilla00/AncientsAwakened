@@ -1,3 +1,4 @@
+using AAMod.CrossMod;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -10,7 +11,7 @@ namespace AAMod
 
         public override void SetDefaults(NPC npc)
         {
-            if (ModSupport.GetMod("CalamityMod") != null)
+            if (ModLoader.GetMod("CalamityMod") != null)
 			{
                 if(npc.type == mod.NPCType("Athena")) CalamityDR = 0.8f;
                 if(npc.type == mod.NPCType("OlympianDragon")) CalamityDR = 0.8f;
@@ -87,7 +88,7 @@ namespace AAMod
 
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
-            if (ModSupport.GetMod("CalamityMod") != null)
+            if (ModLoader.GetMod("CalamityMod") != null)
 			{
                 if (npc.realLife > 0 && Main.npc[npc.realLife].GetGlobalNPC<CalamityGlobalNPC>().CalamityDR < 1f) CalamityDR = Main.npc[npc.realLife].GetGlobalNPC<CalamityGlobalNPC>().CalamityDR;
             }
@@ -95,7 +96,7 @@ namespace AAMod
 
         public override void ModifyHitPlayer(NPC npc, Player target, ref int damage, ref bool crit)
 		{
-            if (ModSupport.GetMod("CalamityMod") != null)
+            if (ModLoader.GetMod("CalamityMod") != null)
 			{
                 if (npc.type > 580 && npc.modNPC.mod == AAMod.instance && npc.boss)
                 {
@@ -115,7 +116,7 @@ namespace AAMod
 
         public override void ModifyHitByItem(NPC npc, Player player, Item item, ref int damage, ref float knockback, ref bool crit)
         {
-            if (ModSupport.GetMod("CalamityMod") != null)
+            if (ModLoader.GetMod("CalamityMod") != null)
 			{
                 if (npc.type > 580 && npc.boss && npc.modNPC.mod == AAMod.instance)
                 {
@@ -136,7 +137,7 @@ namespace AAMod
 
         public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{
-            if (ModSupport.GetMod("CalamityMod") != null)
+            if (ModLoader.GetMod("CalamityMod") != null)
 			{
                 if (npc.type > 580 && npc.boss && npc.modNPC.mod == AAMod.instance)
                 {
@@ -160,7 +161,7 @@ namespace AAMod
     {
         public override void ModifyHitPlayer(Projectile projectile, Player target, ref int damage, ref bool crit)
 		{
-            if (ModSupport.GetMod("CalamityMod") != null)
+            if (ModLoader.GetMod("CalamityMod") != null)
 			{
                 if (projectile.hostile && !projectile.friendly && projectile.type > 714 && projectile.modProjectile.mod == AAMod.instance)
                 {

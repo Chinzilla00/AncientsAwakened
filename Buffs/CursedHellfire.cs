@@ -1,3 +1,4 @@
+using AAMod.Globals;
 using Terraria;
 using Terraria.ModLoader;
 

@@ -1,3 +1,4 @@
+using AAMod.Misc;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -53,7 +54,6 @@ namespace AAMod.NPCs.Enemies.Desert
                 npc.spriteDirection = 1;
             }
             npc.TargetClosest(true);
-            Player player = Main.player[npc.target];
             BaseAI.AIFloater(npc, ref npc.ai, true, 0.2f, 3, 1.5f, .05f, 1.3f, 4);
             npc.ai[3]++;
 

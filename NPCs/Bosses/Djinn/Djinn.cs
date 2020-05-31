@@ -1,4 +1,5 @@
 
+using AAMod.Misc;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -194,7 +195,7 @@ namespace AAMod.NPCs.Bosses.Djinn
                 npc.velocity.Y = 0;
                 if (npc.ai[3] == 9 || npc.ai[3] == 36 || npc.ai[3] == 72)
                 {
-                    if (Main.netMode != NetmodeID.MultiplayerClient && AAGlobalProjectile.CountProjectiles(658) < 5)
+                    if (Main.netMode != NetmodeID.MultiplayerClient && Globals.AAGlobalProjectile.CountProjectiles(658) < 5)
                     {
                         FireProjectile();
                         npc.netUpdate = true;
@@ -443,7 +444,7 @@ namespace AAMod.NPCs.Bosses.Djinn
                 if (!flag118)
                 {
                     int startY = point14.Y - 20;
-                    Collision.ExpandVertically(num1469, startY, out int num1470, out int num1471, 1, 51);
+                    Collision.ExpandVertically(num1469, startY, out _, out int num1471, 1, 51);
                     if (StrayMethods.CanSpawnSandstormHostile(new Vector2(num1469, num1471 - 15) * 16f, 15, 15))
                     {
                         list4.Add(new Point(num1469, num1471 - 15));

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-
+using AAMod.Misc;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -727,7 +727,7 @@ namespace AAMod.NPCs.Bosses.Serpent
             {
                 for (int i = 0; i < 3 - NPC.CountNPCS(ModContent.NPCType<Enemies.Snow.SnakeHead>()); i++)
                 {
-                    AAModGlobalNPC.SpawnBoss(player, ModContent.NPCType<Enemies.Snow.SnakeHead>(), false, 0, 0, "Snake", false);
+                    Globals.AAModGlobalNPC.SpawnBoss(player, ModContent.NPCType<Enemies.Snow.SnakeHead>(), false, 0, 0, "Snake", false);
                 }
                 internalAI[3] = 0;
             }

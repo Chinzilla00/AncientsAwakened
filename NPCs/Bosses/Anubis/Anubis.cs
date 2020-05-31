@@ -4,6 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 using System.IO;
+using AAMod.Misc;
 
 namespace AAMod.NPCs.Bosses.Anubis
 {
@@ -277,7 +278,7 @@ namespace AAMod.NPCs.Bosses.Anubis
                         ScepterTeleport();
                     }
 
-                    if (npc.ai[1] > 140 && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<Scepter>()))
+                    if (npc.ai[1] > 140 && !Globals.AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<Scepter>()))
                     {
                         npc.ai[0]++;
                         npc.ai[1] = 0;
@@ -321,7 +322,7 @@ namespace AAMod.NPCs.Bosses.Anubis
                             }
                         }
 
-                        if (npc.ai[1] > 120 && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<Block>()))
+                        if (npc.ai[1] > 120 && !Globals.AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<Block>()))
                         {
                             npc.ai[0]++;
                             npc.ai[1] = 0;
@@ -350,7 +351,7 @@ namespace AAMod.NPCs.Bosses.Anubis
                             Main.projectile[d].ai[1] = u;
                             Main.projectile[d].Center = player.Center + new Vector2(0, 800);
                         }
-                        if (npc.ai[1] > 180 && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<Block>()))
+                        if (npc.ai[1] > 180 && !Globals.AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<Block>()))
                         {
                             npc.ai[0]++;
                             npc.ai[1] = 0;
@@ -383,7 +384,7 @@ namespace AAMod.NPCs.Bosses.Anubis
                             }
                         }
 
-                        if (npc.ai[1] > 270 && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<Block>()))
+                        if (npc.ai[1] > 270 && !Globals.AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<Block>()))
                         {
                             npc.ai[0]++;
                             npc.ai[1] = 0;

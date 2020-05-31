@@ -35,7 +35,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return AAColor.Oblivion;
+            return Globals.AAColor.Oblivion;
         }
 
         public override void AI()

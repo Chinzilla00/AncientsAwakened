@@ -26,7 +26,7 @@ namespace AAMod.Items.Summoning.Minions
             projectile.alpha = 255;
             projectile.netImportant = true;
             projectile.hide = true;
-            projectile.GetGlobalProjectile<AAGlobalProjectile>().LongMinion = true;
+            projectile.GetGlobalProjectile<Globals.AAGlobalProjectile>().LongMinion = true;
         }
 
         public override Color? GetAlpha(Color lightColor)
@@ -69,7 +69,7 @@ namespace AAMod.Items.Summoning.Minions
             }
 
 
-            int num1038 = 10;
+            int num1038;
             if (player.dead) modPlayer.DragonMinion = false;
             if (modPlayer.DragonMinion) projectile.timeLeft = 2;
             num1038 = 30;

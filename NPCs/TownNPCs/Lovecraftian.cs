@@ -195,7 +195,7 @@ namespace AAMod.NPCs.TownNPCs
 
                     if (Main.netMode == NetmodeID.MultiplayerClient)
                     {
-						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)1);
+						Globals.AANet.SendNetMessage(Globals.AANet.UpdateLovecraftianCount, (byte)1);
                     }
                     AAWorld.squid1++;
                     Main.PlaySound(SoundID.Chat, -1, -1, 1);
@@ -217,7 +217,7 @@ namespace AAMod.NPCs.TownNPCs
 
                     if (Main.netMode == NetmodeID.MultiplayerClient)
                     {
-						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)2);
+						Globals.AANet.SendNetMessage(Globals.AANet.UpdateLovecraftianCount, (byte)2);
                     }
                     AAWorld.squid2++;
                     Main.PlaySound(SoundID.Chat, -1, -1, 1);
@@ -239,7 +239,7 @@ namespace AAMod.NPCs.TownNPCs
 
 					if(Main.netMode == NetmodeID.MultiplayerClient)
 					{
-						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)3);
+						Globals.AANet.SendNetMessage(Globals.AANet.UpdateLovecraftianCount, (byte)3);
 					}
                     AAWorld.squid3++;
                     Main.PlaySound(SoundID.Chat, -1, -1, 1);
@@ -261,7 +261,7 @@ namespace AAMod.NPCs.TownNPCs
 
 					if(Main.netMode == NetmodeID.MultiplayerClient)
 					{
-						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)4);
+						Globals.AANet.SendNetMessage(Globals.AANet.UpdateLovecraftianCount, (byte)4);
 					}
                     AAWorld.squid4++;
                     Main.PlaySound(SoundID.Chat, -1, -1, 1);
@@ -282,7 +282,7 @@ namespace AAMod.NPCs.TownNPCs
                     }
 					if(Main.netMode == NetmodeID.MultiplayerClient)
 					{
-						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)5);
+						Globals.AANet.SendNetMessage(Globals.AANet.UpdateLovecraftianCount, (byte)5);
 					}
                     AAWorld.squid5++;
                     Main.PlaySound(SoundID.Chat, -1, -1, 1);
@@ -303,7 +303,7 @@ namespace AAMod.NPCs.TownNPCs
                     }
 					if(Main.netMode == NetmodeID.MultiplayerClient)
 					{
-						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)6);
+						Globals.AANet.SendNetMessage(Globals.AANet.UpdateLovecraftianCount, (byte)6);
 					}
                     AAWorld.squid6++;
                     Main.PlaySound(SoundID.Chat, -1, -1, 1);
@@ -324,7 +324,7 @@ namespace AAMod.NPCs.TownNPCs
                     }
 					if(Main.netMode == NetmodeID.MultiplayerClient)
 					{
-						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)7);
+						Globals.AANet.SendNetMessage(Globals.AANet.UpdateLovecraftianCount, (byte)7);
 					}
                     AAWorld.squid7++;
                     Main.PlaySound(SoundID.Chat, -1, -1, 1);
@@ -345,7 +345,7 @@ namespace AAMod.NPCs.TownNPCs
                     }
 					if(Main.netMode == NetmodeID.MultiplayerClient)
 					{
-						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)8);
+						Globals.AANet.SendNetMessage(Globals.AANet.UpdateLovecraftianCount, (byte)8);
 					}
                     AAWorld.squid8++;
                     Main.PlaySound(SoundID.Chat, -1, -1, 1);
@@ -366,7 +366,7 @@ namespace AAMod.NPCs.TownNPCs
                     }
 					if(Main.netMode == NetmodeID.MultiplayerClient)
 					{
-						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)9);
+						Globals.AANet.SendNetMessage(Globals.AANet.UpdateLovecraftianCount, (byte)9);
 					}
                     AAWorld.squid9++;
                     Main.PlaySound(SoundID.Chat, -1, -1, 1);
@@ -387,7 +387,7 @@ namespace AAMod.NPCs.TownNPCs
                     }
 					if(Main.netMode == NetmodeID.MultiplayerClient)
 					{
-						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)10);
+						Globals.AANet.SendNetMessage(Globals.AANet.UpdateLovecraftianCount, (byte)10);
 					}
                     AAWorld.squid10++;
                     Main.PlaySound(SoundID.Chat, -1, -1, 1);
@@ -408,7 +408,7 @@ namespace AAMod.NPCs.TownNPCs
                     }
                     if (Main.netMode == NetmodeID.MultiplayerClient)
                     {
-                        AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)11);
+                        Globals.AANet.SendNetMessage(Globals.AANet.UpdateLovecraftianCount, (byte)11);
                     }
                     AAWorld.squid11++;
                     Main.PlaySound(SoundID.Chat, -1, -1, 1);
@@ -430,7 +430,7 @@ namespace AAMod.NPCs.TownNPCs
                     }
                     if (Main.netMode == NetmodeID.MultiplayerClient)
                     {
-                        AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)12);
+                        Globals.AANet.SendNetMessage(Globals.AANet.UpdateLovecraftianCount, (byte)12);
                     }
                     AAWorld.squid12++;
                     Main.PlaySound(SoundID.Chat, -1, -1, 1);
@@ -451,7 +451,7 @@ namespace AAMod.NPCs.TownNPCs
                     }
                     if (Main.netMode == NetmodeID.MultiplayerClient)
                     {
-                        AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)13);
+                        Globals.AANet.SendNetMessage(Globals.AANet.UpdateLovecraftianCount, (byte)13);
                     }
                     AAWorld.squid13++;
                     Main.PlaySound(SoundID.Chat, -1, -1, 1);

@@ -39,7 +39,7 @@ N0N-C0NSUMABLE");
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Rarity13;
+                    line2.overrideColor = Globals.AAColor.Rarity13;
                 }
             }
         }

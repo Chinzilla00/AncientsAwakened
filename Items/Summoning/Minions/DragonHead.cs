@@ -25,7 +25,7 @@ namespace AAMod.Items.Summoning.Minions
             projectile.tileCollide = false;
             projectile.alpha = 255;
             projectile.netImportant = true;
-            projectile.GetGlobalProjectile<AAGlobalProjectile>().LongMinion = true;
+            projectile.GetGlobalProjectile<Globals.AAGlobalProjectile>().LongMinion = true;
         }
 
         public override Color? GetAlpha(Color lightColor)

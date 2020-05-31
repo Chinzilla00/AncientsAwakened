@@ -50,7 +50,7 @@ namespace AAMod.Items.Dev
                     item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
                 ),
                 new Rectangle(0, 0, texture.Width, texture.Height),
-                AAColor.Hallow,
+                Globals.AAColor.Hallow,
                 rotation,
                 texture.Size() * 0.5f,
                 scale,
@@ -62,7 +62,7 @@ namespace AAMod.Items.Dev
         public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
             Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
-            spriteBatch.Draw(texture, position, null, AAColor.Hallow, 0, origin, scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw(texture, position, null, Globals.AAColor.Hallow, 0, origin, scale, SpriteEffects.None, 0f);
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

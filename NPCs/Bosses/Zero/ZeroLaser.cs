@@ -138,7 +138,7 @@ namespace AAMod.NPCs.Bosses.Zero
             Texture2D texture2D20 = mod.GetTexture("NPCs/Bosses/Zero/ZeroLaser2");
             Texture2D texture2D21 = mod.GetTexture("NPCs/Bosses/Zero/ZeroLaser3");
             float num223 = projectile.localAI[1];
-            Color color44 = AAColor.COLOR_WHITEFADE1 * 0.9f;
+            Color color44 = Globals.AAColor.COLOR_WHITEFADE1 * 0.9f;
             SpriteBatch arg_ABD8_0 = Main.spriteBatch;
             Texture2D arg_ABD8_1 = texture2D19;
             Vector2 arg_ABD8_2 = projectile.Center - Main.screenPosition;

@@ -1,3 +1,4 @@
+using AAMod.Misc;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -34,7 +35,7 @@ namespace AAMod.NPCs.Enemies.Other
 
         public override void AI()
         {
-            AAAI.AIClaw(npc, ref npc.ai, true, false, 0.1f, 0.04f, 3f, 1.5f, 1f, 1f);
+            Globals.AAAI.AIClaw(npc, ref npc.ai, true, false, 0.1f, 0.04f, 3f, 1.5f, 1f, 1f);
             if (npc.velocity.X > 0f)
             {
                 npc.spriteDirection = 1;
@@ -77,7 +78,7 @@ namespace AAMod.NPCs.Enemies.Other
         }
         public override void NPCLoot()
         {
-            npc.DropLoot(mod.ItemType("DragonClaw"), 1);
+            npc.DropLoot(mod.ItemType("DragonClaw"));
         }
     }
 }

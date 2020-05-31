@@ -59,7 +59,7 @@ namespace AAMod.NPCs.Enemies.Inferno
             float acceleration = 0.09f;
             
             
-            AAAI.DustOnNPCSpawn(npc, mod.DustType("AkumaADust"), 2, 12);
+            Globals.AAAI.DustOnNPCSpawn(npc, mod.DustType("AkumaADust"), 2, 12);
 
             npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
             npc.ai[1]++;
@@ -354,7 +354,7 @@ namespace AAMod.NPCs.Enemies.Inferno
             if (Main.player[npc.target].dead && npc.timeLeft > 300)
                 npc.timeLeft = 300;
 
-            AAAI.DustOnNPCSpawn(npc, mod.DustType("AkumaDust"), 2, 12);
+            Globals.AAAI.DustOnNPCSpawn(npc, mod.DustType("AkumaDust"), 2, 12);
             if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 if (!Main.npc[(int)npc.ai[1]].active || Main.npc[(int)npc.ai[3]].type != mod.NPCType("Lung"))
@@ -457,7 +457,7 @@ namespace AAMod.NPCs.Enemies.Inferno
             if (Main.player[npc.target].dead && npc.timeLeft > 300)
                 npc.timeLeft = 300;
 
-            AAAI.DustOnNPCSpawn(npc, mod.DustType("AkumaDust"), 2, 12);
+            Globals.AAAI.DustOnNPCSpawn(npc, mod.DustType("AkumaDust"), 2, 12);
             if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 if (!Main.npc[(int)npc.ai[1]].active || Main.npc[(int)npc.ai[3]].type != mod.NPCType("Lung"))

@@ -233,7 +233,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                     }
                     internalAI[2] = 0;
                 }
-                AAAI.InfernoFighterAI(npc, ref npc.ai, true, false, 0, 0.07f, 3f, 3, 4, 60, true, 10, 60, true, null, false);	
+                Globals.AAAI.InfernoFighterAI(npc, ref npc.ai, true, false, 0, 0.07f, 3f, 3, 4, 60, true, 10, 60, true, null, false);	
 			}else
 			if(internalAI[1] == AISTATE_JUMP)//jumper
 			{

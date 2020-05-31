@@ -278,8 +278,8 @@ namespace AAMod.Items.Summoning.Minions
             if (hasTarget)
             {
                 Texture2D g = mod.GetTexture("Glowmasks/XiaoDoragon_Glow");
-                BaseDrawing.DrawTexture(spriteBatch, g, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.spriteDirection, 5, frame, AAColor.Shen2, true);
-                BaseDrawing.DrawAfterimage(spriteBatch, g, 0, projectile.position, projectile.width, projectile.height, projectile.oldPos, 1f, projectile.rotation, projectile.spriteDirection, 5, frame, 1, 1, 5, true, 0, 0, AAColor.Shen2);
+                BaseDrawing.DrawTexture(spriteBatch, g, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.spriteDirection, 5, frame, Globals.AAColor.Shen2, true);
+                BaseDrawing.DrawAfterimage(spriteBatch, g, 0, projectile.position, projectile.width, projectile.height, projectile.oldPos, 1f, projectile.rotation, projectile.spriteDirection, 5, frame, 1, 1, 5, true, 0, 0, Globals.AAColor.Shen2);
             }
             return false;
         }

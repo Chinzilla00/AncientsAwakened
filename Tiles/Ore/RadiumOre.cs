@@ -47,13 +47,13 @@ namespace AAMod.Tiles.Ore
             {
                 glowtex = mod.GetTexture("Glowmasks/RadiumOre_Glow");
                 BaseDrawing.DrawTileTexture(spriteBatch, Main.tileTexture[Type], x, y, true, false, false);
-                BaseDrawing.DrawTileTexture(spriteBatch, glowtex, x, y, true, false, false, null, AAGlobalTile.GetRadiumColorBright);
+                BaseDrawing.DrawTileTexture(spriteBatch, glowtex, x, y, true, false, false, null, Globals.AAGlobalTile.GetRadiumColorBright);
             }
             else
             {
                 glowtex = mod.GetTexture("Glowmasks/DarkmatterOre_Glow");
                 BaseDrawing.DrawTileTexture(spriteBatch, mod.GetTexture("Tiles/Ore/DarkmatterOre"), x, y, true, false, false);
-                BaseDrawing.DrawTileTexture(spriteBatch, glowtex, x, y, true, false, false, null, AAGlobalTile.GetDarkmatterColorBright);
+                BaseDrawing.DrawTileTexture(spriteBatch, glowtex, x, y, true, false, false, null, Globals.AAGlobalTile.GetDarkmatterColorBright);
             }
             Tile tile = Main.tile[x, y];
             Vector2 zero = new Vector2(Main.offScreenRange, Main.offScreenRange);

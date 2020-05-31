@@ -39,7 +39,7 @@ namespace AAMod.Projectiles.Zero
                     ProjTimer = 0;
                     int NPCTarget = Target();
 
-                    if (NPCTarget != -1 && AAGlobalProjectile.CountProjectiles(ModContent.ProjectileType<VortexProj>()) < 5)
+                    if (NPCTarget != -1 && Globals.AAGlobalProjectile.CountProjectiles(ModContent.ProjectileType<VortexProj>()) < 5)
                     {
                         Projectile.NewProjectile(projectile.position, projectile.velocity, ModContent.ProjectileType<VortexProj>(), projectile.damage, projectile.knockBack, projectile.owner);
                     }

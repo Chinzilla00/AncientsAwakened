@@ -38,7 +38,7 @@ namespace AAMod.Items.Boss.AH
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Rarity12;
+                    line2.overrideColor = Globals.AAColor.Rarity12;
                 }
             }
         }
@@ -53,7 +53,7 @@ namespace AAMod.Items.Boss.AH
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            bool AnyOrbiters = AAGlobalProjectile.AnyProjectiles(Terraria.ModLoader.ModContent.ProjectileType<Projectiles.AH.FireOrbiter>());
+            bool AnyOrbiters = Globals.AAGlobalProjectile.AnyProjectiles(Terraria.ModLoader.ModContent.ProjectileType<Projectiles.AH.FireOrbiter>());
             int SummonCount = 2;
             if (AnyOrbiters)
             {

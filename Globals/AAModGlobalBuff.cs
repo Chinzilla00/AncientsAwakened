@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod
+namespace AAMod.Globals
 {
     public class AAModGlobalBuff : GlobalBuff
 	{

@@ -16,7 +16,7 @@ namespace AAMod.Items.Boss.Shen
 Combines the effects of the Taiyang Baolei and the Naitokurosu, while granting their strongest effects at all times
 Your attacks inflict Discordian Inferno
 You are immune to Terrablaze, Dragonfire, Hydratoxin, Discordian Inferno
-Attack is multiplied by 15%
+Attack is increased by 15%
 While in the chaos biomes, your attack multiplier is increased to 30%
 While in the Inferno, your defense is increased by 10
 While in the Mire, your speed is increased by 50%
@@ -101,7 +101,7 @@ Grants a strong dash that shreds through enemies in a fiery blaze of glory");
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Rarity14;
+                    line2.overrideColor = Globals.AAColor.Rarity14;
                 }
             }
         }

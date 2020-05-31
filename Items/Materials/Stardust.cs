@@ -27,7 +27,7 @@ namespace AAMod.Items.Materials
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return AAColor.Glow;
+            return Globals.AAColor.Glow;
         }
     }
 }

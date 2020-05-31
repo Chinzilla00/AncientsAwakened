@@ -32,7 +32,7 @@ namespace AAMod.NPCs.Bosses.FeudalFungus
         {
             if(projectile.ai[1] == 1f)
             {
-                return AAColor.Glow;
+                return Globals.AAColor.Glow;
             }
             return base.GetAlpha(lightColor);
         }

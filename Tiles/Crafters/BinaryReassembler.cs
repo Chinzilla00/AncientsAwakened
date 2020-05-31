@@ -50,7 +50,7 @@ namespace AAMod.Tiles.Crafters
 
         public Color GetColor(Color color)
         {
-            Color glowColor = AAColor.ZeroShield;
+            Color glowColor = Globals.AAColor.ZeroShield;
             return glowColor;
         }
 

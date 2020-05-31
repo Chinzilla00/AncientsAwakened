@@ -34,7 +34,7 @@ namespace AAMod.Items.Melee
 
             glowmaskDrawType = GLOWMASKTYPE_SWORD;
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow";
-            glowmaskDrawColor = AAColor.COLOR_WHITEFADE1;
+            glowmaskDrawColor = Globals.AAColor.COLOR_WHITEFADE1;
         }
 
 		public override void UseStyle(Player player)

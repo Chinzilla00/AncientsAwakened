@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework.Graphics;
 using AAMod.NPCs.Enemies.Sky;
 using Terraria.ID;
+using AAMod.Misc;
 
 namespace AAMod.NPCs.Bosses.Athena
 {

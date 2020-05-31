@@ -56,7 +56,7 @@ namespace AAMod.Projectiles
         	if(Main.player[projectile.owner].itemAnimation < Main.player[projectile.owner].itemAnimationMax / 3)
         	{
         		projectile.ai[0] -= 2.4f;
-                if (projectile.localAI[0] == 0f && Main.myPlayer == projectile.owner && !AAGlobalProjectile.AnyProjectiles(mod.ProjectileType("ChaosYariEXShot")))
+                if (projectile.localAI[0] == 0f && Main.myPlayer == projectile.owner && !Globals.AAGlobalProjectile.AnyProjectiles(mod.ProjectileType("ChaosYariEXShot")))
                 {
 					projectile.localAI[0] = 1f;
                     Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X * 1.4f, projectile.velocity.Y * 1.4f, mod.ProjectileType("ChaosYariEXShot"), (int)((double)projectile.damage * 0.85f), projectile.knockBack * 0.85f, projectile.owner, 0f, 0f);

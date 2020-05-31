@@ -1,10 +1,12 @@
 ﻿using System;
+using AAMod.CrossMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
-namespace AAMod
+namespace AAMod.Globals
 {
     /// <summary>
     /// Sabres are, first and foremost, weapons skills
@@ -34,7 +36,7 @@ namespace AAMod
             {
                 // JUST attacked
                 bool onAttackFrame = player.itemAnimation == player.itemAnimationMax - 1; 
-                if(ModSupport.GetMod("TerrariaOverhaul") != null)
+                if(ModLoader.GetMod("TerrariaOverhaul") != null)
                 { onAttackFrame = player.itemAnimation == player.itemAnimationMax - 2; }
 
                 if (onAttackFrame)

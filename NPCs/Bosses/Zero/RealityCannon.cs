@@ -138,7 +138,7 @@ namespace AAMod.NPCs.Bosses.Zero
             Texture2D glowTex = mod.GetTexture("Glowmasks/RealityCannonZ");
             BaseDrawing.DrawAfterimage(spriteBatch, tex, 0, npc, 1, 1, 6, true, 0, 0, Color.DarkRed, npc.frame);
             BaseDrawing.DrawTexture(spriteBatch, tex, 0, npc, drawColor);
-            BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc, AAColor.COLOR_WHITEFADE1);
+            BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc, Globals.AAColor.COLOR_WHITEFADE1);
             return false;
         }
 

@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using AAMod.Dusts;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using AAMod.CrossMod;
 
 namespace AAMod.Projectiles.Greed.WKG
 {
@@ -305,7 +306,7 @@ namespace AAMod.Projectiles.Greed.WKG
                     projectile.Kill();
                 }
             }
-            else if(ModSupport.GetMod("CalamityMod") != null)
+            else if(ModLoader.GetMod("CalamityMod") != null)
             {
                 if (projectile.ai[1] == ModSupport.GetModItem("CalamityMod", "ChaoticOre").item.type)
                 {
@@ -362,7 +363,7 @@ namespace AAMod.Projectiles.Greed.WKG
                     }
                 }
             }
-            else if(ModSupport.GetMod("Redemption") != null)
+            else if(ModLoader.GetMod("Redemption") != null)
             {
                 
             }
@@ -481,7 +482,7 @@ namespace AAMod.Projectiles.Greed.WKG
                     Main.projectile[p].Center = projectile.Center;
                 }
             }
-            else if(ModSupport.GetMod("CalamityMod") != null)
+            else if(ModLoader.GetMod("CalamityMod") != null)
             {
                 if(projectile.ai[1] == ModSupport.GetModItem("CalamityMod", "CryonicOre").item.type)
                 {
@@ -887,7 +888,7 @@ namespace AAMod.Projectiles.Greed.WKG
 
                 if(projectile.velocity.Length() < 10f) projectile.velocity = 10 * Vector2.Normalize(projectile.velocity);
             }
-            else if(ModSupport.GetMod("CalamityMod") != null)
+            else if(ModLoader.GetMod("CalamityMod") != null)
             {
                 if(k == ModSupport.GetModItem("CalamityMod", "AerialiteOre").item.type)
                 {
@@ -1026,7 +1027,7 @@ namespace AAMod.Projectiles.Greed.WKG
                         if(rangedLevel < 12500)
                         {
                             rangedLevel += 2;
-                            ModSupport.SetModPlayerConditions("CalamityMod", Main.player[projectile.owner], "CalamityPlayer", "rangedLevel", rangedLevel, false, false);
+                            CrossMod.ModSupport.SetModPlayerConditions("CalamityMod", Main.player[projectile.owner], "CalamityPlayer", "rangedLevel", rangedLevel, false, false);
                         }
                     }
                     bool revenge = (bool)ModSupport.GetModWorldConditions("CalamityMod", "CalamityWorld", "revenge", false, true);
@@ -1040,12 +1041,12 @@ namespace AAMod.Projectiles.Greed.WKG
                         if(stress < 10000 && !rageMode)
                         {
                             stress += Death? 350 : 150;
-                            ModSupport.SetModPlayerConditions("CalamityMod", Main.player[projectile.owner], "CalamityPlayer", "stress", stress, false, false);
+                            CrossMod.ModSupport.SetModPlayerConditions("CalamityMod", Main.player[projectile.owner], "CalamityPlayer", "stress", stress, false, false);
                         }
                         if(adrenaline < 10000 && !adrenalineMode)
                         {
                             adrenaline += Death? 350 : 150;
-                            ModSupport.SetModPlayerConditions("CalamityMod", Main.player[projectile.owner], "CalamityPlayer", "adrenaline", adrenaline, false, false);
+                            CrossMod.ModSupport.SetModPlayerConditions("CalamityMod", Main.player[projectile.owner], "CalamityPlayer", "adrenaline", adrenaline, false, false);
                         }
                     }
                     return;
@@ -1114,7 +1115,7 @@ namespace AAMod.Projectiles.Greed.WKG
                     Main.dust[num292].noGravity = true;
                 };
             }
-            else if(ModSupport.GetMod("CalamityMod") != null)
+            else if(ModLoader.GetMod("CalamityMod") != null)
             {
                 if(k == ModSupport.GetModItem("CalamityMod", "AerialiteOre").item.type)
                 {

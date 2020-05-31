@@ -34,7 +34,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 
         public override void AI()
         {
-            Lighting.AddLight(npc.Center, AAColor.Lantern.R / 255, AAColor.Lantern.G / 255, AAColor.Lantern.B / 255);
+            Lighting.AddLight(npc.Center, Globals.AAColor.Lantern.R / 255, Globals.AAColor.Lantern.G / 255, Globals.AAColor.Lantern.B / 255);
             if (npc.wet)
             {
                 npc.noGravity = true;

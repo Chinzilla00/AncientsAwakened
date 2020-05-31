@@ -59,7 +59,7 @@ namespace AAMod.Tiles.Crafters
             int frameY = tile != null && tile.active() ? tile.frameY + (Main.tileFrame[Type] * 54) : 0;
 
             BaseDrawing.DrawTileTexture(sb, glowTex, x, y, 16, 16, tile.frameX, frameY, false, false, false, null, White);
-            BaseDrawing.DrawTileTexture(sb, Sphere, x, y, 16, 16, tile.frameX, frameY, false, false, false, null, AAGlobalTile.GetShenColorBright);
+            BaseDrawing.DrawTileTexture(sb, Sphere, x, y, 16, 16, tile.frameX, frameY, false, false, false, null, Globals.AAGlobalTile.GetShenColorBright);
         }
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)

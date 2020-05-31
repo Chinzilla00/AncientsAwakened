@@ -43,7 +43,7 @@ namespace AAMod.Projectiles.Zero
             if (IsAtMaxCharge)
             {
                 DrawLaser(spriteBatch, Main.projectileTexture[projectile.type], Main.player[projectile.owner].Center,
-                    projectile.velocity, 10, projectile.damage, -1.57f, 1f, 1000f, AAColor.ZeroShield, (int)MOVE_DISTANCE);
+                    projectile.velocity, 10, projectile.damage, -1.57f, 1f, 1000f, Globals.AAColor.ZeroShield, (int)MOVE_DISTANCE);
             }
             return false;
         }
@@ -54,7 +54,7 @@ namespace AAMod.Projectiles.Zero
 
             for (float i = transDist; i <= Distance; i += step)
             {
-                Color c = AAColor.ZeroShield;
+                Color c = Globals.AAColor.ZeroShield;
                 var origin = start + i * unit;
                 spriteBatch.Draw(texture, origin - Main.screenPosition,
                     new Rectangle(0, 26, 28, 26), i < transDist ? Color.Transparent : c, r,
@@ -62,10 +62,10 @@ namespace AAMod.Projectiles.Zero
             }
 
             spriteBatch.Draw(texture, start + unit * (transDist - step) - Main.screenPosition,
-                new Rectangle(0, 0, 28, 26), AAColor.ZeroShield, r, new Vector2(28 * .5f, 26 * .5f), scale, 0, 0);
+                new Rectangle(0, 0, 28, 26), Globals.AAColor.ZeroShield, r, new Vector2(28 * .5f, 26 * .5f), scale, 0, 0);
 
             spriteBatch.Draw(texture, start + (Distance + step) * unit - Main.screenPosition,
-                new Rectangle(0, 52, 28, 26), AAColor.ZeroShield, r, new Vector2(28 * .5f, 26 * .5f), scale, 0, 0);
+                new Rectangle(0, 52, 28, 26), Globals.AAColor.ZeroShield, r, new Vector2(28 * .5f, 26 * .5f), scale, 0, 0);
         }
 
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
@@ -221,7 +221,7 @@ namespace AAMod.Projectiles.Zero
 
         private void CastLights()
         {
-            DelegateMethods.v3_1 = new Vector3(AAColor.ZeroShield.R / 255, AAColor.ZeroShield.G / 255, AAColor.ZeroShield.B / 255);
+            DelegateMethods.v3_1 = new Vector3(Globals.AAColor.ZeroShield.R / 255, Globals.AAColor.ZeroShield.G / 255, Globals.AAColor.ZeroShield.B / 255);
             Utils.PlotTileLine(projectile.Center, projectile.Center + projectile.velocity * (Distance - MOVE_DISTANCE), 26, DelegateMethods.CastLight);
         }
 

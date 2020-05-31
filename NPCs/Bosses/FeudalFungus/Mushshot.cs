@@ -26,7 +26,7 @@ namespace AAMod.NPCs.Bosses.FeudalFungus
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return AAColor.Glow;
+            return Globals.AAColor.Glow;
         }
 
         public override void AI()

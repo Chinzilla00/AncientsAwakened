@@ -77,7 +77,7 @@ namespace AAMod.Tiles.Torches
 		public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 		{
 			ulong randSeed = Main.TileFrameSeed ^ Convert.ToUInt64(j << 32 | i);
-            Color color = AAColor.BogToxin;
+            Color color = Globals.AAColor.BogToxin;
 			int frameX = Main.tile[i, j].frameX;
 			int frameY = Main.tile[i, j].frameY;
 			int width = 20;

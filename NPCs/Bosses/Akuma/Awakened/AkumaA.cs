@@ -184,7 +184,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     targetPos = Main.player[npc.target].Center;
                     MovementWorm(targetPos, 15f, 0.13f); //original movement
                     Main.PlaySound(SoundID.Item, (int)npc.Center.X, (int)npc.Center.Y, 20);
-                    AAAI.BreatheFire(npc, true, ModContent.ProjectileType<AkumaABreath>(), 2, 4);
+                    Globals.AAAI.BreatheFire(npc, true, ModContent.ProjectileType<AkumaABreath>(), 2, 4);
                     if (npc.HasBuff(BuffID.Wet))
                     {
                         fireTimer++;
@@ -206,7 +206,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     }
                     else
                     {
-                        AAAI.BreatheFire(npc, true, ModContent.ProjectileType<AkumaBreath>(), 2, 4);
+                        Globals.AAAI.BreatheFire(npc, true, ModContent.ProjectileType<AkumaBreath>(), 2, 4);
                     }
                     if (++npc.ai[1] > 240)
                     {

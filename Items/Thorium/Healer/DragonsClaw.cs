@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using AAMod.CrossMod;
 using Microsoft.Xna.Framework;
 
 using Terraria;
@@ -51,12 +52,12 @@ Grants 1 soul essence on direct hit");
 
         public override void ModifyWeaponDamage(Player player, ref float add, ref float mult, ref float flat)
         {
-            mult *= ((ModSupportPlayer)player.GetModPlayer(mod, "ModSupportPlayer")).Thorium_radiantBoost;
+            mult *= ((CrossMod.ModSupportPlayer)player.GetModPlayer(mod, "CrossMod.ModSupportPlayer")).Thorium_radiantBoost;
         }
 
         public override void ModifyHitNPC(Player player, NPC target, ref int damage, ref float knockBack, ref bool crit)
 		{
-			if (Main.rand.Next(100) <= ((ModSupportPlayer)player.GetModPlayer(mod, "ModSupportPlayer")).Thorium_radiantCrit)
+			if (Main.rand.Next(100) <= ((CrossMod.ModSupportPlayer)player.GetModPlayer(mod, "CrossMod.ModSupportPlayer")).Thorium_radiantCrit)
 			{
 				crit = true;
 			}
@@ -64,7 +65,7 @@ Grants 1 soul essence on direct hit");
 
         public override void UpdateInventory(Player player)
         {
-            if (ModSupport.GetMod("ThoriumMod") == null)
+            if (ModLoader.GetMod("ThoriumMod") == null)
             {
                 item.TurnToAir();
             }
@@ -93,7 +94,7 @@ Grants 1 soul essence on direct hit");
 
         public override void AddRecipes()
         {
-            if (ModSupport.GetMod("ThoriumMod") == null) return;
+            if (ModLoader.GetMod("ThoriumMod") == null) return;
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "IncineriteBar", 8);
             recipe.AddTile(TileID.Anvils);

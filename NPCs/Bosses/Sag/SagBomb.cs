@@ -60,7 +60,7 @@ namespace AAMod.NPCs.Bosses.Sag
 
             Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 11, 0, 0);
             BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 11, frame, lightColor, true);
-            BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/SagBomb_Glow"), 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 11, frame, AAColor.ZeroShield, true);
+            BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/SagBomb_Glow"), 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 11, frame, Globals.AAColor.ZeroShield, true);
             return false;
         }
 

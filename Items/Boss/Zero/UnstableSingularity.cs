@@ -19,7 +19,7 @@ namespace AAMod.Items.Boss.Zero
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return AAColor.COLOR_WHITEFADE1;
+            return Globals.AAColor.COLOR_WHITEFADE1;
         }
 
         public override void SetDefaults()
@@ -37,7 +37,7 @@ namespace AAMod.Items.Boss.Zero
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Rarity13;
+                    line2.overrideColor = Globals.AAColor.Rarity13;
                 }
             }
         }

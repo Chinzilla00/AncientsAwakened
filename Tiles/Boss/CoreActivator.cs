@@ -35,7 +35,7 @@ namespace AAMod.Tiles.Boss
 
         public Color White(Color color)
         {
-            return AAColor.COLOR_WHITEFADE1;
+            return Globals.AAColor.COLOR_WHITEFADE1;
         }
 
         public override void PostDraw(int x, int y, SpriteBatch sb)
@@ -110,7 +110,7 @@ namespace AAMod.Tiles.Boss
             else
             {
                 //I have no idea how to convert this to the standard system so im gonna post this method too lol
-                AANet.SendNetMessage(AANet.SummonNPCFromClient, (byte)player.whoAmI, (short)bossType, true, (int)npcCenter.X, (int)npcCenter.Y, "The Biome Core whirs to life!", false);
+                Globals.AANet.SendNetMessage(Globals.AANet.SummonNPCFromClient, (byte)player.whoAmI, (short)bossType, true, (int)npcCenter.X, (int)npcCenter.Y, "The Biome Core whirs to life!", false);
             }
         }
 

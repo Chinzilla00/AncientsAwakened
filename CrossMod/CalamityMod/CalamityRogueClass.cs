@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using System.Reflection;
 using AAMod.Items;
 using Microsoft.Xna.Framework;
+using AAMod.CrossMod;
 
 namespace AAMod
 {
@@ -24,7 +25,7 @@ namespace AAMod
 		}
 		public override void ModifyWeaponDamage(Player player, ref float add, ref float mult, ref float flat)
 		{
-			if (ModSupport.GetMod("CalamityMod") != null)
+			if (ModLoader.GetMod("CalamityMod") != null)
 			{
 				float throwingDamage = (float) ModSupport.GetModPlayerConditions("CalamityMod", player, "CalamityPlayer", "throwingDamage", false, false);
 				add += throwingDamage - 1f;
@@ -32,7 +33,7 @@ namespace AAMod
 		}
 		public override void GetWeaponCrit(Player player, ref int crit)
 		{
-			if (ModSupport.GetMod("CalamityMod") != null)
+			if (ModLoader.GetMod("CalamityMod") != null)
 			{
 				int throwingCrit = (int) ModSupport.GetModPlayerConditions("CalamityMod", player, "CalamityPlayer", "throwingCrit", false, false);
 				crit = item.crit + throwingCrit;
@@ -41,7 +42,7 @@ namespace AAMod
 		public override float UseTimeMultiplier(Player player)
 		{
 			float num = 1f;
-			if (ModSupport.GetMod("CalamityMod") != null)
+			if (ModLoader.GetMod("CalamityMod") != null)
 			{
 				bool gloveOfPrecision = (bool) ModSupport.GetModPlayerConditions("CalamityMod", player, "CalamityPlayer", "gloveOfPrecision", false, false);
 				bool gloveOfRecklessness = (bool) ModSupport.GetModPlayerConditions("CalamityMod", player, "CalamityPlayer", "gloveOfRecklessness", false, false);
@@ -58,7 +59,7 @@ namespace AAMod
 		}
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
-			if (ModSupport.GetMod("CalamityMod") != null)
+			if (ModLoader.GetMod("CalamityMod") != null)
 			{
 				TooltipLine tooltipLine = tooltips.FirstOrDefault((TooltipLine x) => x.Name == "Damage" && x.mod == "Terraria");
 				if (tooltipLine != null)
@@ -83,7 +84,7 @@ namespace AAMod
 		}
 		public override bool ConsumeItem(Player player)
 		{
-			if (ModSupport.GetMod("CalamityMod") != null)
+			if (ModLoader.GetMod("CalamityMod") != null)
 			{
 				bool throwingAmmoCost50 = (bool) ModSupport.GetModPlayerConditions("CalamityMod", player, "CalamityPlayer", "throwingAmmoCost50", false, false);
 				bool throwingAmmoCost66 = (bool) ModSupport.GetModPlayerConditions("CalamityMod", player, "CalamityPlayer", "throwingAmmoCost66", false, false);
@@ -99,7 +100,7 @@ namespace AAMod
         {
 			get
 			{
-				if (ModSupport.GetMod("CalamityMod") != null)
+				if (ModLoader.GetMod("CalamityMod") != null)
                 {
                     float? stealth = (float?) ModSupport.GetModPlayerConditions("CalamityMod", player, "CalamityPlayer", "throwingDamage", false, false);
                     if (stealth != null) return (float)stealth;
@@ -108,9 +109,9 @@ namespace AAMod
 			}
 			set
 			{
-				if (ModSupport.GetMod("CalamityMod") != null)
+				if (ModLoader.GetMod("CalamityMod") != null)
                 {
-					ModSupport.SetModPlayerConditions("CalamityMod", player, "CalamityPlayer", "throwingDamage", value, false, false);
+					CrossMod.ModSupport.SetModPlayerConditions("CalamityMod", player, "CalamityPlayer", "throwingDamage", value, false, false);
 				}
 			}
 		}
@@ -119,7 +120,7 @@ namespace AAMod
         {
 			get
 			{
-				if (ModSupport.GetMod("CalamityMod") != null)
+				if (ModLoader.GetMod("CalamityMod") != null)
                 {
                     float? stealth = (float?) ModSupport.GetModPlayerConditions("CalamityMod", player, "CalamityPlayer", "throwingVelocity", false, false);
                     if (stealth != null) return (float)stealth;
@@ -128,9 +129,9 @@ namespace AAMod
 			}
 			set
 			{
-				if (ModSupport.GetMod("CalamityMod") != null)
+				if (ModLoader.GetMod("CalamityMod") != null)
                 {
-					ModSupport.SetModPlayerConditions("CalamityMod", player, "CalamityPlayer", "rogueStealthMax", value, false, false);
+					CrossMod.ModSupport.SetModPlayerConditions("CalamityMod", player, "CalamityPlayer", "rogueStealthMax", value, false, false);
 				}
 			}
 		}
@@ -139,7 +140,7 @@ namespace AAMod
         {
 			get
 			{
-				if (ModSupport.GetMod("CalamityMod") != null)
+				if (ModLoader.GetMod("CalamityMod") != null)
                 {
                     int? stealth = (int?) ModSupport.GetModPlayerConditions("CalamityMod", player, "CalamityPlayer", "throwingCrit", false, false);
                     if (stealth != null) return (int)stealth;
@@ -148,9 +149,9 @@ namespace AAMod
 			}
 			set
 			{
-				if (ModSupport.GetMod("CalamityMod") != null)
+				if (ModLoader.GetMod("CalamityMod") != null)
                 {
-					ModSupport.SetModPlayerConditions("CalamityMod", player, "CalamityPlayer", "throwingCrit", value, false, false);
+					CrossMod.ModSupport.SetModPlayerConditions("CalamityMod", player, "CalamityPlayer", "throwingCrit", value, false, false);
 				}
 			}
 		}
@@ -159,7 +160,7 @@ namespace AAMod
         {
 			get
 			{
-				if (ModSupport.GetMod("CalamityMod") != null)
+				if (ModLoader.GetMod("CalamityMod") != null)
                 {
                     float? stealth = (float?) ModSupport.GetModPlayerConditions("CalamityMod", player, "CalamityPlayer", "rogueStealth", false, false);
                     if (stealth != null) return (float)stealth;
@@ -168,9 +169,9 @@ namespace AAMod
 			}
 			set
 			{
-				if (ModSupport.GetMod("CalamityMod") != null)
+				if (ModLoader.GetMod("CalamityMod") != null)
                 {
-					ModSupport.SetModPlayerConditions("CalamityMod", player, "CalamityPlayer", "rogueStealth", value, false, false);
+					CrossMod.ModSupport.SetModPlayerConditions("CalamityMod", player, "CalamityPlayer", "rogueStealth", value, false, false);
 				}
 			}
 		}
@@ -179,7 +180,7 @@ namespace AAMod
         {
 			get
 			{
-				if (ModSupport.GetMod("CalamityMod") != null)
+				if (ModLoader.GetMod("CalamityMod") != null)
                 {
                     float? stealth = (float?) ModSupport.GetModPlayerConditions("CalamityMod", player, "CalamityPlayer", "rogueStealthMax", false, false);
                     if (stealth != null) return (float)stealth;
@@ -188,9 +189,9 @@ namespace AAMod
 			}
 			set
 			{
-				if (ModSupport.GetMod("CalamityMod") != null)
+				if (ModLoader.GetMod("CalamityMod") != null)
                 {
-					ModSupport.SetModPlayerConditions("CalamityMod", player, "CalamityPlayer", "rogueStealthMax", value, false, false);
+					CrossMod.ModSupport.SetModPlayerConditions("CalamityMod", player, "CalamityPlayer", "rogueStealthMax", value, false, false);
 				}
 			}
 		}
@@ -199,9 +200,9 @@ namespace AAMod
         {
 			get
 			{
-				if (ModSupport.GetMod("CalamityMod") != null)
+				if (ModLoader.GetMod("CalamityMod") != null)
                 {
-					Mod mod = ModSupport.GetMod("CalamityMod");
+					Mod mod = ModLoader.GetMod("CalamityMod");
 					ModPlayer modplayer = player.GetModPlayer(mod, "CalamityPlayer");
 					MethodInfo StealthStrike = modplayer.GetType().GetMethod("StealthStrikeAvailable", BindingFlags.Instance | BindingFlags.Public);
                     bool? stealth = (bool?)StealthStrike.Invoke(modplayer, new object[]{});
@@ -220,10 +221,10 @@ namespace AAMod
 
         public override void SetDefaults(Item item)
 		{
-			if (ModSupport.GetMod("CalamityMod") != null)
+			if (ModLoader.GetMod("CalamityMod") != null)
 			{
 				rogue = (bool) ModSupport.GetModGlobalItemConditions("CalamityMod", item, "CalamityGlobalItem", "rogue", false, false);
-				ModSupport.SetModGlobalItemConditions("CalamityMod", item, "CalamityGlobalItem", "rogue", true, false, false);
+				CrossMod.ModSupport.SetModGlobalItemConditions("CalamityMod", item, "CalamityGlobalItem", "rogue", true, false, false);
 			}
 		}
 	}
@@ -236,10 +237,10 @@ namespace AAMod
 		public bool stealthStrike = false;
         public override void SetDefaults(Projectile projectile)
 		{
-			if (ModSupport.GetMod("CalamityMod") != null)
+			if (ModLoader.GetMod("CalamityMod") != null)
 			{
 				rogue = (bool) ModSupport.GetModGlobalProjConditions("CalamityMod", projectile, "CalamityGlobalProjectile", "rogue", false, false);
-				ModSupport.SetModGlobalProjConditions("CalamityMod", projectile, "CalamityGlobalProjectile", "rogue", true, false, false);
+				CrossMod.ModSupport.SetModGlobalProjConditions("CalamityMod", projectile, "CalamityGlobalProjectile", "rogue", true, false, false);
 			}
 		}
 	}

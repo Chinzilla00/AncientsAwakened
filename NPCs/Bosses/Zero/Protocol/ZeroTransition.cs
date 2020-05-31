@@ -37,7 +37,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             BaseDrawing.DrawTexture(spriteBatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, npc.GetAlpha(lightColor), true);
-            BaseDrawing.DrawTexture(spriteBatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, AAColor.Oblivion, true);
+            BaseDrawing.DrawTexture(spriteBatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, Globals.AAColor.Oblivion, true);
             return false;
         }
 
@@ -58,7 +58,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             }
             if (npc.ai[0] >= 135 && !NPC.AnyNPCs(mod.NPCType("ZeroProtocol")) && Main.netMode != NetmodeID.MultiplayerClient)
             {
-                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("ZeroProtocol"), false, npc.Center, "", false);
+                Globals.AAModGlobalNPC.SpawnBoss(player, mod.NPCType("ZeroProtocol"), false, npc.Center, "", false);
 
                 int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer, 0, 0);
                 Main.projectile[b].Center = npc.Center;

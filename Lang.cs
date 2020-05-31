@@ -7,7 +7,7 @@ namespace AAMod
         public static string Worldtext(string WorldInfo)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
-                {
+            {
                     switch(WorldInfo)
                     {
                         case "YttriumInfo":

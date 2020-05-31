@@ -18,7 +18,7 @@ namespace AAMod.Items.Blocks.Boxes
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.YamataA;
+                    line2.overrideColor = Globals.AAColor.YamataA;
                 }
             }
         }

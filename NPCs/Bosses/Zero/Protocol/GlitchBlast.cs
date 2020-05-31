@@ -51,7 +51,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return AAColor.Oblivion;
+            return Globals.AAColor.Oblivion;
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

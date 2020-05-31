@@ -66,8 +66,8 @@ namespace AAMod.NPCs.Bosses.Sag
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 4, 0, 0);
-            DrawAfterimage(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.oldPos, projectile.scale, projectile.rotation, projectile.direction, 4, frame, .8f, 1f, 9, true, 0, 0, true, new Color(AAColor.ZeroShield.R, AAColor.ZeroShield.G, AAColor.ZeroShield.B, 150));
-            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 4, frame, new Color(AAColor.ZeroShield.R, AAColor.ZeroShield.G, AAColor.ZeroShield.B, 150), true);
+            DrawAfterimage(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.oldPos, projectile.scale, projectile.rotation, projectile.direction, 4, frame, .8f, 1f, 9, true, 0, 0, true, new Color(Globals.AAColor.ZeroShield.R, Globals.AAColor.ZeroShield.G, Globals.AAColor.ZeroShield.B, 150));
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 4, frame, new Color(Globals.AAColor.ZeroShield.R, Globals.AAColor.ZeroShield.G, Globals.AAColor.ZeroShield.B, 150), true);
             return false;
         }
 

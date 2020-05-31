@@ -35,7 +35,7 @@ namespace AAMod.Tiles.Ore
             if (glow && tile != null && tile.active() && tile.type == Type)
             {
                 if (glowTex == null) glowTex = mod.GetTexture("Glowmasks/EventideAbyssiumOre_Glow");
-                BaseDrawing.DrawTileTexture(sb, glowTex, x, y, true, false, false, null, AAGlobalTile.GetYamataColorDim2);
+                BaseDrawing.DrawTileTexture(sb, glowTex, x, y, true, false, false, null, Globals.AAGlobalTile.GetYamataColorDim2);
             }
         }
 

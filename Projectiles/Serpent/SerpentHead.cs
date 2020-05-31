@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using AAMod.Globals;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -27,7 +28,7 @@ namespace AAMod.Projectiles.Serpent
             projectile.penetrate = -1;
             projectile.timeLeft = 18000;
             projectile.timeLeft *= 5;
-            projectile.GetGlobalProjectile<AAGlobalProjectile>().LongMinion = true;
+            projectile.GetGlobalProjectile<Globals.AAGlobalProjectile>().LongMinion = true;
         }
 
         public override Color? GetAlpha(Color lightColor)
@@ -188,7 +189,7 @@ namespace AAMod.Projectiles.Serpent
             ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
             projectile.timeLeft *= 5;
             projectile.minionSlots = .5f;
-            projectile.GetGlobalProjectile<AAGlobalProjectile>().LongMinion = true;
+            projectile.GetGlobalProjectile<Globals.AAGlobalProjectile>().LongMinion = true;
         }
         public override Color? GetAlpha(Color lightColor)
         {

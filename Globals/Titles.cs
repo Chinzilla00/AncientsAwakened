@@ -1,7 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod
+namespace AAMod.Globals
 {
 	public class Titles : ModPlayer
     {
@@ -19,12 +19,12 @@ namespace AAMod
 
         public override void PreUpdate()
         {
-            if (!AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<Title>()) && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<SistersTitle>()))
+            if (!Globals.AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<Title>()) && !Globals.AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<SistersTitle>()))
             {
                 alphaText = 255f;
                 alphaText2 = 255f;
             }
-            if (!AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<SistersTitle>()))
+            if (!Globals.AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<SistersTitle>()))
             {
                 alphaText3 = 255f;
                 alphaText4 = 255f;

@@ -1,4 +1,5 @@
 using System;
+using AAMod.Misc;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -96,7 +97,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
 
 		public Color GetGlowAlpha()
 		{
-			return ColorUtils.COLOR_GLOWPULSE;// new Color(255, 255, 255) * ((float)Main.mouseTextColor / 255f);
+			return ColorUtils.COLOR_GLOWPULSE;
 		}
 
         public override void PostDraw(SpriteBatch sb, Color dColor)

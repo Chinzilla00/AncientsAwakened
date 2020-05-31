@@ -47,7 +47,7 @@ namespace AAMod.Projectiles.Sag
         {
             Texture2D Glow = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
             BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture("Projectiles/Sag/ZeroStarP"), 0, projectile, lightColor, true);
-            BaseDrawing.DrawTexture(spriteBatch, Glow, 0, projectile, AAColor.COLOR_WHITEFADE1, true);
+            BaseDrawing.DrawTexture(spriteBatch, Glow, 0, projectile, Globals.AAColor.COLOR_WHITEFADE1, true);
             return false;
         }
     }

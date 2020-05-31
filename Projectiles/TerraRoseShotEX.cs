@@ -76,12 +76,12 @@ namespace AAMod.Projectiles
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return AAColor.COLOR_WHITEFADE1;
+            return Globals.AAColor.COLOR_WHITEFADE1;
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile, AAColor.COLOR_WHITEFADE1, true);
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile, Globals.AAColor.COLOR_WHITEFADE1, true);
             return false;
         }
 

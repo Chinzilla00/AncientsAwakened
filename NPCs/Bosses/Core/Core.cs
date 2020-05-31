@@ -8,6 +8,7 @@ using System.IO;
 using AAMod.NPCs.Enemies.Terrarium.Hardmode;
 using AAMod.NPCs.Bosses.Core.Projectiles;
 using System.Collections.Generic;
+using AAMod.Misc;
 
 namespace AAMod.NPCs.Bosses.Core
 {
@@ -485,7 +486,7 @@ namespace AAMod.NPCs.Bosses.Core
                 if (!flag118)
                 {
                     int startY = point14.Y - 20;
-                    Collision.ExpandVertically(num1469, startY, out int num1470, out int num1471, 1, 51);
+                    Collision.ExpandVertically(num1469, startY, out _, out int num1471, 1, 51);
                     if (StrayMethods.CanSpawnSandstormHostile(new Vector2(num1469, num1471 - 15) * 16f, 15, 15))
                     {
                         list4.Add(new Point(num1469, num1471 - 15));

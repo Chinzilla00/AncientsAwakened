@@ -39,7 +39,7 @@ namespace AAMod.Items.Blocks.Boxes
 
                     line2.overrideColor = new Color(100, 0, 10);
 
-                    line2.overrideColor = AAColor.Rarity13;
+                    line2.overrideColor = Globals.AAColor.Rarity13;
 //
                 }
             }

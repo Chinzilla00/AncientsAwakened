@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using System;
+using AAMod.Misc;
 
 namespace AAMod.NPCs.Bosses.Broodmother
 {
@@ -40,9 +41,11 @@ namespace AAMod.NPCs.Bosses.Broodmother
             bool tileCheck = TileID.Sets.Platforms[Main.tile[(int)(tile.X / 16), (int)(tile.Y / 16)].type];
             if (tileCheck) 
             {
-                projectile.velocity.X = 0f;
-                projectile.velocity.Y = 0f;
-                if(explode) projectile.Kill();
+                projectile.velocity = Vector2.Zero;
+                if (explode)
+                {
+                    projectile.Kill();
+                }
             }
         }
 

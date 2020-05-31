@@ -9,6 +9,7 @@ using System.IO;
 using AAMod.Items.Boss.Rajah;
 using Terraria.Graphics.Shaders;
 using AAMod.NPCs.Bosses.Rajah.Supreme;
+using AAMod.Misc;
 
 namespace AAMod.NPCs.Bosses.Rajah
 {
@@ -164,7 +165,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
                 damage = npc.damage / 2;
             }
-            AAModGlobalNPC.Rajah = npc.whoAmI;
+            Globals.AAModGlobalNPC.Rajah = npc.whoAmI;
             WeaponPos = new Vector2(npc.Center.X + (npc.direction == 1 ? -78 : 78), npc.Center.Y - 9);
             StaffPos = new Vector2(npc.Center.X + (npc.direction == 1 ? 78 : -78), npc.Center.Y - 9);
             if (Roaring) roarTimer--;
@@ -415,7 +416,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 {
                     internalAI[3] = 0;
                     npc.ai[2] = 0;
-                    if (ModSupport.GetMod("ThoriumMod") != null && Main.rand.Next(7) == 0)
+                    if (ModLoader.GetMod("ThoriumMod") != null && Main.rand.Next(7) == 0)
                     {
                         npc.ai[3] = 7;
                     }
@@ -443,7 +444,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                         internalAI[3] = 0;
                         if (internalAI[1] == 0)
                         {
-                            if (NPC.CountNPCS(ModContent.NPCType<RabbitcopterSoldier>()) + AAGlobalProjectile.CountProjectiles(ModContent.ProjectileType<BunnySummon1>()) < 5)
+                            if (NPC.CountNPCS(ModContent.NPCType<RabbitcopterSoldier>()) + Globals.AAGlobalProjectile.CountProjectiles(ModContent.ProjectileType<BunnySummon1>()) < 5)
                             {
                                 Projectile.NewProjectile(StaffPos, Vector2.Zero, ModContent.ProjectileType<BunnySummon1>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
                                 Projectile.NewProjectile(StaffPos, Vector2.Zero, ModContent.ProjectileType<BunnySummon1>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 200, (int)npc.Center.X + 200), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
@@ -459,7 +460,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                             }
                             if (npc.ai[1] == 0)
                             {
-                                if (NPC.CountNPCS(ModContent.NPCType<RabbitcopterSoldier>()) + AAGlobalProjectile.CountProjectiles(ModContent.ProjectileType<BunnySummon1>()) < 5)
+                                if (NPC.CountNPCS(ModContent.NPCType<RabbitcopterSoldier>()) + Globals.AAGlobalProjectile.CountProjectiles(ModContent.ProjectileType<BunnySummon1>()) < 5)
                                 {
                                     Projectile.NewProjectile(StaffPos, Vector2.Zero, ModContent.ProjectileType<BunnySummon1>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 500, (int)npc.Center.X + 500), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
                                     Projectile.NewProjectile(StaffPos, Vector2.Zero, ModContent.ProjectileType<BunnySummon1>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 500, (int)npc.Center.X + 500), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
@@ -468,7 +469,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                             }
                             else if (npc.ai[1] == 1)
                             {
-                                if (NPC.CountNPCS(ModContent.NPCType<BunnyBrawler>()) + AAGlobalProjectile.CountProjectiles(ModContent.ProjectileType<BunnySummon2>()) < 5)
+                                if (NPC.CountNPCS(ModContent.NPCType<BunnyBrawler>()) + Globals.AAGlobalProjectile.CountProjectiles(ModContent.ProjectileType<BunnySummon2>()) < 5)
                                 {
                                     Projectile.NewProjectile(StaffPos, Vector2.Zero, ModContent.ProjectileType<BunnySummon2>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 500, (int)npc.Center.X + 500), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
                                     Projectile.NewProjectile(StaffPos, Vector2.Zero, ModContent.ProjectileType<BunnySummon2>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 500, (int)npc.Center.X + 500), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
@@ -476,7 +477,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                             }
                             else if (npc.ai[1] == 2)
                             {
-                                if (NPC.CountNPCS(ModContent.NPCType<BunnyBattler>()) + AAGlobalProjectile.CountProjectiles(ModContent.ProjectileType<BunnySummon3>()) < 8)
+                                if (NPC.CountNPCS(ModContent.NPCType<BunnyBattler>()) + Globals.AAGlobalProjectile.CountProjectiles(ModContent.ProjectileType<BunnySummon3>()) < 8)
                                 {
                                     Projectile.NewProjectile(StaffPos, Vector2.Zero, ModContent.ProjectileType<BunnySummon3>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 500, (int)npc.Center.X + 500), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
 
@@ -608,7 +609,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 }
                 else if (npc.ai[3] == 7) //Carrot Farmer
                 {
-                    if (!AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<CarrotFarmerR>()))
+                    if (!Globals.AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<CarrotFarmerR>()))
                     {
                         Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, ModContent.ProjectileType<CarrotFarmerR>(), damage, 3f, Main.myPlayer, npc.whoAmI);
                         npc.netUpdate = true;

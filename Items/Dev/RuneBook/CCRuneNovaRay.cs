@@ -98,7 +98,7 @@ namespace AAMod.Items.Dev.RuneBook
             #region Draw laser body
             for (float i = transDist; i <= Distance; i += step)
             {
-                Color c = AAColor.Oblivion;
+                Color c = Globals.AAColor.Oblivion;
                 Vector2 origin = start + i * unit;
                 spriteBatch.Draw(texture, origin - Main.screenPosition,
                     new Rectangle(0, 26, 28, 26), i < transDist ? Color.Transparent : c, r,
@@ -108,12 +108,12 @@ namespace AAMod.Items.Dev.RuneBook
 
             #region Draw laser tail
             spriteBatch.Draw(texture, start + unit * (transDist - step) - Main.screenPosition,
-                new Rectangle(0, 0, 28, 26), AAColor.ZeroShield, r, new Vector2(28 * .5f, 26 * .5f), scale, 0, 0);
+                new Rectangle(0, 0, 28, 26), Globals.AAColor.ZeroShield, r, new Vector2(28 * .5f, 26 * .5f), scale, 0, 0);
             #endregion
 
             #region Draw laser head
             spriteBatch.Draw(texture, start + (Distance + step) * unit - Main.screenPosition,
-                new Rectangle(0, 52, 28, 26), AAColor.ZeroShield, r, new Vector2(28 * .5f, 26 * .5f), scale, 0, 0);
+                new Rectangle(0, 52, 28, 26), Globals.AAColor.ZeroShield, r, new Vector2(28 * .5f, 26 * .5f), scale, 0, 0);
             #endregion
         }
 

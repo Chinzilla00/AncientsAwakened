@@ -6,7 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using AAMod.Items.Blocks;
 
-namespace AAMod
+namespace AAMod.Globals
 {
     public class AAGlobalTile : GlobalTile
     {
@@ -29,7 +29,7 @@ namespace AAMod
         public static Color GetIncineriteColorBright(Color color) => GetIncineriteColor(color, 0.6f, 1f, false);
         public static Color GetIncineriteColorBrightInvert(Color color) => GetIncineriteColor(color, 1f, 0.6f, true);
 
-        public static Color GetZeroColor(Color color, float min, float max, bool clamp) => GetTimedColor(AAColor.ZeroShield, color, min, max, clamp);
+        public static Color GetZeroColor(Color color, float min, float max, bool clamp) => GetTimedColor(Globals.AAColor.ZeroShield, color, min, max, clamp);
         public static Color GetZeroColorDim(Color color) => GetZeroColor(color, 0.4f, .6f, false);
         public static Color GetZeroColorBright(Color color) => GetZeroColor(color, 0.6f, 1f, false);
         public static Color GetZeroColorBrightInvert(Color color) => GetZeroColor(color, 1f, 0.6f, true);
@@ -59,12 +59,12 @@ namespace AAMod
         public static Color GetAkumaColorBright(Color color) => GetAkumaColor(color, 0.6f, 1f, false);
         public static Color GetAkumaColorBrightInvert(Color color) => GetAkumaColor(color, 1f, 0.6f, true);
 
-        public static Color GetDarkmatterColor(Color color, float min, float max, bool clamp) => GetTimedColor(AAColor.Nightcrawler, color, min, max, clamp);
+        public static Color GetDarkmatterColor(Color color, float min, float max, bool clamp) => GetTimedColor(Globals.AAColor.Nightcrawler, color, min, max, clamp);
         public static Color GetDarkmatterColorDim(Color color) => GetDarkmatterColor(color, 0.4f, 1f, false);
         public static Color GetDarkmatterColorBright(Color color) => GetDarkmatterColor(color, 0.6f, 1f, false);
         public static Color GetDarkmatterColorBrightInvert(Color color) => GetDarkmatterColor(color, 1f, 0.6f, true);
 
-        public static Color GetRadiumColor(Color color, float min, float max, bool clamp) => GetTimedColor(AAColor.Daybringer, color, min, max, clamp);
+        public static Color GetRadiumColor(Color color, float min, float max, bool clamp) => GetTimedColor(Globals.AAColor.Daybringer, color, min, max, clamp);
         public static Color GetRadiumColorDim(Color color) => GetRadiumColor(color, 0.4f, 1f, false);
         public static Color GetRadiumColorBright(Color color) => GetRadiumColor(color, 0.6f, 1f, false);
         public static Color GetRadiumColorBrightInvert(Color color) => GetRadiumColor(color, 1f, 0.6f, true);
@@ -84,17 +84,17 @@ namespace AAMod
         public static Color GetCthulhuColorBright(Color color) => GetCthulhuColor(color, 0.6f, 1f, false);
         public static Color GetCthulhuColorBrightInvert(Color color) => GetCthulhuColor(color, 1f, 0.6f, true);
 
-        public static Color GetShenColor(Color color, float min, float max, bool clamp) => GetTimedColor(AAColor.Shen2, color, min, max, clamp);
+        public static Color GetShenColor(Color color, float min, float max, bool clamp) => GetTimedColor(Globals.AAColor.Shen2, color, min, max, clamp);
         public static Color GetShenColorDim(Color color) => GetShenColor(color, 0.4f, 1f, false);
         public static Color GetShenColorBright(Color color) => GetShenColor(color, 0.6f, 1f, false);
         public static Color GetShenColorBrightInvert(Color color) => GetShenColor(color, 1f, 0.6f, true);
 
-        public static Color GetSkyColor(Color color, float min, float max, bool clamp) => GetTimedColor(AAColor.Sky, color, min, max, clamp);
+        public static Color GetSkyColor(Color color, float min, float max, bool clamp) => GetTimedColor(Globals.AAColor.Sky, color, min, max, clamp);
         public static Color GetSkyColorDim(Color color) => GetSkyColor(color, 0.4f, 1f, false);
         public static Color GetSkyColorBright(Color color) => GetSkyColor(color, 0.6f, 1f, false);
         public static Color GetSkyColorBrightInvert(Color color) => GetSkyColor(color, 1f, 0.6f, true);
 
-        public static Color GetBlankColor(Color color, float min, float max, bool clamp) => GetTimedColor(AAColor.COLOR_WHITEFADE1, color, min, max, clamp);
+        public static Color GetBlankColor(Color color, float min, float max, bool clamp) => GetTimedColor(Globals.AAColor.COLOR_WHITEFADE1, color, min, max, clamp);
         public static Color GetBlankColorDim(Color color) => GetBlankColor(color, 0.4f, 1f, false);
         public static Color GetBlankColorBright(Color color) => GetBlankColor(color, 0.6f, 1f, false);
         public static Color GetBlankColorBrightInvert(Color color) => GetBlankColor(color, 1f, 0.6f, true);

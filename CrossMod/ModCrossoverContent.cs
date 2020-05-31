@@ -2,11 +2,10 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using AAMod.Items;
 using System;
 using System.Reflection;
 
-namespace AAMod
+namespace AAMod.CrossMod
 {
     public class ModSupport
     {
@@ -73,6 +72,9 @@ namespace AAMod
             }
         }*/
 
+        // What the fuck!? I'm marking this as obsolete instead of deleting it because it's genuinely hilarious
+
+        [Obsolete]
         public static Mod GetMod(string modname)
 		{
             if(ModLoader.GetMod(modname) != null)
@@ -385,7 +387,7 @@ namespace AAMod
 
         public override void ModifyTooltips(List<TooltipLine> list)
         {
-            if (ModSupport.GetMod(crossoverModName) != null)
+            if (ModLoader.GetMod(crossoverModName) != null)
             {
                 TooltipLine error = new TooltipLine(mod, "Error", "WARNING: ITEM WILL NOT FUNCTION WITHOUT " + crossoverModName.ToUpper() + " ENABLED!")
                 {
@@ -403,18 +405,18 @@ namespace AAMod
         {
             get
             {
-                if (ModSupport.GetMod("ThoriumMod") != null)
+                if (ModLoader.GetMod("ThoriumMod") != null)
                 {
-                    float? boost = (float?)ModSupport.GetMod("ThoriumMod").Call("GetRadiantBoost", player.whoAmI);
+                    float? boost = (float?)ModLoader.GetMod("ThoriumMod").Call("GetRadiantBoost", player.whoAmI);
                     if (boost != null) return (float)boost;
                 }
                 return 1f;
             }
             set
             {
-                if (ModSupport.GetMod("ThoriumMod") != null)
+                if (ModLoader.GetMod("ThoriumMod") != null)
                 {
-                    ModSupport.GetMod("ThoriumMod").Call("SetRadiantBoost", player.whoAmI, value);
+                    ModLoader.GetMod("ThoriumMod").Call("SetRadiantBoost", player.whoAmI, value);
                 }
             }
         }
@@ -422,18 +424,18 @@ namespace AAMod
         {
             get
             {
-                if (ModSupport.GetMod("ThoriumMod") != null)
+                if (ModLoader.GetMod("ThoriumMod") != null)
                 {
-                    int? boost = (int?)ModSupport.GetMod("ThoriumMod").Call("GetRadiantCrit", player.whoAmI);
+                    int? boost = (int?)ModLoader.GetMod("ThoriumMod").Call("GetRadiantCrit", player.whoAmI);
                     if (boost != null) return (int)boost;
                 }
                 return 0;
             }
             set
             {
-                if (ModSupport.GetMod("ThoriumMod") != null)
+                if (ModLoader.GetMod("ThoriumMod") != null)
                 {
-                    ModSupport.GetMod("ThoriumMod").Call("SetRadiantCrit", player.whoAmI, value);
+                    ModLoader.GetMod("ThoriumMod").Call("SetRadiantCrit", player.whoAmI, value);
                 }
             }
         }
@@ -441,18 +443,18 @@ namespace AAMod
         {
             get
             {
-                if (ModSupport.GetMod("ThoriumMod") != null)
+                if (ModLoader.GetMod("ThoriumMod") != null)
                 {
-                    int? boost = (int?)ModSupport.GetMod("ThoriumMod").Call("GetHealBonus", player.whoAmI);
+                    int? boost = (int?)ModLoader.GetMod("ThoriumMod").Call("GetHealBonus", player.whoAmI);
                     if (boost != null) return (int)boost;
                 }
                 return 0;
             }
             set
             {
-                if (ModSupport.GetMod("ThoriumMod") != null)
+                if (ModLoader.GetMod("ThoriumMod") != null)
                 {
-                    ModSupport.GetMod("ThoriumMod").Call("SetHealBonus", player.whoAmI, value);
+                    ModLoader.GetMod("ThoriumMod").Call("SetHealBonus", player.whoAmI, value);
                 }
             }
         }
@@ -464,18 +466,18 @@ namespace AAMod
         {
             get
             {
-                if (ModSupport.GetMod("Redemption") != null)
+                if (ModLoader.GetMod("Redemption") != null)
                 {
-                    float? boost = (float?)ModSupport.GetMod("Redemption").Call("GetDruidicBoost", player.whoAmI);
+                    float? boost = (float?)ModLoader.GetMod("Redemption").Call("GetDruidicBoost", player.whoAmI);
                     if (boost != null) return (float)boost;
                 }
                 return 1f;
             }
             set
             {
-                if (ModSupport.GetMod("Redemption") != null)
+                if (ModLoader.GetMod("Redemption") != null)
                 {
-                    ModSupport.GetMod("Redemption").Call("SetDruidicBoost", player.whoAmI, value);
+                    ModLoader.GetMod("Redemption").Call("SetDruidicBoost", player.whoAmI, value);
                 }
             }
         }
@@ -483,18 +485,18 @@ namespace AAMod
         {
             get
             {
-                if (ModSupport.GetMod("Redemption") != null)
+                if (ModLoader.GetMod("Redemption") != null)
                 {
-                    int? boost = (int?)ModSupport.GetMod("Redemption").Call("GetDruidicCrit", player.whoAmI);
+                    int? boost = (int?)ModLoader.GetMod("Redemption").Call("GetDruidicCrit", player.whoAmI);
                     if (boost != null) return (int)boost;
                 }
                 return 0;
             }
             set
             {
-                if (ModSupport.GetMod("Redemption") != null)
+                if (ModLoader.GetMod("Redemption") != null)
                 {
-                    ModSupport.GetMod("Redemption").Call("SetDruidicCrit", player.whoAmI, value);
+                    ModLoader.GetMod("Redemption").Call("SetDruidicCrit", player.whoAmI, value);
                 }
             }
         }

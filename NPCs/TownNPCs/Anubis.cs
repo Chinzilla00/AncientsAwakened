@@ -8,6 +8,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Utilities;
 using AAMod.NPCs.Bosses.Anubis.Forsaken;
+using AAMod.CrossMod;
 
 namespace AAMod.NPCs.TownNPCs
 {
@@ -579,7 +580,7 @@ namespace AAMod.NPCs.TownNPCs
             }
             else if (GreedA)
             {
-                if (ModSupport.GetMod("CalamityMod") != null)
+                if (ModLoader.GetMod("CalamityMod") != null)
                 {
                     if (DoG && AAWorld.downedGreedA)
                     {
@@ -667,10 +668,10 @@ namespace AAMod.NPCs.TownNPCs
 
         public override string GetChat()
         {
-            Mod GRealm = ModSupport.GetMod("Grealm");
-            Mod Fargos = ModSupport.GetMod("Fargowiltas");
-            Mod Redemption = ModSupport.GetMod("Redemption");
-            Mod Thorium = ModSupport.GetMod("ThoriumMod");
+            Mod GRealm = ModLoader.GetMod("Grealm");
+            Mod Fargos = ModLoader.GetMod("Fargowiltas");
+            Mod Redemption = ModLoader.GetMod("Redemption");
+            Mod Thorium = ModLoader.GetMod("ThoriumMod");
 
             //int HordeZombie = GRealm == null ? -1 : NPC.FindFirstNPC(ModSupport.GetModNPC("GRealm", "HordeZombie").npc.type);
             int Mutant = Fargos == null ? -1 : NPC.FindFirstNPC(ModSupport.GetModNPC("Fargowiltas", "Mutant").npc.type);

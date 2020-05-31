@@ -30,7 +30,7 @@ namespace AAMod.Projectiles
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return AAColor.Hallow;
+            return Globals.AAColor.Hallow;
         }
 
         public override void AI()

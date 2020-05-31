@@ -131,7 +131,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 				}else
 				if (npc.ai[0] >= 1455 && !NPC.AnyNPCs(mod.NPCType("YamataA")))
 				{
-					AAModGlobalNPC.SpawnBoss(player, mod.NPCType("YamataA"), false, npc.Center, "", false);
+					Globals.AAModGlobalNPC.SpawnBoss(player, mod.NPCType("YamataA"), false, npc.Center, "", false);
 					BaseUtility.Chat(Lang.BossChat("YamataTransition5"), Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
 					BaseUtility.Chat(Lang.BossChat("YamataTransition6"), new Color(146, 30, 68));
 
@@ -250,7 +250,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                     else
                     if (npc.ai[0] >= 600 && !NPC.AnyNPCs(mod.NPCType("YamataA")))
                     {
-                        AAModGlobalNPC.SpawnBoss(player, mod.NPCType("YamataA"), false, npc.Center, "", false);
+                        Globals.AAModGlobalNPC.SpawnBoss(player, mod.NPCType("YamataA"), false, npc.Center, "", false);
                         BaseUtility.Chat(Lang.BossChat("YamataTransition5"), Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
 
                         int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer, 0, 0);

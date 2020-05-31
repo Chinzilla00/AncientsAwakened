@@ -1,4 +1,6 @@
 ﻿
+using AAMod.CrossMod;
+using AAMod.Misc;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -731,31 +733,31 @@ namespace AAMod.NPCs.Bosses.Shen
 
             bool a = false;
 
-            if (ModSupport.GetMod("ThoriumMod") != null && DownedRag)
+            if (ModLoader.GetMod("ThoriumMod") != null && DownedRag)
             {
                 a = true;
                 Text.Add(Lang.BossChat("ShenAThorium"));
             }
 
-            if (ModSupport.GetMod("CalamityMod") != null && DownedScal)
+            if (ModLoader.GetMod("CalamityMod") != null && DownedScal)
             {
                 a = true;
                 Text.Add(Lang.BossChat("ShenACalamity"));
             }
 
-            if (ModSupport.GetMod("GRealm") != null && DownedMantid)
+            if (ModLoader.GetMod("GRealm") != null && DownedMantid)
             {
                 a = true;
                 Text.Add(Lang.BossChat("ShenAGRealm"));
             }
 
-            if (ModSupport.GetMod("Redemption") != null && DownedNeb)
+            if (ModLoader.GetMod("Redemption") != null && DownedNeb)
             {
                 a = true;
                 Text.Add(Lang.BossChat("ShenARedemption"));
             }
 
-            if (ModSupport.GetMod("SpiritMod") != null && DownedOverseer)
+            if (ModLoader.GetMod("SpiritMod") != null && DownedOverseer)
             {
                 a = true;
                 Text.Add(Lang.BossChat("ShenASpirit"));
@@ -797,8 +799,8 @@ namespace AAMod.NPCs.Bosses.Shen
             BaseDrawing.DrawTexture(sb, currentTex, 0, npc, drawColor);
 
             //draw glow/glow afterimage
-            BaseDrawing.DrawTexture(sb, glowTex, 0, npc, AAColor.Shen3);
-            BaseDrawing.DrawAfterimage(sb, glowTex, 0, npc, 0.3f, 1f, 8, false, 0f, 0f, AAColor.Shen3);
+            BaseDrawing.DrawTexture(sb, glowTex, 0, npc, Globals.AAColor.Shen3);
+            BaseDrawing.DrawAfterimage(sb, glowTex, 0, npc, 0.3f, 1f, 8, false, 0f, 0f, Globals.AAColor.Shen3);
 
             //draw wings
             BaseDrawing.DrawTexture(sb, currentWingTex2, 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 5, wingFrame, drawColor);

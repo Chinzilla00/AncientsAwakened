@@ -27,7 +27,7 @@
 
         public override void PostUpdate()
 		{
-			Lighting.AddLight(item.Center, AAColor.ZeroShield.ToVector3() * 0.55f * Main.essScale);
+			Lighting.AddLight(item.Center, Globals.AAColor.ZeroShield.ToVector3() * 0.55f * Main.essScale);
 		}
 	}
 }*/

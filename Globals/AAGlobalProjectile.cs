@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using AAMod.Tiles;
 using AAMod.Items.FishingItem.Crate;
 
-namespace AAMod
+namespace AAMod.Globals
 {
     public class AAGlobalProjectile : GlobalProjectile
     {

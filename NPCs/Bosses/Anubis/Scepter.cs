@@ -73,8 +73,8 @@ namespace AAMod.NPCs.Bosses.Anubis
                         reflectvelocity *= vector.Length();
                         Main.projectile[i].damage /= 2;
                         Main.projectile[i].penetrate = 1;
-                        Main.projectile[i].GetGlobalProjectile<AAGlobalProjectile>().reflectvelocity = reflectvelocity;
-                        Main.projectile[i].GetGlobalProjectile<AAGlobalProjectile>().isReflecting = true;
+                        Main.projectile[i].GetGlobalProjectile<Globals.AAGlobalProjectile>().reflectvelocity = reflectvelocity;
+                        Main.projectile[i].GetGlobalProjectile<Globals.AAGlobalProjectile>().isReflecting = true;
                     }
                 }
             }

@@ -104,7 +104,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                     else
                     if (npc.ai[0] >= 600 && !NPC.AnyNPCs(mod.NPCType("AkumaA")))
                     {
-                        AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AkumaA"), false, npc.Center, "", false);
+                        Globals.AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AkumaA"), false, npc.Center, "", false);
                         BaseUtility.Chat(Lang.BossChat("AkumaTransition4"), Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
 
                         int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer, 0, 0);
@@ -196,7 +196,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 				}else
 				if (npc.ai[0] >= 1200 && !NPC.AnyNPCs(mod.NPCType("AkumaA")))
 				{
-					AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AkumaA"), false, npc.Center, "", false);
+					Globals.AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AkumaA"), false, npc.Center, "", false);
 					BaseUtility.Chat(Lang.BossChat("AkumaTransition4"), Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
 					BaseUtility.Chat(Lang.BossChat("AkumaTransition5"), Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
 

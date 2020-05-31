@@ -27,7 +27,7 @@ namespace AAMod.Dusts
                 {
                     strength = 1f;
                 }
-                Lighting.AddLight(dust.position, AAColor.Hallow.R / 255 * 0.3f * strength, AAColor.Hallow.G / 255 * 0.3f * strength, AAColor.Hallow.B / 255 * 0.3f * strength);
+                Lighting.AddLight(dust.position, Globals.AAColor.Hallow.R / 255 * 0.3f * strength, Globals.AAColor.Hallow.G / 255 * 0.3f * strength, Globals.AAColor.Hallow.B / 255 * 0.3f * strength);
             }
             if (Collision.SolidCollision(dust.position - Vector2.One * 5f, 10, 10) && dust.fadeIn == 0f)
             {

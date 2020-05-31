@@ -31,7 +31,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return AAColor.ZeroShield;
+            return Globals.AAColor.ZeroShield;
         }
 
         public override void AI()

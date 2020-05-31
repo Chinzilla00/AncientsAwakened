@@ -33,7 +33,7 @@ namespace AAMod.NPCs.Enemies.Other
 
         public override void AI()
         {
-            AAAI.AIClaw(npc, ref npc.ai, false, true, 0.1f, 0.04f, 9f, 5f, 1f, 1f);
+            Globals.AAAI.AIClaw(npc, ref npc.ai, false, true, 0.1f, 0.04f, 9f, 5f, 1f, 1f);
             if (npc.velocity.X > 0f)
             {
                 npc.spriteDirection = 1;

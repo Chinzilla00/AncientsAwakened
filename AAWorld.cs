@@ -13,13 +13,13 @@ using AAMod.Tiles.Ore;
 using AAMod.Tiles;
 using AAMod.Tiles.Crafters;
 using AAMod.Worldgeneration;
-using AAMod.Worldgen;
 using Terraria.Utilities;
 using Terraria.Localization;
 using AAMod.Walls;
 using Terraria.UI;
 using Terraria.GameContent.UI.Elements;
 using Microsoft.Xna.Framework.Graphics;
+using AAMod.Misc;
 
 namespace AAMod
 {
@@ -1385,10 +1385,6 @@ namespace AAMod
                                     {
                                         Main.NewText(Lang.BossSummonsInfo("GripsAwoken"), 50, 255, 130, false);
                                     }
-                                    else if (Main.netMode == NetmodeID.Server)
-                                    {
-                                        NetMessage.SendData(MessageID.ChatText, -1, -1, null, 255, 50f, 255f, 130f, 0, 0, 0);
-                                    }
                                 }
                             }
                         }
@@ -1406,8 +1402,8 @@ namespace AAMod
                                     {
                                         NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(Language.GetTextValue("Mods.AAMod.Grips.GripsofChaosAwoken")), new Color(175, 75, 255), -1);
                                     }
-                                AAModGlobalNPC.SpawnBoss(Main.player[k], mod.NPCType("GripOfChaosBlue"), false, 1, 0);
-                                AAModGlobalNPC.SpawnBoss(Main.player[k], mod.NPCType("GripOfChaosRed"), false, -1, 0);
+                                Globals.AAModGlobalNPC.SpawnBoss(Main.player[k], mod.NPCType("GripOfChaosBlue"), false, 1, 0);
+                                Globals.AAModGlobalNPC.SpawnBoss(Main.player[k], mod.NPCType("GripOfChaosRed"), false, -1, 0);
                                 spawnGrips = false;
                                 break;
                             }

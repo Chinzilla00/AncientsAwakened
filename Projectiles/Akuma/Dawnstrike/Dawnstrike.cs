@@ -114,7 +114,7 @@ namespace AAMod.Projectiles.Akuma.Dawnstrike
 
             if (counter >= 120)
             {
-                GlowColor = AAColor.AkumaA;
+                GlowColor = Globals.AAColor.AkumaA;
                 chargeLevel = 3;
             }
 
@@ -180,7 +180,7 @@ namespace AAMod.Projectiles.Akuma.Dawnstrike
             }
         }
 
-        public Color GlowColor = AAColor.Akuma;
+        public Color GlowColor = Globals.AAColor.Akuma;
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {

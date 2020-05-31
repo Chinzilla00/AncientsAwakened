@@ -35,7 +35,7 @@ namespace AAMod.Items.Materials
 
         public override void PostUpdate()
         {
-            Lighting.AddLight(item.Center, AAColor.Ocean.ToVector3() * 0.55f * Main.essScale);
+            Lighting.AddLight(item.Center, Globals.AAColor.Ocean.ToVector3() * 0.55f * Main.essScale);
         }
     }
 }

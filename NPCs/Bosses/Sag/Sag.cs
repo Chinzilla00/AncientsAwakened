@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 
 using System.IO;
 using Terraria.Graphics.Shaders;
+using AAMod.Misc;
 
 namespace AAMod.NPCs.Bosses.Sag
 {

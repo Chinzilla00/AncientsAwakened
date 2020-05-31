@@ -9,10 +9,8 @@ namespace AAMod
     public class DownedBools : ModWorld
     {
         public static bool downedGobSummoner = false;
-
         public static bool downedOgre = false;
         public static bool downedBetsy = false;
-
         public static bool downedMoth = false;
 
         public override void Initialize()

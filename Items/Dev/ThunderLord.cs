@@ -46,7 +46,7 @@ namespace AAMod.Items.Dev
 
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow";
 			glowmaskDrawType = GLOWMASKTYPE_GUN;
-			glowmaskDrawColor = AAColor.COLOR_WHITEFADE1;
+			glowmaskDrawColor = Globals.AAColor.COLOR_WHITEFADE1;
 			customNameColor = new Color(0, 0, 255);			
         }
 

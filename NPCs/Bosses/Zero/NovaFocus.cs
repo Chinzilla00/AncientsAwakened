@@ -120,7 +120,7 @@ namespace AAMod.NPCs.Bosses.Zero
                     npc.ai[3] = 0;
                     if (Main.netMode != NetmodeID.MultiplayerClient) laser.Kill();
                 }
-                else if (!AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<NovaRay>()) && Main.netMode != NetmodeID.MultiplayerClient)
+                else if (!Globals.AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<NovaRay>()) && Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     laser = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, ModContent.ProjectileType<NovaRay>(), (int)(npc.damage * 0.75f), 3f, Main.myPlayer, npc.whoAmI, 420)];
                     laser.velocity = BaseUtility.RotateVector(default, new Vector2(14f, 0f), laser.rotation);
@@ -136,7 +136,7 @@ namespace AAMod.NPCs.Bosses.Zero
             Texture2D glowTex = mod.GetTexture("Glowmasks/NovaFocus_Glow");
             BaseDrawing.DrawAfterimage(spriteBatch, tex, 0, npc, 1, 1, 6, true, 0, 0, Color.DarkRed, npc.frame);
             BaseDrawing.DrawTexture(spriteBatch, tex, 0, npc, drawColor);
-            BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc, AAColor.COLOR_WHITEFADE1);
+            BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc, Globals.AAColor.COLOR_WHITEFADE1);
             return false;
         }
 

@@ -30,7 +30,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return AAColor.AkumaA;
+            return Globals.AAColor.AkumaA;
         }
 
         public override void AI()

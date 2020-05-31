@@ -40,7 +40,7 @@ namespace AAMod.NPCs.Bosses.Grips
                     npc.active = false;
                 }
             }
-            AAAI.AIClaw(npc, ref npc.ai, true, false, 0.1f, 0.04f, 4f, 1.5f, 1f, 1f);
+            Globals.AAAI.AIClaw(npc, ref npc.ai, true, false, 0.1f, 0.04f, 4f, 1.5f, 1f, 1f);
         }
 
         public override void HitEffect(int hitDirection, double damage)

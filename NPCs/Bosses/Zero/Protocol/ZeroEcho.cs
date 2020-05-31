@@ -40,7 +40,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
         public override Color? GetAlpha(Color drawColor)
         {
-            return AAColor.Oblivion;
+            return Globals.AAColor.Oblivion;
         }
 
         int body = -1;

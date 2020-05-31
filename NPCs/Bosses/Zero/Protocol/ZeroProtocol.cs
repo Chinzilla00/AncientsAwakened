@@ -207,8 +207,8 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 if(!isCharging)
                 {
                     npc.height = 170;
-                    BaseDrawing.DrawAura(spritebatch, glowTex, 0, npc.position, npc.width, npc.height, auraPercent, 1f, 1f, npc.rotation, npc.direction, 7, npc.frame, 0f, 0f, AAColor.Oblivion);
-                    BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, AAColor.Oblivion);
+                    BaseDrawing.DrawAura(spritebatch, glowTex, 0, npc.position, npc.width, npc.height, auraPercent, 1f, 1f, npc.rotation, npc.direction, 7, npc.frame, 0f, 0f, Globals.AAColor.Oblivion);
+                    BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, Globals.AAColor.Oblivion);
                 }
             }
             

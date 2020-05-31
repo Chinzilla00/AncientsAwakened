@@ -34,7 +34,7 @@ namespace AAMod.Tiles.Bricks
             if (tile != null && tile.active() && tile.type == Type)
             {
                 Texture2D glowTex = mod.GetTexture("Glowmasks/ApocalyptiteTile_Glow");
-                BaseDrawing.DrawTileTexture(sb, glowTex, x, y, true, false, false, null, AAGlobalTile.GetZeroColorDim);
+                BaseDrawing.DrawTileTexture(sb, glowTex, x, y, true, false, false, null, Globals.AAGlobalTile.GetZeroColorDim);
             }
         }
 

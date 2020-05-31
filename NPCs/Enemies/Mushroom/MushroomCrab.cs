@@ -34,7 +34,7 @@ namespace AAMod.NPCs.Enemies.Mushroom
 
         public override void AI()
         {
-            AAAI.InfernoFighterAI(npc, ref npc.ai, true, false, -1, 0.13f, 3f, 3, 4, 60, true, 10, 60, true, null, false);
+            Globals.AAAI.InfernoFighterAI(npc, ref npc.ai, true, false, -1, 0.13f, 3f, 3, 4, 60, true, 10, 60, true, null, false);
         }
 
         public override void HitEffect(int hitDirection, double damage)

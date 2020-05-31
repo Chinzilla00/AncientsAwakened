@@ -7,6 +7,7 @@ using Terraria.ID;
 using Terraria.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using AAMod.Misc;
 
 namespace AAMod.NPCs.Bosses.Toad
 {
@@ -107,7 +108,7 @@ namespace AAMod.NPCs.Bosses.Toad
             }
             npc.TargetClosest();
             Player player = Main.player[npc.target]; // makes it so you can reference the player the npc is targetting
-            AAModGlobalNPC.Toad = npc.whoAmI;
+            Globals.AAModGlobalNPC.Toad = npc.whoAmI;
 
             Vector2 tile = new Vector2(npc.Center.X,npc.Center.Y + npc.height / 2);
             bool tileCheck = Main.tile[(int)(tile.X / 16), (int)(tile.Y / 16)].active() && (TileID.Sets.Platforms[Main.tile[(int)(tile.X / 16), (int)(tile.Y / 16)].type] || Main.tileSolid[Main.tile[(int)(tile.X / 16), (int)(tile.Y / 16)].type]);

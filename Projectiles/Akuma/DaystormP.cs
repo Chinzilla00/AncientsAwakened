@@ -147,7 +147,7 @@ namespace AAMod.Projectiles.Akuma
                 scale5 = num217;
             }
             Main.spriteBatch.Draw(texture2D14, vector27, new Rectangle?(new Rectangle(0, y7, texture2D14.Width, num215)), projectile.GetAlpha(color25), projectile.rotation, new Vector2(texture2D14.Width / 2f, num215 / 2f), projectile.scale, spriteEffects, 0f);
-            Main.spriteBatch.Draw(Glow, vector27, new Rectangle?(new Rectangle(0, y7, texture2D14.Width, num215)), AAColor.Glow * scale5, projectile.rotation, new Vector2(texture2D14.Width / 2f, num215 / 2f), projectile.scale, spriteEffects, 0f);
+            Main.spriteBatch.Draw(Glow, vector27, new Rectangle?(new Rectangle(0, y7, texture2D14.Width, num215)), Globals.AAColor.Glow * scale5, projectile.rotation, new Vector2(texture2D14.Width / 2f, num215 / 2f), projectile.scale, spriteEffects, 0f);
             return false;
         }
     }

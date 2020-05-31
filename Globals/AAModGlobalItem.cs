@@ -18,7 +18,7 @@ using AAMod.Items.Accessories;
 using AAMod.Items.Materials;
 using AAMod.Items.Blocks;
 
-namespace AAMod
+namespace AAMod.Globals
 {
     public class AAModGlobalItem : GlobalItem
 	{

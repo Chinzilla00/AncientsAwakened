@@ -1,11 +1,9 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
 using Terraria;
-
 using Terraria.Audio;
 
-namespace AAMod
+namespace AAMod.Globals
 {
     public abstract class AAProjectile : ParentProjectile
     {

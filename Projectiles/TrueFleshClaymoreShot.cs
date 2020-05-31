@@ -39,7 +39,7 @@ namespace AAMod.Projectiles
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return AAColor.Ichor;
+            return Globals.AAColor.Ichor;
         }
         public override void Kill(int timeLeft)
         {

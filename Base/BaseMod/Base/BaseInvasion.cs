@@ -224,7 +224,7 @@ namespace AAMod
 				if(spawnHardMobCount > 0 && hardMobs < hardMobsMax && hardMobsCooldown == 0)
 				{
 					bool addedHardMob = false;
-					if (ModSupport.calamity != null && ModSupport.downedBoss_calamity != null && (DEV || ModSupport.downedBoss_calamity("Bumblebirb")) && Main.rand.Next(3) != 0) //bumblebirb rider
+					if (CrossMod.ModSupport.calamity != null && CrossMod.ModSupport.downedBoss_calamity != null && (DEV || CrossMod.ModSupport.downedBoss_calamity("Bumblebirb")) && Main.rand.Next(3) != 0) //bumblebirb rider
 					{
 						addedHardMob = true;
 						net.Add(mod.NPCType("BumblebirbRider"));				
@@ -259,7 +259,7 @@ namespace AAMod
 				#region boss specials
 				if ((DEV || NPC.downedBoss1) && Main.rand.Next(rarityHM) == 0) //eyemaster, gundead, dynadead
 				{
-					if(ModSupport.calamity != null && Main.rand.Next(2) == 0)
+					if(CrossMod.ModSupport.calamity != null && Main.rand.Next(2) == 0)
 					{
 						net.Add(mod.NPCType("BlightedEyemaster"));
 					}else

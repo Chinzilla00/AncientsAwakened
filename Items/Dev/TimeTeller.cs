@@ -3,7 +3,7 @@ using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using System.Collections.Generic;
-
+using AAMod.CrossMod;
 
 namespace AAMod.Items.Dev
 {
@@ -27,7 +27,7 @@ namespace AAMod.Items.Dev
 
         public override void ModifyWeaponDamage(Player player, ref float add, ref float mult, ref float flat)
         {
-            mult *= ((ModSupportPlayer)player.GetModPlayer(mod, "ModSupportPlayer")).Thorium_radiantBoost;
+            mult *= ((ModSupportPlayer)player.GetModPlayer(mod, "CrossMod.ModSupportPlayer")).Thorium_radiantBoost;
         }
 
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)

@@ -90,11 +90,11 @@ Non-Consumable");
             {
                 if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(AAWorld.downedShen ? Language.GetTextValue("Mods.AAMod.Common.ChaosSigilTrue1") : Language.GetTextValue("Mods.AAMod.Common.ChaosSigilTrue2"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
 
-                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Shen"), true, 0, 0, Language.GetTextValue("Mods.AAMod.Common.ShenDoragon"), false);
+                Globals.AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Shen"), true, 0, 0, Language.GetTextValue("Mods.AAMod.Common.ShenDoragon"), false);
             }
             if (!AAWorld.ShenSummoned)
             {
-                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("ShenSpawn"), false, 0, 0);
+                Globals.AAModGlobalNPC.SpawnBoss(player, mod.NPCType("ShenSpawn"), false, 0, 0);
                 AAWorld.ShenSummoned = true;
             }
 

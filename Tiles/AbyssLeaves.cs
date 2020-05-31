@@ -38,7 +38,7 @@ namespace AAMod.Tiles
             if (glow && tile != null && tile.active() && tile.type == Type)
             {
                 if (glowTex == null) glowTex = mod.GetTexture("Tiles/AbyssLeaves");
-                BaseDrawing.DrawTileTexture(spriteBatch, glowTex, x, y, true, false, false, null, AAGlobalTile.GetYamataColorDim);
+                BaseDrawing.DrawTileTexture(spriteBatch, glowTex, x, y, true, false, false, null, Globals.AAGlobalTile.GetYamataColorDim);
             }
         }
 

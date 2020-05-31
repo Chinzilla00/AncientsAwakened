@@ -51,7 +51,7 @@ namespace AAMod.Projectiles.Greed
         public override void Kill(int timeLeft)
         {
             Vector2 vector = Vector2.Normalize(projectile.velocity);
-            if (!AAGlobalProjectile.AnyProjectiles(mod.ProjectileType("GoldFountain")))
+            if (!Globals.AAGlobalProjectile.AnyProjectiles(mod.ProjectileType("GoldFountain")))
             {
                 Projectile.NewProjectile(projectile.position.X - vector.X * 20f, projectile.position.Y - vector.Y * 20f, 0, 0, mod.ProjectileType("GoldFountain"), projectile.damage, 1, projectile.owner, 0, 0);
             }

@@ -60,7 +60,7 @@ namespace AAMod.Items.Summoning.Minions
                 int num501 = 20;
                 for (int num502 = 0; num502 < num501; num502++)
                 {
-                    int num503 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 16f), projectile.width, projectile.height - 16, ModContent.DustType<Dusts.InfinityOverloadB>(), 0f, 0f, 0, AAColor.Hallow, 1f);
+                    int num503 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 16f), projectile.width, projectile.height - 16, ModContent.DustType<Dusts.InfinityOverloadB>(), 0f, 0f, 0, Globals.AAColor.Hallow, 1f);
                     Main.dust[num503].velocity *= 2f;
                 }
             }

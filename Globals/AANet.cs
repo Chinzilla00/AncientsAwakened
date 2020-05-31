@@ -6,7 +6,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.GameContent.Events;
 
-namespace AAMod
+namespace AAMod.Globals
 {
     public class AANet
     {
@@ -41,7 +41,7 @@ namespace AAMod
 						string overrideDisplayName = bb.ReadString();
 						bool namePlural = bb.ReadBool();
 
-						AAModGlobalNPC.SpawnBoss(Main.player[playerID], bossType, spawnMessage, new Vector2(npcCenterX, npcCenterY), overrideDisplayName, namePlural);
+						Globals.AAModGlobalNPC.SpawnBoss(Main.player[playerID], bossType, spawnMessage, new Vector2(npcCenterX, npcCenterY), overrideDisplayName, namePlural);
 					}
 				}
                 else if (msg == UpdateLovecraftianCount)

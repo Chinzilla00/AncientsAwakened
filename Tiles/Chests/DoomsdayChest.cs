@@ -260,7 +260,7 @@ namespace AAMod.Tiles.Chests
 
         public Color GetColor(Color color)
         {
-            Color glowColor = AAColor.ZeroShield;
+            Color glowColor = Globals.AAColor.ZeroShield;
             return glowColor;
         }
 

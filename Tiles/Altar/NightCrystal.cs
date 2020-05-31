@@ -47,7 +47,7 @@ namespace AAMod.Tiles.Altar
         {
             if (AAWorld.GravActive)
             {
-                return AAColor.COLOR_WHITEFADE1;
+                return Globals.AAColor.COLOR_WHITEFADE1;
             }
             return Color.Transparent;
         }

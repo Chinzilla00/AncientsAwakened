@@ -117,7 +117,7 @@ namespace AAMod.NPCs.Bosses.Athena
                             if (npc.ai[0] >= 1200)
                             {
                                 if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("AthenaDefeat9"), Color.CornflowerBlue);
-                                AAModGlobalNPC.SpawnBoss(Main.player[npc.target], ModContent.NPCType<Olympian.AthenaA>(), false, npc.Center);
+                                Globals.AAModGlobalNPC.SpawnBoss(Main.player[npc.target], ModContent.NPCType<Olympian.AthenaA>(), false, npc.Center);
                                 AAMod.ShowTitle(npc, 5);
 
                                 int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer);
@@ -182,7 +182,7 @@ namespace AAMod.NPCs.Bosses.Athena
                             else if (npc.ai[0] >= 1200)
                             {
                                 if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("Athena2Defeat9"), Color.CornflowerBlue);
-                                AAModGlobalNPC.SpawnBoss(Main.player[npc.target], ModContent.NPCType<AthenaFlee>(), false, npc.Center);
+                                Globals.AAModGlobalNPC.SpawnBoss(Main.player[npc.target], ModContent.NPCType<AthenaFlee>(), false, npc.Center);
                                 npc.active = false;
                                 npc.netUpdate = true;
                             }

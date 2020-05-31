@@ -29,7 +29,7 @@ namespace AAMod.Projectiles.Toad
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return AAColor.TODE;
+            return Globals.AAColor.TODE;
         }
 
         public override void AI()

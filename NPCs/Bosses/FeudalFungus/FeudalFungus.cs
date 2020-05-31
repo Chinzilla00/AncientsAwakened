@@ -304,7 +304,7 @@ namespace AAMod.NPCs.Bosses.FeudalFungus
         {
             Texture2D glowTex = mod.GetTexture("Glowmasks/FeudalFungus_Glow");
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 8, npc.frame, npc.GetAlpha(dColor), true);
-            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 8, npc.frame, AAColor.Glow, true);
+            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 8, npc.frame, Globals.AAColor.Glow, true);
             return false;
         }
     }

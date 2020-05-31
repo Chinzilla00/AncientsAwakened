@@ -45,7 +45,7 @@ Right click and hold to release and aim manually");
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Rarity13;
+                    line2.overrideColor = Globals.AAColor.Rarity13;
                 }
             }
         }
@@ -90,7 +90,7 @@ Right click and hold to release and aim manually");
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            bool AnyOrbiters = AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<Projectiles.Akuma.SunstormFireball>());
+            bool AnyOrbiters = Globals.AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<Projectiles.Akuma.SunstormFireball>());
             for (int Loops = 0; Loops < 4; Loops++)
             {
                 Projectile.NewProjectile(position, new Vector2(speedX, speedY), type, damage, knockBack, Main.myPlayer, 0, 0);

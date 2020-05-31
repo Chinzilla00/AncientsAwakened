@@ -57,7 +57,7 @@ Non-Consumable");
                     item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
                 ),
                 new Rectangle(0, 0, texture.Width, texture.Height),
-                AAColor.Shen3,
+                Globals.AAColor.Shen3,
                 rotation,
                 texture.Size() * 0.5f,
                 scale,
@@ -74,7 +74,7 @@ Non-Consumable");
             for (int i = 0; i < 4; i++)
             {
                 //Vector2 offsetPositon = Vector2.UnitY.RotatedBy(MathHelper.PiOver2 * i) * 2;
-                spriteBatch.Draw(texture, position, null, AAColor.Shen3, 0, origin, scale, SpriteEffects.None, 0f);
+                spriteBatch.Draw(texture, position, null, Globals.AAColor.Shen3, 0, origin, scale, SpriteEffects.None, 0f);
 
             }
 
@@ -116,7 +116,7 @@ Non-Consumable");
         {
             if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ChaosRuneTrue1"), Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
             if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ChaosRuneTrue2"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
-            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("ShenA"), false, 0, 0);
+            Globals.AAModGlobalNPC.SpawnBoss(player, mod.NPCType("ShenA"), false, 0, 0);
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/ShenRoar"), player.position);
             return true;
         }

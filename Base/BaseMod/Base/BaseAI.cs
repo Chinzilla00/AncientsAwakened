@@ -5216,12 +5216,8 @@ namespace AAMod
             {
                 int parsedDamage = dmgAmt; if (dmgVariation){ parsedDamage = Main.DamageVar(dmgAmt); }
                 player.Hurt(PlayerDeathReason.ByOther(-1), parsedDamage, hitDirection, false, false, false, 0);
-                if (Main.netMode != NetmodeID.SinglePlayer)
-                {
-                    NetMessage.SendData(MessageID.HurtPlayer, -1, -1, PlayerDeathReason.LegacyDefault().GetDeathText(player.name), player.whoAmI, hitDirection, 1, knockback, parsedDamage);
-                }
-            }else
-			if (damager is Player subPlayer)
+            }
+			else if (damager is Player subPlayer)
 			{
 				//bool crit = false;
 				//if (critChance > 0) { crit = Main.rand.Next(1, 101) <= critChance; }
@@ -5247,8 +5243,7 @@ namespace AAMod
 				}
 				subPlayer.attackCD = (int)(subPlayer.itemAnimationMax * 0.33f);
 			}
-			else
-			if (damager is Projectile p)
+			else if (damager is Projectile p)
 			{
 				if (p.friendly)
 				{
@@ -5268,8 +5263,7 @@ namespace AAMod
 					}
 					p.playerImmune[player.whoAmI] = 40;
 				}
-				else
-				if (p.hostile)
+				else if (p.hostile)
 				{
 					//bool crit = false; float mult = 2f;
 					//p.DamagePlayer(player, hitDirection, ref dmgAmt, ref crit, ref mult);
@@ -5285,8 +5279,7 @@ namespace AAMod
 					}
 				}
 			}
-			else
-			if (damager is NPC npc)
+			else if (damager is NPC npc)
 			{
 
 				//bool crit = false; float mult = 2f;
@@ -5345,8 +5338,8 @@ namespace AAMod
                 {
                     NetMessage.SendData(MessageID.StrikeNPC, -1, -1, NetworkText.FromLiteral(""), npc.whoAmI, 1, knockback, hitDirection, parsedDamage);
                 }
-            }else
-			if (damager is Projectile p)
+            }
+			else if (damager is Projectile p)
 			{
 				if (p.owner == Main.myPlayer)
 				{

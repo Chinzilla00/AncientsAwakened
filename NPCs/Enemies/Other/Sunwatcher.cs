@@ -4,6 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 using AAMod.Dusts;
+using AAMod.Misc;
 
 namespace AAMod.NPCs.Enemies.Other
 {
@@ -67,7 +68,7 @@ namespace AAMod.NPCs.Enemies.Other
         {
 			if(AAWorld.downedEquinox)
 			{
-				for (int Ammount = 0; Ammount < Main.rand.Next(3); Ammount++)
+				for (int Amount = 0; Amount < Main.rand.Next(3); Amount++)
 				{
 					npc.DropLoot(ModContent.ItemType<Items.Materials.Stardust>());
 				}

@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 
 using System.IO;
+using AAMod.Misc;
 
 namespace AAMod.NPCs.Bosses.Akuma
 {
@@ -180,7 +181,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 }
                 else if (!npc.HasBuff(BuffID.Wet))
                 {
-                    AAAI.BreatheFire(npc, true, ModContent.ProjectileType<AkumaBreath>(), 2, 4);
+                    Globals.AAAI.BreatheFire(npc, true, ModContent.ProjectileType<AkumaBreath>(), 2, 4);
                 }
                 if (attackTimer >= 80)
                 {
@@ -190,7 +191,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                     attackCounter = 0;
                 }
             }
-            AAAI.DustOnNPCSpawn(npc, mod.DustType("AkumaDust"), 2, 12);
+            Globals.AAAI.DustOnNPCSpawn(npc, mod.DustType("AkumaDust"), 2, 12);
 
             npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
             npc.ai[1]++;
@@ -498,7 +499,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                     if (Main.netMode != NetmodeID.MultiplayerClient) BaseUtility.Chat(Lang.BossChat("Akuma11"), Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B, false);
                 }
                 string[] lootTable = { "AkumaTerratool", "DayStorm", "LungStaff", "MorningGlory", "RadiantDawn", "Solar", "SunSpear", "ReignOfFire", "DaybreakArrow", "Daycrusher", "Dawnstrike", "SunStorm", "SunStaff", "DragonSlasher" };
-                AAAI.DownedBoss(npc, mod, lootTable, AAWorld.downedAkuma, true, mod.ItemType("CrucibleScale"), 20, 30, false, false, true, 0, mod.ItemType("AkumaTrophy"), false);
+                Globals.AAAI.DownedBoss(npc, mod, lootTable, AAWorld.downedAkuma, true, mod.ItemType("CrucibleScale"), 20, 30, false, false, true, 0, mod.ItemType("AkumaTrophy"), false);
                 if (Main.netMode != NetmodeID.MultiplayerClient) AAMod.Chat(Lang.BossChat("Akuma12"), new Color(180, 41, 32));
 
             }

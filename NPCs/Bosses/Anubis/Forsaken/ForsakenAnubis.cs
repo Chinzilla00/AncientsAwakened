@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 
 using System;
 using System.IO;
+using AAMod.Misc;
 
 namespace AAMod.NPCs.Bosses.Anubis.Forsaken
 {
@@ -243,44 +244,44 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                         {
                             if (npc.life < npc.lifeMax / 3)
                             {
-                                int a = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X - 150, npc.Center.Y);
-                                int b = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X + 150, npc.Center.Y);
-                                int c = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X, npc.Center.Y - 150);
-                                int d = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X, npc.Center.Y + 150);
+                                Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X - 150, npc.Center.Y);
+                                Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X + 150, npc.Center.Y);
+                                Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X, npc.Center.Y - 150);
+                                Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X, npc.Center.Y + 150);
                             }
                             else
                             {
-                                int a = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X - 180, npc.Center.Y - 60);
-                                int b = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X + 180, npc.Center.Y - 60);
-                                int c = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X, npc.Center.Y - 200);
+                                Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X - 180, npc.Center.Y - 60);
+                                Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X + 180, npc.Center.Y - 60);
+                                Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X, npc.Center.Y - 200);
                             }
                         }
                         else
                         {
                             if (npc.life < npc.lifeMax / 2)
                             {
-                                int m = NPC.NewNPC((int)npc.position.X + 130, (int)npc.position.Y, ModContent.NPCType<CurseCircle>());
-                                Main.npc[m].Center = new Vector2(npc.Center.X + 130, npc.Center.Y);
+                                int circle1 = NPC.NewNPC((int)npc.position.X + 130, (int)npc.position.Y, ModContent.NPCType<CurseCircle>());
+                                Main.npc[circle1].Center = new Vector2(npc.Center.X + 130, npc.Center.Y);
 
-                                int n = NPC.NewNPC((int)npc.position.X - 130, (int)npc.position.Y, ModContent.NPCType<CurseCircle>());
-                                Main.npc[n].Center = new Vector2(npc.Center.X - 130, npc.Center.Y);
+                                int circle2 = NPC.NewNPC((int)npc.position.X - 130, (int)npc.position.Y, ModContent.NPCType<CurseCircle>());
+                                Main.npc[circle2].Center = new Vector2(npc.Center.X - 130, npc.Center.Y);
 
-                                int o = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y + 130, ModContent.NPCType<CurseCircle>());
-                                Main.npc[o].Center = new Vector2(npc.Center.X, npc.Center.Y + 130);
+                                int circle3 = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y + 130, ModContent.NPCType<CurseCircle>());
+                                Main.npc[circle3].Center = new Vector2(npc.Center.X, npc.Center.Y + 130);
 
-                                int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y - 130, ModContent.NPCType<CurseCircle>());
-                                Main.npc[p].Center = new Vector2(npc.Center.X, npc.Center.Y - 130);
+                                int circle4 = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y - 130, ModContent.NPCType<CurseCircle>());
+                                Main.npc[circle4].Center = new Vector2(npc.Center.X, npc.Center.Y - 130);
                             }
                             else
                             {
-                                int m = NPC.NewNPC((int)npc.position.X + 130, (int)npc.position.Y, ModContent.NPCType<CurseCircle>());
-                                Main.npc[m].Center = new Vector2(npc.Center.X + 130, npc.Center.Y - 60);
+                                int circle1 = NPC.NewNPC((int)npc.position.X + 130, (int)npc.position.Y, ModContent.NPCType<CurseCircle>());
+                                Main.npc[circle1].Center = new Vector2(npc.Center.X + 130, npc.Center.Y - 60);
 
-                                int n = NPC.NewNPC((int)npc.position.X - 130, (int)npc.position.Y, ModContent.NPCType<CurseCircle>());
-                                Main.npc[n].Center = new Vector2(npc.Center.X - 130, npc.Center.Y - 60);
+                                int circle2 = NPC.NewNPC((int)npc.position.X - 130, (int)npc.position.Y, ModContent.NPCType<CurseCircle>());
+                                Main.npc[circle2].Center = new Vector2(npc.Center.X - 130, npc.Center.Y - 60);
 
-                                int o = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y + 130, ModContent.NPCType<CurseCircle>());
-                                Main.npc[o].Center = new Vector2(npc.Center.X, npc.Center.Y + 130);
+                                int circle3 = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y + 130, ModContent.NPCType<CurseCircle>());
+                                Main.npc[circle3].Center = new Vector2(npc.Center.X, npc.Center.Y + 130);
                             }
                         }
                     }
@@ -298,7 +299,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                         ScepterTeleport();
                     }
 
-                    if (npc.ai[1] > 160 && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<ForsakenStaff>()))
+                    if (npc.ai[1] > 160 && !Globals.AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<ForsakenStaff>()))
                     {
                         npc.ai[0]++;
                         npc.ai[1] = 0;
@@ -383,7 +384,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                         break;
                     if (npc.life > npc.lifeMax / 2)
                     {
-                        if (npc.ai[1] > 160 && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<Block>()))
+                        if (npc.ai[1] > 160 && !Globals.AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<Block>()))
                         {
                             internalAI[1]++;
                             if (internalAI[3] < TeleportCount && internalAI[1] >= 50)
@@ -425,7 +426,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                     }
                     else
                     {
-                        if (npc.ai[1] > 240 && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<BlockF>()))
+                        if (npc.ai[1] > 240 && !Globals.AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<BlockF>()))
                         {
                             internalAI[1]++;
                             if (internalAI[3] < TeleportCount && internalAI[1] >= 50)

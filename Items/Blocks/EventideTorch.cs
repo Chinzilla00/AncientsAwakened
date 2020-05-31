@@ -37,7 +37,7 @@ namespace AAMod.Items.Blocks
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Rarity13;
+                    line2.overrideColor = Globals.AAColor.Rarity13;
                 }
             }
         }
@@ -49,14 +49,14 @@ namespace AAMod.Items.Blocks
 				Dust.NewDust(new Vector2(player.itemLocation.X + 16f * player.direction, player.itemLocation.Y - 14f * player.gravDir), 4, 4, mod.DustType("YamataADust"));
 			}
 			Vector2 position = player.RotatedRelativePoint(new Vector2(player.itemLocation.X + 12f * player.direction + player.velocity.X, player.itemLocation.Y - 14f + player.velocity.Y), true);
-			Lighting.AddLight(position, AAColor.YamataA.R / 255, AAColor.YamataA.G / 255, AAColor.YamataA.B / 255);
+			Lighting.AddLight(position, Globals.AAColor.YamataA.R / 255, Globals.AAColor.YamataA.G / 255, Globals.AAColor.YamataA.B / 255);
 		}
 
 		public override void PostUpdate()
 		{
 			if (!item.wet)
 			{
-				Lighting.AddLight((int)((item.position.X + item.width / 2) / 16f), (int)((item.position.Y + item.height / 2) / 16f), AAColor.YamataA.R / 255, AAColor.YamataA.G / 255, AAColor.YamataA.B / 255);
+				Lighting.AddLight((int)((item.position.X + item.width / 2) / 16f), (int)((item.position.Y + item.height / 2) / 16f), Globals.AAColor.YamataA.R / 255, Globals.AAColor.YamataA.G / 255, Globals.AAColor.YamataA.B / 255);
 			}
 		}
 

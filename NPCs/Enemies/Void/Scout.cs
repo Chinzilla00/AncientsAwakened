@@ -96,7 +96,7 @@ namespace AAMod.NPCs.Enemies.Void
             Texture2D GlowTex = mod.GetTexture("Glowmasks/Scout_Glow");
 
             BaseDrawing.DrawTexture(spriteBatch, texture2D13, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 4, npc.frame, drawColor, true);
-            BaseDrawing.DrawTexture(spriteBatch, GlowTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 4, npc.frame, AAColor.ZeroShield, true);
+            BaseDrawing.DrawTexture(spriteBatch, GlowTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 4, npc.frame, Globals.AAColor.ZeroShield, true);
             return false;
         }
     }

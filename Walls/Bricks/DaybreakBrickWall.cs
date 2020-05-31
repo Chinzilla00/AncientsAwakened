@@ -18,7 +18,7 @@ namespace AAMod.Walls.Bricks
         public override void PostDraw(int x, int y, SpriteBatch sb)
         {
             Texture2D glowTex = mod.GetTexture("Glowmasks/DaybreakBrickWall_Glow");
-            BaseDrawing.DrawWallTexture(sb, glowTex, x, y, false, AAGlobalTile.GetAkumaColorDim);
+            BaseDrawing.DrawWallTexture(sb, glowTex, x, y, false, Globals.AAGlobalTile.GetAkumaColorDim);
         }
     }
 }

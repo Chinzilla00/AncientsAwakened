@@ -33,7 +33,7 @@ namespace AAMod.NPCs.Enemies.Mushroom
 
         public override void AI()
         {
-            AAAI.InfernoFighterAI(npc, ref npc.ai, true, true, 1, 0.07f, 1f, 3, 4, 60, true, 10, 60, true, null, false);
+            Globals.AAAI.InfernoFighterAI(npc, ref npc.ai, true, true, 1, 0.07f, 1f, 3, 4, 60, true, 10, 60, true, null, false);
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)

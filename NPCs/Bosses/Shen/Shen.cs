@@ -7,6 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using AAMod.NPCs.Bosses.Shen.Projectiles;
+using AAMod.Misc;
 
 namespace AAMod.NPCs.Bosses.Shen
 {
@@ -739,8 +740,8 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 SpawnGrips = true;
                 if (Main.netMode != NetmodeID.MultiplayerClient) AAMod.Chat(Lang.BossChat("ShenDoragon2"), Color.DarkMagenta);
-                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AbyssGrip"), false, 0, 0);
-                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("BlazeGrip"), false, 0, 0);
+                Globals.AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AbyssGrip"), false, 0, 0);
+                Globals.AAModGlobalNPC.SpawnBoss(player, mod.NPCType("BlazeGrip"), false, 0, 0);
                 Main.PlaySound(SoundID.Roar, player.position, 0);
             }
             if (npc.life <= npc.lifeMax * .4f && !SpawnGrips && isAwakened)
@@ -760,8 +761,8 @@ namespace AAMod.NPCs.Bosses.Shen
                     if (Main.netMode != NetmodeID.MultiplayerClient) AAMod.Chat(Lang.BossChat("ShenDoragon8"), new Color(72, 78, 117));
                 }
 
-                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("FuryAshe"), false, 0, 0);
-                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("WrathHaruka"), false, 0, 0);
+                Globals.AAModGlobalNPC.SpawnBoss(player, mod.NPCType("FuryAshe"), false, 0, 0);
+                Globals.AAModGlobalNPC.SpawnBoss(player, mod.NPCType("WrathHaruka"), false, 0, 0);
             }
 
             if (npc.life <= npc.lifeMax * 0.80f && !Health4 && !isAwakened)

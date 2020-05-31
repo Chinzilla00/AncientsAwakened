@@ -124,7 +124,7 @@ namespace AAMod.Items.Armor.Chaos
                 Main.dust[num88].position = projectile.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
                 Main.dust[num88].velocity *= 2f;
                 Main.dust[num88].noGravity = true;
-                Main.dust[num88].color = AAColor.Shen2 * 0.5f;
+                Main.dust[num88].color = Globals.AAColor.Shen2 * 0.5f;
                 Main.dust[num88].noLight = true;
                 Main.dust[num88].velocity += projectile.DirectionTo(Main.dust[num88].position) * 8f;
             }

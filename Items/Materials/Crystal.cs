@@ -27,12 +27,12 @@ namespace AAMod.Items.Materials
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return AAColor.COLOR_WHITEFADE1;
+            return Globals.AAColor.COLOR_WHITEFADE1;
         }
 
         public override void PostUpdate()
         {
-            Lighting.AddLight(item.Center, AAColor.COLOR_WHITEFADE1.ToVector3() * 0.55f * Main.essScale);
+            Lighting.AddLight(item.Center, Globals.AAColor.COLOR_WHITEFADE1.ToVector3() * 0.55f * Main.essScale);
         }
 
         public override void AddRecipes()
@@ -67,12 +67,12 @@ namespace AAMod.Items.Materials
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return AAColor.TerraGlow;
+            return Globals.AAColor.TerraGlow;
         }
 
         public override void PostUpdate()
         {
-            Lighting.AddLight(item.Center, AAColor.TerraGlow.ToVector3() * 0.55f * Main.essScale);
+            Lighting.AddLight(item.Center, Globals.AAColor.TerraGlow.ToVector3() * 0.55f * Main.essScale);
         }
     }
 
@@ -98,12 +98,12 @@ namespace AAMod.Items.Materials
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return AAColor.Shen3;
+            return Globals.AAColor.Shen3;
         }
 
         public override void PostUpdate()
         {
-            Lighting.AddLight(item.Center, AAColor.Shen3.ToVector3() * 0.55f * Main.essScale);
+            Lighting.AddLight(item.Center, Globals.AAColor.Shen3.ToVector3() * 0.55f * Main.essScale);
         }
     }
 }

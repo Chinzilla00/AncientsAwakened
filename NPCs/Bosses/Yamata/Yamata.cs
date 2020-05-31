@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using AAMod.Misc;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -676,7 +677,6 @@ namespace AAMod.NPCs.Bosses.Yamata
         }
         public void DrawHead(SpriteBatch spriteBatch, string headTexture, string glowMaskTexture, NPC head, Color drawColor, bool DrawUnder)
         {
-            Color lightColor = npc.GetAlpha(BaseDrawing.GetLightColor(npc.Center));
             Color GlowColor = Color.White;
             if (head != null && head.active && head.modNPC != null && (head.modNPC is YamataHead || head.modNPC is YamataHeadF1))
             {

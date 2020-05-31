@@ -37,7 +37,7 @@ namespace AAMod.Projectiles.Zero
             BaseDrawing.DrawAfterimage(spritebatch, Main.projectileTexture[projectile.type], 0, 
                 projectile.position, projectile.width, projectile.height, projectile.oldPos, 
                 projectile.scale, projectile.rotation, projectile.spriteDirection, 
-                1, frame, 1.5f, 1, 5, false, 0, 0, projectile.GetAlpha(AAColor.ZeroShield));
+                1, frame, 1.5f, 1, 5, false, 0, 0, projectile.GetAlpha(Globals.AAColor.ZeroShield));
             return true;
         }
     }

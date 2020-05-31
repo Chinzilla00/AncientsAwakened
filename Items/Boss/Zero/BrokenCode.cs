@@ -42,14 +42,14 @@ WARNING: May permanently displace appendages until game restart. This is a featu
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Rarity13;
+                    line2.overrideColor = Globals.AAColor.Rarity13;
                 }
             }
         }
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return AAColor.COLOR_WHITEFADE1;
+            return Globals.AAColor.COLOR_WHITEFADE1;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

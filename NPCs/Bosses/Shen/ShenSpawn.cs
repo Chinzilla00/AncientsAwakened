@@ -212,7 +212,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public void SummonShen()
         {
-            AAModGlobalNPC.SpawnBoss(Main.player[npc.target], mod.NPCType("Shen"), false, npc.Center, "");
+            Globals.AAModGlobalNPC.SpawnBoss(Main.player[npc.target], mod.NPCType("Shen"), false, npc.Center, "");
         }
 
         public Color GetColorAlpha()
@@ -555,7 +555,7 @@ namespace AAMod.NPCs.Bosses.Shen
             Main.projectile[b].Center = npc.Center;
 
 
-            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("ShenA"), false, npc.Center, "Shen Awakened", false);
+            Globals.AAModGlobalNPC.SpawnBoss(player, mod.NPCType("ShenA"), false, npc.Center, "Shen Awakened", false);
         }
 
         public Color GetColorAlpha()

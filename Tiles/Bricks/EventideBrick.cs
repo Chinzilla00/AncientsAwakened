@@ -12,7 +12,7 @@ namespace AAMod.Tiles.Bricks
             Main.tileLighted[Type] = false;
             Main.tileBlockLight[Type] = true;
             drop = mod.ItemType("EventideBrick");   
-            AddMapEntry(AAColor.Yamata);
+            AddMapEntry(Globals.AAColor.Yamata);
             dustType = ModContent.DustType<Dusts.AbyssDust>();
         }
     }
